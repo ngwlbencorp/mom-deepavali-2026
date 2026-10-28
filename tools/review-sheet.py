@@ -1,5 +1,5 @@
 """Builds the translation review workbook for MOM's language team.
-Usage: python tools/review-sheet.py <out.xlsx>
+Usage: python tools/review-sheet.py <out.xlsx> [git ref of the last workbook sent, default HEAD]
 Reads English from js/content.js (via node), drafts from i18n/<code>.json, languages from
 tools/languages.json, key terms from tools/glossary.json and sources from SOURCES.md."""
 import json, os, re, subprocess, sys
@@ -9,6 +9,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = [(l['code'], l['sheet']) for l in json.load(open(os.path.join(ROOT, 'tools', 'languages.json'), encoding='utf-8'))]
+BASE = sys.argv[2] if len(sys.argv) > 2 else 'HEAD'
 GLOSSARY = json.load(open(os.path.join(ROOT, 'tools', 'glossary.json'), encoding='utf-8'))
 FIXED = {'type', 'icon', 'code', 'helpline'}
 
@@ -34,9 +35,9 @@ def sources_for(key):
     return ITEM_SOURCES.get(m.group(0), '') if m else ''
 
 def previous_draft(code):
-    """The draft as last committed, to flag lines that changed since the last workbook."""
+    """The draft at BASE (the commit the last workbook was built from), to flag changed lines."""
     try:
-        return json.loads(subprocess.check_output(['git', 'show', 'HEAD:i18n/%s.json' % code], cwd=ROOT, stderr=subprocess.DEVNULL))
+        return json.loads(subprocess.check_output(['git', 'show', '%s:i18n/%s.json' % (BASE, code)], cwd=ROOT, stderr=subprocess.DEVNULL))
     except Exception:
         return None
 
