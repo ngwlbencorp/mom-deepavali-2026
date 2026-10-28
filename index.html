@@ -6,35 +6,31 @@
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#4a1d5e">
 <title>Stay Safe from Scams</title>
-<meta name="description" content="Deepavali scam awareness quiz by MOM.">
+<meta name="description" content="Deepavali scam awareness: learn the tricks, then take the quiz.">
 <link rel="stylesheet" href="./css/site.css">
+<link rel="stylesheet" href="./css/quiz.css">
 </head>
-<body>
-  <header class="top">
-    <svg class="rangoli" viewBox="0 0 200 200" aria-hidden="true">
-      <g fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="100" cy="100" r="30"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="90"/>
-        <path d="M100 10 L120 100 L100 190 L80 100 Z M10 100 L100 80 L190 100 L100 120 Z"/>
-      </g>
-    </svg>
-    <svg class="diya" viewBox="0 0 64 64" aria-hidden="true">
-      <path class="flame" d="M32 6 C38 16 40 22 32 30 C24 22 26 16 32 6 Z"/>
-      <path class="lamp" d="M6 36 H58 C56 48 46 56 32 56 C18 56 8 48 6 36 Z"/>
-    </svg>
-    <p class="brand">Ministry of Manpower</p>
+<body class="app">
+  <header class="bar">
+    <button class="iconbtn" id="homeBtn" type="button" aria-label="Home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path class="flame" d="M32 6 C38 16 40 22 32 30 C24 22 26 16 32 6 Z"/><path class="lamp" d="M6 36 H58 C56 48 46 56 32 56 C18 56 8 48 6 36 Z"/></svg>
+    </button>
+    <p class="bar-title">Ministry of Manpower</p>
+    <button class="langbtn" id="langBtn" type="button" hidden>EN</button>
   </header>
 
-  <main id="app" aria-live="polite">
-    <noscript><section class="card"><p>Please turn on JavaScript to do the quiz. If unsure about a message or call, call the ScamShield Helpline at 1799.</p></section></noscript>
+  <main id="app" class="screen" aria-live="polite">
+    <noscript><p>Please turn on JavaScript. If unsure about a message or call, call the ScamShield Helpline at 1799.</p></noscript>
   </main>
 
-  <footer class="foot">
-    <p>Happy Deepavali! Stay safe. Call <a href="tel:1799">1799</a> if unsure.</p>
-  </footer>
+  <footer id="nav" class="nav" hidden></footer>
+  <div id="sheet" class="sheet" hidden></div>
 
   <script src="./js/config.js"></script>
   <script src="./js/api.js"></script>
   <script src="./js/content.js"></script>
+  <!-- Translations: add one script per language, e.g. <script src="./js/lang/id.js"></script> -->
+  <script src="./js/i18n.js"></script>
   <script src="./js/payload.js"></script>
   <script src="./js/vendor/qrcode.js"></script>
   <script src="./js/app.js"></script>

@@ -1,175 +1,247 @@
-// All wording for the mini-site lives here so it can be reviewed and edited
-// without touching app logic. Items marked VERIFY must be checked against the
-// latest official source before the event.
+// All mini-site wording (English). Other languages live in js/lang/<code>.js and only need to
+// provide the text: anything they leave out falls back to the English here. Answers, flags and
+// scoring are defined once, below, and are never translated.
+// DRAFT: scenarios are drafted from public MOM / ScamShield guidance pending the final deck.
+// Items marked VERIFY must be checked against the latest official source before the event.
 
-window.SCAM_CONTENT = {
+window.SCAM_LANGS = [{ code: 'en', name: 'English' }];
+window.SCAM_TEXT = window.SCAM_TEXT || {};
+
+window.SCAM_TEXT.en = {
   event: {
     greeting: "Happy Deepavali!",
     title: "Stay safe from scams",
-    intro: "Scammers use festivals, jobs and fake officers to trick you into sending money. Answer 8 quick questions to learn how to spot their tricks.",
-    meta: "8 questions · about 3 minutes",
-    souvenirNote: "Get all answers correct and show your QR code to an MOM officer for a souvenir. Only for the first 500 correct answers!",
-    staffNote: "Look for MOM officers wearing the MOM badge at both sides of the hall.",
+    intro: "Learn the tricks scammers use, then take the quiz.",
+    souvenirNote: "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
     helpline: "1799",
     helplineName: "ScamShield Helpline"
   },
 
-  links: [
-    { label: "MOM: Staying safe from scams", url: "https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker/publications-and-resources/staying-safe-from-scams" },
-    { label: "ScamShield: Don't be a scam mule", url: "https://www.scamshield.gov.sg/i-want-protection-from-scams/scam-mules/" }
-  ],
+  ui: {
+    language: "Language",
+    home: "Home",
+    back: "Back",
+    next: "Next",
+    done: "Done",
+    learnTitle: "Learn about scams",
+    learnSub: "5 short stories · 2 min",
+    quizTitle: "Quiz for a souvenir",
+    quizSub: "6 challenges · 3 min",
+    showQr: "Show my QR code",
+    unsure: "Unsure? Call",
+    example: "EXAMPLE · NOT REAL",
+    whatToDo: "What to do",
+    toQuiz: "Take the quiz",
+    spotPrompt: "Tap the {n} red flags",
+    selected: "{k} of {n} chosen",
+    scam: "Scam",
+    safe: "Safe",
+    card: "Message {i} of {n}",
+    step: "{i} of {n}",
+    saving: "Saving your result…",
+    allCorrect: "All correct!",
+    allCorrectMsg: "Show this QR code to an MOM officer for your souvenir.",
+    partial: "{s} of {t} correct",
+    partialMsg: "Review the answers, then try again for a souvenir.",
+    review: "Review answers",
+    tryAgain: "Try again",
+    backToResult: "Back to my QR code",
+    saved: "Result saved ✓",
+    notSaved: "Not saved yet (no connection). An officer can still scan this QR code.",
+    retry: "Retry saving",
+    yourAnswer: "Your answer",
+    rightAnswer: "Right answer",
+    correct: "Correct",
+    wrong: "Not correct",
+    code: "Code",
+    attempt: "Attempt"
+  },
 
-  // type: "single" (tap one answer) or "multi" (select all that apply, then check)
-  // answer: index (single) or array of indexes (multi)
-  // example: optional fictional message shown as a phone mock-up, always labelled EXAMPLE
-  questions: [
+  // Learn: one story per scam type in the deck. Each story: an animated example message, its red
+  // flags lighting up one by one, then "What to do".
+  learn: [
     {
-      // Slide 1. VERIFY: confirm the latest SPF figure for self-effected transfers.
-      topic: "The scammer needs you to press SEND",
-      question: "In scam cases, how often do victims send the money themselves?",
-      type: "single",
-      options: ["2 in 10 victims", "4 in 10 victims", "6 in 10 victims", "8 in 10 victims"],
-      answer: 3,
-      explain: "About 8 in 10 victims sent the money themselves. Scammers do not need to hack you: they scare, rush or excite you until you press SEND. Anyone can be targeted."
-    },
-    {
-      // Slide 2
-      topic: "Spot the trick: Fake MOM officer",
-      example: {
-        channel: "Phone call",
-        from: "Unknown number",
-        lines: [
-          "Hello, I am an officer from MOM.",
-          "Your work permit has a problem. Pay now or you will be sent home!",
-          "Download this app so I can help you. Now I will transfer you to the Police."
-        ]
-      },
-      question: "Which of these would MOM NEVER ask you to do? Select all that apply.",
-      type: "multi",
-      options: [
-        "Transfer money to a bank account",
-        "Give your bank login details",
-        "Install an app from a link",
-        "Transfer your call to the Police",
-        "Check information yourself on MOM's official website"
+      title: "Fake MOM officer",
+      tagline: "Scammers pretend to be MOM or the Police.",
+      chat: { channel: "Phone call", from: "Unknown number", lines: [
+        "Hello, I am an officer from MOM.",
+        "Your work permit has a problem. Pay $500 now or you will be sent home!",
+        "Install this app so I can check your bank account."
+      ] },
+      flags: [
+        { line: 0, label: "Pretends to be MOM" },
+        { line: 1, label: "Threat + pay now" },
+        { line: 2, label: "Asks you to install an app" }
       ],
-      answer: [0, 1, 2, 3],
-      explain: "MOM will never ask you to transfer money, give your bank login, install an app from a link, or transfer your call to the Police. If unsure, hang up and call 1799."
+      todo: [
+        "MOM will never ask you to transfer money or give your bank login.",
+        "Hang up. Call 1799 to check."
+      ]
     },
     {
-      // Slide 3
-      topic: "Spot the trick: Fake festive offer",
-      example: {
-        channel: "Advertisement",
-        from: "Deepavali Deals",
-        lines: [
-          "Special Deepavali deal! 90% off gold jewellery!",
-          "Install our app to claim: deepavali-deals.example/app",
-          "Offer ends in 1 hour!"
-        ]
-      },
-      question: "What is the safest thing to do?",
-      type: "single",
-      options: [
-        "Install the app quickly before the deal ends",
-        "Only install apps from official app stores (Google Play Store or Apple App Store)",
-        "Send the link to friends so they can get the deal too",
-        "Install the app, then delete it after buying"
+      title: "Fake festive deal",
+      tagline: "Too-good deals that make you install an app.",
+      chat: { channel: "Advertisement", from: "Deepavali Gold Sale", lines: [
+        "Deepavali Mega Sale! Gold 80% off!",
+        "Download our app here: deepavali-gold.example/app",
+        "Only 1 hour left!"
+      ] },
+      flags: [
+        { line: 0, label: "Too good to be true" },
+        { line: 1, label: "App link outside the app store" },
+        { line: 2, label: "Rushes you" }
       ],
-      answer: 1,
-      explain: "Apps from links outside the official app stores can contain malware that steals your bank details or takes control of your phone. A deal that rushes you is a warning sign."
+      todo: [
+        "Only install apps from the official app store.",
+        "A deal that rushes you is a warning sign."
+      ]
     },
     {
-      // Slide 4. VERIFY: penalties wording against the ScamShield scam mule page.
-      topic: "Spot the trick: Easy money",
-      example: {
-        channel: "WhatsApp",
-        from: "+65 8XXX XXXX",
-        lines: [
-          "Easy money! Earn $500 a week, no work needed.",
-          "Just let us use your bank account, SIM card or Singpass."
-        ]
-      },
-      question: "Letting others use your bank account, SIM card or Singpass can be a crime. What are the penalties?",
-      type: "single",
-      options: ["Fines", "Jail", "Caning", "All of the above"],
-      answer: 3,
-      explain: "Never lend or sell your bank account, SIM card or Singpass. Becoming a scam mule can be a criminal offence, and penalties can include fines, jail and caning.",
-      link: 1
-    },
-    {
-      // Slide 5
-      topic: "Fake job or work permit offer",
-      example: {
-        channel: "WhatsApp",
-        from: "SG Jobs Agent",
-        lines: [
-          "Congratulations! Your Singapore work permit is approved.",
-          "Send $800 within 24 hours to confirm your job."
-        ],
-        attachment: "WORK PERMIT APPROVAL.pdf"
-      },
-      question: "True or false: every job-related message, document or payment is a scam.",
-      type: "single",
-      options: ["True", "False"],
-      answer: 1,
-      explain: "False. Some payments are real: for example, licensed employment agencies can charge fees. But a message or document that looks official is not always genuine. Always verify the job offer, the sender and any payment request through official channels."
-    },
-    {
-      // Slide 5 follow-up
-      topic: "Fake job or work permit offer",
-      question: "How can you check if a job offer or payment request is real?",
-      type: "single",
-      options: [
-        "It has an official-looking logo and stamp",
-        "Check through official channels, e.g. confirm the employment agency is licensed on MOM's website, or call 1799",
-        "The sender replies quickly and is very friendly",
-        "Pay a small amount first to test"
+      // VERIFY penalties against the ScamShield scam mule page.
+      title: "Easy money (scam mule)",
+      tagline: "Paying you to use your bank account.",
+      chat: { channel: "Chat message", from: "+65 8XXX XXXX", lines: [
+        "Want easy money? $300 a week, no work!",
+        "Just lend me your bank account, SIM card or Singpass."
+      ] },
+      flags: [
+        { line: 0, label: "Easy money" },
+        { line: 1, label: "Wants your account, SIM or Singpass" }
       ],
-      answer: 1,
-      explain: "Logos, stamps and friendly replies are easy to fake. Check through official channels before you pay or share anything.",
-      link: 0
+      todo: [
+        "Never lend or sell your bank account, SIM card or Singpass.",
+        "It is a crime. Penalties can include fines, jail and caning."
+      ]
     },
     {
-      // Slide 6
-      topic: "Remember: ACT",
-      question: "What does ACT stand for?",
-      type: "single",
-      options: [
-        "ADD protection, CHECK first, TELL someone",
-        "ANSWER, CALL, TRANSFER",
-        "ACT fast, CLICK the link, TRUST the caller",
-        "ACCEPT, CHECK, TRANSFER"
+      title: "Fake job or work permit",
+      tagline: "Official-looking offers that ask for money.",
+      chat: { channel: "Chat message", from: "SG Jobs Agent", lines: [
+        "Your Singapore work permit is approved!",
+        "Send $800 today to confirm your job."
+      ], attachment: "WORK PERMIT APPROVAL.pdf" },
+      flags: [
+        { line: 0, label: "Looks official" },
+        { line: 1, label: "Pay today to confirm" }
       ],
-      answer: 0,
-      explain: "ADD protection, such as the ScamShield app and your phone's security features. CHECK suspicious messages with official sources. TELL the authorities, family and friends about scams."
+      todo: [
+        "Check job offers through official channels, like MOM's website.",
+        "Licensed agencies can charge fees, but check first. Call 1799 if unsure."
+      ]
     },
     {
-      // Closing: secret codes and 1799
-      topic: "Never share secret codes",
-      example: {
-        channel: "SMS",
-        from: "+65 9XXX XXXX",
-        lines: [
-          "Sorry, I sent a code to your phone by mistake.",
-          "Please tell me the 6-digit code quickly!"
-        ]
-      },
-      question: "You are not sure if this is a scam. What should you do?",
-      type: "single",
-      options: [
-        "Share the code: it is only a number",
-        "Do not share the code. Call 1799 (ScamShield Helpline) to check",
-        "Call back the number that sent the message",
-        "Ask the sender if they are real"
+      title: "Secret codes (OTP)",
+      tagline: "Scammers ask for the code sent to your phone.",
+      chat: { channel: "SMS", from: "+65 9XXX XXXX", lines: [
+        "Sorry, I sent a code to your phone by mistake.",
+        "Please send me the 6-digit code. Quick!"
+      ] },
+      flags: [
+        { line: 1, label: "Asks for your code + rushes you" }
       ],
-      answer: 1,
-      explain: "Never share secret codes (OTPs). STOP suspicious requests, CHECK with 1799, and only use official app stores."
+      todo: [
+        "Never share codes (OTP) with anyone.",
+        "Remember ACT: ADD protection, CHECK with 1799, TELL family and friends."
+      ]
     }
   ],
 
-  // Admin "Manual input" page: for MWs without a phone, or whose code does not work.
-  // The officer asks each question aloud and marks the MW's reply. All correct = souvenir.
+  // Quiz: scenarios differ from the presentation's questions. Right answers are shown only at the
+  // end, in "Review answers". Points: spot = 1, each sort card = 1, reply = 1, pick = 1.
+  quiz: [
+    {
+      type: "spot",
+      title: "Spot the red flags",
+      msg: { channel: "SMS", from: "MOM-ALERT", bubbles: [
+        [{ t: "Dear worker," }, { t: "your work permit will be cancelled today.", flag: true }],
+        [{ t: "Pay $350 penalty", flag: true }, { t: "at" }, { t: "mom-sg.pay-fine.example", flag: true }],
+        [{ t: "Ref: WP-20391" }]
+      ] },
+      explain: "Rushing you (\"cancelled today\"), asking for a payment, and a strange link are red flags. MOM will never ask you to pay through a link in a message."
+    },
+    {
+      type: "sort",
+      title: "Scam or safe?",
+      cards: [
+        { from: "Your employer", text: "Please buy rice on the way home. Thank you!", scam: false,
+          why: "A normal message from someone you know, with no money or codes asked." },
+        { from: "Unknown number", text: "You won $1,000 in our Deepavali lucky draw! Pay $20 admin fee to claim.", scam: true,
+          why: "You never joined a draw, and you must pay first. That is a scam." },
+        { from: "New contact", text: "Lend me your bank card for one week. I give you $300.", scam: true,
+          why: "This is a scam mule offer. Lending your bank card is a crime." },
+        { from: "Your friend", text: "Happy Deepavali! See you at the event on Sunday.", scam: false,
+          why: "A normal greeting from a friend, with nothing asked." }
+      ]
+    },
+    {
+      type: "reply",
+      title: "What would you reply?",
+      chat: { from: "\"Cousin\" (new number)", lines: [
+        "Hi sis, I changed my number.",
+        "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!"
+      ] },
+      options: [
+        "OK, here is the code: 482915",
+        "No. I never share codes. I will call 1799 to check.",
+        "Send me your photo first, then I will send it."
+      ],
+      answer: 1,
+      explain: "Never share codes (OTP), even with family. Scammers pretend to be relatives with a \"new number\"."
+    },
+    {
+      type: "pick",
+      title: "Pick the safe way",
+      prompt: "You want to install a Deepavali sale app. Where should you get it?",
+      options: [
+        { icon: "store", label: "The official app store on your phone" },
+        { icon: "chat", label: "A link sent in a chat message" },
+        { icon: "ad", label: "A link in an online advert" }
+      ],
+      answer: 0,
+      explain: "Only install apps from the official app store. Apps from links can steal your bank details."
+    },
+    {
+      type: "spot",
+      title: "Spot the red flags",
+      msg: { channel: "Chat message", from: "Overseas Jobs", bubbles: [
+        [{ t: "Job in Singapore." }, { t: "Salary $3,000, no experience needed!", flag: true }],
+        [{ t: "Pay $500 visa fee today", flag: true }, { t: "to keep your place." }],
+        [{ t: "Do not tell your agency.", flag: true }]
+      ] },
+      explain: "Pay that is too good, a fee to pay today, and asking you to keep it secret are red flags. Check job offers through official channels."
+    },
+    {
+      type: "reply",
+      title: "What would you reply?",
+      chat: { from: "Unknown number", lines: [
+        "Easy money! Earn $200 every week.",
+        "Just let me use your bank account and Singpass."
+      ] },
+      options: [
+        "OK, how do I start?",
+        "Can you pay me $400 instead?",
+        "No. This is a crime. I will report it."
+      ],
+      answer: 2,
+      explain: "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it."
+    }
+  ],
+
+  feedback: {
+    title: "One last thing",
+    csatQuestion: "How happy are you with today's event?",
+    csatLabels: ["Very unhappy", "Unhappy", "Okay", "Happy", "Very happy"],
+    learnedQuestion: "Did you learn something new about scams?",
+    learnedOptions: [
+      { code: "Y", label: "Yes" },
+      { code: "S", label: "A little" },
+      { code: "N", label: "No" }
+    ],
+    submit: "See my result"
+  },
+
+  // Admin "Manual input" page (officers only, English): for MWs without a phone, or whose code does
+  // not work. The officer asks each question aloud and marks the reply. All correct = souvenir.
   manual: {
     intro: "Use this for MWs without a phone, or whose QR code does not work. Ask each question and mark their reply.",
     questions: [
@@ -177,18 +249,8 @@ window.SCAM_CONTENT = {
       { q: "True or false: it is safe to tell a caller the secret code (OTP) sent to your phone.", answer: "False" },
       { q: "What number can you call to check if something is a scam?", answer: "1799" }
     ]
-  },
-
-  feedback: {
-    title: "One last thing",
-    intro: "Your answers help us improve future events.",
-    csatQuestion: "How satisfied are you with today's event?",
-    csatLabels: ["Very unhappy", "Unhappy", "Okay", "Happy", "Very happy"],
-    learnedQuestion: "Did you learn something new about scams today?",
-    learnedOptions: [
-      { code: "Y", label: "Yes" },
-      { code: "S", label: "A little" },
-      { code: "N", label: "No" }
-    ]
   }
 };
+
+// The admin page reads SCAM_CONTENT.manual.
+window.SCAM_CONTENT = window.SCAM_TEXT.en;

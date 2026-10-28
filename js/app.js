@@ -1,8 +1,10 @@
 (function () {
   'use strict';
-  var C = window.SCAM_CONTENT;
+  var I = window.ScamI18n;
+  var T = I.text(I.current());
   var KEY = 'scamquiz.v1';
-  var app = document.getElementById('app');
+  var app = document.getElementById('app'), nav = document.getElementById('nav');
+  var redraw = null; // re-renders the current screen, e.g. after a language change
 
   // ---------- storage (falls back to memory in private mode) ----------
   var memory = null;
@@ -35,7 +37,7 @@
   if (!state.id) { state = { id: newId(), attempts: 0 }; save(state); }
   if (!state.key) { state.key = newKey(); save(state); }
 
-  // ---------- tiny DOM helper ----------
+  // ---------- tiny DOM helpers ----------
   function el(tag, attrs, kids) {
     var n = document.createElement(tag);
     for (var k in attrs || {}) {
@@ -47,130 +49,299 @@
     (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
     return n;
   }
-  function show(nodes) {
+  // Animation timings go through the style property (CSSOM), which a strict host CSP allows.
+  function vars(node, map) { for (var k in map) node.style.setProperty(k, map[k]); return node; }
+  var f = I.fmt;
+
+  // Renders one screen: body nodes, plus footer buttons [{label, run, primary, disabled}].
+  function show(nodes, buttons, again) {
+    redraw = again || null;
     app.innerHTML = '';
+    app.scrollTop = 0;
     nodes.forEach(function (n) { if (n) app.appendChild(n); });
-    window.scrollTo(0, 0);
+    nav.innerHTML = '';
+    var refs = (buttons || []).map(function (b) {
+      var btn = el('button', { class: 'btn' + (b.primary ? '' : ' secondary'), type: 'button', onclick: b.run }, [b.label]);
+      if (b.disabled) btn.disabled = true;
+      nav.appendChild(btn);
+      return btn;
+    });
+    nav.hidden = !refs.length;
+    return refs;
   }
-  function linkTo(i) {
-    var l = C.links[i];
-    return el('a', { href: l.url, target: '_blank', rel: 'noopener noreferrer', class: 'ext' }, [l.label + ' ↗']);
+  function progress(i, n) {
+    return el('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(n), 'aria-valuenow': String(i) }, [
+      vars(el('i'), { '--p': Math.round(i / n * 100) + '%' })
+    ]);
   }
   function helpline() {
-    return el('p', { class: 'helpline' }, ['Unsure? Call the ' + C.event.helplineName + ' ',
-      el('a', { href: 'tel:' + C.event.helpline }, [C.event.helpline])]);
+    return el('a', { class: 'helpline', href: 'tel:' + T.event.helpline }, [T.ui.unsure + ' ', el('b', { text: T.event.helpline })]);
+  }
+  // Phone-style message mock-up, always labelled EXAMPLE.
+  function phone(from, channel, body) {
+    return el('div', { class: 'phone' }, [
+      el('div', { class: 'phone-head' }, [
+        el('span', { class: 'who' }, [el('strong', { text: from }), channel ? el('small', { text: channel }) : null]),
+        el('span', { class: 'phone-tag', text: T.ui.example })
+      ]),
+      el('div', { class: 'phone-body' }, body)
+    ]);
   }
 
-  // ---------- screens ----------
+  // ---------- language ----------
+  var langBtn = document.getElementById('langBtn'), sheet = document.getElementById('sheet');
+  function setupLang() {
+    langBtn.hidden = I.langs().length < 2;
+    langBtn.textContent = I.current().toUpperCase();
+    langBtn.setAttribute('aria-label', T.ui.language);
+  }
+  langBtn.addEventListener('click', function () {
+    sheet.innerHTML = '';
+    sheet.appendChild(el('p', { class: 'sheet-title', text: T.ui.language }));
+    I.langs().forEach(function (l) {
+      sheet.appendChild(el('button', { class: 'btn' + (l.code === I.current() ? '' : ' secondary'), type: 'button', lang: l.code, onclick: function () {
+        I.set(l.code);
+        T = I.text(l.code);
+        sheet.hidden = true;
+        setupLang();
+        if (redraw) redraw();
+      } }, [l.name]));
+    });
+    sheet.hidden = false;
+  });
+  document.getElementById('homeBtn').addEventListener('click', function () { run = null; sheet.hidden = true; home(); });
+  document.documentElement.lang = I.current();
+  setupLang();
+
+  // ---------- home ----------
   function home() {
     show([
-      el('section', { class: 'card hero' }, [
-        el('p', { class: 'eyebrow', text: C.event.greeting }),
-        el('h1', { text: C.event.title }),
-        el('p', { text: C.event.intro }),
-        el('p', { class: 'muted', text: C.event.meta }),
-        el('button', { class: 'btn', onclick: startQuiz }, [state.attempts ? 'Try the quiz again' : 'Start quiz']),
-        state.last ? el('button', { class: 'btn secondary', onclick: result }, ['Show my QR code']) : null
+      el('p', { class: 'eyebrow', text: T.event.greeting }),
+      el('h1', { text: T.event.title }),
+      el('p', { class: 'lead', text: T.event.intro }),
+      el('button', { class: 'tile', type: 'button', onclick: function () { story(0, 0); } }, [
+        el('span', { class: 'tile-ico', 'aria-hidden': 'true', text: '📖' }),
+        el('span', { class: 'tile-txt' }, [el('b', { text: T.ui.learnTitle }), el('small', { text: T.ui.learnSub })])
       ]),
-      el('section', { class: 'card' }, [el('p', { text: C.event.souvenirNote }), el('p', { class: 'muted', text: C.event.staffNote })]),
+      el('button', { class: 'tile alt', type: 'button', onclick: startQuiz }, [
+        el('span', { class: 'tile-ico', 'aria-hidden': 'true', text: '🏆' }),
+        el('span', { class: 'tile-txt' }, [el('b', { text: T.ui.quizTitle }), el('small', { text: T.ui.quizSub })])
+      ]),
+      state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [T.ui.showQr]) : null,
+      el('p', { class: 'note', text: T.event.souvenirNote }),
       helpline()
-    ]);
+    ], [], home);
   }
 
-  var run;
-  function startQuiz() { run = { i: 0, correct: 0 }; question(); }
-
-  function exampleCard(ex) {
-    return el('div', { class: 'phone', 'aria-label': 'Example scam message' }, [
-      el('div', { class: 'phone-tag', text: 'EXAMPLE · NOT REAL' }),
-      el('div', { class: 'phone-head' }, [el('strong', { text: ex.from }), el('span', { text: ex.channel })]),
-      el('div', { class: 'phone-body' }, ex.lines.map(function (l) { return el('p', { class: 'bubble', text: l }); })
-        .concat(ex.attachment ? [el('p', { class: 'bubble file', text: '📄 ' + ex.attachment })] : []))
-    ]);
-  }
-
-  // Width set through the style property, not a style attribute, so a host
-  // Content-Security-Policy that blocks inline styles cannot break it.
-  function barFill(pct) {
-    var i = el('i');
-    i.style.width = pct + '%';
-    return i;
-  }
-
-  function question() {
-    var q = C.questions[run.i], total = C.questions.length, picked = [], done = false;
-    var opts = el('div', { class: 'options', role: q.type === 'multi' ? 'group' : 'radiogroup' });
-    var feedback = el('div', { class: 'explain', hidden: '' });
-    var checkBtn = q.type === 'multi' ? el('button', { class: 'btn', disabled: '', onclick: function () { reveal(); } }, ['Check answer']) : null;
-    var nextBtn = el('button', { class: 'btn', hidden: '', onclick: next }, [run.i + 1 < total ? 'Next question' : 'See my result']);
-
-    var buttons = q.options.map(function (label, idx) {
-      var b = el('button', { class: 'opt', type: 'button', 'aria-pressed': 'false', onclick: function () {
-        if (done) return;
-        if (q.type === 'multi') {
-          var at = picked.indexOf(idx);
-          if (at >= 0) picked.splice(at, 1); else picked.push(idx);
-          b.setAttribute('aria-pressed', at >= 0 ? 'false' : 'true');
-          if (picked.length) checkBtn.removeAttribute('disabled'); else checkBtn.setAttribute('disabled', '');
-        } else { picked = [idx]; b.setAttribute('aria-pressed', 'true'); reveal(); }
-      } }, [q.type === 'multi' ? el('span', { class: 'box', 'aria-hidden': 'true' }) : null, label]);
-      opts.appendChild(b);
-      return b;
-    });
-
-    function reveal() {
-      done = true;
-      var answer = [].concat(q.answer);
-      var right = picked.length === answer.length && answer.every(function (a) { return picked.indexOf(a) >= 0; });
-      if (right) run.correct++;
-      buttons.forEach(function (b, idx) {
-        b.disabled = true;
-        if (answer.indexOf(idx) >= 0) b.classList.add('right');
-        else if (picked.indexOf(idx) >= 0) b.classList.add('wrong');
+  // ---------- learn: 2 frames per story (animated example, then what to do) ----------
+  function story(si, frame) {
+    var s = T.learn[si], total = T.learn.length * 2, pos = si * 2 + frame;
+    var last = si === T.learn.length - 1 && frame === 1;
+    var prev = function () { if (frame) story(si, 0); else if (si) story(si - 1, 1); else home(); };
+    var next = function () { if (!frame) story(si, 1); else if (!last) story(si + 1, 0); };
+    var body;
+    if (frame === 0) {
+      var STEP = 0.8, flagged = {}, extra = s.chat.attachment ? 1 : 0;
+      s.flags.forEach(function (fl, k) { flagged[fl.line] = { label: fl.label, at: (s.chat.lines.length + extra + k) * STEP + 0.3 }; });
+      var bubbles = [];
+      s.chat.lines.forEach(function (line, i) {
+        var fl = flagged[i];
+        bubbles.push(vars(el('p', { class: 'bubble' + (fl ? ' flag' : '') }, [line, fl ? el('span', { class: 'flaglabel', text: '🚩 ' + fl.label }) : null]),
+          { '--d': i * STEP + 's', '--fd': fl ? fl.at + 's' : '0s' }));
       });
-      feedback.className = 'explain ' + (right ? 'ok' : 'no');
-      feedback.appendChild(el('strong', { text: right ? 'Correct!' : 'Not quite.' }));
-      feedback.appendChild(el('p', { text: q.explain }));
-      if (q.link !== undefined) feedback.appendChild(linkTo(q.link));
-      feedback.removeAttribute('hidden');
-      if (checkBtn) checkBtn.hidden = true;
-      nextBtn.removeAttribute('hidden');
-      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (extra) bubbles.push(vars(el('p', { class: 'bubble file', text: '📄 ' + s.chat.attachment }), { '--d': s.chat.lines.length * STEP + 's' }));
+      body = [el('h2', { text: s.title }), el('p', { class: 'sub', text: s.tagline }), phone(s.chat.from, s.chat.channel, bubbles)];
+    } else {
+      body = [
+        el('h2', { text: s.title }),
+        el('p', { class: 'eyebrow', text: T.ui.whatToDo }),
+        el('ul', { class: 'todo' }, s.todo.map(function (t) { return el('li', { text: t }); })),
+        helpline()
+      ];
     }
-
-    function next() {
-      run.i++;
-      if (run.i < total) return question();
-      finish();
-    }
-
-    show([
-      el('div', { class: 'progress', 'aria-label': 'Question ' + (run.i + 1) + ' of ' + total }, [
-        el('span', { text: 'Question ' + (run.i + 1) + ' of ' + total }),
-        el('div', { class: 'bar' }, [barFill(Math.round(run.i / total * 100))])
-      ]),
-      el('section', { class: 'card' }, [
-        el('p', { class: 'eyebrow', text: q.topic }),
-        q.example ? exampleCard(q.example) : null,
-        el('h2', { text: q.question }),
-        opts, checkBtn, feedback, nextBtn
-      ])
-    ]);
+    show([progress(pos + 1, total)].concat(body),
+      [{ label: T.ui.back, run: prev }, last ? { label: T.ui.toQuiz, run: startQuiz, primary: true } : { label: T.ui.next, run: next, primary: true }],
+      function () { story(si, frame); });
   }
+
+  // ---------- quiz: answers are revealed only at the end ----------
+  var run = null;
+  function startQuiz() { run = { i: 0, answers: [] }; item(); }
+
+  function item() {
+    var q = T.quiz[run.i], n = T.quiz.length, i = run.i, nextBtn = null;
+    function setAnswer(a, ready) { run.answers[i] = a; if (nextBtn) nextBtn.disabled = !ready; }
+    function go(d) {
+      run.i += d;
+      if (run.i < 0) { run = null; return home(); }
+      if (run.i >= n) return finish();
+      item();
+    }
+    var body = renderItem(q, run.answers[i], setAnswer, false);
+    var refs = show([progress(i + 1, n), el('p', { class: 'eyebrow', text: f(T.ui.step, { i: i + 1, n: n }) + ' · ' + q.title })].concat(body),
+      [{ label: T.ui.back, run: function () { go(-1); } }, { label: T.ui.next, run: function () { go(1); }, primary: true, disabled: !answered(q, run.answers[i]) }],
+      item);
+    nextBtn = refs[1];
+  }
+
+  function answered(q, a) {
+    if (a === undefined || a === null) return false;
+    if (q.type === 'spot') return a.length === flagKeys(q).length;
+    if (q.type === 'sort') return a.length === q.cards.length && a.every(function (x) { return typeof x === 'boolean'; });
+    return true;
+  }
+  function flagKeys(q) {
+    var keys = [];
+    q.msg.bubbles.forEach(function (b, bi) { b.forEach(function (seg, si) { if (seg.flag) keys.push(bi + '-' + si); }); });
+    return keys;
+  }
+
+  // Each format renders in answer mode, or read-only review mode (review = true) with marks.
+  function renderItem(q, ans, setAnswer, review) {
+    return ({ spot: spotItem, sort: sortItem, reply: replyItem, pick: pickItem })[q.type](q, ans, setAnswer, review);
+  }
+
+  // Tap exactly n parts of the message. Changing your mind is allowed; the count stops at n.
+  function spotItem(q, ans, setAnswer, review) {
+    var flags = flagKeys(q), n = flags.length, picked = (ans || []).slice();
+    var counter = el('p', { class: 'counter', text: f(T.ui.selected, { k: picked.length, n: n }) });
+    var bubbles = q.msg.bubbles.map(function (b, bi) {
+      return el('p', { class: 'bubble static' }, b.map(function (seg, si) {
+        var key = bi + '-' + si, isFlag = flags.indexOf(key) >= 0, on = picked.indexOf(key) >= 0;
+        var cls = 'seg' + (on ? ' on' : '');
+        if (review) cls += isFlag ? ' right' : on ? ' wrong' : '';
+        var btn = el('button', { class: cls, type: 'button', 'aria-pressed': String(on) }, [seg.t]);
+        if (review) { btn.disabled = true; return btn; }
+        btn.addEventListener('click', function () {
+          var at = picked.indexOf(key);
+          if (at >= 0) picked.splice(at, 1);
+          else if (picked.length < n) picked.push(key);
+          else { btn.classList.remove('nudge'); void btn.offsetWidth; btn.classList.add('nudge'); return; }
+          btn.classList.toggle('on', at < 0);
+          btn.setAttribute('aria-pressed', String(at < 0));
+          counter.textContent = f(T.ui.selected, { k: picked.length, n: n });
+          setAnswer(picked.slice(), picked.length === n);
+        });
+        return btn;
+      }));
+    });
+    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(q.msg.from, q.msg.channel, bubbles), review ? null : counter];
+  }
+
+  // One message card at a time: Scam or Safe. Each card is one point.
+  function sortItem(q, ans, setAnswer, review) {
+    var a = (ans || []).slice();
+    if (review) {
+      return [el('ul', { class: 'sortreview' }, q.cards.map(function (c, k) {
+        var ok = a[k] === c.scam;
+        return el('li', { class: ok ? 'ok' : 'no' }, [
+          el('p', { class: 'msg' }, [el('b', { text: c.from + ': ' }), c.text]),
+          el('p', { class: 'mark', text: (ok ? '✓ ' : '✕ ') + T.ui.rightAnswer + ': ' + (c.scam ? T.ui.scam : T.ui.safe) }),
+          ok ? null : el('p', { class: 'why', text: c.why })
+        ]);
+      }))];
+    }
+    var doneCount = function () { return a.filter(function (x) { return typeof x === 'boolean'; }).length; };
+    var k = Math.min(doneCount(), q.cards.length - 1);
+    var wrap = el('div', { class: 'sortwrap' });
+    function draw() {
+      var c = q.cards[k];
+      wrap.innerHTML = '';
+      wrap.appendChild(el('p', { class: 'counter', text: f(T.ui.card, { i: k + 1, n: q.cards.length }) }));
+      wrap.appendChild(phone(c.from, null, [el('p', { class: 'bubble static', text: c.text })]));
+      var row = el('div', { class: 'sortbtns' });
+      [[true, 'scam', T.ui.scam], [false, 'safe', T.ui.safe]].forEach(function (o) {
+        row.appendChild(el('button', { class: 'sortbtn ' + o[1] + (a[k] === o[0] ? ' on' : ''), type: 'button', 'aria-pressed': String(a[k] === o[0]), onclick: function () {
+          a[k] = o[0];
+          setAnswer(a.slice(), doneCount() === q.cards.length);
+          if (k < q.cards.length - 1 && typeof a[k + 1] !== 'boolean') k++;
+          draw();
+        } }, [o[2]]));
+      });
+      wrap.appendChild(row);
+      wrap.appendChild(el('div', { class: 'dots' }, q.cards.map(function (_, j) {
+        var reachable = j <= doneCount();
+        var d = el('button', { class: 'dot' + (j === k ? ' cur' : '') + (typeof a[j] === 'boolean' ? ' done' : ''), type: 'button',
+          'aria-label': f(T.ui.card, { i: j + 1, n: q.cards.length }), onclick: function () { if (reachable) { k = j; draw(); } } });
+        if (!reachable) d.disabled = true;
+        return d;
+      })));
+    }
+    draw();
+    return [wrap];
+  }
+
+  // A short chat plays out; pick the reply to send.
+  function replyItem(q, ans, setAnswer, review) {
+    var lines = q.chat.lines.map(function (l, i) { return vars(el('p', { class: 'bubble', text: l }), { '--d': i * 0.7 + 's' }); });
+    var opts = el('div', { class: 'replies', role: 'radiogroup' });
+    q.options.forEach(function (o, i) {
+      var cls = 'reply' + (ans === i ? ' on' : '');
+      if (review) cls += i === q.answer ? ' right' : ans === i ? ' wrong' : '';
+      var b = el('button', { class: cls, type: 'button', role: 'radio', 'aria-checked': String(ans === i) }, [o]);
+      if (review) b.disabled = true;
+      else b.addEventListener('click', function () {
+        [].forEach.call(opts.children, function (c) { c.classList.remove('on'); c.setAttribute('aria-checked', 'false'); });
+        b.classList.add('on'); b.setAttribute('aria-checked', 'true');
+        setAnswer(i, true);
+      });
+      opts.appendChild(b);
+    });
+    if (review) return [el('p', { class: 'quote' }, [el('b', { text: q.chat.from + ': ' }), q.chat.lines[q.chat.lines.length - 1]]), opts];
+    return [phone(q.chat.from, null, lines), opts];
+  }
+
+  var ICONS = {
+    store: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 16h28l-2 24H12z" fill="#2a78d6"/><path d="M18 16v-3a6 6 0 0 1 12 0v3" fill="none" stroke="#2a78d6" stroke-width="3"/><path d="M19 30l4 4 7-8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    chat: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10h32v22H20l-8 7v-7H8z" fill="#8a8781"/><path d="M17 21h14M17 26h9" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>',
+    ad: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="3" fill="#eb6834"/><text x="24" y="28" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">SALE</text></svg>'
+  };
+  // Tap the picture that shows the safe way.
+  function pickItem(q, ans, setAnswer, review) {
+    var grid = el('div', { class: 'picks', role: 'radiogroup' });
+    q.options.forEach(function (o, i) {
+      var cls = 'pick' + (ans === i ? ' on' : '');
+      if (review) cls += i === q.answer ? ' right' : ans === i ? ' wrong' : '';
+      var ico = el('span', { class: 'pick-ico' });
+      ico.innerHTML = ICONS[o.icon] || '';
+      var b = el('button', { class: cls, type: 'button', role: 'radio', 'aria-checked': String(ans === i) }, [ico, el('span', { text: o.label })]);
+      if (review) b.disabled = true;
+      else b.addEventListener('click', function () {
+        [].forEach.call(grid.children, function (c) { c.classList.remove('on'); c.setAttribute('aria-checked', 'false'); });
+        b.classList.add('on'); b.setAttribute('aria-checked', 'true');
+        setAnswer(i, true);
+      });
+      grid.appendChild(b);
+    });
+    return [el('p', { class: 'prompt', text: q.prompt }), grid];
+  }
+
+  // ---------- scoring ----------
+  function itemPoints(q, a) {
+    if (q.type === 'sort') return q.cards.reduce(function (s, c, k) { return s + (a && a[k] === c.scam ? 1 : 0); }, 0);
+    if (q.type === 'spot') {
+      var fk = flagKeys(q);
+      return a && a.length === fk.length && fk.every(function (k) { return a.indexOf(k) >= 0; }) ? 1 : 0;
+    }
+    return a === q.answer ? 1 : 0;
+  }
+  function itemMax(q) { return q.type === 'sort' ? q.cards.length : 1; }
 
   function finish() {
-    var total = C.questions.length;
+    var score = 0, total = 0;
+    T.quiz.forEach(function (q, i) { score += itemPoints(q, run.answers[i]); total += itemMax(q); });
     state.attempts = (state.attempts || 0) + 1;
-    state.last = { score: run.correct, total: total };
-    if (run.correct === total && !state.firstFull) state.firstFull = state.attempts;
+    state.last = { score: score, total: total, answers: run.answers };
+    if (score === total && !state.firstFull) state.firstFull = state.attempts;
     save(state);
+    run = null;
     if (!state.feedbackDone) feedbackScreen(); else submitResult();
   }
 
   // Registers this attempt with the server. The first phone to register an ID owns it; if another
   // phone already owns this ID (409), pick a new ID and key and try again.
   function submitResult() {
-    show([el('section', { class: 'card center' }, [el('p', { class: 'muted', text: 'Saving your result…' })])]);
+    show([el('p', { class: 'center muted', text: T.ui.saving })], []);
     var tries = 0;
     function attempt() {
       return window.ScamApi.call('POST', '/api/submit', {
@@ -197,7 +368,7 @@
   }
 
   function feedbackScreen() {
-    var F = C.feedback, csat = null, learned = null;
+    var F = T.feedback, csat = null, learned = null, go;
     function choice(group, items, onPick) {
       var wrap = el('div', { class: 'choices ' + group, role: 'radiogroup' });
       items.forEach(function (it) {
@@ -210,31 +381,26 @@
       });
       return wrap;
     }
+    function ready() { if (csat && learned) go.disabled = false; }
     var faces = ['😞', '🙁', '😐', '🙂', '😄'];
-    var go = el('button', { class: 'btn', disabled: '', onclick: submit }, ['Submit and see my QR code']);
-    function ready() { if (csat && learned) go.removeAttribute('disabled'); }
-    function submit() {
+    go = show([
+      el('h2', { text: F.title }),
+      el('h3', { text: F.csatQuestion }),
+      choice('faces', F.csatLabels.map(function (l, i) {
+        return { value: i + 1, kids: [el('span', { class: 'face', 'aria-hidden': 'true', text: faces[i] }), el('span', { class: 'lbl', text: l })] };
+      }), function (v) { csat = v; ready(); }),
+      el('h3', { text: F.learnedQuestion }),
+      choice('words', F.learnedOptions.map(function (o) { return { value: o.code, kids: [o.label] }; }), function (v) { learned = v; ready(); })
+    ], [{ label: F.submit, primary: true, disabled: true, run: function () {
       state.csat = csat;
       state.learned = learned;
       state.feedbackDone = true;
       save(state);
       submitResult();
-    }
-    show([
-      el('section', { class: 'card' }, [
-        el('h2', { text: F.title }),
-        el('p', { class: 'muted', text: F.intro }),
-        el('h3', { text: F.csatQuestion }),
-        choice('faces', F.csatLabels.map(function (l, i) {
-          return { value: i + 1, kids: [el('span', { class: 'face', 'aria-hidden': 'true', text: faces[i] }), el('span', { class: 'lbl', text: l })] };
-        }), function (v) { csat = v; ready(); }),
-        el('h3', { text: F.learnedQuestion }),
-        choice('words', F.learnedOptions.map(function (o) { return { value: o.code, kids: [o.label] }; }), function (v) { learned = v; ready(); }),
-        go
-      ])
-    ]);
+    } }])[0];
   }
 
+  // ---------- result + review ----------
   function result() {
     var last = state.last, full = last.score === last.total;
     var text = window.ScamPayload.encode({
@@ -244,40 +410,35 @@
     var qr = qrcode(0, 'M');
     qr.addData(text);
     qr.make();
-    var qrBox = el('div', { class: 'qr', role: 'img', 'aria-label': 'Your quiz QR code' });
-    qrBox.innerHTML = qr.createSvgTag({ cellSize: 6, margin: 4, scalable: true });
-
+    var qrBox = el('div', { class: 'qr', role: 'img', 'aria-label': 'QR code' });
+    qrBox.innerHTML = qr.createSvgTag({ cellSize: 6, margin: 3, scalable: true });
+    var buttons = [];
+    if (last.answers) buttons.push({ label: T.ui.review, run: function () { review(0); } });
+    buttons.push({ label: T.ui.tryAgain, run: startQuiz, primary: !full });
     show([
-      el('section', { class: 'card result ' + (full ? 'full' : 'partial') }, [
-        el('p', { class: 'score', text: last.score + ' / ' + last.total }),
-        el('h2', { text: full ? 'All correct! Well done.' : 'Good try! Get all correct for a souvenir.' }),
-        el('p', { text: full
-          ? 'Show this QR code to an MOM officer at the side of the hall to collect your souvenir.'
-          : 'You can still show this QR code to an MOM officer, then try again to get all answers correct.' }),
+      el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
+        el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
+        el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.partialMsg }),
         qrBox,
-        el('p', { class: 'code' }, ['Code: ', el('strong', { text: state.id }), ' · Attempt ' + state.attempts]),
+        el('p', { class: 'code' }, [T.ui.code + ': ', el('strong', { text: state.id }), ' · ' + T.ui.attempt + ' ' + state.attempts]),
         state.pending
-          ? el('div', { class: 'notice' }, [
-              el('p', { text: 'Your result is not saved yet (no connection). An MOM officer can still scan this QR code.' }),
-              el('button', { class: 'btn secondary', onclick: submitResult }, ['Retry saving'])
-            ])
-          : el('p', { class: 'saved', text: 'Result saved ✓' }),
-        el('button', { class: full ? 'btn secondary' : 'btn', onclick: startQuiz }, [full ? 'Do the quiz again' : 'Try again'])
-      ]),
-      el('section', { class: 'card' }, [
-        el('h3', { text: 'Remember' }),
-        el('ul', { class: 'remember' }, [
-          el('li', {}, [el('strong', { text: 'STOP' }), ' suspicious requests. Never share secret codes.']),
-          el('li', {}, [el('strong', { text: 'CHECK' }), ' with ' + C.event.helpline + ' if unsure.']),
-          el('li', {}, [el('strong', { text: 'USE' }), ' official app stores only.'])
-        ]),
-        el('p', {}, [linkTo(0)]),
-        el('p', {}, [linkTo(1)])
-      ]),
-      helpline(),
-      el('p', { class: 'center' }, [el('button', { class: 'linkbtn', onclick: home }, ['Back to start'])])
-    ]);
+          ? el('p', { class: 'notice' }, [T.ui.notSaved + ' ', el('button', { class: 'linkbtn inline', type: 'button', onclick: submitResult }, [T.ui.retry])])
+          : el('p', { class: 'saved', text: T.ui.saved })
+      ])
+    ], buttons, result);
   }
 
-  if (state.last && location.hash === '#qr') result(); else home();
+  function review(i) {
+    var q = T.quiz[i], n = T.quiz.length, a = state.last.answers[i];
+    var pts = itemPoints(q, a), max = itemMax(q), ok = pts === max;
+    var verdict = el('p', { class: 'verdict ' + (ok ? 'ok' : 'no'), text: (ok ? '✓ ' + T.ui.correct : '✕ ' + T.ui.wrong) + (max > 1 ? ' (' + pts + '/' + max + ')' : '') });
+    show([progress(i + 1, n), el('div', { class: 'reviewhead' }, [el('p', { class: 'eyebrow', text: f(T.ui.step, { i: i + 1, n: n }) }), verdict])]
+      .concat(renderItem(q, a, null, true))
+      .concat([q.explain ? el('p', { class: 'explain', text: q.explain }) : null]),
+      [{ label: T.ui.back, run: function () { if (i) review(i - 1); else result(); } },
+       i < n - 1 ? { label: T.ui.next, run: function () { review(i + 1); }, primary: true } : { label: T.ui.backToResult, run: result, primary: true }],
+      function () { review(i); });
+  }
+
+  home();
 })();

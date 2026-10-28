@@ -16,6 +16,26 @@ The Deepavali scam quiz, with:
 
 The admin and superadmin pages are not linked from the quiz. Bookmark them.
 
+## The mini-site (for MWs)
+
+- **Home** → **Learn about scams** (5 animated stories: fake MOM officer, fake festive deal, scam mule, fake job/work permit, secret codes + ACT) or **Quiz for a souvenir**.
+- **Quiz:** 6 interactive challenges, 9 points in total. The formats are: spot the red flags (tap exactly the number shown; changing your mind is allowed); scam or safe (4 cards, one point each); what would you reply; and pick the safe way. **Answers are revealed only at the end**, under "Review answers".
+- **Feedback** (rating + "learned something new") is required once, before the first result.
+- **Fits the screen:** every screen fits without scrolling at 320×568, 360×640 and 390×844 (checked by `tests/fit.test.js`). If text is ever longer (big system font, long translation), only the middle area scrolls.
+- **Wording** lives in `js/content.js`. Scenarios are drafts from public MOM/ScamShield guidance; check the items marked `VERIFY`.
+
+### Adding a language
+
+1. Copy the text parts of `SCAM_TEXT.en` from `js/content.js` into `js/lang/<code>.js`:
+   ```js
+   window.SCAM_LANGS.push({ code: 'id', name: 'Bahasa Indonesia' });
+   window.SCAM_TEXT.id = { event: { ... }, ui: { ... }, learn: [ ... ], quiz: [ ... ], feedback: { ... } };
+   ```
+   Keep the same order and nesting as the English. Only text is used from a translation: answers, flags and scoring always come from the English file, so a translation can't change what counts as correct.
+2. Add `<script src="./js/lang/<code>.js"></script>` to `index.html`, before `js/i18n.js`.
+
+Anything a translation leaves out falls back to English. The language button appears once there's more than one language, and the choice is remembered on the phone.
+
 ## How claim IDs work
 
 1. On the first visit, the phone makes a random 8-character ID plus a secret 32-hex **device key**, and keeps both in browser storage.

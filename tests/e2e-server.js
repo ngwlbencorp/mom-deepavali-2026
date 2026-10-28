@@ -22,17 +22,30 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
     return pg;
   };
 
+  // Answers every item correctly in the current quiz formats, then the one-off feedback.
   async function doQuiz(pg) {
-    await pg.click('button.btn');
-    const qs = await pg.evaluate(() => window.SCAM_CONTENT.questions.map((q) => ({ type: q.type, answer: q.answer })));
-    for (const q of qs) {
-      const opts = pg.locator('.opt');
-      if (q.type === 'multi') { for (const a of q.answer) await opts.nth(a).click(); await pg.click('text=Check answer'); }
-      else await opts.nth(q.answer).click();
-      await pg.locator('.explain').waitFor();
-      await pg.locator('button.btn:visible').last().click();
+    await pg.click('.tile.alt');
+    const quiz = await pg.evaluate(() => window.SCAM_TEXT.en.quiz);
+    for (const q of quiz) {
+      if (q.type === 'spot') {
+        let k = 0;
+        const picks = [];
+        q.msg.bubbles.forEach((bb) => bb.forEach((s) => { if (s.flag) picks.push(k); k++; }));
+        for (const p of picks) await pg.locator('.seg').nth(p).click();
+      } else if (q.type === 'sort') {
+        for (const c of q.cards) await pg.click(c.scam ? '.sortbtn.scam' : '.sortbtn.safe');
+      } else if (q.type === 'reply') {
+        await pg.locator('.reply').nth(q.answer).click();
+      } else {
+        await pg.locator('.pick').nth(q.answer).click();
+      }
+      await pg.locator('#nav .btn').last().click();
     }
-    if (await pg.locator('.faces').count()) { await pg.locator('.faces .chip').nth(4).click(); await pg.locator('.words .chip').first().click(); await pg.click('text=Submit and see my QR code'); }
+    if (await pg.locator('.faces').count()) {
+      await pg.locator('.faces .chip').nth(4).click();
+      await pg.locator('.words .chip').first().click();
+      await pg.locator('#nav .btn').click();
+    }
     await pg.locator('.result').waitFor();
     return pg.locator('.code strong').textContent();
   }
