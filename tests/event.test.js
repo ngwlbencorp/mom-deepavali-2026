@@ -37,7 +37,7 @@ const call = (base, path, body, token) => fetch(base + path, {
     const quiz = await pg.evaluate(() => window.SCAM_TEXT.en.quiz);
     for (const q of quiz) {
       if (q.type === 'spot') {
-        let k = 0; const picks = [];
+        let k = q.msg.fromFlag ? 1 : 0; const picks = q.msg.fromFlag ? [0] : [];
         q.msg.bubbles.forEach((bb) => bb.forEach((s) => { if (s.flag) picks.push(k); k++; }));
         for (const p of picks) await pg.locator('.seg').nth(p).click();
       } else if (q.type === 'sort') { for (const c of q.cards) await pg.click(c.scam ? '.sortbtn.scam' : '.sortbtn.safe'); }

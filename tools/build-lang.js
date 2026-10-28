@@ -1,6 +1,10 @@
 // Builds js/lang/<code>.js from i18n/<code>.json (flat "path": "text" pairs, the format used in the
 // language team's review sheet). Checks every key against the English text in js/content.js.
-// Usage: node tools/build-lang.js            (all languages in i18n/)
+// Usage: node tools/build-lang.js              (all languages in i18n/)
+//        node tools/build-lang.js --snapshot   (also record the current English as what the
+//                                               translations match; do this after updating them)
+// i18n/en.json is that snapshot: a translated line whose English has changed since is reported as
+// stale, so an outdated translation is never shipped silently.
 const fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..');
 const NAMES = { my: 'မြန်မာ (Burmese)', hi: 'हिन्दी (Hindi)', ta: 'தமிழ் (Tamil)' };
@@ -29,14 +33,19 @@ function setPath(obj, p, value) {
   });
 }
 
+const snapPath = path.join(root, 'i18n', 'en.json');
+if (process.argv.includes('--snapshot')) fs.writeFileSync(snapPath, JSON.stringify(english, null, 2) + '\n');
+const snapshot = fs.existsSync(snapPath) ? JSON.parse(fs.readFileSync(snapPath, 'utf8')) : null;
+
 let failed = false;
-for (const file of fs.readdirSync(path.join(root, 'i18n')).filter((f) => f.endsWith('.json'))) {
+for (const file of fs.readdirSync(path.join(root, 'i18n')).filter((f) => f.endsWith('.json') && f !== 'en.json')) {
   const code = path.basename(file, '.json');
   const flat = JSON.parse(fs.readFileSync(path.join(root, 'i18n', file), 'utf8'));
   const out = {}, problems = [];
   for (const [k, v] of Object.entries(flat)) {
     if (!(k in english)) { problems.push(`unknown or fixed key: ${k}`); continue; }
     if (typeof v !== 'string' || !v.trim()) { problems.push(`empty: ${k}`); continue; }
+    if (snapshot && snapshot[k] !== english[k]) { problems.push(`stale (English changed since translation): ${k}`); continue; }
     if (tokens(v) !== tokens(english[k])) { problems.push(`placeholders differ in ${k}: "${tokens(english[k])}" vs "${tokens(v)}"`); continue; }
     setPath(out, k, v.trim());
   }

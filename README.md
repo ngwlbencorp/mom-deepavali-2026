@@ -145,6 +145,23 @@ The scam content follows public, official guidance, checked on 26 Oct 2026:
 - Police, 24 Sep 2026 (scam mules: up to 12 strokes of the cane at the court's discretion): https://www.police.gov.sg/Media-Hub/News/2026/09/20260924_police_investigate_259_scammers_and_money_mules_in_islandwide_enforcement_operation
 - Police, 20 Oct 2026 (fake social media ads leading to app files): https://www.police.gov.sg/Media-Hub/News/2026/10/20261020_police_advisory_on_malware_from_social_media_advertisements
 
+**Quiz answer key: every right answer rests on an official rule.**
+
+| Quiz item | Right answer | Official basis |
+|---|---|---|
+| 1. SMS: sender "MOM-ALERT" | red flag | Government SMSes come from the "gov.sg" sender ID (MOM) |
+| 1. SMS: `mom-sg.org/pay` | red flag | MOM's own published example of a fake site; real MOM addresses contain ".mom.gov.sg" |
+| 1. SMS: "reply with your bank login" | red flag | Government agencies will not ask for banking details by phone, SMS or email (ScamShield) |
+| 1. SMS: the $350 penalty | **not** a red flag (on purpose) | MOM can raise penalties; the topic alone does not prove a scam |
+| 2. Bank locked, reply with OTP | scam | Never share your OTP |
+| 2. Lend your bank card for $300 | scam | Never sell or lend your bank account (ScamShield; Police, 24 Sep 2026) |
+| 3. Never share the code; call 1799 | right reply | Never share your OTP; 1799 is the ScamShield Helpline |
+| 4. Official app store | right pick | MOM never asks you to install apps from unofficial stores; Police advisory of 20 Oct 2026 |
+| 5. "Pay me $500 to keep your job" | red flag | Illegal for anyone to demand money from a worker to keep their job (MOM, kickbacks) |
+| 5. `wponlinemomgov.sg.com` | red flag | MOM's own published example of a fake site |
+| 5. "send me your Singpass password" | red flag | Never share your Singpass ID, password or OTP |
+| 6. Refuse to lend account or Singpass | right reply | ScamShield; Police, 24 Sep 2026 |
+
 All mock messages are fictional and labelled EXAMPLE. The festive deal is an illustration, not a reported Deepavali case.
 
 ## Security notes and residual risks

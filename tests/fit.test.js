@@ -47,8 +47,8 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
       const q = quiz[i], wrong = i === wrongAt;
       if (q.type === 'spot') {
         const segs = pg.locator('.seg');
-        const flags = [], others = [];
-        let k = 0;
+        const flags = q.msg.fromFlag ? [0] : [], others = []; // the sender line is the first tappable part
+        let k = q.msg.fromFlag ? 1 : 0;
         q.msg.bubbles.forEach((bb) => bb.forEach((s) => { (s.flag ? flags : others).push(k++); }));
         const picks = wrong ? [others[0]].concat(flags.slice(1)) : flags;
         for (const p of picks) await segs.nth(p).click();

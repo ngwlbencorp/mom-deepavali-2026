@@ -20,9 +20,12 @@ window.SCAM_TEXT.en = {
   ui: {
     language: "Language",
     home: "Home",
-    back: "Back",
+    previous: "Previous",
     next: "Next",
-    done: "Done",
+    finish: "Finish",
+    exitQuiz: "Exit quiz",
+    exitConfirm: "Leave the quiz? Your answers so far will be lost.",
+    closeReview: "Close review",
     learnTitle: "Learn about scams",
     learnSub: "5 short stories · 2 min",
     quizTitle: "Quiz for a souvenir",
@@ -95,13 +98,11 @@ window.SCAM_TEXT.en = {
         "Only 1 hour left!"
       ] },
       flags: [
-        { line: 0, label: "Too good to be true" },
-        { line: 1, label: "App link outside the app store" },
-        { line: 2, label: "Rushes you" }
+        { line: 1, label: "App link outside the app store" }
       ],
       todo: [
         "Only install apps from the official app store.",
-        "A deal that rushes you is a warning sign."
+        "Fake ads can make you install apps that steal your money."
       ]
     },
     {
@@ -159,12 +160,14 @@ window.SCAM_TEXT.en = {
     {
       type: "spot",
       title: "Spot the red flags",
-      msg: { channel: "SMS", from: "MOM-ALERT", bubbles: [
-        [{ t: "Dear worker," }, { t: "your work permit will be cancelled today.", flag: true }],
-        [{ t: "Pay $350 penalty", flag: true }, { t: "at" }, { t: "mom-sg.org/pay", flag: true }],
-        [{ t: "Ref: WP-20391" }]
+      // Red flags, each an official rule: sender is not "gov.sg"; mom-sg.org is a fake address MOM
+      // itself publishes; government agencies do not ask for banking details by SMS (ScamShield).
+      // The penalty is deliberately NOT a red flag: the topic alone does not prove a scam.
+      msg: { channel: "SMS", from: "MOM-ALERT", fromFlag: true, bubbles: [
+        [{ t: "Dear worker," }, { t: "you have an unpaid work permit penalty of $350." }],
+        [{ t: "Pay at" }, { t: "mom-sg.org/pay", flag: true }, { t: "or reply with your bank login.", flag: true }]
       ] },
-      explain: "Rushing you, asking you to pay, and a fake link are red flags. Real MOM web addresses contain \".mom.gov.sg\". Government SMSes come from \"gov.sg\"."
+      explain: "Government SMSes come from \"gov.sg\". Real MOM links contain \".mom.gov.sg\". Government agencies do not ask for bank details by SMS. If unsure, call 1799."
     },
     {
       type: "sort",
@@ -172,8 +175,8 @@ window.SCAM_TEXT.en = {
       cards: [
         { from: "Your employer", text: "Please buy rice on the way home. Thank you!", scam: false,
           why: "A normal message from someone you know, with no money or codes asked." },
-        { from: "Unknown number", text: "You won $1,000 in our Deepavali lucky draw! Pay $20 admin fee to claim.", scam: true,
-          why: "You never joined a draw, and you must pay first. That is a scam." },
+        { from: "Unknown number", text: "Your bank account is locked. Reply with the OTP we just sent you.", scam: true,
+          why: "Never share your OTP (the secret code sent to your phone) with anyone." },
         { from: "New contact", text: "Lend me your bank card for one week. I give you $300.", scam: true,
           why: "This is a scam mule offer. Lending your bank card is a crime." },
         { from: "Your friend", text: "Happy Deepavali! See you at the event on Sunday.", scam: false,
@@ -193,7 +196,7 @@ window.SCAM_TEXT.en = {
         "Send me your photo first, then I will send it."
       ],
       answer: 1,
-      explain: "Never share codes (OTP), even with family. Scammers pretend to be relatives with a \"new number\"."
+      explain: "Never share your OTP (the secret code sent to your phone) with anyone, even family. If unsure, call 1799."
     },
     {
       type: "pick",
@@ -210,12 +213,15 @@ window.SCAM_TEXT.en = {
     {
       type: "spot",
       title: "Spot the red flags",
-      msg: { channel: "Chat message", from: "Overseas Jobs", bubbles: [
-        [{ t: "Job in Singapore." }, { t: "Salary $3,000, no experience needed!", flag: true }],
-        [{ t: "Pay $500 visa fee today", flag: true }, { t: "to keep your place." }],
-        [{ t: "Do not tell your agency.", flag: true }]
+      // Red flags, each an official rule: it is illegal to demand money from a worker to keep their
+      // job (MOM); wponlinemomgov.sg.com is a fake address MOM publishes; never share your Singpass
+      // password.
+      msg: { channel: "Chat message", from: "Job Agent", bubbles: [
+        [{ t: "Your employer wants to cancel your work permit." }],
+        [{ t: "Pay me $500 to keep your job.", flag: true }],
+        [{ t: "Check your permit at" }, { t: "wponlinemomgov.sg.com", flag: true }, { t: "and send me your Singpass password.", flag: true }]
       ] },
-      explain: "Pay that is too good, a fee to pay today, and asking you to keep it secret are red flags. Check job offers through official channels."
+      explain: "It is illegal for anyone to ask you for money to keep your job. Real MOM links contain \".mom.gov.sg\". Never share your Singpass password."
     },
     {
       type: "reply",

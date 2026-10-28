@@ -29,6 +29,8 @@ const call = (method, path, body, token) => fetch(base + path, {
 
   // ---- superadmin ----
   ok((await call('POST', '/api/login', { role: 'super', username: SUPER_USER, password: ADMIN_PW })).status === 401, 'superadmin cannot log in with the admin password');
+  ok((await call('POST', '/api/login', { role: 'super', username: ' ' + SUPER_USER.toUpperCase() + ' ', password: SUPER_PW })).status === 200, 'superadmin login ID ignores case and spaces');
+  ok((await call('POST', '/api/login', { role: 'super', username: SUPER_USER, password: SUPER_PW.toUpperCase() })).status === 401, 'superadmin password is case-sensitive');
   const sl = await call('POST', '/api/login', { role: 'super', username: SUPER_USER, password: SUPER_PW });
   ok(sl.status === 200 && sl.body.token, 'superadmin login');
   const SUP = sl.body.token;

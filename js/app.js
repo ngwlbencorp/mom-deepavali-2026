@@ -78,12 +78,13 @@
     nodes.forEach(function (n) { if (n) app.appendChild(n); });
     nav.innerHTML = '';
     var refs = (buttons || []).map(function (b) {
+      if (!b) return null;
       var btn = el('button', { class: 'btn' + (b.primary ? '' : ' secondary'), type: 'button', onclick: b.run }, [b.label]);
       if (b.disabled) btn.disabled = true;
       nav.appendChild(btn);
       return btn;
     });
-    nav.hidden = !refs.length;
+    nav.hidden = !refs.some(Boolean);
     fit();
     return refs;
   }
@@ -140,6 +141,13 @@
       vars(el('i'), { '--p': Math.round(i / n * 100) + '%' })
     ]);
   }
+  // Top row on every inner screen: a clearly labelled way out, then the progress bar.
+  function topbar(label, onExit, i, n) {
+    return el('div', { class: 'topbar' }, [
+      el('button', { class: 'exitbtn', type: 'button', onclick: onExit }, [label]),
+      n ? progress(i, n) : null
+    ]);
+  }
   function helpline() {
     return el('a', { class: 'helpline', href: 'tel:' + T.event.helpline }, [T.ui.unsure + ' ', el('b', { text: T.event.helpline })]);
   }
@@ -147,7 +155,7 @@
   function phone(from, channel, body) {
     return el('div', { class: 'phone' }, [
       el('div', { class: 'phone-head' }, [
-        el('span', { class: 'who' }, [el('strong', { text: from }), channel ? el('small', { text: channel }) : null]),
+        el('span', { class: 'who' }, [typeof from === 'string' ? el('strong', { text: from }) : el('strong', {}, [from]), channel ? el('small', { text: channel }) : null]),
         el('span', { class: 'phone-tag', text: T.ui.example })
       ]),
       el('div', { class: 'phone-body' }, body)
@@ -175,7 +183,7 @@
     });
     sheet.hidden = false;
   });
-  document.getElementById('homeBtn').addEventListener('click', function () { run = null; sheet.hidden = true; home(); });
+  document.getElementById('homeBtn').addEventListener('click', function () { sheet.hidden = true; leave(home); });
   document.documentElement.lang = I.current();
   setupLang();
 
@@ -205,7 +213,8 @@
   function story(si, frame) {
     var s = T.learn[si], total = T.learn.length * 2, pos = si * 2 + frame;
     var last = si === T.learn.length - 1 && frame === 1;
-    var prev = function () { if (frame) story(si, 0); else if (si) story(si - 1, 1); else home(); };
+    var first = si === 0 && frame === 0;
+    var prev = function () { if (frame) story(si, 0); else story(si - 1, 1); };
     var next = function () { if (!frame) story(si, 1); else if (!last) story(si + 1, 0); };
     var body;
     if (frame === 0) {
@@ -227,27 +236,32 @@
         helpline()
       ];
     }
-    show([progress(pos + 1, total)].concat(body),
-      [{ label: T.ui.back, run: prev }, last ? { label: T.ui.toQuiz, run: startQuiz, primary: true } : { label: T.ui.next, run: next, primary: true }],
+    show([topbar('⌂ ' + T.ui.home, home, pos + 1, total)].concat(body),
+      [first ? null : { label: T.ui.previous, run: prev }, last ? { label: T.ui.toQuiz, run: startQuiz, primary: true } : { label: T.ui.next, run: next, primary: true }],
       function () { story(si, frame); });
   }
 
   // ---------- quiz: answers are revealed only at the end ----------
   var run = null;
   function startQuiz() { run = { i: 0, answers: [] }; item(); }
+  // Leaving mid-quiz loses the answers, so ask first if any were given.
+  function leave(then) {
+    if (run && run.answers.some(function (a) { return a !== undefined && a !== null; }) && !window.confirm(T.ui.exitConfirm)) return;
+    run = null;
+    then();
+  }
 
   function item() {
     var q = T.quiz[run.i], n = T.quiz.length, i = run.i, nextBtn = null;
     function setAnswer(a, ready) { run.answers[i] = a; if (nextBtn) nextBtn.disabled = !ready; }
     function go(d) {
       run.i += d;
-      if (run.i < 0) { run = null; return home(); }
       if (run.i >= n) return finish();
       item();
     }
     var body = renderItem(q, run.answers[i], setAnswer, false);
-    var refs = show([progress(i + 1, n), el('p', { class: 'eyebrow', text: f(T.ui.step, { i: i + 1, n: n }) + ' · ' + q.title })].concat(body),
-      [{ label: T.ui.back, run: function () { go(-1); } }, { label: T.ui.next, run: function () { go(1); }, primary: true, disabled: !answered(q, run.answers[i]) }],
+    var refs = show([topbar('✕ ' + T.ui.exitQuiz, function () { leave(home); }, i + 1, n), el('p', { class: 'eyebrow', text: f(T.ui.step, { i: i + 1, n: n }) + (q.type === 'spot' || q.type === 'pick' ? '' : ' · ' + q.title) })].concat(body),
+      [i ? { label: T.ui.previous, run: function () { go(-1); } } : null, { label: i < n - 1 ? T.ui.next : T.ui.finish, run: function () { go(1); }, primary: true, disabled: !answered(q, run.answers[i]) }],
       item);
     nextBtn = refs[1];
   }
@@ -258,12 +272,12 @@
     if (q.type === 'sort') return a.length === q.cards.length && a.every(function (x) { return typeof x === 'boolean'; });
     return true;
   }
+  // Red-flag keys: "from" for the sender line (when msg.fromFlag), else "<bubble>-<segment>".
   function flagKeys(q) {
-    var keys = [];
+    var keys = q.msg.fromFlag ? ['from'] : [];
     q.msg.bubbles.forEach(function (b, bi) { b.forEach(function (seg, si) { if (seg.flag) keys.push(bi + '-' + si); }); });
     return keys;
   }
-
   // Each format renders in answer mode, or read-only review mode (review = true) with marks.
   function renderItem(q, ans, setAnswer, review) {
     return ({ spot: spotItem, sort: sortItem, reply: replyItem, pick: pickItem })[q.type](q, ans, setAnswer, review);
@@ -273,29 +287,33 @@
   function spotItem(q, ans, setAnswer, review) {
     var flags = flagKeys(q), n = flags.length, picked = (ans || []).slice();
     var counter = el('p', { class: 'counter', text: f(T.ui.selected, { k: picked.length, n: n }) });
+    // Every part of the message (and the sender, when it can be a red flag) is tappable.
+    function seg(key, text) {
+      var isFlag = flags.indexOf(key) >= 0, on = picked.indexOf(key) >= 0;
+      var cls = 'seg' + (on ? ' on' : '');
+      if (review) cls += isFlag ? ' right' : on ? ' wrong' : '';
+      var btn = el('button', { class: cls, type: 'button', 'aria-pressed': String(on) }, [text]);
+      if (review) { btn.disabled = true; return btn; }
+      btn.addEventListener('click', function () {
+        var at = picked.indexOf(key);
+        if (at >= 0) picked.splice(at, 1);
+        else if (picked.length < n) picked.push(key);
+        else { btn.classList.remove('nudge'); void btn.offsetWidth; btn.classList.add('nudge'); return; }
+        btn.classList.toggle('on', at < 0);
+        btn.setAttribute('aria-pressed', String(at < 0));
+        counter.textContent = f(T.ui.selected, { k: picked.length, n: n });
+        setAnswer(picked.slice(), picked.length === n);
+      });
+      return btn;
+    }
+    var from = q.msg.fromFlag ? seg('from', q.msg.from) : q.msg.from;
     var bubbles = q.msg.bubbles.map(function (b, bi) {
-      return el('p', { class: 'bubble static' }, b.map(function (seg, si) {
-        var key = bi + '-' + si, isFlag = flags.indexOf(key) >= 0, on = picked.indexOf(key) >= 0;
-        var cls = 'seg' + (on ? ' on' : '');
-        if (review) cls += isFlag ? ' right' : on ? ' wrong' : '';
-        var btn = el('button', { class: cls, type: 'button', 'aria-pressed': String(on) }, [seg.t]);
-        if (review) { btn.disabled = true; return btn; }
-        btn.addEventListener('click', function () {
-          var at = picked.indexOf(key);
-          if (at >= 0) picked.splice(at, 1);
-          else if (picked.length < n) picked.push(key);
-          else { btn.classList.remove('nudge'); void btn.offsetWidth; btn.classList.add('nudge'); return; }
-          btn.classList.toggle('on', at < 0);
-          btn.setAttribute('aria-pressed', String(at < 0));
-          counter.textContent = f(T.ui.selected, { k: picked.length, n: n });
-          setAnswer(picked.slice(), picked.length === n);
-        });
-        return btn;
-      }));
+      return el('p', { class: 'bubble static' }, b.map(function (part, si) { return seg(bi + '-' + si, part.t); }));
     });
-    if (review) return [phone(q.msg.from, q.msg.channel, bubbles)];
-    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(q.msg.from, q.msg.channel, bubbles), counter];
+    if (review) return [phone(from, q.msg.channel, bubbles)];
+    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(from, q.msg.channel, bubbles), counter];
   }
+
 
   // One message card at a time: Scam or Safe. Each card is one point.
   function sortItem(q, ans, setAnswer, review) {
@@ -481,6 +499,7 @@
     if (!souvenirsOn()) {
       // After the event, or once all souvenirs are gone: no QR code, no collection message.
       show([
+        topbar('⌂ ' + T.ui.home, home),
         el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
           el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
           el('p', { class: 'msg', text: eventOpen() ? T.ui.soldOut : full ? T.ui.afterFull : T.ui.afterPartial }),
@@ -500,6 +519,7 @@
     var qrBox = el('div', { class: 'qr', role: 'img', 'aria-label': 'QR code' });
     qrBox.innerHTML = qr.createSvgTag({ cellSize: 6, margin: 3, scalable: true });
     show([
+      topbar('⌂ ' + T.ui.home, home),
       el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
         el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
         el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.partialMsg }),
@@ -515,10 +535,10 @@
     var q = T.quiz[i], n = T.quiz.length, a = state.last.answers[i];
     var pts = itemPoints(q, a), max = itemMax(q), ok = pts === max;
     var verdict = el('p', { class: 'verdict ' + (ok ? 'ok' : 'no'), text: (ok ? '✓ ' + T.ui.correct : '✕ ' + T.ui.wrong) + (max > 1 ? ' (' + pts + '/' + max + ')' : '') });
-    show([progress(i + 1, n), el('div', { class: 'reviewhead' }, [el('p', { class: 'eyebrow', text: f(T.ui.step, { i: i + 1, n: n }) }), verdict])]
+    show([topbar('✕ ' + T.ui.closeReview, result, i + 1, n), el('div', { class: 'reviewhead' }, [el('p', { class: 'eyebrow', text: f(T.ui.step, { i: i + 1, n: n }) }), verdict])]
       .concat(renderItem(q, a, null, true))
       .concat([q.explain ? el('p', { class: 'explain', text: q.explain }) : null]),
-      [{ label: T.ui.back, run: function () { if (i) review(i - 1); else result(); } },
+      [i ? { label: T.ui.previous, run: function () { review(i - 1); } } : null,
        i < n - 1 ? { label: T.ui.next, run: function () { review(i + 1); }, primary: true } : { label: T.ui.backToResult, run: result, primary: true }],
       function () { review(i); }, false, 'reviewing');
   }

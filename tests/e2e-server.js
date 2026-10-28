@@ -28,8 +28,8 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
     const quiz = await pg.evaluate(() => window.SCAM_TEXT.en.quiz);
     for (const q of quiz) {
       if (q.type === 'spot') {
-        let k = 0;
-        const picks = [];
+        let k = q.msg.fromFlag ? 1 : 0; // the sender line is the first tappable part
+        const picks = q.msg.fromFlag ? [0] : [];
         q.msg.bubbles.forEach((bb) => bb.forEach((s) => { if (s.flag) picks.push(k); k++; }));
         for (const p of picks) await pg.locator('.seg').nth(p).click();
       } else if (q.type === 'sort') {
