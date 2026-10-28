@@ -257,6 +257,18 @@
     }, function () { adminError('Cannot reach the server.'); });
   });
 
+  $('addForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    adminError('');
+    var email = $('addEmail').value.trim().toLowerCase();
+    Api.call('POST', '/api/admins', { emails: [email], mode: 'add' }, ROLE).then(function (r) {
+      if (!guard(r)) return;
+      if (!r.ok) return adminError(r.body.message);
+      $('addEmail').value = '';
+      renderAdmins(r.body.admins);
+    }, function () { adminError('Cannot reach the server.'); });
+  });
+
   // ---------- data ----------
   [].forEach.call(document.querySelectorAll('[data-export]'), function (b) {
     b.addEventListener('click', function () {

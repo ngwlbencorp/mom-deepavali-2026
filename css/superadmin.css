@@ -48,3 +48,6 @@ main.wide { max-width: 960px; }
 .adminlist button { font: inherit; font-size: .85rem; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; cursor: pointer; color: var(--no); }
 .danger { border-left: 5px solid var(--no); }
 .danger-btn { background: var(--no); }
+.addone { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: end; margin-top: 16px; }
+.addone .field { margin: 0; }
+.addone .btn { margin: 0; width: auto; }

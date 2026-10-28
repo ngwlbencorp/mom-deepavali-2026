@@ -69,6 +69,11 @@
             <label class="radio"><input type="radio" name="mode" value="replace"> Replace the current list</label>
             <button class="btn" id="uploadBtn">Upload</button>
           </div>
+          <form class="addone" id="addForm">
+            <label class="field">Or add one email <input id="addEmail" type="email" autocomplete="off" placeholder="name@mom.gov.sg" required></label>
+            <button class="btn secondary" type="submit">Add admin</button>
+          </form>
+          <p class="muted small">Emails are stored in lower case and login ignores capitals, so "Name@MOM.gov.sg" and "name@mom.gov.sg" are the same admin.</p>
           <p class="error" id="adminErr" hidden></p>
         </div>
         <div class="card">

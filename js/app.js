@@ -211,8 +211,11 @@
       return wrap;
     }
     var faces = ['😞', '🙁', '😐', '🙂', '😄'];
-    function submit(skip) {
-      if (!skip) { state.csat = csat; state.learned = learned; }
+    var go = el('button', { class: 'btn', disabled: '', onclick: submit }, ['Submit and see my QR code']);
+    function ready() { if (csat && learned) go.removeAttribute('disabled'); }
+    function submit() {
+      state.csat = csat;
+      state.learned = learned;
       state.feedbackDone = true;
       save(state);
       submitResult();
@@ -224,11 +227,10 @@
         el('h3', { text: F.csatQuestion }),
         choice('faces', F.csatLabels.map(function (l, i) {
           return { value: i + 1, kids: [el('span', { class: 'face', 'aria-hidden': 'true', text: faces[i] }), el('span', { class: 'lbl', text: l })] };
-        }), function (v) { csat = v; }),
+        }), function (v) { csat = v; ready(); }),
         el('h3', { text: F.learnedQuestion }),
-        choice('words', F.learnedOptions.map(function (o) { return { value: o.code, kids: [o.label] }; }), function (v) { learned = v; }),
-        el('button', { class: 'btn', onclick: function () { submit(false); } }, ['Submit and see my QR code']),
-        el('button', { class: 'linkbtn', onclick: function () { submit(true); } }, ['Skip'])
+        choice('words', F.learnedOptions.map(function (o) { return { value: o.code, kids: [o.label] }; }), function (v) { learned = v; ready(); }),
+        go
       ])
     ]);
   }
