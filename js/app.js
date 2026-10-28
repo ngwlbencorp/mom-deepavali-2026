@@ -89,6 +89,14 @@
     ]);
   }
 
+  // Width set through the style property, not a style attribute, so a host
+  // Content-Security-Policy that blocks inline styles cannot break it.
+  function barFill(pct) {
+    var i = el('i');
+    i.style.width = pct + '%';
+    return i;
+  }
+
   function question() {
     var q = C.questions[run.i], total = C.questions.length, picked = [], done = false;
     var opts = el('div', { class: 'options', role: q.type === 'multi' ? 'group' : 'radiogroup' });
@@ -139,7 +147,7 @@
     show([
       el('div', { class: 'progress', 'aria-label': 'Question ' + (run.i + 1) + ' of ' + total }, [
         el('span', { text: 'Question ' + (run.i + 1) + ' of ' + total }),
-        el('div', { class: 'bar' }, [el('i', { style: 'width:' + Math.round(run.i / total * 100) + '%' })])
+        el('div', { class: 'bar' }, [barFill(Math.round(run.i / total * 100))])
       ]),
       el('section', { class: 'card' }, [
         el('p', { class: 'eyebrow', text: q.topic }),
