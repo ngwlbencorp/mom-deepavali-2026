@@ -1,0 +1,11 @@
+[
+  { "code": "bn", "sheet": "Bengali", "name": "বাংলা (Bengali)" },
+  { "code": "zh", "sheet": "Chinese", "name": "中文 (Chinese)" },
+  { "code": "hi", "sheet": "Hindi", "name": "हिन्दी (Hindi)" },
+  { "code": "id", "sheet": "Bahasa Indonesia", "name": "Bahasa Indonesia" },
+  { "code": "my", "sheet": "Burmese", "name": "မြန်မာ (Burmese)" },
+  { "code": "ta", "sheet": "Tamil", "name": "தமிழ் (Tamil)" },
+  { "code": "tl", "sheet": "Tagalog", "name": "Tagalog" },
+  { "code": "th", "sheet": "Thai", "name": "ไทย (Thai)" },
+  { "code": "vi", "sheet": "Vietnamese", "name": "Tiếng Việt (Vietnamese)" }
+]

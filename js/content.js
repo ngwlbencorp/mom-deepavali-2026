@@ -1,8 +1,11 @@
 // All mini-site wording (English). Other languages live in js/lang/<code>.js and only need to
 // provide the text: anything they leave out falls back to the English here. Answers, flags and
 // scoring are defined once, below, and are never translated.
-// Scenarios follow public MOM, ScamShield and Police guidance (checked 26 Oct 2026; sources in
-// README "Content sources"). Mock messages are fictional and always labelled EXAMPLE.
+// Every rule taught here comes from a public MOM, ScamShield, Police or GovTech page (checked
+// 28 Oct 2026). SOURCES.md maps each story, flag and quiz answer to its source and quote.
+// Mock messages are fictional and always labelled EXAMPLE.
+// Writing style, to keep translation simple: short sentences, one idea each, everyday words,
+// and the same word for the same thing everywhere (e.g. "OTP", "app store", "bank login").
 
 window.SCAM_LANGS = [{ code: 'en', name: 'English' }];
 window.SCAM_TEXT = window.SCAM_TEXT || {};
@@ -75,35 +78,37 @@ window.SCAM_TEXT.en = {
       title: "Fake MOM officer",
       tagline: "Scammers pretend to be MOM or the Police.",
       chat: { channel: "Phone call", from: "Unknown number", lines: [
-        "Hello, I am an officer from MOM. Your work permit has a problem.",
-        "Pay $500 now or you will be sent home!",
+        "Hello, I am from MOM. There is a problem with your work permit.",
+        "Transfer $500 now, or you will be sent home!",
         "Install this app from my link so I can help you.",
         "Now I will transfer your call to the Police."
       ] },
       flags: [
-        { line: 1, label: "Asks you to pay now" },
-        { line: 2, label: "App from outside the app store" },
+        { line: 1, label: "Asks you to transfer money" },
+        { line: 2, label: "App from a link, not the app store" },
         { line: 3, label: "Transfers your call to the Police" }
       ],
       todo: [
-        "MOM may call you about your work. But MOM will never ask you to transfer money, give your bank login, or install apps from outside the app store.",
-        "MOM will never transfer your call to the Police. Unsure? Hang up."
+        "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+        "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up."
       ]
     },
     {
       title: "Fake festive deal",
       tagline: "Too-good deals that make you install an app.",
       chat: { channel: "Advertisement", from: "Deepavali Gold Sale", lines: [
-        "Deepavali Mega Sale! Gold 80% off!",
+        "Deepavali sale! Gold 80% off!",
         "Download our app here: deepavali-gold.example/app",
         "Only 1 hour left!"
       ] },
       flags: [
-        { line: 1, label: "App link outside the app store" }
+        { line: 0, label: "Price is too good to be true" },
+        { line: 1, label: "App from a link, not the app store" },
+        { line: 2, label: "Rushes you" }
       ],
       todo: [
-        "Only install apps from the official app store.",
-        "Fake ads can make you install apps that steal your money."
+        "Only install apps from the official app store (Google Play or Apple App Store).",
+        "Fake apps can steal money from your bank account."
       ]
     },
     {
@@ -111,31 +116,32 @@ window.SCAM_TEXT.en = {
       tagline: "Paying you to use your bank account.",
       chat: { channel: "Chat message", from: "+65 8XXX XXXX", lines: [
         "Want easy money? $300 a week, no work!",
-        "Just lend me your bank account, SIM card or Singpass."
+        "Just let me use your bank account, SIM card or Singpass."
       ] },
       flags: [
-        { line: 0, label: "Easy money" },
-        { line: 1, label: "Wants your account, SIM or Singpass" }
+        { line: 0, label: "Money for no work" },
+        { line: 1, label: "Wants your bank account, SIM card or Singpass" }
       ],
       todo: [
         "Never sell, lend or give away your bank account, SIM card or Singpass.",
-        "It is a crime. You can be fined, jailed or caned."
+        "This is a crime. You can be fined, jailed or caned."
       ]
     },
     {
       title: "Fake job or work permit",
       tagline: "Official-looking offers that ask for money.",
       chat: { channel: "Chat message", from: "SG Jobs Agent", lines: [
-        "Your Singapore work permit is approved!",
-        "Send $800 today to confirm your job."
+        "Good news! Your work permit is approved.",
+        "Send $800 today to confirm your job.",
+        "We are a licensed agency. Licence no. 99X9999."
       ], attachment: "WORK PERMIT APPROVAL.pdf" },
       flags: [
-        { line: 0, label: "Looks official" },
-        { line: 1, label: "Pay today to confirm" }
+        { line: 1, label: "Asks you to pay first" },
+        { line: 2, label: "A licence number does not prove it is real" }
       ],
       todo: [
-        "Check job offers through official channels, like MOM's website.",
-        "Licensed agencies can charge fees, but check first. Call 1799 if unsure."
+        "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+        "Scammers can copy a real agency's licence number. Contact the agency yourself."
       ]
     },
     {
@@ -146,10 +152,10 @@ window.SCAM_TEXT.en = {
         "Please send me the 6-digit code. Quick!"
       ] },
       flags: [
-        { line: 1, label: "Asks for your code + rushes you" }
+        { line: 1, label: "Asks for your OTP and rushes you" }
       ],
       todo: [
-        "Never share codes (OTP) with anyone.",
+        "Never share your OTP (the code sent to your phone) with anyone.",
         "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends."
       ]
     }
@@ -161,14 +167,15 @@ window.SCAM_TEXT.en = {
     {
       type: "spot",
       title: "Spot the red flags",
-      // Red flags, each an official rule: sender is not "gov.sg"; mom-sg.org is a fake address MOM
-      // itself publishes; government agencies do not ask for banking details by SMS (ScamShield).
-      // The penalty is deliberately NOT a red flag: the topic alone does not prove a scam.
+      // Red flags, each an official rule: government SMSes come from "gov.sg" (MOM, ScamShield);
+      // mom-sg.org is a fake site MOM itself lists; government agencies do not ask for banking
+      // details by SMS (ScamShield). The greeting and the fine are NOT red flags: no official
+      // rule says so, and the topic alone does not prove a scam.
       msg: { channel: "SMS", from: "MOM-ALERT", fromFlag: true, bubbles: [
-        [{ t: "Dear worker," }, { t: "you have an unpaid work permit penalty of $350." }],
+        [{ t: "Dear worker," }, { t: "you have an unpaid work permit fine of $350." }],
         [{ t: "Pay at" }, { t: "mom-sg.org/pay", flag: true }, { t: "or reply with your bank login.", flag: true }]
       ] },
-      explain: "Government SMSes come from \"gov.sg\". Real MOM links contain \".mom.gov.sg\". Government agencies do not ask for bank details by SMS. If unsure, call 1799."
+      explain: "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799."
     },
     {
       type: "sort",
@@ -177,9 +184,9 @@ window.SCAM_TEXT.en = {
         { from: "Your employer", text: "Please buy rice on the way home. Thank you!", scam: false,
           why: "A normal message from someone you know, with no money or codes asked." },
         { from: "Unknown number", text: "Your bank account is locked. Reply with the OTP we just sent you.", scam: true,
-          why: "Never share your OTP (the secret code sent to your phone) with anyone." },
-        { from: "New contact", text: "Lend me your bank card for one week. I give you $300.", scam: true,
-          why: "This is a scam mule offer. Lending your bank card is a crime." },
+          why: "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank." },
+        { from: "New contact", text: "Lend me your bank card for one week. I will pay you $300.", scam: true,
+          why: "This is a scam mule offer. Letting others use your bank card is a crime." },
         { from: "Your friend", text: "Happy Deepavali! See you at the event on Sunday.", scam: false,
           why: "A normal greeting from a friend, with nothing asked." }
       ]
@@ -193,36 +200,36 @@ window.SCAM_TEXT.en = {
       ] },
       options: [
         "OK, here is the code: 482915",
-        "No. I never share codes. I will call 1799 to check.",
+        "No. I never share codes. I will call your old number.",
         "Send me your photo first, then I will send it."
       ],
       answer: 1,
-      explain: "Never share your OTP (the secret code sent to your phone) with anyone, even family. If unsure, call 1799."
+      explain: "Never share your OTP, even with family. If someone says they changed their number, call their old number to check."
     },
     {
       type: "pick",
       title: "Pick the safe way",
-      prompt: "You want to install a Deepavali sale app. Where should you get it?",
+      prompt: "You want a shopping app for Deepavali deals. Where should you get it?",
       options: [
         { icon: "store", label: "The official app store on your phone" },
         { icon: "chat", label: "A link sent in a chat message" },
         { icon: "ad", label: "A link in an online advert" }
       ],
       answer: 0,
-      explain: "Only install apps from the official app store. Apps from links can steal your bank details."
+      explain: "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money."
     },
     {
       type: "spot",
       title: "Spot the red flags",
       // Red flags, each an official rule: it is illegal to demand money from a worker to keep their
-      // job (MOM); wponlinemomgov.sg.com is a fake address MOM publishes; never share your Singpass
-      // password.
+      // job (MOM); wponlinemomgov.sg.com is a fake site MOM lists (it ends with ".sg.com", not
+      // ".mom.gov.sg"); never share your Singpass password (GovTech, SPF).
       msg: { channel: "Chat message", from: "Job Agent", bubbles: [
         [{ t: "Your employer wants to cancel your work permit." }],
         [{ t: "Pay me $500 to keep your job.", flag: true }],
         [{ t: "Check your permit at" }, { t: "wponlinemomgov.sg.com", flag: true }, { t: "and send me your Singpass password.", flag: true }]
       ] },
-      explain: "It is illegal for anyone to ask you for money to keep your job. Real MOM links contain \".mom.gov.sg\". Never share your Singpass password."
+      explain: "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password."
     },
     {
       type: "reply",

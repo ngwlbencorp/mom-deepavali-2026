@@ -5,7 +5,7 @@ import json, os, sys
 from openpyxl import load_workbook
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SHEETS = {'Burmese': 'my', 'Hindi': 'hi', 'Tamil': 'ta'}
+SHEETS = {l['sheet']: l['code'] for l in json.load(open(os.path.join(ROOT, 'tools', 'languages.json'), encoding='utf-8'))}
 wb = load_workbook(sys.argv[1], data_only=True)
 for sheet, code in SHEETS.items():
     if sheet not in wb.sheetnames: continue

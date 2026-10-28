@@ -7,7 +7,8 @@
 // stale, so an outdated translation is never shipped silently.
 const fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..');
-const NAMES = { my: 'မြန်မာ (Burmese)', hi: 'हिन्दी (Hindi)', ta: 'தமிழ் (Tamil)' };
+// Display names (shown in the language menu) come from tools/languages.json, shared with the review tools.
+const NAMES = Object.fromEntries(require('./languages.json').map((l) => [l.code, l.name]));
 const FIXED = new Set(['type', 'icon', 'code', 'helpline']);
 
 global.window = {};
@@ -23,6 +24,9 @@ const english = {};
 })(en, '');
 
 const tokens = (s) => (s.match(/\{\w+\}/g) || []).sort().join(',');
+// Text that must survive translation unchanged: web addresses, amounts and numbers (a typo in
+// "mom-sg.org/pay" or "1799" would teach the wrong thing).
+const literals = (s) => (s.match(/\$\d+|\b\d[\dX]{2,}\b|[\w.-]+\.(?:sg|com|org|example)(?:\/\w+)*/g) || []);
 function setPath(obj, p, value) {
   const parts = p.match(/[^.[\]]+/g);
   let cur = obj;
@@ -46,6 +50,8 @@ for (const file of fs.readdirSync(path.join(root, 'i18n')).filter((f) => f.endsW
     if (!(k in english)) { problems.push(`unknown or fixed key: ${k}`); continue; }
     if (typeof v !== 'string' || !v.trim()) { problems.push(`empty: ${k}`); continue; }
     if (snapshot && snapshot[k] !== english[k]) { problems.push(`stale (English changed since translation): ${k}`); continue; }
+    const lost = literals(english[k]).filter((t) => !v.includes(t));
+    if (lost.length) { problems.push(`changed or missing in ${k}: ${lost.join(', ')}`); continue; }
     if (tokens(v) !== tokens(english[k])) { problems.push(`placeholders differ in ${k}: "${tokens(english[k])}" vs "${tokens(v)}"`); continue; }
     setPath(out, k, v.trim());
   }

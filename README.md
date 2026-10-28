@@ -22,20 +22,22 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 - **Quiz:** 6 interactive challenges, 9 points in total. The formats are: spot the red flags (tap exactly the number shown; changing your mind is allowed); scam or safe (4 cards, one point each); what would you reply; and pick the safe way. **Answers are revealed only at the end**, under "Review answers".
 - **Feedback** (rating + "learned something new") is required once, before the first result.
 - **Fits the screen:** every screen fits without scrolling at 320×568, 360×640 and 390×844 (checked by `tests/fit.test.js`). If text is ever longer (big system font, long translation), only the middle area scrolls.
-- **Wording** lives in `js/content.js`. Scenarios are drafts from public MOM/ScamShield guidance; check the items marked `VERIFY`.
+- **Wording** lives in `js/content.js`, in short plain-English sentences so it translates cleanly. Every rule it teaches, and every quiz answer, is traced to a public MOM, ScamShield, Police or GovTech page in [SOURCES.md](SOURCES.md).
 
 ### Languages
 
-English is live. **Burmese, Hindi and Tamil** (the languages MOM uses for its scam-awareness video) are drafted but **not switched on**: the drafts were machine-written and must be checked by MOM's language team first.
+English is live. Drafts exist for **every language MOM publishes worker materials in**: Bahasa Indonesia, Bengali, Burmese, Chinese, Hindi, Tagalog, Tamil, Thai and Vietnamese. **None is switched on**: they were machine-drafted and must be checked by MOM's language team first. MOM decides which ones to publish.
 
-- **Source of truth:** `i18n/<code>.json` (flat `"key": "text"` pairs). `js/lang/<code>.js` is generated from it by `node tools/build-lang.js`, which rejects unknown keys and broken `{n}` placeholders.
+- **Source of truth:** `i18n/<code>.json` (flat `"key": "text"` pairs). `js/lang/<code>.js` is generated from it by `node tools/build-lang.js`, which rejects unknown keys, broken `{n}` placeholders, and any line where a web address, amount or number from the English (`mom-sg.org/pay`, `$500`, `1799`) was changed or dropped.
+- **Language list:** `tools/languages.json` (code, menu name, workbook tab). Key terms per language: `tools/glossary.json`.
 - **Review round trip:**
-  1. `python tools/review-sheet.py review.xlsx` builds the review workbook: one tab per language, with English, the draft, a yellow "Your correction" column and line-by-line notes.
+  1. `python tools/review-sheet.py review.xlsx` builds the review workbook: a Glossary tab (agree key terms once), a Sources tab, and one tab per language with English, the draft, a yellow "Your correction" column, notes, and the sources behind each line. Lines that changed since the last committed draft are marked CHANGED.
   2. The language team fills in corrections only where needed.
   3. `python tools/import-review.py reviewed.xlsx` applies them to `i18n/*.json`, then run `node tools/build-lang.js`.
+- **Changing the English later:** edit `js/content.js`, update the affected lines in every `i18n/<code>.json`, then run `node tools/build-lang.js --snapshot`. Without `--snapshot`, the build reports every translation whose English changed as stale, so an outdated line is never shipped silently.
 - **Switching a language on:** add `<script src="./js/lang/<code>.js"></script>` to `index.html`, before `js/i18n.js`. The language button appears automatically.
 - **Safety:** a translation can only change text. Answers, red flags, scoring, quiz types, icons and feedback codes always come from the English file.
-- **Fitting the screen:** with Noto fonts (as on Android), every language fits every screen at 360×640 and 390×844. Burmese and Hindi also fit at 320×568. Tamil at 320×568 (very small, older phones) needs the middle area to scroll on a few screens. If a screen ever overflows (long translation, large system font), `fit()` in `js/app.js` steps the text down automatically, at most twice. Re-run `tests/fit.test.js` with the language code after corrections, because longer corrected text can change this.
+- **Fitting the screen:** tested with Noto fonts (as on Android). Every language fits every screen at 360×640 and 390×844. At 320×568 (small, older phones) every language fits except Tamil, where the middle area scrolls on 8 screens. If a screen ever overflows (long translation, large system font), `fit()` in `js/app.js` steps the text down automatically, at most twice. Re-run `tests/fit.test.js` with the language code after corrections, because longer corrected text can change this.
 - **Burmese** is in Unicode Myanmar script. Very old phones that still use the Zawgyi font will show it garbled.
 
 ## Event window and souvenirs left
@@ -137,32 +139,7 @@ No names, FINs or phone numbers are stored. The claim ID is random, and officer 
 
 ## Content sources
 
-The scam content follows public, official guidance, checked on 26 Oct 2026:
-- MOM, "Transact safely and securely" (MOM may call about work; the four "never" items; "gov.sg" SMS sender; ".mom.gov.sg" addresses; published fake addresses such as mom-sg.org): https://www.mom.gov.sg/transact-safely-and-securely
-- MOM, "Staying safe from scams" (ACT; 1799; video in English, Burmese, Hindi and Tamil): https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker/publications-and-resources/staying-safe-from-scams
-- ScamShield, "I can ACT against scams": https://www.scamshield.gov.sg/get-involved/i-can-act-campaign/
-- ScamShield, scam mules (fines, jail, caning): https://www.scamshield.gov.sg/i-want-protection-from-scams/scam-mules/
-- Police, 24 Sep 2026 (scam mules: up to 12 strokes of the cane at the court's discretion): https://www.police.gov.sg/Media-Hub/News/2026/09/20260924_police_investigate_259_scammers_and_money_mules_in_islandwide_enforcement_operation
-- Police, 20 Oct 2026 (fake social media ads leading to app files): https://www.police.gov.sg/Media-Hub/News/2026/10/20261020_police_advisory_on_malware_from_social_media_advertisements
-
-**Quiz answer key: every right answer rests on an official rule.**
-
-| Quiz item | Right answer | Official basis |
-|---|---|---|
-| 1. SMS: sender "MOM-ALERT" | red flag | Government SMSes come from the "gov.sg" sender ID (MOM) |
-| 1. SMS: `mom-sg.org/pay` | red flag | MOM's own published example of a fake site; real MOM addresses contain ".mom.gov.sg" |
-| 1. SMS: "reply with your bank login" | red flag | Government agencies will not ask for banking details by phone, SMS or email (ScamShield) |
-| 1. SMS: the $350 penalty | **not** a red flag (on purpose) | MOM can raise penalties; the topic alone does not prove a scam |
-| 2. Bank locked, reply with OTP | scam | Never share your OTP |
-| 2. Lend your bank card for $300 | scam | Never sell or lend your bank account (ScamShield; Police, 24 Sep 2026) |
-| 3. Never share the code; call 1799 | right reply | Never share your OTP; 1799 is the ScamShield Helpline |
-| 4. Official app store | right pick | MOM never asks you to install apps from unofficial stores; Police advisory of 20 Oct 2026 |
-| 5. "Pay me $500 to keep your job" | red flag | Illegal for anyone to demand money from a worker to keep their job (MOM, kickbacks) |
-| 5. `wponlinemomgov.sg.com` | red flag | MOM's own published example of a fake site |
-| 5. "send me your Singpass password" | red flag | Never share your Singpass ID, password or OTP |
-| 6. Refuse to lend account or Singpass | right reply | ScamShield; Police, 24 Sep 2026 |
-
-All mock messages are fictional and labelled EXAMPLE. The festive deal is an illustration, not a reported Deepavali case.
+[SOURCES.md](SOURCES.md) lists every source page (MOM, ScamShield, Police, GovTech, plus one HOME case study), the quote behind each learn-story rule, and the full quiz answer key with the official basis for every right answer. All pages were read on 28 Oct 2026. Mock messages are fictional and labelled EXAMPLE; the festive deal is an illustration, not a reported Deepavali case.
 
 ## Security notes and residual risks
 
@@ -183,7 +160,7 @@ All mock messages are fictional and labelled EXAMPLE. The festive deal is an ill
 - [ ] Env vars set and the project redeployed; Deployment Protection off.
 - [ ] Admin CSV uploaded; one officer logs in on the venue network.
 - [ ] Camera scanning tested on iPhone and Android over the live HTTPS site (the only path not tested in automation).
-- [ ] Comms/legal sign-off on the quiz and the manual questions (`js/content.js`, `manual`); check the `VERIFY` items.
+- [ ] MOM language team has reviewed the chosen languages; corrections imported and `tests/fit.test.js` re-run for each.
 - [ ] Rehearsal data cleared.
 
 ## Tests (local)
