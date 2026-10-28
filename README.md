@@ -24,17 +24,19 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 - **Fits the screen:** every screen fits without scrolling at 320×568, 360×640 and 390×844 (checked by `tests/fit.test.js`). If text is ever longer (big system font, long translation), only the middle area scrolls.
 - **Wording** lives in `js/content.js`. Scenarios are drafts from public MOM/ScamShield guidance; check the items marked `VERIFY`.
 
-### Adding a language
+### Languages
 
-1. Copy the text parts of `SCAM_TEXT.en` from `js/content.js` into `js/lang/<code>.js`:
-   ```js
-   window.SCAM_LANGS.push({ code: 'id', name: 'Bahasa Indonesia' });
-   window.SCAM_TEXT.id = { event: { ... }, ui: { ... }, learn: [ ... ], quiz: [ ... ], feedback: { ... } };
-   ```
-   Keep the same order and nesting as the English. Only text is used from a translation: answers, flags and scoring always come from the English file, so a translation can't change what counts as correct.
-2. Add `<script src="./js/lang/<code>.js"></script>` to `index.html`, before `js/i18n.js`.
+English is live. **Burmese, Hindi and Tamil** (the languages MOM uses for its scam-awareness video) are drafted but **not switched on**: the drafts were machine-written and must be checked by MOM's language team first.
 
-Anything a translation leaves out falls back to English. The language button appears once there's more than one language, and the choice is remembered on the phone.
+- **Source of truth:** `i18n/<code>.json` (flat `"key": "text"` pairs). `js/lang/<code>.js` is generated from it by `node tools/build-lang.js`, which rejects unknown keys and broken `{n}` placeholders.
+- **Review round trip:**
+  1. `python tools/review-sheet.py review.xlsx` builds the review workbook: one tab per language, with English, the draft, a yellow "Your correction" column and line-by-line notes.
+  2. The language team fills in corrections only where needed.
+  3. `python tools/import-review.py reviewed.xlsx` applies them to `i18n/*.json`, then run `node tools/build-lang.js`.
+- **Switching a language on:** add `<script src="./js/lang/<code>.js"></script>` to `index.html`, before `js/i18n.js`. The language button appears automatically.
+- **Safety:** a translation can only change text. Answers, red flags, scoring, quiz types, icons and feedback codes always come from the English file.
+- **Fitting the screen:** with Noto fonts (as on Android), every language fits every screen at 360×640 and 390×844. Burmese and Hindi also fit at 320×568. Tamil at 320×568 (very small, older phones) needs the middle area to scroll on a few screens. If a screen ever overflows (long translation, large system font), `fit()` in `js/app.js` steps the text down automatically, at most twice. Re-run `tests/fit.test.js` with the language code after corrections, because longer corrected text can change this.
+- **Burmese** is in Unicode Myanmar script. Very old phones that still use the Zawgyi font will show it garbled.
 
 ## Event window and souvenirs left
 

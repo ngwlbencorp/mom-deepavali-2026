@@ -1,9 +1,10 @@
 // Walks every mini-site screen at a given phone size and fails if anything needs scrolling
 // (the page, the middle area, or a message mock-up), or if scoring is wrong.
-// Usage: node tests/fit.test.js <siteBase> <width> <height> [outDir]
+// Usage: node tests/fit.test.js <siteBase> <width> <height> [outDir] [lang]
+// For a language other than English, the site copy must load js/lang/<lang>.js.
 // The site copy at <siteBase> must have js/config.js pointing at a running API.
 const { chromium } = require('playwright');
-const [site, W, H, out] = [process.argv[2], +process.argv[3], +process.argv[4], process.argv[5]];
+const [site, W, H, out, LANG] = [process.argv[2], +process.argv[3], +process.argv[4], process.argv[5], process.argv[6] || 'en'];
 let fails = 0, shots = 0;
 const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++; };
 
@@ -20,14 +21,15 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
       return { pageY: d.scrollHeight > innerHeight + 1, pageX: d.scrollWidth > innerWidth + 1, main: m.scrollHeight > m.clientHeight + 1, inner, over: m.scrollHeight - m.clientHeight };
     });
     const good = !r.pageY && !r.pageX && !r.main && !r.inner;
-    ok(good, `${W}x${H} fits without scrolling: ${name}` + (good ? '' : ` (page-y ${r.pageY}, page-x ${r.pageX}, main overflow ${r.over}px, message box ${r.inner})`));
-    if (out) await pg.screenshot({ path: `${out}/${W}x${H}-${String(++shots).padStart(2, '0')}-${name.replace(/\W+/g, '_')}.png` });
+    ok(good, `${LANG} ${W}x${H} fits without scrolling: ${name}` + (good ? '' : ` (page-y ${r.pageY}, page-x ${r.pageX}, main overflow ${r.over}px, message box ${r.inner})`));
+    if (out) await pg.screenshot({ path: `${out}/${LANG}-${W}x${H}-${String(++shots).padStart(2, '0')}-${name.replace(/\W+/g, '_')}.png` });
   }
   const next = () => pg.locator('#nav .btn').last().click();
 
   await pg.goto(site + 'index.html');
-  await pg.evaluate(() => localStorage.clear());
+  await pg.evaluate((l) => { localStorage.clear(); localStorage.setItem('scamsite.lang', l); }, LANG);
   await pg.reload();
+  ok(await pg.evaluate(() => document.documentElement.lang) === LANG, `page is in ${LANG}`);
   await fits('home');
 
   // learn: 5 stories x 2 frames
@@ -75,7 +77,8 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await next();
   await pg.locator('.result').waitFor();
   const total = await pg.evaluate(() => window.SCAM_TEXT.en.quiz.reduce((s, q) => s + (q.type === 'sort' ? q.cards.length : 1), 0));
-  ok((await pg.locator('.result .score').textContent()).includes(`${total - 1} of ${total}`), `one wrong spot item scores ${total - 1}/${total}`);
+  const last = () => pg.evaluate(() => JSON.parse(localStorage.getItem('scamquiz.v1')).last);
+  ok((await last()).score === total - 1 && await pg.locator('.result.partial').count() === 1, `one wrong spot item scores ${total - 1}/${total}`);
   ok(await pg.locator('.result .saved').count() === 1, 'result saved to the API');
   await fits('result (partial)');
   await pg.click('#nav .btn >> nth=0'); // Review answers
@@ -86,11 +89,11 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   }
   ok(await pg.locator('.result').count() === 1, 'review ends back at the QR code');
 
-  await pg.click('#nav >> text=Try again');
+  await pg.locator('#nav .btn').last().click(); // Try again
   await answerAll(-1);
   await pg.locator('.result.full').waitFor();
-  ok((await pg.locator('.result .score').textContent()).includes('All correct'), `all correct scores ${total}/${total}`);
-  ok(await pg.locator('.code').textContent().then((t) => /Attempt 2/.test(t)), 'second attempt counted');
+  ok((await last()).score === total && await pg.locator('.result.full').count() === 1, `all correct scores ${total}/${total}`);
+  ok(await pg.evaluate(() => JSON.parse(localStorage.getItem('scamquiz.v1')).attempts) === 2, 'second attempt counted');
   await fits('result (all correct)');
 
   ok(!errs.length, 'no page errors ' + (errs.length ? JSON.stringify(errs) : ''));

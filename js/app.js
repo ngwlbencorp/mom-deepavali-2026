@@ -63,9 +63,10 @@
   var f = I.fmt;
 
   // Renders one screen: body nodes, plus footer buttons [{label, run, primary, disabled}].
-  function show(nodes, buttons, again, watchLive) {
+  function show(nodes, buttons, again, watchLive, mode) {
     redraw = again || null;
     watch(!!watchLive);
+    app.className = 'screen' + (mode ? ' ' + mode : '');
     app.innerHTML = '';
     app.scrollTop = 0;
     nodes.forEach(function (n) { if (n) app.appendChild(n); });
@@ -77,8 +78,25 @@
       return btn;
     });
     nav.hidden = !refs.length;
+    fit();
     return refs;
   }
+
+  // If a screen does not fit (long translation, small phone, large system font), step the text
+  // down, at most twice. Past that, only the middle area scrolls.
+  function overflowing() {
+    if (app.scrollHeight > app.clientHeight + 1) return true;
+    return [].some.call(app.querySelectorAll('.phone-body'), function (b) { return b.scrollHeight > b.clientHeight + 1; });
+  }
+  function fit() {
+    app.classList.remove('tight', 'tighter');
+    if (!overflowing()) return;
+    app.classList.add('tight');
+    if (!overflowing()) return;
+    app.classList.add('tighter');
+  }
+  var fitTimer;
+  window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fit, 150); });
   // Polls the souvenir count every 20 s, only while home or the result screen is visible.
   var pollTimer = null;
   function watch(on) {
@@ -269,7 +287,8 @@
         return btn;
       }));
     });
-    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(q.msg.from, q.msg.channel, bubbles), review ? null : counter];
+    if (review) return [phone(q.msg.from, q.msg.channel, bubbles)];
+    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(q.msg.from, q.msg.channel, bubbles), counter];
   }
 
   // One message card at a time: Scam or Safe. Each card is one point.
@@ -479,7 +498,7 @@
         el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
         el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.partialMsg }),
         qrBox,
-        el('p', { class: 'code' }, [T.ui.code + ': ', el('strong', { text: state.id }), ' · ' + T.ui.attempt + ' ' + state.attempts]),
+        el('p', { class: 'code' }, [T.ui.codeLabel + ': ', el('strong', { text: state.id }), ' · ' + T.ui.attempt + ' ' + state.attempts]),
         pending || el('p', { class: 'saved', text: T.ui.saved }),
         pill()
       ])
@@ -495,7 +514,7 @@
       .concat([q.explain ? el('p', { class: 'explain', text: q.explain }) : null]),
       [{ label: T.ui.back, run: function () { if (i) review(i - 1); else result(); } },
        i < n - 1 ? { label: T.ui.next, run: function () { review(i + 1); }, primary: true } : { label: T.ui.backToResult, run: result, primary: true }],
-      function () { review(i); });
+      function () { review(i); }, false, 'reviewing');
   }
 
   home();

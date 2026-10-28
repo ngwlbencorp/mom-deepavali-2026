@@ -4,6 +4,8 @@
 (function (g) {
   'use strict';
   var KEY = 'scamsite.lang';
+  // Strings that are identifiers, not text: never taken from a translation.
+  var FIXED = { type: 1, icon: 1, code: 1, helpline: 1 };
 
   // Overlay "over" onto "base", keeping base's shape: arrays by index, objects by key, and only
   // values of the same type (so a translation can never change a boolean flag or an answer index).
@@ -12,7 +14,7 @@
     if (Array.isArray(base)) return base.map(function (b, i) { return merge(b, Array.isArray(over) ? over[i] : undefined); });
     if (base && typeof base === 'object') {
       var out = {};
-      for (var k in base) out[k] = merge(base[k], over[k]);
+      for (var k in base) out[k] = FIXED[k] ? base[k] : merge(base[k], over[k]);
       return out;
     }
     if (typeof base === 'string' && typeof over === 'string') return over;

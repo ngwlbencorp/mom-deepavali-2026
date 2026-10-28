@@ -60,7 +60,7 @@ window.SCAM_TEXT.en = {
     rightAnswer: "Right answer",
     correct: "Correct",
     wrong: "Not correct",
-    code: "Code",
+    codeLabel: "Code",
     attempt: "Attempt"
   },
 
@@ -184,7 +184,7 @@ window.SCAM_TEXT.en = {
       type: "reply",
       title: "What would you reply?",
       chat: { from: "\"Cousin\" (new number)", lines: [
-        "Hi sis, I changed my number.",
+        "Hi, it's your cousin. I changed my number.",
         "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!"
       ] },
       options: [
