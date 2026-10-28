@@ -36,6 +36,14 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 
 Anything a translation leaves out falls back to English. The language button appears once there's more than one language, and the choice is remembered on the phone.
 
+## Event window and souvenirs left
+
+- **After the event ends** (`EVENT_END` on the server, `eventEnd` in `js/config.js`; default 8 Nov 2026, 9 pm SGT):
+  - the mini-site keeps working as a learning quiz but shows **no QR code, no claim code and no souvenir wording**;
+  - the server refuses all redemptions (`/api/redeem`, `/api/manual`) with `event_closed`, whatever a phone's clock says. When the server can be reached, its answer overrides the phone's clock on the mini-site too;
+  - quiz submissions are still recorded, so later visits appear in the dashboard and exports. Filter by date if you report event-day figures only.
+- **Souvenirs left:** the home and result screens show "🎁 N souvenirs left", refreshed every 20 seconds while one of those screens is open. It comes from the public `/api/remaining`, which Vercel's edge caches for 10 seconds, so the database sees about one query per 10 seconds however many phones are open. At 0, the QR code is replaced by "All souvenirs have been given out".
+
 ## How claim IDs work
 
 1. On the first visit, the phone makes a random 8-character ID plus a secret 32-hex **device key**, and keeps both in browser storage.
@@ -63,6 +71,7 @@ Anything a translation leaves out falls back to English. The language button app
 | `SUPERADMIN_USER` | your superadmin login ID |
 | `SUPERADMIN_PASSWORD` | your superadmin password. **Must differ from `ADMIN_PASSWORD`**, or superadmin login is refused |
 | `REDEEM_CAP` | `500` |
+| `EVENT_END` | optional; when redemption closes, default `2026-11-08T21:00:00+08:00`. Keep it equal to `eventEnd` in `js/config.js` |
 | `SESSION_SECRET` | optional; signs login tokens. If unset, it is derived from the passwords, so changing any password logs everyone out |
 | `ALLOWED_ORIGINS` | optional, e.g. `https://ducks.ai.tech.gov.sg`; if unset, any origin is accepted (logins still protect everything except the quiz submit) |
 
@@ -75,7 +84,7 @@ Logins last 14 hours, and only for the browser tab they were made in.
 3. Add the env vars above, then **Redeploy**. Env vars do not apply to an existing deployment.
 4. **Turn off Deployment Protection** (Vercel Authentication), or phones get a Vercel login page instead of the API.
 5. Check from a phone on mobile data: `https://<app>.vercel.app/api/ping` should show `{"ok":true,...}`.
-6. The project has 11 API routes. Vercel's Hobby plan has historically limited a deployment to 12 functions, so don't add more than one route without checking your plan.
+6. All API routes run in **one** Vercel function: `vercel.json` rewrites `/api/<name>` to `api/index.js`, which dispatches to `lib/routes/<name>.js`. This keeps the deployment far below Vercel's per-deployment function limit, and the admins' polling keeps that one function warm. To add a route, add a file in `lib/routes/` and one line in `api/index.js`.
 
 ## Hosting the pages on ducks instead
 
@@ -123,6 +132,18 @@ The table `scans` keeps the original eight columns from the brief: `id, score, t
 | `admins` | `email, added_at` | officers allowed to log in |
 
 No names, FINs or phone numbers are stored. The claim ID is random, and officer emails are the only personal data.
+
+## Content sources
+
+The scam content follows public, official guidance, checked on 26 Oct 2026:
+- MOM, "Transact safely and securely" (MOM may call about work; the four "never" items; "gov.sg" SMS sender; ".mom.gov.sg" addresses; published fake addresses such as mom-sg.org): https://www.mom.gov.sg/transact-safely-and-securely
+- MOM, "Staying safe from scams" (ACT; 1799; video in English, Burmese, Hindi and Tamil): https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker/publications-and-resources/staying-safe-from-scams
+- ScamShield, "I can ACT against scams": https://www.scamshield.gov.sg/get-involved/i-can-act-campaign/
+- ScamShield, scam mules (fines, jail, caning): https://www.scamshield.gov.sg/i-want-protection-from-scams/scam-mules/
+- Police, 24 Sep 2026 (scam mules: up to 12 strokes of the cane at the court's discretion): https://www.police.gov.sg/Media-Hub/News/2026/09/20260924_police_investigate_259_scammers_and_money_mules_in_islandwide_enforcement_operation
+- Police, 20 Oct 2026 (fake social media ads leading to app files): https://www.police.gov.sg/Media-Hub/News/2026/10/20261020_police_advisory_on_malware_from_social_media_advertisements
+
+All mock messages are fictional and labelled EXAMPLE. The festive deal is an illustration, not a reported Deepavali case.
 
 ## Security notes and residual risks
 

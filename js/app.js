@@ -6,6 +6,15 @@
   var app = document.getElementById('app'), nav = document.getElementById('nav');
   var redraw = null; // re-renders the current screen, e.g. after a language change
 
+  // ---------- event window and souvenirs left ----------
+  // After the event ends, the site keeps working as a quiz but shows no QR code and no souvenir
+  // messages. The server's answer (from /api/remaining) wins over the phone's clock.
+  var CFG = window.SCAM_CONFIG || {};
+  var EVENT_END = Date.parse(CFG.eventEnd || '2026-11-08T21:00:00+08:00');
+  var live = { open: null, left: null }; // null = not known yet
+  function eventOpen() { return live.open !== null ? live.open : Date.now() < EVENT_END; }
+  function souvenirsOn() { return eventOpen() && live.left !== 0; }
+
   // ---------- storage (falls back to memory in private mode) ----------
   var memory = null;
   function load() {
@@ -54,8 +63,9 @@
   var f = I.fmt;
 
   // Renders one screen: body nodes, plus footer buttons [{label, run, primary, disabled}].
-  function show(nodes, buttons, again) {
+  function show(nodes, buttons, again, watchLive) {
     redraw = again || null;
+    watch(!!watchLive);
     app.innerHTML = '';
     app.scrollTop = 0;
     nodes.forEach(function (n) { if (n) app.appendChild(n); });
@@ -69,6 +79,38 @@
     nav.hidden = !refs.length;
     return refs;
   }
+  // Polls the souvenir count every 20 s, only while home or the result screen is visible.
+  var pollTimer = null;
+  function watch(on) {
+    if (!on) { clearInterval(pollTimer); pollTimer = null; return; }
+    if (pollTimer) return;
+    pollLive();
+    pollTimer = setInterval(pollLive, 20000);
+  }
+  function pollLive() {
+    if (document.visibilityState === 'hidden' || !window.ScamApi) return;
+    window.ScamApi.call('GET', '/api/remaining').then(function (r) {
+      if (!r.ok) return;
+      var before = souvenirsOn() + '|' + eventOpen();
+      live.open = !!r.body.open;
+      live.left = r.body.capRemaining;
+      if (souvenirsOn() + '|' + eventOpen() !== before && redraw) redraw(); else updatePill();
+    }, function () {});
+  }
+  function leftText() { return live.left === null ? '' : live.left > 0 ? f(T.ui.left, { n: live.left }) : T.ui.soldOut; }
+  function pill() {
+    var p = el('p', { class: 'leftpill', id: 'leftPill', text: leftText() });
+    if (live.left === null) p.hidden = true;
+    return p;
+  }
+  function updatePill() {
+    var p = document.getElementById('leftPill');
+    if (!p) return;
+    p.textContent = leftText();
+    p.hidden = live.left === null;
+  }
+  document.addEventListener('visibilitychange', function () { if (pollTimer && document.visibilityState === 'visible') pollLive(); });
+
   function progress(i, n) {
     return el('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(n), 'aria-valuenow': String(i) }, [
       vars(el('i'), { '--p': Math.round(i / n * 100) + '%' })
@@ -115,6 +157,7 @@
 
   // ---------- home ----------
   function home() {
+    var open = eventOpen();
     show([
       el('p', { class: 'eyebrow', text: T.event.greeting }),
       el('h1', { text: T.event.title }),
@@ -125,12 +168,13 @@
       ]),
       el('button', { class: 'tile alt', type: 'button', onclick: startQuiz }, [
         el('span', { class: 'tile-ico', 'aria-hidden': 'true', text: '🏆' }),
-        el('span', { class: 'tile-txt' }, [el('b', { text: T.ui.quizTitle }), el('small', { text: T.ui.quizSub })])
+        el('span', { class: 'tile-txt' }, [el('b', { text: open ? T.ui.quizTitle : T.ui.quizTitleAfter }), el('small', { text: T.ui.quizSub })])
       ]),
-      state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [T.ui.showQr]) : null,
-      el('p', { class: 'note', text: T.event.souvenirNote }),
+      state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [souvenirsOn() ? T.ui.showQr : T.ui.showResult]) : null,
+      open ? el('p', { class: 'note', text: T.event.souvenirNote }) : null,
+      open ? pill() : null,
       helpline()
-    ], [], home);
+    ], [], home, true);
   }
 
   // ---------- learn: 2 frames per story (animated example, then what to do) ----------
@@ -403,6 +447,24 @@
   // ---------- result + review ----------
   function result() {
     var last = state.last, full = last.score === last.total;
+    var buttons = [];
+    if (last.answers) buttons.push({ label: T.ui.review, run: function () { review(0); } });
+    buttons.push({ label: T.ui.tryAgain, run: startQuiz, primary: !full });
+    var pending = state.pending
+      ? el('p', { class: 'notice' }, [(souvenirsOn() ? T.ui.notSaved : T.ui.notSavedAfter) + ' ', el('button', { class: 'linkbtn inline', type: 'button', onclick: submitResult }, [T.ui.retry])])
+      : null;
+    if (!souvenirsOn()) {
+      // After the event, or once all souvenirs are gone: no QR code, no collection message.
+      show([
+        el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
+          el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
+          el('p', { class: 'msg', text: eventOpen() ? T.ui.soldOut : full ? T.ui.afterFull : T.ui.afterPartial }),
+          eventOpen() && !full ? el('p', { class: 'msg', text: T.ui.afterPartial }) : null,
+          pending
+        ])
+      ], buttons, result, eventOpen());
+      return;
+    }
     var text = window.ScamPayload.encode({
       id: state.id, score: last.score, total: last.total, attempts: state.attempts,
       firstFull: state.firstFull, csat: state.csat, learned: state.learned
@@ -412,20 +474,16 @@
     qr.make();
     var qrBox = el('div', { class: 'qr', role: 'img', 'aria-label': 'QR code' });
     qrBox.innerHTML = qr.createSvgTag({ cellSize: 6, margin: 3, scalable: true });
-    var buttons = [];
-    if (last.answers) buttons.push({ label: T.ui.review, run: function () { review(0); } });
-    buttons.push({ label: T.ui.tryAgain, run: startQuiz, primary: !full });
     show([
       el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
         el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
         el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.partialMsg }),
         qrBox,
         el('p', { class: 'code' }, [T.ui.code + ': ', el('strong', { text: state.id }), ' · ' + T.ui.attempt + ' ' + state.attempts]),
-        state.pending
-          ? el('p', { class: 'notice' }, [T.ui.notSaved + ' ', el('button', { class: 'linkbtn inline', type: 'button', onclick: submitResult }, [T.ui.retry])])
-          : el('p', { class: 'saved', text: T.ui.saved })
+        pending || el('p', { class: 'saved', text: T.ui.saved }),
+        pill()
       ])
-    ], buttons, result);
+    ], buttons, result, true);
   }
 
   function review(i) {

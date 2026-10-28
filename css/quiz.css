@@ -153,6 +153,9 @@ body.app main.screen {
 /* ---------- feedback ---------- */
 .screen .choices { margin: 0; }
 
+/* ---------- souvenirs left ---------- */
+.leftpill { align-self: center; margin: 0; padding: 4px 12px; border-radius: 999px; background: var(--gold-soft); border: 1px solid var(--gold); font-weight: 700; font-size: .9rem; color: var(--plum); }
+
 /* ---------- result + review ---------- */
 .result { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
 .result .score { font-size: 1.6rem; font-weight: 800; color: var(--plum); margin: 0; }
@@ -201,4 +204,7 @@ body.app main.screen {
   .nav { padding-top: 6px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); }
   .nav .btn { min-height: 44px; }
   .result .qr { width: min(180px, 30vh); }
+  .todo { gap: 8px; }
+  .todo li { font-size: .95rem; padding: 9px 12px 9px 40px; }
+  .todo li::before { left: 12px; top: 8px; }
 }

@@ -1,5 +1,8 @@
 {
   "regions": ["sin1"],
+  "rewrites": [
+    { "source": "/api/:route", "destination": "/api/index?route=:route" }
+  ],
   "headers": [
     { "source": "/(admin|superadmin)/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
   ]

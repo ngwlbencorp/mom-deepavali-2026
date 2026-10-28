@@ -93,6 +93,7 @@
   }
   function failed(box, r, next) {
     if (r && r.status === 401) return loggedOut(r.body.message);
+    if (r && r.body && r.body.error === 'event_closed') return verdict(box, 'stop', 'Event has ended', r.body.message, [box === 'mverdict' ? nextPerson : nextScan]);
     var msg = r && r.network ? 'No connection to the server. Do NOT give a souvenir yet.' : ((r && r.body && r.body.message) || 'Server error') + '.';
     verdict(box, 'stop', 'Not checked', msg, [{ label: 'Try again', run: next }]);
   }

@@ -1,8 +1,8 @@
 // All mini-site wording (English). Other languages live in js/lang/<code>.js and only need to
 // provide the text: anything they leave out falls back to the English here. Answers, flags and
 // scoring are defined once, below, and are never translated.
-// DRAFT: scenarios are drafted from public MOM / ScamShield guidance pending the final deck.
-// Items marked VERIFY must be checked against the latest official source before the event.
+// Scenarios follow public MOM, ScamShield and Police guidance (checked 26 Oct 2026; sources in
+// README "Content sources"). Mock messages are fictional and always labelled EXAMPLE.
 
 window.SCAM_LANGS = [{ code: 'en', name: 'English' }];
 window.SCAM_TEXT = window.SCAM_TEXT || {};
@@ -26,8 +26,14 @@ window.SCAM_TEXT.en = {
     learnTitle: "Learn about scams",
     learnSub: "5 short stories · 2 min",
     quizTitle: "Quiz for a souvenir",
+    quizTitleAfter: "Take the quiz",
     quizSub: "6 challenges · 3 min",
     showQr: "Show my QR code",
+    showResult: "Show my result",
+    left: "🎁 {n} souvenirs left",
+    soldOut: "All souvenirs have been given out. Thank you for taking part!",
+    afterFull: "Great job! You know how to spot scams.",
+    afterPartial: "Review the answers, then try again.",
     unsure: "Unsure? Call",
     example: "EXAMPLE · NOT REAL",
     whatToDo: "What to do",
@@ -48,6 +54,7 @@ window.SCAM_TEXT.en = {
     backToResult: "Back to my QR code",
     saved: "Result saved ✓",
     notSaved: "Not saved yet (no connection). An officer can still scan this QR code.",
+    notSavedAfter: "Not saved yet (no connection).",
     retry: "Retry saving",
     yourAnswer: "Your answer",
     rightAnswer: "Right answer",
@@ -64,18 +71,19 @@ window.SCAM_TEXT.en = {
       title: "Fake MOM officer",
       tagline: "Scammers pretend to be MOM or the Police.",
       chat: { channel: "Phone call", from: "Unknown number", lines: [
-        "Hello, I am an officer from MOM.",
-        "Your work permit has a problem. Pay $500 now or you will be sent home!",
-        "Install this app so I can check your bank account."
+        "Hello, I am an officer from MOM. Your work permit has a problem.",
+        "Pay $500 now or you will be sent home!",
+        "Install this app from my link so I can help you.",
+        "Now I will transfer your call to the Police."
       ] },
       flags: [
-        { line: 0, label: "Pretends to be MOM" },
-        { line: 1, label: "Threat + pay now" },
-        { line: 2, label: "Asks you to install an app" }
+        { line: 1, label: "Asks you to pay now" },
+        { line: 2, label: "App from outside the app store" },
+        { line: 3, label: "Transfers your call to the Police" }
       ],
       todo: [
-        "MOM will never ask you to transfer money or give your bank login.",
-        "Hang up. Call 1799 to check."
+        "MOM may call you about your work. But MOM will never ask you to transfer money, give your bank login, or install apps from outside the app store.",
+        "MOM will never transfer your call to the Police. Unsure? Hang up."
       ]
     },
     {
@@ -97,7 +105,6 @@ window.SCAM_TEXT.en = {
       ]
     },
     {
-      // VERIFY penalties against the ScamShield scam mule page.
       title: "Easy money (scam mule)",
       tagline: "Paying you to use your bank account.",
       chat: { channel: "Chat message", from: "+65 8XXX XXXX", lines: [
@@ -109,8 +116,8 @@ window.SCAM_TEXT.en = {
         { line: 1, label: "Wants your account, SIM or Singpass" }
       ],
       todo: [
-        "Never lend or sell your bank account, SIM card or Singpass.",
-        "It is a crime. Penalties can include fines, jail and caning."
+        "Never sell, lend or give away your bank account, SIM card or Singpass.",
+        "It is a crime. You can be fined, jailed or caned."
       ]
     },
     {
@@ -141,7 +148,7 @@ window.SCAM_TEXT.en = {
       ],
       todo: [
         "Never share codes (OTP) with anyone.",
-        "Remember ACT: ADD protection, CHECK with 1799, TELL family and friends."
+        "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends."
       ]
     }
   ],
@@ -154,10 +161,10 @@ window.SCAM_TEXT.en = {
       title: "Spot the red flags",
       msg: { channel: "SMS", from: "MOM-ALERT", bubbles: [
         [{ t: "Dear worker," }, { t: "your work permit will be cancelled today.", flag: true }],
-        [{ t: "Pay $350 penalty", flag: true }, { t: "at" }, { t: "mom-sg.pay-fine.example", flag: true }],
+        [{ t: "Pay $350 penalty", flag: true }, { t: "at" }, { t: "mom-sg.org/pay", flag: true }],
         [{ t: "Ref: WP-20391" }]
       ] },
-      explain: "Rushing you (\"cancelled today\"), asking for a payment, and a strange link are red flags. MOM will never ask you to pay through a link in a message."
+      explain: "Rushing you, asking you to pay, and a fake link are red flags. Real MOM web addresses contain \".mom.gov.sg\". Government SMSes come from \"gov.sg\"."
     },
     {
       type: "sort",
