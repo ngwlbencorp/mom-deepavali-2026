@@ -10,6 +10,12 @@
   // After the event ends, the site keeps working as a quiz but shows no QR code and no souvenir
   // messages. The server's answer (from /api/remaining) wins over the phone's clock.
   var CFG = window.SCAM_CONFIG || {};
+
+  // ducks.ai lays its own "back to ducks" and "report" buttons over the top-left of hosted pages.
+  // Keep that corner of the header clear when running there.
+  if (CFG.hostOverlay === true || /(^|\.)ducks\.ai\.tech\.gov\.sg$/.test(location.hostname)) {
+    document.body.classList.add('on-ducks');
+  }
   var EVENT_END = Date.parse(CFG.eventEnd || '2026-11-08T21:00:00+08:00');
   var live = { open: null, left: null }; // null = not known yet
   function eventOpen() { return live.open !== null ? live.open : Date.now() < EVENT_END; }

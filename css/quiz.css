@@ -25,6 +25,10 @@ body.app {
   font: inherit; font-weight: 700; font-size: .85rem; cursor: pointer;
 }
 
+/* On ducks.ai the platform's floating buttons cover about 150 x 56 px at the top-left. */
+body.app.on-ducks .bar { height: 62px; padding-left: 164px; }
+body.app.on-ducks .bar-title { font-size: .8rem; line-height: 1.15; }
+
 /* ---------- screen + footer ---------- */
 body.app main.screen {
   flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
