@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<title>Souvenir Station</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <header class="top slim">
+    <p class="brand">Souvenir station · MOM officers only</p>
+  </header>
+
+  <div class="counter" id="counter" hidden>
+    <div class="counter-main"><b id="left">–</b><span class="of">left of <span id="cap">–</span><br>souvenirs</span></div>
+    <div class="counter-side">
+      <span id="given">– given</span>
+      <span class="live" id="live">connecting…</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- login -->
+    <section class="card view" id="v-login" hidden>
+      <h2>Officer login</h2>
+      <form id="loginForm">
+        <label class="field">Work email <input id="email" type="email" autocomplete="username" required></label>
+        <label class="field">Password <input id="password" type="password" autocomplete="current-password" required></label>
+        <button class="btn" type="submit">Log in</button>
+        <p class="error" id="loginErr" hidden></p>
+      </form>
+    </section>
+
+    <!-- menu -->
+    <section class="view" id="v-home" hidden>
+      <a class="bigbtn" href="#scan"><span class="ico" aria-hidden="true">▣</span>Scan QR<small>MW shows their quiz QR code</small></a>
+      <a class="bigbtn alt" href="#manual"><span class="ico" aria-hidden="true">✎</span>Manual input<small>No phone, or the code does not work</small></a>
+      <p class="whoami muted small"><span id="who"></span> · <button class="linkbtn inline" id="logout">Log out</button></p>
+    </section>
+
+    <!-- scan -->
+    <section class="view" id="v-scan" hidden>
+      <div class="card">
+        <div class="cam" id="camWrap" hidden><video id="video" playsinline muted></video><div class="frame"></div></div>
+        <button class="btn" id="camBtn">Start camera</button>
+        <label class="btn secondary filebtn">Scan from photo<input type="file" id="file" accept="image/*" capture="environment"></label>
+        <form class="typecode" id="typeForm">
+          <input id="typed" maxlength="200" autocomplete="off" autocapitalize="characters" placeholder="Or type the 8-character code">
+          <button class="btn secondary" type="submit">Check</button>
+        </form>
+        <p class="muted small" id="camNote"></p>
+      </div>
+      <section class="card verdict" id="verdict" hidden></section>
+      <p class="center"><a class="linkbtn" href="#home">← Back to menu</a></p>
+    </section>
+
+    <!-- manual -->
+    <section class="view" id="v-manual" hidden>
+      <div class="card">
+        <h2>Manual input</h2>
+        <p class="muted" id="manualIntro"></p>
+        <ol class="mq" id="mq"></ol>
+        <button class="btn" id="manualSubmit" disabled>Submit</button>
+      </div>
+      <section class="card verdict" id="mverdict" hidden></section>
+      <p class="center"><a class="linkbtn" href="#home">← Back to menu</a></p>
+    </section>
+  </main>
+
+  <canvas id="canvas" hidden></canvas>
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/content.js"></script>
+  <script src="../js/payload.js"></script>
+  <script src="../js/vendor/jsQR.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

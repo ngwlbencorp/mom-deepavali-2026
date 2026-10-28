@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<title>Event Control</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/superadmin.css">
+</head>
+<body>
+  <header class="top slim">
+    <p class="brand">Event control · superadmin</p>
+  </header>
+
+  <main class="wide viz">
+    <section class="card" id="v-login" hidden>
+      <h2>Superadmin login</h2>
+      <form id="loginForm">
+        <label class="field">Login ID <input id="username" autocomplete="username" required></label>
+        <label class="field">Password <input id="password" type="password" autocomplete="current-password" required></label>
+        <button class="btn" type="submit">Log in</button>
+        <p class="error" id="loginErr" hidden></p>
+      </form>
+    </section>
+
+    <div id="v-app" hidden>
+      <nav class="tabs" role="tablist">
+        <button role="tab" data-tab="dash" aria-selected="true">Dashboard</button>
+        <button role="tab" data-tab="admins" aria-selected="false">Admins</button>
+        <button role="tab" data-tab="data" aria-selected="false">Data</button>
+        <button class="linkbtn inline right" id="logout">Log out</button>
+      </nav>
+
+      <!-- dashboard -->
+      <section id="t-dash">
+        <p class="muted small" id="updated">Loading…</p>
+        <div class="tiles" id="tiles"></div>
+
+        <div class="card">
+          <h3>Over time (cumulative)</h3>
+          <div class="legend" id="legend"></div>
+          <div class="chart" id="lineChart"></div>
+          <details><summary>Show as table</summary><div class="tablewrap" id="lineTable"></div></details>
+        </div>
+
+        <div class="card">
+          <h3>Satisfaction (1 = very unhappy, 5 = very happy)</h3>
+          <div class="chart" id="csatChart"></div>
+        </div>
+
+        <div class="card caveat">
+          <h3>Check before reporting try rates</h3>
+          <p>"First-try success" and "attempts to full score" are counted <b>per claim ID</b>, which means per phone browser, not per person. They are only reliable if each MW uses one phone and does not clear the browser or switch browsers. Results registered only by an officer's scan (when the phone had no connection) carry the phone's own count. Manual (officer-assisted) claims use 3 spoken questions, not the 8-question quiz, so they are reported separately. Confirm this is good enough before using these figures as outcome measures.</p>
+        </div>
+      </section>
+
+      <!-- admins -->
+      <section id="t-admins" hidden>
+        <div class="card">
+          <h3>Upload admin emails (CSV)</h3>
+          <p class="muted small">Any cell containing an email address is used; headers and other columns are ignored. Admins log in with their email and the shared admin password.</p>
+          <label class="btn secondary filebtn">Choose CSV file<input type="file" id="csv" accept=".csv,text/csv,text/plain"></label>
+          <div id="preview" hidden>
+            <p id="previewText"></p>
+            <label class="radio"><input type="radio" name="mode" value="add" checked> Add to the current list</label>
+            <label class="radio"><input type="radio" name="mode" value="replace"> Replace the current list</label>
+            <button class="btn" id="uploadBtn">Upload</button>
+          </div>
+          <p class="error" id="adminErr" hidden></p>
+        </div>
+        <div class="card">
+          <h3>Current admins (<span id="adminCount">0</span>)</h3>
+          <ul class="adminlist" id="adminList"></ul>
+        </div>
+      </section>
+
+      <!-- data -->
+      <section id="t-data" hidden>
+        <div class="card">
+          <h3>Download data (CSV)</h3>
+          <button class="btn secondary" data-export="claims">Claims (one row per claim ID)</button>
+          <button class="btn secondary" data-export="submissions">Quiz submissions (one row per attempt)</button>
+          <button class="btn secondary" data-export="admins">Admin list</button>
+          <p class="error" id="exportErr" hidden></p>
+        </div>
+        <div class="card danger">
+          <h3>Clear rehearsal data</h3>
+          <p class="muted small">Deletes all claims and submissions (admin emails are kept). Do this after testing and before the event starts. It cannot be undone.</p>
+          <label class="field">Type RESET to confirm <input id="resetConfirm" autocomplete="off"></label>
+          <button class="btn danger-btn" id="resetBtn">Clear all claims and submissions</button>
+          <p class="small" id="resetMsg"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="tooltip" id="tip" hidden></div>
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/superadmin.js"></script>
+</body>
+</html>

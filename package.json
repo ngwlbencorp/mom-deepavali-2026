@@ -1,0 +1,9 @@
+{
+  "name": "scamsite-vercel",
+  "private": true,
+  "description": "Deepavali scam awareness quiz with souvenir redemption API (Vercel + Neon)",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "pg": "8.13.1"
+  }
+}

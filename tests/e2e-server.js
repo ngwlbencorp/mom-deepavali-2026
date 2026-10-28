@@ -1,0 +1,184 @@
+// End-to-end browser test: MW phones, two admins, superadmin. Site and API on different origins.
+// Usage: node tests/e2e-server.js <siteBase> <apiOrigin> <adminPw> <superUser> <superPw> <outDir>
+// The site copy at <siteBase> must have js/config.js pointing at <apiOrigin>. The database is reset.
+const fs = require('fs');
+const { chromium, devices } = require('playwright');
+const [site, api, ADMIN_PW, SUPER_USER, SUPER_PW, out] = process.argv.slice(2);
+let fails = 0;
+const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++; };
+const post = (path, body, token) => fetch(api + path, { method: 'POST', headers: { 'content-type': 'application/json', ...(token ? { authorization: 'Bearer ' + token } : {}) }, body: JSON.stringify(body) }).then((r) => r.json());
+
+(async () => {
+  // fresh data and two admins
+  const SUP = (await post('/api/login', { role: 'super', username: SUPER_USER, password: SUPER_PW })).token;
+  await post('/api/reset', { confirm: 'RESET' }, SUP);
+  await post('/api/admins', { emails: ['alice@mom.gov.sg', 'bob@mom.gov.sg'], mode: 'replace' }, SUP);
+
+  const b = await chromium.launch(), errs = [];
+  const phone = async (name) => {
+    const ctx = await b.newContext({ ...devices['Pixel 7'] });
+    const pg = await ctx.newPage();
+    pg.on('pageerror', (e) => errs.push(name + ': ' + e.message));
+    return pg;
+  };
+
+  async function doQuiz(pg) {
+    await pg.click('button.btn');
+    const qs = await pg.evaluate(() => window.SCAM_CONTENT.questions.map((q) => ({ type: q.type, answer: q.answer })));
+    for (const q of qs) {
+      const opts = pg.locator('.opt');
+      if (q.type === 'multi') { for (const a of q.answer) await opts.nth(a).click(); await pg.click('text=Check answer'); }
+      else await opts.nth(q.answer).click();
+      await pg.locator('.explain').waitFor();
+      await pg.locator('button.btn:visible').last().click();
+    }
+    if (await pg.locator('.faces').count()) { await pg.locator('.faces .chip').nth(4).click(); await pg.locator('.words .chip').first().click(); await pg.click('text=Submit and see my QR code'); }
+    await pg.locator('.result').waitFor();
+    return pg.locator('.code strong').textContent();
+  }
+
+  // ---- MW phone A ----
+  const A = await phone('A');
+  await A.goto(site + 'index.html');
+  const idA = await doQuiz(A);
+  ok(await A.locator('.saved').count() === 1, `phone A: result saved to server (${idA})`);
+  await A.screenshot({ path: out + '/mw-result.png', fullPage: true });
+
+  // ---- MW phone B starts with the SAME ID as A (forced clash) ----
+  const B = await phone('B');
+  await B.goto(site + 'index.html');
+  await B.evaluate((id) => localStorage.setItem('scamquiz.v1', JSON.stringify({ id, key: 'ab'.repeat(16), attempts: 0 })), idA);
+  await B.reload();
+  const idB = await doQuiz(B);
+  ok(idB !== idA && await B.locator('.saved').count() === 1, `phone B: clash detected, new ID issued and saved (${idA} -> ${idB})`);
+
+  // ---- MW phone C: no connection, then retry ----
+  const Cp = await phone('C');
+  await Cp.goto(site + 'index.html');
+  await Cp.route(api + '/**', (r) => r.abort());
+  await doQuiz(Cp);
+  ok(await Cp.locator('.notice').count() === 1, 'phone C offline: shows "not saved yet" with Retry');
+  await Cp.unroute(api + '/**');
+  await Cp.click('text=Retry saving');
+  await Cp.locator('.saved').waitFor();
+  ok(true, 'phone C: retry saves once back online');
+
+  // ---- admins ----
+  async function admin(email) {
+    const pg = await phone(email);
+    await pg.goto(site + 'admin/index.html');
+    await pg.fill('#email', email); await pg.fill('#password', ADMIN_PW);
+    await pg.click('#loginForm button');
+    await pg.locator('#v-home').waitFor();
+    await pg.waitForFunction(() => /live/.test(document.getElementById('live').textContent));
+    return pg;
+  }
+  const bad = await phone('bad');
+  await bad.goto(site + 'admin/index.html');
+  await bad.fill('#email', 'mallory@mom.gov.sg'); await bad.fill('#password', ADMIN_PW); await bad.click('#loginForm button');
+  await bad.locator('#loginErr').waitFor();
+  ok(/Wrong login/.test(await bad.locator('#loginErr').textContent()), 'unlisted email cannot log in');
+
+  const alice = await admin('alice@mom.gov.sg'), bob = await admin('bob@mom.gov.sg');
+  ok(await alice.locator('.bigbtn').count() === 2, 'after login: menu with Scan QR and Manual input');
+  ok((await alice.locator('#left').textContent()) === '500', 'live counter shows 500 left');
+  await alice.screenshot({ path: out + '/admin-home.png', fullPage: true });
+
+  const typeCode = async (pg, code) => {
+    await pg.fill('#typed', code); await pg.click('#typeForm button');
+    await pg.waitForFunction(() => !document.getElementById('verdict').hidden && document.querySelector('#verdict .big'));
+    return pg.locator('#verdict .big').textContent();
+  };
+  await alice.click('text=Scan QR');
+  ok(await typeCode(alice, idA) === 'All correct', 'alice: typed code shows All correct');
+  await alice.click('text=Souvenir given');
+  await alice.waitForFunction(() => /Recorded|Already|left|Not/.test(document.querySelector('#verdict .big').textContent));
+  ok((await alice.locator('#verdict .big').textContent()) === 'Recorded ✓', 'alice: souvenir recorded');
+  ok((await alice.locator('#left').textContent()) === '499', 'alice: counter updates at once (499)');
+  await bob.waitForFunction(() => document.getElementById('left').textContent === '499', null, { timeout: 8000 });
+  ok(true, "bob's counter updates live without any action (499)");
+
+  await bob.click('text=Scan QR');
+  ok(await typeCode(bob, idA) === 'Already given', 'bob: same code shows Already given');
+  ok(/alice@mom\.gov\.sg/.test(await bob.locator('#verdict .detail').textContent()), 'bob is told alice gave it');
+  await bob.screenshot({ path: out + '/admin-already.png', fullPage: true });
+
+  // QR photo of phone B
+  await B.locator('.qr').screenshot({ path: out + '/qrB.png' });
+  await alice.click('#verdict >> text=Scan next');
+  await alice.setInputFiles('#file', out + '/qrB.png');
+  await alice.waitForFunction(() => /All correct/.test(document.querySelector('#verdict .big').textContent));
+  ok(true, 'alice: QR photo of phone B decodes and shows All correct');
+  await alice.click('text=Souvenir given');
+  await alice.waitForFunction(() => /Recorded/.test(document.querySelector('#verdict .big').textContent));
+
+  // manual path
+  await bob.goto(site + 'admin/index.html#manual');
+  await bob.locator('#v-manual').waitFor();
+  ok(await bob.locator('.mq li').count() === 3, 'manual page lists 3 questions with correct answers');
+  ok(await bob.locator('#manualSubmit').isDisabled(), 'submit disabled until every question is marked');
+  const mark = async (pg, arr) => { for (let i = 0; i < arr.length; i++) await pg.locator('.mq li').nth(i).locator(arr[i] ? '.yes' : '.no').click(); };
+  await mark(bob, [true, false, true]);
+  await bob.click('#manualSubmit');
+  await bob.locator('#mverdict .big').waitFor();
+  ok((await bob.locator('#mverdict .big').textContent()) === 'Not all correct', 'manual with one wrong: not all correct');
+  await bob.click('text=Ask again');
+  await mark(bob, [true, true, true]);
+  await bob.click('#manualSubmit');
+  await bob.waitForFunction(() => /Give a souvenir/.test(document.querySelector('#mverdict .big').textContent));
+  ok(true, 'ask again, all correct: give a souvenir');
+  await bob.screenshot({ path: out + '/admin-manual.png', fullPage: true });
+  await bob.click('text=Next person');
+  await mark(bob, [true, true, true]);
+  await bob.click('#manualSubmit');
+  await bob.waitForFunction(() => /Give a souvenir/.test(document.querySelector('#mverdict .big').textContent));
+  ok(true, 'next person with the same answers is not treated as a duplicate');
+  await alice.waitForFunction(() => document.getElementById('left').textContent === '496', null, { timeout: 8000 });
+  ok(true, "alice's counter reflects bob's manual claims live (496)");
+
+  // admin loses the server
+  await alice.route(api + '/**', (r) => r.abort());
+  await alice.click('#verdict >> text=Scan next');
+  ok(await typeCode(alice, idB) === 'Not checked', 'server unreachable: scan says Not checked, no give button');
+  await alice.waitForFunction(() => /offline/.test(document.getElementById('live').textContent), null, { timeout: 20000 });
+  ok(true, 'counter turns to "offline: do not give souvenirs"');
+  await alice.screenshot({ path: out + '/admin-offline.png', fullPage: true });
+
+  // ---- superadmin ----
+  const sup = await phone('super');
+  await sup.setViewportSize({ width: 1100, height: 900 });
+  await sup.goto(site + 'superadmin/index.html');
+  await sup.fill('#username', SUPER_USER); await sup.fill('#password', ADMIN_PW); await sup.click('#loginForm button');
+  await sup.locator('#loginErr').waitFor();
+  ok(true, 'superadmin login refuses the admin password');
+  await sup.fill('#password', SUPER_PW); await sup.click('#loginForm button');
+  await sup.waitForFunction(() => document.querySelectorAll('.tile').length === 8);
+  const tiles = await sup.locator('.tile').allInnerTexts();
+  ok(/4 \/ 500/.test(tiles[0]) && /2 via manual/.test(tiles[0]), 'dashboard: souvenirs given 4 / 500, 2 via manual');
+  ok(/^Quiz submissions\s+6\s/.test(tiles[1]), 'dashboard: 6 quiz submissions (3 phones + 3 manual)');
+  ok(await sup.locator('#lineChart path').count() === 2 && await sup.locator('#csatChart path').count() >= 1, 'line chart (2 series) and satisfaction chart render');
+  await sup.locator('#lineChart rect').hover();
+  ok(!(await sup.locator('#tip').isHidden()), 'hover shows tooltip');
+  await sup.screenshot({ path: out + '/superadmin-dash.png', fullPage: true });
+
+  await sup.click('[data-tab="admins"]');
+  fs.writeFileSync(out + '/admins.csv', 'Name,Email\r\n"Dan","Dan@MOM.gov.sg"\r\nEve,eve@mom.gov.sg\r\nno email here,\r\n');
+  await sup.setInputFiles('#csv', out + '/admins.csv');
+  await sup.waitForFunction(() => !document.getElementById('preview').hidden);
+  ok(/2 email address/.test(await sup.locator('#previewText').textContent()), 'CSV preview finds 2 emails');
+  await sup.click('#uploadBtn');
+  await sup.waitForFunction(() => document.getElementById('adminCount').textContent === '4');
+  ok(true, 'upload (add mode): 4 admins listed');
+  await sup.screenshot({ path: out + '/superadmin-admins.png', fullPage: true });
+
+  await sup.click('[data-tab="data"]');
+  const [dl] = await Promise.all([sup.waitForEvent('download'), sup.click('[data-export="claims"]')]);
+  await dl.saveAs(out + '/claims.csv');
+  const csv = fs.readFileSync(out + '/claims.csv', 'utf8');
+  ok(csv.includes(idA) && csv.split('\r\n').length === 6, 'claims CSV downloads (5 claims + header)');
+
+  ok(!errs.length, 'no page errors ' + (errs.length ? JSON.stringify(errs) : ''));
+  await b.close();
+  console.log(fails ? `${fails} FAILED` : 'ALL PASSED');
+  process.exit(fails ? 1 : 0);
+})();
