@@ -79,7 +79,8 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   const total = await pg.evaluate(() => window.SCAM_TEXT.en.quiz.reduce((s, q) => s + (q.type === 'sort' ? q.cards.length : 1), 0));
   const last = () => pg.evaluate(() => JSON.parse(localStorage.getItem('scamquiz.v1')).last);
   ok((await last()).score === total - 1 && await pg.locator('.result.partial').count() === 1, `one wrong spot item scores ${total - 1}/${total}`);
-  ok(await pg.locator('.result .saved').count() === 1, 'result saved to the API');
+  ok(await pg.locator('.qr').count() === 0 && await pg.locator('.code').count() === 0, 'not all correct: no QR code and no claim code');
+  ok(await pg.evaluate(() => JSON.parse(localStorage.getItem('scamquiz.v1')).pending) === false, 'result saved to the API');
   await fits('result (partial)');
   await pg.click('#nav .btn >> nth=0'); // Review answers
   for (let i = 0; i < quiz.length; i++) {
@@ -94,7 +95,15 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await pg.locator('.result.full').waitFor();
   ok((await last()).score === total && await pg.locator('.result.full').count() === 1, `all correct scores ${total}/${total}`);
   ok(await pg.evaluate(() => JSON.parse(localStorage.getItem('scamquiz.v1')).attempts) === 2, 'second attempt counted');
+  ok(await pg.locator('.qr').count() === 1, 'all correct: QR code shown');
   await fits('result (all correct)');
+
+  // a later attempt with a mistake keeps the QR code (the best score counts)
+  await pg.locator('#nav .btn').last().click(); // Try again
+  await answerAll(0);
+  await pg.locator('.result').waitFor();
+  ok(await pg.locator('.result.partial').count() === 1 && await pg.locator('.qr').count() === 1, 'later attempt with a mistake: QR code kept');
+  await fits('result (partial, earned before)');
 
   ok(!errs.length, 'no page errors ' + (errs.length ? JSON.stringify(errs) : ''));
   await b.close();

@@ -202,7 +202,7 @@
         el('span', { class: 'tile-ico', 'aria-hidden': 'true', text: '🏆' }),
         el('span', { class: 'tile-txt' }, [el('b', { text: open ? T.ui.quizTitle : T.ui.quizTitleAfter }), el('small', { text: T.ui.quizSub })])
       ]),
-      state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [souvenirsOn() ? T.ui.showQr : T.ui.showResult]) : null,
+      state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [souvenirsOn() && (state.last.score === state.last.total || state.firstFull) ? T.ui.showQr : T.ui.showResult]) : null,
       open ? el('p', { class: 'note', text: T.event.souvenirNote }) : null,
       open ? pill() : null,
       helpline()
@@ -490,28 +490,33 @@
   // ---------- result + review ----------
   function result() {
     var last = state.last, full = last.score === last.total;
+    // A QR code only for a full score: on this attempt, or an earlier one (the server keeps the
+    // best score, so a later lower score does not take the souvenir away).
+    var earned = full || !!state.firstFull;
+    var withQr = earned && souvenirsOn();
     var buttons = [];
     if (last.answers) buttons.push({ label: T.ui.review, run: function () { review(0); } });
     buttons.push({ label: T.ui.tryAgain, run: startQuiz, primary: !full });
     var pending = state.pending
-      ? el('p', { class: 'notice' }, [(souvenirsOn() ? T.ui.notSaved : T.ui.notSavedAfter) + ' ', el('button', { class: 'linkbtn inline', type: 'button', onclick: submitResult }, [T.ui.retry])])
+      ? el('p', { class: 'notice' }, [(withQr ? T.ui.notSaved : T.ui.notSavedAfter) + ' ', el('button', { class: 'linkbtn inline', type: 'button', onclick: submitResult }, [T.ui.retry])])
       : null;
-    if (!souvenirsOn()) {
-      // After the event, or once all souvenirs are gone: no QR code, no collection message.
+    var score = el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) });
+    if (!withQr) {
+      // Not all correct yet, after the event, or once all souvenirs are gone: no QR code.
+      var msgs = souvenirsOn() ? [T.ui.partialMsg]
+        : eventOpen() ? [T.ui.soldOut, full ? null : T.ui.afterPartial]
+        : [full ? T.ui.afterFull : T.ui.afterPartial];
       show([
         topbar('⌂ ' + T.ui.home, home),
-        el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
-          el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
-          el('p', { class: 'msg', text: eventOpen() ? T.ui.soldOut : full ? T.ui.afterFull : T.ui.afterPartial }),
-          eventOpen() && !full ? el('p', { class: 'msg', text: T.ui.afterPartial }) : null,
-          pending
-        ])
+        el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [score]
+          .concat(msgs.map(function (m) { return m ? el('p', { class: 'msg', text: m }) : null; }))
+          .concat([pending, souvenirsOn() ? pill() : null]))
       ], buttons, result, eventOpen());
       return;
     }
     var text = window.ScamPayload.encode({
-      id: state.id, score: last.score, total: last.total, attempts: state.attempts,
-      firstFull: state.firstFull, csat: state.csat, learned: state.learned
+      id: state.id, score: last.total, total: last.total, attempts: state.attempts,
+      firstFull: state.firstFull || state.attempts, csat: state.csat, learned: state.learned
     });
     var qr = qrcode(0, 'M');
     qr.addData(text);
@@ -521,8 +526,8 @@
     show([
       topbar('⌂ ' + T.ui.home, home),
       el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
-        el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }),
-        el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.partialMsg }),
+        score,
+        el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.earnedBefore }),
         qrBox,
         el('p', { class: 'code' }, [T.ui.codeLabel + ': ', el('strong', { text: state.id }), ' · ' + T.ui.attempt + ' ' + state.attempts]),
         pending || el('p', { class: 'saved', text: T.ui.saved }),

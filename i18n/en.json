@@ -36,6 +36,7 @@
   "ui.saving": "Saving your result…",
   "ui.allCorrect": "All correct!",
   "ui.allCorrectMsg": "Show this QR code to an MOM officer for your souvenir.",
+  "ui.earnedBefore": "You got all correct before, so your QR code is still valid.",
   "ui.partial": "{s} of {t} correct",
   "ui.partialMsg": "Review the answers, then try again for a souvenir.",
   "ui.review": "Review answers",

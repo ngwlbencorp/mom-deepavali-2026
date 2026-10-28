@@ -50,6 +50,7 @@ window.SCAM_TEXT.en = {
     saving: "Saving your result…",
     allCorrect: "All correct!",
     allCorrectMsg: "Show this QR code to an MOM officer for your souvenir.",
+    earnedBefore: "You got all correct before, so your QR code is still valid.",
     partial: "{s} of {t} correct",
     partialMsg: "Review the answers, then try again for a souvenir.",
     review: "Review answers",
