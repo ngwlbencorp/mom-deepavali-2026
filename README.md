@@ -198,6 +198,8 @@ node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b .
 
 Both test scripts reset data. Never run them against the production database.
 
+iOS zoom (`tests/zoom.test.js`): every text box, list and file picker on the officer and superadmin pages must be at least 16px, or iPhones zoom in on tap and stay zoomed. Run `node tests/zoom.test.js <site copy> <adminPw> <superUser> <superPw>` after any style change to those pages.
+
 The ducks.ai shell (`tests/shell.test.js`): serve a copy of the pages with CORS as a stand-in for Vercel (`python3 tests/serve-cors.py 8890 <copy>`), build the zips from it (`node tools/build-shell.js --root <copy> --out …`, and again with `--frozen`), unpack three shells (base set to the stand-in, with a `<div id="ducks-extra">` added before the scripts; base set to a dead port; frozen), serve each, then:
 
 ```bash

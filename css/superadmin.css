@@ -67,3 +67,7 @@ main.wide { max-width: 960px; }
 .badge.needs_decision { background: var(--no-bg); color: var(--no); }
 .badge.fixed { background: var(--ok-bg); color: var(--ok); }
 .bug select { margin-left: 6px; font: inherit; padding: 4px 8px; border-radius: 8px; }
+
+/* iOS Safari zooms in when a text box under 16px gets focus, and does not zoom back out.
+   This rule wins over any other font setting on form controls (tests/zoom.test.js checks it). */
+input, select, textarea { font-size: 16px !important; }
