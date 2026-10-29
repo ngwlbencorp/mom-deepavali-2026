@@ -104,6 +104,8 @@ body.app main.screen {
 .todo { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 12px; }
 .todo li { position: relative; padding: 12px 14px 12px 44px; background: var(--card); border-radius: 12px; font-size: 1.05rem; box-shadow: 0 4px 14px rgba(74, 29, 94, .06); }
 .todo li::before { content: "✓"; position: absolute; left: 14px; top: 10px; font-weight: 800; color: var(--ok); font-size: 1.2rem; }
+.todo.act li { font-size: 1.25rem; }
+.todo.act b { color: var(--plum); letter-spacing: .5px; }
 .watch { display: flex; align-items: center; gap: 10px; padding: 6px 12px; border-radius: 12px; background: var(--gold-soft); color: var(--ink); text-decoration: none; line-height: 1.2; }
 .watch .play { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--plum); color: #fff; font-size: .7rem; }
 .watch .watchtext { display: grid; }

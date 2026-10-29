@@ -33,7 +33,7 @@ window.SCAM_TEXT.en = {
     exitConfirm: "Leave the quiz? Your answers so far will be lost.",
     closeReview: "Close review",
     learnTitle: "Learn about scams",
-    learnSub: "5 short stories · 2 min",
+    learnSub: "6 short stories · 3 min",
     quizTitle: "Quiz for a souvenir",
     quizTitleAfter: "Take the quiz",
     quizSub: "6 challenges · 3 min",
@@ -112,7 +112,7 @@ window.SCAM_TEXT.en = {
         { line: 2, label: "Rushes you" }
       ],
       todo: [
-        "Only install apps from the official app store (Google Play or Apple App Store).",
+        "Only install apps from the official app store on your phone.",
         "Fake apps can steal money from your bank account."
       ],
       video: { id: "j9-EMJlNkao", by: "MOM" }
@@ -148,7 +148,7 @@ window.SCAM_TEXT.en = {
       ],
       todo: [
         "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
-        "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers."
+        "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal."
       ],
       video: { id: "l6GoxFEUB4Y", by: "NCPC" }
     },
@@ -163,12 +163,36 @@ window.SCAM_TEXT.en = {
         { line: 1, label: "Asks for your OTP and rushes you" }
       ],
       todo: [
-        "Never share your OTP (the code sent to your phone) with anyone.",
-        "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends."
+        "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+        "Someone says they changed their number? Call their old number to check."
       ],
       video: { id: "_2e1GCLl7Cs", by: "MOM", lang: { hi: "KTO5GpIIjSc", my: "iK6B5pRFu_c", ta: "uruQE3-l6AU" } }
+    },
+    {
+      // Moved here from the presentation (content v2). www.mom.gov.sg.official.com.net is one of the
+      // fakes MOM itself publishes (M1); the quiz's fake addresses are deliberately not used here.
+      title: "Fake MOM message",
+      tagline: "Check who sent it, and where the link goes.",
+      chat: { channel: "SMS", from: "MOM-NOTICE", lines: [
+        "MOM: your work permit will expire soon.",
+        "Renew it now: www.mom.gov.sg.official.com.net"
+      ] },
+      flags: [
+        { line: 1, label: "Fake website: it does not end with .mom.gov.sg" }
+      ],
+      todo: [
+        "Government SMS come from the sender \"gov.sg\".",
+        "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\"."
+      ],
+      video: { id: "SawQL3w8rSc", by: "CSA" }
     }
   ],
+
+  // Closing screen after the last story (as on the presentation's ACT slide). ADD, CHECK and TELL stay in English.
+  act: {
+    title: "Remember ACT",
+    items: ["ADD the ScamShield app", "CHECK with 1799", "TELL family and friends"]
+  },
 
   // Quiz: scenarios differ from the presentation's questions. Right answers are shown only at the
   // end, in "Review answers". Points: spot = 1, each sort card = 1, reply = 1, pick = 1.
@@ -225,7 +249,7 @@ window.SCAM_TEXT.en = {
         { icon: "ad", label: "A link in an online advert" }
       ],
       answer: 0,
-      explain: "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money."
+      explain: "Only install apps from the official app store on your phone. Apps from links can steal your money."
     },
     {
       type: "spot",

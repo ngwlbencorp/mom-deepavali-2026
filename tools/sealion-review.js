@@ -50,7 +50,7 @@ const protectedBits = (s) => (s.match(/\{\w+\}|\$\d+|\b\d[\dX]{2,}\b|[\w.-]+\.(?
 function where(key) {
   let m = key.match(/^learn\[(\d+)\]/); if (m) return `Learn story "${en.learn[m[1]].title}"`;
   m = key.match(/^quiz\[(\d+)\]/); if (m) return `Quiz item "${en.quiz[m[1]].title}"`;
-  return { event: 'Home screen', ui: 'Button or label', feedback: 'Feedback screen' }[key.split('.')[0]];
+  return { event: 'Home screen', ui: 'Button or label', act: 'Closing screen after the stories', feedback: 'Feedback screen' }[key.split('.')[0]];
 }
 function hint(key) {
   if (/\.msg\.bubbles/.test(key)) return 'One tappable part of a fake message; the parts are shown in order and must read naturally together.';

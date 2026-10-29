@@ -23,7 +23,6 @@
    "quiz[4].explain": "SEA-LION was wrong: \"காக்கப் பணம்\" is correct sandhi."
   },
   "my": {
-   "ui.learnSub": "SEA-LION was wrong: ပုဒ် is the right classifier for stories.",
    "ui.toQuiz": "Other labels use ဉာဏ်စမ်း for \"quiz\"; changing one breaks consistency.",
    "ui.selected": "SEA-LION was wrong: \"{n} ခုမှ {k} ခု\" is the natural Burmese order for \"k of n\".",
    "ui.partial": "SEA-LION was wrong: \"{t} ခုမှ {s} ခု\" is the natural Burmese order.",
@@ -44,7 +43,6 @@
    "learn[4].tagline": "Style only; the draft is natural and consistent with the other lines.",
    "learn[4].chat.lines[0]": "\"ပို့မိသွား\" already means \"sent by mistake\"; it is natural.",
    "learn[4].flags[0].label": "The suggestion changes the meaning (\"performs hastily\").",
-   "learn[4].todo[0]": "The suggestion drops \"never\" (ဘယ်တော့မှ).",
    "quiz[1].cards[1].why": "The suggestion drops \"never\".",
    "quiz[0].msg.bubbles[0][0].t": "Fake official messages are written formally on purpose, as real scams are.",
    "quiz[0].msg.bubbles[0][1].t": "Fake official messages are written formally on purpose, as real scams are.",
@@ -59,7 +57,12 @@
   "id": {
    "ui.toQuiz": "\"Ikuti kuis\" (join the quiz) is natural; \"ambil\" means pick up.",
    "ui.spotPrompt": "\"Tanda bahaya\" is the usual term; \"tanda merah\" is a literal calque.",
-   "learn[0].tagline": "\"Mengaku dari MOM\" (claim to be from MOM) fits fake officers better."
+   "learn[0].tagline": "\"Mengaku dari MOM\" (claim to be from MOM) fits fake officers better.",
+   "learn[1].todo[0]": "Keeps the standard everyday register used on every other line (\"pasang\", \"ponsel\", \"memberikan\", \"kata sandi\"); the suggestion switches to slang (\"cuma\", \"hp\", \"kasih\"), inconsistently with the rest of the site.",
+   "quiz[3].explain": "Keeps the standard everyday register used on every other line (\"pasang\", \"ponsel\", \"memberikan\", \"kata sandi\"); the suggestion switches to slang (\"cuma\", \"hp\", \"kasih\"), inconsistently with the rest of the site.",
+   "learn[4].todo[0]": "Keeps the standard everyday register used on every other line (\"pasang\", \"ponsel\", \"memberikan\", \"kata sandi\"); the suggestion switches to slang (\"cuma\", \"hp\", \"kasih\"), inconsistently with the rest of the site.",
+   "learn[4].todo[1]": "\"Telepon\" is the standard spelling; \"telpon\" is non-standard.",
+   "learn[3].todo[1]": "\"Tidak ada yang boleh\" (no one is allowed to) carries the legal point; \"bisa memaksa\" (is able to force) does not. The rest is style only."
   },
   "zh": {
    "event.greeting": "SEA-LION was wrong: Singapore uses 屠妖节 for Deepavali.",
@@ -73,15 +76,18 @@
    "quiz[0].msg.bubbles[1][2].t": "Fake official messages are written formally on purpose, as real scams are.",
    "quiz[0].explain": "\"不确定的话？\" is awkward; the draft is clear.",
    "quiz[1].cards[1].text": "Fake official messages are written formally on purpose, as real scams are.",
-   "quiz[1].cards[3].text": "\"活动见\" is the natural colloquial form."
+   "quiz[1].cards[3].text": "\"活动见\" is the natural colloquial form.",
+   "act.items[0]": "ADD, CHECK and TELL stay in English (as on ScamShield materials); the Chinese words after them say what to do, for readers who do not know the English word. Same pattern in every language.",
+   "act.items[1]": "ADD, CHECK and TELL stay in English (as on ScamShield materials); the Chinese words after them say what to do, for readers who do not know the English word. Same pattern in every language."
   },
   "vi": {
    "learn[4].flags[0].label": "\"Ép bạn nhanh\" is awkward; \"hối thúc\" is clear.",
-   "learn[4].todo[0]": "The suggestion repeats \"cho\" (\"cho OTP … cho ai\"), which is clumsy.",
-   "learn[4].todo[1]": "Style only; the draft is natural and consistent with the other lines.",
    "quiz[0].explain": "\"Kết thúc là\" is less natural than \"kết thúc bằng\".",
    "quiz[1].cards[1].text": "Fake official messages are written formally on purpose, as real scams are.",
    "quiz[1].cards[1].why": "The suggestion repeats \"cho\", which is clumsy."
+  },
+  "th": {
+   "learn[3].todo[1]": "Draft (already shortened from the first suggestion) keeps the final \"ได้\" (can): without it the line says \"no one forces you\", not \"no one can make you\". \"เจอบ่อย\" vs \"พบบ่อย\" is style only."
   }
  }
 }

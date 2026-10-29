@@ -115,10 +115,10 @@
    "reason": ""
   },
   "ui.learnSub": {
-   "english": "5 short stories · 2 min",
-   "draft": "5 maikling kuwento · 2 min",
+   "english": "6 short stories · 3 min",
+   "draft": "6 maikling kuwento · 3 min",
    "verdict": "ok",
-   "back": "5 short stories · 2 min",
+   "back": "6 short stories · 3 min",
    "suggestion": "",
    "reason": ""
   },
@@ -524,11 +524,11 @@
   },
   "learn[0].todo[1]": {
    "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
-   "draft": "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, at hindi nito ililipat ang tawag mo sa Pulis. Hindi sigurado? Ibaba ang telepono.",
-   "verdict": "fix",
-   "back": "MOM will not order you to install an app from a link, and it will not transfer your call to the Police. Not sure? Put down the phone.",
-   "suggestion": "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, o ilipat ang tawag mo sa Pulis. Hindi sigurado? I-hang up.",
-   "reason": "Changed 'ibaba ang telepono' (put down phone) to 'i-hang up' (hang up) to match the English instruction exactly and use common local usage."
+   "draft": "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, o ilipat ang tawag mo sa Pulis. Hindi sigurado? I-hang up.",
+   "verdict": "ok",
+   "back": "MOM will not order you to install an app from a link, or transfer your call to the Police. Not sure? Hang up.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].title": {
    "english": "Fake festive deal",
@@ -611,10 +611,10 @@
    "reason": ""
   },
   "learn[1].todo[0]": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
-   "draft": "Mag-install lang ng app mula sa opisyal na app store (Google Play o Apple App Store).",
+   "english": "Only install apps from the official app store on your phone.",
+   "draft": "Mag-install lang ng app mula sa opisyal na app store sa phone mo.",
    "verdict": "ok",
-   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "back": "Only install apps from the official app store on your phone.",
    "suggestion": "",
    "reason": ""
   },
@@ -779,12 +779,12 @@
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "draft": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga sulat at kopyahin ang mga licence number ng mga scammer.",
-   "verdict": "fix",
-   "back": "Asking to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "suggestion": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga scammer ang mga sulat at kopyahin ang mga licence number.",
-   "reason": "Fixed grammar: moved 'ng mga scammer' to modify 'mameke' directly, making the sentence clearer and more natural."
+   "english": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "draft": "Karaniwang senyales ng job scam ang pagpapabayad muna. Walang puwedeng magpabayad sa iyo para manatili sa trabaho: ilegal iyon.",
+   "verdict": "ok",
+   "back": "Asking to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[4].title": {
    "english": "Secret codes (OTP)",
@@ -827,18 +827,18 @@
    "reason": ""
   },
   "learn[4].todo[0]": {
-   "english": "Never share your OTP (the code sent to your phone) with anyone.",
-   "draft": "Huwag kailanman ibigay ang OTP mo (ang code na ipinadala sa phone mo) kahit kanino.",
+   "english": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "draft": "Huwag kailanman ibigay ang OTP mo (ang code na ipinadala sa phone mo) o ang Singpass password mo kahit kanino.",
    "verdict": "ok",
-   "back": "Never give your OTP (the code sent to your phone) to anyone.",
+   "back": "Never give your OTP (the code sent to your phone) or your Singpass password to anyone.",
    "suggestion": "",
    "reason": ""
   },
   "learn[4].todo[1]": {
-   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "draft": "Tandaan ang ACT: ADD ang ScamShield app, CHECK sa 1799, TELL sa pamilya at mga kaibigan.",
+   "english": "Someone says they changed their number? Call their old number to check.",
+   "draft": "May nagsabing nagpalit siya ng numero? Tawagan ang luma niyang numero para i-check.",
    "verdict": "ok",
-   "back": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "back": "Someone says they changed their number? Call their old number to check.",
    "suggestion": "",
    "reason": ""
   },
@@ -1099,10 +1099,10 @@
    "reason": ""
   },
   "quiz[3].explain": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
-   "draft": "Mag-install lang ng app mula sa opisyal na app store (Google Play o Apple App Store). Kayang nakawin ng mga app mula sa link ang pera mo.",
+   "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "draft": "Mag-install lang ng app mula sa opisyal na app store sa phone mo. Kayang nakawin ng mga app mula sa link ang pera mo.",
    "verdict": "ok",
-   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "back": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
    "suggestion": "",
    "reason": ""
   },
@@ -1335,6 +1335,94 @@
    "draft": "Panoorin ang opisyal na video",
    "verdict": "ok",
    "back": "Watch the official video",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].title": {
+   "english": "Fake MOM message",
+   "draft": "Pekeng mensahe ng MOM",
+   "verdict": "ok",
+   "back": "Fake MOM message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].tagline": {
+   "english": "Check who sent it, and where the link goes.",
+   "draft": "I-check kung sino ang nagpadala, at saan papunta ang link.",
+   "verdict": "ok",
+   "back": "Check who sent it, and where the link goes.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[0]": {
+   "english": "MOM: your work permit will expire soon.",
+   "draft": "MOM: malapit nang mag-expire ang work permit mo.",
+   "verdict": "ok",
+   "back": "MOM: your work permit will expire soon.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[1]": {
+   "english": "Renew it now: www.mom.gov.sg.official.com.net",
+   "draft": "I-renew na ngayon: www.mom.gov.sg.official.com.net",
+   "verdict": "ok",
+   "back": "Renew it now: www.mom.gov.sg.official.com.net",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].flags[0].label": {
+   "english": "Fake website: it does not end with .mom.gov.sg",
+   "draft": "Pekeng website: hindi nagtatapos sa .mom.gov.sg",
+   "verdict": "ok",
+   "back": "Fake website: it does not end with .mom.gov.sg",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[0]": {
+   "english": "Government SMS come from the sender \"gov.sg\".",
+   "draft": "Galing sa sender na \"gov.sg\" ang mga SMS ng gobyerno.",
+   "verdict": "ok",
+   "back": "Government SMS come from the sender \"gov.sg\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[1]": {
+   "english": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "draft": "Nagtatapos sa \".mom.gov.sg\" ang mga totoong website ng MOM. Tingnan ang pangalan ng website, bago ang unang \"/\".",
+   "verdict": "ok",
+   "back": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.title": {
+   "english": "Remember ACT",
+   "draft": "Tandaan ang ACT",
+   "verdict": "ok",
+   "back": "Remember the ACT",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[0]": {
+   "english": "ADD the ScamShield app",
+   "draft": "ADD ang ScamShield app",
+   "verdict": "ok",
+   "back": "ADD the ScamShield app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[1]": {
+   "english": "CHECK with 1799",
+   "draft": "CHECK sa 1799",
+   "verdict": "ok",
+   "back": "CHECK at 1799",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[2]": {
+   "english": "TELL family and friends",
+   "draft": "TELL sa pamilya at mga kaibigan",
+   "verdict": "ok",
+   "back": "TELL to family and friends",
    "suggestion": "",
    "reason": ""
   }

@@ -32,9 +32,9 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   ok(await pg.evaluate(() => document.documentElement.lang) === LANG, `page is in ${LANG}`);
   await fits('home');
 
-  // learn: 5 stories x 2 frames
+  // learn: 2 frames per story, then the ACT screen
   await pg.click('.tile >> nth=0');
-  const frames = await pg.evaluate(() => window.SCAM_TEXT.en.learn.length * 2);
+  const frames = await pg.evaluate(() => window.SCAM_TEXT.en.learn.length * 2 + 1);
   for (let i = 0; i < frames; i++) {
     await fits('learn frame ' + (i + 1));
     if (i < frames - 1) await next();

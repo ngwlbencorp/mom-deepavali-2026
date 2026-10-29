@@ -19,7 +19,7 @@ window.SCAM_TEXT["vi"] = {
     "exitConfirm": "Thoát bài đố? Các câu trả lời của bạn sẽ bị mất.",
     "closeReview": "Đóng phần xem lại",
     "learnTitle": "Tìm hiểu về lừa đảo",
-    "learnSub": "5 câu chuyện ngắn · 2 phút",
+    "learnSub": "6 câu chuyện ngắn · 3 phút",
     "quizTitle": "Đố vui nhận quà",
     "quizTitleAfter": "Làm bài đố",
     "quizSub": "6 thử thách · 3 phút",
@@ -114,7 +114,7 @@ window.SCAM_TEXT["vi"] = {
         }
       ],
       "todo": [
-        "Chỉ cài ứng dụng từ kho ứng dụng chính thức (Google Play hoặc Apple App Store).",
+        "Chỉ cài ứng dụng từ kho ứng dụng chính thức trên điện thoại của bạn.",
         "Ứng dụng giả có thể lấy cắp tiền trong tài khoản ngân hàng của bạn."
       ]
     },
@@ -163,7 +163,7 @@ window.SCAM_TEXT["vi"] = {
       ],
       "todo": [
         "Tự kiểm tra giấy phép lao động trên website của MOM: \"Check work pass and application status\". Không cần đăng nhập.",
-        "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Kẻ lừa đảo có thể làm giả thư và chép số giấy phép."
+        "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Không ai được bắt bạn trả tiền để giữ việc: điều đó là phạm pháp."
       ]
     },
     {
@@ -181,11 +181,38 @@ window.SCAM_TEXT["vi"] = {
         }
       ],
       "todo": [
-        "Không bao giờ đưa OTP (mã gửi đến điện thoại của bạn) cho bất kỳ ai.",
-        "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK gọi 1799 để kiểm tra, TELL báo cho gia đình và bạn bè."
+        "Không bao giờ đưa OTP (mã gửi đến điện thoại của bạn) hay mật khẩu Singpass cho bất kỳ ai.",
+        "Có người nói họ đã đổi số? Hãy gọi số cũ của họ để kiểm tra."
+      ]
+    },
+    {
+      "title": "Tin nhắn MOM giả",
+      "tagline": "Kiểm tra ai gửi, và link dẫn đến đâu.",
+      "chat": {
+        "lines": [
+          "MOM: giấy phép lao động của bạn sắp hết hạn.",
+          "Gia hạn ngay: www.mom.gov.sg.official.com.net"
+        ]
+      },
+      "flags": [
+        {
+          "label": "Website giả: không kết thúc bằng .mom.gov.sg"
+        }
+      ],
+      "todo": [
+        "Tin nhắn SMS của chính phủ được gửi từ người gửi \"gov.sg\".",
+        "Website thật của MOM kết thúc bằng \".mom.gov.sg\". Hãy xem tên website, trước dấu \"/\" đầu tiên."
       ]
     }
   ],
+  "act": {
+    "title": "Nhớ ACT",
+    "items": [
+      "ADD cài ứng dụng ScamShield",
+      "CHECK gọi 1799 để kiểm tra",
+      "TELL báo cho gia đình và bạn bè"
+    ]
+  },
   "quiz": [
     {
       "title": "Tìm dấu hiệu cảnh báo",
@@ -267,7 +294,7 @@ window.SCAM_TEXT["vi"] = {
           "label": "Link trong quảng cáo trên mạng"
         }
       ],
-      "explain": "Chỉ cài ứng dụng từ kho ứng dụng chính thức (Google Play hoặc Apple App Store). Ứng dụng từ link có thể lấy cắp tiền của bạn."
+      "explain": "Chỉ cài ứng dụng từ kho ứng dụng chính thức trên điện thoại của bạn. Ứng dụng từ link có thể lấy cắp tiền của bạn."
     },
     {
       "title": "Tìm dấu hiệu cảnh báo",

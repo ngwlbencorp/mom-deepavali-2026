@@ -115,10 +115,10 @@
    "reason": ""
   },
   "ui.learnSub": {
-   "english": "5 short stories · 2 min",
-   "draft": "5 cerita pendek · 2 menit",
+   "english": "6 short stories · 3 min",
+   "draft": "6 cerita pendek · 3 menit",
    "verdict": "ok",
-   "back": "5 short stories · 2 min",
+   "back": "6 short stories · 3 min",
    "suggestion": "",
    "reason": ""
   },
@@ -619,12 +619,12 @@
    "reason": ""
   },
   "learn[1].todo[0]": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
-   "draft": "Hanya pasang aplikasi dari app store resmi (Google Play atau Apple App Store).",
-   "verdict": "ok",
-   "back": "Only install apps from official app store (Google Play or Apple App Store).",
-   "suggestion": "",
-   "reason": ""
+   "english": "Only install apps from the official app store on your phone.",
+   "draft": "Hanya pasang aplikasi dari app store resmi di ponsel Anda.",
+   "verdict": "fix",
+   "back": "Only install apps from the official app store on your phone.",
+   "suggestion": "Cuma instal aplikasi dari app store resmi di hp Anda.",
+   "reason": "Use everyday words: 'Cuma' instead of 'Hanya', 'instal' instead of 'pasang', 'hp' instead of 'ponsel'."
   },
   "learn[1].todo[1]": {
    "english": "Fake apps can steal money from your bank account.",
@@ -787,12 +787,12 @@
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "draft": "Diminta membayar dulu adalah tanda umum penipuan kerja. Penipu bisa memalsukan surat dan meniru nomor lisensi.",
-   "verdict": "ok",
-   "back": "Being asked to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "suggestion": "",
-   "reason": ""
+   "english": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "draft": "Diminta membayar dulu adalah tanda umum penipuan kerja. Tidak ada yang boleh menyuruh Anda membayar agar tetap bekerja: itu ilegal.",
+   "verdict": "fix",
+   "back": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "suggestion": "Minta bayar dulu adalah tanda umum penipuan pekerjaan. Tidak ada yang bisa memaksa Anda membayar untuk tetap bekerja: itu melanggar hukum.",
+   "reason": "More natural phrasing: 'Minta bayar dulu', 'penipuan pekerjaan', 'bisa memaksa', 'melanggar hukum'."
   },
   "learn[4].title": {
    "english": "Secret codes (OTP)",
@@ -835,20 +835,20 @@
    "reason": ""
   },
   "learn[4].todo[0]": {
-   "english": "Never share your OTP (the code sent to your phone) with anyone.",
-   "draft": "Jangan pernah memberikan OTP Anda (kode yang dikirim ke ponsel Anda) kepada siapa pun.",
-   "verdict": "ok",
-   "back": "Never share your OTP (the code sent to your phone) with anyone.",
-   "suggestion": "",
-   "reason": ""
+   "english": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "draft": "Jangan pernah memberikan OTP Anda (kode yang dikirim ke ponsel Anda) atau kata sandi Singpass Anda kepada siapa pun.",
+   "verdict": "fix",
+   "back": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "suggestion": "Jangan pernah kasih OTP Anda (kode yang dikirim ke hp Anda) atau password Singpass Anda ke siapa saja.",
+   "reason": "Everyday words: 'kasih' instead of 'memberikan', 'hp' instead of 'ponsel', 'password' instead of 'kata sandi', 'siapa saja' instead of 'siapa pun'."
   },
   "learn[4].todo[1]": {
-   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "draft": "Ingat ACT: ADD (pasang) aplikasi ScamShield, CHECK (cek) ke 1799, TELL (beri tahu) keluarga dan teman.",
-   "verdict": "ok",
-   "back": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "suggestion": "",
-   "reason": ""
+   "english": "Someone says they changed their number? Call their old number to check.",
+   "draft": "Ada yang bilang sudah ganti nomor? Telepon nomor lamanya untuk cek.",
+   "verdict": "fix",
+   "back": "Someone says they changed their number? Call their old number to check.",
+   "suggestion": "Ada yang bilang sudah ganti nomor? Telpon nomor lamanya untuk cek.",
+   "reason": "Use 'Telpon' (colloquial) instead of 'Telepon' (formal)."
   },
   "quiz[0].title": {
    "english": "Spot the red flags",
@@ -1107,12 +1107,12 @@
    "reason": ""
   },
   "quiz[3].explain": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
-   "draft": "Hanya pasang aplikasi dari app store resmi (Google Play atau Apple App Store). Aplikasi dari link bisa mencuri uang Anda.",
-   "verdict": "ok",
-   "back": "Only install apps from app store official (Google Play or Apple App Store). Apps from link can steal money your.",
-   "suggestion": "",
-   "reason": ""
+   "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "draft": "Hanya pasang aplikasi dari app store resmi di ponsel Anda. Aplikasi dari link bisa mencuri uang Anda.",
+   "verdict": "fix",
+   "back": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "suggestion": "Cuma instal aplikasi dari app store resmi di hp Anda. Aplikasi dari link bisa mencuri uang Anda.",
+   "reason": "Consistent with line 2: 'Cuma', 'instal', 'hp' for everyday language."
   },
   "quiz[4].title": {
    "english": "Spot the red flags",
@@ -1335,6 +1335,94 @@
    "draft": "Lihat hasil saya",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].title": {
+   "english": "Fake MOM message",
+   "draft": "Pesan MOM palsu",
+   "verdict": "ok",
+   "back": "Fake MOM message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].tagline": {
+   "english": "Check who sent it, and where the link goes.",
+   "draft": "Cek siapa pengirimnya, dan ke mana link-nya.",
+   "verdict": "ok",
+   "back": "Check who sent it, and where the link goes.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[0]": {
+   "english": "MOM: your work permit will expire soon.",
+   "draft": "MOM: izin kerja Anda akan segera habis.",
+   "verdict": "ok",
+   "back": "MOM: your work permit will expire soon.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[1]": {
+   "english": "Renew it now: www.mom.gov.sg.official.com.net",
+   "draft": "Perpanjang sekarang: www.mom.gov.sg.official.com.net",
+   "verdict": "ok",
+   "back": "Renew it now: www.mom.gov.sg.official.com.net",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].flags[0].label": {
+   "english": "Fake website: it does not end with .mom.gov.sg",
+   "draft": "Situs palsu: tidak berakhir dengan .mom.gov.sg",
+   "verdict": "ok",
+   "back": "Fake website: does not end with .mom.gov.sg",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[0]": {
+   "english": "Government SMS come from the sender \"gov.sg\".",
+   "draft": "SMS dari pemerintah dikirim dari pengirim \"gov.sg\".",
+   "verdict": "ok",
+   "back": "Government SMS come from the sender \"gov.sg\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[1]": {
+   "english": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "draft": "Situs web MOM yang asli berakhir dengan \".mom.gov.sg\". Lihat nama situsnya, sebelum tanda \"/\" pertama.",
+   "verdict": "ok",
+   "back": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.title": {
+   "english": "Remember ACT",
+   "draft": "Ingat ACT",
+   "verdict": "ok",
+   "back": "Remember ACT",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[0]": {
+   "english": "ADD the ScamShield app",
+   "draft": "ADD (pasang) aplikasi ScamShield",
+   "verdict": "ok",
+   "back": "ADD (install) ScamShield app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[1]": {
+   "english": "CHECK with 1799",
+   "draft": "CHECK (cek) ke 1799",
+   "verdict": "ok",
+   "back": "CHECK (check) to 1799",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[2]": {
+   "english": "TELL family and friends",
+   "draft": "TELL (beri tahu) keluarga dan teman",
+   "verdict": "ok",
+   "back": "TELL (inform) family and friends",
    "suggestion": "",
    "reason": ""
   }

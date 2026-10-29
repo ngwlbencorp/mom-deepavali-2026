@@ -19,7 +19,7 @@ window.SCAM_TEXT["zh"] = {
     "exitConfirm": "要退出问答吗？您目前的答案将会丢失。",
     "closeReview": "关闭答案",
     "learnTitle": "认识诈骗",
-    "learnSub": "5个小故事 · 2分钟",
+    "learnSub": "6个小故事 · 3分钟",
     "quizTitle": "问答赢纪念品",
     "quizTitleAfter": "参加问答",
     "quizSub": "6个挑战 · 3分钟",
@@ -114,7 +114,7 @@ window.SCAM_TEXT["zh"] = {
         }
       ],
       "todo": [
-        "只从官方应用商店（Google Play 或 Apple App Store）安装应用。",
+        "只从手机上的官方应用商店安装应用。",
         "假应用会盗取您银行户口里的钱。"
       ]
     },
@@ -163,7 +163,7 @@ window.SCAM_TEXT["zh"] = {
       ],
       "todo": [
         "自己上MOM网站查看您的工作准证：\"Check work pass and application status\"。无需登录。",
-        "要您先付钱是工作诈骗的常见迹象。骗子可以伪造信件，盗用执照号码。"
+        "要您先付钱是工作诈骗的常见迹象。任何人都不能要您付钱才能保住工作：这是违法的。"
       ]
     },
     {
@@ -181,11 +181,38 @@ window.SCAM_TEXT["zh"] = {
         }
       ],
       "todo": [
-        "绝不要把您的OTP（手机收到的验证码）告诉任何人。",
-        "记住ACT：ADD 安装ScamShield应用，CHECK 拨打1799查一下，TELL 告诉家人和朋友。"
+        "绝不要把您的OTP（手机收到的验证码）或Singpass密码告诉任何人。",
+        "有人说他换了号码？请打他的旧号码查证。"
+      ]
+    },
+    {
+      "title": "假冒MOM信息",
+      "tagline": "看清是谁发的，链接会去哪里。",
+      "chat": {
+        "lines": [
+          "MOM：您的工作准证即将到期。",
+          "立即更新：www.mom.gov.sg.official.com.net"
+        ]
+      },
+      "flags": [
+        {
+          "label": "假网站：不是以.mom.gov.sg结尾"
+        }
+      ],
+      "todo": [
+        "政府短信的发送者是\"gov.sg\"。",
+        "MOM的真实网址以\".mom.gov.sg\"结尾。请看第一个\"/\"之前的网站名称。"
       ]
     }
   ],
+  "act": {
+    "title": "记住ACT",
+    "items": [
+      "ADD 安装ScamShield应用",
+      "CHECK 拨打1799查一下",
+      "TELL 告诉家人和朋友"
+    ]
+  },
   "quiz": [
     {
       "title": "找出危险信号",
@@ -267,7 +294,7 @@ window.SCAM_TEXT["zh"] = {
           "label": "网上广告里的链接"
         }
       ],
-      "explain": "只从官方应用商店（Google Play 或 Apple App Store）安装应用。来自链接的应用会盗取您的钱。"
+      "explain": "只从手机上的官方应用商店安装应用。来自链接的应用会盗取您的钱。"
     },
     {
       "title": "找出危险信号",

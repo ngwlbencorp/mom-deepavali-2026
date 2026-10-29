@@ -18,7 +18,7 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 
 ## The mini-site (for MWs)
 
-- **Home** → **Learn about scams** (5 animated stories: fake MOM officer, fake festive deal, scam mule, fake job/work permit, secret codes + ACT) or **Quiz for a souvenir**.
+- **Home** → **Learn about scams** (6 animated stories: fake MOM officer, fake festive deal, scam mule, fake job/work permit, secret codes, fake MOM message; then a "Remember ACT" screen) or **Quiz for a souvenir**.
 - **Quiz:** 6 interactive challenges, 9 points in total. The formats are: spot the red flags (tap exactly the number shown; changing your mind is allowed); scam or safe (4 cards, one point each); what would you reply; and pick the safe way. **Answers are revealed only at the end**, under "Review answers".
 - **Feedback** (rating + "learned something new") is required once, before the first result.
 - **Fits the screen:** every screen fits without scrolling at 320×568, 360×640 and 390×844 (checked by `tests/fit.test.js`). If text is ever longer (big system font, long translation), only the middle area scrolls.

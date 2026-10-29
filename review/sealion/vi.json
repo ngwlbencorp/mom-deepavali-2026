@@ -115,10 +115,10 @@
    "reason": ""
   },
   "ui.learnSub": {
-   "english": "5 short stories · 2 min",
-   "draft": "5 câu chuyện ngắn · 2 phút",
+   "english": "6 short stories · 3 min",
+   "draft": "6 câu chuyện ngắn · 3 phút",
    "verdict": "ok",
-   "back": "5 short stories · 2 minutes",
+   "back": "6 short stories · 3 min",
    "suggestion": "",
    "reason": ""
   },
@@ -236,9 +236,9 @@
   },
   "ui.spotPrompt": {
    "english": "Tap the {n} red flags",
-   "draft": "Chạm vào {n} dấu hiệu nguy hiểm",
+   "draft": "Chạm vào {n} dấu hiệu cảnh báo",
    "verdict": "ok",
-   "back": "Tap into {n} warning signs",
+   "back": "Tap the {n} red flags",
    "suggestion": "",
    "reason": ""
   },
@@ -619,10 +619,10 @@
    "reason": ""
   },
   "learn[1].todo[0]": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
-   "draft": "Chỉ cài ứng dụng từ kho ứng dụng chính thức (Google Play hoặc Apple App Store).",
+   "english": "Only install apps from the official app store on your phone.",
+   "draft": "Chỉ cài ứng dụng từ kho ứng dụng chính thức trên điện thoại của bạn.",
    "verdict": "ok",
-   "back": "Only install apps from official app store (Google Play or Apple App Store).",
+   "back": "Only install apps from the official app store on your phone.",
    "suggestion": "",
    "reason": ""
   },
@@ -787,10 +787,10 @@
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "draft": "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Kẻ lừa đảo có thể làm giả thư và chép số giấy phép.",
+   "english": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "draft": "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Không ai được bắt bạn trả tiền để giữ việc: điều đó là phạm pháp.",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common sign of job scam. Scammers can fake letters and copy license numbers.",
+   "back": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
    "suggestion": "",
    "reason": ""
   },
@@ -804,19 +804,19 @@
   },
   "learn[4].tagline": {
    "english": "Scammers ask for the code sent to your phone.",
-   "draft": "Kẻ lừa đảo xin mã được gửi đến điện thoại của bạn.",
-   "verdict": "fix",
+   "draft": "Kẻ lừa đảo yêu cầu mã được gửi cho điện thoại của bạn.",
+   "verdict": "ok",
    "back": "Scammers ask for the code sent to your phone.",
-   "suggestion": "Kẻ lừa đảo yêu cầu mã được gửi cho điện thoại của bạn.",
-   "reason": "xin is too polite; đến should be cho for naturalness"
+   "suggestion": "",
+   "reason": ""
   },
   "learn[4].chat.lines[0]": {
    "english": "Sorry, I sent a code to your phone by mistake.",
-   "draft": "Xin lỗi, tôi gửi nhầm một mã đến điện thoại của bạn.",
-   "verdict": "fix",
+   "draft": "Xin lỗi, tôi gửi nhầm mã cho điện thoại của bạn.",
+   "verdict": "ok",
    "back": "Sorry, I sent a code to your phone by mistake.",
-   "suggestion": "Xin lỗi, tôi gửi nhầm mã cho điện thoại của bạn.",
-   "reason": "một mã redundant; đến unnatural"
+   "suggestion": "",
+   "reason": ""
   },
   "learn[4].chat.lines[1]": {
    "english": "Please send me the 6-digit code. Quick!",
@@ -835,28 +835,28 @@
    "reason": "xin too polite; hối thúc formal"
   },
   "learn[4].todo[0]": {
-   "english": "Never share your OTP (the code sent to your phone) with anyone.",
-   "draft": "Không bao giờ đưa OTP (mã gửi đến điện thoại của bạn) cho bất kỳ ai.",
-   "verdict": "fix",
-   "back": "Never share your OTP (the code sent to your phone) with anyone.",
-   "suggestion": "Không bao giờ cho OTP (mã gửi cho điện thoại của bạn) cho ai.",
-   "reason": "đưa unnatural; đến should be cho; bất kỳ ai wordy"
+   "english": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "draft": "Không bao giờ đưa OTP (mã gửi đến điện thoại của bạn) hay mật khẩu Singpass cho bất kỳ ai.",
+   "verdict": "ok",
+   "back": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[4].todo[1]": {
-   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "draft": "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK gọi 1799 để kiểm tra, TELL báo cho gia đình và bạn bè.",
-   "verdict": "fix",
-   "back": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "suggestion": "Nhớ ACT: ADD tải ứng dụng ScamShield, CHECK gọi 1799, TELL cho gia đình và bạn bè biết.",
-   "reason": "cài informal; để kiểm tra redundant; báo cho unnatural"
+   "english": "Someone says they changed their number? Call their old number to check.",
+   "draft": "Có người nói họ đã đổi số? Hãy gọi số cũ của họ để kiểm tra.",
+   "verdict": "ok",
+   "back": "Someone says they changed their number? Call their old number to check.",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[0].title": {
    "english": "Spot the red flags",
-   "draft": "Tìm dấu hiệu nguy hiểm",
-   "verdict": "fix",
+   "draft": "Tìm dấu hiệu cảnh báo",
+   "verdict": "ok",
    "back": "Spot the red flags",
-   "suggestion": "Tìm dấu hiệu cảnh báo",
-   "reason": "red flags = warning signs, not just dangerous"
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[0].msg.bubbles[0][0].t": {
    "english": "Dear worker,",
@@ -868,11 +868,11 @@
   },
   "quiz[0].msg.bubbles[0][1].t": {
    "english": "you have an unpaid work permit fine of $350.",
-   "draft": "bạn còn nợ tiền phạt giấy phép lao động $350.",
-   "verdict": "fix",
+   "draft": "bạn chưa trả tiền phạt giấy phép lao động $350.",
+   "verdict": "ok",
    "back": "you have an unpaid work permit fine of $350.",
-   "suggestion": "bạn chưa trả tiền phạt giấy phép lao động $350.",
-   "reason": "còn nợ implies still owe; unpaid = chưa trả"
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[0].msg.bubbles[1][0].t": {
    "english": "Pay at",
@@ -1107,16 +1107,16 @@
    "reason": ""
   },
   "quiz[3].explain": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
-   "draft": "Chỉ cài ứng dụng từ kho ứng dụng chính thức (Google Play hoặc Apple App Store). Ứng dụng từ link có thể lấy cắp tiền của bạn.",
+   "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "draft": "Chỉ cài ứng dụng từ kho ứng dụng chính thức trên điện thoại của bạn. Ứng dụng từ link có thể lấy cắp tiền của bạn.",
    "verdict": "ok",
-   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "back": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
    "suggestion": "",
    "reason": ""
   },
   "quiz[4].title": {
    "english": "Spot the red flags",
-   "draft": "Tìm dấu hiệu nguy hiểm",
+   "draft": "Tìm dấu hiệu cảnh báo",
    "verdict": "ok",
    "back": "Spot the red flags",
    "suggestion": "",
@@ -1335,6 +1335,94 @@
    "draft": "Xem kết quả của tôi",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].title": {
+   "english": "Fake MOM message",
+   "draft": "Tin nhắn MOM giả",
+   "verdict": "ok",
+   "back": "Fake MOM message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].tagline": {
+   "english": "Check who sent it, and where the link goes.",
+   "draft": "Kiểm tra ai gửi, và link dẫn đến đâu.",
+   "verdict": "ok",
+   "back": "Check who sent it, and where the link goes.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[0]": {
+   "english": "MOM: your work permit will expire soon.",
+   "draft": "MOM: giấy phép lao động của bạn sắp hết hạn.",
+   "verdict": "ok",
+   "back": "MOM: your work permit will expire soon.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[1]": {
+   "english": "Renew it now: www.mom.gov.sg.official.com.net",
+   "draft": "Gia hạn ngay: www.mom.gov.sg.official.com.net",
+   "verdict": "ok",
+   "back": "Renew it now: www.mom.gov.sg.official.com.net",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].flags[0].label": {
+   "english": "Fake website: it does not end with .mom.gov.sg",
+   "draft": "Website giả: không kết thúc bằng .mom.gov.sg",
+   "verdict": "ok",
+   "back": "Fake website: it does not end with .mom.gov.sg",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[0]": {
+   "english": "Government SMS come from the sender \"gov.sg\".",
+   "draft": "Tin nhắn SMS của chính phủ được gửi từ người gửi \"gov.sg\".",
+   "verdict": "ok",
+   "back": "Government SMS come from the sender \"gov.sg\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[1]": {
+   "english": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "draft": "Website thật của MOM kết thúc bằng \".mom.gov.sg\". Hãy xem tên website, trước dấu \"/\" đầu tiên.",
+   "verdict": "ok",
+   "back": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.title": {
+   "english": "Remember ACT",
+   "draft": "Nhớ ACT",
+   "verdict": "ok",
+   "back": "Remember ACT",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[0]": {
+   "english": "ADD the ScamShield app",
+   "draft": "ADD cài ứng dụng ScamShield",
+   "verdict": "ok",
+   "back": "ADD install ScamShield app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[1]": {
+   "english": "CHECK with 1799",
+   "draft": "CHECK gọi 1799 để kiểm tra",
+   "verdict": "ok",
+   "back": "CHECK call 1799 to check",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[2]": {
+   "english": "TELL family and friends",
+   "draft": "TELL báo cho gia đình và bạn bè",
+   "verdict": "ok",
+   "back": "TELL report to family and friends",
    "suggestion": "",
    "reason": ""
   }

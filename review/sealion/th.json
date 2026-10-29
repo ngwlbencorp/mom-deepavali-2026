@@ -115,10 +115,10 @@
    "reason": ""
   },
   "ui.learnSub": {
-   "english": "5 short stories · 2 min",
-   "draft": "5 เรื่องสั้น · 2 นาที",
+   "english": "6 short stories · 3 min",
+   "draft": "6 เรื่องสั้น · 3 นาที",
    "verdict": "ok",
-   "back": "5 short stories · 2 min",
+   "back": "6 short stories · 3 minutes",
    "suggestion": "",
    "reason": ""
   },
@@ -619,10 +619,10 @@
    "reason": ""
   },
   "learn[1].todo[0]": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
-   "draft": "ติดตั้งแอปจากแอปสโตร์ทางการ (Google Play หรือ Apple App Store) เท่านั้น",
+   "english": "Only install apps from the official app store on your phone.",
+   "draft": "ติดตั้งแอปจากแอปสโตร์ทางการในโทรศัพท์ของคุณเท่านั้น",
    "verdict": "ok",
-   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "back": "Install apps only from the official app store on your phone.",
    "suggestion": "",
    "reason": ""
   },
@@ -787,12 +787,12 @@
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "draft": "การให้จ่ายเงินก่อนเป็นสัญญาณที่พบบ่อยของการหลอกลวงเรื่องงาน มิจฉาชีพปลอมจดหมายและลอกเลขใบอนุญาตได้",
-   "verdict": "ok",
-   "back": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "suggestion": "",
-   "reason": ""
+   "english": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "draft": "การให้จ่ายเงินก่อนเป็นสัญญาณที่พบบ่อยของการหลอกลวงเรื่องงาน ไม่มีใครบังคับให้คุณจ่ายเงินเพื่อทำงานต่อได้ เพราะผิดกฎหมาย",
+   "verdict": "fix",
+   "back": "Asking to pay first is a common sign of job scam. No one can force you to pay to continue working because it is illegal.",
+   "suggestion": "ขอให้จ่ายเงินก่อนเป็นสัญญาณที่เจอบ่อยของการหลอกลวงเรื่องงาน ไม่มีใครบังคับให้คุณจ่ายเงินเพื่อทำงานต่อ เพราะผิดกฎหมาย",
+   "reason": "Draft uses formal phrasing 'การให้จ่ายเงินก่อน' (unnatural) and 'เพื่อทำงานต่อได้' (redundant 'ได้'). Suggested version uses everyday words 'ขอให้จ่ายเงินก่อน' and 'เพื่อทำงานต่อ' for better comprehension by workers with limited schooling."
   },
   "learn[4].title": {
    "english": "Secret codes (OTP)",
@@ -835,18 +835,18 @@
    "reason": ""
   },
   "learn[4].todo[0]": {
-   "english": "Never share your OTP (the code sent to your phone) with anyone.",
-   "draft": "ห้ามบอก OTP (รหัสที่ส่งมาที่โทรศัพท์ของคุณ) กับใครเด็ดขาด",
+   "english": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "draft": "ห้ามบอก OTP (รหัสที่ส่งมาที่โทรศัพท์ของคุณ) หรือรหัสผ่าน Singpass กับใครเด็ดขาด",
    "verdict": "ok",
-   "back": "Never share your OTP (the code sent to your phone) with anyone.",
+   "back": "Never tell OTP (the code sent to your phone) or Singpass password to anyone.",
    "suggestion": "",
    "reason": ""
   },
   "learn[4].todo[1]": {
-   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "draft": "จำ ACT ไว้: ADD ติดตั้งแอป ScamShield, CHECK ตรวจสอบกับ 1799, TELL บอกครอบครัวและเพื่อน",
+   "english": "Someone says they changed their number? Call their old number to check.",
+   "draft": "มีคนบอกว่าเปลี่ยนเบอร์? ให้โทรเบอร์เก่าของเขาเพื่อตรวจสอบ",
    "verdict": "ok",
-   "back": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "back": "Someone says they changed their number? Call their old number to check.",
    "suggestion": "",
    "reason": ""
   },
@@ -1107,10 +1107,10 @@
    "reason": ""
   },
   "quiz[3].explain": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
-   "draft": "ติดตั้งแอปจากแอปสโตร์ทางการ (Google Play หรือ Apple App Store) เท่านั้น แอปจากลิงก์ขโมยเงินของคุณได้",
+   "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "draft": "ติดตั้งแอปจากแอปสโตร์ทางการในโทรศัพท์ของคุณเท่านั้น แอปจากลิงก์ขโมยเงินของคุณได้",
    "verdict": "ok",
-   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "back": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
    "suggestion": "",
    "reason": ""
   },
@@ -1335,6 +1335,94 @@
    "draft": "ดูผลของฉัน",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].title": {
+   "english": "Fake MOM message",
+   "draft": "ข้อความ MOM ปลอม",
+   "verdict": "ok",
+   "back": "Fake MOM message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].tagline": {
+   "english": "Check who sent it, and where the link goes.",
+   "draft": "ดูว่าใครส่งมา และลิงก์พาไปที่ไหน",
+   "verdict": "ok",
+   "back": "Check who sent it, and where the link goes.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[0]": {
+   "english": "MOM: your work permit will expire soon.",
+   "draft": "MOM: ใบอนุญาตทำงานของคุณใกล้หมดอายุ",
+   "verdict": "ok",
+   "back": "MOM: your work permit will expire soon.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[1]": {
+   "english": "Renew it now: www.mom.gov.sg.official.com.net",
+   "draft": "ต่ออายุเลย: www.mom.gov.sg.official.com.net",
+   "verdict": "ok",
+   "back": "Renew it now: www.mom.gov.sg.official.com.net",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].flags[0].label": {
+   "english": "Fake website: it does not end with .mom.gov.sg",
+   "draft": "เว็บไซต์ปลอม: ไม่ได้ลงท้ายด้วย .mom.gov.sg",
+   "verdict": "ok",
+   "back": "Fake website: it does not end with .mom.gov.sg",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[0]": {
+   "english": "Government SMS come from the sender \"gov.sg\".",
+   "draft": "SMS จากรัฐบาลส่งมาจากผู้ส่งชื่อ \"gov.sg\"",
+   "verdict": "ok",
+   "back": "Government SMS sent from sender name \"gov.sg\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[1]": {
+   "english": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "draft": "เว็บไซต์จริงของ MOM ลงท้ายด้วย \".mom.gov.sg\" ดูที่ชื่อเว็บไซต์ ก่อนเครื่องหมาย \"/\" ตัวแรก",
+   "verdict": "ok",
+   "back": "Real MOM websites end with \".mom.gov.sg\". Look at the website name before the first \"/\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.title": {
+   "english": "Remember ACT",
+   "draft": "จำ ACT ไว้",
+   "verdict": "ok",
+   "back": "Remember ACT",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[0]": {
+   "english": "ADD the ScamShield app",
+   "draft": "ADD ติดตั้งแอป ScamShield",
+   "verdict": "ok",
+   "back": "ADD install app ScamShield",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[1]": {
+   "english": "CHECK with 1799",
+   "draft": "CHECK ตรวจสอบกับ 1799",
+   "verdict": "ok",
+   "back": "CHECK verify with 1799",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[2]": {
+   "english": "TELL family and friends",
+   "draft": "TELL บอกครอบครัวและเพื่อน",
+   "verdict": "ok",
+   "back": "TELL tell family and friends",
    "suggestion": "",
    "reason": ""
   }

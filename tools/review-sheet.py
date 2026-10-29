@@ -26,12 +26,12 @@ console.log(JSON.stringify({ items: out, learn: window.SCAM_TEXT.en.learn.map(s 
 
 # Which SOURCES.md entries back each learn story and quiz item (IDs as in SOURCES.md).
 ITEM_SOURCES = {
-    'learn[0]': 'M1, S1, P1, M6', 'learn[1]': 'S5, P2', 'learn[2]': 'S6, P5', 'learn[3]': 'S2, P3, M7, T1, N1, H1',
-    'learn[4]': 'S3, S5, S7, M2', 'quiz[0]': 'M1, S1, S7', 'quiz[1]': 'S3, S5, S6', 'quiz[2]': 'S4, S5',
-    'quiz[3]': 'S5, P2, M1', 'quiz[4]': 'M1, M3, G1, P3', 'quiz[5]': 'S6, P6, S7',
+    'learn[0]': 'M1, M6, S1', 'learn[1]': 'S5, P2', 'learn[2]': 'S6, P5', 'learn[3]': 'S2, M3, M7, P3, M11, ICA1',
+    'learn[4]': 'S3, S4, S5, G1, P3', 'learn[5]': 'M1, S1', 'act': 'S7', 'quiz[0]': 'M1, S1, S7', 'quiz[1]': 'S3, S5, S6', 'quiz[2]': 'S4, S5',
+    'quiz[3]': 'S5, P2', 'quiz[4]': 'M1, M3, G1, P3', 'quiz[5]': 'S6, P6, S7',
 }
 def sources_for(key):
-    m = re.match(r'(learn|quiz)\[\d+\]', key)
+    m = re.match(r'(learn|quiz)\[\d+\]|act\b', key)
     return ITEM_SOURCES.get(m.group(0), '') if m else ''
 
 def previous_draft(code):
@@ -79,7 +79,7 @@ def where(key):
     if m: return 'Learn story %d: %s' % (int(m.group(1)) + 1, english['learn'][int(m.group(1))])
     m = re.match(r'quiz\[(\d+)\]', key)
     if m: return 'Quiz %d: %s' % (int(m.group(1)) + 1, english['quiz'][int(m.group(1))])
-    return {'event': 'Home screen', 'ui': 'Buttons and labels (all screens)', 'feedback': 'Feedback screen'}[key.split('.')[0]]
+    return {'event': 'Home screen', 'ui': 'Buttons and labels (all screens)', 'act': 'ACT screen (after the last story)', 'feedback': 'Feedback screen'}[key.split('.')[0]]
 
 def note(key, en, code, prev):
     n = []
@@ -187,7 +187,7 @@ for j, h in enumerate(['ID', 'Publisher and page', 'Link']):
     c.font, c.fill, c.border = head_font, head_fill, border
 r = 2
 for line in open(os.path.join(ROOT, 'SOURCES.md'), encoding='utf-8'):
-    m = re.match(r'\| ([MSPGH]\d) \| (.+?) \| \[[^\]]+\]\(([^)]+)\) \|', line)
+    m = re.match(r'\| ([A-Z]+\d+) \| (.+?) \| (https?://\S+) \|', line)
     if not m: continue
     for j, v in enumerate(m.groups()):
         c = src.cell(row=r, column=j + 1, value=v)

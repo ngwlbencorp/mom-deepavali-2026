@@ -19,7 +19,7 @@ window.SCAM_TEXT["tl"] = {
     "exitConfirm": "Aalis sa quiz? Mawawala ang mga sagot mo.",
     "closeReview": "Isara ang review",
     "learnTitle": "Alamin ang tungkol sa mga scam",
-    "learnSub": "5 maikling kuwento · 2 min",
+    "learnSub": "6 maikling kuwento · 3 min",
     "quizTitle": "Quiz para sa souvenir",
     "quizTitleAfter": "Sagutan ang quiz",
     "quizSub": "6 na hamon · 3 min",
@@ -114,7 +114,7 @@ window.SCAM_TEXT["tl"] = {
         }
       ],
       "todo": [
-        "Mag-install lang ng app mula sa opisyal na app store (Google Play o Apple App Store).",
+        "Mag-install lang ng app mula sa opisyal na app store sa phone mo.",
         "Kayang nakawin ng pekeng app ang pera sa bank account mo."
       ]
     },
@@ -163,7 +163,7 @@ window.SCAM_TEXT["tl"] = {
       ],
       "todo": [
         "I-check mismo ang work pass mo sa website ng MOM: \"Check work pass and application status\". Walang login.",
-        "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga scammer ang mga sulat at kopyahin ang mga licence number."
+        "Karaniwang senyales ng job scam ang pagpapabayad muna. Walang puwedeng magpabayad sa iyo para manatili sa trabaho: ilegal iyon."
       ]
     },
     {
@@ -181,11 +181,38 @@ window.SCAM_TEXT["tl"] = {
         }
       ],
       "todo": [
-        "Huwag kailanman ibigay ang OTP mo (ang code na ipinadala sa phone mo) kahit kanino.",
-        "Tandaan ang ACT: ADD ang ScamShield app, CHECK sa 1799, TELL sa pamilya at mga kaibigan."
+        "Huwag kailanman ibigay ang OTP mo (ang code na ipinadala sa phone mo) o ang Singpass password mo kahit kanino.",
+        "May nagsabing nagpalit siya ng numero? Tawagan ang luma niyang numero para i-check."
+      ]
+    },
+    {
+      "title": "Pekeng mensahe ng MOM",
+      "tagline": "I-check kung sino ang nagpadala, at saan papunta ang link.",
+      "chat": {
+        "lines": [
+          "MOM: malapit nang mag-expire ang work permit mo.",
+          "I-renew na ngayon: www.mom.gov.sg.official.com.net"
+        ]
+      },
+      "flags": [
+        {
+          "label": "Pekeng website: hindi nagtatapos sa .mom.gov.sg"
+        }
+      ],
+      "todo": [
+        "Galing sa sender na \"gov.sg\" ang mga SMS ng gobyerno.",
+        "Nagtatapos sa \".mom.gov.sg\" ang mga totoong website ng MOM. Tingnan ang pangalan ng website, bago ang unang \"/\"."
       ]
     }
   ],
+  "act": {
+    "title": "Tandaan ang ACT",
+    "items": [
+      "ADD ang ScamShield app",
+      "CHECK sa 1799",
+      "TELL sa pamilya at mga kaibigan"
+    ]
+  },
   "quiz": [
     {
       "title": "Hanapin ang mga red flag",
@@ -267,7 +294,7 @@ window.SCAM_TEXT["tl"] = {
           "label": "Isang link sa online na advertisement"
         }
       ],
-      "explain": "Mag-install lang ng app mula sa opisyal na app store (Google Play o Apple App Store). Kayang nakawin ng mga app mula sa link ang pera mo."
+      "explain": "Mag-install lang ng app mula sa opisyal na app store sa phone mo. Kayang nakawin ng mga app mula sa link ang pera mo."
     },
     {
       "title": "Hanapin ang mga red flag",

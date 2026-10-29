@@ -216,13 +216,12 @@
       [el('span', { class: 'play', text: '▶' }), el('span', { class: 'watchtext' }, [el('b', { text: T.ui.watch }), el('small', { text: v.by + ' · YouTube' })])]);
   }
 
-  // ---------- learn: 2 frames per story (animated example, then what to do) ----------
+  // ---------- learn: 2 frames per story (animated example, then what to do), then the ACT screen ----------
   function story(si, frame) {
-    var s = T.learn[si], total = T.learn.length * 2, pos = si * 2 + frame;
-    var last = si === T.learn.length - 1 && frame === 1;
+    var s = T.learn[si], total = T.learn.length * 2 + 1, pos = si * 2 + frame;
     var first = si === 0 && frame === 0;
     var prev = function () { if (frame) story(si, 0); else story(si - 1, 1); };
-    var next = function () { if (!frame) story(si, 1); else if (!last) story(si + 1, 0); };
+    var next = function () { if (!frame) story(si, 1); else if (si < T.learn.length - 1) story(si + 1, 0); else act(); };
     var body;
     if (frame === 0) {
       var STEP = 0.8, flagged = {}, extra = s.chat.attachment ? 1 : 0;
@@ -245,8 +244,20 @@
       ];
     }
     show([topbar('⌂ ' + T.ui.home, home, pos + 1, total)].concat(body),
-      [first ? null : { label: T.ui.previous, run: prev }, last ? { label: T.ui.toQuiz, run: startQuiz, primary: true } : { label: T.ui.next, run: next, primary: true }],
+      [first ? null : { label: T.ui.previous, run: prev }, { label: T.ui.next, run: next, primary: true }],
       function () { story(si, frame); });
+  }
+  function act() {
+    var total = T.learn.length * 2 + 1;
+    show([
+      topbar('⌂ ' + T.ui.home, home, total, total),
+      el('h2', { text: T.act.title }),
+      el('ul', { class: 'todo act' }, T.act.items.map(function (t) {
+        var m = t.match(/^(ADD|CHECK|TELL)\s*(?:[–-]\s*)?(.*)$/);
+        return el('li', {}, m ? [el('b', { text: m[1] }), ' ' + m[2]] : [t]);
+      })),
+      helpline()
+    ], [{ label: T.ui.previous, run: function () { story(T.learn.length - 1, 1); } }, { label: T.ui.toQuiz, run: startQuiz, primary: true }], act);
   }
 
   // ---------- quiz: answers are revealed only at the end ----------

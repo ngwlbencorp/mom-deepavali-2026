@@ -19,7 +19,7 @@ window.SCAM_TEXT["id"] = {
     "exitConfirm": "Keluar dari kuis? Jawaban Anda sejauh ini akan hilang.",
     "closeReview": "Tutup ulasan",
     "learnTitle": "Belajar tentang penipuan",
-    "learnSub": "5 cerita pendek · 2 menit",
+    "learnSub": "6 cerita pendek · 3 menit",
     "quizTitle": "Kuis berhadiah suvenir",
     "quizTitleAfter": "Ikuti kuis",
     "quizSub": "6 tantangan · 3 menit",
@@ -114,7 +114,7 @@ window.SCAM_TEXT["id"] = {
         }
       ],
       "todo": [
-        "Hanya pasang aplikasi dari app store resmi (Google Play atau Apple App Store).",
+        "Hanya pasang aplikasi dari app store resmi di ponsel Anda.",
         "Aplikasi palsu bisa mencuri uang dari rekening bank Anda."
       ]
     },
@@ -163,7 +163,7 @@ window.SCAM_TEXT["id"] = {
       ],
       "todo": [
         "Cek izin kerja Anda sendiri di situs web MOM: \"Check work pass and application status\". Tidak perlu login.",
-        "Diminta membayar dulu adalah tanda umum penipuan kerja. Penipu bisa memalsukan surat dan meniru nomor lisensi."
+        "Diminta membayar dulu adalah tanda umum penipuan kerja. Tidak ada yang boleh menyuruh Anda membayar agar tetap bekerja: itu ilegal."
       ]
     },
     {
@@ -181,11 +181,38 @@ window.SCAM_TEXT["id"] = {
         }
       ],
       "todo": [
-        "Jangan pernah memberikan OTP Anda (kode yang dikirim ke ponsel Anda) kepada siapa pun.",
-        "Ingat ACT: ADD (pasang) aplikasi ScamShield, CHECK (cek) ke 1799, TELL (beri tahu) keluarga dan teman."
+        "Jangan pernah memberikan OTP Anda (kode yang dikirim ke ponsel Anda) atau kata sandi Singpass Anda kepada siapa pun.",
+        "Ada yang bilang sudah ganti nomor? Telepon nomor lamanya untuk cek."
+      ]
+    },
+    {
+      "title": "Pesan MOM palsu",
+      "tagline": "Cek siapa pengirimnya, dan ke mana link-nya.",
+      "chat": {
+        "lines": [
+          "MOM: izin kerja Anda akan segera habis.",
+          "Perpanjang sekarang: www.mom.gov.sg.official.com.net"
+        ]
+      },
+      "flags": [
+        {
+          "label": "Situs palsu: tidak berakhir dengan .mom.gov.sg"
+        }
+      ],
+      "todo": [
+        "SMS dari pemerintah dikirim dari pengirim \"gov.sg\".",
+        "Situs web MOM yang asli berakhir dengan \".mom.gov.sg\". Lihat nama situsnya, sebelum tanda \"/\" pertama."
       ]
     }
   ],
+  "act": {
+    "title": "Ingat ACT",
+    "items": [
+      "ADD (pasang) aplikasi ScamShield",
+      "CHECK (cek) ke 1799",
+      "TELL (beri tahu) keluarga dan teman"
+    ]
+  },
   "quiz": [
     {
       "title": "Temukan tanda bahaya",
@@ -267,7 +294,7 @@ window.SCAM_TEXT["id"] = {
           "label": "Link di iklan online"
         }
       ],
-      "explain": "Hanya pasang aplikasi dari app store resmi (Google Play atau Apple App Store). Aplikasi dari link bisa mencuri uang Anda."
+      "explain": "Hanya pasang aplikasi dari app store resmi di ponsel Anda. Aplikasi dari link bisa mencuri uang Anda."
     },
     {
       "title": "Temukan tanda bahaya",
