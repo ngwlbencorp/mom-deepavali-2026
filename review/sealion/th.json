@@ -1,7 +1,6 @@
 {
- "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
  "checked": "2026-10-29",
- "seaTuned": true,
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -15,7 +14,7 @@
    "english": "Stay safe from scams",
    "draft": "ระวังมิจฉาชีพ",
    "verdict": "ok",
-   "back": "Beware of scammers",
+   "back": "Beware scammers",
    "suggestion": "",
    "reason": ""
   },
@@ -23,7 +22,7 @@
    "english": "Learn the tricks scammers use, then take the quiz.",
    "draft": "เรียนรู้กลโกงของมิจฉาชีพ แล้วมาทำแบบทดสอบ",
    "verdict": "ok",
-   "back": "Learn scammers' tricks, then take the quiz.",
+   "back": "Learn scammers' tricks, then take the quiz",
    "suggestion": "",
    "reason": ""
   },
@@ -39,7 +38,7 @@
    "english": "ScamShield Helpline",
    "draft": "สายด่วน ScamShield",
    "verdict": "ok",
-   "back": "ScamShield Helpline",
+   "back": "ScamShield Hotline",
    "suggestion": "",
    "reason": ""
   },
@@ -79,7 +78,7 @@
    "english": "Finish",
    "draft": "เสร็จสิ้น",
    "verdict": "ok",
-   "back": "Finish",
+   "back": "Finished",
    "suggestion": "",
    "reason": ""
   },
@@ -95,7 +94,7 @@
    "english": "Leave the quiz? Your answers so far will be lost.",
    "draft": "ออกจากแบบทดสอบหรือไม่? คำตอบที่ทำไว้จะหายไป",
    "verdict": "ok",
-   "back": "Exit quiz or not? Answers done will disappear.",
+   "back": "Exit quiz? Your answers so far will be lost.",
    "suggestion": "",
    "reason": ""
   },
@@ -103,7 +102,7 @@
    "english": "Close review",
    "draft": "ปิดเฉลย",
    "verdict": "ok",
-   "back": "Close answers",
+   "back": "Close review",
    "suggestion": "",
    "reason": ""
   },
@@ -111,7 +110,7 @@
    "english": "Learn about scams",
    "draft": "เรียนรู้เรื่องมิจฉาชีพ",
    "verdict": "ok",
-   "back": "Learn about scammers",
+   "back": "Learn about scams",
    "suggestion": "",
    "reason": ""
   },
@@ -127,7 +126,7 @@
    "english": "Quiz for a souvenir",
    "draft": "แบบทดสอบรับของที่ระลึก",
    "verdict": "ok",
-   "back": "Quiz to get souvenir",
+   "back": "Quiz for souvenir",
    "suggestion": "",
    "reason": ""
   },
@@ -135,7 +134,7 @@
    "english": "Take the quiz",
    "draft": "ทำแบบทดสอบ",
    "verdict": "ok",
-   "back": "Take quiz",
+   "back": "Take the quiz",
    "suggestion": "",
    "reason": ""
   },
@@ -143,7 +142,7 @@
    "english": "6 challenges · 3 min",
    "draft": "6 ด่าน · 3 นาที",
    "verdict": "ok",
-   "back": "6 levels · 3 min",
+   "back": "6 challenges · 3 min",
    "suggestion": "",
    "reason": ""
   },
@@ -175,7 +174,7 @@
    "english": "All souvenirs have been given out. Thank you for taking part!",
    "draft": "แจกของที่ระลึกหมดแล้ว ขอบคุณที่ร่วมกิจกรรม!",
    "verdict": "ok",
-   "back": "Souvenirs given out all. Thank you for joining!",
+   "back": "All souvenirs given out. Thank you for participating!",
    "suggestion": "",
    "reason": ""
   },
@@ -183,7 +182,7 @@
    "english": "Great job! You know how to spot scams.",
    "draft": "เยี่ยมมาก! คุณรู้วิธีจับผิดมิจฉาชีพ",
    "verdict": "ok",
-   "back": "Great job! You know how to catch scammers.",
+   "back": "Great job! You know how to spot scams.",
    "suggestion": "",
    "reason": ""
   },
@@ -191,7 +190,7 @@
    "english": "Review the answers, then try again.",
    "draft": "ดูเฉลย แล้วลองอีกครั้ง",
    "verdict": "ok",
-   "back": "Check answers, then try again.",
+   "back": "Review answers, then try again.",
    "suggestion": "",
    "reason": ""
   },
@@ -215,7 +214,7 @@
    "english": "What to do",
    "draft": "สิ่งที่ควรทำ",
    "verdict": "ok",
-   "back": "Things that should be done",
+   "back": "What should be done",
    "suggestion": "",
    "reason": ""
   },
@@ -223,7 +222,15 @@
    "english": "Take the quiz",
    "draft": "ทำแบบทดสอบ",
    "verdict": "ok",
-   "back": "Do the test",
+   "back": "Do the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "ดูวิดีโอทางการ",
+   "verdict": "ok",
+   "back": "Watch official video",
    "suggestion": "",
    "reason": ""
   },
@@ -231,7 +238,7 @@
    "english": "Tap the {n} red flags",
    "draft": "แตะสัญญาณอันตราย {n} จุด",
    "verdict": "ok",
-   "back": "Tap {n} danger signals",
+   "back": "Tap danger signals {n} points",
    "suggestion": "",
    "reason": ""
   },
@@ -239,17 +246,17 @@
    "english": "{k} of {n} chosen",
    "draft": "เลือกแล้ว {k} จาก {n}",
    "verdict": "ok",
-   "back": "Chosen {k} from {n}",
+   "back": "Chosen already {k} from {n}",
    "suggestion": "",
    "reason": ""
   },
   "ui.scam": {
    "english": "Scam",
    "draft": "หลอกลวง",
-   "verdict": "fix",
-   "back": "Deception",
-   "suggestion": "มิจฉาชีพ",
-   "reason": "Scam in this context refers to the scammer or the act of scamming by criminals. 'หลอกลวง' is the abstract concept of deception. 'มิจฉาชีพ' is the common term for scammers used in Singapore safety campaigns."
+   "verdict": "ok",
+   "back": "Scam",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.safe": {
    "english": "Safe",
@@ -279,7 +286,7 @@
    "english": "Saving your result…",
    "draft": "กำลังบันทึกผล…",
    "verdict": "ok",
-   "back": "Saving results...",
+   "back": "Saving result…",
    "suggestion": "",
    "reason": ""
   },
@@ -287,7 +294,7 @@
    "english": "All correct!",
    "draft": "ถูกทุกข้อ!",
    "verdict": "ok",
-   "back": "Correct every item!",
+   "back": "All correct!",
    "suggestion": "",
    "reason": ""
   },
@@ -295,7 +302,7 @@
    "english": "Show this QR code to an MOM officer for your souvenir.",
    "draft": "แสดง QR code นี้ให้เจ้าหน้าที่ MOM ดูเพื่อรับของที่ระลึก",
    "verdict": "ok",
-   "back": "Show this QR code to an MOM officer to receive a souvenir",
+   "back": "Show this QR code to MOM officer to receive souvenir",
    "suggestion": "",
    "reason": ""
   },
@@ -303,7 +310,7 @@
    "english": "You got all correct before, so your QR code is still valid.",
    "draft": "คุณเคยตอบถูกทุกข้อแล้ว QR code ของคุณจึงยังใช้ได้",
    "verdict": "ok",
-   "back": "You have answered correctly every item before, so your QR code is still usable",
+   "back": "You have answered all correct before, your QR code therefore still usable",
    "suggestion": "",
    "reason": ""
   },
@@ -319,7 +326,7 @@
    "english": "Review the answers, then try again for a souvenir.",
    "draft": "ดูเฉลย แล้วลองอีกครั้งเพื่อรับของที่ระลึก",
    "verdict": "ok",
-   "back": "Look at answers, then try again to receive a souvenir",
+   "back": "View answers then try again to receive souvenir",
    "suggestion": "",
    "reason": ""
   },
@@ -327,7 +334,7 @@
    "english": "Review answers",
    "draft": "ดูเฉลย",
    "verdict": "ok",
-   "back": "Look at answers",
+   "back": "View answers",
    "suggestion": "",
    "reason": ""
   },
@@ -351,7 +358,7 @@
    "english": "Result saved ✓",
    "draft": "บันทึกผลแล้ว ✓",
    "verdict": "ok",
-   "back": "Saved results ✓",
+   "back": "Saved result ✓",
    "suggestion": "",
    "reason": ""
   },
@@ -359,7 +366,7 @@
    "english": "Not saved yet (no connection). An officer can still scan this QR code.",
    "draft": "ยังไม่ได้บันทึก (ไม่มีสัญญาณ) เจ้าหน้าที่ยังสแกน QR code นี้ได้",
    "verdict": "ok",
-   "back": "Not saved yet (no signal) Officer can still scan this QR code",
+   "back": "Not yet saved (no signal) officer still can scan this QR code",
    "suggestion": "",
    "reason": ""
   },
@@ -367,7 +374,7 @@
    "english": "Not saved yet (no connection).",
    "draft": "ยังไม่ได้บันทึก (ไม่มีสัญญาณ)",
    "verdict": "ok",
-   "back": "Not saved yet (no signal)",
+   "back": "Not yet saved (no signal)",
    "suggestion": "",
    "reason": ""
   },
@@ -375,7 +382,7 @@
    "english": "Retry saving",
    "draft": "ลองบันทึกอีกครั้ง",
    "verdict": "ok",
-   "back": "Try saving again",
+   "back": "Try save again",
    "suggestion": "",
    "reason": ""
   },
@@ -391,7 +398,7 @@
    "english": "Right answer",
    "draft": "คำตอบที่ถูก",
    "verdict": "ok",
-   "back": "The correct answer",
+   "back": "Answer that is correct",
    "suggestion": "",
    "reason": ""
   },
@@ -422,10 +429,10 @@
   "ui.attempt": {
    "english": "Attempt",
    "draft": "ครั้งที่",
-   "verdict": "fix",
-   "back": "Time",
-   "suggestion": "ครั้ง",
-   "reason": "Draft 'ครั้งที่' means 'the ... time' (ordinal), but English is 'Attempt' (noun). 'ครั้ง' is the plain word for 'attempt' or 'time'."
+   "verdict": "ok",
+   "back": "Attempt",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].title": {
    "english": "Fake MOM officer",
@@ -439,23 +446,23 @@
    "english": "Scammers pretend to be MOM or the Police.",
    "draft": "มิจฉาชีพแอบอ้างเป็น MOM หรือตำรวจ",
    "verdict": "ok",
-   "back": "Scammers pretend to be MOM or police",
+   "back": "Scammers pretend to be MOM or the Police.",
    "suggestion": "",
    "reason": ""
   },
   "learn[0].chat.channel": {
    "english": "Phone call",
    "draft": "สายโทรศัพท์",
-   "verdict": "fix",
-   "back": "Phone line",
-   "suggestion": "โทรศัพท์",
-   "reason": "The English is 'Phone call'. 'สายโทรศัพท์' means 'phone line' (the wire/connection). 'โทรศัพท์' is the common word for a call."
+   "verdict": "ok",
+   "back": "Phone call",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].chat.from": {
    "english": "Unknown number",
    "draft": "เบอร์ที่ไม่รู้จัก",
    "verdict": "ok",
-   "back": "Number not known",
+   "back": "Unknown number",
    "suggestion": "",
    "reason": ""
   },
@@ -463,7 +470,7 @@
    "english": "Hello, I am from MOM. There is a problem with your work permit.",
    "draft": "สวัสดีครับ ผมโทรจาก MOM ใบอนุญาตทำงานของคุณมีปัญหา",
    "verdict": "ok",
-   "back": "Hello, I call from MOM. Your work permit has problem.",
+   "back": "Hello, I am from MOM. There is a problem with your work permit.",
    "suggestion": "",
    "reason": ""
   },
@@ -471,7 +478,7 @@
    "english": "Transfer $500 now, or you will be sent home!",
    "draft": "โอนเงิน $500 เดี๋ยวนี้ ไม่อย่างนั้นคุณจะถูกส่งกลับประเทศ!",
    "verdict": "ok",
-   "back": "Transfer money $500 now, otherwise you will be sent back country!",
+   "back": "Transfer $500 now, or you will be sent home!",
    "suggestion": "",
    "reason": ""
   },
@@ -479,7 +486,7 @@
    "english": "Install this app from my link so I can help you.",
    "draft": "ติดตั้งแอปนี้จากลิงก์ของผม ผมจะได้ช่วยคุณ",
    "verdict": "ok",
-   "back": "Install this app from my link, I will help you.",
+   "back": "Install this app from my link so I can help you.",
    "suggestion": "",
    "reason": ""
   },
@@ -487,7 +494,7 @@
    "english": "Now I will transfer your call to the Police.",
    "draft": "ตอนนี้ผมจะโอนสายคุณไปที่ตำรวจ",
    "verdict": "ok",
-   "back": "Now I will transfer your line to police",
+   "back": "Now I will transfer your call to the Police.",
    "suggestion": "",
    "reason": ""
   },
@@ -495,7 +502,7 @@
    "english": "Asks you to transfer money",
    "draft": "ให้คุณโอนเงิน",
    "verdict": "ok",
-   "back": "Let you transfer money",
+   "back": "Asks you to transfer money",
    "suggestion": "",
    "reason": ""
   },
@@ -503,7 +510,7 @@
    "english": "App from a link, not the app store",
    "draft": "แอปจากลิงก์ ไม่ใช่จากแอปสโตร์",
    "verdict": "ok",
-   "back": "App from link, not from app store",
+   "back": "App from a link, not the app store",
    "suggestion": "",
    "reason": ""
   },
@@ -511,7 +518,7 @@
    "english": "Transfers your call to the Police",
    "draft": "โอนสายคุณไปที่ตำรวจ",
    "verdict": "ok",
-   "back": "Transfer your line to police",
+   "back": "Transfers your call to the Police",
    "suggestion": "",
    "reason": ""
   },
@@ -519,7 +526,7 @@
    "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
    "draft": "MOM อาจโทรหาคุณเรื่องงาน แต่ MOM จะไม่ขอให้คุณโอนเงินหรือให้ข้อมูลเข้าสู่ระบบธนาคารเด็ดขาด",
    "verdict": "ok",
-   "back": "MOM may call you about work. But MOM will not ask you to transfer money or give bank login info absolutely.",
+   "back": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
    "suggestion": "",
    "reason": ""
   },
@@ -527,7 +534,7 @@
    "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
    "draft": "MOM จะไม่ขอให้คุณติดตั้งแอปจากลิงก์ และจะไม่โอนสายคุณไปที่ตำรวจ ไม่แน่ใจ? วางสายไป",
    "verdict": "ok",
-   "back": "MOM will not ask you to install app from link, and will not transfer your line to police. Not sure? Hang up.",
+   "back": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
    "suggestion": "",
    "reason": ""
   },
@@ -535,7 +542,7 @@
    "english": "Fake festive deal",
    "draft": "โปรเทศกาลปลอม",
    "verdict": "ok",
-   "back": "Fake festival promo",
+   "back": "Fake festive deal",
    "suggestion": "",
    "reason": ""
   },
@@ -543,7 +550,7 @@
    "english": "Too-good deals that make you install an app.",
    "draft": "ดีลถูกเกินจริงที่ให้คุณติดตั้งแอป",
    "verdict": "ok",
-   "back": "Deal too cheap real that let you install app",
+   "back": "Too-good deals that make you install an app.",
    "suggestion": "",
    "reason": ""
   },
@@ -559,7 +566,7 @@
    "english": "Deepavali Gold Sale",
    "draft": "โปรโมชั่นทองดีปาวลี",
    "verdict": "ok",
-   "back": "Deepavali Gold Promotion",
+   "back": "Deepavali Gold Sale",
    "suggestion": "",
    "reason": ""
   },
@@ -567,7 +574,7 @@
    "english": "Deepavali sale! Gold 80% off!",
    "draft": "ลดราคาดีปาวลี! ทองลด 80%!",
    "verdict": "ok",
-   "back": "Discount Deepavali! Gold discount 80%!",
+   "back": "Deepavali sale! Gold 80% off!",
    "suggestion": "",
    "reason": ""
   },
@@ -583,7 +590,7 @@
    "english": "Only 1 hour left!",
    "draft": "เหลือเวลาแค่ 1 ชั่วโมง!",
    "verdict": "ok",
-   "back": "Left time just 1 hour!",
+   "back": "Only 1 hour left!",
    "suggestion": "",
    "reason": ""
   },
@@ -591,7 +598,7 @@
    "english": "Price is too good to be true",
    "draft": "ราคาถูกเกินจริง",
    "verdict": "ok",
-   "back": "Price cheap too real",
+   "back": "Price is too good to be true",
    "suggestion": "",
    "reason": ""
   },
@@ -599,7 +606,7 @@
    "english": "App from a link, not the app store",
    "draft": "แอปจากลิงก์ ไม่ใช่จากแอปสโตร์",
    "verdict": "ok",
-   "back": "App from link, not from app store",
+   "back": "App from a link, not the app store",
    "suggestion": "",
    "reason": ""
   },
@@ -607,7 +614,7 @@
    "english": "Rushes you",
    "draft": "เร่งให้คุณรีบตัดสินใจ",
    "verdict": "ok",
-   "back": "Rushes you to decide quickly",
+   "back": "Pressuring you to decide quickly",
    "suggestion": "",
    "reason": ""
   },
@@ -615,7 +622,7 @@
    "english": "Only install apps from the official app store (Google Play or Apple App Store).",
    "draft": "ติดตั้งแอปจากแอปสโตร์ทางการ (Google Play หรือ Apple App Store) เท่านั้น",
    "verdict": "ok",
-   "back": "Install apps from official app store (Google Play or Apple App Store) only",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
    "suggestion": "",
    "reason": ""
   },
@@ -623,7 +630,7 @@
    "english": "Fake apps can steal money from your bank account.",
    "draft": "แอปปลอมขโมยเงินจากบัญชีธนาคารของคุณได้",
    "verdict": "ok",
-   "back": "Fake apps can steal money from your bank account",
+   "back": "Fake apps can steal money from your bank account.",
    "suggestion": "",
    "reason": ""
   },
@@ -631,17 +638,17 @@
    "english": "Easy money (scam mule)",
    "draft": "เงินง่าย (บัญชีม้า)",
    "verdict": "ok",
-   "back": "Easy money (mule account)",
+   "back": "Easy money (scam mule)",
    "suggestion": "",
    "reason": ""
   },
   "learn[2].tagline": {
    "english": "Paying you to use your bank account.",
    "draft": "จ่ายเงินให้คุณเพื่อขอใช้บัญชีธนาคาร",
-   "verdict": "fix",
-   "back": "Paying you to ask to use bank account",
-   "suggestion": "จ่ายเงินให้คุณเพื่อใช้บัญชีธนาคาร",
-   "reason": "The English says 'use your bank account'. The draft adds 'ขอ' (ask to), which changes the meaning slightly. Scammers don't ask; they trick you into letting them use it. Remove 'ขอ' for accuracy."
+   "verdict": "ok",
+   "back": "Paying you to use your bank account.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[2].chat.channel": {
    "english": "Chat message",
@@ -663,7 +670,7 @@
    "english": "Just let me use your bank account, SIM card or Singpass.",
    "draft": "แค่ให้ผมใช้บัญชีธนาคาร ซิมการ์ด หรือ Singpass ของคุณ",
    "verdict": "ok",
-   "back": "Just let me use your bank account, SIM card or Singpass",
+   "back": "Just let me use your bank account, SIM card or Singpass.",
    "suggestion": "",
    "reason": ""
   },
@@ -679,7 +686,7 @@
    "english": "Wants your bank account, SIM card or Singpass",
    "draft": "ขอบัญชีธนาคาร ซิมการ์ด หรือ Singpass ของคุณ",
    "verdict": "ok",
-   "back": "Ask for your bank account, SIM card or Singpass",
+   "back": "Wants your bank account, SIM card or Singpass",
    "suggestion": "",
    "reason": ""
   },
@@ -687,7 +694,7 @@
    "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
    "draft": "ห้ามขาย ให้ยืม หรือยกบัญชีธนาคาร ซิมการ์ด หรือ Singpass ของคุณให้ใครเด็ดขาด",
    "verdict": "ok",
-   "back": "Do not sell, lend or give your bank account, SIM card or Singpass to anyone absolutely",
+   "back": "Never sell, lend or give away your bank account, SIM card or Singpass.",
    "suggestion": "",
    "reason": ""
   },
@@ -695,7 +702,7 @@
    "english": "This is a crime. You can be fined, jailed or caned.",
    "draft": "นี่คือความผิดทางอาญา คุณอาจถูกปรับ จำคุก หรือเฆี่ยน",
    "verdict": "ok",
-   "back": "This is a criminal offense. You may be fined, jailed or caned",
+   "back": "This is a crime. You can be fined, jailed or caned.",
    "suggestion": "",
    "reason": ""
   },
@@ -703,7 +710,7 @@
    "english": "Fake job or work permit",
    "draft": "งานปลอมหรือใบอนุญาตทำงานปลอม",
    "verdict": "ok",
-   "back": "Fake job or fake work permit",
+   "back": "Fake job or work permit",
    "suggestion": "",
    "reason": ""
   },
@@ -711,7 +718,7 @@
    "english": "Fake approval letters that ask for money.",
    "draft": "จดหมายอนุมัติปลอมที่เรียกเงิน",
    "verdict": "ok",
-   "back": "Fake approval letters that ask for money",
+   "back": "Fake approval letters that ask for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -727,7 +734,7 @@
    "english": "SG Jobs Agent",
    "draft": "เอเจนต์จัดหางาน SG",
    "verdict": "ok",
-   "back": "SG Job Agent",
+   "back": "SG Jobs Agent",
    "suggestion": "",
    "reason": ""
   },
@@ -735,7 +742,7 @@
    "english": "Good news! Your work permit is approved.",
    "draft": "ข่าวดี! ใบอนุญาตทำงานของคุณได้รับอนุมัติแล้ว",
    "verdict": "ok",
-   "back": "Good news! Your work permit has been approved",
+   "back": "Good news! Your work permit is approved.",
    "suggestion": "",
    "reason": ""
   },
@@ -743,7 +750,7 @@
    "english": "Send $800 today to confirm your job.",
    "draft": "ส่งเงิน $800 วันนี้เพื่อยืนยันงานของคุณ",
    "verdict": "ok",
-   "back": "Send money $800 today to confirm your job",
+   "back": "Send $800 today to confirm your job.",
    "suggestion": "",
    "reason": ""
   },
@@ -751,7 +758,7 @@
    "english": "We are a licensed agency. Licence no. 99X9999.",
    "draft": "เราเป็นบริษัทจัดหางานที่มีใบอนุญาต เลขที่ใบอนุญาต 99X9999",
    "verdict": "ok",
-   "back": "We are a licensed recruitment company. License number 99X9999",
+   "back": "We are a licensed agency. Licence no. 99X9999.",
    "suggestion": "",
    "reason": ""
   },
@@ -759,7 +766,7 @@
    "english": "Asks you to pay first",
    "draft": "ให้คุณจ่ายเงินก่อน",
    "verdict": "ok",
-   "back": "Let you pay first",
+   "back": "Asks you to pay first",
    "suggestion": "",
    "reason": ""
   },
@@ -767,7 +774,7 @@
    "english": "A licence number does not prove it is real",
    "draft": "เลขใบอนุญาตไม่ได้พิสูจน์ว่าเป็นของจริง",
    "verdict": "ok",
-   "back": "License number does not prove it is real",
+   "back": "A licence number does not prove it is real",
    "suggestion": "",
    "reason": ""
   },
@@ -775,7 +782,7 @@
    "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
    "draft": "ตรวจสอบใบอนุญาตทำงานด้วยตัวเองที่เว็บไซต์ MOM: \"Check work pass and application status\" ไม่ต้องเข้าสู่ระบบ",
    "verdict": "ok",
-   "back": "Check work permit yourself on MOM website: 'Check work pass and application status' No login needed",
+   "back": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
    "suggestion": "",
    "reason": ""
   },
@@ -783,7 +790,7 @@
    "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
    "draft": "การให้จ่ายเงินก่อนเป็นสัญญาณที่พบบ่อยของการหลอกลวงเรื่องงาน มิจฉาชีพปลอมจดหมายและลอกเลขใบอนุญาตได้",
    "verdict": "ok",
-   "back": "Asking to pay first is a common sign of job scam. Scammers can fake letters and copy license numbers",
+   "back": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -799,7 +806,7 @@
    "english": "Scammers ask for the code sent to your phone.",
    "draft": "มิจฉาชีพขอรหัสที่ส่งมาที่โทรศัพท์ของคุณ",
    "verdict": "ok",
-   "back": "Scammers ask for the code sent to your phone",
+   "back": "Scammers ask for the code sent to your phone.",
    "suggestion": "",
    "reason": ""
   },
@@ -807,7 +814,7 @@
    "english": "Sorry, I sent a code to your phone by mistake.",
    "draft": "ขอโทษครับ ผมส่งรหัสไปที่โทรศัพท์ของคุณโดยไม่ได้ตั้งใจ",
    "verdict": "ok",
-   "back": "Sorry, I sent the code to your phone unintentionally.",
+   "back": "Sorry, I sent a code to your phone by mistake.",
    "suggestion": "",
    "reason": ""
   },
@@ -815,7 +822,7 @@
    "english": "Please send me the 6-digit code. Quick!",
    "draft": "ช่วยส่งรหัส 6 หลักมาให้ผมหน่อย เร็วๆ!",
    "verdict": "ok",
-   "back": "Please send the 6-digit code to me, quickly!",
+   "back": "Please send me the 6-digit code. Quick!",
    "suggestion": "",
    "reason": ""
   },
@@ -823,7 +830,7 @@
    "english": "Asks for your OTP and rushes you",
    "draft": "ขอ OTP ของคุณและเร่งให้รีบ",
    "verdict": "ok",
-   "back": "Asks for your OTP and rushes you to hurry.",
+   "back": "Asks for your OTP and rushes you",
    "suggestion": "",
    "reason": ""
   },
@@ -831,7 +838,7 @@
    "english": "Never share your OTP (the code sent to your phone) with anyone.",
    "draft": "ห้ามบอก OTP (รหัสที่ส่งมาที่โทรศัพท์ของคุณ) กับใครเด็ดขาด",
    "verdict": "ok",
-   "back": "Do not tell OTP (the code sent to your phone) to anyone absolutely.",
+   "back": "Never share your OTP (the code sent to your phone) with anyone.",
    "suggestion": "",
    "reason": ""
   },
@@ -839,7 +846,7 @@
    "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
    "draft": "จำ ACT ไว้: ADD ติดตั้งแอป ScamShield, CHECK ตรวจสอบกับ 1799, TELL บอกครอบครัวและเพื่อน",
    "verdict": "ok",
-   "back": "Remember ACT: ADD install ScamShield app, CHECK verify with 1799, TELL tell family and friends.",
+   "back": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
    "suggestion": "",
    "reason": ""
   },
@@ -847,7 +854,7 @@
    "english": "Spot the red flags",
    "draft": "หาสัญญาณอันตราย",
    "verdict": "ok",
-   "back": "Find danger signals.",
+   "back": "Spot the red flags",
    "suggestion": "",
    "reason": ""
   },
@@ -855,7 +862,7 @@
    "english": "Dear worker,",
    "draft": "เรียน คนงาน",
    "verdict": "ok",
-   "back": "Dear worker",
+   "back": "Dear worker,",
    "suggestion": "",
    "reason": ""
   },
@@ -863,7 +870,7 @@
    "english": "you have an unpaid work permit fine of $350.",
    "draft": "คุณมีค่าปรับใบอนุญาตทำงานค้างชำระ $350",
    "verdict": "ok",
-   "back": "You have an unpaid work permit fine of $350.",
+   "back": "you have an unpaid work permit fine of $350.",
    "suggestion": "",
    "reason": ""
   },
@@ -879,7 +886,7 @@
    "english": "or reply with your bank login.",
    "draft": "หรือตอบกลับพร้อมข้อมูลเข้าสู่ระบบธนาคารของคุณ",
    "verdict": "ok",
-   "back": "Or reply with your bank login information.",
+   "back": "or reply with your bank login.",
    "suggestion": "",
    "reason": ""
   },
@@ -887,7 +894,7 @@
    "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
    "draft": "SMS จากรัฐบาลส่งมาจาก \"gov.sg\" ที่อยู่จริงของ MOM ลงท้ายด้วย \".mom.gov.sg\" รัฐบาลจะไม่ขอข้อมูลเข้าสู่ระบบธนาคารทาง SMS เด็ดขาด ไม่แน่ใจ? โทร 1799",
    "verdict": "ok",
-   "back": "SMS from government come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". Government will not ask for bank login via SMS absolutely. Unsure? Call 1799.",
+   "back": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
    "suggestion": "",
    "reason": ""
   },
@@ -911,7 +918,7 @@
    "english": "Please buy rice on the way home. Thank you!",
    "draft": "ขากลับบ้านช่วยซื้อข้าวสารด้วยนะ ขอบคุณ!",
    "verdict": "ok",
-   "back": "On the way home, please help buy rice. Thank you!",
+   "back": "Please buy rice on the way home. Thank you!",
    "suggestion": "",
    "reason": ""
   },
@@ -919,7 +926,7 @@
    "english": "A normal message from someone you know, with no money or codes asked.",
    "draft": "ข้อความธรรมดาจากคนที่คุณรู้จัก ไม่ได้ขอเงินหรือรหัส",
    "verdict": "ok",
-   "back": "Normal message from someone you know, did not ask for money or code.",
+   "back": "A normal message from someone you know, with no money or codes asked.",
    "suggestion": "",
    "reason": ""
   },
@@ -927,7 +934,7 @@
    "english": "Unknown number",
    "draft": "เบอร์ที่ไม่รู้จัก",
    "verdict": "ok",
-   "back": "Number not recognized",
+   "back": "Unknown number",
    "suggestion": "",
    "reason": ""
   },
@@ -935,7 +942,7 @@
    "english": "Your bank account is locked. Reply with the OTP we just sent you.",
    "draft": "บัญชีธนาคารของคุณถูกล็อก ตอบกลับด้วย OTP ที่เราเพิ่งส่งไป",
    "verdict": "ok",
-   "back": "Your bank account is locked. Reply with the OTP we just sent.",
+   "back": "Your bank account is locked. Reply with the OTP we just sent you.",
    "suggestion": "",
    "reason": ""
   },
@@ -943,7 +950,7 @@
    "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
    "draft": "ห้ามบอก OTP (รหัสที่ส่งมาที่โทรศัพท์ของคุณ) กับใครเด็ดขาด แม้เขาจะบอกว่าเป็นธนาคารของคุณ",
    "verdict": "ok",
-   "back": "Do not tell OTP (the code sent to your phone) to anyone absolutely, even if they say they are your bank.",
+   "back": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
    "suggestion": "",
    "reason": ""
   },
@@ -959,7 +966,7 @@
    "english": "Lend me your bank card for one week. I will pay you $300.",
    "draft": "ขอยืมบัตรธนาคารของคุณหนึ่งสัปดาห์ ผมจะจ่ายให้ $300",
    "verdict": "ok",
-   "back": "Borrow your bank card for one week. I will pay you $300.",
+   "back": "Lend me your bank card for one week. I will pay you $300.",
    "suggestion": "",
    "reason": ""
   },
@@ -967,7 +974,7 @@
    "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
    "draft": "นี่คือข้อเสนอให้เป็นบัญชีม้า การให้คนอื่นใช้บัตรธนาคารของคุณเป็นความผิดทางอาญา",
    "verdict": "ok",
-   "back": "This is an offer to be a scam mule. Letting others use your bank card is a criminal offense.",
+   "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
    "suggestion": "",
    "reason": ""
   },
@@ -991,7 +998,7 @@
    "english": "A normal greeting from a friend, with nothing asked.",
    "draft": "คำอวยพรธรรมดาจากเพื่อน ไม่ได้ขออะไร",
    "verdict": "ok",
-   "back": "Normal greeting from a friend, did not ask for anything.",
+   "back": "A normal greeting from a friend, with nothing asked.",
    "suggestion": "",
    "reason": ""
   },
@@ -999,7 +1006,7 @@
    "english": "What would you reply?",
    "draft": "คุณจะตอบว่าอะไร?",
    "verdict": "ok",
-   "back": "What will you reply?",
+   "back": "What would you reply?",
    "suggestion": "",
    "reason": ""
   },
@@ -1015,7 +1022,7 @@
    "english": "Hi, it's your cousin. I changed my number.",
    "draft": "หวัดดี นี่ลูกพี่ลูกน้องเธอเอง ฉันเปลี่ยนเบอร์แล้ว",
    "verdict": "ok",
-   "back": "Hi, this is your cousin myself. I changed number already.",
+   "back": "Hi, it's your cousin. I changed my number.",
    "suggestion": "",
    "reason": ""
   },
@@ -1023,7 +1030,7 @@
    "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
    "draft": "ฉันส่งรหัส 6 หลักไปที่โทรศัพท์เธอโดยไม่ได้ตั้งใจ ส่งมาให้ฉันหน่อยได้ไหม? ด่วน!",
    "verdict": "ok",
-   "back": "I sent 6-digit code to your phone by mistake. Send to me please? Urgent!",
+   "back": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
    "suggestion": "",
    "reason": ""
   },
@@ -1031,7 +1038,7 @@
    "english": "OK, here is the code: 482915",
    "draft": "ได้ นี่รหัส: 482915",
    "verdict": "ok",
-   "back": "OK, here code: 482915",
+   "back": "OK, here is the code: 482915",
    "suggestion": "",
    "reason": ""
   },
@@ -1039,7 +1046,7 @@
    "english": "No. I never share codes. I will call your old number.",
    "draft": "ไม่ ฉันไม่บอกรหัสใครเลย ฉันจะโทรเบอร์เก่าของเธอ",
    "verdict": "ok",
-   "back": "No. I never tell code to anyone. I will call your old number.",
+   "back": "No. I never share codes. I will call your old number.",
    "suggestion": "",
    "reason": ""
   },
@@ -1047,7 +1054,7 @@
    "english": "Send me your photo first, then I will send it.",
    "draft": "ส่งรูปเธอมาก่อน แล้วฉันจะส่งให้",
    "verdict": "ok",
-   "back": "Send your photo first, then I will send.",
+   "back": "Send me your photo first, then I will send it.",
    "suggestion": "",
    "reason": ""
   },
@@ -1055,7 +1062,7 @@
    "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
    "draft": "ห้ามบอก OTP กับใคร แม้แต่ครอบครัว ถ้ามีคนบอกว่าเปลี่ยนเบอร์ ให้โทรเบอร์เก่าของเขาเพื่อตรวจสอบ",
    "verdict": "ok",
-   "back": "Do not tell OTP to anyone, even family. If someone says changed number, call their old number to check.",
+   "back": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
    "suggestion": "",
    "reason": ""
   },
@@ -1063,7 +1070,7 @@
    "english": "Pick the safe way",
    "draft": "เลือกวิธีที่ปลอดภัย",
    "verdict": "ok",
-   "back": "Choose safe way",
+   "back": "Pick the safe way",
    "suggestion": "",
    "reason": ""
   },
@@ -1071,7 +1078,7 @@
    "english": "You want a shopping app for Deepavali deals. Where should you get it?",
    "draft": "คุณอยากได้แอปช้อปปิ้งสำหรับโปรดีปาวลี ควรดาวน์โหลดจากที่ไหน?",
    "verdict": "ok",
-   "back": "You want shopping app for Deepavali promo. Should download from where?",
+   "back": "You want a shopping app for Deepavali deals. Where should you get it?",
    "suggestion": "",
    "reason": ""
   },
@@ -1079,7 +1086,7 @@
    "english": "The official app store on your phone",
    "draft": "แอปสโตร์ทางการในโทรศัพท์ของคุณ",
    "verdict": "ok",
-   "back": "Official app store in your phone",
+   "back": "The official app store on your phone",
    "suggestion": "",
    "reason": ""
   },
@@ -1087,7 +1094,7 @@
    "english": "A link sent in a chat message",
    "draft": "ลิงก์ที่ส่งมาในข้อความแชท",
    "verdict": "ok",
-   "back": "Link sent in chat message",
+   "back": "A link sent in a chat message",
    "suggestion": "",
    "reason": ""
   },
@@ -1095,7 +1102,7 @@
    "english": "A link in an online advert",
    "draft": "ลิงก์ในโฆษณาออนไลน์",
    "verdict": "ok",
-   "back": "Link in online advert",
+   "back": "A link in an online advert",
    "suggestion": "",
    "reason": ""
   },
@@ -1103,7 +1110,7 @@
    "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
    "draft": "ติดตั้งแอปจากแอปสโตร์ทางการ (Google Play หรือ Apple App Store) เท่านั้น แอปจากลิงก์ขโมยเงินของคุณได้",
    "verdict": "ok",
-   "back": "Install app from official app store (Google Play or Apple App Store) only. App from link can steal your money.",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
    "suggestion": "",
    "reason": ""
   },
@@ -1111,7 +1118,7 @@
    "english": "Spot the red flags",
    "draft": "หาสัญญาณอันตราย",
    "verdict": "ok",
-   "back": "Find danger signal",
+   "back": "Spot the red flags",
    "suggestion": "",
    "reason": ""
   },
@@ -1143,7 +1150,7 @@
    "english": "Pay me $500 to keep your job.",
    "draft": "จ่ายผม $500 เพื่อรักษางานของคุณ",
    "verdict": "ok",
-   "back": "Pay me $500 to keep your job",
+   "back": "Pay me $500 to keep your job.",
    "suggestion": "",
    "reason": ""
   },
@@ -1159,7 +1166,7 @@
    "english": "and send me your Singpass password.",
    "draft": "และส่งรหัสผ่าน Singpass ของคุณมาให้ผม",
    "verdict": "ok",
-   "back": "and send your Singpass password to me.",
+   "back": "and send me your Singpass password.",
    "suggestion": "",
    "reason": ""
   },
@@ -1167,7 +1174,7 @@
    "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
    "draft": "การเรียกเงินเพื่อแลกกับการได้ทำงานต่อเป็นสิ่งผิดกฎหมาย ที่อยู่จริงของ MOM ลงท้ายด้วย \".mom.gov.sg\" ห้ามบอกรหัสผ่าน Singpass กับใครเด็ดขาด",
    "verdict": "ok",
-   "back": "Asking money to exchange for getting to work continue is illegal. Real MOM address ends with \".mom.gov.sg\". Do not tell Singpass password to anyone absolutely.",
+   "back": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
    "suggestion": "",
    "reason": ""
   },
@@ -1175,7 +1182,7 @@
    "english": "What would you reply?",
    "draft": "คุณจะตอบว่าอะไร?",
    "verdict": "ok",
-   "back": "You will answer what?",
+   "back": "What would you reply?",
    "suggestion": "",
    "reason": ""
   },
@@ -1183,7 +1190,7 @@
    "english": "Unknown number",
    "draft": "เบอร์ที่ไม่รู้จัก",
    "verdict": "ok",
-   "back": "Number not know",
+   "back": "Unknown number",
    "suggestion": "",
    "reason": ""
   },
@@ -1191,7 +1198,7 @@
    "english": "Easy money! Earn $200 every week.",
    "draft": "เงินง่ายๆ! รับ $200 ทุกสัปดาห์",
    "verdict": "ok",
-   "back": "Easy money! Receive $200 every week",
+   "back": "Easy money! Earn $200 every week.",
    "suggestion": "",
    "reason": ""
   },
@@ -1207,7 +1214,7 @@
    "english": "OK, how do I start?",
    "draft": "ได้ เริ่มยังไง?",
    "verdict": "ok",
-   "back": "OK, how to start?",
+   "back": "OK, how do I start?",
    "suggestion": "",
    "reason": ""
   },
@@ -1223,7 +1230,7 @@
    "english": "No. This is a crime. I will report it.",
    "draft": "ไม่ นี่คืออาชญากรรม ฉันจะแจ้งตำรวจ",
    "verdict": "ok",
-   "back": "No. This is a crime. I will report to police",
+   "back": "No. This is a crime. I will report it.",
    "suggestion": "",
    "reason": ""
   },
@@ -1231,7 +1238,7 @@
    "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
    "draft": "การให้คนอื่นใช้บัญชีธนาคารหรือ Singpass ของคุณ ทำให้คุณเป็น 'บัญชีม้า' ซึ่งเป็นอาชญากรรม ต้องปฏิเสธและแจ้งตำรวจ",
    "verdict": "ok",
-   "back": "Letting others use your bank account or Singpass makes you a 'scam mule' which is a crime. Must refuse and report to police",
+   "back": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
    "suggestion": "",
    "reason": ""
   },
@@ -1247,7 +1254,7 @@
    "english": "How happy are you with today's event?",
    "draft": "คุณพอใจกับกิจกรรมวันนี้แค่ไหน?",
    "verdict": "ok",
-   "back": "How satisfied are you with today's activity?",
+   "back": "How happy are you with today's event?",
    "suggestion": "",
    "reason": ""
   },
@@ -1255,7 +1262,7 @@
    "english": "Very unhappy",
    "draft": "ไม่พอใจมาก",
    "verdict": "ok",
-   "back": "Very unsatisfied",
+   "back": "Very unhappy",
    "suggestion": "",
    "reason": ""
   },
@@ -1263,7 +1270,7 @@
    "english": "Unhappy",
    "draft": "ไม่พอใจ",
    "verdict": "ok",
-   "back": "Unsatisfied",
+   "back": "Unhappy",
    "suggestion": "",
    "reason": ""
   },
@@ -1279,7 +1286,7 @@
    "english": "Happy",
    "draft": "พอใจ",
    "verdict": "ok",
-   "back": "Satisfied",
+   "back": "Happy",
    "suggestion": "",
    "reason": ""
   },
@@ -1287,7 +1294,7 @@
    "english": "Very happy",
    "draft": "พอใจมาก",
    "verdict": "ok",
-   "back": "Very satisfied",
+   "back": "Very happy",
    "suggestion": "",
    "reason": ""
   },
@@ -1295,47 +1302,39 @@
    "english": "Did you learn something new about scams?",
    "draft": "คุณได้เรียนรู้เรื่องใหม่เกี่ยวกับมิจฉาชีพไหม?",
    "verdict": "ok",
-   "back": "Did you learn something new about scammers?",
+   "back": "Did you learn something new about scams?",
    "suggestion": "",
    "reason": ""
   },
   "feedback.learnedOptions[0].label": {
    "english": "Yes",
    "draft": "ได้",
-   "verdict": "fix",
-   "back": "Got it",
-   "suggestion": "ใช่",
-   "reason": "'ได้' (Got it/Can do) is ambiguous for a Yes/No question. 'ใช่' (Yes) is clear."
+   "verdict": "ok",
+   "back": "Yes",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.learnedOptions[1].label": {
    "english": "A little",
    "draft": "นิดหน่อย",
    "verdict": "ok",
-   "back": "A little bit",
+   "back": "A little",
    "suggestion": "",
    "reason": ""
   },
   "feedback.learnedOptions[2].label": {
    "english": "No",
    "draft": "ไม่ได้",
-   "verdict": "fix",
-   "back": "Did not get it",
-   "suggestion": "ไม่",
-   "reason": "'ไม่ได้' (Did not get it/Can't do) is ambiguous. 'ไม่' (No) is clear and matches the 'Yes' option."
+   "verdict": "ok",
+   "back": "No",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.submit": {
    "english": "See my result",
    "draft": "ดูผลของฉัน",
    "verdict": "ok",
    "back": "See my result",
-   "suggestion": "",
-   "reason": ""
-  },
-  "ui.watch": {
-   "english": "Watch the official video",
-   "draft": "ดูวิดีโอทางการ",
-   "verdict": "ok",
-   "back": "Watch official video",
    "suggestion": "",
    "reason": ""
   }

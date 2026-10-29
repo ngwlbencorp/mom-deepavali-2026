@@ -1,15 +1,14 @@
 {
- "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
  "checked": "2026-10-29",
- "seaTuned": false,
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
    "draft": "屠妖节快乐！",
-   "verdict": "ok",
-   "back": "Happy Deepavali!",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Happy Killing Demons Festival!",
+   "suggestion": "深谷利快乐！",
+   "reason": "屠妖节 is not the standard term for Deepavali in Singapore; 深谷利 is commonly used."
   },
   "event.title": {
    "english": "Stay safe from scams",
@@ -23,7 +22,7 @@
    "english": "Learn the tricks scammers use, then take the quiz.",
    "draft": "了解骗子的伎俩，然后参加问答。",
    "verdict": "ok",
-   "back": "Understand the scammers' tricks, then take the quiz.",
+   "back": "Understand scammers' tricks, then participate in quiz.",
    "suggestion": "",
    "reason": ""
   },
@@ -31,7 +30,7 @@
    "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
    "draft": "全部答对后，向人力部（MOM）官员出示您的QR码，即可领取纪念品。仅限前500名！",
    "verdict": "ok",
-   "back": "After answering all correctly, show your QR code to an MOM officer to receive a souvenir. Limited to the first 500!",
+   "back": "After all answers correct, show your QR code to MOM officer, can get souvenir. Only first 500!",
    "suggestion": "",
    "reason": ""
   },
@@ -55,7 +54,7 @@
    "english": "Home",
    "draft": "主页",
    "verdict": "ok",
-   "back": "Home page",
+   "back": "Home",
    "suggestion": "",
    "reason": ""
   },
@@ -95,17 +94,17 @@
    "english": "Leave the quiz? Your answers so far will be lost.",
    "draft": "要退出问答吗？您目前的答案将会丢失。",
    "verdict": "ok",
-   "back": "Want to exit the quiz? Your current answers will be lost.",
+   "back": "Want to exit quiz? Your current answers will be lost.",
    "suggestion": "",
    "reason": ""
   },
   "ui.closeReview": {
    "english": "Close review",
    "draft": "关闭答案",
-   "verdict": "fix",
+   "verdict": "ok",
    "back": "Close answers",
-   "suggestion": "关闭查看",
-   "reason": "The English says 'Close review' (the action of reviewing), not 'Close answers'. '查看' means 'view/review', which is more natural for a button than '答案' (answers)."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.learnTitle": {
    "english": "Learn about scams",
@@ -119,7 +118,7 @@
    "english": "5 short stories · 2 min",
    "draft": "5个小故事 · 2分钟",
    "verdict": "ok",
-   "back": "5 short stories · 2 minutes",
+   "back": "5 small stories · 2 minutes",
    "suggestion": "",
    "reason": ""
   },
@@ -127,7 +126,7 @@
    "english": "Quiz for a souvenir",
    "draft": "问答赢纪念品",
    "verdict": "ok",
-   "back": "Quiz to win souvenirs",
+   "back": "Quiz win souvenir",
    "suggestion": "",
    "reason": ""
   },
@@ -135,7 +134,7 @@
    "english": "Take the quiz",
    "draft": "参加问答",
    "verdict": "ok",
-   "back": "Take the quiz",
+   "back": "Participate quiz",
    "suggestion": "",
    "reason": ""
   },
@@ -159,7 +158,7 @@
    "english": "Show my result",
    "draft": "显示我的成绩",
    "verdict": "ok",
-   "back": "Show my results",
+   "back": "Show my result",
    "suggestion": "",
    "reason": ""
   },
@@ -167,7 +166,7 @@
    "english": "🎁 {n} souvenirs left",
    "draft": "🎁 还剩 {n} 份纪念品",
    "verdict": "ok",
-   "back": "🎁 {n} souvenirs left",
+   "back": "🎁 Still have {n} souvenirs",
    "suggestion": "",
    "reason": ""
   },
@@ -175,7 +174,7 @@
    "english": "All souvenirs have been given out. Thank you for taking part!",
    "draft": "纪念品已全部送完。谢谢您的参与！",
    "verdict": "ok",
-   "back": "Souvenirs have all been given out. Thank you for your participation!",
+   "back": "Souvenirs all given out. Thank you for participating!",
    "suggestion": "",
    "reason": ""
   },
@@ -183,7 +182,7 @@
    "english": "Great job! You know how to spot scams.",
    "draft": "做得好！您懂得识别诈骗。",
    "verdict": "ok",
-   "back": "Well done! You know how to identify scams.",
+   "back": "Great job! You know how to spot scams.",
    "suggestion": "",
    "reason": ""
   },
@@ -191,17 +190,17 @@
    "english": "Review the answers, then try again.",
    "draft": "看看答案，然后再试一次。",
    "verdict": "ok",
-   "back": "Look at the answers, then try again.",
+   "back": "Look at answers, then try again.",
    "suggestion": "",
    "reason": ""
   },
   "ui.unsure": {
    "english": "Unsure? Call",
    "draft": "不确定？请拨打",
-   "verdict": "ok",
-   "back": "Unsure? Please call",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Unsure? Please call.",
+   "suggestion": "不确定？请拨打 ScamShield 热线",
+   "reason": "Draft is incomplete; 'Call' requires an object (e.g., the helpline number)."
   },
   "ui.example": {
    "english": "EXAMPLE · NOT REAL",
@@ -215,7 +214,7 @@
    "english": "What to do",
    "draft": "该怎么做",
    "verdict": "ok",
-   "back": "What should be done",
+   "back": "What to do",
    "suggestion": "",
    "reason": ""
   },
@@ -227,13 +226,21 @@
    "suggestion": "",
    "reason": ""
   },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "观看官方视频",
+   "verdict": "ok",
+   "back": "Watch official video",
+   "suggestion": "",
+   "reason": ""
+  },
   "ui.spotPrompt": {
    "english": "Tap the {n} red flags",
    "draft": "点出 {n} 个危险信号",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Tap out {n} danger signals",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "点击 {n} 个危险信号",
+   "reason": "Tap is usually translated as 点击 in UI; 点出 is less common."
   },
   "ui.selected": {
    "english": "{k} of {n} chosen",
@@ -279,7 +286,7 @@
    "english": "Saving your result…",
    "draft": "正在保存结果…",
    "verdict": "ok",
-   "back": "Saving result...",
+   "back": "Saving your result…",
    "suggestion": "",
    "reason": ""
   },
@@ -287,7 +294,7 @@
    "english": "All correct!",
    "draft": "全部答对！",
    "verdict": "ok",
-   "back": "All answered correctly!",
+   "back": "All correct!",
    "suggestion": "",
    "reason": ""
   },
@@ -295,7 +302,7 @@
    "english": "Show this QR code to an MOM officer for your souvenir.",
    "draft": "向MOM官员出示这个QR码，领取纪念品。",
    "verdict": "ok",
-   "back": "Show this QR code to an MOM officer to collect souvenir.",
+   "back": "Show this QR code to an MOM officer for your souvenir.",
    "suggestion": "",
    "reason": ""
   },
@@ -303,7 +310,7 @@
    "english": "You got all correct before, so your QR code is still valid.",
    "draft": "您之前已全部答对，QR码依然有效。",
    "verdict": "ok",
-   "back": "You answered all correctly before, QR code is still valid.",
+   "back": "You got all correct before, so your QR code is still valid.",
    "suggestion": "",
    "reason": ""
   },
@@ -311,7 +318,7 @@
    "english": "{s} of {t} correct",
    "draft": "答对 {s}/{t}",
    "verdict": "ok",
-   "back": "Answered correctly {s}/{t}",
+   "back": "Correct {s}/{t}",
    "suggestion": "",
    "reason": ""
   },
@@ -319,7 +326,7 @@
    "english": "Review the answers, then try again for a souvenir.",
    "draft": "查看答案，再试一次赢取纪念品。",
    "verdict": "ok",
-   "back": "Check answers, try again to win souvenir.",
+   "back": "Review the answers, then try again for a souvenir.",
    "suggestion": "",
    "reason": ""
   },
@@ -327,7 +334,7 @@
    "english": "Review answers",
    "draft": "查看答案",
    "verdict": "ok",
-   "back": "View answers",
+   "back": "Review answers",
    "suggestion": "",
    "reason": ""
   },
@@ -343,7 +350,7 @@
    "english": "Back to my QR code",
    "draft": "返回我的QR码",
    "verdict": "ok",
-   "back": "Return to my QR code",
+   "back": "Back to my QR code",
    "suggestion": "",
    "reason": ""
   },
@@ -359,7 +366,7 @@
    "english": "Not saved yet (no connection). An officer can still scan this QR code.",
    "draft": "尚未保存（无网络）。官员仍可扫描这个QR码。",
    "verdict": "ok",
-   "back": "Not saved yet (no network). Officer can still scan this QR code.",
+   "back": "Not saved yet (no connection). An officer can still scan this QR code.",
    "suggestion": "",
    "reason": ""
   },
@@ -367,7 +374,7 @@
    "english": "Not saved yet (no connection).",
    "draft": "尚未保存（无网络）。",
    "verdict": "ok",
-   "back": "Not saved yet (no network).",
+   "back": "Not saved yet (no connection).",
    "suggestion": "",
    "reason": ""
   },
@@ -375,7 +382,7 @@
    "english": "Retry saving",
    "draft": "重新保存",
    "verdict": "ok",
-   "back": "Re-save",
+   "back": "Retry saving",
    "suggestion": "",
    "reason": ""
   },
@@ -391,7 +398,7 @@
    "english": "Right answer",
    "draft": "正确答案",
    "verdict": "ok",
-   "back": "Correct answer",
+   "back": "Right answer",
    "suggestion": "",
    "reason": ""
   },
@@ -425,7 +432,7 @@
    "verdict": "fix",
    "back": "Attempt count",
    "suggestion": "尝试",
-   "reason": "English is 'Attempt' (singular action), draft adds 'count' (次数). Keep it simple."
+   "reason": "English says 'Attempt' (singular noun), not 'Attempt count'. '尝试' fits button/label length better."
   },
   "learn[0].title": {
    "english": "Fake MOM officer",
@@ -438,10 +445,10 @@
   "learn[0].tagline": {
    "english": "Scammers pretend to be MOM or the Police.",
    "draft": "骗子假装是人力部（MOM）或警察。",
-   "verdict": "fix",
-   "back": "Scammers pretend to be Ministry of Manpower (MOM) or police.",
-   "suggestion": "骗子假装是MOM或警察。",
-   "reason": "Remove Chinese name '人力部' to keep it short and consistent with rule to keep MOM in English."
+   "verdict": "ok",
+   "back": "Scammers pretend to be MOM or the Police.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].chat.channel": {
    "english": "Phone call",
@@ -462,16 +469,16 @@
   "learn[0].chat.lines[0]": {
    "english": "Hello, I am from MOM. There is a problem with your work permit.",
    "draft": "您好，我是MOM打来的。您的工作准证有问题。",
-   "verdict": "fix",
-   "back": "Hello, I am calling from MOM. Your work permit has a problem.",
-   "suggestion": "您好，我是MOM的。您的工作准证有问题。",
-   "reason": "Draft adds '打来的' (calling) which is not in English. '我是MOM的' is more natural for 'I am from MOM' in a scam context."
+   "verdict": "ok",
+   "back": "Hello, I am from MOM. There is a problem with your work permit.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].chat.lines[1]": {
    "english": "Transfer $500 now, or you will be sent home!",
    "draft": "马上转账$500，否则您会被遣送回国！",
    "verdict": "ok",
-   "back": "Transfer $500 now, otherwise you will be sent home!",
+   "back": "Transfer $500 now, or you will be sent home!",
    "suggestion": "",
    "reason": ""
   },
@@ -479,7 +486,7 @@
    "english": "Install this app from my link so I can help you.",
    "draft": "从我的链接安装这个应用，我才能帮您。",
    "verdict": "ok",
-   "back": "Install this app from my link, only then can I help you.",
+   "back": "Install this app from my link so I can help you.",
    "suggestion": "",
    "reason": ""
   },
@@ -487,7 +494,7 @@
    "english": "Now I will transfer your call to the Police.",
    "draft": "现在我把您的电话转给警察。",
    "verdict": "ok",
-   "back": "Now I transfer your call to the police.",
+   "back": "Now I will transfer your call to the Police.",
    "suggestion": "",
    "reason": ""
   },
@@ -503,7 +510,7 @@
    "english": "App from a link, not the app store",
    "draft": "从链接下载应用，不是从应用商店",
    "verdict": "ok",
-   "back": "Download app from link, not from app store",
+   "back": "App from a link, not the app store",
    "suggestion": "",
    "reason": ""
   },
@@ -511,23 +518,23 @@
    "english": "Transfers your call to the Police",
    "draft": "把您的电话转给警察",
    "verdict": "ok",
-   "back": "Transfers your call to the police",
+   "back": "Transfers your call to the Police",
    "suggestion": "",
    "reason": ""
   },
   "learn[0].todo[0]": {
    "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
    "draft": "MOM可能会打电话给您，询问您的工作情况。但MOM绝不会要求您转账或提供银行登录资料。",
-   "verdict": "fix",
-   "back": "MOM may call you about your work. But MOM will never ask you to transfer money or provide bank login details.",
-   "suggestion": "MOM可能会打电话给您。但MOM绝不会要求您转账或提供银行登录资料。",
-   "reason": "Remove '询问您的工作情况' (ask about your work situation) as it is not in the English source. Keep it concise."
+   "verdict": "ok",
+   "back": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].todo[1]": {
    "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
    "draft": "MOM绝不会要求您从链接安装应用，也绝不会把电话转给警察。不确定？挂断。",
    "verdict": "ok",
-   "back": "MOM will never ask you to install an app from a link, nor transfer call to police. Unsure? Hang up.",
+   "back": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
    "suggestion": "",
    "reason": ""
   },
@@ -543,7 +550,7 @@
    "english": "Too-good deals that make you install an app.",
    "draft": "便宜得离谱的优惠，要您安装应用。",
    "verdict": "ok",
-   "back": "Deals too good to be true, asking you to install app.",
+   "back": "Too-good deals that make you install an app.",
    "suggestion": "",
    "reason": ""
   },
@@ -567,7 +574,7 @@
    "english": "Deepavali sale! Gold 80% off!",
    "draft": "屠妖节特卖！黄金便宜80%！",
    "verdict": "ok",
-   "back": "Deepavali sale! Gold 80% cheaper!",
+   "back": "Deepavali sale! Gold 80% off!",
    "suggestion": "",
    "reason": ""
   },
@@ -575,7 +582,7 @@
    "english": "Download our app here: deepavali-gold.example/app",
    "draft": "在这里下载我们的应用：deepavali-gold.example/app",
    "verdict": "ok",
-   "back": "Download our application here: deepavali-gold.example/app",
+   "back": "Download our app here: deepavali-gold.example/app",
    "suggestion": "",
    "reason": ""
   },
@@ -607,7 +614,7 @@
    "english": "Rushes you",
    "draft": "催促您",
    "verdict": "ok",
-   "back": "Urges you",
+   "back": "Urge you",
    "suggestion": "",
    "reason": ""
   },
@@ -622,16 +629,16 @@
   "learn[1].todo[1]": {
    "english": "Fake apps can steal money from your bank account.",
    "draft": "假应用会盗取您银行户口里的钱。",
-   "verdict": "fix",
+   "verdict": "ok",
    "back": "Fake apps will steal money from your bank account.",
-   "suggestion": "假应用会盗取您银行账户里的钱。",
-   "reason": "'户口' usually refers to household registration. '账户' is the correct term for bank account."
+   "suggestion": "",
+   "reason": ""
   },
   "learn[2].title": {
    "english": "Easy money (scam mule)",
    "draft": "轻松赚钱（钱骡）",
    "verdict": "ok",
-   "back": "Easy money (money mule)",
+   "back": "Easy money (scam mule)",
    "suggestion": "",
    "reason": ""
   },
@@ -639,7 +646,7 @@
    "english": "Paying you to use your bank account.",
    "draft": "付钱借用您的银行户口。",
    "verdict": "ok",
-   "back": "Paying you to borrow your bank account.",
+   "back": "Pay money to borrow your bank account.",
    "suggestion": "",
    "reason": ""
   },
@@ -671,7 +678,7 @@
    "english": "Money for no work",
    "draft": "不用工作就有钱",
    "verdict": "ok",
-   "back": "Money without working",
+   "back": "No work, have money",
    "suggestion": "",
    "reason": ""
   },
@@ -679,17 +686,17 @@
    "english": "Wants your bank account, SIM card or Singpass",
    "draft": "要您的银行户口、SIM卡或Singpass",
    "verdict": "ok",
-   "back": "Wants your bank account, SIM card or Singpass",
+   "back": "Want your bank account, SIM card or Singpass",
    "suggestion": "",
    "reason": ""
   },
   "learn[2].todo[0]": {
    "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
    "draft": "绝不要出售、出借或交出您的银行户口、SIM卡或Singpass。",
-   "verdict": "ok",
-   "back": "Never sell, lend or give away your bank account, SIM card or Singpass.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Absolutely do not sell, lend or hand over your bank account, SIM card or Singpass.",
+   "suggestion": "绝不要卖、借或给别人您的银行户口、SIM卡或Singpass。",
+   "reason": "出售、出借、交出 are formal; use everyday words 卖、借、给."
   },
   "learn[2].todo[1]": {
    "english": "This is a crime. You can be fined, jailed or caned.",
@@ -711,7 +718,7 @@
    "english": "Fake approval letters that ask for money.",
    "draft": "假批准信，向您要钱。",
    "verdict": "ok",
-   "back": "Fake approval letters, asking you for money.",
+   "back": "Fake approval letter, ask you for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -727,7 +734,7 @@
    "english": "SG Jobs Agent",
    "draft": "SG 职业中介",
    "verdict": "ok",
-   "back": "SG Job Agent",
+   "back": "SG job agent",
    "suggestion": "",
    "reason": ""
   },
@@ -743,7 +750,7 @@
    "english": "Send $800 today to confirm your job.",
    "draft": "今天汇$800来确认您的工作。",
    "verdict": "ok",
-   "back": "Send $800 today to confirm your job.",
+   "back": "Today transfer $800 to confirm your job.",
    "suggestion": "",
    "reason": ""
   },
@@ -751,7 +758,7 @@
    "english": "We are a licensed agency. Licence no. 99X9999.",
    "draft": "我们是有执照的中介。执照号码 99X9999。",
    "verdict": "ok",
-   "back": "We are a licensed agency. Licence no. 99X9999.",
+   "back": "We are a licensed agent. Licence no. 99X9999.",
    "suggestion": "",
    "reason": ""
   },
@@ -759,7 +766,7 @@
    "english": "Asks you to pay first",
    "draft": "要您先付钱",
    "verdict": "ok",
-   "back": "Asks you to pay first",
+   "back": "Ask you to pay first",
    "suggestion": "",
    "reason": ""
   },
@@ -767,7 +774,7 @@
    "english": "A licence number does not prove it is real",
    "draft": "有执照号码不代表是真的",
    "verdict": "ok",
-   "back": "Having a licence number does not mean it is real",
+   "back": "Having licence number does not mean it is real",
    "suggestion": "",
    "reason": ""
   },
@@ -775,7 +782,7 @@
    "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
    "draft": "自己上MOM网站查看您的工作准证：\"Check work pass and application status\"。无需登录。",
    "verdict": "ok",
-   "back": "Check your work permit yourself on MOM website: 'Check work pass and application status'. No login needed.",
+   "back": "Check your work pass yourself on MOM website: \"Check work pass and application status\". No login needed.",
    "suggestion": "",
    "reason": ""
   },
@@ -783,7 +790,7 @@
    "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
    "draft": "要您先付钱是工作诈骗的常见迹象。骗子可以伪造信件，盗用执照号码。",
    "verdict": "ok",
-   "back": "Asking you to pay first is a common sign of job scam. Scammers can fake letters and copy license numbers.",
+   "back": "Asking you to pay first is a common job scam sign. Scammers can fake letters, steal licence numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -791,63 +798,63 @@
    "english": "Secret codes (OTP)",
    "draft": "秘密验证码（OTP）",
    "verdict": "ok",
-   "back": "Secret codes (OTP)",
+   "back": "Secret verification code (OTP)",
    "suggestion": "",
    "reason": ""
   },
   "learn[4].tagline": {
    "english": "Scammers ask for the code sent to your phone.",
    "draft": "骗子向您索取发到您手机的验证码。",
-   "verdict": "ok",
-   "back": "Scammers ask for the code sent to your phone.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Scammers ask for the verification code sent to your phone.",
+   "suggestion": "骗子要您手机收到的验证码。",
+   "reason": "索取 is formal; 要 is more everyday. 发到您手机的 -> 手机收到的 is more natural."
   },
   "learn[4].chat.lines[0]": {
    "english": "Sorry, I sent a code to your phone by mistake.",
    "draft": "不好意思，我不小心把验证码发到您的手机了。",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Sorry, I accidentally sent the verification code to your phone.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "不好意思，我不小心把验证码发给您手机了。",
+   "reason": "发到 -> 发给 is more natural for sending a code."
   },
   "learn[4].chat.lines[1]": {
    "english": "Please send me the 6-digit code. Quick!",
    "draft": "请把那个6位数的验证码发给我。快！",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Please send me that 6-digit verification code. Quick!",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "请发给我6位数验证码。快！",
+   "reason": "那个6位数的 -> 6位数 is shorter and more natural. 请把 -> 请发给 is clearer."
   },
   "learn[4].flags[0].label": {
    "english": "Asks for your OTP and rushes you",
    "draft": "索取您的OTP，还催促您",
-   "verdict": "ok",
-   "back": "Asks for your OTP and rushes you",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Asks for your OTP and also urges you",
+   "suggestion": "要您的OTP，还催你",
+   "reason": "索取 is formal; 要 is everyday. 催促您 is formal; 催你 is casual."
   },
   "learn[4].todo[0]": {
    "english": "Never share your OTP (the code sent to your phone) with anyone.",
    "draft": "绝不要把您的OTP（发到您手机的验证码）告诉任何人。",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Never tell anyone your OTP (the verification code sent to your phone).",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "绝不要把您的OTP（手机收到的验证码）告诉任何人。",
+   "reason": "发到您手机的 -> 手机收到的 is more natural."
   },
   "learn[4].todo[1]": {
    "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
    "draft": "记住ACT：ADD 安装ScamShield应用，CHECK 拨打1799查证，TELL 告诉家人和朋友。",
-   "verdict": "ok",
-   "back": "Remember ACT: ADD install ScamShield app, CHECK call 1799 to verify, TELL tell family and friends.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Remember ACT: ADD install ScamShield app, CHECK call 1799 verify, TELL tell family and friends.",
+   "suggestion": "记住ACT：ADD ScamShield app，CHECK 拨打1799查一下，TELL 告诉家人和朋友。",
+   "reason": "ADD 安装ScamShield应用 -> ADD ScamShield app matches English. 查证 is formal; 查一下 is everyday."
   },
   "quiz[0].title": {
    "english": "Spot the red flags",
    "draft": "找出危险信号",
    "verdict": "ok",
-   "back": "Find the danger signals",
+   "back": "Spot the red flags",
    "suggestion": "",
    "reason": ""
   },
@@ -855,41 +862,41 @@
    "english": "Dear worker,",
    "draft": "亲爱的员工，",
    "verdict": "ok",
-   "back": "Dear employee,",
+   "back": "Dear worker,",
    "suggestion": "",
    "reason": ""
   },
   "quiz[0].msg.bubbles[0][1].t": {
    "english": "you have an unpaid work permit fine of $350.",
    "draft": "您有一笔$350的工作准证罚款尚未缴付。",
-   "verdict": "ok",
-   "back": "You have an unpaid work permit fine of $350.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "You have a $350 work permit fine not yet paid.",
+   "suggestion": "您有一笔$350的工作准证罚款还没交。",
+   "reason": "尚未缴付 is formal; 还没交 is everyday."
   },
   "quiz[0].msg.bubbles[1][0].t": {
    "english": "Pay at",
    "draft": "在以下网址缴付：",
    "verdict": "fix",
-   "back": "Pay at the following URL:",
-   "suggestion": "在以下网址付款：",
-   "reason": "Draft adds '以下' (following) and '网址' (URL) which are not in the English source 'Pay at'. The English is just 'Pay at', likely followed by a link. '在...付款' is sufficient. Also '缴付' is formal, '付款' is everyday."
+   "back": "Pay at the following website:",
+   "suggestion": "在下面的网址付款：",
+   "reason": "缴付 is formal; 付款 is everyday. 在以下 -> 在下面的 is more natural."
   },
   "quiz[0].msg.bubbles[1][2].t": {
    "english": "or reply with your bank login.",
    "draft": "或回复您的银行登录资料。",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Or reply with your bank login details.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "或者回复您的银行登录信息。",
+   "reason": "或 is formal; 或者 is everyday. 资料 is formal; 信息 is more natural."
   },
   "quiz[0].explain": {
    "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
    "draft": "政府短信来自\"gov.sg\"。MOM的真实网址以\".mom.gov.sg\"结尾。政府绝不会通过短信索取您的银行登录资料。不确定？请拨打1799。",
-   "verdict": "ok",
-   "back": "Government SMSes come from 'gov.sg'. Real MOM addresses end with '.mom.gov.sg'. The Government never asks for your bank login details via SMS. Unsure? Please call 1799.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "suggestion": "政府短信来自\"gov.sg\"。MOM的真实网址以\".mom.gov.sg\"结尾。政府绝不会通过短信要您的银行登录信息。不确定的话？打1799。",
+   "reason": "索取 is formal; 要 is everyday. 不确定？ -> 不确定的话？ is more natural. 请拨打 -> 打 is shorter."
   },
   "quiz[1].title": {
    "english": "Scam or safe?",
@@ -934,18 +941,18 @@
   "quiz[1].cards[1].text": {
    "english": "Your bank account is locked. Reply with the OTP we just sent you.",
    "draft": "您的银行户口已被冻结。请回复我们刚发给您的OTP。",
-   "verdict": "ok",
-   "back": "Your bank account has been frozen. Please reply with the OTP we just sent you.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "suggestion": "您的银行户口冻结了。回复我们刚发给您的OTP。",
+   "reason": "已被冻结 is formal; 冻结了 is everyday. 请回复 -> 回复 is shorter."
   },
   "quiz[1].cards[1].why": {
    "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
    "draft": "绝不要把您的OTP（发到您手机的验证码）告诉任何人，即使对方说是您的银行。",
-   "verdict": "ok",
-   "back": "Never tell anyone your OTP (the verification code sent to your phone), even if they say they are your bank.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "suggestion": "绝不要把您的OTP（手机收到的验证码）告诉任何人，即使对方说是您的银行。",
+   "reason": "发到您手机的 -> 手机收到的 is more natural."
   },
   "quiz[1].cards[2].from": {
    "english": "New contact",
@@ -958,18 +965,18 @@
   "quiz[1].cards[2].text": {
    "english": "Lend me your bank card for one week. I will pay you $300.",
    "draft": "把您的银行卡借我一个星期。我付您$300。",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Lend me your bank card for one week. I will pay you $300.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "把您的银行卡借我一个星期。我给您$300。",
+   "reason": "付您 is less natural; 给您 is more everyday."
   },
   "quiz[1].cards[2].why": {
    "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
    "draft": "这是要您当钱骡的提议。让别人使用您的银行卡是犯罪行为。",
-   "verdict": "ok",
-   "back": "This is an offer to make you a money mule. Letting others use your bank card is a crime.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "suggestion": "这是要您当钱骡的提议。让别人使用您的银行卡是犯罪。",
+   "reason": "犯罪行为 is formal; 犯罪 is enough. 要您当 -> 让您当 is more natural."
   },
   "quiz[1].cards[3].from": {
    "english": "Your friend",
@@ -982,10 +989,10 @@
   "quiz[1].cards[3].text": {
    "english": "Happy Deepavali! See you at the event on Sunday.",
    "draft": "屠妖节快乐！星期天活动见。",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Happy Deepavali! See you at the event on Sunday.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "屠妖节快乐！星期天活动见面。",
+   "reason": "活动见 is terse; 活动见面 is more natural."
   },
   "quiz[1].cards[3].why": {
    "english": "A normal greeting from a friend, with nothing asked.",
@@ -1015,7 +1022,7 @@
    "english": "Hi, it's your cousin. I changed my number.",
    "draft": "嗨，我是你表哥。我换号码了。",
    "verdict": "ok",
-   "back": "Hi, I am your cousin. I changed my number.",
+   "back": "Hi, I am your cousin. I changed number.",
    "suggestion": "",
    "reason": ""
   },
@@ -1031,7 +1038,7 @@
    "english": "OK, here is the code: 482915",
    "draft": "好的，验证码是：482915",
    "verdict": "ok",
-   "back": "Okay, the verification code is: 482915",
+   "back": "OK, verification code is: 482915",
    "suggestion": "",
    "reason": ""
   },
@@ -1039,7 +1046,7 @@
    "english": "No. I never share codes. I will call your old number.",
    "draft": "不。我从不把验证码给别人。我会打你的旧号码。",
    "verdict": "ok",
-   "back": "No. I never give verification codes to others. I will call your old number.",
+   "back": "No. I never give verification code to others. I will call your old number.",
    "suggestion": "",
    "reason": ""
   },
@@ -1047,7 +1054,7 @@
    "english": "Send me your photo first, then I will send it.",
    "draft": "你先发你的照片给我，我再发给你。",
    "verdict": "ok",
-   "back": "You send your photo to me first, then I will send it to you.",
+   "back": "You first send your photo to me, I then send to you.",
    "suggestion": "",
    "reason": ""
   },
@@ -1055,7 +1062,7 @@
    "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
    "draft": "绝不要把您的OTP告诉任何人，家人也不行。如果有人说他换了号码，请打他的旧号码查证。",
    "verdict": "ok",
-   "back": "Never tell anyone your OTP, not even family. If someone says they changed their number, please call their old number to verify.",
+   "back": "Absolutely do not tell anyone your OTP, family also not allowed. If someone says he changed number, please call his old number to verify.",
    "suggestion": "",
    "reason": ""
   },
@@ -1063,7 +1070,7 @@
    "english": "Pick the safe way",
    "draft": "选出安全的方法",
    "verdict": "ok",
-   "back": "Choose the safe method",
+   "back": "Select out safe method",
    "suggestion": "",
    "reason": ""
   },
@@ -1071,7 +1078,7 @@
    "english": "You want a shopping app for Deepavali deals. Where should you get it?",
    "draft": "您想下载一个购物应用，买屠妖节优惠商品。应该从哪里下载？",
    "verdict": "ok",
-   "back": "You want to download a shopping app to buy Deepavali discount items. Where should you download from?",
+   "back": "You want to download a shopping app, buy Deepavali discount goods. Where should download from?",
    "suggestion": "",
    "reason": ""
   },
@@ -1079,7 +1086,7 @@
    "english": "The official app store on your phone",
    "draft": "您手机上的官方应用商店",
    "verdict": "ok",
-   "back": "The official app store on your phone",
+   "back": "Your phone's official app store",
    "suggestion": "",
    "reason": ""
   },
@@ -1087,7 +1094,7 @@
    "english": "A link sent in a chat message",
    "draft": "聊天信息里发来的链接",
    "verdict": "ok",
-   "back": "A link sent in a chat message",
+   "back": "Chat message inside sent link",
    "suggestion": "",
    "reason": ""
   },
@@ -1095,7 +1102,7 @@
    "english": "A link in an online advert",
    "draft": "网上广告里的链接",
    "verdict": "ok",
-   "back": "A link in an online advertisement",
+   "back": "Online advertisement inside link",
    "suggestion": "",
    "reason": ""
   },
@@ -1103,7 +1110,7 @@
    "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
    "draft": "只从官方应用商店（Google Play 或 Apple App Store）安装应用。来自链接的应用会盗取您的钱。",
    "verdict": "ok",
-   "back": "Only install apps from official app store (Google Play or Apple App Store). Apps from links will steal your money.",
+   "back": "Only from official app store (Google Play or Apple App Store) install app. Apps from links will steal your money.",
    "suggestion": "",
    "reason": ""
   },
@@ -1111,7 +1118,7 @@
    "english": "Spot the red flags",
    "draft": "找出危险信号",
    "verdict": "ok",
-   "back": "Find the danger signals",
+   "back": "Find out danger signals",
    "suggestion": "",
    "reason": ""
   },
@@ -1127,7 +1134,7 @@
    "english": "Job Agent",
    "draft": "职业中介",
    "verdict": "ok",
-   "back": "Job Agent",
+   "back": "Job agent",
    "suggestion": "",
    "reason": ""
   },
@@ -1143,7 +1150,7 @@
    "english": "Pay me $500 to keep your job.",
    "draft": "付我$500，就能保住您的工作。",
    "verdict": "ok",
-   "back": "Pay me $500, and you can keep your job.",
+   "back": "Pay me $500, then can keep your job.",
    "suggestion": "",
    "reason": ""
   },
@@ -1151,7 +1158,7 @@
    "english": "Check your permit at",
    "draft": "到这里查看您的准证：",
    "verdict": "ok",
-   "back": "Check your permit here:",
+   "back": "Here check your permit:",
    "suggestion": "",
    "reason": ""
   },
@@ -1159,7 +1166,7 @@
    "english": "and send me your Singpass password.",
    "draft": "然后把您的Singpass密码发给我。",
    "verdict": "ok",
-   "back": "and then send your Singpass password to me.",
+   "back": "Then put your Singpass password send to me.",
    "suggestion": "",
    "reason": ""
   },
@@ -1167,7 +1174,7 @@
    "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
    "draft": "要您付钱才能保住工作，是违法的。MOM的真实网址以\".mom.gov.sg\"结尾。绝不要把您的Singpass密码告诉任何人。",
    "verdict": "ok",
-   "back": "Making you pay to keep your job is illegal. Real MOM websites end with \".mom.gov.sg\". Never tell anyone your Singpass password.",
+   "back": "Want you pay money to keep job, is illegal. MOM real address ends with \".mom.gov.sg\". Absolutely do not tell anyone your Singpass password.",
    "suggestion": "",
    "reason": ""
   },
@@ -1183,7 +1190,7 @@
    "english": "Unknown number",
    "draft": "陌生号码",
    "verdict": "ok",
-   "back": "Unknown number",
+   "back": "Strange number",
    "suggestion": "",
    "reason": ""
   },
@@ -1191,7 +1198,7 @@
    "english": "Easy money! Earn $200 every week.",
    "draft": "轻松赚钱！每周赚$200。",
    "verdict": "ok",
-   "back": "Easy money! Earn $200 every week.",
+   "back": "Easy earn money! Every week earn $200.",
    "suggestion": "",
    "reason": ""
   },
@@ -1207,7 +1214,7 @@
    "english": "OK, how do I start?",
    "draft": "好的，怎么开始？",
    "verdict": "ok",
-   "back": "Okay, how to start?",
+   "back": "OK, how do I start?",
    "suggestion": "",
    "reason": ""
   },
@@ -1215,7 +1222,7 @@
    "english": "Can you pay me $400 instead?",
    "draft": "可以付我$400吗？",
    "verdict": "ok",
-   "back": "Can pay me $400?",
+   "back": "Can you pay me $400 instead?",
    "suggestion": "",
    "reason": ""
   },
@@ -1223,17 +1230,17 @@
    "english": "No. This is a crime. I will report it.",
    "draft": "不。这是犯罪。我会举报。",
    "verdict": "ok",
-   "back": "No. This is crime. I will report.",
+   "back": "No. This is a crime. I will report it.",
    "suggestion": "",
    "reason": ""
   },
   "quiz[5].explain": {
    "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
    "draft": "让别人使用您的银行户口或Singpass，会让您成为钱骡。这是犯罪行为。请拒绝并举报。",
-   "verdict": "fix",
-   "back": "Letting others use your bank account or Singpass will make you a money mule. This is criminal behavior. Please refuse and report.",
-   "suggestion": "让别人用你的银行户口或Singpass，你会变成钱骡。这是犯罪。请拒绝并举报。",
-   "reason": "Changed '您的' to '你的' for casual tone; simplified '犯罪行为' to '犯罪' and '会让您成为' to '你会变成' for plain language."
+   "verdict": "ok",
+   "back": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.title": {
    "english": "One last thing",
@@ -1247,7 +1254,7 @@
    "english": "How happy are you with today's event?",
    "draft": "您对今天的活动满意吗？",
    "verdict": "ok",
-   "back": "Are you satisfied with today's event?",
+   "back": "How happy are you with today's event?",
    "suggestion": "",
    "reason": ""
   },
@@ -1255,7 +1262,7 @@
    "english": "Very unhappy",
    "draft": "非常不满意",
    "verdict": "ok",
-   "back": "Very unsatisfied",
+   "back": "Very unhappy",
    "suggestion": "",
    "reason": ""
   },
@@ -1263,7 +1270,7 @@
    "english": "Unhappy",
    "draft": "不满意",
    "verdict": "ok",
-   "back": "Unsatisfied",
+   "back": "Unhappy",
    "suggestion": "",
    "reason": ""
   },
@@ -1271,7 +1278,7 @@
    "english": "Okay",
    "draft": "一般",
    "verdict": "ok",
-   "back": "Average",
+   "back": "Okay",
    "suggestion": "",
    "reason": ""
   },
@@ -1279,7 +1286,7 @@
    "english": "Happy",
    "draft": "满意",
    "verdict": "ok",
-   "back": "Satisfied",
+   "back": "Happy",
    "suggestion": "",
    "reason": ""
   },
@@ -1287,7 +1294,7 @@
    "english": "Very happy",
    "draft": "非常满意",
    "verdict": "ok",
-   "back": "Very satisfied",
+   "back": "Very happy",
    "suggestion": "",
    "reason": ""
   },
@@ -1295,47 +1302,39 @@
    "english": "Did you learn something new about scams?",
    "draft": "您学到关于诈骗的新知识了吗？",
    "verdict": "ok",
-   "back": "Did you learn new knowledge about scams?",
+   "back": "Did you learn something new about scams?",
    "suggestion": "",
    "reason": ""
   },
   "feedback.learnedOptions[0].label": {
    "english": "Yes",
    "draft": "有",
-   "verdict": "fix",
-   "back": "Have",
-   "suggestion": "是",
-   "reason": "English is 'Yes'. '有' means 'have'. In Chinese, answering 'Did you learn?' with '有' is colloquial but '是' (Yes) is clearer for a binary choice alongside 'No'."
+   "verdict": "ok",
+   "back": "Yes",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.learnedOptions[1].label": {
    "english": "A little",
    "draft": "一点点",
    "verdict": "ok",
-   "back": "A little bit",
+   "back": "A little",
    "suggestion": "",
    "reason": ""
   },
   "feedback.learnedOptions[2].label": {
    "english": "No",
    "draft": "没有",
-   "verdict": "fix",
-   "back": "No have",
-   "suggestion": "否",
-   "reason": "English is 'No'. '没有' is 'don't have'. '否' is the standard negative answer for 'Yes/No' questions in forms, or '没有' if matching the verb. Since option 0 was changed to '是', option 2 should be '否' for consistency."
+   "verdict": "ok",
+   "back": "No",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.submit": {
    "english": "See my result",
    "draft": "查看我的结果",
    "verdict": "ok",
-   "back": "View my result",
-   "suggestion": "",
-   "reason": ""
-  },
-  "ui.watch": {
-   "english": "Watch the official video",
-   "draft": "观看官方视频",
-   "verdict": "ok",
-   "back": "Watch official video",
+   "back": "See my result",
    "suggestion": "",
    "reason": ""
   }

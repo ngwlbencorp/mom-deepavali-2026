@@ -1,7 +1,6 @@
 {
- "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
  "checked": "2026-10-29",
- "seaTuned": true,
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -14,10 +13,10 @@
   "event.title": {
    "english": "Stay safe from scams",
    "draft": "လိမ်လည်မှုများမှ ဘေးကင်းစွာ နေပါ",
-   "verdict": "ok",
-   "back": "Stay safe from scams",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Stay safely from scams",
+   "suggestion": "လိမ်လည်မှုများမှ ကာကွယ်ပါ",
+   "reason": "Current draft sounds like 'stay safely' rather than 'stay safe from scams'. 'ကာကွယ်ပါ' is more natural for 'stay safe from'."
   },
   "event.intro": {
    "english": "Learn the tricks scammers use, then take the quiz.",
@@ -86,10 +85,10 @@
   "ui.exitQuiz": {
    "english": "Exit quiz",
    "draft": "ထွက်ရန်",
-   "verdict": "fix",
-   "back": "Exit",
-   "suggestion": "ဉာဏ်စမ်းမေးခွန်းမှ ထွက်ရန်",
-   "reason": "Draft 'ထွက်ရန်' (To exit) is too vague; English specifies 'Exit quiz'. Added context for clarity."
+   "verdict": "ok",
+   "back": "Exit quiz",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.exitConfirm": {
    "english": "Leave the quiz? Your answers so far will be lost.",
@@ -102,10 +101,10 @@
   "ui.closeReview": {
    "english": "Close review",
    "draft": "ပိတ်ရန်",
-   "verdict": "fix",
+   "verdict": "ok",
    "back": "Close",
-   "suggestion": "ပြန်ကြည့်မှုကို ပိတ်ရန်",
-   "reason": "Draft 'ပိတ်ရန်' (To close) is too vague; English specifies 'Close review'. Added context."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.learnTitle": {
    "english": "Learn about scams",
@@ -118,16 +117,16 @@
   "ui.learnSub": {
    "english": "5 short stories · 2 min",
    "draft": "ဇာတ်လမ်းတို 5 ပုဒ် · 2 မိနစ်",
-   "verdict": "ok",
-   "back": "5 short stories · 2 min",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "5 short story chapters · 2 min",
+   "suggestion": "ဇာတ်လမ်းတို 5 ခု · 2 မိနစ်",
+   "reason": "ပုဒ် means chapter; use ခု for items"
   },
   "ui.quizTitle": {
    "english": "Quiz for a souvenir",
    "draft": "လက်ဆောင်ရ ဉာဏ်စမ်းမေးခွန်း",
    "verdict": "ok",
-   "back": "Quiz for a souvenir",
+   "back": "Quiz to get souvenir",
    "suggestion": "",
    "reason": ""
   },
@@ -135,7 +134,7 @@
    "english": "Take the quiz",
    "draft": "ဉာဏ်စမ်းမေးခွန်း ဖြေပါ",
    "verdict": "ok",
-   "back": "Take the quiz",
+   "back": "Answer the quiz",
    "suggestion": "",
    "reason": ""
   },
@@ -167,7 +166,7 @@
    "english": "🎁 {n} souvenirs left",
    "draft": "🎁 လက်ဆောင် {n} ခု ကျန်ပါသေးသည်",
    "verdict": "ok",
-   "back": "🎁 {n} souvenirs left",
+   "back": "🎁 {n} souvenirs remain",
    "suggestion": "",
    "reason": ""
   },
@@ -207,7 +206,7 @@
    "english": "EXAMPLE · NOT REAL",
    "draft": "ဥပမာ · အစစ်မဟုတ်ပါ",
    "verdict": "ok",
-   "back": "Example · Not real",
+   "back": "EXAMPLE · NOT REAL",
    "suggestion": "",
    "reason": ""
   },
@@ -223,31 +222,39 @@
    "english": "Take the quiz",
    "draft": "ဉာဏ်စမ်းမေးခွန်း ဖြေပါ",
    "verdict": "fix",
-   "back": "Answer the intelligence test questions",
-   "suggestion": "မေးခွန်းများ ဖြေပါ",
-   "reason": "‘ဉာဏ်စမ်း’ implies an IQ test; ‘မေးခွန်းများ ဖြေပါ’ (Answer questions) is simpler and more natural for a quiz."
+   "back": "Answer the quiz questions",
+   "suggestion": "မေးခွန်းလုပ်ဆောင်ပါ",
+   "reason": "Draft means 'answer the quiz questions' but English says 'Take the quiz' (start/do the quiz)."
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "တရားဝင် ဗီဒီယိုကို ကြည့်ပါ",
+   "verdict": "ok",
+   "back": "Watch the official video",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.spotPrompt": {
    "english": "Tap the {n} red flags",
    "draft": "အန္တရာယ် အချက်ပြ {n} ခုကို နှိပ်ပါ",
    "verdict": "ok",
-   "back": "Tap the {n} danger signals",
+   "back": "Tap the {n} red flags",
    "suggestion": "",
    "reason": ""
   },
   "ui.selected": {
    "english": "{k} of {n} chosen",
    "draft": "{n} ခုမှ {k} ခု ရွေးပြီး",
-   "verdict": "ok",
-   "back": "{k} of {n} chosen",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "{n} of {k} chosen",
+   "suggestion": "{k} / {n} ရွေးပြီး",
+   "reason": "Order reversed: English says {k} of {n} but draft shows {n} of {k}."
   },
   "ui.scam": {
    "english": "Scam",
    "draft": "လိမ်လည်မှု",
    "verdict": "ok",
-   "back": "Fraud",
+   "back": "Scam",
    "suggestion": "",
    "reason": ""
   },
@@ -263,7 +270,7 @@
    "english": "Message {i} of {n}",
    "draft": "စာ {i} / {n}",
    "verdict": "ok",
-   "back": "Message {i} / {n}",
+   "back": "Message {i} of {n}",
    "suggestion": "",
    "reason": ""
   },
@@ -271,7 +278,7 @@
    "english": "{i} of {n}",
    "draft": "{i} / {n}",
    "verdict": "ok",
-   "back": "{i} / {n}",
+   "back": "{i} of {n}",
    "suggestion": "",
    "reason": ""
   },
@@ -287,7 +294,7 @@
    "english": "All correct!",
    "draft": "အားလုံး မှန်ပါသည်!",
    "verdict": "ok",
-   "back": "All are correct!",
+   "back": "All correct!",
    "suggestion": "",
    "reason": ""
   },
@@ -295,7 +302,7 @@
    "english": "Show this QR code to an MOM officer for your souvenir.",
    "draft": "လက်ဆောင်ရယူရန် ဤ QR ကုဒ်ကို MOM အရာရှိကို ပြပါ။",
    "verdict": "ok",
-   "back": "Show this QR code to an MOM officer to get a souvenir.",
+   "back": "Show this QR code to an MOM officer for your souvenir.",
    "suggestion": "",
    "reason": ""
   },
@@ -303,33 +310,33 @@
    "english": "You got all correct before, so your QR code is still valid.",
    "draft": "ယခင်က အားလုံး မှန်ခဲ့သဖြင့် သင့် QR ကုဒ် အသုံးပြုနိုင်ပါသေးသည်။",
    "verdict": "ok",
-   "back": "Since you got all correct before, your QR code is still usable.",
+   "back": "You got all correct before, so your QR code is still valid.",
    "suggestion": "",
    "reason": ""
   },
   "ui.partial": {
    "english": "{s} of {t} correct",
    "draft": "{t} ခုမှ {s} ခု မှန်",
-   "verdict": "ok",
-   "back": "{s} of {t} correct",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "{t} of {s} correct",
+   "suggestion": "{s} / {t} မှန်",
+   "reason": "Order reversed: English says {s} of {t} but draft shows {t} of {s}."
   },
   "ui.partialMsg": {
    "english": "Review the answers, then try again for a souvenir.",
    "draft": "အဖြေများကို ပြန်ကြည့်ပြီး လက်ဆောင်အတွက် ထပ်မံကြိုးစားပါ။",
    "verdict": "ok",
-   "back": "Review the answers and try again for a souvenir.",
+   "back": "Review the answers, then try again for a souvenir.",
    "suggestion": "",
    "reason": ""
   },
   "ui.review": {
    "english": "Review answers",
    "draft": "အဖြေများ ပြန်ကြည့်ရန်",
-   "verdict": "fix",
-   "back": "To review answers",
-   "suggestion": "အဖြေများ ပြန်ကြည့်ပါ",
-   "reason": "Remove 'ရန်' (to) to make it a direct command/button label like 'Review answers'."
+   "verdict": "ok",
+   "back": "Review answers",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.tryAgain": {
    "english": "Try again",
@@ -342,10 +349,10 @@
   "ui.backToResult": {
    "english": "Back to my QR code",
    "draft": "ကျွန်ုပ်၏ QR ကုဒ်သို့ ပြန်သွားရန်",
-   "verdict": "fix",
-   "back": "To go back to my QR code",
-   "suggestion": "ကျွန်ုပ်၏ QR ကုဒ်သို့ ပြန်သွားပါ",
-   "reason": "Remove 'ရန်' (to) to make it a direct command/button label."
+   "verdict": "ok",
+   "back": "Back to my QR code",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.saved": {
    "english": "Result saved ✓",
@@ -359,7 +366,7 @@
    "english": "Not saved yet (no connection). An officer can still scan this QR code.",
    "draft": "မသိမ်းရသေးပါ (အင်တာနက် မရှိပါ)။ အရာရှိက ဤ QR ကုဒ်ကို စကင်ဖတ်နိုင်ပါသေးသည်။",
    "verdict": "ok",
-   "back": "Not saved yet (no internet). An officer can still scan this QR code.",
+   "back": "Not saved yet (no connection). An officer can still scan this QR code.",
    "suggestion": "",
    "reason": ""
   },
@@ -367,17 +374,17 @@
    "english": "Not saved yet (no connection).",
    "draft": "မသိမ်းရသေးပါ (အင်တာနက် မရှိပါ)။",
    "verdict": "ok",
-   "back": "Not saved yet (no internet).",
+   "back": "Not saved yet (no connection).",
    "suggestion": "",
    "reason": ""
   },
   "ui.retry": {
    "english": "Retry saving",
    "draft": "ထပ်မံသိမ်းရန်",
-   "verdict": "fix",
-   "back": "To save again",
-   "suggestion": "ထပ်မံသိမ်းပါ",
-   "reason": "Remove 'ရန်' (to) to make it a direct command/button label."
+   "verdict": "ok",
+   "back": "Retry saving",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.yourAnswer": {
    "english": "Your answer",
@@ -391,25 +398,25 @@
    "english": "Right answer",
    "draft": "အဖြေမှန်",
    "verdict": "ok",
-   "back": "Correct answer",
+   "back": "Right answer",
    "suggestion": "",
    "reason": ""
   },
   "ui.correct": {
    "english": "Correct",
    "draft": "မှန်ပါသည်",
-   "verdict": "ok",
-   "back": "It is correct",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Correct",
+   "suggestion": "မှန်တယ်",
+   "reason": "Too formal for button label; 'မှန်တယ်' is shorter and natural for UI"
   },
   "ui.wrong": {
    "english": "Not correct",
    "draft": "မမှန်ပါ",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Not correct",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "မမှန်တယ်",
+   "reason": "Too formal; 'မမှန်တယ်' is more natural for button"
   },
   "ui.codeLabel": {
    "english": "Code",
@@ -422,26 +429,26 @@
   "ui.attempt": {
    "english": "Attempt",
    "draft": "ကြိုးစားမှု",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Attempt",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "ကြိုးစားပါ",
+   "reason": "Button label should be imperative; 'ကြိုးစားပါ' is natural action text"
   },
   "learn[0].title": {
    "english": "Fake MOM officer",
    "draft": "MOM အရာရှိ အတု",
-   "verdict": "ok",
-   "back": "Fake MOM officer",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "MOM real fake",
+   "suggestion": "MOM အတု",
+   "reason": "'အရာရှိ' means real, contradicts 'fake'; 'MOM အတု' is clear and short"
   },
   "learn[0].tagline": {
    "english": "Scammers pretend to be MOM or the Police.",
    "draft": "လိမ်လည်သူများသည် MOM သို့မဟုတ် ရဲ ဟု ဟန်ဆောင်တတ်သည်။",
-   "verdict": "ok",
-   "back": "Scammers often pretend to be MOM or the Police.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Scammers pretend to be MOM or the Police.",
+   "suggestion": "လိမ်လည်သူများသည် MOM သို့မဟုတ် ရဲ ဟု ဟန်ဆောင်သည်။",
+   "reason": "'ဟန်ဆောင်တတ်သည်' is formal; 'ဟန်ဆောင်သည်' is natural for written text"
   },
   "learn[0].chat.channel": {
    "english": "Phone call",
@@ -454,98 +461,98 @@
   "learn[0].chat.from": {
    "english": "Unknown number",
    "draft": "မသိသော နံပါတ်",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Unknown number",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "မသိဘဲ နံပါတ်",
+   "reason": "'မသိသော' is formal; 'မသိဘဲ' is more natural for UI"
   },
   "learn[0].chat.lines[0]": {
    "english": "Hello, I am from MOM. There is a problem with your work permit.",
    "draft": "မင်္ဂလာပါ၊ ကျွန်တော် MOM က ဖြစ်ပါတယ်။ သင့်အလုပ်ပါမစ်မှာ ပြဿနာ ရှိနေပါတယ်။",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Hello, I am from MOM. There is a problem with your work permit.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "မင်္ဂလာပါ၊ ကျွန်တော် MOM ကနေ ဖြစ်ပါတယ်။ သင့်အလုပ်ပါမစ်မှု ပြဿနာ ရှိပါတယ်။",
+   "reason": "'ကနေ' is more natural for 'from'; 'အလုပ်ပါမစ်မှု' is standard term; 'ရှိပါတယ်' is shorter"
   },
   "learn[0].chat.lines[1]": {
    "english": "Transfer $500 now, or you will be sent home!",
    "draft": "အခုချက်ချင်း $500 လွှဲပါ၊ မဟုတ်ရင် သင့်ကို နိုင်ငံပြန်ပို့မယ်!",
-   "verdict": "ok",
-   "back": "Transfer $500 now, or they will send you back to your country!",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Transfer $500 now, or you will be sent home!",
+   "suggestion": "အခု $500 လွှဲပါ၊ မဟုတ်ရင် သင့်ကို နိုင်ငံပြန်ပို့ပေးမယ်!",
+   "reason": "'အခု' is shorter than 'အခုချက်ချင်း'; 'ပို့ပေးမယ်' is more natural than 'ပို့မယ်'"
   },
   "learn[0].chat.lines[2]": {
    "english": "Install this app from my link so I can help you.",
    "draft": "ကျွန်တော် ကူညီနိုင်ဖို့ ကျွန်တော့် လင့်ခ်ကနေ ဒီအက်ပ်ကို ထည့်သွင်းပါ။",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Install this app from my link so I can help you.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "ကျွန်တော် ကူညီနိုင်ဖို့ ကျွန်တော် လင့်ခ်ကနေ ဒီအက်ပ်ကို ဒေါင်းလုဒ်ပါ။",
+   "reason": "'ဒေါင်းလုဒ်ပါ' is more common than 'ထည့်သွင်းပါ' for app install; 'ကျွန်တော်' instead of 'ကျွန်တော့်' for consistency"
   },
   "learn[0].chat.lines[3]": {
    "english": "Now I will transfer your call to the Police.",
    "draft": "အခု သင့်ဖုန်းကို ရဲဆီ လွှဲပေးပါမယ်။",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Now I will transfer your call to the Police.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "အခု သင့်ဖုန်းခေါ်ဆိုမှု ကို ရဲဆီ လွှဲပေးမယ်။",
+   "reason": "'ဖုန်းခေါ်ဆိုမှု' means 'call'; 'လွှဲပေးမယ်' is natural"
   },
   "learn[0].flags[0].label": {
    "english": "Asks you to transfer money",
    "draft": "ငွေလွှဲခိုင်းသည်",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Asks you to transfer money",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "ငွေလွှဲခိုင်းတယ်",
+   "reason": "'ခိုင်းတယ်' is more natural than 'ခိုင်းသည်' for flag label"
   },
   "learn[0].flags[1].label": {
    "english": "App from a link, not the app store",
    "draft": "အက်ပ်စတိုး မဟုတ်ဘဲ လင့်ခ်မှ အက်ပ်",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "App from a link, not the app store",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "အက်ပ်စတိုး မဟုတ်ဘဲ လင့်ခ်ကနေ အက်ပ်",
+   "reason": "'လင့်ခ်ကနေ' is more natural than 'လင့်ခ်မှ' for 'from link'"
   },
   "learn[0].flags[2].label": {
    "english": "Transfers your call to the Police",
    "draft": "ဖုန်းကို ရဲဆီ လွှဲပေးသည်",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Transfers your call to the Police",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "ဖုန်းခေါ်ဆိုမှု ကို ရဲဆီ လွှဲပေးတယ်",
+   "reason": "'ဖုန်းခေါ်ဆိုမှု' means 'call'; 'လွှဲပေးတယ်' is natural"
   },
   "learn[0].todo[0]": {
    "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
    "draft": "MOM က သင့်အလုပ်အကြောင်း ဖုန်းခေါ်နိုင်သည်။ သို့သော် MOM သည် ငွေလွှဲရန် သို့မဟုတ် ဘဏ် login ပေးရန် ဘယ်တော့မှ မတောင်းပါ။",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "MOM က သင့်အလုပ်အကြောင်း ဖုန်းခေါ်နိုင်တယ်။ သို့သော် MOM သည် ငွေလွှဲရန် သို့မဟုတ် ဘဏ် login ပေးရန် ဘယ်တော့မှ မတောင်းပါ။",
+   "reason": "'နိုင်တယ်' is more natural than 'နိုင်သည်'; rest is acceptable"
   },
   "learn[0].todo[1]": {
    "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
    "draft": "MOM သည် လင့်ခ်မှ အက်ပ်ထည့်သွင်းရန် ဘယ်တော့မှ မခိုင်းပါ၊ သင့်ဖုန်းကို ရဲထံ လွှဲမပေးပါ။ မသေချာပါက ဖုန်းချလိုက်ပါ။",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "MOM သည် လင့်ခ်ကနေ အက်ပ်ဒေါင်းလုဒ်ရန် ဘယ်တော့မှ မခိုင်းပါ၊ သင့်ဖုန်းခေါ်ဆိုမှု ကို ရဲထံ လွှဲမပေးပါ။ မသေချာပါက ဖုန်းချလိုက်ပါ။",
+   "reason": "'လင့်ခ်ကနေ' for 'from link'; 'ဒေါင်းလုဒ်ရန်' for 'install app'; 'ဖုန်းခေါ်ဆိုမှု' for 'call'"
   },
   "learn[1].title": {
    "english": "Fake festive deal",
    "draft": "ပွဲတော် အရောင်းပွဲ အတု",
    "verdict": "ok",
-   "back": "Fake festival sale",
+   "back": "Fake festive deal",
    "suggestion": "",
    "reason": ""
   },
   "learn[1].tagline": {
    "english": "Too-good deals that make you install an app.",
    "draft": "အက်ပ်ထည့်ခိုင်းသော ယုံရခက်လောက်အောင် ကောင်းသည့် အရောင်းပွဲများ။",
-   "verdict": "ok",
-   "back": "Sales that are too good to be true, asking you to install an app.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Too-good deals that make you install an app.",
+   "suggestion": "ဒေါင်းလုဒ်ခိုင်းသော ယုံရခက်လောက်အောင် အရောင်းပွဲများ။",
+   "reason": "'ဒေါင်းလုဒ်ခိုင်းသော' is more natural than 'အက်ပ်ထည့်ခိုင်းသော'; removed redundant 'ကောင်းသည့်'"
   },
   "learn[1].chat.channel": {
    "english": "Advertisement",
@@ -582,24 +589,24 @@
   "learn[1].chat.lines[2]": {
    "english": "Only 1 hour left!",
    "draft": "1 နာရီသာ ကျန်တော့သည်!",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Only 1 hour left!",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "1 နာရီသာ ကျန်တော့တယ်!",
+   "reason": "'ကျန်တော့တယ်' is more natural than 'ကျန်တော့သည်' for casual message"
   },
   "learn[1].flags[0].label": {
    "english": "Price is too good to be true",
    "draft": "ယုံရခက်လောက်အောင် ဈေးပေါသည်",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Price is too good to be true",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "ဈေးက ယုံရခက်လောက်အောင်",
+   "reason": "'ဈေးက' makes it clear 'price is'; shorter and natural"
   },
   "learn[1].flags[1].label": {
    "english": "App from a link, not the app store",
    "draft": "အက်ပ်စတိုး မဟုတ်ဘဲ လင့်ခ်မှ အက်ပ်",
    "verdict": "ok",
-   "back": "App from a link, not the app store",
+   "back": "App not from app store but from link",
    "suggestion": "",
    "reason": ""
   },
@@ -607,7 +614,7 @@
    "english": "Rushes you",
    "draft": "အလျင်စလို လုပ်ခိုင်းသည်",
    "verdict": "ok",
-   "back": "Makes you do it quickly",
+   "back": "Hurriedly makes you do",
    "suggestion": "",
    "reason": ""
   },
@@ -615,7 +622,7 @@
    "english": "Only install apps from the official app store (Google Play or Apple App Store).",
    "draft": "တရားဝင် အက်ပ်စတိုး (Google Play သို့မဟုတ် Apple App Store) မှသာ အက်ပ်များကို ထည့်သွင်းပါ။",
    "verdict": "ok",
-   "back": "Install apps only from the official app store (Google Play or Apple App Store).",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
    "suggestion": "",
    "reason": ""
   },
@@ -639,7 +646,7 @@
    "english": "Paying you to use your bank account.",
    "draft": "သင့်ဘဏ်အကောင့်ကို သုံးဖို့ ငွေပေးခြင်း။",
    "verdict": "ok",
-   "back": "Paying you to use your bank account.",
+   "back": "Paying money to use your bank account.",
    "suggestion": "",
    "reason": ""
   },
@@ -671,7 +678,7 @@
    "english": "Money for no work",
    "draft": "အလုပ်မလုပ်ဘဲ ငွေရသည်",
    "verdict": "ok",
-   "back": "Gets money without working",
+   "back": "Money without working",
    "suggestion": "",
    "reason": ""
   },
@@ -679,7 +686,7 @@
    "english": "Wants your bank account, SIM card or Singpass",
    "draft": "သင့်ဘဏ်အကောင့်၊ SIM ကတ် သို့မဟုတ် Singpass ကို တောင်းသည်",
    "verdict": "ok",
-   "back": "Asks for your bank account, SIM card or Singpass",
+   "back": "Wants your bank account, SIM card or Singpass",
    "suggestion": "",
    "reason": ""
   },
@@ -687,7 +694,7 @@
    "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
    "draft": "သင့်ဘဏ်အကောင့်၊ SIM ကတ် သို့မဟုတ် Singpass ကို ဘယ်တော့မှ မရောင်းပါနှင့်၊ မငှားပါနှင့်၊ မပေးပါနှင့်။",
    "verdict": "ok",
-   "back": "Never sell, rent, or give your bank account, SIM card, or Singpass.",
+   "back": "Never sell, lend or give away your bank account, SIM card or Singpass.",
    "suggestion": "",
    "reason": ""
   },
@@ -703,7 +710,7 @@
    "english": "Fake job or work permit",
    "draft": "အလုပ် သို့မဟုတ် အလုပ်ပါမစ် အတု",
    "verdict": "ok",
-   "back": "Fake job or work permit",
+   "back": "Job or work permit fake",
    "suggestion": "",
    "reason": ""
   },
@@ -711,7 +718,7 @@
    "english": "Fake approval letters that ask for money.",
    "draft": "ငွေတောင်းသော အတည်ပြုစာ အတုများ။",
    "verdict": "ok",
-   "back": "Fake approval letters asking for money.",
+   "back": "Approval letters asking for money that are fake.",
    "suggestion": "",
    "reason": ""
   },
@@ -759,7 +766,7 @@
    "english": "Asks you to pay first",
    "draft": "အရင် ငွေပေးခိုင်းသည်",
    "verdict": "ok",
-   "back": "Makes you pay first",
+   "back": "First asks to pay money",
    "suggestion": "",
    "reason": ""
   },
@@ -767,7 +774,7 @@
    "english": "A licence number does not prove it is real",
    "draft": "လိုင်စင်နံပါတ် ရှိရုံဖြင့် အစစ်ဟု မသက်သေပြနိုင်",
    "verdict": "ok",
-   "back": "Having a licence number does not prove it is real",
+   "back": "By having a licence number, cannot prove it is real",
    "suggestion": "",
    "reason": ""
   },
@@ -783,7 +790,7 @@
    "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
    "draft": "အရင် ငွေပေးခိုင်းခြင်းသည် အလုပ်လိမ်လည်မှု၏ အဖြစ်များသော လက္ခဏာ ဖြစ်သည်။ လိမ်လည်သူများသည် စာအတု လုပ်နိုင်ပြီး လိုင်စင်နံပါတ်ကို ကူးယူနိုင်သည်။",
    "verdict": "ok",
-   "back": "Asking you to pay first is a common sign of a job scam. Scammers can make fake letters and copy license numbers.",
+   "back": "Asking to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -791,55 +798,423 @@
    "english": "Secret codes (OTP)",
    "draft": "လျှို့ဝှက်ကုဒ် (OTP)",
    "verdict": "ok",
-   "back": "Secret codes (OTP)",
+   "back": "Secret code (OTP)",
    "suggestion": "",
    "reason": ""
   },
   "learn[4].tagline": {
    "english": "Scammers ask for the code sent to your phone.",
    "draft": "လိမ်လည်သူများက သင့်ဖုန်းသို့ ပို့ထားသော ကုဒ်ကို တောင်းတတ်သည်။",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Scammers ask for the code sent to your phone.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "လိမ်လည်သူများက သင့်ဖုန်းကို ပို့ထားသော ကုဒ်ကို တောင်းတယ်။",
+   "reason": "Too formal/wordy. 'သင့်ဖုန်းကို ပို့ထားသော' is more natural than 'သင့်ဖုန်းသို့ ပို့ထားသော'. 'တောင်းတယ်' is more everyday than 'တောင်းတတ်သည်'."
   },
   "learn[4].chat.lines[0]": {
    "english": "Sorry, I sent a code to your phone by mistake.",
    "draft": "တောင်းပန်ပါတယ်၊ မှားပြီး သင့်ဖုန်းကို ကုဒ်တစ်ခု ပို့မိသွားလို့ပါ။",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Sorry, I sent a code to your phone by mistake.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "learn[4].chat.lines[1]": {
-   "english": "Please send me the 6-digit code. Quick!",
-   "draft": "အဲဒီ ဂဏန်း 6 လုံး ကုဒ်ကို ပို့ပေးပါ။ မြန်မြန်!",
-   "verdict": "ok",
-   "back": "Please send that 6-digit code. Quick!",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "တောင်းပန်ပါတယ်၊ မှားပြီး သင့်ဖုန်းကို ကုဒ်တစ်ခု ပို့ခဲ့တယ်။",
+   "reason": "ပို့မိသွားလို့ပါ is unnatural. 'ပို့ခဲ့တယ်' is the natural way to say 'sent' in casual chat."
   },
   "learn[4].flags[0].label": {
    "english": "Asks for your OTP and rushes you",
    "draft": "သင့် OTP ကို တောင်းပြီး အလျင်စလို လုပ်ခိုင်းသည်",
-   "verdict": "ok",
-   "back": "Asks for your OTP and makes you do it quickly",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Asks for your OTP and rushes you",
+   "suggestion": "သင့် OTP ကို တောင်းပြီး အလျင်စလို လုပ်ဆောင်သည်",
+   "reason": "လုပ်ခိုင်းသည် is formal. 'လုပ်ဆောင်သည်' is more natural for this context."
   },
   "learn[4].todo[0]": {
    "english": "Never share your OTP (the code sent to your phone) with anyone.",
    "draft": "သင့် OTP (သင့်ဖုန်းသို့ ပို့သော ကုဒ်) ကို မည်သူ့ကိုမျှ ဘယ်တော့မှ မပေးပါနှင့်။",
+   "verdict": "fix",
+   "back": "Never share your OTP (the code sent to your phone) with anyone.",
+   "suggestion": "သင့် OTP (သင့်ဖုန်းကို ပို့ထားသော ကုဒ်) ကို မည်သူ့ကိုမျှ မပေးပါ။",
+   "reason": "Too wordy. 'သင့်ဖုန်းကို ပို့ထားသော' is shorter. 'နှင့်' at end is unnecessary."
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "draft": "ချစ်လှစွာသော အလုပ်သမား၊",
+   "verdict": "fix",
+   "back": "Dear worker,",
+   "suggestion": "အလုပ်သမား၊",
+   "reason": "ချစ်လှစွာသော is too formal/literary for a fake SMS. Scam messages usually just say 'Dear worker' or similar without extra adjectives."
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "draft": "သင့်တွင် မပေးရသေးသော အလုပ်ပါမစ် ဒဏ်ငွေ $350 ရှိသည်။",
+   "verdict": "fix",
+   "back": "you have an unpaid work permit fine of $350.",
+   "suggestion": "သင့်တွင် မပေးရသေးသော အလုပ်ပါမစ် ဒဏ်ငွေ $350 ရှိတယ်။",
+   "reason": "ရှိသည် is formal. 'ရှိတယ်' is more natural for SMS."
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "draft": "ဤနေရာတွင် ပေးပါ:",
+   "verdict": "fix",
+   "back": "Pay at",
+   "suggestion": "ဤနေရာမှာ ပေးပါ:",
+   "reason": "ဤနေရာတွင် is formal. 'ဤနေရာမှာ' is more natural for SMS."
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "draft": "သင့် OTP (သင့်ဖုန်းသို့ ပို့သော ကုဒ်) ကို မည်သူ့ကိုမျှ မပေးပါနှင့်၊ ဘဏ်ဟု ပြောလျှင်ပင်။",
+   "verdict": "fix",
+   "back": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "suggestion": "သင့် OTP (သင့်ဖုန်းကို ပို့ထားသော ကုဒ်) ကို မည်သူ့ကိုမျှ မပေးပါ။ ဘဏ်ဟု ပြောလျှင်ပင်။",
+   "reason": "Too wordy. 'သင့်ဖုန်းကို ပို့ထားသော' is shorter. 'နှင့်' at end is unnecessary."
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "draft": "သင် ဘာပြန်ဖြေမလဲ?",
    "verdict": "ok",
-   "back": "Never give your OTP (the code sent to your phone) to anyone.",
+   "back": "What would you reply?",
    "suggestion": "",
    "reason": ""
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "draft": "\"ဝမ်းကွဲ\" (နံပါတ်အသစ်)",
+   "verdict": "ok",
+   "back": "\"Cousin\" (new number)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "draft": "ဟိုင်း၊ ငါ မင်းရဲ့ ဝမ်းကွဲပါ။ ငါ့နံပါတ် ပြောင်းလိုက်ပြီ။",
+   "verdict": "ok",
+   "back": "Hi, it's your cousin. I changed my number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "draft": "မှားပြီး မင်းဖုန်းကို ဂဏန်း 6 လုံး ကုဒ် ပို့မိသွားတယ်။ ငါ့ကို ပြန်ပို့ပေးပါ။ အရေးကြီးတယ်!",
+   "verdict": "ok",
+   "back": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "draft": "ရပါတယ်၊ ကုဒ်က ဒါပါ: 482915",
+   "verdict": "ok",
+   "back": "OK, here is the code: 482915",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "draft": "မပေးဘူး။ ကုဒ်ကို ဘယ်သူ့ကိုမှ မပေးဘူး။ မင်းရဲ့ နံပါတ်ဟောင်းကို ဖုန်းခေါ်မယ်။",
+   "verdict": "ok",
+   "back": "No. I never share codes. I will call your old number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "draft": "မင်းဓာတ်ပုံ အရင်ပို့၊ ပြီးမှ ပို့ပေးမယ်။",
+   "verdict": "ok",
+   "back": "Send me your photo first, then I will send it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "draft": "သင့် OTP ကို မိသားစုကိုပင် မပေးပါနှင့်။ တစ်စုံတစ်ယောက်က နံပါတ်ပြောင်းလိုက်ပြီဟု ပြောလျှင် ၎င်းတို့၏ နံပါတ်ဟောင်းကို ဖုန်းခေါ်၍ စစ်ဆေးပါ။",
+   "verdict": "ok",
+   "back": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "draft": "ဘေးကင်းသော နည်းလမ်းကို ရွေးပါ",
+   "verdict": "ok",
+   "back": "Pick the safe way",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "draft": "ဒီပါဝလီ လျှော့ဈေးများအတွက် ဈေးဝယ် အက်ပ်တစ်ခု လိုချင်သည်။ ဘယ်ကနေ ရယူသင့်သလဲ?",
+   "verdict": "ok",
+   "back": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "draft": "သင့်ဖုန်းရှိ တရားဝင် အက်ပ်စတိုး",
+   "verdict": "ok",
+   "back": "The official app store on your phone",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "draft": "chat စာထဲတွင် ပို့ထားသော လင့်ခ်",
+   "verdict": "ok",
+   "back": "A link sent in a chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "draft": "အွန်လိုင်း ကြော်ငြာရှိ လင့်ခ်",
+   "verdict": "ok",
+   "back": "A link in an online advert",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "draft": "တရားဝင် အက်ပ်စတိုး (Google Play သို့မဟုတ် Apple App Store) မှသာ အက်ပ်များကို ထည့်သွင်းပါ။ လင့်ခ်မှ အက်ပ်များသည် သင့်ငွေကို ခိုးယူနိုင်သည်။",
+   "verdict": "ok",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "draft": "အန္တရာယ် အချက်ပြများကို ရှာပါ",
+   "verdict": "ok",
+   "back": "Spot the red flags",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "draft": "chat စာ",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "draft": "အလုပ် အေးဂျင့်",
+   "verdict": "ok",
+   "back": "Job Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "draft": "သင့်အလုပ်ရှင်က သင့်အလုပ်ပါမစ်ကို ပယ်ဖျက်ချင်နေသည်။",
+   "verdict": "ok",
+   "back": "Your employer wants to cancel your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "draft": "သင့်အလုပ် ဆက်ရဖို့ ကျွန်တော့်ကို $500 ပေးပါ။",
+   "verdict": "ok",
+   "back": "Pay me $500 to keep your job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "draft": "သင့်ပါမစ်ကို ဒီမှာ စစ်ပါ:",
+   "verdict": "ok",
+   "back": "Check your permit at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "draft": "ပြီးရင် သင့် Singpass စကားဝှက်ကို ကျွန်တော့်ကို ပို့ပါ။",
+   "verdict": "ok",
+   "back": "and send me your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "draft": "သင့်အလုပ် ဆက်ရရန် ငွေပေးခိုင်းခြင်းသည် တရားမဝင်ပါ။ MOM လိပ်စာအစစ်များသည် \".mom.gov.sg\" ဖြင့် အဆုံးသတ်သည်။ သင့် Singpass စကားဝှက်ကို မည်သူ့ကိုမျှ မပေးပါနှင့်။",
+   "verdict": "ok",
+   "back": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "draft": "သင် ဘာပြန်ဖြေမလဲ?",
+   "verdict": "ok",
+   "back": "What would you reply?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "draft": "မသိသော နံပါတ်",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "draft": "ငွေလွယ်လွယ်! တစ်ပတ်ကို $200 ရှာပါ။",
+   "verdict": "ok",
+   "back": "Easy money! Earn $200 every week.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "draft": "သင့်ဘဏ်အကောင့်နှင့် Singpass ကို ကျွန်တော့်ကို သုံးခွင့်ပေးရုံပါပဲ။",
+   "verdict": "ok",
+   "back": "Please just let me use your bank account and Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "draft": "ရပါတယ်၊ ဘယ်လို စရမလဲ?",
+   "verdict": "ok",
+   "back": "OK, how do I start?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "draft": "အဲဒီအစား $400 ပေးနိုင်မလား?",
+   "verdict": "fix",
+   "back": "Can you pay $400 instead?",
+   "suggestion": "အဲဒီအစား $400 ကိုယ်ကို ပေးနိုင်မလား?",
+   "reason": "Missing 'me' (ကိုယ်ကို) - English says 'pay me'."
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "draft": "မလုပ်ပါ။ ဒါ ရာဇဝတ်မှုပါ။ တိုင်ကြားပါမယ်။",
+   "verdict": "ok",
+   "back": "Don't do it. This is a crime. I will report it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "draft": "သင့်ဘဏ်အကောင့် သို့မဟုတ် Singpass ကို တခြားသူ သုံးခွင့်ပေးလျှင် သင်သည် scam mule ဖြစ်သွားမည်။ ဤသည်မှာ ရာဇဝတ်မှု ဖြစ်သည်။ ငြင်းဆိုပြီး တိုင်ကြားပါ။",
+   "verdict": "ok",
+   "back": "If you let others use your bank account or Singpass, you will become a scam mule. This is a crime. Say no and report it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "draft": "နောက်ဆုံးအချက်တစ်ခု",
+   "verdict": "ok",
+   "back": "One last thing",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "draft": "ယနေ့ပွဲကို ဘယ်လောက် ကျေနပ်ပါသလဲ?",
+   "verdict": "ok",
+   "back": "How happy are you with today's event?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "draft": "လုံးဝ မကျေနပ်",
+   "verdict": "ok",
+   "back": "Completely not happy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "draft": "မကျေနပ်",
+   "verdict": "ok",
+   "back": "Not happy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "draft": "သင့်တင့်",
+   "verdict": "ok",
+   "back": "Okay",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "draft": "ကျေနပ်",
+   "verdict": "ok",
+   "back": "Happy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "draft": "အလွန်ကျေနပ်",
+   "verdict": "ok",
+   "back": "Very happy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "draft": "လိမ်လည်မှုများအကြောင်း အသစ်တစ်ခုခု သိခဲ့ပါသလား?",
+   "verdict": "fix",
+   "back": "Did you know something new about scams?",
+   "suggestion": "လိမ်လည်မှုများအကြောင်း အသစ်တစ်ခုခု သင်ယူပါသလား?",
+   "reason": "English says 'learn' (သင်ယူ), draft uses 'know' (သိ)."
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "draft": "သိခဲ့သည်",
+   "verdict": "fix",
+   "back": "Knew",
+   "suggestion": "ဟုတ်ကဲ့",
+   "reason": "Label should be 'Yes' (ဟုတ်ကဲ့), not 'knew'."
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "draft": "နည်းနည်း",
+   "verdict": "ok",
+   "back": "A little",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "draft": "မသိခဲ့ပါ",
+   "verdict": "fix",
+   "back": "Did not know",
+   "suggestion": "မဟုတ်ဘူး",
+   "reason": "Label should be 'No' (မဟုတ်ဘူး), not 'did not know'."
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "draft": "ကျွန်ုပ်၏ ရလဒ် ကြည့်ရန်",
+   "verdict": "fix",
+   "back": "To see my result",
+   "suggestion": "ရလဒ် ကြည့်ပါ",
+   "reason": "Button label should be imperative 'See result' (ရလဒ် ကြည့်ပါ), not infinitive 'to see my result'."
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "draft": "အဲဒီ ဂဏန်း 6 လုံး ကုဒ်ကို ပို့ပေးပါ။ မြန်မြန်!",
+   "verdict": "fix",
+   "back": "Please send that 6-digit code. Quick!",
+   "suggestion": "ဂဏန်း 6 လုံး ကုဒ်ကို ပို့ပေးပါ။ မြန်မြန်!",
+   "reason": "အဲဒီ adds \"that\" not in English"
   },
   "learn[4].todo[1]": {
    "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
    "draft": "ACT ကို မှတ်ထားပါ: ADD – ScamShield အက်ပ်ထည့်ပါ၊ CHECK – 1799 ဖြင့် စစ်ဆေးပါ၊ TELL – မိသားစုနှင့် သူငယ်ချင်းများကို ပြောပါ။",
    "verdict": "ok",
-   "back": "Remember ACT: ADD – install ScamShield app, CHECK – check with 1799, TELL – tell family and friends.",
+   "back": "Remember ACT: ADD – ScamShield app add, CHECK – with 1799 check, TELL – family and friends tell.",
    "suggestion": "",
    "reason": ""
   },
@@ -847,33 +1222,9 @@
    "english": "Spot the red flags",
    "draft": "အန္တရာယ် အချက်ပြများကို ရှာပါ",
    "verdict": "ok",
-   "back": "Find the danger signs",
+   "back": "Spot the danger signs",
    "suggestion": "",
    "reason": ""
-  },
-  "quiz[0].msg.bubbles[0][0].t": {
-   "english": "Dear worker,",
-   "draft": "ချစ်လှစွာသော အလုပ်သမား၊",
-   "verdict": "ok",
-   "back": "Dear worker,",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[0].msg.bubbles[0][1].t": {
-   "english": "you have an unpaid work permit fine of $350.",
-   "draft": "သင့်တွင် မပေးရသေးသော အလုပ်ပါမစ် ဒဏ်ငွေ $350 ရှိသည်။",
-   "verdict": "ok",
-   "back": "You have an unpaid work permit fine of $350.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[0].msg.bubbles[1][0].t": {
-   "english": "Pay at",
-   "draft": "ဤနေရာတွင် ပေးပါ:",
-   "verdict": "fix",
-   "back": "Pay here:",
-   "suggestion": "ဤနေရာတွင် ပေးပါ",
-   "reason": "The English is 'Pay at', but the draft adds a colon and implies a location ('here'). 'Pay at' is a preposition waiting for a link. The draft should be 'Pay at' or 'Pay here' without the colon if it's a button, but since the next part is the link, 'Pay at' is safer. However, in Burmese chat context, 'Pay here' (ဤနေရာတွင် ပေးပါ) is natural. The issue is the colon in the draft which isn't in the English. Let's remove the colon to match the English structure exactly."
   },
   "quiz[0].msg.bubbles[1][2].t": {
    "english": "or reply with your bank login.",
@@ -887,7 +1238,7 @@
    "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
    "draft": "အစိုးရ SMS များသည် \"gov.sg\" မှ လာသည်။ MOM လိပ်စာအစစ်များသည် \".mom.gov.sg\" ဖြင့် အဆုံးသတ်သည်။ အစိုးရသည် SMS ဖြင့် သင့်ဘဏ် login ကို ဘယ်တော့မှ မတောင်းပါ။ မသေချာပါက 1799 ကို ဖုန်းခေါ်ပါ။",
    "verdict": "ok",
-   "back": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. If unsure, call 1799.",
+   "back": "Government SMSes come from \"gov.sg\". MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
    "suggestion": "",
    "reason": ""
   },
@@ -919,7 +1270,7 @@
    "english": "A normal message from someone you know, with no money or codes asked.",
    "draft": "သင်သိသူထံမှ ပုံမှန်စာ ဖြစ်သည်။ ငွေ သို့မဟုတ် ကုဒ် မတောင်းပါ။",
    "verdict": "ok",
-   "back": "It is a normal message from someone you know. No money or code asked.",
+   "back": "A normal message from someone you know. Money or code not asked.",
    "suggestion": "",
    "reason": ""
   },
@@ -939,14 +1290,6 @@
    "suggestion": "",
    "reason": ""
   },
-  "quiz[1].cards[1].why": {
-   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
-   "draft": "သင့် OTP (သင့်ဖုန်းသို့ ပို့သော ကုဒ်) ကို မည်သူ့ကိုမျှ မပေးပါနှင့်၊ ဘဏ်ဟု ပြောလျှင်ပင်။",
-   "verdict": "ok",
-   "back": "Never give your OTP (the code sent to your phone) to anyone, even if they say they are your bank.",
-   "suggestion": "",
-   "reason": ""
-  },
   "quiz[1].cards[2].from": {
    "english": "New contact",
    "draft": "အဆက်အသွယ် အသစ်",
@@ -959,7 +1302,7 @@
    "english": "Lend me your bank card for one week. I will pay you $300.",
    "draft": "သင့်ဘဏ်ကတ်ကို တစ်ပတ် ငှားပါ။ သင့်ကို $300 ပေးမယ်။",
    "verdict": "ok",
-   "back": "Lend me your bank card for one week. I will give you $300.",
+   "back": "Lend me your bank card for one week. I will pay you $300.",
    "suggestion": "",
    "reason": ""
   },
@@ -991,351 +1334,7 @@
    "english": "A normal greeting from a friend, with nothing asked.",
    "draft": "သူငယ်ချင်းထံမှ ပုံမှန် နှုတ်ခွန်းဆက်စာ၊ ဘာမှ မတောင်းပါ။",
    "verdict": "ok",
-   "back": "A normal greeting from a friend, nothing asked.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].title": {
-   "english": "What would you reply?",
-   "draft": "သင် ဘာပြန်ဖြေမလဲ?",
-   "verdict": "ok",
-   "back": "What would you reply?",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].chat.from": {
-   "english": "\"Cousin\" (new number)",
-   "draft": "\"ဝမ်းကွဲ\" (နံပါတ်အသစ်)",
-   "verdict": "ok",
-   "back": "\"Cousin\" (new number)",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].chat.lines[0]": {
-   "english": "Hi, it's your cousin. I changed my number.",
-   "draft": "ဟိုင်း၊ ငါ မင်းရဲ့ ဝမ်းကွဲပါ။ ငါ့နံပါတ် ပြောင်းလိုက်ပြီ။",
-   "verdict": "ok",
-   "back": "Hi, I am your cousin. I changed my number.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].chat.lines[1]": {
-   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
-   "draft": "မှားပြီး မင်းဖုန်းကို ဂဏန်း 6 လုံး ကုဒ် ပို့မိသွားတယ်။ ငါ့ကို ပြန်ပို့ပေးပါ။ အရေးကြီးတယ်!",
-   "verdict": "ok",
-   "back": "I mistakenly sent a 6-digit code to your phone. Please send it back to me. Urgent!",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].options[0]": {
-   "english": "OK, here is the code: 482915",
-   "draft": "ရပါတယ်၊ ကုဒ်က ဒါပါ: 482915",
-   "verdict": "ok",
-   "back": "Okay, the code is this: 482915",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].options[1]": {
-   "english": "No. I never share codes. I will call your old number.",
-   "draft": "မပေးဘူး။ ကုဒ်ကို ဘယ်သူ့ကိုမှ မပေးဘူး။ မင်းရဲ့ နံပါတ်ဟောင်းကို ဖုန်းခေါ်မယ်။",
-   "verdict": "ok",
-   "back": "No. I never give codes to anyone. I will call your old number.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].options[2]": {
-   "english": "Send me your photo first, then I will send it.",
-   "draft": "မင်းဓာတ်ပုံ အရင်ပို့၊ ပြီးမှ ပို့ပေးမယ်။",
-   "verdict": "ok",
-   "back": "Send your photo first, then I will send it.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[2].explain": {
-   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
-   "draft": "သင့် OTP ကို မိသားစုကိုပင် မပေးပါနှင့်။ တစ်စုံတစ်ယောက်က နံပါတ်ပြောင်းလိုက်ပြီဟု ပြောလျှင် ၎င်းတို့၏ နံပါတ်ဟောင်းကို ဖုန်းခေါ်၍ စစ်ဆေးပါ။",
-   "verdict": "ok",
-   "back": "Do not give your OTP even to family. If someone says they changed their number, call their old number to check.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[3].title": {
-   "english": "Pick the safe way",
-   "draft": "ဘေးကင်းသော နည်းလမ်းကို ရွေးပါ",
-   "verdict": "ok",
-   "back": "Choose the safe way",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[3].prompt": {
-   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
-   "draft": "ဒီပါဝလီ လျှော့ဈေးများအတွက် ဈေးဝယ် အက်ပ်တစ်ခု လိုချင်သည်။ ဘယ်ကနေ ရယူသင့်သလဲ?",
-   "verdict": "ok",
-   "back": "You want a shopping app for Deepavali deals. Where should you get it?",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[3].options[0].label": {
-   "english": "The official app store on your phone",
-   "draft": "သင့်ဖုန်းရှိ တရားဝင် အက်ပ်စတိုး",
-   "verdict": "ok",
-   "back": "The official app store on your phone",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[3].options[1].label": {
-   "english": "A link sent in a chat message",
-   "draft": "chat စာထဲတွင် ပို့ထားသော လင့်ခ်",
-   "verdict": "fix",
-   "back": "A link sent in a chat message",
-   "suggestion": "chat စာထဲက ပို့လာတဲ့ လင့်ခ်",
-   "reason": "Use 'chat စာ' (chat message) consistently with other lines; 'စာထဲတွင်' is too formal."
-  },
-  "quiz[3].options[2].label": {
-   "english": "A link in an online advert",
-   "draft": "အွန်လိုင်း ကြော်ငြာရှိ လင့်ခ်",
-   "verdict": "ok",
-   "back": "A link in an online advert",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[3].explain": {
-   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
-   "draft": "တရားဝင် အက်ပ်စတိုး (Google Play သို့မဟုတ် Apple App Store) မှသာ အက်ပ်များကို ထည့်သွင်းပါ။ လင့်ခ်မှ အက်ပ်များသည် သင့်ငွေကို ခိုးယူနိုင်သည်။",
-   "verdict": "ok",
-   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].title": {
-   "english": "Spot the red flags",
-   "draft": "အန္တရာယ် အချက်ပြများကို ရှာပါ",
-   "verdict": "ok",
-   "back": "Find the danger signs",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].msg.channel": {
-   "english": "Chat message",
-   "draft": "chat စာ",
-   "verdict": "ok",
-   "back": "chat message",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].msg.from": {
-   "english": "Job Agent",
-   "draft": "အလုပ် အေးဂျင့်",
-   "verdict": "ok",
-   "back": "Job Agent",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].msg.bubbles[0][0].t": {
-   "english": "Your employer wants to cancel your work permit.",
-   "draft": "သင့်အလုပ်ရှင်က သင့်အလုပ်ပါမစ်ကို ပယ်ဖျက်ချင်နေသည်။",
-   "verdict": "ok",
-   "back": "Your employer wants to cancel your work permit.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].msg.bubbles[1][0].t": {
-   "english": "Pay me $500 to keep your job.",
-   "draft": "သင့်အလုပ် ဆက်ရဖို့ ကျွန်တော့်ကို $500 ပေးပါ။",
-   "verdict": "ok",
-   "back": "Give me $500 to keep your job.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].msg.bubbles[2][0].t": {
-   "english": "Check your permit at",
-   "draft": "သင့်ပါမစ်ကို ဒီမှာ စစ်ပါ:",
-   "verdict": "ok",
-   "back": "Check your permit here:",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].msg.bubbles[2][2].t": {
-   "english": "and send me your Singpass password.",
-   "draft": "ပြီးရင် သင့် Singpass စကားဝှက်ကို ကျွန်တော့်ကို ပို့ပါ။",
-   "verdict": "ok",
-   "back": "and send me your Singpass password.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[4].explain": {
-   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
-   "draft": "သင့်အလုပ် ဆက်ရရန် ငွေပေးခိုင်းခြင်းသည် တရားမဝင်ပါ။ MOM လိပ်စာအစစ်များသည် \".mom.gov.sg\" ဖြင့် အဆုံးသတ်သည်။ သင့် Singpass စကားဝှက်ကို မည်သူ့ကိုမျှ မပေးပါနှင့်။",
-   "verdict": "ok",
-   "back": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Do not give your Singpass password to anyone.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].title": {
-   "english": "What would you reply?",
-   "draft": "သင် ဘာပြန်ဖြေမလဲ?",
-   "verdict": "ok",
-   "back": "What will you reply?",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].chat.from": {
-   "english": "Unknown number",
-   "draft": "မသိသော နံပါတ်",
-   "verdict": "ok",
-   "back": "Unknown number",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].chat.lines[0]": {
-   "english": "Easy money! Earn $200 every week.",
-   "draft": "ငွေလွယ်လွယ်! တစ်ပတ်ကို $200 ရှာပါ။",
-   "verdict": "ok",
-   "back": "Easy money! Earn $200 every week.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].chat.lines[1]": {
-   "english": "Just let me use your bank account and Singpass.",
-   "draft": "သင့်ဘဏ်အကောင့်နှင့် Singpass ကို ကျွန်တော့်ကို သုံးခွင့်ပေးရုံပါပဲ။",
-   "verdict": "ok",
-   "back": "Just let me use your bank account and Singpass.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].options[0]": {
-   "english": "OK, how do I start?",
-   "draft": "ရပါတယ်၊ ဘယ်လို စရမလဲ?",
-   "verdict": "ok",
-   "back": "Okay, how to start?",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].options[1]": {
-   "english": "Can you pay me $400 instead?",
-   "draft": "အဲဒီအစား $400 ပေးနိုင်မလား?",
-   "verdict": "ok",
-   "back": "Can you pay $400 instead of that?",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].options[2]": {
-   "english": "No. This is a crime. I will report it.",
-   "draft": "မလုပ်ပါ။ ဒါ ရာဇဝတ်မှုပါ။ တိုင်ကြားပါမယ်။",
-   "verdict": "ok",
-   "back": "Will not do. This is a crime. Will report.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "quiz[5].explain": {
-   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
-   "draft": "သင့်ဘဏ်အကောင့် သို့မဟုတ် Singpass ကို တခြားသူ သုံးခွင့်ပေးလျှင် သင်သည် scam mule ဖြစ်သွားမည်။ ဤသည်မှာ ရာဇဝတ်မှု ဖြစ်သည်။ ငြင်းဆိုပြီး တိုင်ကြားပါ။",
-   "verdict": "ok",
-   "back": "If you let others use your bank account or Singpass, you will become a scam mule. This is a crime. Refuse and report.",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.title": {
-   "english": "One last thing",
-   "draft": "နောက်ဆုံးအချက်တစ်ခု",
-   "verdict": "ok",
-   "back": "One last thing",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.csatQuestion": {
-   "english": "How happy are you with today's event?",
-   "draft": "ယနေ့ပွဲကို ဘယ်လောက် ကျေနပ်ပါသလဲ?",
-   "verdict": "ok",
-   "back": "How satisfied are you with today's event?",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.csatLabels[0]": {
-   "english": "Very unhappy",
-   "draft": "လုံးဝ မကျေနပ်",
-   "verdict": "ok",
-   "back": "Completely not satisfied",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.csatLabels[1]": {
-   "english": "Unhappy",
-   "draft": "မကျေနပ်",
-   "verdict": "ok",
-   "back": "Not satisfied",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.csatLabels[2]": {
-   "english": "Okay",
-   "draft": "သင့်တင့်",
-   "verdict": "fix",
-   "back": "Appropriate",
-   "suggestion": "သင့်တင့်သည်",
-   "reason": "The draft 'သင့်တင့်' is an adjective fragment. In a list of labels, it should be a complete state 'သင့်တင့်သည်' (It is appropriate/Okay) to match the grammar of the other options."
-  },
-  "feedback.csatLabels[3]": {
-   "english": "Happy",
-   "draft": "ကျေနပ်",
-   "verdict": "ok",
-   "back": "Satisfied",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.csatLabels[4]": {
-   "english": "Very happy",
-   "draft": "အလွန်ကျေနပ်",
-   "verdict": "ok",
-   "back": "Very satisfied",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.learnedQuestion": {
-   "english": "Did you learn something new about scams?",
-   "draft": "လိမ်လည်မှုများအကြောင်း အသစ်တစ်ခုခု သိခဲ့ပါသလား?",
-   "verdict": "ok",
-   "back": "Did you know something new about scams?",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.learnedOptions[0].label": {
-   "english": "Yes",
-   "draft": "သိခဲ့သည်",
-   "verdict": "fix",
-   "back": "Knew",
-   "suggestion": "ဟုတ်ကဲ့",
-   "reason": "The English source is 'Yes'. The draft 'သိခဲ့သည်' means 'I knew' or 'I learned', which changes the meaning from a simple affirmation to a statement of fact. 'ဟုတ်ကဲ့' is the natural 'Yes' for a survey."
-  },
-  "feedback.learnedOptions[1].label": {
-   "english": "A little",
-   "draft": "နည်းနည်း",
-   "verdict": "ok",
-   "back": "A little",
-   "suggestion": "",
-   "reason": ""
-  },
-  "feedback.learnedOptions[2].label": {
-   "english": "No",
-   "draft": "မသိခဲ့ပါ",
-   "verdict": "fix",
-   "back": "Did not know",
-   "suggestion": "မဟုတ်ပါ",
-   "reason": "The English source is 'No'. The draft 'မသိခဲ့ပါ' means 'I did not know', which is a statement rather than a direct negative answer. 'မဟုတ်ပါ' is the standard 'No' for a survey."
-  },
-  "feedback.submit": {
-   "english": "See my result",
-   "draft": "ကျွန်ုပ်၏ ရလဒ် ကြည့်ရန်",
-   "verdict": "ok",
-   "back": "To see my result",
-   "suggestion": "",
-   "reason": ""
-  },
-  "ui.watch": {
-   "english": "Watch the official video",
-   "draft": "တရားဝင် ဗီဒီယိုကို ကြည့်ပါ",
-   "verdict": "ok",
-   "back": "Watch the official video",
+   "back": "A normal greeting from a friend, with nothing asked.",
    "suggestion": "",
    "reason": ""
   }

@@ -1,7 +1,6 @@
 {
  "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
  "checked": "2026-10-29",
- "seaTuned": true,
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -517,19 +516,19 @@
   },
   "learn[0].todo[0]": {
    "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
-   "draft": "Maaaring tumawag sa iyo ang MOM tungkol sa trabaho mo. Pero hindi ka kailanman uutusan ng MOM na mag-transfer ng pera o ibigay ang bank login mo.",
+   "draft": "Maaaring tawagan ka ng MOM tungkol sa trabaho mo. Pero hindi ka uutusan ng MOM na mag-transfer ng pera o ibigay ang bank login mo.",
    "verdict": "ok",
-   "back": "MOM may call you about your work. But MOM will never order you to transfer money or give your bank login.",
+   "back": "MOM might call you about your work. But MOM will not order you to transfer money or give your bank login.",
    "suggestion": "",
    "reason": ""
   },
   "learn[0].todo[1]": {
    "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
-   "draft": "Hindi ka kailanman uutusan ng MOM na mag-install ng app mula sa link, at hindi nito ililipat ang tawag mo sa Pulis. Hindi sigurado? Ibaba ang telepono.",
-   "verdict": "ok",
-   "back": "MOM will never order you to install an app from a link, and they will not transfer your call to the Police. Not sure? Hang up.",
-   "suggestion": "",
-   "reason": ""
+   "draft": "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, at hindi nito ililipat ang tawag mo sa Pulis. Hindi sigurado? Ibaba ang telepono.",
+   "verdict": "fix",
+   "back": "MOM will not order you to install an app from a link, and it will not transfer your call to the Police. Not sure? Put down the phone.",
+   "suggestion": "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, o ilipat ang tawag mo sa Pulis. Hindi sigurado? I-hang up.",
+   "reason": "Changed 'ibaba ang telepono' (put down phone) to 'i-hang up' (hang up) to match the English instruction exactly and use common local usage."
   },
   "learn[1].title": {
    "english": "Fake festive deal",
@@ -773,19 +772,19 @@
   },
   "learn[3].todo[0]": {
    "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
-   "draft": "Ikaw mismo ang mag-check ng work pass mo sa website ng MOM: \"Check work pass and application status\". Hindi kailangang mag-login.",
+   "draft": "I-check mismo ang work pass mo sa website ng MOM: \"Check work pass and application status\". Walang login.",
    "verdict": "ok",
-   "back": "You yourself check your work pass on MOM's website: 'Check work pass and application status'. No need to login.",
+   "back": "Check your work pass yourself on MOM's website: 'Check work pass and application status'. No login.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
    "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "draft": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng sulat at kopyahin ang licence number ng mga scammer.",
+   "draft": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga sulat at kopyahin ang mga licence number ng mga scammer.",
    "verdict": "fix",
    "back": "Asking to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
-   "suggestion": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga sulat at kopyahin ang mga licence number ng mga scammer.",
-   "reason": "English uses plural 'letters' and 'numbers'; Tagalog draft uses singular. Added 'mga' to match plural meaning."
+   "suggestion": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga scammer ang mga sulat at kopyahin ang mga licence number.",
+   "reason": "Fixed grammar: moved 'ng mga scammer' to modify 'mameke' directly, making the sentence clearer and more natural."
   },
   "learn[4].title": {
    "english": "Secret codes (OTP)",

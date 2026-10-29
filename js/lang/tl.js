@@ -87,7 +87,7 @@ window.SCAM_TEXT["tl"] = {
       ],
       "todo": [
         "Maaaring tawagan ka ng MOM tungkol sa trabaho mo. Pero hindi ka uutusan ng MOM na mag-transfer ng pera o ibigay ang bank login mo.",
-        "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, at hindi nito ililipat ang tawag mo sa Pulis. Hindi sigurado? Ibaba ang telepono."
+        "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, o ilipat ang tawag mo sa Pulis. Hindi sigurado? I-hang up."
       ]
     },
     {
@@ -163,7 +163,7 @@ window.SCAM_TEXT["tl"] = {
       ],
       "todo": [
         "I-check mismo ang work pass mo sa website ng MOM: \"Check work pass and application status\". Walang login.",
-        "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga sulat at kopyahin ang mga licence number ng mga scammer."
+        "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga scammer ang mga sulat at kopyahin ang mga licence number."
       ]
     },
     {

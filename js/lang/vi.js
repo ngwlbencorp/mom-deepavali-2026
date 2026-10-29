@@ -34,7 +34,7 @@ window.SCAM_TEXT["vi"] = {
     "whatToDo": "Nên làm gì",
     "toQuiz": "Làm bài đố",
     "watch": "Xem video chính thức",
-    "spotPrompt": "Chạm vào {n} dấu hiệu nguy hiểm",
+    "spotPrompt": "Chạm vào {n} dấu hiệu cảnh báo",
     "selected": "Đã chọn {k}/{n}",
     "scam": "Lừa đảo",
     "safe": "An toàn",
@@ -168,10 +168,10 @@ window.SCAM_TEXT["vi"] = {
     },
     {
       "title": "Mã bí mật (OTP)",
-      "tagline": "Kẻ lừa đảo xin mã được gửi đến điện thoại của bạn.",
+      "tagline": "Kẻ lừa đảo yêu cầu mã được gửi cho điện thoại của bạn.",
       "chat": {
         "lines": [
-          "Xin lỗi, tôi gửi nhầm một mã đến điện thoại của bạn.",
+          "Xin lỗi, tôi gửi nhầm mã cho điện thoại của bạn.",
           "Làm ơn gửi cho tôi mã 6 số đó. Nhanh lên!"
         ]
       },
@@ -188,7 +188,7 @@ window.SCAM_TEXT["vi"] = {
   ],
   "quiz": [
     {
-      "title": "Tìm dấu hiệu nguy hiểm",
+      "title": "Tìm dấu hiệu cảnh báo",
       "msg": {
         "bubbles": [
           [
@@ -196,7 +196,7 @@ window.SCAM_TEXT["vi"] = {
               "t": "Gửi anh/chị,"
             },
             {
-              "t": "bạn còn nợ tiền phạt giấy phép lao động $350."
+              "t": "bạn chưa trả tiền phạt giấy phép lao động $350."
             }
           ],
           [
@@ -270,7 +270,7 @@ window.SCAM_TEXT["vi"] = {
       "explain": "Chỉ cài ứng dụng từ kho ứng dụng chính thức (Google Play hoặc Apple App Store). Ứng dụng từ link có thể lấy cắp tiền của bạn."
     },
     {
-      "title": "Tìm dấu hiệu nguy hiểm",
+      "title": "Tìm dấu hiệu cảnh báo",
       "msg": {
         "channel": "Tin nhắn chat",
         "from": "Môi giới việc làm",

@@ -1,13 +1,12 @@
 {
- "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
  "checked": "2026-10-29",
- "seaTuned": true,
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
    "draft": "தீபாவளி வாழ்த்துகள்!",
    "verdict": "ok",
-   "back": "Deepavali greetings!",
+   "back": "Happy Deepavali!",
    "suggestion": "",
    "reason": ""
   },
@@ -23,23 +22,23 @@
    "english": "Learn the tricks scammers use, then take the quiz.",
    "draft": "மோசடித் தந்திரங்களை அறிந்து, பிறகு வினாடி வினாவில் பங்கேற்கவும்.",
    "verdict": "ok",
-   "back": "Know scam tricks, then participate in the quiz.",
+   "back": "Learn the tricks scammers use, then take the quiz.",
    "suggestion": "",
    "reason": ""
   },
   "event.souvenirNote": {
    "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
    "draft": "எல்லாக் கேள்விகளுக்கும் சரியாகப் பதிலளித்து, QR குறியீட்டை MOM அதிகாரியிடம் காட்டி நினைவுப் பரிசு பெறுங்கள். முதல் 500 பேருக்கு மட்டும்!",
-   "verdict": "ok",
-   "back": "Answer all questions correctly, show QR code to MOM officer to get souvenir. Only for first 500 people!",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "suggestion": "எல்லா கேள்விகளுக்கும் சரியாகப் பதிலளித்து, QR குறியீட்டை MOM அதிகாரியிடம் காட்டி நினைவுப் பரிசு பெறுங்கள். முதல் 500 பேருக்கு மட்டும்!",
+   "reason": "Typo: 'எல்லாக்' should be 'எல்லா' (extra 'க்' removed)."
   },
   "event.helplineName": {
    "english": "ScamShield Helpline",
    "draft": "ScamShield உதவி எண்",
    "verdict": "ok",
-   "back": "ScamShield Helpline number",
+   "back": "ScamShield Helpline",
    "suggestion": "",
    "reason": ""
   },
@@ -63,7 +62,7 @@
    "english": "Previous",
    "draft": "முந்தையது",
    "verdict": "ok",
-   "back": "Previous one",
+   "back": "Previous",
    "suggestion": "",
    "reason": ""
   },
@@ -86,16 +85,16 @@
   "ui.exitQuiz": {
    "english": "Exit quiz",
    "draft": "வெளியேறு",
-   "verdict": "fix",
-   "back": "Exit",
-   "suggestion": "வினாடி வினாவை விட்டு வெளியேறு",
-   "reason": "Too vague; 'Exit' alone might mean exit app. Needs to specify quiz context for clarity."
+   "verdict": "ok",
+   "back": "Exit quiz",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.exitConfirm": {
    "english": "Leave the quiz? Your answers so far will be lost.",
    "draft": "வினாடி வினாவை விட்டு வெளியேறவா? இதுவரை அளித்த பதில்கள் அழிந்துவிடும்.",
    "verdict": "ok",
-   "back": "Leave the quiz? Answers given so far will be deleted.",
+   "back": "Leave the quiz? Your answers so far will be lost.",
    "suggestion": "",
    "reason": ""
   },
@@ -103,7 +102,7 @@
    "english": "Close review",
    "draft": "மூடு",
    "verdict": "ok",
-   "back": "Close",
+   "back": "Close review",
    "suggestion": "",
    "reason": ""
   },
@@ -119,7 +118,7 @@
    "english": "5 short stories · 2 min",
    "draft": "5 சிறு கதைகள் · 2 நிமிடம்",
    "verdict": "ok",
-   "back": "5 short stories · 2 minutes",
+   "back": "5 short stories · 2 min",
    "suggestion": "",
    "reason": ""
   },
@@ -127,7 +126,7 @@
    "english": "Quiz for a souvenir",
    "draft": "நினைவுப் பரிசுக்கான வினாடி வினா",
    "verdict": "ok",
-   "back": "Quiz for souvenir",
+   "back": "Quiz for a souvenir",
    "suggestion": "",
    "reason": ""
   },
@@ -135,7 +134,7 @@
    "english": "Take the quiz",
    "draft": "வினாடி வினாவில் பங்கேற்கவும்",
    "verdict": "ok",
-   "back": "Participate in the quiz",
+   "back": "Take the quiz",
    "suggestion": "",
    "reason": ""
   },
@@ -143,7 +142,7 @@
    "english": "6 challenges · 3 min",
    "draft": "6 சவால்கள் · 3 நிமிடம்",
    "verdict": "ok",
-   "back": "6 challenges · 3 minutes",
+   "back": "6 challenges · 3 min",
    "suggestion": "",
    "reason": ""
   },
@@ -167,7 +166,7 @@
    "english": "🎁 {n} souvenirs left",
    "draft": "🎁 இன்னும் {n} நினைவுப் பரிசுகள் உள்ளன",
    "verdict": "ok",
-   "back": "🎁 Still {n} souvenirs left",
+   "back": "🎁 {n} souvenirs left",
    "suggestion": "",
    "reason": ""
   },
@@ -175,7 +174,7 @@
    "english": "All souvenirs have been given out. Thank you for taking part!",
    "draft": "எல்லா நினைவுப் பரிசுகளும் வழங்கப்பட்டுவிட்டன. பங்கேற்றதற்கு நன்றி!",
    "verdict": "ok",
-   "back": "All souvenirs have been given out. Thank you for participating!",
+   "back": "All souvenirs have been given out. Thank you for taking part!",
    "suggestion": "",
    "reason": ""
   },
@@ -183,7 +182,7 @@
    "english": "Great job! You know how to spot scams.",
    "draft": "அருமை! மோசடிகளை அடையாளம் காண உங்களுக்குத் தெரியும்.",
    "verdict": "ok",
-   "back": "Great! You know how to identify scams.",
+   "back": "Great job! You know how to spot scams.",
    "suggestion": "",
    "reason": ""
   },
@@ -191,7 +190,7 @@
    "english": "Review the answers, then try again.",
    "draft": "பதில்களைப் பாருங்கள், பிறகு மீண்டும் முயலுங்கள்.",
    "verdict": "ok",
-   "back": "Look at answers, then try again.",
+   "back": "Review the answers, then try again.",
    "suggestion": "",
    "reason": ""
   },
@@ -199,7 +198,7 @@
    "english": "Unsure? Call",
    "draft": "சந்தேகமா? அழையுங்கள்",
    "verdict": "ok",
-   "back": "Doubt? Call",
+   "back": "Unsure? Call",
    "suggestion": "",
    "reason": ""
   },
@@ -207,7 +206,7 @@
    "english": "EXAMPLE · NOT REAL",
    "draft": "மாதிரி · போலி",
    "verdict": "ok",
-   "back": "Example · Fake",
+   "back": "EXAMPLE · FAKE",
    "suggestion": "",
    "reason": ""
   },
@@ -215,15 +214,23 @@
    "english": "What to do",
    "draft": "என்ன செய்ய வேண்டும்",
    "verdict": "ok",
-   "back": "What must be done",
+   "back": "What to do",
    "suggestion": "",
    "reason": ""
   },
   "ui.toQuiz": {
    "english": "Take the quiz",
    "draft": "வினாடி வினா எழுதுங்கள்",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "Write the quiz",
+   "suggestion": "வினாடி வினா செய்யுங்கள்",
+   "reason": "Take the quiz means participate/do the quiz, not necessarily write"
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "அதிகாரப்பூர்வ வீடியோவைப் பாருங்கள்",
+   "verdict": "ok",
+   "back": "Watch the official video",
    "suggestion": "",
    "reason": ""
   },
@@ -231,17 +238,17 @@
    "english": "Tap the {n} red flags",
    "draft": "{n} அபாய அறிகுறிகளைத் தொடுங்கள்",
    "verdict": "ok",
-   "back": "Touch {n} danger signs",
+   "back": "Tap the {n} danger signs",
    "suggestion": "",
    "reason": ""
   },
   "ui.selected": {
    "english": "{k} of {n} chosen",
    "draft": "{n} இல் {k} தேர்வு",
-   "verdict": "ok",
-   "back": "{k} selected in {n}",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "In {n} {k} selection",
+   "suggestion": "{k} / {n} தேர்வு",
+   "reason": "Order of placeholders reversed; should match English '{k} of {n}'"
   },
   "ui.scam": {
    "english": "Scam",
@@ -255,7 +262,7 @@
    "english": "Safe",
    "draft": "பாதுகாப்பானது",
    "verdict": "ok",
-   "back": "It is safe",
+   "back": "Safe",
    "suggestion": "",
    "reason": ""
   },
@@ -279,7 +286,7 @@
    "english": "Saving your result…",
    "draft": "உங்கள் முடிவு சேமிக்கப்படுகிறது…",
    "verdict": "ok",
-   "back": "Your result is being saved...",
+   "back": "Your result is being saved…",
    "suggestion": "",
    "reason": ""
   },
@@ -287,7 +294,7 @@
    "english": "All correct!",
    "draft": "எல்லாம் சரி!",
    "verdict": "ok",
-   "back": "Everything is correct!",
+   "back": "All correct!",
    "suggestion": "",
    "reason": ""
   },
@@ -295,7 +302,7 @@
    "english": "Show this QR code to an MOM officer for your souvenir.",
    "draft": "நினைவுப் பரிசைப் பெற இந்த QR குறியீட்டை MOM அதிகாரியிடம் காட்டுங்கள்.",
    "verdict": "ok",
-   "back": "Show this QR code to an MOM officer to get a souvenir.",
+   "back": "To get the souvenir, show this QR code to an MOM officer.",
    "suggestion": "",
    "reason": ""
   },
@@ -303,7 +310,7 @@
    "english": "You got all correct before, so your QR code is still valid.",
    "draft": "முன்பே எல்லாம் சரியாகப் பதிலளித்ததால், உங்கள் QR குறியீடு இன்னும் செல்லுபடியாகும்.",
    "verdict": "ok",
-   "back": "Since you answered everything correctly before, your QR code is still valid.",
+   "back": "Because you answered everything correctly before, your QR code is still valid.",
    "suggestion": "",
    "reason": ""
   },
@@ -311,7 +318,7 @@
    "english": "{s} of {t} correct",
    "draft": "{t} இல் {s} சரி",
    "verdict": "ok",
-   "back": "{s} correct in {t}",
+   "back": "{t} in {s} correct",
    "suggestion": "",
    "reason": ""
   },
@@ -319,7 +326,7 @@
    "english": "Review the answers, then try again for a souvenir.",
    "draft": "பதில்களைப் பாருங்கள், பிறகு நினைவுப் பரிசுக்காக மீண்டும் முயலுங்கள்.",
    "verdict": "ok",
-   "back": "Look at the answers, then try again for a souvenir.",
+   "back": "Review the answers, then try again for a souvenir.",
    "suggestion": "",
    "reason": ""
   },
@@ -327,7 +334,7 @@
    "english": "Review answers",
    "draft": "பதில்களைப் பாருங்கள்",
    "verdict": "ok",
-   "back": "Look at the answers",
+   "back": "Review answers",
    "suggestion": "",
    "reason": ""
   },
@@ -343,7 +350,7 @@
    "english": "Back to my QR code",
    "draft": "என் QR குறியீட்டுக்குத் திரும்பு",
    "verdict": "ok",
-   "back": "Return to my QR code",
+   "back": "Back to my QR code",
    "suggestion": "",
    "reason": ""
   },
@@ -359,7 +366,7 @@
    "english": "Not saved yet (no connection). An officer can still scan this QR code.",
    "draft": "இன்னும் சேமிக்கப்படவில்லை (இணைப்பு இல்லை). அதிகாரி இந்த QR குறியீட்டை இன்னும் ஸ்கேன் செய்யலாம்.",
    "verdict": "ok",
-   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
+   "back": "Not yet saved (no connection). Officer can still scan this QR code.",
    "suggestion": "",
    "reason": ""
   },
@@ -367,7 +374,7 @@
    "english": "Not saved yet (no connection).",
    "draft": "இன்னும் சேமிக்கப்படவில்லை (இணைப்பு இல்லை).",
    "verdict": "ok",
-   "back": "Not saved yet (no connection).",
+   "back": "Not yet saved (no connection).",
    "suggestion": "",
    "reason": ""
   },
@@ -375,7 +382,7 @@
    "english": "Retry saving",
    "draft": "மீண்டும் சேமிக்கவும்",
    "verdict": "ok",
-   "back": "Save again",
+   "back": "Retry saving",
    "suggestion": "",
    "reason": ""
   },
@@ -463,7 +470,7 @@
    "english": "Hello, I am from MOM. There is a problem with your work permit.",
    "draft": "வணக்கம், நான் MOM-இலிருந்து பேசுகிறேன். உங்கள் வேலை அனுமதியில் பிரச்சினை உள்ளது.",
    "verdict": "ok",
-   "back": "Hello, I am speaking from MOM. There is a problem with your work permit.",
+   "back": "Hello, I am from MOM. There is a problem with your work permit.",
    "suggestion": "",
    "reason": ""
   },
@@ -471,7 +478,7 @@
    "english": "Transfer $500 now, or you will be sent home!",
    "draft": "இப்போதே $500 அனுப்புங்கள், இல்லையேல் ஊருக்கு அனுப்புவோம்!",
    "verdict": "ok",
-   "back": "Send $500 now, otherwise we will send you home!",
+   "back": "Transfer $500 now, or you will be sent home!",
    "suggestion": "",
    "reason": ""
   },
@@ -479,7 +486,7 @@
    "english": "Install this app from my link so I can help you.",
    "draft": "என் இணைப்பிலிருந்து இந்தச் செயலியை நிறுவுங்கள், நான் உங்களுக்கு உதவுவேன்.",
    "verdict": "ok",
-   "back": "Install this app from my link, I will help you.",
+   "back": "Install this app from my link so I can help you.",
    "suggestion": "",
    "reason": ""
   },
@@ -487,7 +494,7 @@
    "english": "Now I will transfer your call to the Police.",
    "draft": "இப்போது அழைப்பைக் காவல்துறைக்கு மாற்றுகிறேன்.",
    "verdict": "ok",
-   "back": "Now I am transferring the call to the Police.",
+   "back": "Now I will transfer your call to the Police.",
    "suggestion": "",
    "reason": ""
   },
@@ -495,7 +502,7 @@
    "english": "Asks you to transfer money",
    "draft": "பணம் அனுப்பச் சொல்கிறார்",
    "verdict": "ok",
-   "back": "He asks to send money",
+   "back": "Asks you to transfer money",
    "suggestion": "",
    "reason": ""
   },
@@ -503,7 +510,7 @@
    "english": "App from a link, not the app store",
    "draft": "இணைப்பிலிருந்து செயலி, ஆப் ஸ்டோர் அல்ல",
    "verdict": "ok",
-   "back": "App from a link, not App Store",
+   "back": "App from a link, not the app store",
    "suggestion": "",
    "reason": ""
   },
@@ -511,7 +518,7 @@
    "english": "Transfers your call to the Police",
    "draft": "அழைப்பைக் காவல்துறைக்கு மாற்றுகிறார்",
    "verdict": "ok",
-   "back": "He transfers the call to the Police",
+   "back": "Transfers your call to the Police",
    "suggestion": "",
    "reason": ""
   },
@@ -519,7 +526,7 @@
    "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
    "draft": "உங்கள் வேலை பற்றி MOM அழைக்கலாம். ஆனால் பணம் அனுப்பவோ, வங்கி உள்நுழைவு விவரங்களைத் தரவோ MOM ஒருபோதும் கேட்காது.",
    "verdict": "ok",
-   "back": "MOM may call about your work. But MOM will never ask to send money or give bank login details.",
+   "back": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
    "suggestion": "",
    "reason": ""
   },
@@ -527,7 +534,7 @@
    "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
    "draft": "இணைப்பிலிருந்து செயலியை நிறுவ MOM ஒருபோதும் சொல்லாது; அழைப்பைக் காவல்துறைக்கு மாற்றாது. சந்தேகமா? அழைப்பைத் துண்டியுங்கள்.",
    "verdict": "ok",
-   "back": "MOM will never say to install an app from a link; will not transfer call to Police. Doubtful? Hang up.",
+   "back": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
    "suggestion": "",
    "reason": ""
   },
@@ -543,7 +550,7 @@
    "english": "Too-good deals that make you install an app.",
    "draft": "செயலியை நிறுவச் சொல்லும், நம்ப முடியாத அளவு நல்ல சலுகைகள்.",
    "verdict": "ok",
-   "back": "Unbelievably good deals that tell you to install an app.",
+   "back": "Too-good deals that make you install an app.",
    "suggestion": "",
    "reason": ""
   },
@@ -567,7 +574,7 @@
    "english": "Deepavali sale! Gold 80% off!",
    "draft": "தீபாவளி விற்பனை! தங்கத்துக்கு 80% தள்ளுபடி!",
    "verdict": "ok",
-   "back": "Deepavali sale! 80% discount on gold!",
+   "back": "Deepavali sale! Gold 80% off!",
    "suggestion": "",
    "reason": ""
   },
@@ -591,7 +598,7 @@
    "english": "Price is too good to be true",
    "draft": "நம்ப முடியாத அளவு குறைந்த விலை",
    "verdict": "ok",
-   "back": "Unbelievably low price",
+   "back": "Price is too good to be true",
    "suggestion": "",
    "reason": ""
   },
@@ -599,7 +606,7 @@
    "english": "App from a link, not the app store",
    "draft": "இணைப்பிலிருந்து செயலி, ஆப் ஸ்டோர் அல்ல",
    "verdict": "ok",
-   "back": "App from a link, not App Store",
+   "back": "App from link, app store not",
    "suggestion": "",
    "reason": ""
   },
@@ -607,7 +614,7 @@
    "english": "Rushes you",
    "draft": "அவசரப்படுத்துகிறது",
    "verdict": "ok",
-   "back": "It rushes you",
+   "back": "Rushes/pressures you",
    "suggestion": "",
    "reason": ""
   },
@@ -615,17 +622,17 @@
    "english": "Only install apps from the official app store (Google Play or Apple App Store).",
    "draft": "அதிகாரப்பூர்வ ஆப் ஸ்டோரிலிருந்து (Google Play அல்லது Apple App Store) மட்டுமே செயலிகளை நிறுவுங்கள்.",
    "verdict": "ok",
-   "back": "Install apps only from the official app store (Google Play or Apple App Store).",
+   "back": "From official app store (Google Play or Apple App Store) only install apps.",
    "suggestion": "",
    "reason": ""
   },
   "learn[1].todo[1]": {
    "english": "Fake apps can steal money from your bank account.",
    "draft": "போலிச் செயலிகள் உங்கள் வங்கிக் கணக்கிலிருந்து பணத்தைத் திருடலாம்.",
-   "verdict": "ok",
-   "back": "Fake apps can steal money from your bank account.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Fake apps your bank account from money can steal.",
+   "suggestion": "போலி செயலிகள் உங்கள் வங்கிக் கணக்கிலிருந்து பணத்தைத் திருடலாம்.",
+   "reason": "Use standard Tamil word 'போலி' for 'fake' instead of transliteration 'போலிச்'."
   },
   "learn[2].title": {
    "english": "Easy money (scam mule)",
@@ -639,7 +646,7 @@
    "english": "Paying you to use your bank account.",
    "draft": "உங்கள் வங்கிக் கணக்கைப் பயன்படுத்த உங்களுக்குப் பணம் தருவது.",
    "verdict": "ok",
-   "back": "Giving you money to use your bank account.",
+   "back": "Using your bank account, giving you money.",
    "suggestion": "",
    "reason": ""
   },
@@ -655,23 +662,23 @@
    "english": "Want easy money? $300 a week, no work!",
    "draft": "எளிதாகப் பணம் வேண்டுமா? வாரம் $300, வேலை இல்லை!",
    "verdict": "ok",
-   "back": "Want easy money? $300 a week, no work!",
+   "back": "Want easy money? Week $300, no work!",
    "suggestion": "",
    "reason": ""
   },
   "learn[2].chat.lines[1]": {
    "english": "Just let me use your bank account, SIM card or Singpass.",
    "draft": "உங்கள் வங்கிக் கணக்கு, சிம் கார்டு அல்லது Singpass-ஐ நான் பயன்படுத்த விடுங்கள், போதும்.",
-   "verdict": "ok",
-   "back": "Just let me use your bank account, SIM card or Singpass.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Your bank account, SIM card or Singpass let me use, enough.",
+   "suggestion": "உங்கள் வங்கிக் கணக்கு, சிம் கார்டு அல்லது Singpass-ஐ நான் பயன்படுத்த அனுமதிக்கவும்.",
+   "reason": "Remove unnecessary 'போதும்' and use natural request phrasing 'அனுமதிக்கவும்'."
   },
   "learn[2].flags[0].label": {
    "english": "Money for no work",
    "draft": "வேலை இல்லாமல் பணம்",
    "verdict": "ok",
-   "back": "Money without work",
+   "back": "No work money",
    "suggestion": "",
    "reason": ""
   },
@@ -679,7 +686,7 @@
    "english": "Wants your bank account, SIM card or Singpass",
    "draft": "வங்கிக் கணக்கு, சிம் கார்டு அல்லது Singpass-ஐக் கேட்கிறார்",
    "verdict": "ok",
-   "back": "Asks for bank account, SIM card or Singpass",
+   "back": "Bank account, SIM card or Singpass asks",
    "suggestion": "",
    "reason": ""
   },
@@ -687,7 +694,7 @@
    "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
    "draft": "உங்கள் வங்கிக் கணக்கு, சிம் கார்டு அல்லது Singpass-ஐ ஒருபோதும் விற்கவோ, கடன் கொடுக்கவோ, பிறருக்குக் கொடுக்கவோ வேண்டாம்.",
    "verdict": "ok",
-   "back": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "back": "Your bank account, SIM card or Singpass never sell or lend or give to others not.",
    "suggestion": "",
    "reason": ""
   },
@@ -695,7 +702,7 @@
    "english": "This is a crime. You can be fined, jailed or caned.",
    "draft": "இது குற்றம். உங்களுக்கு அபராதம், சிறை அல்லது பிரம்படி விதிக்கப்படலாம்.",
    "verdict": "ok",
-   "back": "This is a crime. You can be fined, jailed or caned.",
+   "back": "This is crime. You can be fined, jailed or caned.",
    "suggestion": "",
    "reason": ""
   },
@@ -711,7 +718,7 @@
    "english": "Fake approval letters that ask for money.",
    "draft": "பணம் கேட்கும் போலி அனுமதிக் கடிதங்கள்.",
    "verdict": "ok",
-   "back": "Fake permission letters that ask for money.",
+   "back": "Money asking fake approval letters.",
    "suggestion": "",
    "reason": ""
   },
@@ -727,7 +734,7 @@
    "english": "SG Jobs Agent",
    "draft": "SG வேலை முகவர்",
    "verdict": "ok",
-   "back": "SG Job Agent",
+   "back": "SG job agent",
    "suggestion": "",
    "reason": ""
   },
@@ -735,7 +742,7 @@
    "english": "Good news! Your work permit is approved.",
    "draft": "நல்ல செய்தி! உங்கள் வேலை அனுமதி அங்கீகரிக்கப்பட்டது.",
    "verdict": "ok",
-   "back": "Good news! Your work permit is approved.",
+   "back": "Good news! Your work permit approved.",
    "suggestion": "",
    "reason": ""
   },
@@ -743,7 +750,7 @@
    "english": "Send $800 today to confirm your job.",
    "draft": "உங்கள் வேலையை உறுதிசெய்ய இன்றே $800 அனுப்புங்கள்.",
    "verdict": "ok",
-   "back": "Send $800 today to confirm your job.",
+   "back": "Your job to confirm today $800 send.",
    "suggestion": "",
    "reason": ""
   },
@@ -751,7 +758,7 @@
    "english": "We are a licensed agency. Licence no. 99X9999.",
    "draft": "நாங்கள் உரிமம் பெற்ற நிறுவனம். உரிம எண் 99X9999.",
    "verdict": "ok",
-   "back": "We are a licensed agency. Licence no. 99X9999.",
+   "back": "We are licensed organization. Licence number 99X9999.",
    "suggestion": "",
    "reason": ""
   },
@@ -759,7 +766,7 @@
    "english": "Asks you to pay first",
    "draft": "முதலில் பணம் கேட்கிறார்",
    "verdict": "ok",
-   "back": "Asks you to pay first",
+   "back": "First money asks",
    "suggestion": "",
    "reason": ""
   },
@@ -767,7 +774,7 @@
    "english": "A licence number does not prove it is real",
    "draft": "உரிம எண் இருந்தால் உண்மை என்று அர்த்தமில்லை",
    "verdict": "ok",
-   "back": "Having a licence number does not mean it is real",
+   "back": "If licence number exists, meaning is not real",
    "suggestion": "",
    "reason": ""
   },
@@ -775,7 +782,7 @@
    "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
    "draft": "MOM இணையதளத்தில் வேலை அனுமதியை நீங்களே சரிபாருங்கள்: \"Check work pass and application status\". உள்நுழைவு தேவையில்லை.",
    "verdict": "ok",
-   "back": "Check work permit yourself on MOM website: \"Check work pass and application status\". Login not needed.",
+   "back": "MOM website on work pass yourself check: \"Check work pass and application status\". Login not needed.",
    "suggestion": "",
    "reason": ""
   },
@@ -783,7 +790,7 @@
    "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
    "draft": "முதலில் பணம் கேட்பது வேலை மோசடியின் அறிகுறி. மோசடிக்காரர்கள் கடிதங்களைப் போலியாக்கி, உரிம எண்ணை நகலெடுக்கலாம்.",
    "verdict": "ok",
-   "back": "Asking for money first is a sign of job scam. Scammers can fake letters and copy license numbers.",
+   "back": "Asking first money is job scam sign. Scammers letters fake, licence number can copy.",
    "suggestion": "",
    "reason": ""
   },
@@ -807,7 +814,7 @@
    "english": "Sorry, I sent a code to your phone by mistake.",
    "draft": "மன்னிக்கவும், தவறுதலாக உங்கள் தொலைபேசிக்கு ஒரு குறியீட்டை அனுப்பிவிட்டேன்.",
    "verdict": "ok",
-   "back": "Sorry, I accidentally sent a code to your phone.",
+   "back": "Sorry, I sent a code to your phone by mistake.",
    "suggestion": "",
    "reason": ""
   },
@@ -815,7 +822,7 @@
    "english": "Please send me the 6-digit code. Quick!",
    "draft": "அந்த 6 இலக்கக் குறியீட்டை எனக்கு அனுப்புங்கள். சீக்கிரம்!",
    "verdict": "ok",
-   "back": "Send me that 6-digit code. Quick!",
+   "back": "Please send me the 6-digit code. Quick!",
    "suggestion": "",
    "reason": ""
   },
@@ -823,7 +830,7 @@
    "english": "Asks for your OTP and rushes you",
    "draft": "OTP-ஐக் கேட்டு அவசரப்படுத்துகிறார்",
    "verdict": "ok",
-   "back": "Asks for OTP and rushes you",
+   "back": "Asks for your OTP and rushes you",
    "suggestion": "",
    "reason": ""
   },
@@ -831,23 +838,23 @@
    "english": "Never share your OTP (the code sent to your phone) with anyone.",
    "draft": "உங்கள் OTP-ஐ (தொலைபேசிக்கு வரும் குறியீடு) யாரிடமும் ஒருபோதும் பகிர வேண்டாம்.",
    "verdict": "ok",
-   "back": "Never share your OTP (code coming to phone) with anyone.",
+   "back": "Never share your OTP (the code sent to your phone) with anyone.",
    "suggestion": "",
    "reason": ""
   },
   "learn[4].todo[1]": {
    "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
    "draft": "ACT நினைவில் கொள்ளுங்கள்: ADD – ScamShield செயலியைப் பதிவிறக்குங்கள், CHECK – 1799-ல் சரிபாருங்கள், TELL – குடும்பத்தினர், நண்பர்களிடம் சொல்லுங்கள்.",
-   "verdict": "fix",
-   "back": "Remember ACT: ADD – download ScamShield app, CHECK – check with 1799, TELL – tell family, friends.",
-   "suggestion": "ACT நினைவில் கொள்ளுங்கள்: ADD – ScamShield செயலியைப் பதிவிறக்குங்கள், CHECK – 1799-ல் சரிபாருங்கள், TELL – குடும்பத்தினர் மற்றும் நண்பர்களிடம் சொல்லுங்கள்.",
-   "reason": "Added 'மற்றும்' (and) for natural flow in the list of people to tell."
+   "verdict": "ok",
+   "back": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[0].title": {
    "english": "Spot the red flags",
    "draft": "அபாய அறிகுறிகளைக் கண்டறியுங்கள்",
    "verdict": "ok",
-   "back": "Find the danger signs",
+   "back": "Spot the red flags",
    "suggestion": "",
    "reason": ""
   },
@@ -863,7 +870,7 @@
    "english": "you have an unpaid work permit fine of $350.",
    "draft": "உங்கள் வேலை அனுமதிக்கு $350 அபராதம் நிலுவையில் உள்ளது.",
    "verdict": "ok",
-   "back": "Your work permit has a $350 fine pending.",
+   "back": "you have an unpaid work permit fine of $350.",
    "suggestion": "",
    "reason": ""
   },
@@ -871,7 +878,7 @@
    "english": "Pay at",
    "draft": "இங்கே செலுத்துங்கள்:",
    "verdict": "ok",
-   "back": "Pay here:",
+   "back": "Pay at",
    "suggestion": "",
    "reason": ""
   },
@@ -879,7 +886,7 @@
    "english": "or reply with your bank login.",
    "draft": "அல்லது வங்கி உள்நுழைவு விவரங்களைப் பதிலாக அனுப்புங்கள்.",
    "verdict": "ok",
-   "back": "Or send bank login details as reply.",
+   "back": "or reply with your bank login.",
    "suggestion": "",
    "reason": ""
   },
@@ -887,7 +894,7 @@
    "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
    "draft": "அரசாங்க SMS-கள் \"gov.sg\"-இலிருந்து வரும். உண்மையான MOM முகவரிகள் \".mom.gov.sg\" என்று முடியும். அரசாங்கம் SMS மூலம் வங்கி உள்நுழைவு விவரங்களைக் கேட்காது. சந்தேகமா? 1799-ஐ அழையுங்கள்.",
    "verdict": "ok",
-   "back": "Government SMSes come from 'gov.sg'. Real MOM addresses end with '.mom.gov.sg'. Government never asks for bank login via SMS. Doubtful? Call 1799.",
+   "back": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
    "suggestion": "",
    "reason": ""
   },
@@ -919,7 +926,7 @@
    "english": "A normal message from someone you know, with no money or codes asked.",
    "draft": "உங்களுக்குத் தெரிந்தவரின் சாதாரணச் செய்தி. பணமோ குறியீடோ கேட்கவில்லை.",
    "verdict": "ok",
-   "back": "Normal message from someone you know. No money or code asked.",
+   "back": "A normal message from someone you know, with no money or codes asked.",
    "suggestion": "",
    "reason": ""
   },
@@ -935,7 +942,7 @@
    "english": "Your bank account is locked. Reply with the OTP we just sent you.",
    "draft": "உங்கள் வங்கிக் கணக்கு முடக்கப்பட்டுள்ளது. நாங்கள் அனுப்பிய OTP-ஐப் பதிலாக அனுப்புங்கள்.",
    "verdict": "ok",
-   "back": "Your bank account is locked. Reply with the OTP we sent.",
+   "back": "Your bank account is locked. Reply with the OTP we just sent you.",
    "suggestion": "",
    "reason": ""
   },
@@ -943,7 +950,7 @@
    "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
    "draft": "உங்கள் OTP-ஐ (தொலைபேசிக்கு வரும் குறியீடு) யாரிடமும் பகிர வேண்டாம், அவர்கள் வங்கி என்று சொன்னாலும்.",
    "verdict": "ok",
-   "back": "Never share your OTP (code coming to phone) with anyone, even if they say they are bank.",
+   "back": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
    "suggestion": "",
    "reason": ""
   },
@@ -959,7 +966,7 @@
    "english": "Lend me your bank card for one week. I will pay you $300.",
    "draft": "உங்கள் வங்கி அட்டையை ஒரு வாரத்துக்கு எனக்குக் கடனாகக் கொடுங்கள். உங்களுக்கு $300 தருகிறேன்.",
    "verdict": "ok",
-   "back": "Lend me your bank card for one week. I will give you $300.",
+   "back": "Lend me your bank card for one week. I will pay you $300.",
    "suggestion": "",
    "reason": ""
   },
@@ -967,7 +974,7 @@
    "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
    "draft": "இது scam mule சதி. பிறர் உங்கள் வங்கி அட்டையைப் பயன்படுத்த விடுவது குற்றம்.",
    "verdict": "ok",
-   "back": "This is scam mule plot. Letting others use your bank card is a crime.",
+   "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
    "suggestion": "",
    "reason": ""
   },
@@ -991,7 +998,7 @@
    "english": "A normal greeting from a friend, with nothing asked.",
    "draft": "நண்பரின் சாதாரண வாழ்த்து, எதுவும் கேட்கவில்லை.",
    "verdict": "ok",
-   "back": "Normal greeting from friend, nothing asked.",
+   "back": "A normal greeting from a friend, with nothing asked.",
    "suggestion": "",
    "reason": ""
   },
@@ -1006,80 +1013,80 @@
   "quiz[2].chat.from": {
    "english": "\"Cousin\" (new number)",
    "draft": "\"உறவினர்\" (புதிய எண்)",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "\"Relative\" (new number)",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "\"குடும்ப உறவினர்\" (புதிய எண்)",
+   "reason": "Cousin is specific; உறவினர் is too general"
   },
   "quiz[2].chat.lines[0]": {
    "english": "Hi, it's your cousin. I changed my number.",
    "draft": "வணக்கம், நான் உங்கள் உறவினர். எண்ணை மாற்றிவிட்டேன்.",
-   "verdict": "ok",
-   "back": "Hello, I am your relative. I have changed the number.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Hello, I am your relative. I changed the number.",
+   "suggestion": "ஹாய், நான் உங்கள் குடும்ப உறவினர். எண்ணை மாற்றியேன்.",
+   "reason": "Hi should be casual ஹாய்; cousin specific; changed more natural"
   },
   "quiz[2].chat.lines[1]": {
    "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
    "draft": "தவறுதலாக உங்கள் போனுக்கு 6 இலக்கக் குறியீடு அனுப்பிவிட்டேன். அதை எனக்கு அனுப்புங்கள். அவசரம்!",
-   "verdict": "ok",
-   "back": "Sent 6-digit code to your phone by mistake. Send it to me. Urgent!",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "By mistake I sent a 6-digit code to your phone. Send it to me. Urgent!",
+   "suggestion": "தவறாக உங்கள் போனுக்கு 6 இலக்கக் குறியீடு அனுப்பினேன். அதை எனக்கு அனுப்புங்கள். அவசரம்!",
+   "reason": "தவறுதலாக formal; அனுப்பிவிட்டேன் formal"
   },
   "quiz[2].options[0]": {
    "english": "OK, here is the code: 482915",
    "draft": "சரி, குறியீடு இதோ: 482915",
    "verdict": "ok",
-   "back": "Okay, here is the code: 482915",
+   "back": "OK, here is the code: 482915",
    "suggestion": "",
    "reason": ""
   },
   "quiz[2].options[1]": {
    "english": "No. I never share codes. I will call your old number.",
    "draft": "இல்லை. குறியீட்டை யாருக்கும் தரமாட்டேன். உங்கள் பழைய எண்ணை அழைக்கிறேன்.",
-   "verdict": "ok",
+   "verdict": "fix",
    "back": "No. I will not give the code to anyone. I will call your old number.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "இல்லை. குறியீட்டை யாருக்கும் தராதேன். உங்கள் பழைய எண்ணை அழைக்கிறேன்.",
+   "reason": "தரமாட்டேன் formal"
   },
   "quiz[2].options[2]": {
    "english": "Send me your photo first, then I will send it.",
    "draft": "முதலில் உங்கள் படத்தை அனுப்புங்கள், பிறகு தருகிறேன்.",
    "verdict": "ok",
-   "back": "Send your photo first, then I will give it.",
+   "back": "First send your photo, then I will give.",
    "suggestion": "",
    "reason": ""
   },
   "quiz[2].explain": {
    "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
    "draft": "OTP-ஐக் குடும்பத்தினர் உட்பட யாரிடமும் பகிர வேண்டாம். எண்ணை மாற்றியதாகச் சொன்னால், பழைய எண்ணை அழைத்துச் சரிபாருங்கள்.",
-   "verdict": "ok",
-   "back": "Do not share OTP with anyone, including family. If someone says they changed number, call old number to check.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Do not share OTP even with family. If someone says they changed number, call old number and check.",
+   "suggestion": "OTP-ஐக் குடும்பத்தினருக்கும் யாரிடமும் பகிர வேண்டாம். எண்ணை மாற்றியதாகச் சொன்னால், பழைய எண்ணை அழைத்து சரிபாருங்கள்.",
+   "reason": "குடும்பத்தினர் உட்பட formal; அழைத்துச் சரிபாருங்கள் formal"
   },
   "quiz[3].title": {
    "english": "Pick the safe way",
    "draft": "பாதுகாப்பான வழியைத் தேர்ந்தெடுங்கள்",
    "verdict": "ok",
-   "back": "Choose the safe way",
+   "back": "Pick the safe way",
    "suggestion": "",
    "reason": ""
   },
   "quiz[3].prompt": {
    "english": "You want a shopping app for Deepavali deals. Where should you get it?",
    "draft": "தீபாவளிச் சலுகைகளுக்கு ஒரு ஷாப்பிங் செயலி வேண்டும். அதை எங்கிருந்து பெற வேண்டும்?",
-   "verdict": "ok",
-   "back": "You want a shopping app for Deepavali deals. Where should you get it?",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "For Deepavali deals a shopping app is needed. From where should it be obtained?",
+   "suggestion": "தீபாவளிச் சலுகைகளுக்கு ஒரு ஷாப்பிங் செயலி வேண்டும். அதை எங்கே பெறலாம்?",
+   "reason": "எங்கிருந்து formal; பெற வேண்டும் formal"
   },
   "quiz[3].options[0].label": {
    "english": "The official app store on your phone",
    "draft": "உங்கள் தொலைபேசியில் உள்ள அதிகாரப்பூர்வ ஆப் ஸ்டோர்",
    "verdict": "ok",
-   "back": "The official app store on your phone",
+   "back": "The official app store in your phone",
    "suggestion": "",
    "reason": ""
   },
@@ -1087,7 +1094,7 @@
    "english": "A link sent in a chat message",
    "draft": "அரட்டைச் செய்தியில் அனுப்பப்பட்ட இணைப்பு",
    "verdict": "ok",
-   "back": "A link sent in a chat message",
+   "back": "Link sent in chat message",
    "suggestion": "",
    "reason": ""
   },
@@ -1095,7 +1102,7 @@
    "english": "A link in an online advert",
    "draft": "இணைய விளம்பரத்தில் உள்ள இணைப்பு",
    "verdict": "ok",
-   "back": "A link in an online advert",
+   "back": "Link in online advert",
    "suggestion": "",
    "reason": ""
   },
@@ -1111,7 +1118,7 @@
    "english": "Spot the red flags",
    "draft": "அபாய அறிகுறிகளைக் கண்டறியுங்கள்",
    "verdict": "ok",
-   "back": "Find the danger signs",
+   "back": "Spot the danger signs",
    "suggestion": "",
    "reason": ""
   },
@@ -1127,7 +1134,7 @@
    "english": "Job Agent",
    "draft": "வேலை முகவர்",
    "verdict": "ok",
-   "back": "Job Agent",
+   "back": "Job agent",
    "suggestion": "",
    "reason": ""
   },
@@ -1135,7 +1142,7 @@
    "english": "Your employer wants to cancel your work permit.",
    "draft": "உங்கள் முதலாளி வேலை அனுமதியை ரத்து செய்யப் போகிறார்.",
    "verdict": "ok",
-   "back": "Your employer is going to cancel work permit.",
+   "back": "Your employer wants to cancel work permit.",
    "suggestion": "",
    "reason": ""
   },
@@ -1143,39 +1150,39 @@
    "english": "Pay me $500 to keep your job.",
    "draft": "வேலை தொடர எனக்கு $500 கொடுங்கள்.",
    "verdict": "ok",
-   "back": "Give me $500 to continue work.",
+   "back": "Continue job give me $500",
    "suggestion": "",
    "reason": ""
   },
   "quiz[4].msg.bubbles[2][0].t": {
    "english": "Check your permit at",
    "draft": "அனுமதியை இங்கே பாருங்கள்:",
-   "verdict": "fix",
+   "verdict": "ok",
    "back": "Check permit here:",
-   "suggestion": "அனுமதியை இங்கே சரிபாருங்கள்:",
-   "reason": "Changed 'look' to 'check' to match English 'Check'."
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[4].msg.bubbles[2][2].t": {
    "english": "and send me your Singpass password.",
    "draft": "பிறகு Singpass கடவுச்சொல்லை எனக்கு அனுப்புங்கள்.",
    "verdict": "ok",
-   "back": "Then send Singpass password to me.",
+   "back": "Then send Singpass password to me",
    "suggestion": "",
    "reason": ""
   },
   "quiz[4].explain": {
    "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
    "draft": "வேலையைக் காக்கப் பணம் கேட்பது சட்டவிரோதம். உண்மையான MOM முகவரிகள் \".mom.gov.sg\" என்று முடியும். Singpass கடவுச்சொல்லை யாரிடமும் பகிர வேண்டாம்.",
-   "verdict": "ok",
-   "back": "Asking for money to keep job is illegal. Real MOM addresses end with \".mom.gov.sg\". Do not share Singpass password with anyone.",
-   "suggestion": "",
-   "reason": ""
+   "verdict": "fix",
+   "back": "Asking money to keep job is illegal. Real MOM addresses end with \".mom.gov.sg\". Do not share Singpass password to anyone.",
+   "suggestion": "வேலையைக் காக்க பணம் கேட்பது சட்டவிரோதம். உண்மையான MOM முகவரிகள் \".mom.gov.sg\" என்று முடியும். Singpass கடவுச்சொல்லை யாரிடமும் பகிர வேண்டாம்.",
+   "reason": "காக்கப் formal"
   },
   "quiz[5].title": {
    "english": "What would you reply?",
    "draft": "நீங்கள் என்ன பதில் சொல்வீர்கள்?",
    "verdict": "ok",
-   "back": "What will you reply?",
+   "back": "What would you reply?",
    "suggestion": "",
    "reason": ""
   },
@@ -1199,7 +1206,7 @@
    "english": "Just let me use your bank account and Singpass.",
    "draft": "உங்கள் வங்கிக் கணக்கையும் Singpass-ஐயும் நான் பயன்படுத்த அனுமதியுங்கள்.",
    "verdict": "ok",
-   "back": "Allow me to use your bank account and Singpass.",
+   "back": "Please allow me to use your bank account and Singpass.",
    "suggestion": "",
    "reason": ""
   },
@@ -1207,7 +1214,7 @@
    "english": "OK, how do I start?",
    "draft": "சரி, எப்படித் தொடங்குவது?",
    "verdict": "ok",
-   "back": "Okay, how to start?",
+   "back": "OK, how to start?",
    "suggestion": "",
    "reason": ""
   },
@@ -1215,7 +1222,7 @@
    "english": "Can you pay me $400 instead?",
    "draft": "அதற்குப் பதிலாக $400 தர முடியுமா?",
    "verdict": "ok",
-   "back": "Can you give $400 instead for that?",
+   "back": "Instead of that, can you give $400?",
    "suggestion": "",
    "reason": ""
   },
@@ -1239,57 +1246,57 @@
    "english": "One last thing",
    "draft": "கடைசியாக ஒன்று",
    "verdict": "ok",
-   "back": "One last thing",
+   "back": "Finally one",
    "suggestion": "",
    "reason": ""
   },
   "feedback.csatQuestion": {
    "english": "How happy are you with today's event?",
    "draft": "இன்றைய நிகழ்ச்சி உங்களுக்கு எப்படி இருந்தது?",
-   "verdict": "fix",
+   "verdict": "ok",
    "back": "How was today's event for you?",
-   "suggestion": "இன்றைய நிகழ்வு உங்களுக்கு எப்படி இருந்தது?",
-   "reason": "Changed 'நிகழ்ச்சி' (program/show) to 'நிகழ்வு' (event/occurrence) which is more accurate for a general feedback question about the session."
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatLabels[0]": {
    "english": "Very unhappy",
    "draft": "மிகவும் அதிருப்தி",
-   "verdict": "fix",
-   "back": "Very dissatisfaction",
-   "suggestion": "மிகவும் அதிருப்தியாக இருந்தது",
-   "reason": "The draft is a noun phrase ('dissatisfaction'). The label should describe the feeling ('was very dissatisfied') to match the question."
+   "verdict": "ok",
+   "back": "Very unhappy",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatLabels[1]": {
    "english": "Unhappy",
    "draft": "அதிருப்தி",
-   "verdict": "fix",
-   "back": "Dissatisfaction",
-   "suggestion": "அதிருப்தியாக இருந்தது",
-   "reason": "Same as above; needs to be a descriptive phrase, not just a noun."
+   "verdict": "ok",
+   "back": "Unhappy",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatLabels[2]": {
    "english": "Okay",
    "draft": "பரவாயில்லை",
    "verdict": "ok",
-   "back": "It's okay",
+   "back": "No problem",
    "suggestion": "",
    "reason": ""
   },
   "feedback.csatLabels[3]": {
    "english": "Happy",
    "draft": "மகிழ்ச்சி",
-   "verdict": "fix",
+   "verdict": "ok",
    "back": "Happiness",
-   "suggestion": "மகிழ்ச்சியாக இருந்தது",
-   "reason": "The draft is a noun ('happiness'). It should be 'was happy' to match the scale."
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatLabels[4]": {
    "english": "Very happy",
    "draft": "மிகவும் மகிழ்ச்சி",
-   "verdict": "fix",
+   "verdict": "ok",
    "back": "Very happiness",
-   "suggestion": "மிகவும் மகிழ்ச்சியாக இருந்தது",
-   "reason": "The draft is grammatically incorrect ('Very happiness'). It should be 'was very happy'."
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.learnedQuestion": {
    "english": "Did you learn something new about scams?",
@@ -1328,14 +1335,6 @@
    "draft": "என் முடிவைப் பார்",
    "verdict": "ok",
    "back": "See my result",
-   "suggestion": "",
-   "reason": ""
-  },
-  "ui.watch": {
-   "english": "Watch the official video",
-   "draft": "அதிகாரப்பூர்வ வீடியோவைப் பாருங்கள்",
-   "verdict": "ok",
-   "back": "Watch the official video",
    "suggestion": "",
    "reason": ""
   }
