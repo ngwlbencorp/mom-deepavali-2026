@@ -301,8 +301,9 @@
     if (!list.length) box.appendChild(node('p', 'muted center', 'No reports yet.'));
     list.forEach(function (b) {
       var card = node('div', 'card bug ' + b.status);
+      card.dataset.id = b.id;
       var head = node('div', 'bughead');
-      head.appendChild(node('b', null, '#' + b.id + ' · ' + (b.screen || 'No screen given')));
+      head.appendChild(node('b', null, 'Report #' + b.id + (b.screen ? ' · ' + b.screen : '')));
       head.appendChild(node('span', 'badge ' + b.status, STATUS_LABEL[b.status] || b.status));
       card.appendChild(head);
       card.appendChild(node('p', 'muted small', 'Reported ' + new Date(b.created_at).toLocaleString() + ' by ' + (b.reporter_email || '–') +

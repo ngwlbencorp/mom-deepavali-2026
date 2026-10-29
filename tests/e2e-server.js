@@ -152,8 +152,7 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   // bug report from the officer page, with a real (tall, full-page) screenshot
   await bob.goto(site + 'admin/index.html#bug');
   await bob.locator('#bugForm').waitFor();
-  ok(/personal details/.test(await bob.locator('#v-bug .warn').textContent()), 'bug form warns against personal details in screenshots');
-  await bob.selectOption('#bugScreen', 'Mini-site: quiz');
+  ok(await bob.locator('#bugForm select').count() === 0, 'bug form asks only what went wrong (no list to choose from)');
   await bob.fill('#bugText', 'Test report: the quiz froze after question 3 on my Android phone.');
   await bob.setInputFiles('#bugFiles', [out + '/admin-manual.png']);
   await bob.locator('#bugThumbs img').waitFor();
@@ -201,14 +200,14 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   ok(csv.includes(idA) && csv.split('\r\n').length === 6, 'claims CSV downloads (5 claims + header)');
 
   await sup.click('[data-tab="bugs"]');
-  const card = sup.locator('.bug', { hasText: '#' + bugNo + ' · Mini-site: quiz' });
+  const card = sup.locator(`.bug[data-id="${bugNo}"]`);
   await card.waitFor();
   ok(/bob@mom\.gov\.sg/.test(await card.textContent()) && /froze after question 3/.test(await card.textContent()) && /New/.test(await card.locator('.badge').textContent()),
     'bug log shows the report: officer, description, status New');
-  await sup.waitForFunction((n) => { const c = [...document.querySelectorAll('.bug')].find((x) => x.textContent.includes('#' + n + ' ·')); const i = c && c.querySelector('.bugshots img'); return i && i.complete && i.naturalWidth > 0; }, bugNo);
+  await sup.waitForFunction((n) => { const c = document.querySelector(`.bug[data-id="${n}"]`); const i = c && c.querySelector('.bugshots img'); return i && i.complete && i.naturalWidth > 0; }, bugNo);
   ok(true, 'bug log shows the screenshot');
   await card.locator('select').selectOption('fixed');
-  await sup.waitForFunction((n) => { const c = [...document.querySelectorAll('.bug')].find((x) => x.textContent.includes('#' + n + ' ·')); return c && /Fixed/.test(c.querySelector('.badge').textContent) && /min\)/.test(c.textContent); }, bugNo);
+  await sup.waitForFunction((n) => { const c = document.querySelector(`.bug[data-id="${n}"]`); return c && /Fixed/.test(c.querySelector('.badge').textContent) && /min\)/.test(c.textContent); }, bugNo);
   ok(/\d+ fixed/.test(await sup.locator('#bugSummary').textContent()), 'superadmin can mark it fixed; time to fix and summary shown');
   await sup.screenshot({ path: out + '/superadmin-bugs.png', fullPage: true });
 

@@ -73,26 +73,12 @@
     <section class="view" id="v-bug" hidden>
       <form class="card" id="bugForm">
         <h2>Report a problem</h2>
-        <p class="muted">Tell us what went wrong. Screenshots help a lot. Reports go to the team fixing the mini-site.</p>
-        <label class="field">Where did it happen?
-          <select id="bugScreen" required>
-            <option value="">Choose…</option>
-            <option>Mini-site: home page</option>
-            <option>Mini-site: learn stories</option>
-            <option>Mini-site: quiz</option>
-            <option>Mini-site: result or QR code</option>
-            <option>Mini-site: language</option>
-            <option>Mini-site: somewhere else</option>
-            <option>Officer page (this page)</option>
-            <option>Other</option>
-          </select>
-        </label>
+        <p class="muted">Tell us what went wrong. Reports go to the team fixing the mini-site.</p>
         <label class="field">What went wrong?
-          <textarea id="bugText" rows="5" maxlength="2000" required placeholder="What you did, what you expected, and what happened instead. Which phone, if you know."></textarea>
+          <textarea id="bugText" rows="5" maxlength="2000" required placeholder="What you did, and what went wrong. A screenshot of the screen helps."></textarea>
         </label>
         <label class="btn secondary filebtn">Add screenshots (up to 3)<input type="file" id="bugFiles" accept="image/*" multiple></label>
         <div class="bugthumbs" id="bugThumbs"></div>
-        <p class="warn small">Before adding a screenshot, check it shows no personal details: no names, FIN or ID numbers, phone numbers or messages from other apps.</p>
         <button class="btn" type="submit" id="bugSend">Send report</button>
         <p class="error" id="bugErr" hidden></p>
       </form>

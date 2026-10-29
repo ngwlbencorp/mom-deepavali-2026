@@ -285,7 +285,7 @@
     e.preventDefault();
     $('bugSend').disabled = true;
     $('bugErr').hidden = true;
-    Api.call('POST', '/api/bugreport', { screen: $('bugScreen').value, description: $('bugText').value, screenshots: shots }, ROLE).then(function (r) {
+    Api.call('POST', '/api/bugreport', { description: $('bugText').value, screenshots: shots }, ROLE).then(function (r) {
       if (r.status === 401) return loggedOut(r.body.message);
       if (!r.ok) { $('bugErr').textContent = r.body.message || 'Could not send. Try again.'; $('bugErr').hidden = false; $('bugSend').disabled = false; return; }
       $('bugForm').hidden = true;
