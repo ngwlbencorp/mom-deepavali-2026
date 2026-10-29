@@ -12,6 +12,8 @@
 //          --fresh (ignore earlier results; by default, lines already reviewed are skipped).
 // Windows PowerShell: $env:SEALION_API_KEY = '<key>'; node tools/sealion-review.js   (key lasts for that window only)
 // The free tier allows 10 requests a minute, so requests are spaced 7 seconds apart.
+// Behind an HTTPS proxy (e.g. a cloud session), Node's fetch needs NODE_USE_ENV_PROXY=1 (and
+// NODE_EXTRA_CA_CERTS if the proxy uses its own certificate).
 const fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..');
 
@@ -85,6 +87,9 @@ async function reviewBatch(code, keys, draft) {
   const lines = keys.map((k) => ({ key: k, where: where(k), note: hint(k), english: english[k], draft: draft[k] }));
   const body = {
     model: MODEL, temperature: 0.2, max_completion_tokens: 12000,
+    // Qwen-based SEA-LION "thinks" before answering by default: ~20x slower, and the thinking can
+    // use up the whole token budget. A line-by-line check does not need it.
+    chat_template_kwargs: { enable_thinking: false },
     messages: [{ role: 'system', content: SYSTEM },
       { role: 'user', content: `Language: ${NAME[code]}.\nCheck these ${lines.length} lines:\n${JSON.stringify(lines, null, 1)}` }]
   };
