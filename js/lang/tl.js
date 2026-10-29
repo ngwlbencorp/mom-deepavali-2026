@@ -33,6 +33,7 @@ window.SCAM_TEXT["tl"] = {
     "example": "HALIMBAWA · PEKE",
     "whatToDo": "Ano ang gagawin",
     "toQuiz": "Sagutan ang quiz",
+    "watch": "Panoorin ang opisyal na video",
     "spotPrompt": "I-tap ang {n} red flag",
     "selected": "{k} sa {n} ang napili",
     "scam": "Scam",
@@ -85,8 +86,8 @@ window.SCAM_TEXT["tl"] = {
         }
       ],
       "todo": [
-        "Maaaring tumawag sa iyo ang MOM tungkol sa trabaho mo. Pero hindi ka kailanman uutusan ng MOM na mag-transfer ng pera o ibigay ang bank login mo.",
-        "Hindi ka kailanman uutusan ng MOM na mag-install ng app mula sa link, at hindi nito ililipat ang tawag mo sa Pulis. Hindi sigurado? Ibaba ang telepono."
+        "Maaaring tawagan ka ng MOM tungkol sa trabaho mo. Pero hindi ka uutusan ng MOM na mag-transfer ng pera o ibigay ang bank login mo.",
+        "Hindi ka uutusan ng MOM na mag-install ng app mula sa link, at hindi nito ililipat ang tawag mo sa Pulis. Hindi sigurado? Ibaba ang telepono."
       ]
     },
     {
@@ -142,7 +143,7 @@ window.SCAM_TEXT["tl"] = {
     },
     {
       "title": "Pekeng trabaho o work permit",
-      "tagline": "Mga alok na mukhang opisyal pero humihingi ng pera.",
+      "tagline": "Pekeng approval letter na humihingi ng pera.",
       "chat": {
         "channel": "Chat message",
         "from": "SG Jobs Agent",
@@ -161,8 +162,8 @@ window.SCAM_TEXT["tl"] = {
         }
       ],
       "todo": [
-        "Karaniwang senyales ng job scam ang pagpapabayad muna. Ang employer mo ang dapat magbayad ng mga fee ng work permit mo.",
-        "Kayang kopyahin ng mga scammer ang licence number ng totoong ahensya. Ikaw mismo ang kumontak sa ahensya."
+        "I-check mismo ang work pass mo sa website ng MOM: \"Check work pass and application status\". Walang login.",
+        "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga sulat at kopyahin ang mga licence number ng mga scammer."
       ]
     },
     {

@@ -209,6 +209,13 @@
     ], [], home, true);
   }
 
+  // An official video on YouTube, in the reader's language where a subtitled version exists.
+  function watchLink(v) {
+    var id = (v.lang && v.lang[I.current()]) || v.id;
+    return el('a', { class: 'watch', href: 'https://www.youtube.com/watch?v=' + id, target: '_blank', rel: 'noopener' },
+      [el('span', { class: 'play', text: '▶' }), el('span', { class: 'watchtext' }, [el('b', { text: T.ui.watch }), el('small', { text: v.by + ' · YouTube' })])]);
+  }
+
   // ---------- learn: 2 frames per story (animated example, then what to do) ----------
   function story(si, frame) {
     var s = T.learn[si], total = T.learn.length * 2, pos = si * 2 + frame;
@@ -233,6 +240,7 @@
         el('h2', { text: s.title }),
         el('p', { class: 'eyebrow', text: T.ui.whatToDo }),
         el('ul', { class: 'todo' }, s.todo.map(function (t) { return el('li', { text: t }); })),
+        s.video ? watchLink(s.video) : null,
         helpline()
       ];
     }

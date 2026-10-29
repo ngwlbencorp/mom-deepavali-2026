@@ -5,7 +5,7 @@
   'use strict';
   var KEY = 'scamsite.lang';
   // Strings that are identifiers, not text: never taken from a translation.
-  var FIXED = { type: 1, icon: 1, code: 1, helpline: 1 };
+  var FIXED = { type: 1, icon: 1, code: 1, helpline: 1, video: 1 };
 
   // Overlay "over" onto "base", keeping base's shape: arrays by index, objects by key, and only
   // values of the same type (so a translation can never change a boolean flag or an answer index).

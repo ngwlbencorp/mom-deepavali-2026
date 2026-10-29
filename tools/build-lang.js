@@ -9,7 +9,7 @@ const fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..');
 // Display names (shown in the language menu) come from tools/languages.json, shared with the review tools.
 const NAMES = Object.fromEntries(require('./languages.json').map((l) => [l.code, l.name]));
-const FIXED = new Set(['type', 'icon', 'code', 'helpline']);
+const FIXED = new Set(['type', 'icon', 'code', 'helpline', 'video']);
 
 global.window = {};
 require(path.join(root, 'js/content.js'));

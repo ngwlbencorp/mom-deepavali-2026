@@ -461,11 +461,11 @@
   },
   "learn[0].chat.lines[0]": {
    "english": "Hello, I am from MOM. There is a problem with your work permit.",
-   "draft": "Halo, saya dari MOM. Ada masalah dengan izin kerja (Work Permit) Anda.",
-   "verdict": "fix",
-   "back": "Hello, I am from MOM. There is a problem with your work permit (Work Permit).",
-   "suggestion": "Halo, saya dari MOM. Ada masalah dengan izin kerja Anda.",
-   "reason": "Removed redundant English text in parentheses to keep it natural and short for a phone screen."
+   "draft": "Halo, saya dari MOM. Ada masalah dengan izin kerja Anda.",
+   "verdict": "ok",
+   "back": "Hello, I am from MOM. There is a problem with your work permit.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].chat.lines[1]": {
    "english": "Transfer $500 now, or you will be sent home!",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "Tawaran yang tampak resmi tapi meminta uang.",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "Surat persetujuan palsu yang meminta uang.",
    "verdict": "ok",
-   "back": "Offers that look official but ask for money.",
+   "back": "Fake approval letters that ask for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "Diminta membayar dulu adalah tanda umum penipuan kerja. Biaya izin kerja Anda wajib dibayar oleh majikan.",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "Cek izin kerja Anda sendiri di situs web MOM: \"Check work pass and application status\". Tidak perlu login.",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "back": "Check your work permit yourself on MOM's website: \"Check work pass and application status\". No login needed.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "Penipu bisa meniru nomor lisensi agen yang asli. Hubungi agennya sendiri.",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "Diminta membayar dulu adalah tanda umum penipuan kerja. Penipu bisa memalsukan surat dan meniru nomor lisensi.",
    "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "back": "Being asked to pay first is a common job scam sign. Scammers can fake letters and copy license numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -1245,27 +1245,27 @@
   },
   "feedback.csatQuestion": {
    "english": "How happy are you with today's event?",
-   "draft": "Seberapa senang Anda dengan acara hari ini?",
+   "draft": "Seberapa puas Anda dengan acara hari ini?",
    "verdict": "fix",
-   "back": "How happy are you with today's event?",
-   "suggestion": "Seberapa puas Anda dengan acara hari ini?",
-   "reason": "'Senang' (happy) is emotional. For feedback on an event/service, 'puas' (satisfied) is the standard and correct word. 'Senang' sounds like 'Are you happy?'. 'Puas' means 'Are you satisfied?'."
+   "back": "How satisfied are you with today's event?",
+   "suggestion": "Seberapa senang Anda dengan acara hari ini?",
+   "reason": "English source uses 'happy', draft uses 'puas' (satisfied). 'Senang' matches 'happy' better for simple language."
   },
   "feedback.csatLabels[0]": {
    "english": "Very unhappy",
-   "draft": "Sangat tidak senang",
+   "draft": "Sangat tidak puas",
    "verdict": "fix",
-   "back": "Very not happy",
-   "suggestion": "Sangat tidak puas",
-   "reason": "Consistency with 'puas' (satisfied) from the question. 'Tidak senang' is okay but 'tidak puas' is better for feedback scales."
+   "back": "Very unsatisfied",
+   "suggestion": "Sangat tidak senang",
+   "reason": "Must match 'happy' scale in question. 'Tidak senang' is simpler than 'tidak puas'."
   },
   "feedback.csatLabels[1]": {
    "english": "Unhappy",
-   "draft": "Tidak senang",
+   "draft": "Tidak puas",
    "verdict": "fix",
-   "back": "Not happy",
-   "suggestion": "Tidak puas",
-   "reason": "Consistency with 'puas'."
+   "back": "Unsatisfied",
+   "suggestion": "Tidak senang",
+   "reason": "Must match 'happy' scale in question."
   },
   "feedback.csatLabels[2]": {
    "english": "Okay",
@@ -1277,19 +1277,19 @@
   },
   "feedback.csatLabels[3]": {
    "english": "Happy",
-   "draft": "Senang",
+   "draft": "Puas",
    "verdict": "fix",
-   "back": "Happy",
-   "suggestion": "Puas",
-   "reason": "Consistency with 'puas'."
+   "back": "Satisfied",
+   "suggestion": "Senang",
+   "reason": "Must match 'happy' scale in question."
   },
   "feedback.csatLabels[4]": {
    "english": "Very happy",
-   "draft": "Sangat senang",
+   "draft": "Sangat puas",
    "verdict": "fix",
-   "back": "Very happy",
-   "suggestion": "Sangat puas",
-   "reason": "Consistency with 'puas'."
+   "back": "Very satisfied",
+   "suggestion": "Sangat senang",
+   "reason": "Must match 'happy' scale in question."
   },
   "feedback.learnedQuestion": {
    "english": "Did you learn something new about scams?",
@@ -1328,6 +1328,14 @@
    "draft": "Lihat hasil saya",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "Tonton video resmi",
+   "verdict": "ok",
+   "back": "Watch official video",
    "suggestion": "",
    "reason": ""
   }

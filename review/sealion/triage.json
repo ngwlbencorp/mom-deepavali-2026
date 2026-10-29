@@ -4,7 +4,12 @@
   "id": {
    "ui.toQuiz": "Style only; SEA-LION itself says the draft is acceptable.",
    "quiz[5].explain": "\"Kata tidak\" is not natural Indonesian; \"Tolak\" (refuse) is clear.",
-   "feedback.csatLabels[2]": "\"Cukup puas\" leans positive; the middle of the scale should be neutral."
+   "feedback.csatLabels[2]": "\"Cukup puas\" leans positive; the middle of the scale should be neutral.",
+   "feedback.csatQuestion": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
+   "feedback.csatLabels[0]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
+   "feedback.csatLabels[1]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
+   "feedback.csatLabels[3]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
+   "feedback.csatLabels[4]": "SEA-LION reversed its own suggestion from the first run; kept the current text."
   },
   "tl": {
    "ui.spotPrompt": "English loanwords are not pluralised after a number in Tagalog.",
@@ -17,7 +22,12 @@
   "vi": {
    "quiz[1].cards[0].from": "\"Chủ nhà\" means homeowner; most attendees are not domestic workers.",
    "quiz[4].msg.bubbles[0][0].t": "Same: \"chủ nhà\" fits domestic workers only.",
-   "feedback.csatQuestion": "\"Buổi học\" means a class; this is an event."
+   "feedback.csatQuestion": "\"Buổi học\" means a class; this is an event.",
+   "ui.attempt": "\"Thử lại\" means \"Try again\"; this is the label before an attempt number.",
+   "learn[2].todo[1]": "\"Phạt tiền, phạt tù\" is the standard legal phrasing; SEA-LION was wrong.",
+   "learn[4].todo[1]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
+   "quiz[0].msg.bubbles[0][0].t": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
+   "quiz[5].explain": "\"Scam mule\" is not one of the names kept in English; the plain Vietnamese is clearer."
   },
   "zh": {
    "ui.closeReview": "\"关闭查看\" is awkward; the review screen shows answers.",
@@ -28,13 +38,18 @@
    "learn[1].tagline": "Applied through the 应用程序 to 应用 change.",
    "quiz[5].explain": "Keeps the polite 您 used everywhere else.",
    "feedback.learnedOptions[0].label": "有/没有 is the natural answer to \"学到…了吗\".",
-   "feedback.learnedOptions[2].label": "Same as above."
+   "feedback.learnedOptions[2].label": "Same as above.",
+   "learn[0].chat.lines[0]": "\"我是MOM的\" is incomplete; \"我是MOM打来的\" is natural for a call.",
+   "learn[1].todo[1]": "\"银行户口\" is the standard term in Singapore.",
+   "quiz[0].msg.bubbles[1][0].t": "SEA-LION reversed its own suggestion from the first run; kept the current text."
   },
   "th": {
    "ui.scam": "\"มิจฉาชีพ\" means scammer (a person); the button labels a message as a scam.",
    "ui.attempt": "Shown before a number (\"ครั้งที่ 2\"), so the ordinal is correct.",
    "feedback.learnedOptions[0].label": "\"ได้/ไม่ได้\" is the natural answer to \"ได้เรียนรู้…ไหม\".",
-   "feedback.learnedOptions[2].label": "Same as above."
+   "feedback.learnedOptions[2].label": "Same as above.",
+   "learn[0].chat.channel": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
+   "learn[2].tagline": "Style only; the meaning is the same."
   },
   "ta": {
    "ui.exitQuiz": "Longer label would not fit the top bar on small phones.",
@@ -43,7 +58,9 @@
    "feedback.csatLabels[0]": "Short scale labels are normal; longer ones risk the layout.",
    "feedback.csatLabels[1]": "Same as above.",
    "feedback.csatLabels[3]": "Same as above.",
-   "feedback.csatLabels[4]": "Same as above."
+   "feedback.csatLabels[4]": "Same as above.",
+   "learn[4].todo[1]": "Style only; the longer line risks overflowing the screen.",
+   "feedback.csatQuestion": "நிகழ்ச்சி is the usual word for an event like this; style only."
   },
   "my": {
    "ui.exitQuiz": "Longer label would not fit the top bar on small phones.",
@@ -73,7 +90,8 @@
    "feedback.csatLabels[0]": "Same as above.",
    "feedback.csatLabels[1]": "Same as above.",
    "feedback.csatLabels[3]": "Same as above.",
-   "feedback.csatLabels[4]": "Same as above."
+   "feedback.csatLabels[4]": "Same as above.",
+   "quiz[4].msg.bubbles[2][0].t": "\"এখানে …:\" leads into the web address in the next part; it reads naturally."
   }
  }
 }

@@ -1,6 +1,6 @@
 # Content sources
 
-Every rule the mini-site teaches, and every quiz answer, comes from a public page by MOM, ScamShield, the Singapore Police Force (SPF) or GovTech. All pages were read on **28 Oct 2026**. Quotes are copied from the page; where the site paraphrases, the paraphrase is marked.
+Every rule the mini-site teaches, and every quiz answer, comes from a public page by MOM, ScamShield, the Singapore Police Force (SPF) or GovTech, with two NGO pages (HOME, TWC2) and one news report for real cases. Pages were read on **28 Oct 2026**; M7, T1 and N1 and the video list on **29 Oct 2026**. Quotes are copied from the page; where the site paraphrases, the paraphrase is marked.
 
 Mock messages, names, numbers, prices and web addresses in the stories are fictional and labelled EXAMPLE on screen, except the two fake MOM addresses (`mom-sg.org`, `wponlinemomgov.sg.com`), which MOM itself publishes as examples of fake sites.
 
@@ -14,6 +14,7 @@ Mock messages, names, numbers, prices and web addresses in the stories are ficti
 | M4 | MOM FAQ, "Are EAs allowed to charge foreign workers fees for work pass renewals?" | [mom.gov.sg](https://www.mom.gov.sg/faq/employment-agencies/are-eas-allowed-to-charge-foreign-workers-fees-for-work-pass-renewals) |
 | M5 | MOM, "A Guide for Migrant Workers" (handy guide, PDF) | [mom.gov.sg](https://www.mom.gov.sg/-/media/mom/documents/publications/mw-guides/mw-handy-guide-english.pdf) |
 | M6 | MOM, 2025 scam alert: impersonation phone calls | [mom.gov.sg](https://www.mom.gov.sg/newsroom/announcements/2025/2025-scam-alert-impersonation-phone-call) |
+| M7 | MOM eService, "Check work pass and application status" | [mom.gov.sg](https://www.mom.gov.sg/eservices/services/check-work-pass-and-application-status) |
 | S1 | ScamShield, Government officials impersonation scams | [scamshield.gov.sg](https://www.scamshield.gov.sg/i-want-protection-from-scams/learn-to-recognise-scams/government-officials-impersonation-scams/) |
 | S2 | ScamShield, Job scams | [scamshield.gov.sg](https://www.scamshield.gov.sg/i-want-protection-from-scams/learn-to-recognise-scams/job-scams/) |
 | S3 | ScamShield, Phishing scams | [scamshield.gov.sg](https://www.scamshield.gov.sg/i-want-protection-from-scams/learn-to-recognise-scams/phishing-scams/) |
@@ -29,8 +30,10 @@ Mock messages, names, numbers, prices and web addresses in the stories are ficti
 | P6 | SPF, 24 Sep 2026: islandwide operation against scammers and money mules | [police.gov.sg](https://www.police.gov.sg/Media-Hub/News/2026/09/20260924_police_investigate_259_scammers_and_money_mules_in_islandwide_enforcement_operation) |
 | G1 | GovTech, "Five ways to keep your Singpass safe" | [tech.gov.sg](https://www.tech.gov.sg/technews/five-ways-to-keep-your-singpass-safe/) |
 | H1 | HOME (NGO), 27 Aug 2026: "When a migrant worker is cheated: the case of Shanti" | [home.org.sg](https://www.home.org.sg/our-updates/2026/8/27/when-a-migrant-worker-is-cheated-the-case-of-shanti) |
+| T1 | TWC2 (NGO), 28 Mar 2025: "Several cases of forgery of crucial MOM document" (fake IPA letters) | [twc2.org.sg](https://twc2.org.sg/2025/03/28/several-cases-of-forgery-of-crucial-mom-document/) |
+| N1 | Mothership, Jul 2026: six Indian nationals allegedly duped of over S$14,000 with forged work-permit documents; MOM's advice quoted | [mothership.sg](https://mothership.sg/2026/07/spore-man-scams-indian-nationals/) |
 
-**Searched, nothing specific found:** Transient Workers Count Too (TWC2) and the Migrant Workers' Centre (MWC) had no scam-awareness guidance page on 28 Oct 2026. They are not used as sources.
+**Searched, nothing specific found:** the Migrant Workers' Centre (MWC) had no scam-awareness guidance page. (An earlier version of this file said the same of TWC2; that was wrong: TWC2 has case articles on forged IPA letters, used as T1.)
 
 ## Learn stories
 
@@ -47,12 +50,36 @@ Mock messages, names, numbers, prices and web addresses in the stories are ficti
 | 3. Scam mule | Never sell, lend or give your bank account, SIM card or Singpass | S6: "Never sell your bank accounts, SIM cards or Singpass account to anyone." P5: "Your SIM Card is for your own use only." |
 | | Fined, jailed or caned | S6: fines up to S$500,000, jail up to 10 years, "Liable for caning of up to 12 strokes". P5: SIM offences carry a fine of up to $10,000 or jail up to three years, or both. |
 | 4. Fake job or work permit | Flag: asks you to pay first | S2: likely a scam if you must "Pay upfront before starting the job." M2: job scams "ask for upfront payment". |
-| | "Your employer must pay your work permit fees." | M4: "Employers are responsible for paying administrative costs, including levy and fees for work pass applications and renewals ... They are not allowed to recover the fees (directly or indirectly) from their foreign employees." M3: "My employment, my employer pays". |
-| | Flag: a licence number does not prove it is real; contact the agency yourself | P3: "Do not assume that a person is from a legitimate recruitment agency, just because a valid recruitment agency's licence number has been provided." S2: check the "Authenticity of job offers by directly contacting the company." |
-| | The "approval" attachment | H1: the worker was sent a screenshot saying the work pass was "approved", then asked for payments. Illustration, not a flag. |
+| | "Check your work pass yourself on MOM's website: "Check work pass and application status". No login needed." | M7: "Check the status of a work pass application or the validity of a work pass … No log in is required." Applicants without an IPA or FIN can check with date of birth and passport number. N1: MOM "reminded prospective workers … to check the authenticity of their IPA letters through its portal before travelling to Singapore." T1: "few prospective workers in origin countries know about this enquiry window." |
+| | "Scammers can fake letters" (the "IPA LETTER.pdf" attachment) | T1: "Fake IPAs are becoming sickeningly common, with workers losing thousands of dollars in scams." N1: forged IPAs and work-permit documents, over S$14,000 lost. H1: an "approved" screenshot, then payments. |
+| | Flag: a licence number does not prove it is real; scammers copy licence numbers | P3: "Do not assume that a person is from a legitimate recruitment agency, just because a valid recruitment agency's licence number has been provided." |
 | | What the site deliberately does NOT say | It does not say all agency fees are scams. Licensed agencies may charge capped fees (M5: no more than 1 month of salary for each year of the permit or contract, capped at 2 months). The site only says paying first is a common scam sign. |
 | 5. OTP and ACT | Never share your OTP with anyone | S3: "Requests for your One-Time passwords (OTPs), personal or banking details" are a scam sign. S5: "Never disclose ... One-Time Passwords (OTPs) to anyone." |
 | | ACT: ADD ScamShield, CHECK with 1799, TELL family and friends | S7: "ADD: ScamShield app and security features"; "Check: for scams signs and with official sources"; "Tell: Authorities, family and friends about scams"; "Check ... by calling 1799". M2: same three steps for MDWs. |
+
+## Official videos (one per learn story)
+
+Linked, not copied: each opens on YouTube (linking and embedding are allowed by YouTube's terms). Titles are as published; video lengths could not be checked automatically, so **watch each one before the event** to confirm it fits the story.
+
+| Story | Video | Channel | Language versions |
+|---|---|---|---|
+| 1. Fake MOM officer | ["Police" or "Government Official" asking you to transfer money? Stop! Call 1799](https://www.youtube.com/watch?v=DtfmVQSBqsE) | Singapore Police Force (embedded on S1) | English |
+| 2. Fake festive deal | [Phishing Scam](https://www.youtube.com/watch?v=j9-EMJlNkao) | MOMsingapore (embedded on M2) | English |
+| 3. Scam mule | [Don't trade your future by being a scam mule](https://www.youtube.com/watch?v=ytBKJNpYX3M) | Singapore Police Force (embedded on S6) | English |
+| 4. Fake job or work permit | [STOP! Check if it's a job scam by calling 1799](https://www.youtube.com/watch?v=l6GoxFEUB4Y) | National Crime Prevention Council (embedded on S7) | English |
+| 5. OTP and ACT | [ACT against scams](https://www.youtube.com/watch?v=_2e1GCLl7Cs) | MOMsingapore (embedded on M2) | English; [Hindi](https://www.youtube.com/watch?v=KTO5GpIIjSc), [Burmese](https://www.youtube.com/watch?v=iK6B5pRFu_c) and [Tamil](https://www.youtube.com/watch?v=uruQE3-l6AU) subtitles: the site picks the reader's language |
+
+Other official videos found, not used: MOM "Real-life stories from scam victims" ([English](https://www.youtube.com/watch?v=e5Mr4WjTLoM), [Burmese](https://www.youtube.com/watch?v=Vp5P-hS2nBE), [Hindi](https://www.youtube.com/watch?v=cgqxBb2CmCo), [Tamil](https://www.youtube.com/watch?v=mH4uR8K-RaA), [Bahasa Indonesia/Tagalog](https://www.youtube.com/watch?v=VrX6VMZ3rnk)); MOM "[Love Scam](https://www.youtube.com/watch?v=eSn3RhbuUwM)"; SPF "[Misuse of SIM Card Offences](https://www.youtube.com/watch?v=-44qCAzXfB4)"; NCPC "[government official impersonation](https://www.youtube.com/watch?v=9u_ZFkb_cvM)"; CSA "[How to Spot Signs of Phishing](https://www.youtube.com/watch?v=SawQL3w8rSc)".
+
+## Official images: considered, not used
+
+Several official images would suit the stories: ScamShield's "Government officials will NEVER do these things over a phone call" poster (story 1), MOM's screenshots of fake MOM websites and of the real address bar (quiz 1), ScamShield's scam-mule icons (story 3), and real scam chat screenshots on ScamShield. They are **not** copied into this site, because the sites' terms do not allow reproduction without permission:
+
+- ScamShield terms of use, 3.3.3: users may not "reproduce, publish, distribute … publicly display" the Service or its content; 3.3.14: no use of its logos "without our prior written consent".
+- SPF terms of use: "Graphics and images on this Site are protected by copyright and may not be reproduced or appropriated in any manner without written permission of SPF."
+- MOM terms of use: materials are "protected by law … All rights reserved", with fair dealing only "for the purposes of private study, research, criticism or review".
+
+With written permission (MOM for its own images; SPF/NCPC/GovTech for ScamShield's), they can be added. The site's own mock messages stay either way: they are translated, and their red flags are interactive.
 
 ## Quiz answer key
 

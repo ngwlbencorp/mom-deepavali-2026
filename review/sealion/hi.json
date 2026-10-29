@@ -29,11 +29,11 @@
   },
   "event.souvenirNote": {
    "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
-   "draft": "सभी उत्तर सही करें और स्मृति-चिह्न के लिए MOM अधिकारी को अपना QR कोड दिखाएँ। केवल पहले 500 लोगों के लिए!",
-   "verdict": "fix",
-   "back": "Make all answers correct and show your QR code to an MOM officer for a souvenir. Only for the first 500 people!",
-   "suggestion": "सभी उत्तर सही करें और स्मृति-चिह्न पाने के लिए MOM अधिकारी को अपना QR कोड दिखाएँ। केवल पहले 500 लोगों के लिए!",
-   "reason": "Added 'पाने के लिए' (to get) for clarity; 'स्मृति-चिह्न' is acceptable but long, kept for consistency."
+   "draft": "सभी उत्तर सही करें और स्मृति-चिह्न पाने के लिए MOM अधिकारी को अपना QR कोड दिखाएँ। केवल पहले 500 लोगों के लिए!",
+   "verdict": "ok",
+   "back": "Make all answers correct and show your QR code to an MOM officer to get a souvenir. Only for the first 500 people!",
+   "suggestion": "",
+   "reason": ""
   },
   "event.helplineName": {
    "english": "ScamShield Helpline",
@@ -181,11 +181,11 @@
   },
   "ui.afterFull": {
    "english": "Great job! You know how to spot scams.",
-   "draft": "बहुत बढ़िया! आप स्कैम पहचानना जानते हैं।",
-   "verdict": "fix",
-   "back": "Very good! You know how to spot scams.",
-   "suggestion": "बहुत बढ़िया! आप स्कैम पहचान सकते हैं।",
-   "reason": "Changed 'जानते हैं' (know) to 'पहचान सकते हैं' (can spot/identify) to match 'spot scams'."
+   "draft": "बहुत बढ़िया! आप स्कैम पहचान सकते हैं।",
+   "verdict": "ok",
+   "back": "Very good! You can identify scams.",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.afterPartial": {
    "english": "Review the answers, then try again.",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "सरकारी दिखने वाले ऑफ़र, जो पैसे माँगते हैं।",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "नकली मंज़ूरी पत्र, जो पैसे माँगते हैं।",
    "verdict": "ok",
-   "back": "Offers that look official, which ask for money.",
+   "back": "Fake approval letters, which ask for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "पहले पैसे माँगना नौकरी स्कैम का आम संकेत है। आपके वर्क परमिट की फ़ीस आपके नियोक्ता को देनी होती है।",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "अपना वर्क पास खुद MOM की वेबसाइट पर जाँचें: \"Check work pass and application status\"। लॉगिन की ज़रूरत नहीं।",
    "verdict": "ok",
-   "back": "Asking for money first is a common job scam sign. Your employer must pay your work permit fees.",
+   "back": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "स्कैमर असली एजेंसी का लाइसेंस नंबर कॉपी कर सकते हैं। एजेंसी से खुद संपर्क करें।",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "पहले पैसे माँगना नौकरी स्कैम का आम संकेत है। स्कैमर पत्र नकली बना सकते हैं और लाइसेंस नंबर कॉपी कर सकते हैं।",
    "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "back": "Asking for money first is a common sign of a job scam. Scammers can make fake letters and copy licence numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -1328,6 +1328,14 @@
    "draft": "मेरा परिणाम देखें",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "आधिकारिक वीडियो देखें",
+   "verdict": "ok",
+   "back": "Watch the official video",
    "suggestion": "",
    "reason": ""
   }

@@ -533,19 +533,19 @@
   },
   "learn[1].title": {
    "english": "Fake festive deal",
-   "draft": "ပွဲတော် ပရိုမိုးရှင်း အတု",
-   "verdict": "fix",
-   "back": "Fake festive promotion",
-   "suggestion": "ပွဲတော် အရောင်းပွဲ အတု",
-   "reason": "The English is 'deal', not 'promotion'. 'ပရိုမိုးရှင်း' is a loanword. 'အရောင်းပွဲ' (sale) or 'အခွင့်အရေး' (deal/opportunity) is better. 'အရောင်းပွဲ' fits the context of a sale better."
+   "draft": "ပွဲတော် အရောင်းပွဲ အတု",
+   "verdict": "ok",
+   "back": "Fake festival sale",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].tagline": {
    "english": "Too-good deals that make you install an app.",
-   "draft": "အက်ပ်ထည့်ခိုင်းသော ယုံရခက်လောက်အောင် ကောင်းသည့် ပရိုမိုးရှင်းများ။",
-   "verdict": "fix",
-   "back": "Too-good promotions that make you install an app.",
-   "suggestion": "အက်ပ်ထည့်ခိုင်းသော ယုံရခက်လောက်အောင် ကောင်းသည့် အရောင်းပွဲများ။",
-   "reason": "Consistency with title change from 'promotion' to 'sale/deal'."
+   "draft": "အက်ပ်ထည့်ခိုင်းသော ယုံရခက်လောက်အောင် ကောင်းသည့် အရောင်းပွဲများ။",
+   "verdict": "ok",
+   "back": "Sales that are too good to be true, asking you to install an app.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].chat.channel": {
    "english": "Advertisement",
@@ -685,11 +685,11 @@
   },
   "learn[2].todo[0]": {
    "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
-   "draft": "သင့်ဘဏ်အကောင့်၊ ဆင်းကတ် သို့မဟုတ် Singpass ကို ဘယ်တော့မှ မရောင်းပါနှင့်၊ မငှားပါနှင့်၊ မပေးပါနှင့်။",
-   "verdict": "fix",
-   "back": "Never sell, rent or give your bank account, SIM card or Singpass.",
-   "suggestion": "သင့်ဘဏ်အကောင့်၊ SIM ကတ် သို့မဟုတ် Singpass ကို ဘယ်တော့မှ မရောင်းပါနှင့်၊ မငှားပါနှင့်၊ မပေးပါနှင့်။",
-   "reason": "Consistency: 'SIM ကတ်' used in other lines, not 'ဆင်းကတ်'."
+   "draft": "သင့်ဘဏ်အကောင့်၊ SIM ကတ် သို့မဟုတ် Singpass ကို ဘယ်တော့မှ မရောင်းပါနှင့်၊ မငှားပါနှင့်၊ မပေးပါနှင့်။",
+   "verdict": "ok",
+   "back": "Never sell, rent, or give your bank account, SIM card, or Singpass.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[2].todo[1]": {
    "english": "This is a crime. You can be fined, jailed or caned.",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "ငွေတောင်းသော တရားဝင်ပုံပေါ်သည့် ကမ်းလှမ်းချက်များ။",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "ငွေတောင်းသော အတည်ပြုစာ အတုများ။",
    "verdict": "ok",
-   "back": "Official-looking offers that ask for money.",
+   "back": "Fake approval letters asking for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "အရင် ငွေပေးခိုင်းခြင်းသည် အလုပ်လိမ်လည်မှု၏ အဖြစ်များသော လက္ခဏာ ဖြစ်သည်။ သင့်အလုပ်ပါမစ် ကြေးကို သင့်အလုပ်ရှင်က ပေးရမည်။",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "MOM ဝက်ဘ်ဆိုက်တွင် သင့်အလုပ်ပါမစ်ကို ကိုယ်တိုင် စစ်ဆေးပါ: \"Check work pass and application status\"။ login မလိုပါ။",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "back": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "လိမ်လည်သူများသည် အေဂျင်စီအစစ်၏ လိုင်စင်နံပါတ်ကို ကူးယူနိုင်သည်။ အေဂျင်စီကို သင်ကိုယ်တိုင် ဆက်သွယ်ပါ။",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "အရင် ငွေပေးခိုင်းခြင်းသည် အလုပ်လိမ်လည်မှု၏ အဖြစ်များသော လက္ခဏာ ဖြစ်သည်။ လိမ်လည်သူများသည် စာအတု လုပ်နိုင်ပြီး လိုင်စင်နံပါတ်ကို ကူးယူနိုင်သည်။",
    "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "back": "Asking you to pay first is a common sign of a job scam. Scammers can make fake letters and copy license numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -909,11 +909,11 @@
   },
   "quiz[1].cards[0].text": {
    "english": "Please buy rice on the way home. Thank you!",
-   "draft": "အိမ်ပြန်လာရင် ဆန် ဝယ်ခဲ့ပေးပါ။ ကျေးဇူးပါ!",
-   "verdict": "fix",
-   "back": "Buy rice on the way home. Thank you!",
-   "suggestion": "အိမ်ပြန်လမ်းမှာ ဆန် ဝယ်ခဲ့ပေးပါ။ ကျေးဇူးပါ!",
-   "reason": "The draft says 'When you return home' (အိမ်ပြန်လာရင်), but the English is 'on the way home'. This is a key distinction in scam awareness (doing it during the trip vs after arriving)."
+   "draft": "အိမ်ပြန်လမ်းမှာ ဆန် ဝယ်ခဲ့ပေးပါ။ ကျေးဇူးပါ!",
+   "verdict": "ok",
+   "back": "Please buy rice on the way home. Thank you!",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[1].cards[0].why": {
    "english": "A normal message from someone you know, with no money or codes asked.",
@@ -1237,11 +1237,11 @@
   },
   "feedback.title": {
    "english": "One last thing",
-   "draft": "နောက်ဆုံး တစ်ခု",
-   "verdict": "fix",
-   "back": "Last one thing",
-   "suggestion": "နောက်ဆုံးအချက်တစ်ခု",
-   "reason": "The draft 'နောက်ဆုံး တစ်ခု' is grammatically incomplete and sounds unnatural. 'နောက်ဆုံးအချက်တစ်ခု' (One last point/thing) is the standard phrase for this context."
+   "draft": "နောက်ဆုံးအချက်တစ်ခု",
+   "verdict": "ok",
+   "back": "One last thing",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatQuestion": {
    "english": "How happy are you with today's event?",
@@ -1328,6 +1328,14 @@
    "draft": "ကျွန်ုပ်၏ ရလဒ် ကြည့်ရန်",
    "verdict": "ok",
    "back": "To see my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "တရားဝင် ဗီဒီယိုကို ကြည့်ပါ",
+   "verdict": "ok",
+   "back": "Watch the official video",
    "suggestion": "",
    "reason": ""
   }

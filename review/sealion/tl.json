@@ -13,11 +13,11 @@
   },
   "event.title": {
    "english": "Stay safe from scams",
-   "draft": "Mag-ingat sa scam",
-   "verdict": "fix",
-   "back": "Be careful of scam",
-   "suggestion": "Mag-ingat sa mga scam",
-   "reason": "Added 'mga' for natural plural flow; 'scam' kept in English as per rules."
+   "draft": "Mag-ingat sa mga scam",
+   "verdict": "ok",
+   "back": "Be careful with scams",
+   "suggestion": "",
+   "reason": ""
   },
   "event.intro": {
    "english": "Learn the tricks scammers use, then take the quiz.",
@@ -109,11 +109,11 @@
   },
   "ui.learnTitle": {
    "english": "Learn about scams",
-   "draft": "Alamin ang tungkol sa scam",
-   "verdict": "fix",
-   "back": "Know about scam",
-   "suggestion": "Alamin ang tungkol sa mga scam",
-   "reason": "Added 'mga' for natural plural flow; 'scam' kept in English."
+   "draft": "Alamin ang tungkol sa mga scam",
+   "verdict": "ok",
+   "back": "Learn about scams",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.learnSub": {
    "english": "5 short stories · 2 min",
@@ -181,11 +181,11 @@
   },
   "ui.afterFull": {
    "english": "Great job! You know how to spot scams.",
-   "draft": "Magaling! Alam mo kung paano makilala ang scam.",
-   "verdict": "fix",
-   "back": "Good job! You know how to spot scam.",
-   "suggestion": "Magaling! Alam mo kung paano makilala ang mga scam.",
-   "reason": "Added 'mga' for natural plural flow; 'scam' kept in English."
+   "draft": "Magaling! Alam mo kung paano makilala ang mga scam.",
+   "verdict": "ok",
+   "back": "Good job! You know how to recognize scams.",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.afterPartial": {
    "english": "Review the answers, then try again.",
@@ -293,11 +293,11 @@
   },
   "ui.allCorrectMsg": {
    "english": "Show this QR code to an MOM officer for your souvenir.",
-   "draft": "Ipakita ang QR code na ito sa isang MOM officer para sa iyong souvenir.",
-   "verdict": "fix",
+   "draft": "Ipakita ang QR code na ito sa MOM officer para sa souvenir mo.",
+   "verdict": "ok",
    "back": "Show this QR code to an MOM officer for your souvenir.",
-   "suggestion": "Ipakita ang QR code na ito sa MOM officer para sa souvenir mo.",
-   "reason": "Removed 'isang' (a/an) and 'iyong' (your) for shorter, more natural phrasing suitable for phone screens."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.earnedBefore": {
    "english": "You got all correct before, so your QR code is still valid.",
@@ -317,11 +317,11 @@
   },
   "ui.partialMsg": {
    "english": "Review the answers, then try again for a souvenir.",
-   "draft": "Tingnan ang mga sagot, saka subukan ulit para sa souvenir.",
-   "verdict": "fix",
-   "back": "Review the answers, then try again for a souvenir.",
-   "suggestion": "Tingnan ang mga sagot, tapos subukan ulit para sa souvenir.",
-   "reason": "Changed 'saka' to 'tapos' which is more common in everyday speech for 'then'."
+   "draft": "Tingnan ang mga sagot, tapos subukan ulit para sa souvenir.",
+   "verdict": "ok",
+   "back": "Look at the answers, then try again for a souvenir.",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.review": {
    "english": "Review answers",
@@ -357,11 +357,11 @@
   },
   "ui.notSaved": {
    "english": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "draft": "Hindi pa na-save (walang koneksyon). Maaari pa ring i-scan ng officer ang QR code na ito.",
-   "verdict": "fix",
+   "draft": "Hindi pa na-save (walang koneksyon). Ma-scan pa rin ng officer ang QR code na ito.",
+   "verdict": "ok",
    "back": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "suggestion": "Hindi pa na-save (walang koneksyon). Ma-scan pa rin ng officer ang QR code na ito.",
-   "reason": "Shortened 'Maaari pa ring i-scan' to 'Ma-scan pa rin' to fit screen better while keeping meaning."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.notSavedAfter": {
    "english": "Not saved yet (no connection).",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "Mga alok na mukhang opisyal pero humihingi ng pera.",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "Pekeng approval letter na humihingi ng pera.",
    "verdict": "ok",
-   "back": "Offers that look official but ask for money.",
+   "back": "Fake approval letter that asks for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,20 +772,20 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "Karaniwang senyales ng job scam ang pagpapabayad muna. Ang employer mo ang dapat magbayad ng mga fee ng work permit mo.",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "Ikaw mismo ang mag-check ng work pass mo sa website ng MOM: \"Check work pass and application status\". Hindi kailangang mag-login.",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "back": "You yourself check your work pass on MOM's website: 'Check work pass and application status'. No need to login.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "Kayang kopyahin ng mga scammer ang licence number ng totoong ahensya. Ikaw mismo ang kumontak sa ahensya.",
-   "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. You yourself must contact the agency.",
-   "suggestion": "",
-   "reason": ""
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng sulat at kopyahin ang licence number ng mga scammer.",
+   "verdict": "fix",
+   "back": "Asking to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "suggestion": "Karaniwang senyales ng job scam ang pagpapabayad muna. Kayang mameke ng mga sulat at kopyahin ang mga licence number ng mga scammer.",
+   "reason": "English uses plural 'letters' and 'numbers'; Tagalog draft uses singular. Added 'mga' to match plural meaning."
   },
   "learn[4].title": {
    "english": "Secret codes (OTP)",
@@ -1328,6 +1328,14 @@
    "draft": "Tingnan ang resulta ko",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "Panoorin ang opisyal na video",
+   "verdict": "ok",
+   "back": "Watch the official video",
    "suggestion": "",
    "reason": ""
   }

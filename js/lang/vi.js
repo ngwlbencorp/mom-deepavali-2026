@@ -33,6 +33,7 @@ window.SCAM_TEXT["vi"] = {
     "example": "VÍ DỤ · KHÔNG CÓ THẬT",
     "whatToDo": "Nên làm gì",
     "toQuiz": "Làm bài đố",
+    "watch": "Xem video chính thức",
     "spotPrompt": "Chạm vào {n} dấu hiệu nguy hiểm",
     "selected": "Đã chọn {k}/{n}",
     "scam": "Lừa đảo",
@@ -142,7 +143,7 @@ window.SCAM_TEXT["vi"] = {
     },
     {
       "title": "Việc làm hoặc giấy phép lao động giả",
-      "tagline": "Lời mời trông như chính thức nhưng đòi tiền.",
+      "tagline": "Thư chấp thuận giả để đòi tiền.",
       "chat": {
         "channel": "Tin nhắn chat",
         "from": "Môi giới việc làm SG",
@@ -161,8 +162,8 @@ window.SCAM_TEXT["vi"] = {
         }
       ],
       "todo": [
-        "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Chủ lao động phải trả phí giấy phép lao động cho bạn.",
-        "Kẻ lừa đảo có thể chép số giấy phép của một công ty thật. Hãy tự liên hệ với công ty."
+        "Tự kiểm tra giấy phép lao động trên website của MOM: \"Check work pass and application status\". Không cần đăng nhập.",
+        "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Kẻ lừa đảo có thể làm giả thư và chép số giấy phép."
       ]
     },
     {

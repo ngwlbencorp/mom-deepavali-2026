@@ -11,11 +11,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = [(l['code'], l['sheet']) for l in json.load(open(os.path.join(ROOT, 'tools', 'languages.json'), encoding='utf-8'))]
 BASE = sys.argv[2] if len(sys.argv) > 2 else 'HEAD'
 GLOSSARY = json.load(open(os.path.join(ROOT, 'tools', 'glossary.json'), encoding='utf-8'))
-FIXED = {'type', 'icon', 'code', 'helpline'}
+FIXED = {'type', 'icon', 'code', 'helpline', 'video'}
 
 english = json.loads(subprocess.check_output(['node', '-e', r'''
 global.window = {}; require(process.argv[1]);
-const out = []; const FIXED = new Set(['type','icon','code','helpline']);
+const out = []; const FIXED = new Set(['type','icon','code','helpline','video']);
 (function walk(v, p) {
   if (typeof v === 'string') { out.push([p, v]); return; }
   if (Array.isArray(v)) return v.forEach((x, i) => walk(x, `${p}[${i}]`));
@@ -26,7 +26,7 @@ console.log(JSON.stringify({ items: out, learn: window.SCAM_TEXT.en.learn.map(s 
 
 # Which SOURCES.md entries back each learn story and quiz item (IDs as in SOURCES.md).
 ITEM_SOURCES = {
-    'learn[0]': 'M1, S1, P1, M6', 'learn[1]': 'S5, P2', 'learn[2]': 'S6, P5', 'learn[3]': 'S2, P3, M3, M4, H1',
+    'learn[0]': 'M1, S1, P1, M6', 'learn[1]': 'S5, P2', 'learn[2]': 'S6, P5', 'learn[3]': 'S2, P3, M7, T1, N1, H1',
     'learn[4]': 'S3, S5, S7, M2', 'quiz[0]': 'M1, S1, S7', 'quiz[1]': 'S3, S5, S6', 'quiz[2]': 'S4, S5',
     'quiz[3]': 'S5, P2, M1', 'quiz[4]': 'M1, M3, G1, P3', 'quiz[5]': 'S6, P6, S7',
 }

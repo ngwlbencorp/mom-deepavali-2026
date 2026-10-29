@@ -3,7 +3,10 @@
 // scoring are defined once, below, and are never translated.
 // Every rule taught here comes from a public MOM, ScamShield, Police or GovTech page (checked
 // 28 Oct 2026). SOURCES.md maps each story, flag and quiz answer to its source and quote.
-// Mock messages are fictional and always labelled EXAMPLE.
+// Mock messages are fictional and always labelled EXAMPLE. Each story links to one official video
+// on YouTube (linking and embedding are allowed by YouTube's terms; the government sites' own
+// images may not be reproduced without permission, so none are copied here).
+// video: { id, by, lang }: lang gives a version subtitled in that language, where one exists.
 // Writing style, to keep translation simple: short sentences, one idea each, everyday words,
 // and the same word for the same thing everywhere (e.g. "OTP", "app store", "bank login").
 
@@ -44,6 +47,7 @@ window.SCAM_TEXT.en = {
     example: "EXAMPLE · NOT REAL",
     whatToDo: "What to do",
     toQuiz: "Take the quiz",
+    watch: "Watch the official video",
     spotPrompt: "Tap the {n} red flags",
     selected: "{k} of {n} chosen",
     scam: "Scam",
@@ -91,7 +95,8 @@ window.SCAM_TEXT.en = {
       todo: [
         "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
         "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up."
-      ]
+      ],
+      video: { id: "DtfmVQSBqsE", by: "Singapore Police Force" }
     },
     {
       title: "Fake festive deal",
@@ -109,7 +114,8 @@ window.SCAM_TEXT.en = {
       todo: [
         "Only install apps from the official app store (Google Play or Apple App Store).",
         "Fake apps can steal money from your bank account."
-      ]
+      ],
+      video: { id: "j9-EMJlNkao", by: "MOM" }
     },
     {
       title: "Easy money (scam mule)",
@@ -125,24 +131,26 @@ window.SCAM_TEXT.en = {
       todo: [
         "Never sell, lend or give away your bank account, SIM card or Singpass.",
         "This is a crime. You can be fined, jailed or caned."
-      ]
+      ],
+      video: { id: "ytBKJNpYX3M", by: "Singapore Police Force" }
     },
     {
       title: "Fake job or work permit",
-      tagline: "Official-looking offers that ask for money.",
+      tagline: "Fake approval letters that ask for money.",
       chat: { channel: "Chat message", from: "SG Jobs Agent", lines: [
         "Good news! Your work permit is approved.",
         "Send $800 today to confirm your job.",
         "We are a licensed agency. Licence no. 99X9999."
-      ], attachment: "WORK PERMIT APPROVAL.pdf" },
+      ], attachment: "IPA LETTER.pdf" },
       flags: [
         { line: 1, label: "Asks you to pay first" },
         { line: 2, label: "A licence number does not prove it is real" }
       ],
       todo: [
-        "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-        "Scammers can copy a real agency's licence number. Contact the agency yourself."
-      ]
+        "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+        "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers."
+      ],
+      video: { id: "l6GoxFEUB4Y", by: "NCPC" }
     },
     {
       title: "Secret codes (OTP)",
@@ -157,7 +165,8 @@ window.SCAM_TEXT.en = {
       todo: [
         "Never share your OTP (the code sent to your phone) with anyone.",
         "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends."
-      ]
+      ],
+      video: { id: "_2e1GCLl7Cs", by: "MOM", lang: { hi: "KTO5GpIIjSc", my: "iK6B5pRFu_c", ta: "uruQE3-l6AU" } }
     }
   ],
 

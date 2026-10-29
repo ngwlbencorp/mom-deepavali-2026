@@ -33,6 +33,7 @@ window.SCAM_TEXT["id"] = {
     "example": "CONTOH · BUKAN ASLI",
     "whatToDo": "Yang harus dilakukan",
     "toQuiz": "Ikuti kuis",
+    "watch": "Tonton video resmi",
     "spotPrompt": "Ketuk {n} tanda bahaya",
     "selected": "{k} dari {n} dipilih",
     "scam": "Penipuan",
@@ -142,7 +143,7 @@ window.SCAM_TEXT["id"] = {
     },
     {
       "title": "Pekerjaan atau izin kerja palsu",
-      "tagline": "Tawaran yang tampak resmi tapi meminta uang.",
+      "tagline": "Surat persetujuan palsu yang meminta uang.",
       "chat": {
         "channel": "Pesan chat",
         "from": "Agen Kerja SG",
@@ -161,8 +162,8 @@ window.SCAM_TEXT["id"] = {
         }
       ],
       "todo": [
-        "Diminta membayar dulu adalah tanda umum penipuan kerja. Biaya izin kerja Anda wajib dibayar oleh majikan.",
-        "Penipu bisa meniru nomor lisensi agen yang asli. Hubungi agennya sendiri."
+        "Cek izin kerja Anda sendiri di situs web MOM: \"Check work pass and application status\". Tidak perlu login.",
+        "Diminta membayar dulu adalah tanda umum penipuan kerja. Penipu bisa memalsukan surat dan meniru nomor lisensi."
       ]
     },
     {

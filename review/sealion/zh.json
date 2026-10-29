@@ -213,19 +213,19 @@
   },
   "ui.whatToDo": {
    "english": "What to do",
-   "draft": "应该怎么做",
-   "verdict": "fix",
-   "back": "Should do how",
-   "suggestion": "该怎么做",
-   "reason": "More natural and concise for a button label."
+   "draft": "该怎么做",
+   "verdict": "ok",
+   "back": "What should be done",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.toQuiz": {
    "english": "Take the quiz",
-   "draft": "参加问答",
-   "verdict": "fix",
-   "back": "Participate in Q&A",
-   "suggestion": "开始答题",
-   "reason": "More direct action verb suitable for a button."
+   "draft": "开始答题",
+   "verdict": "ok",
+   "back": "Start answering questions",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.spotPrompt": {
    "english": "Tap the {n} red flags",
@@ -277,11 +277,11 @@
   },
   "ui.saving": {
    "english": "Saving your result…",
-   "draft": "正在保存您的成绩…",
-   "verdict": "fix",
-   "back": "Saving your score...",
-   "suggestion": "正在保存结果…",
-   "reason": "'成绩' implies a grade/score. '结果' (result) is more general and fits 'saving your result' better."
+   "draft": "正在保存结果…",
+   "verdict": "ok",
+   "back": "Saving result...",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.allCorrect": {
    "english": "All correct!",
@@ -293,19 +293,19 @@
   },
   "ui.allCorrectMsg": {
    "english": "Show this QR code to an MOM officer for your souvenir.",
-   "draft": "向MOM官员出示这个QR码，领取您的纪念品。",
-   "verdict": "fix",
-   "back": "Show this QR code to an MOM officer to get your souvenir.",
-   "suggestion": "向 MOM 官员出示这个 QR 码，领取纪念品。",
-   "reason": "Removed '您的' (your) before souvenir to be more concise and natural. Added space around MOM."
+   "draft": "向MOM官员出示这个QR码，领取纪念品。",
+   "verdict": "ok",
+   "back": "Show this QR code to an MOM officer to collect souvenir.",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.earnedBefore": {
    "english": "You got all correct before, so your QR code is still valid.",
-   "draft": "您之前已全部答对，所以您的QR码仍然有效。",
-   "verdict": "fix",
-   "back": "You previously answered all correctly, so your QR code is still valid.",
-   "suggestion": "您之前已全部答对，QR 码依然有效。",
-   "reason": "Simplified sentence structure. Removed '所以' (so) and '您的' (your) for brevity on screen."
+   "draft": "您之前已全部答对，QR码依然有效。",
+   "verdict": "ok",
+   "back": "You answered all correctly before, QR code is still valid.",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.partial": {
    "english": "{s} of {t} correct",
@@ -317,11 +317,11 @@
   },
   "ui.partialMsg": {
    "english": "Review the answers, then try again for a souvenir.",
-   "draft": "看看答案，然后再试一次，赢取纪念品。",
-   "verdict": "fix",
-   "back": "Look at answers, then try again to win souvenir.",
-   "suggestion": "查看答案，再试一次赢取纪念品。",
-   "reason": "'看看' is too casual. '查看' is better. '然后' can be dropped for brevity."
+   "draft": "查看答案，再试一次赢取纪念品。",
+   "verdict": "ok",
+   "back": "Check answers, try again to win souvenir.",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.review": {
    "english": "Review answers",
@@ -349,27 +349,27 @@
   },
   "ui.saved": {
    "english": "Result saved ✓",
-   "draft": "成绩已保存 ✓",
-   "verdict": "fix",
-   "back": "Score saved ✓",
-   "suggestion": "结果已保存 ✓",
-   "reason": "Consistent with 'result' vs 'score' decision above."
+   "draft": "结果已保存 ✓",
+   "verdict": "ok",
+   "back": "Result saved ✓",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.notSaved": {
    "english": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "draft": "尚未保存（没有网络）。官员仍可扫描这个QR码。",
-   "verdict": "fix",
+   "draft": "尚未保存（无网络）。官员仍可扫描这个QR码。",
+   "verdict": "ok",
    "back": "Not saved yet (no network). Officer can still scan this QR code.",
-   "suggestion": "尚未保存（无网络）。官员仍可扫描这个 QR 码。",
-   "reason": "Shortened '没有网络' to '无网络' for screen space."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.notSavedAfter": {
    "english": "Not saved yet (no connection).",
-   "draft": "尚未保存（没有网络）。",
-   "verdict": "fix",
+   "draft": "尚未保存（无网络）。",
+   "verdict": "ok",
    "back": "Not saved yet (no network).",
-   "suggestion": "尚未保存（无网络）。",
-   "reason": "Consistent with above."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.retry": {
    "english": "Retry saving",
@@ -461,11 +461,11 @@
   },
   "learn[0].chat.lines[0]": {
    "english": "Hello, I am from MOM. There is a problem with your work permit.",
-   "draft": "您好，我是MOM的官员。您的工作准证有问题。",
+   "draft": "您好，我是MOM打来的。您的工作准证有问题。",
    "verdict": "fix",
-   "back": "Hello, I am a MOM officer. Your work permit has a problem.",
-   "suggestion": "您好，我是MOM。您的工作准证有问题。",
-   "reason": "Remove '官员' (officer) to match English 'I am from MOM' and sound more natural/casual."
+   "back": "Hello, I am calling from MOM. Your work permit has a problem.",
+   "suggestion": "您好，我是MOM的。您的工作准证有问题。",
+   "reason": "Draft adds '打来的' (calling) which is not in English. '我是MOM的' is more natural for 'I am from MOM' in a scam context."
   },
   "learn[0].chat.lines[1]": {
    "english": "Transfer $500 now, or you will be sent home!",
@@ -477,11 +477,11 @@
   },
   "learn[0].chat.lines[2]": {
    "english": "Install this app from my link so I can help you.",
-   "draft": "从我的链接安装这个应用程序，我才能帮您。",
-   "verdict": "fix",
-   "back": "Install this application from my link, only then can I help you.",
-   "suggestion": "从我的链接安装这个应用，我才能帮您。",
-   "reason": "Change '应用程序' to '应用' for shorter, more common usage on phone screens."
+   "draft": "从我的链接安装这个应用，我才能帮您。",
+   "verdict": "ok",
+   "back": "Install this app from my link, only then can I help you.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].chat.lines[3]": {
    "english": "Now I will transfer your call to the Police.",
@@ -525,11 +525,11 @@
   },
   "learn[0].todo[1]": {
    "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
-   "draft": "MOM绝不会要求您从链接安装应用程序，也绝不会把您的电话转给警察。不确定？挂断电话。",
-   "verdict": "fix",
-   "back": "MOM will never ask you to install an application from a link, or transfer your call to the police. Unsure? Hang up.",
-   "suggestion": "MOM绝不会要求您从链接安装应用，也绝不会把电话转给警察。不确定？挂断。",
-   "reason": "Shorten '应用程序' to '应用' and '您的电话' to '电话' for better fit on screen."
+   "draft": "MOM绝不会要求您从链接安装应用，也绝不会把电话转给警察。不确定？挂断。",
+   "verdict": "ok",
+   "back": "MOM will never ask you to install an app from a link, nor transfer call to police. Unsure? Hang up.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].title": {
    "english": "Fake festive deal",
@@ -541,11 +541,11 @@
   },
   "learn[1].tagline": {
    "english": "Too-good deals that make you install an app.",
-   "draft": "便宜得离谱的优惠，要您安装应用程序。",
-   "verdict": "fix",
-   "back": "Deals too cheap to be true, asking you to install an application.",
-   "suggestion": "便宜得离谱的优惠，要您安装应用。",
-   "reason": "Shorten '应用程序' to '应用'."
+   "draft": "便宜得离谱的优惠，要您安装应用。",
+   "verdict": "ok",
+   "back": "Deals too good to be true, asking you to install app.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].chat.channel": {
    "english": "Advertisement",
@@ -565,11 +565,11 @@
   },
   "learn[1].chat.lines[0]": {
    "english": "Deepavali sale! Gold 80% off!",
-   "draft": "屠妖节特卖！黄金打两折！",
-   "verdict": "fix",
-   "back": "Deepavali sale! Gold 20% of original price!",
-   "suggestion": "屠妖节特卖！黄金8折！",
-   "reason": "English says '80% off' (pay 20%). Draft says '打两折' (pay 20%). This is correct math, but '80% off' is often translated as '8折' in casual speech? No, '80% off' means you pay 20%. '打两折' means pay 20%. Wait. In China/Singapore, '8折' means 20% off (pay 80%). '2折' means 80% off (pay 20%). So '打两折' is correct for 80% off. However, to avoid confusion for workers who might mix up the system, '80% off' is clearer if kept as '80% off' or '便宜80%'. Let's use '便宜80%' to be safe and plain."
+   "draft": "屠妖节特卖！黄金便宜80%！",
+   "verdict": "ok",
+   "back": "Deepavali sale! Gold 80% cheaper!",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].chat.lines[1]": {
    "english": "Download our app here: deepavali-gold.example/app",
@@ -613,19 +613,19 @@
   },
   "learn[1].todo[0]": {
    "english": "Only install apps from the official app store (Google Play or Apple App Store).",
-   "draft": "只从官方应用商店（Google Play 或 Apple App Store）安装应用程序。",
+   "draft": "只从官方应用商店（Google Play 或 Apple App Store）安装应用。",
    "verdict": "ok",
-   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "back": "Only install apps from official app store (Google Play or Apple App Store).",
    "suggestion": "",
    "reason": ""
   },
   "learn[1].todo[1]": {
    "english": "Fake apps can steal money from your bank account.",
-   "draft": "假应用程序会盗取您银行户口里的钱。",
-   "verdict": "ok",
+   "draft": "假应用会盗取您银行户口里的钱。",
+   "verdict": "fix",
    "back": "Fake apps will steal money from your bank account.",
-   "suggestion": "",
-   "reason": ""
+   "suggestion": "假应用会盗取您银行账户里的钱。",
+   "reason": "'户口' usually refers to household registration. '账户' is the correct term for bank account."
   },
   "learn[2].title": {
    "english": "Easy money (scam mule)",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "看起来像官方的工作机会，却向您要钱。",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "假批准信，向您要钱。",
    "verdict": "ok",
-   "back": "Offers that look official but ask for money.",
+   "back": "Fake approval letters, asking you for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "要您先付钱是工作诈骗的常见迹象。您的工作准证费用必须由雇主支付。",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "自己上MOM网站查看您的工作准证：\"Check work pass and application status\"。无需登录。",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common sign of job scams. Your employer must pay your work permit fees.",
+   "back": "Check your work permit yourself on MOM website: 'Check work pass and application status'. No login needed.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "骗子可以盗用真实中介的执照号码。请您自己联系该中介。",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "要您先付钱是工作诈骗的常见迹象。骗子可以伪造信件，盗用执照号码。",
    "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "back": "Asking you to pay first is a common sign of job scam. Scammers can fake letters and copy license numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -869,11 +869,11 @@
   },
   "quiz[0].msg.bubbles[1][0].t": {
    "english": "Pay at",
-   "draft": "缴付网址：",
+   "draft": "在以下网址缴付：",
    "verdict": "fix",
-   "back": "Payment URL:",
-   "suggestion": "在以下网址缴付：",
-   "reason": "The English is 'Pay at', implying a location or URL follows. The draft '缴付网址：' (Payment URL:) adds the word 'URL' which isn't in the source, and makes it a label rather than an instruction. '在以下网址缴付：' (Pay at the following URL:) is closer to the imperative 'Pay at' and flows better into the link."
+   "back": "Pay at the following URL:",
+   "suggestion": "在以下网址付款：",
+   "reason": "Draft adds '以下' (following) and '网址' (URL) which are not in the English source 'Pay at'. The English is just 'Pay at', likely followed by a link. '在...付款' is sufficient. Also '缴付' is formal, '付款' is everyday."
   },
   "quiz[0].msg.bubbles[1][2].t": {
    "english": "or reply with your bank login.",
@@ -1101,9 +1101,9 @@
   },
   "quiz[3].explain": {
    "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
-   "draft": "只从官方应用商店（Google Play 或 Apple App Store）安装应用程序。来自链接的应用程序会盗取您的钱。",
+   "draft": "只从官方应用商店（Google Play 或 Apple App Store）安装应用。来自链接的应用会盗取您的钱。",
    "verdict": "ok",
-   "back": "Only install applications from the official app store (Google Play or Apple App Store). Applications from links will steal your money.",
+   "back": "Only install apps from official app store (Google Play or Apple App Store). Apps from links will steal your money.",
    "suggestion": "",
    "reason": ""
   },
@@ -1237,11 +1237,11 @@
   },
   "feedback.title": {
    "english": "One last thing",
-   "draft": "最后一个问题",
-   "verdict": "fix",
-   "back": "Last question",
-   "suggestion": "最后一件事",
-   "reason": "English is 'One last thing', not 'question'. '事' is more natural for a closing remark."
+   "draft": "最后一件事",
+   "verdict": "ok",
+   "back": "One last thing",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatQuestion": {
    "english": "How happy are you with today's event?",
@@ -1325,11 +1325,19 @@
   },
   "feedback.submit": {
    "english": "See my result",
-   "draft": "查看我的成绩",
-   "verdict": "fix",
-   "back": "View my score",
-   "suggestion": "查看我的结果",
-   "reason": "English is 'result', not 'score' (成绩). '结果' is the correct translation for result."
+   "draft": "查看我的结果",
+   "verdict": "ok",
+   "back": "View my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "观看官方视频",
+   "verdict": "ok",
+   "back": "Watch official video",
+   "suggestion": "",
+   "reason": ""
   }
  }
 }

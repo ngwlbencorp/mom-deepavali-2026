@@ -33,6 +33,7 @@ window.SCAM_TEXT["zh"] = {
     "example": "示例 · 非真实",
     "whatToDo": "该怎么做",
     "toQuiz": "开始答题",
+    "watch": "观看官方视频",
     "spotPrompt": "点出 {n} 个危险信号",
     "selected": "已选 {k}/{n}",
     "scam": "诈骗",
@@ -142,7 +143,7 @@ window.SCAM_TEXT["zh"] = {
     },
     {
       "title": "假工作或假工作准证",
-      "tagline": "看起来像官方的工作机会，却向您要钱。",
+      "tagline": "假批准信，向您要钱。",
       "chat": {
         "channel": "聊天信息",
         "from": "SG 职业中介",
@@ -161,8 +162,8 @@ window.SCAM_TEXT["zh"] = {
         }
       ],
       "todo": [
-        "要您先付钱是工作诈骗的常见迹象。您的工作准证费用必须由雇主支付。",
-        "骗子可以盗用真实中介的执照号码。请您自己联系该中介。"
+        "自己上MOM网站查看您的工作准证：\"Check work pass and application status\"。无需登录。",
+        "要您先付钱是工作诈骗的常见迹象。骗子可以伪造信件，盗用执照号码。"
       ]
     },
     {

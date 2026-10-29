@@ -77,11 +77,11 @@
   },
   "ui.finish": {
    "english": "Finish",
-   "draft": "শেষ",
-   "verdict": "fix",
-   "back": "End",
-   "suggestion": "সম্পন্ন করুন",
-   "reason": "'শেষ' means 'end' or 'last'. 'সম্পন্ন করুন' (Complete/Finish) is the standard action verb for finishing a task."
+   "draft": "শেষ করুন",
+   "verdict": "ok",
+   "back": "Finish",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.exitQuiz": {
    "english": "Exit quiz",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "সরকারি মনে হয় এমন অফার, যা টাকা চায়।",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "ভুয়া অনুমোদনপত্র, যা টাকা চায়।",
    "verdict": "ok",
-   "back": "Offers that look official but ask for money.",
+   "back": "Fake approval letter, which asks for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "আগে টাকা চাওয়া চাকরির প্রতারণার একটি সাধারণ লক্ষণ। আপনার ওয়ার্ক পারমিটের ফি আপনার নিয়োগকর্তাকেই দিতে হবে।",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "MOM-এর ওয়েবসাইটে নিজেই আপনার ওয়ার্ক পাস যাচাই করুন: \"Check work pass and application status\"। লগইন লাগবে না।",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "back": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". Login not needed.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "প্রতারকরা আসল এজেন্সির লাইসেন্স নম্বর নকল করতে পারে। এজেন্সির সাথে নিজে যোগাযোগ করুন।",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "আগে টাকা চাওয়া চাকরির প্রতারণার একটি সাধারণ লক্ষণ। প্রতারকরা চিঠি জাল করতে ও লাইসেন্স নম্বর নকল করতে পারে।",
    "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "back": "Asking for money first is a common sign of job scam. Scammers can fake letters and copy licence numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -1149,11 +1149,11 @@
   },
   "quiz[4].msg.bubbles[2][0].t": {
    "english": "Check your permit at",
-   "draft": "আপনার পারমিট এখানে দেখুন:",
+   "draft": "আপনার পারমিট এখানে চেক করুন:",
    "verdict": "fix",
    "back": "Check your permit here:",
-   "suggestion": "আপনার পারমিট এখানে চেক করুন:",
-   "reason": "Consistency: The English source uses 'Check', and the rule requires keeping 'CHECK' in English. 'দেখুন' means 'look/see', which is less precise for verifying status."
+   "suggestion": "আপনার পারমিট চেক করুন:",
+   "reason": "The English source 'Check your permit at' implies the location follows immediately (e.g., 'at [link]'). The draft adds 'here' (এখানে), which changes the meaning and breaks the flow if the next bubble contains the link. Removed 'here' to match the source structure."
   },
   "quiz[4].msg.bubbles[2][2].t": {
    "english": "and send me your Singpass password.",
@@ -1328,6 +1328,14 @@
    "draft": "আমার ফলাফল দেখুন",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "অফিসিয়াল ভিডিও দেখুন",
+   "verdict": "ok",
+   "back": "Watch official video",
    "suggestion": "",
    "reason": ""
   }

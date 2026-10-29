@@ -373,11 +373,11 @@
   },
   "ui.retry": {
    "english": "Retry saving",
-   "draft": "บันทึกอีกครั้ง",
-   "verdict": "fix",
-   "back": "Save again",
-   "suggestion": "ลองบันทึกอีกครั้ง",
-   "reason": "The English is 'Retry saving'. The draft 'บันทึกอีกครั้ง' means 'Save again'. While close, 'ลอง...อีกครั้ง' (Try... again) captures the 'Retry' nuance better, implying an attempt to fix a failed action."
+   "draft": "ลองบันทึกอีกครั้ง",
+   "verdict": "ok",
+   "back": "Try saving again",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.yourAnswer": {
    "english": "Your answer",
@@ -445,11 +445,11 @@
   },
   "learn[0].chat.channel": {
    "english": "Phone call",
-   "draft": "โทรศัพท์",
+   "draft": "สายโทรศัพท์",
    "verdict": "fix",
-   "back": "Telephone",
-   "suggestion": "สายโทรศัพท์",
-   "reason": "Draft 'โทรศัพท์' is the device. 'สายโทรศัพท์' means 'phone call', matching the English context of a channel."
+   "back": "Phone line",
+   "suggestion": "โทรศัพท์",
+   "reason": "The English is 'Phone call'. 'สายโทรศัพท์' means 'phone line' (the wire/connection). 'โทรศัพท์' is the common word for a call."
   },
   "learn[0].chat.from": {
    "english": "Unknown number",
@@ -557,11 +557,11 @@
   },
   "learn[1].chat.from": {
    "english": "Deepavali Gold Sale",
-   "draft": "ทองลดราคาดีปาวลี",
-   "verdict": "fix",
-   "back": "Gold discount Deepavali",
-   "suggestion": "โปรโมชั่นทองดีปาวลี",
-   "reason": "Draft 'ทองลดราคาดีปาวลี' sounds like a description, not a sender name. 'โปรโมชั่นทองดีปาวลี' (Deepavali Gold Promo) sounds more like a sender ID for an ad."
+   "draft": "โปรโมชั่นทองดีปาวลี",
+   "verdict": "ok",
+   "back": "Deepavali Gold Promotion",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].chat.lines[0]": {
    "english": "Deepavali sale! Gold 80% off!",
@@ -605,11 +605,11 @@
   },
   "learn[1].flags[2].label": {
    "english": "Rushes you",
-   "draft": "เร่งให้คุณรีบ",
-   "verdict": "fix",
-   "back": "Hurries you to be quick",
-   "suggestion": "เร่งให้คุณรีบตัดสินใจ",
-   "reason": "Original means 'rushes you' (pressure). Draft is redundant ('hurries you to be quick'). Added 'decision' to clarify the pressure context."
+   "draft": "เร่งให้คุณรีบตัดสินใจ",
+   "verdict": "ok",
+   "back": "Rushes you to decide quickly",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].todo[0]": {
    "english": "Only install apps from the official app store (Google Play or Apple App Store).",
@@ -637,11 +637,11 @@
   },
   "learn[2].tagline": {
    "english": "Paying you to use your bank account.",
-   "draft": "จ่ายเงินให้คุณเพื่อขอใช้บัญชีธนาคารของคุณ",
+   "draft": "จ่ายเงินให้คุณเพื่อขอใช้บัญชีธนาคาร",
    "verdict": "fix",
-   "back": "Paying you to ask to use your bank account",
-   "suggestion": "จ่ายเงินให้คุณเพื่อขอใช้บัญชีธนาคาร",
-   "reason": "Draft adds 'ของคุณ' (your) at the end which is redundant with 'ให้คุณ' (to you). Simplified for flow."
+   "back": "Paying you to ask to use bank account",
+   "suggestion": "จ่ายเงินให้คุณเพื่อใช้บัญชีธนาคาร",
+   "reason": "The English says 'use your bank account'. The draft adds 'ขอ' (ask to), which changes the meaning slightly. Scammers don't ask; they trick you into letting them use it. Remove 'ขอ' for accuracy."
   },
   "learn[2].chat.channel": {
    "english": "Chat message",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "ข้อเสนอที่ดูเหมือนของทางการแต่ขอเงิน",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "จดหมายอนุมัติปลอมที่เรียกเงิน",
    "verdict": "ok",
-   "back": "Offers that look official but ask for money",
+   "back": "Fake approval letters that ask for money",
    "suggestion": "",
    "reason": ""
   },
@@ -741,11 +741,11 @@
   },
   "learn[3].chat.lines[1]": {
    "english": "Send $800 today to confirm your job.",
-   "draft": "ส่งเงิน $800 ภายในวันนี้เพื่อยืนยันงานของคุณ",
-   "verdict": "fix",
-   "back": "Send $800 within today to confirm your job",
-   "suggestion": "ส่งเงิน $800 วันนี้เพื่อยืนยันงานของคุณ",
-   "reason": "Draft 'ภายในวันนี้' (within today) is slightly formal/awkward for a scam chat. 'วันนี้' (today) is more natural and urgent."
+   "draft": "ส่งเงิน $800 วันนี้เพื่อยืนยันงานของคุณ",
+   "verdict": "ok",
+   "back": "Send money $800 today to confirm your job",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[3].chat.lines[2]": {
    "english": "We are a licensed agency. Licence no. 99X9999.",
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "การให้จ่ายเงินก่อนเป็นสัญญาณที่พบบ่อยของการหลอกลวงเรื่องงาน นายจ้างของคุณต้องเป็นผู้จ่ายค่าธรรมเนียมใบอนุญาตทำงาน",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "ตรวจสอบใบอนุญาตทำงานด้วยตัวเองที่เว็บไซต์ MOM: \"Check work pass and application status\" ไม่ต้องเข้าสู่ระบบ",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common sign of job scam. Your employer must pay your work permit fees",
+   "back": "Check work permit yourself on MOM website: 'Check work pass and application status' No login needed",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "มิจฉาชีพลอกเลขใบอนุญาตของบริษัทจัดหางานจริงได้ ติดต่อบริษัทจัดหางานด้วยตัวเอง",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "การให้จ่ายเงินก่อนเป็นสัญญาณที่พบบ่อยของการหลอกลวงเรื่องงาน มิจฉาชีพปลอมจดหมายและลอกเลขใบอนุญาตได้",
    "verdict": "ok",
-   "back": "Scammers can copy real recruitment company license number. Contact recruitment company yourself",
+   "back": "Asking to pay first is a common sign of job scam. Scammers can fake letters and copy license numbers",
    "suggestion": "",
    "reason": ""
   },
@@ -1141,11 +1141,11 @@
   },
   "quiz[4].msg.bubbles[1][0].t": {
    "english": "Pay me $500 to keep your job.",
-   "draft": "จ่ายผม $500 แล้วคุณจะได้ทำงานต่อ",
-   "verdict": "fix",
-   "back": "Pay me $500 then you will get to work continue.",
-   "suggestion": "จ่ายผม $500 เพื่อรักษางานของคุณ",
-   "reason": "Original says 'to keep your job'. Draft adds 'then you will get to work continue' which changes meaning to a promise of future work rather than the condition of keeping the current job."
+   "draft": "จ่ายผม $500 เพื่อรักษางานของคุณ",
+   "verdict": "ok",
+   "back": "Pay me $500 to keep your job",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[4].msg.bubbles[2][0].t": {
    "english": "Check your permit at",
@@ -1221,19 +1221,19 @@
   },
   "quiz[5].options[2]": {
    "english": "No. This is a crime. I will report it.",
-   "draft": "ไม่ นี่คือความผิดทางอาญา ฉันจะแจ้งเจ้าหน้าที่",
-   "verdict": "fix",
-   "back": "No. This is a criminal offense. I will report to officials.",
-   "suggestion": "ไม่ นี่คืออาชญากรรม ฉันจะแจ้งตำรวจ",
-   "reason": "Simplified 'criminal offense' to 'crime' and 'officials' to 'police' for better understanding by workers with limited schooling."
+   "draft": "ไม่ นี่คืออาชญากรรม ฉันจะแจ้งตำรวจ",
+   "verdict": "ok",
+   "back": "No. This is a crime. I will report to police",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[5].explain": {
    "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
-   "draft": "การให้คนอื่นใช้บัญชีธนาคารหรือ Singpass ของคุณทำให้คุณเป็นบัญชีม้า ซึ่งเป็นความผิดทางอาญา ปฏิเสธและแจ้งเจ้าหน้าที่",
-   "verdict": "fix",
-   "back": "Letting others use your bank account or Singpass makes you a scam mule, which is a criminal offense. Refuse and report to officials.",
-   "suggestion": "การให้คนอื่นใช้บัญชีธนาคารหรือ Singpass ของคุณ ทำให้คุณเป็น 'บัญชีม้า' ซึ่งเป็นอาชญากรรม ต้องปฏิเสธและแจ้งตำรวจ",
-   "reason": "Added quotes around 'scam mule' term for clarity, simplified 'criminal offense' to 'crime', and changed 'officials' to 'police' for directness."
+   "draft": "การให้คนอื่นใช้บัญชีธนาคารหรือ Singpass ของคุณ ทำให้คุณเป็น 'บัญชีม้า' ซึ่งเป็นอาชญากรรม ต้องปฏิเสธและแจ้งตำรวจ",
+   "verdict": "ok",
+   "back": "Letting others use your bank account or Singpass makes you a 'scam mule' which is a crime. Must refuse and report to police",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.title": {
    "english": "One last thing",
@@ -1245,11 +1245,11 @@
   },
   "feedback.csatQuestion": {
    "english": "How happy are you with today's event?",
-   "draft": "คุณพอใจกับงานวันนี้แค่ไหน?",
-   "verdict": "fix",
-   "back": "How satisfied are you with today's event?",
-   "suggestion": "คุณพอใจกับกิจกรรมวันนี้แค่ไหน?",
-   "reason": "Changed 'event' (งาน) to 'activity' (กิจกรรม) as 'event' can imply a large formal gathering, whereas this is a learning session."
+   "draft": "คุณพอใจกับกิจกรรมวันนี้แค่ไหน?",
+   "verdict": "ok",
+   "back": "How satisfied are you with today's activity?",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatLabels[0]": {
    "english": "Very unhappy",
@@ -1269,11 +1269,11 @@
   },
   "feedback.csatLabels[2]": {
    "english": "Okay",
-   "draft": "เฉยๆ",
-   "verdict": "fix",
-   "back": "Indifferent",
-   "suggestion": "พอใช้ได้",
-   "reason": "'เฉยๆ' is too casual/slangy for a formal feedback scale; 'พอใช้ได้' (acceptable/okay) is more standard and polite."
+   "draft": "พอใช้ได้",
+   "verdict": "ok",
+   "back": "Okay",
+   "suggestion": "",
+   "reason": ""
   },
   "feedback.csatLabels[3]": {
    "english": "Happy",
@@ -1328,6 +1328,14 @@
    "draft": "ดูผลของฉัน",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "ดูวิดีโอทางการ",
+   "verdict": "ok",
+   "back": "Watch official video",
    "suggestion": "",
    "reason": ""
   }

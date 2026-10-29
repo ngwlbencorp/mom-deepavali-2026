@@ -221,11 +221,11 @@
   },
   "ui.toQuiz": {
    "english": "Take the quiz",
-   "draft": "வினாடி வினாவில் பங்கேற்கவும்",
-   "verdict": "fix",
-   "back": "Participate in the quiz",
-   "suggestion": "வினாடி வினா எழுதுங்கள்",
-   "reason": "Participate is too formal; 'write/take' is more natural for a quiz."
+   "draft": "வினாடி வினா எழுதுங்கள்",
+   "verdict": "ok",
+   "back": "Write the quiz",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.spotPrompt": {
    "english": "Tap the {n} red flags",
@@ -325,19 +325,19 @@
   },
   "ui.review": {
    "english": "Review answers",
-   "draft": "பதில்களைப் பார்",
-   "verdict": "fix",
-   "back": "Look at answers",
-   "suggestion": "பதில்களைப் பாருங்கள்",
-   "reason": "Missing polite plural suffix 'ங்கள்' for general address."
+   "draft": "பதில்களைப் பாருங்கள்",
+   "verdict": "ok",
+   "back": "Look at the answers",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.tryAgain": {
    "english": "Try again",
-   "draft": "மீண்டும் முயல்க",
-   "verdict": "fix",
+   "draft": "மீண்டும் முயலுங்கள்",
+   "verdict": "ok",
    "back": "Try again",
-   "suggestion": "மீண்டும் முயற்சி செய்யுங்கள்",
-   "reason": "Draft 'முயல்க' is grammatically incorrect (missing suffix). 'முயற்சி செய்யுங்கள்' is standard and clear."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.backToResult": {
    "english": "Back to my QR code",
@@ -373,11 +373,11 @@
   },
   "ui.retry": {
    "english": "Retry saving",
-   "draft": "மீண்டும் சேமி",
-   "verdict": "fix",
+   "draft": "மீண்டும் சேமிக்கவும்",
+   "verdict": "ok",
    "back": "Save again",
-   "suggestion": "மீண்டும் சேமிக்கவும்",
-   "reason": "Draft 'சேமி' is incomplete/incorrect form. 'சேமிக்கவும்' is the correct imperative."
+   "suggestion": "",
+   "reason": ""
   },
   "ui.yourAnswer": {
    "english": "Your answer",
@@ -477,11 +477,11 @@
   },
   "learn[0].chat.lines[2]": {
    "english": "Install this app from my link so I can help you.",
-   "draft": "என் இணைப்பிலிருந்து இந்தச் செயலியை நிறுவுங்கள்.",
-   "verdict": "fix",
-   "back": "Install this app from my link.",
-   "suggestion": "என் இணைப்பிலிருந்து இந்தச் செயலியை நிறுவுங்கள், நான் உங்களுக்கு உதவுவேன்.",
-   "reason": "Missing 'so I can help you' from English source."
+   "draft": "என் இணைப்பிலிருந்து இந்தச் செயலியை நிறுவுங்கள், நான் உங்களுக்கு உதவுவேன்.",
+   "verdict": "ok",
+   "back": "Install this app from my link, I will help you.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[0].chat.lines[3]": {
    "english": "Now I will transfer your call to the Police.",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "பணம் கேட்கும், அதிகாரப்பூர்வமாகத் தோன்றும் சலுகைகள்.",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "பணம் கேட்கும் போலி அனுமதிக் கடிதங்கள்.",
    "verdict": "ok",
-   "back": "Offers that look official and ask for money.",
+   "back": "Fake permission letters that ask for money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "முதலில் பணம் கேட்பது வேலை மோசடியின் அறிகுறி. வேலை அனுமதிக் கட்டணத்தை உங்கள் முதலாளிதான் செலுத்த வேண்டும்.",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "MOM இணையதளத்தில் வேலை அனுமதியை நீங்களே சரிபாருங்கள்: \"Check work pass and application status\". உள்நுழைவு தேவையில்லை.",
    "verdict": "ok",
-   "back": "Being asked to pay first is a sign of a job scam. Your employer must pay your work permit fees.",
+   "back": "Check work permit yourself on MOM website: \"Check work pass and application status\". Login not needed.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "மோசடிக்காரர்கள் உண்மையான உரிம எண்ணை நகலெடுக்கலாம். நிறுவனத்தை நீங்களே தொடர்புகொள்ளுங்கள்.",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "முதலில் பணம் கேட்பது வேலை மோசடியின் அறிகுறி. மோசடிக்காரர்கள் கடிதங்களைப் போலியாக்கி, உரிம எண்ணை நகலெடுக்கலாம்.",
    "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "back": "Asking for money first is a sign of job scam. Scammers can fake letters and copy license numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -837,11 +837,11 @@
   },
   "learn[4].todo[1]": {
    "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "draft": "ACT நினைவில் கொள்ளுங்கள்: ADD – ScamShield செயலியைச் சேருங்கள், CHECK – 1799-இல் சரிபாருங்கள், TELL – குடும்பத்தினர், நண்பர்களிடம் சொல்லுங்கள்.",
+   "draft": "ACT நினைவில் கொள்ளுங்கள்: ADD – ScamShield செயலியைப் பதிவிறக்குங்கள், CHECK – 1799-ல் சரிபாருங்கள், TELL – குடும்பத்தினர், நண்பர்களிடம் சொல்லுங்கள்.",
    "verdict": "fix",
-   "back": "Remember ACT: ADD – add ScamShield app, CHECK – check with 1799, TELL – tell family, friends.",
-   "suggestion": "ACT நினைவில் கொள்ளுங்கள்: ADD – ScamShield செயலியைப் பதிவிறக்குங்கள், CHECK – 1799-ல் சரிபாருங்கள், TELL – குடும்பத்தினர், நண்பர்களிடம் சொல்லுங்கள்.",
-   "reason": "Changed 'சேருங்கள்' (join) to 'பதிவிறக்குங்கள்' (download) for app context; simplified 'முகவரிகள்' to 'சரிபாருங்கள்' for clarity."
+   "back": "Remember ACT: ADD – download ScamShield app, CHECK – check with 1799, TELL – tell family, friends.",
+   "suggestion": "ACT நினைவில் கொள்ளுங்கள்: ADD – ScamShield செயலியைப் பதிவிறக்குங்கள், CHECK – 1799-ல் சரிபாருங்கள், TELL – குடும்பத்தினர் மற்றும் நண்பர்களிடம் சொல்லுங்கள்.",
+   "reason": "Added 'மற்றும்' (and) for natural flow in the list of people to tell."
   },
   "quiz[0].title": {
    "english": "Spot the red flags",
@@ -965,11 +965,11 @@
   },
   "quiz[1].cards[2].why": {
    "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
-   "draft": "இது scam mule ஆக்கும் சலுகை. பிறர் உங்கள் வங்கி அட்டையைப் பயன்படுத்த விடுவது குற்றம்.",
-   "verdict": "fix",
-   "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
-   "suggestion": "இது scam mule சதி. பிறர் உங்கள் வங்கி அட்டையைப் பயன்படுத்த விடுவது குற்றம்.",
-   "reason": "Changed 'சலுகை' (offer/benefit) to 'சதி' (scheme/plot) as 'offer' implies a positive deal, which is misleading for a scam context."
+   "draft": "இது scam mule சதி. பிறர் உங்கள் வங்கி அட்டையைப் பயன்படுத்த விடுவது குற்றம்.",
+   "verdict": "ok",
+   "back": "This is scam mule plot. Letting others use your bank card is a crime.",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[1].cards[3].from": {
    "english": "Your friend",
@@ -1021,11 +1021,11 @@
   },
   "quiz[2].chat.lines[1]": {
    "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
-   "draft": "தவறுதலாக உங்களுக்கு 6 இலக்கக் குறியீடு அனுப்பிவிட்டேன். அதை அனுப்புங்கள். அவசரம்!",
-   "verdict": "fix",
-   "back": "I mistakenly sent a 6-digit code to you. Send it to me. Urgent!",
-   "suggestion": "தவறுதலாக உங்கள் போனுக்கு 6 இலக்கக் குறியீடு அனுப்பிவிட்டேன். அதை எனக்கு அனுப்புங்கள். அவசரம்!",
-   "reason": "Added 'phone' for clarity and 'to me' to match English 'send it to me'."
+   "draft": "தவறுதலாக உங்கள் போனுக்கு 6 இலக்கக் குறியீடு அனுப்பிவிட்டேன். அதை எனக்கு அனுப்புங்கள். அவசரம்!",
+   "verdict": "ok",
+   "back": "Sent 6-digit code to your phone by mistake. Send it to me. Urgent!",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[2].options[0]": {
    "english": "OK, here is the code: 482915",
@@ -1197,11 +1197,11 @@
   },
   "quiz[5].chat.lines[1]": {
    "english": "Just let me use your bank account and Singpass.",
-   "draft": "உங்கள் வங்கிக் கணக்கையும் Singpass-ஐயும் நான் பயன்படுத்த அனுமதியுங்கள், போதும்.",
-   "verdict": "fix",
-   "back": "Allow me to use your bank account and Singpass, that's enough.",
-   "suggestion": "உங்கள் வங்கிக் கணக்கையும் Singpass-ஐயும் நான் பயன்படுத்த அனுமதியுங்கள்.",
-   "reason": "Removed 'that's enough' as it is not in the English source."
+   "draft": "உங்கள் வங்கிக் கணக்கையும் Singpass-ஐயும் நான் பயன்படுத்த அனுமதியுங்கள்.",
+   "verdict": "ok",
+   "back": "Allow me to use your bank account and Singpass.",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[5].options[0]": {
    "english": "OK, how do I start?",
@@ -1245,11 +1245,11 @@
   },
   "feedback.csatQuestion": {
    "english": "How happy are you with today's event?",
-   "draft": "இன்றைய நிகழ்ச்சி உங்களுக்கு எவ்வளவு மகிழ்ச்சி அளித்தது?",
+   "draft": "இன்றைய நிகழ்ச்சி உங்களுக்கு எப்படி இருந்தது?",
    "verdict": "fix",
-   "back": "How much happiness did today's event give you?",
-   "suggestion": "இன்றைய நிகழ்ச்சி உங்களுக்கு எப்படி இருந்தது?",
-   "reason": "The draft asks about 'happiness' specifically, but the English asks for a general rating of the event. 'How was it?' is more natural for a survey."
+   "back": "How was today's event for you?",
+   "suggestion": "இன்றைய நிகழ்வு உங்களுக்கு எப்படி இருந்தது?",
+   "reason": "Changed 'நிகழ்ச்சி' (program/show) to 'நிகழ்வு' (event/occurrence) which is more accurate for a general feedback question about the session."
   },
   "feedback.csatLabels[0]": {
    "english": "Very unhappy",
@@ -1328,6 +1328,14 @@
    "draft": "என் முடிவைப் பார்",
    "verdict": "ok",
    "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "அதிகாரப்பூர்வ வீடியோவைப் பாருங்கள்",
+   "verdict": "ok",
+   "back": "Watch the official video",
    "suggestion": "",
    "reason": ""
   }

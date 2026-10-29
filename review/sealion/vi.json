@@ -421,11 +421,11 @@
   },
   "ui.attempt": {
    "english": "Attempt",
-   "draft": "Lần",
+   "draft": "Lần thử",
    "verdict": "fix",
-   "back": "Time",
-   "suggestion": "Lần thử",
-   "reason": "Needs 'try' to mean 'attempt' clearly."
+   "back": "Try attempt",
+   "suggestion": "Thử lại",
+   "reason": "'Lần thử' is a noun phrase (the attempt), but the button needs a verb (Try/Attempt). 'Thử lại' is the standard UI term for 'Try again' or 'Attempt'."
   },
   "learn[0].title": {
    "english": "Fake MOM officer",
@@ -541,11 +541,11 @@
   },
   "learn[1].tagline": {
    "english": "Too-good deals that make you install an app.",
-   "draft": "Ưu đãi rẻ bất thường, bắt bạn cài ứng dụng.",
-   "verdict": "fix",
-   "back": "Too cheap deals, force you to install app.",
-   "suggestion": "Ưu đãi rẻ bất thường, dụ bạn cài ứng dụng.",
-   "reason": "'Bắt' (force) is too strong; scammers 'lure' (dụ) or 'make' you do it. 'Dụ' fits scam context better."
+   "draft": "Ưu đãi rẻ bất thường, dụ bạn cài ứng dụng.",
+   "verdict": "ok",
+   "back": "Unusually cheap deals, trick you to install app.",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].chat.channel": {
    "english": "Advertisement",
@@ -557,11 +557,11 @@
   },
   "learn[1].chat.from": {
    "english": "Deepavali Gold Sale",
-   "draft": "Bán vàng Deepavali",
-   "verdict": "fix",
-   "back": "Deepavali gold sale",
-   "suggestion": "Khuyến mãi Vàng Deepavali",
-   "reason": "Original is 'Deepavali Gold Sale' (Event Name). 'Bán vàng' sounds like 'selling gold' (action). 'Khuyến mãi' matches 'Sale'."
+   "draft": "Khuyến mãi vàng Deepavali",
+   "verdict": "ok",
+   "back": "Deepavali gold promotion",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[1].chat.lines[0]": {
    "english": "Deepavali sale! Gold 80% off!",
@@ -693,11 +693,11 @@
   },
   "learn[2].todo[1]": {
    "english": "This is a crime. You can be fined, jailed or caned.",
-   "draft": "Đây là tội phạm. Bạn có thể bị phạt tiền, phạt tù hoặc phạt roi.",
-   "verdict": "ok",
-   "back": "This is a crime. You can be fined, jailed or caned.",
-   "suggestion": "",
-   "reason": ""
+   "draft": "Đây là hành vi phạm pháp. Bạn có thể bị phạt tiền, phạt tù hoặc phạt roi.",
+   "verdict": "fix",
+   "back": "This is a criminal act. You can be fined money, fined prison or fined cane.",
+   "suggestion": "Đây là hành vi phạm pháp. Bạn có thể bị phạt tiền, tù hoặc roi.",
+   "reason": "The original draft repeats 'phạt' (fine) for prison and cane, which is grammatically incorrect in Vietnamese. 'Tù' (prison) and 'roi' (cane) stand alone as punishments."
   },
   "learn[3].title": {
    "english": "Fake job or work permit",
@@ -708,10 +708,10 @@
    "reason": ""
   },
   "learn[3].tagline": {
-   "english": "Official-looking offers that ask for money.",
-   "draft": "Lời mời trông như chính thức nhưng đòi tiền.",
+   "english": "Fake approval letters that ask for money.",
+   "draft": "Thư chấp thuận giả để đòi tiền.",
    "verdict": "ok",
-   "back": "Official-looking offers that ask for money.",
+   "back": "Fake approval letters to demand money.",
    "suggestion": "",
    "reason": ""
   },
@@ -772,18 +772,18 @@
    "reason": ""
   },
   "learn[3].todo[0]": {
-   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
-   "draft": "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Chủ lao động phải trả phí giấy phép lao động cho bạn.",
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "Tự kiểm tra giấy phép lao động trên website của MOM: \"Check work pass and application status\". Không cần đăng nhập.",
    "verdict": "ok",
-   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "back": "Self check work permit on MOM website: 'Check work pass and application status'. No need login.",
    "suggestion": "",
    "reason": ""
   },
   "learn[3].todo[1]": {
-   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
-   "draft": "Kẻ lừa đảo có thể chép số giấy phép của một công ty thật. Hãy tự liên hệ với công ty.",
+   "english": "Asking you to pay first is a common job scam sign. Scammers can fake letters and copy licence numbers.",
+   "draft": "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Kẻ lừa đảo có thể làm giả thư và chép số giấy phép.",
    "verdict": "ok",
-   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "back": "Being asked to pay first is common sign of job scam. Scammers can fake letters and copy license numbers.",
    "suggestion": "",
    "reason": ""
   },
@@ -821,11 +821,11 @@
   },
   "learn[4].flags[0].label": {
    "english": "Asks for your OTP and rushes you",
-   "draft": "Xin OTP của bạn và hối thúc",
-   "verdict": "fix",
-   "back": "Asks for your OTP and urges",
-   "suggestion": "Xin OTP của bạn và hối thúc bạn",
-   "reason": "Added 'bạn' (you) to make the verb 'hối thúc' (urge/rush) grammatically complete and natural in Vietnamese."
+   "draft": "Xin OTP của bạn và hối thúc bạn",
+   "verdict": "ok",
+   "back": "Ask your OTP and rush you",
+   "suggestion": "",
+   "reason": ""
   },
   "learn[4].todo[0]": {
    "english": "Never share your OTP (the code sent to your phone) with anyone.",
@@ -837,11 +837,11 @@
   },
   "learn[4].todo[1]": {
    "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
-   "draft": "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK kiểm tra với 1799, TELL báo cho gia đình và bạn bè.",
+   "draft": "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK gọi 1799 để kiểm tra, TELL báo cho gia đình và bạn bè.",
    "verdict": "fix",
-   "back": "Remember ACT: ADD install ScamShield app, CHECK check with 1799, TELL tell family and friends.",
-   "suggestion": "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK gọi 1799 để kiểm tra, TELL báo cho gia đình và bạn bè.",
-   "reason": "Changed 'kiểm tra với 1799' to 'gọi 1799 để kiểm tra' (call 1799 to check) because 1799 is a hotline number, not a person to check with. This is clearer for workers."
+   "back": "Remember ACT: ADD install ScamShield app, CHECK call 1799 to check, TELL report to family and friends.",
+   "suggestion": "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK gọi 1799, TELL báo cho gia đình và bạn bè.",
+   "reason": "The draft added 'để kiểm tra' (to check) after calling 1799, which is not in the English source. The English just says 'CHECK with 1799'. Keeping it short fits the phone screen better."
   },
   "quiz[0].title": {
    "english": "Spot the red flags",
@@ -853,11 +853,11 @@
   },
   "quiz[0].msg.bubbles[0][0].t": {
    "english": "Dear worker,",
-   "draft": "Gửi người lao động,",
+   "draft": "Gửi anh/chị,",
    "verdict": "fix",
-   "back": "To worker,",
-   "suggestion": "Gửi anh/chị,",
-   "reason": "'Người lao động' is too formal/official. 'Anh/chị' is the natural way to address a worker in a message."
+   "back": "Send brother/sister,",
+   "suggestion": "Gửi người lao động,",
+   "reason": "'Anh/chị' is a polite pronoun for 'you', but the English 'Dear worker' is a specific address to the recipient's role. 'Người lao động' is the direct translation used in official contexts for migrant workers."
   },
   "quiz[0].msg.bubbles[0][1].t": {
    "english": "you have an unpaid work permit fine of $350.",
@@ -1141,11 +1141,11 @@
   },
   "quiz[4].msg.bubbles[1][0].t": {
    "english": "Pay me $500 to keep your job.",
-   "draft": "Trả tôi $500 để giữ việc.",
-   "verdict": "fix",
-   "back": "Pay me $500 to keep the job.",
-   "suggestion": "Trả tôi $500 để giữ việc làm.",
-   "reason": "Added 'làm' to 'việc' for natural flow ('việc làm' = job/work). 'Giữ việc' alone is slightly incomplete."
+   "draft": "Trả tôi $500 để giữ việc làm.",
+   "verdict": "ok",
+   "back": "Pay me $500 to keep job.",
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[4].msg.bubbles[2][0].t": {
    "english": "Check your permit at",
@@ -1221,19 +1221,19 @@
   },
   "quiz[5].options[2]": {
    "english": "No. This is a crime. I will report it.",
-   "draft": "Không. Đây là tội phạm. Tôi sẽ báo cáo.",
+   "draft": "Không. Đây là hành vi phạm pháp. Tôi sẽ báo cáo.",
    "verdict": "ok",
-   "back": "No. This is a criminal. I will report.",
+   "back": "No. This is a criminal act. I will report.",
    "suggestion": "",
    "reason": ""
   },
   "quiz[5].explain": {
    "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
-   "draft": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là tiếp tay cho lừa đảo. Đây là tội phạm. Hãy từ chối và báo cáo.",
+   "draft": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là tiếp tay cho lừa đảo. Đây là hành vi phạm pháp. Hãy từ chối và báo cáo.",
    "verdict": "fix",
-   "back": "Letting others use your bank account or Singpass is helping scams. This is a criminal. Please refuse and report.",
-   "suggestion": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là tiếp tay cho lừa đảo. Đây là hành vi phạm pháp. Hãy từ chối và báo cáo.",
-   "reason": "'Tội phạm' means 'criminal' (person). 'Hành vi phạm pháp' means 'criminal act/crime'. The English says 'It is a crime'. Also 'tiếp tay cho lừa đảo' is good, but 'làm mule lừa đảo' is the specific term used in Singapore. However, 'tiếp tay' is plain. I will change 'tội phạm' to 'hành vi phạm pháp' for accuracy."
+   "back": "Let others use bank account or Singpass of you is helping scam. This is a criminal act. Please refuse and report.",
+   "suggestion": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là làm 'scam mule'. Đây là hành vi phạm pháp. Hãy từ chối và báo cáo.",
+   "reason": "The English explicitly uses the term 'scam mule'. The draft translated it as 'tiếp tay cho lừa đảo' (helping scam). To maintain consistency with the specific term used in the English source and other parts of the site, keep 'scam mule' in English as per the rules."
   },
   "feedback.title": {
    "english": "One last thing",
@@ -1325,11 +1325,19 @@
   },
   "feedback.submit": {
    "english": "See my result",
-   "draft": "Xem kết quả",
-   "verdict": "fix",
-   "back": "See result",
-   "suggestion": "Xem kết quả của tôi",
-   "reason": "The English says 'See my result'. The draft 'Xem kết quả' drops 'my'. Adding 'của tôi' makes it personal and matches the English exactly."
+   "draft": "Xem kết quả của tôi",
+   "verdict": "ok",
+   "back": "See result of me",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "Xem video chính thức",
+   "verdict": "ok",
+   "back": "Watch official video",
+   "suggestion": "",
+   "reason": ""
   }
  }
 }
