@@ -1,16 +1,6 @@
 {
- "_about": "Why SEA-LION suggestions were not applied as written (triage on 29 Oct 2026). Lines not listed here were applied, sometimes lightly adjusted.",
+ "_about": "Why SEA-LION suggestions were not applied as written. Keyed by language and line; each language holds only triage of its current model run (see tools/sealion-models.json). Lines not listed were applied, sometimes lightly adjusted.",
  "notApplied": {
-  "id": {
-   "ui.toQuiz": "Style only; SEA-LION itself says the draft is acceptable.",
-   "quiz[5].explain": "\"Kata tidak\" is not natural Indonesian; \"Tolak\" (refuse) is clear.",
-   "feedback.csatLabels[2]": "\"Cukup puas\" leans positive; the middle of the scale should be neutral.",
-   "feedback.csatQuestion": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
-   "feedback.csatLabels[0]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
-   "feedback.csatLabels[1]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
-   "feedback.csatLabels[3]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
-   "feedback.csatLabels[4]": "SEA-LION reversed its own suggestion from the first run; kept the current text."
-  },
   "tl": {
    "ui.spotPrompt": "English loanwords are not pluralised after a number in Tagalog.",
    "ui.earnedBefore": "Suggestion drops \"you\"; the meaning becomes unclear.",
@@ -18,80 +8,6 @@
    "learn[2].todo[1]": "Kept \"(caning)\": the Tagalog alone may not read as a court sentence.",
    "quiz[1].cards[1].text": "\"Kakapadala\" already means \"just sent\"; SEA-LION misread it.",
    "feedback.learnedOptions[2].label": "\"Wala\" pairs naturally with \"Kaunti\" for \"Did you learn anything new?\"."
-  },
-  "vi": {
-   "quiz[1].cards[0].from": "\"Chủ nhà\" means homeowner; most attendees are not domestic workers.",
-   "quiz[4].msg.bubbles[0][0].t": "Same: \"chủ nhà\" fits domestic workers only.",
-   "feedback.csatQuestion": "\"Buổi học\" means a class; this is an event.",
-   "ui.attempt": "\"Thử lại\" means \"Try again\"; this is the label before an attempt number.",
-   "learn[2].todo[1]": "\"Phạt tiền, phạt tù\" is the standard legal phrasing; SEA-LION was wrong.",
-   "learn[4].todo[1]": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
-   "quiz[0].msg.bubbles[0][0].t": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
-   "quiz[5].explain": "\"Scam mule\" is not one of the names kept in English; the plain Vietnamese is clearer."
-  },
-  "zh": {
-   "ui.closeReview": "\"关闭查看\" is awkward; the review screen shows answers.",
-   "ui.attempt": "Shown before a number (\"尝试次数 2\"), so the draft reads correctly.",
-   "learn[0].tagline": "Kept 人力部 once so readers know what MOM is.",
-   "learn[0].chat.lines[2]": "Applied through the 应用程序 to 应用 change.",
-   "learn[0].todo[0]": "\"About your work\" is in the English; SEA-LION was wrong.",
-   "learn[1].tagline": "Applied through the 应用程序 to 应用 change.",
-   "quiz[5].explain": "Keeps the polite 您 used everywhere else.",
-   "feedback.learnedOptions[0].label": "有/没有 is the natural answer to \"学到…了吗\".",
-   "feedback.learnedOptions[2].label": "Same as above.",
-   "learn[0].chat.lines[0]": "\"我是MOM的\" is incomplete; \"我是MOM打来的\" is natural for a call.",
-   "learn[1].todo[1]": "\"银行户口\" is the standard term in Singapore.",
-   "quiz[0].msg.bubbles[1][0].t": "SEA-LION reversed its own suggestion from the first run; kept the current text."
-  },
-  "th": {
-   "ui.scam": "\"มิจฉาชีพ\" means scammer (a person); the button labels a message as a scam.",
-   "ui.attempt": "Shown before a number (\"ครั้งที่ 2\"), so the ordinal is correct.",
-   "feedback.learnedOptions[0].label": "\"ได้/ไม่ได้\" is the natural answer to \"ได้เรียนรู้…ไหม\".",
-   "feedback.learnedOptions[2].label": "Same as above.",
-   "learn[0].chat.channel": "SEA-LION reversed its own suggestion from the first run; kept the current text.",
-   "learn[2].tagline": "Style only; the meaning is the same."
-  },
-  "ta": {
-   "ui.exitQuiz": "Longer label would not fit the top bar on small phones.",
-   "ui.tryAgain": "Used a shorter correct form, \"மீண்டும் முயலுங்கள்\", to fit the result screen.",
-   "quiz[4].msg.bubbles[2][0].t": "Longer wording made the message overflow on a 360px screen.",
-   "feedback.csatLabels[0]": "Short scale labels are normal; longer ones risk the layout.",
-   "feedback.csatLabels[1]": "Same as above.",
-   "feedback.csatLabels[3]": "Same as above.",
-   "feedback.csatLabels[4]": "Same as above.",
-   "learn[4].todo[1]": "Style only; the longer line risks overflowing the screen.",
-   "feedback.csatQuestion": "நிகழ்ச்சி is the usual word for an event like this; style only."
-  },
-  "my": {
-   "ui.exitQuiz": "Longer label would not fit the top bar on small phones.",
-   "ui.closeReview": "Same as above.",
-   "ui.toQuiz": "Other labels use ဉာဏ်စမ်း for \"quiz\"; changing one breaks consistency.",
-   "ui.review": "Button labels ending in ရန် are common; style only.",
-   "ui.backToResult": "Same as above.",
-   "ui.retry": "Same as above.",
-   "quiz[0].msg.bubbles[1][0].t": "The colon leads into the web address that follows.",
-   "quiz[3].options[1].label": "Keeps the same register as the other two options.",
-   "feedback.csatLabels[2]": "Keeps the same form as the other scale labels.",
-   "feedback.learnedOptions[0].label": "\"Learned / did not learn\" answers the question directly.",
-   "feedback.learnedOptions[2].label": "Same as above."
-  },
-  "hi": {
-   "event.title": "Kept the gloss (धोखाधड़ी) for readers who do not know \"स्कैम\".",
-   "event.intro": "\"क्विज़ देना\" is the correct idiom for taking a quiz (like \"परीक्षा देना\").",
-   "ui.toQuiz": "Same as above."
-  },
-  "bn": {
-   "event.title": "Kept the gloss (স্ক্যাম) for readers who know the English word.",
-   "ui.finish": "Used \"শেষ করুন\" (finish, as an action), shorter than the suggestion.",
-   "ui.left": "\"স্মারক\" alone can read as \"memorial\"; \"স্মারক উপহার\" is clearer.",
-   "ui.soldOut": "Same as above.",
-   "quiz[2].options[0]": "\"কোডটা এই:\" is natural.",
-   "feedback.csatQuestion": "\"খুশি\" (happy) is plainer than \"সন্তুষ্ট\" and matches the English.",
-   "feedback.csatLabels[0]": "Same as above.",
-   "feedback.csatLabels[1]": "Same as above.",
-   "feedback.csatLabels[3]": "Same as above.",
-   "feedback.csatLabels[4]": "Same as above.",
-   "quiz[4].msg.bubbles[2][0].t": "\"এখানে …:\" leads into the web address in the next part; it reads naturally."
   }
  }
 }

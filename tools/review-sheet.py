@@ -46,10 +46,21 @@ def sealion(code):
     f = os.path.join(ROOT, 'review', 'sealion', code + '.json')
     return json.load(open(f, encoding='utf-8')) if os.path.exists(f) else None
 
+SL_CONFIG = json.load(open(os.path.join(ROOT, 'tools', 'sealion-models.json'), encoding='utf-8'))
+NOT_SUPPORTED = 'Not supported by SEA-LION'
+
+def sealion_model_cell(code, sl):
+    cfg = SL_CONFIG['languages'].get(code)
+    if not cfg: return NOT_SUPPORTED
+    if not sl: return '%s (not run yet)' % cfg['model'].split('/')[-1]
+    if sl['model'] != cfg['model']: return '%s (OUTDATED: config now says %s)' % (sl['model'].split('/')[-1], cfg['model'].split('/')[-1])
+    return '%s, checked %s' % (sl['model'].split('/')[-1], sl['checked'])
+
 TRIAGE_FILE = os.path.join(ROOT, 'review', 'sealion', 'triage.json')
 TRIAGE = json.load(open(TRIAGE_FILE, encoding='utf-8'))['notApplied'] if os.path.exists(TRIAGE_FILE) else {}
 
 def sealion_cell(sl, key, en, draft, code):
+    if not SL_CONFIG['languages'].get(code): return NOT_SUPPORTED
     r = sl and sl['results'].get(key)
     if not r: return ''
     if r.get('english') != en: return '(checked an older English version of this line)'
@@ -119,7 +130,7 @@ rows = [
     ('3. If the draft is right, leave column E empty.', False),
     ('4. If it needs changing, type the full corrected text in column E (yellow). Do not edit column D.', False),
     ('5. Use column F for questions or comments. Column G has notes about each line; lines marked CHANGED differ from the previous workbook.', False),
-    ('Column I, where filled, is a second opinion from SEA-LION (AI Singapore\'s language model), including a back-translation into English. It is a machine check, not a native speaker: use it as a pointer, not a ruling. SEA-LION is tuned for Burmese, Indonesian, Tagalog, Tamil, Thai and Vietnamese; it is weaker for Bengali, Chinese and Hindi.', False),
+    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). Hindi and Bengali are not supported by any SEA-LION model, so they have no SEA-LION check. It is a machine check, not a native speaker: use it as a pointer, not a ruling.', False),
     ('6. Send the file back. Corrections in column E are applied automatically (tools/import-review.py).', False),
     ('', False),
     ('Rules for all languages', True),
@@ -139,8 +150,8 @@ for i, (text, bold) in enumerate(rows, start=1):
     c.alignment = Alignment(wrap_text=True, vertical='top')
 ws.column_dimensions['A'].width = 120
 ex_row = len(rows) + 1
-headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources', 'SEA-LION check']
-example = ['ui.tryAgain', 'Buttons and labels (all screens)', 'Try again', 'फिर से कोशिश करें', 'दोबारा कोशिश करें', 'Shorter and more common.', '', '', '']
+headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources', 'SEA-LION check', 'SEA-LION model (newest that supports this language)']
+example = ['ui.tryAgain', 'Buttons and labels (all screens)', 'Try again', 'फिर से कोशिश करें', 'दोबारा कोशिश करें', 'Shorter and more common.', '', '', '', '']
 ws2col = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 for j, h in enumerate(headers):
     c = ws.cell(row=ex_row, column=j + 1, value=h)
@@ -186,8 +197,37 @@ for line in open(os.path.join(ROOT, 'SOURCES.md'), encoding='utf-8'):
 for col, w in zip('ABC', [8, 60, 80]):
     src.column_dimensions[col].width = w
 
+# SEA-LION models: which model checked each language, and the evidence that it is the newest one
+# whose documentation lists that language.
+slm = wb.create_sheet('SEA-LION models')
+slm.cell(row=1, column=1, value='Each language is checked by the newest SEA-LION model whose documentation lists it (verified on %s). Languages no model lists are not checked.' % SL_CONFIG['checked']).font = Font(name=FONT, bold=True)
+for j, h in enumerate(['Language', 'SEA-LION model used', 'Release', 'Listed in its documentation as', 'Newest model supporting this language?', 'Last run']):
+    c = slm.cell(row=3, column=j + 1, value=h)
+    c.font, c.fill, c.border, c.alignment = head_font, head_fill, border, wrap
+for i, (code, name) in enumerate(LANGS, start=4):
+    cfg, sl = SL_CONFIG['languages'].get(code), sealion(code)
+    if cfg:
+        rel = SL_CONFIG['models'][cfg['model']]['release']
+        newest = 'Yes. ' + (cfg.get('note') or 'v4.8 (Sep 2026) is the latest SEA-LION release and lists %s.' % cfg['listedAs'])
+        row = [name, cfg['model'].split('/')[-1], rel, cfg['listedAs'], newest, sl['checked'] if sl and sl['model'] == cfg['model'] else 'not run with this model yet']
+    else:
+        row = [name, NOT_SUPPORTED, '', '', 'No SEA-LION model lists this language. ' + SL_CONFIG['evidence']['none'], '']
+    for j, v in enumerate(row):
+        c = slm.cell(row=i, column=j + 1, value=v)
+        c.font, c.border, c.alignment = Font(name=FONT, size=11, bold=(j == 1 and v == NOT_SUPPORTED)), border, wrap
+r = len(LANGS) + 6
+slm.cell(row=r, column=1, value='Evidence (SEA-LION documentation)').font = Font(name=FONT, bold=True)
+for k, v in SL_CONFIG['evidence'].items():
+    r += 1
+    c = slm.cell(row=r, column=1, value='%s: %s' % (k, v)); c.font, c.alignment = Font(name=FONT, size=11), wrap
+    slm.merge_cells(start_row=r, start_column=1, end_row=r, end_column=6)
+    slm.row_dimensions[r].height = 45
+for col, w in zip('ABCDEF', [20, 36, 10, 22, 60, 14]):
+    slm.column_dimensions[col].width = w
+
 for code, name in LANGS:
     draft, prev, sl = DRAFTS[code], previous_draft(code), sealion(code)
+    model_cell = sealion_model_cell(code, sl)
     sh = wb.create_sheet(name)
     for j, h in enumerate(headers):
         c = sh.cell(row=1, column=j + 1, value=h)
@@ -196,17 +236,17 @@ for code, name in LANGS:
     r = 2
     for key, en in english['items']:
         if key not in draft: continue
-        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key), sealion_cell(sl, key, en, draft[key], code)]
+        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key), sealion_cell(sl, key, en, draft[key], code), model_cell]
         for j, v in enumerate(vals):
             c = sh.cell(row=r, column=j + 1, value=v)
             c.font = Font(name=FONT, size=11, color='808080' if j == 0 else '000000')
             c.alignment, c.border = wrap, border
             if j == 4: c.fill = edit_fill
         r += 1
-    for col, w in zip('ABCDEFGHI', [24, 28, 46, 46, 46, 30, 46, 16, 50]):
+    for col, w in zip('ABCDEFGHIJ', [24, 28, 46, 46, 46, 30, 46, 16, 50, 30]):
         sh.column_dimensions[col].width = w
     sh.freeze_panes = 'C2'
-    sh.auto_filter.ref = 'A1:I%d' % (r - 1)
+    sh.auto_filter.ref = 'A1:J%d' % (r - 1)
     sh.sheet_view.zoomScale = 110
 
 out = sys.argv[1]
