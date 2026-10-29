@@ -51,3 +51,17 @@ main.wide { max-width: 960px; }
 .addone { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: end; margin-top: 16px; }
 .addone .field { margin: 0; }
 .addone .btn { margin: 0; width: auto; }
+
+/* ---------- bug log ---------- */
+.bugsum { font-weight: 600; }
+.bug { margin-top: 12px; }
+.bughead { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.bugdesc { white-space: pre-wrap; overflow-wrap: anywhere; }
+.bugshots { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.bugshots img { width: 96px; height: 150px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); background: #f3f0f6; display: block; }
+.badge { font-size: .8rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: #eee; }
+.badge.new { background: #fff4dc; color: #7a4d00; }
+.badge.in_progress { background: #e8f0fe; color: #1a4fa0; }
+.badge.needs_decision { background: var(--no-bg); color: var(--no); }
+.badge.fixed { background: var(--ok-bg); color: var(--ok); }
+.bug select { margin-left: 6px; font: inherit; padding: 4px 8px; border-radius: 8px; }

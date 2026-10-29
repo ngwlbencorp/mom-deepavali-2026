@@ -5,8 +5,8 @@
   var $ = function (id) { return document.getElementById(id); };
   var time = function (iso) { return iso ? new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''; };
 
-  // ---------- views (hash routes: #home, #scan, #manual) ----------
-  var views = ['login', 'home', 'scan', 'manual'];
+  // ---------- views (hash routes: #home, #scan, #manual, #bug) ----------
+  var views = ['login', 'home', 'scan', 'manual', 'bug'];
   function route() {
     var s = Api.session(ROLE);
     var want = (location.hash || '#home').slice(1);
@@ -16,6 +16,7 @@
     $('counter').hidden = !s;
     if (want !== 'scan') stopCamera();
     if (want === 'manual') resetManual();
+    if (want === 'bug') resetBug();
     if (want === 'scan') { $('verdict').hidden = true; startCamera(); }
     if (s) { $('who').textContent = s.user; startPolling(); } else stopPolling();
     window.scrollTo(0, 0);
@@ -233,6 +234,66 @@
     }, function (e) { failed('mverdict', e, submitManual); });
   }
   $('manualSubmit').addEventListener('click', submitManual);
+
+  // ---------- bug report ----------
+  // Photos are shrunk on the phone (longest side 1600 px, JPEG) so each upload stays small.
+  var shots = [];
+  function resetBug() {
+    shots = [];
+    $('bugForm').reset();
+    $('bugForm').hidden = false;
+    $('bverdict').hidden = true;
+    $('bugErr').hidden = true;
+    $('bugSend').disabled = false;
+    drawThumbs();
+  }
+  function drawThumbs() {
+    var box = $('bugThumbs');
+    box.innerHTML = '';
+    shots.forEach(function (src, i) {
+      var fig = document.createElement('figure');
+      var img = document.createElement('img'); img.src = src; img.alt = 'Screenshot ' + (i + 1);
+      var x = document.createElement('button'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Remove screenshot ' + (i + 1));
+      x.addEventListener('click', function () { shots.splice(i, 1); drawThumbs(); });
+      fig.appendChild(img); fig.appendChild(x); box.appendChild(fig);
+    });
+  }
+  function shrink(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        URL.revokeObjectURL(url);
+        var k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+        var c = document.createElement('canvas');
+        c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        var q = 0.82, out = c.toDataURL('image/jpeg', q);
+        while (out.length > 780000 && q > 0.4) { q -= 0.12; out = c.toDataURL('image/jpeg', q); } // stays under the server's 600 KB
+        resolve(out);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('Not a picture')); };
+      img.src = url;
+    });
+  }
+  $('bugFiles').addEventListener('change', function () {
+    var files = [].slice.call(this.files).slice(0, 3 - shots.length);
+    this.value = '';
+    Promise.all(files.map(shrink)).then(function (list) { shots = shots.concat(list).slice(0, 3); drawThumbs(); },
+      function () { $('bugErr').textContent = 'One of the files is not a picture.'; $('bugErr').hidden = false; });
+  });
+  $('bugForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    $('bugSend').disabled = true;
+    $('bugErr').hidden = true;
+    Api.call('POST', '/api/bugreport', { screen: $('bugScreen').value, description: $('bugText').value, screenshots: shots }, ROLE).then(function (r) {
+      if (r.status === 401) return loggedOut(r.body.message);
+      if (!r.ok) { $('bugErr').textContent = r.body.message || 'Could not send. Try again.'; $('bugErr').hidden = false; $('bugSend').disabled = false; return; }
+      $('bugForm').hidden = true;
+      verdict('bverdict', 'give', 'Thank you ✓', 'Report #' + r.body.id + ' sent. You can carry on.', [
+        { label: 'Report another problem', secondary: true, run: function () { resetBug(); window.scrollTo(0, 0); } }
+      ]);
+    }, function () { $('bugErr').textContent = 'Cannot reach the server. Try again.'; $('bugErr').hidden = false; $('bugSend').disabled = false; });
+  });
 
   route();
 })();

@@ -31,6 +31,7 @@
         <button role="tab" data-tab="dash" aria-selected="true">Dashboard</button>
         <button role="tab" data-tab="admins" aria-selected="false">Admins</button>
         <button role="tab" data-tab="data" aria-selected="false">Data</button>
+        <button role="tab" data-tab="bugs" aria-selected="false">Bug log</button>
         <button class="linkbtn inline right" id="logout">Log out</button>
       </nav>
 
@@ -82,6 +83,17 @@
         </div>
       </section>
 
+      <!-- bug log -->
+      <section id="t-bugs" hidden>
+        <div class="card">
+          <h3>Bug log</h3>
+          <p class="muted small">Problems reported by officers from the admin page, and how each was handled. Time to fix runs from the report to the fix going live. Refreshes every 15 seconds while open.</p>
+          <p class="bugsum" id="bugSummary"></p>
+          <p class="error" id="bugErr" hidden></p>
+        </div>
+        <div id="bugList"></div>
+      </section>
+
       <!-- data -->
       <section id="t-data" hidden>
         <div class="card">
@@ -89,6 +101,7 @@
           <button class="btn secondary" data-export="claims">Claims (one row per claim ID)</button>
           <button class="btn secondary" data-export="submissions">Quiz submissions (one row per attempt)</button>
           <button class="btn secondary" data-export="admins">Admin list</button>
+          <button class="btn secondary" data-export="bugs">Bug log (without screenshots)</button>
           <p class="error" id="exportErr" hidden></p>
         </div>
         <div class="card danger">

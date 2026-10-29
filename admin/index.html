@@ -38,6 +38,7 @@
     <section class="view" id="v-home" hidden>
       <a class="bigbtn" href="#scan"><span class="ico" aria-hidden="true">▣</span>Scan QR<small>MW shows their quiz QR code</small></a>
       <a class="bigbtn alt" href="#manual"><span class="ico" aria-hidden="true">✎</span>Manual input<small>No phone, or the code does not work</small></a>
+      <a class="bigbtn alt" href="#bug"><span class="ico" aria-hidden="true">⚑</span>Report a problem<small>Something wrong with the mini-site or this page</small></a>
       <p class="whoami muted small"><span id="who"></span> · <button class="linkbtn inline" id="logout">Log out</button></p>
     </section>
 
@@ -66,6 +67,36 @@
         <button class="btn" id="manualSubmit" disabled>Satisfied: record and give souvenir</button>
       </div>
       <section class="card verdict" id="mverdict" hidden></section>
+      <p class="center"><a class="linkbtn" href="#home">← Back to menu</a></p>
+    </section>
+    <!-- bug report -->
+    <section class="view" id="v-bug" hidden>
+      <form class="card" id="bugForm">
+        <h2>Report a problem</h2>
+        <p class="muted">Tell us what went wrong. Screenshots help a lot. Reports go to the team fixing the mini-site.</p>
+        <label class="field">Where did it happen?
+          <select id="bugScreen" required>
+            <option value="">Choose…</option>
+            <option>Mini-site: home page</option>
+            <option>Mini-site: learn stories</option>
+            <option>Mini-site: quiz</option>
+            <option>Mini-site: result or QR code</option>
+            <option>Mini-site: language</option>
+            <option>Mini-site: somewhere else</option>
+            <option>Officer page (this page)</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="field">What went wrong?
+          <textarea id="bugText" rows="5" maxlength="2000" required placeholder="What you did, what you expected, and what happened instead. Which phone, if you know."></textarea>
+        </label>
+        <label class="btn secondary filebtn">Add screenshots (up to 3)<input type="file" id="bugFiles" accept="image/*" multiple></label>
+        <div class="bugthumbs" id="bugThumbs"></div>
+        <p class="warn small">Before adding a screenshot, check it shows no personal details: no names, FIN or ID numbers, phone numbers or messages from other apps.</p>
+        <button class="btn" type="submit" id="bugSend">Send report</button>
+        <p class="error" id="bugErr" hidden></p>
+      </form>
+      <section class="card verdict" id="bverdict" hidden></section>
       <p class="center"><a class="linkbtn" href="#home">← Back to menu</a></p>
     </section>
   </main>

@@ -1,5 +1,6 @@
 // API checks against a running server with an EMPTY database.
 // Usage: node tests/api.test.js <baseUrl> <adminPassword> <superUser> <superPassword> <cap>
+// With BUG_API_TOKEN set (the same value as the server's), the bug-agent token is checked too.
 // It clears all claims and gives out souvenirs: never point it at the production database.
 const crypto = require('crypto');
 const { encode } = require('../js/payload.js');
@@ -132,6 +133,45 @@ const call = (method, path, body, token) => fetch(base + path, {
   // ---- removing an admin revokes access ----
   await call('POST', '/api/admins', { remove: 'carol@mom.gov.sg' }, SUP);
   ok((await call('GET', '/api/stats', null, ADM3)).status === 401, 'removed admin is locked out immediately');
+
+  // ---- bug reports ----
+  const PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==';
+  let br = await call('POST', '/api/bugreport', { screen: 'Mini-site: quiz', description: 'The Next button does nothing on quiz 3.', screenshots: [PNG, PNG] }, ADM);
+  ok(br.status === 200 && br.body.id > 0, 'officer sends a bug report with 2 screenshots');
+  const bugId = br.body.id;
+  ok((await call('POST', '/api/bugreport', { description: 'Broken page', screenshots: [] })).status === 401, 'bug report needs an officer login');
+  ok((await call('POST', '/api/bugreport', { description: 'x' }, ADM)).status === 400, 'bug report: too-short description refused');
+  ok((await call('POST', '/api/bugreport', { description: 'Four pictures', screenshots: [PNG, PNG, PNG, PNG] }, ADM)).status === 400, 'bug report: more than 3 screenshots refused');
+  ok((await call('POST', '/api/bugreport', { description: 'Not a picture', screenshots: ['data:image/png;base64,' + Buffer.from('<script>alert(1)</script>').toString('base64')] }, ADM)).body.error === 'bad_image', 'bug report: a file that is not really an image is refused');
+  ok((await call('POST', '/api/bugreport', { description: 'Huge picture', screenshots: ['data:image/jpeg;base64,' + Buffer.concat([Buffer.from([0xff, 0xd8, 0xff]), Buffer.alloc(700 * 1024)]).toString('base64')] }, ADM)).body.error === 'image_too_large', 'bug report: screenshot over 600 KB refused');
+  ok((await call('GET', '/api/bugs', null, ADM)).status === 403, 'officers cannot read the bug log');
+  ok((await call('GET', '/api/bugs')).status === 401, 'bug log needs a login');
+  let bl = await call('GET', '/api/bugs', null, SUP);
+  const rep = bl.body.reports && bl.body.reports.find((x) => x.id === bugId);
+  ok(rep && rep.status === 'new' && rep.reporter_email === 'alice@mom.gov.sg' && rep.screenshots.length === 2, 'superadmin sees the report: new, reporter, 2 screenshots');
+  const img = await fetch(base + '/api/bugshot?id=' + rep.screenshots[0], { headers: { authorization: 'Bearer ' + SUP } });
+  const bytes = Buffer.from(await img.arrayBuffer());
+  ok(img.status === 200 && img.headers.get('content-type') === 'image/png' && bytes[0] === 0x89 && /no-store/.test(img.headers.get('cache-control')), 'screenshot comes back as the image, not cached');
+  ok((await call('GET', '/api/bugshot?id=' + rep.screenshots[0], null, ADM)).status === 403, 'officers cannot open screenshots');
+  let up = await call('POST', '/api/bugs', { id: bugId, status: 'fixed', fix_ref: 'abc1234', fix_note: 'Button wired up' }, SUP);
+  ok(up.status === 200 && up.body.report.status === 'fixed' && up.body.report.fixed_at && up.body.report.fix_ref === 'abc1234', 'marking fixed stamps the fix time and keeps the commit');
+  const firstFixed = up.body.report.fixed_at;
+  up = await call('POST', '/api/bugs', { id: bugId, status: 'fixed', fix_note: 'Also checked on iPhone' }, SUP);
+  ok(up.body.report.fixed_at === firstFixed && up.body.report.fix_ref === 'abc1234', 'marking fixed again keeps the first fix time');
+  up = await call('POST', '/api/bugs', { id: bugId, status: 'in_progress' }, SUP);
+  ok(up.body.report.fixed_at === null, 'reopening clears the fix time');
+  ok((await call('POST', '/api/bugs', { id: bugId, status: 'done' }, SUP)).status === 400, 'unknown status refused');
+  ok((await call('POST', '/api/bugs', { id: 999999, status: 'fixed' }, SUP)).status === 404, 'unknown report: 404');
+  const BUG_TOKEN = process.env.BUG_API_TOKEN;
+  if (BUG_TOKEN) {
+    bl = await call('GET', '/api/bugs?status=in_progress', null, BUG_TOKEN);
+    ok(bl.status === 200 && bl.body.reports.some((x) => x.id === bugId), 'bug-agent token can read the bug log, filtered by status');
+    ok((await call('POST', '/api/bugs', { id: bugId, status: 'fixed', fix_ref: 'def5678' }, BUG_TOKEN)).body.report.fix_ref === 'def5678', 'bug-agent token can record a fix');
+    ok((await call('GET', '/api/bugs', null, BUG_TOKEN + 'x')).status === 401, 'a wrong bug-agent token is refused');
+    ok((await call('GET', '/api/dashboard', null, BUG_TOKEN)).status === 401 && (await call('GET', '/api/stats', null, BUG_TOKEN)).status === 401, 'bug-agent token opens nothing else');
+  }
+  await call('POST', '/api/reset', { confirm: 'RESET' }, SUP);
+  ok((await call('GET', '/api/bugs', null, SUP)).body.reports.some((x) => x.id === bugId), 'clearing rehearsal data keeps the bug log');
 
   console.log(fails ? `${fails} FAILED` : 'ALL PASSED');
   process.exit(fails ? 1 : 0);

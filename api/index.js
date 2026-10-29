@@ -4,6 +4,9 @@
 // Routes are required statically so Vercel's bundler includes them.
 const routes = {
   admins: require('../lib/routes/admins'),
+  bugreport: require('../lib/routes/bugreport'),
+  bugs: require('../lib/routes/bugs'),
+  bugshot: require('../lib/routes/bugshot'),
   dashboard: require('../lib/routes/dashboard'),
   export: require('../lib/routes/export'),
   login: require('../lib/routes/login'),

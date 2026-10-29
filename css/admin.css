@@ -75,3 +75,11 @@
 }
 .mq .pair button[aria-pressed="true"].yes { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
 .mq .pair button[aria-pressed="true"].no { background: var(--no-bg); border-color: var(--no); color: var(--no); }
+
+/* ---------- bug report ---------- */
+#bugForm select, #bugForm textarea { width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 2px solid var(--line); background: #fff; box-sizing: border-box; }
+.bugthumbs { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.bugthumbs figure { position: relative; margin: 0; }
+.bugthumbs img { width: 76px; height: 120px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); display: block; }
+.bugthumbs button { position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; border-radius: 50%; border: 0; background: var(--no); color: #fff; font-weight: 800; cursor: pointer; }
+.warn { color: var(--no); background: var(--no-bg); border-radius: 10px; padding: 8px 10px; }

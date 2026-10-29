@@ -20,7 +20,7 @@
     $('v-login').hidden = !!s;
     $('v-app').hidden = !s;
     clearInterval(timer); timer = null;
-    if (s) { tab('dash'); loadDash(); timer = setInterval(function () { if (!$('t-dash').hidden && document.visibilityState === 'visible') loadDash(); }, REFRESH_MS); }
+    if (s) { tab('dash'); loadDash(); timer = setInterval(function () { if (document.visibilityState !== 'visible') return; if (!$('t-dash').hidden) loadDash(); if (!$('t-bugs').hidden) loadBugs(); }, REFRESH_MS); }
   }
   function loggedOut(msg) {
     Api.setSession(ROLE, null);
@@ -41,8 +41,9 @@
 
   function tab(name) {
     [].forEach.call(document.querySelectorAll('[data-tab]'), function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === name)); });
-    ['dash', 'admins', 'data'].forEach(function (t) { $('t-' + t).hidden = t !== name; });
+    ['dash', 'admins', 'data', 'bugs'].forEach(function (t) { $('t-' + t).hidden = t !== name; });
     if (name === 'admins') loadAdmins();
+    if (name === 'bugs') loadBugs();
     if (name === 'dash') loadDash();
   }
   [].forEach.call(document.querySelectorAll('[data-tab]'), function (b) { b.addEventListener('click', function () { tab(b.dataset.tab); }); });
@@ -271,6 +272,70 @@
       renderAdmins(r.body.admins);
     }, function () { adminError('Cannot reach the server.'); });
   });
+
+  // ---------- bug log ----------
+  var STATUS_LABEL = { new: 'New', in_progress: 'Being fixed', needs_decision: 'Needs your decision', fixed: 'Fixed', wont_fix: "Won't fix", duplicate: 'Duplicate' };
+  var REPO = 'https://github.com/ngwlbencorp/mom-deepavali-2026/commit/';
+  var shotUrls = {}; // screenshot id -> object URL, so refreshes do not download images again
+  function took(a, b) {
+    var m = Math.max(0, Math.round((new Date(b) - new Date(a)) / 60000));
+    return m < 60 ? m + ' min' : m < 1440 ? (m / 60).toFixed(1) + ' h' : (m / 1440).toFixed(1) + ' days';
+  }
+  function node(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function loadBugs() {
+    Api.call('GET', '/api/bugs', null, ROLE).then(function (r) {
+      if (!guard(r)) return;
+      if (!r.ok) { $('bugErr').textContent = r.body.message || 'Could not load the bug log'; $('bugErr').hidden = false; return; }
+      $('bugErr').hidden = true;
+      renderBugs(r.body.reports, r.body.statuses);
+    }, function () { $('bugErr').textContent = 'Cannot reach the server.'; $('bugErr').hidden = false; });
+  }
+  function renderBugs(list, statuses) {
+    var fixed = list.filter(function (b) { return b.status === 'fixed' && b.fixed_at; });
+    var open = list.filter(function (b) { return ['new', 'in_progress', 'needs_decision'].indexOf(b.status) >= 0; }).length;
+    var mins = fixed.map(function (b) { return (new Date(b.fixed_at) - new Date(b.created_at)) / 60000; }).sort(function (a, b) { return a - b; });
+    var median = mins.length ? took(0, mins[Math.floor((mins.length - 1) / 2)] * 60000) : '–';
+    $('bugSummary').textContent = list.length + ' reported · ' + fixed.length + ' fixed · ' + open + ' open · median time to fix ' + median;
+    var box = $('bugList');
+    box.innerHTML = '';
+    if (!list.length) box.appendChild(node('p', 'muted center', 'No reports yet.'));
+    list.forEach(function (b) {
+      var card = node('div', 'card bug ' + b.status);
+      var head = node('div', 'bughead');
+      head.appendChild(node('b', null, '#' + b.id + ' · ' + (b.screen || 'No screen given')));
+      head.appendChild(node('span', 'badge ' + b.status, STATUS_LABEL[b.status] || b.status));
+      card.appendChild(head);
+      card.appendChild(node('p', 'muted small', 'Reported ' + new Date(b.created_at).toLocaleString() + ' by ' + (b.reporter_email || '–') +
+        (b.fixed_at ? ' · fixed ' + new Date(b.fixed_at).toLocaleString() + ' (' + took(b.created_at, b.fixed_at) + ')' : '')));
+      card.appendChild(node('p', 'bugdesc', b.description));
+      if (b.screenshots.length) {
+        var row = node('div', 'bugshots');
+        b.screenshots.forEach(function (id) {
+          var a = node('a'); a.target = '_blank'; a.rel = 'noopener';
+          var img = node('img'); img.alt = 'Screenshot ' + id; a.appendChild(img); row.appendChild(a);
+          var show = function (u) { img.src = u; a.href = u; };
+          if (shotUrls[id]) show(shotUrls[id]);
+          else Api.call('GET', '/api/bugshot?id=' + id, null, ROLE, true).then(function (r) { if (r.ok) show(shotUrls[id] = URL.createObjectURL(r.body)); });
+        });
+        card.appendChild(row);
+      }
+      if (b.fix_note || b.fix_ref) {
+        var fix = node('p', 'small');
+        fix.appendChild(node('b', null, 'Fix: '));
+        if (b.fix_note) fix.appendChild(document.createTextNode(b.fix_note + ' '));
+        if (b.fix_ref && /^[0-9a-f]{7,40}$/.test(b.fix_ref)) { var l = node('a', null, b.fix_ref.slice(0, 7)); l.href = REPO + b.fix_ref; l.target = '_blank'; l.rel = 'noopener'; fix.appendChild(l); }
+        else if (b.fix_ref) fix.appendChild(document.createTextNode(b.fix_ref));
+        card.appendChild(fix);
+      }
+      var sel = node('select'); sel.setAttribute('aria-label', 'Status of report ' + b.id);
+      (statuses || Object.keys(STATUS_LABEL)).forEach(function (st) { var o = node('option', null, STATUS_LABEL[st] || st); o.value = st; o.selected = st === b.status; sel.appendChild(o); });
+      sel.addEventListener('change', function () {
+        Api.call('POST', '/api/bugs', { id: b.id, status: sel.value }, ROLE).then(function (r) { if (guard(r)) loadBugs(); });
+      });
+      var lab = node('label', 'field small', 'Status '); lab.appendChild(sel); card.appendChild(lab);
+      box.appendChild(card);
+    });
+  }
 
   // ---------- data ----------
   [].forEach.call(document.querySelectorAll('[data-export]'), function (b) {

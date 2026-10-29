@@ -93,7 +93,7 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   ok(/Wrong login/.test(await bad.locator('#loginErr').textContent()), 'unlisted email cannot log in');
 
   const alice = await admin('alice@mom.gov.sg'), bob = await admin('bob@mom.gov.sg');
-  ok(await alice.locator('.bigbtn').count() === 2, 'after login: menu with Scan QR and Manual input');
+  ok(await alice.locator('.bigbtn').count() === 3, 'after login: menu with Scan QR, Manual input and Report a problem');
   ok((await alice.locator('#left').textContent()) === '500', 'live counter shows 500 left');
   await alice.screenshot({ path: out + '/admin-home.png', fullPage: true });
 
@@ -149,6 +149,22 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   ok(true, 'counter turns to "offline: do not give souvenirs"');
   await alice.screenshot({ path: out + '/admin-offline.png', fullPage: true });
 
+  // bug report from the officer page, with a real (tall, full-page) screenshot
+  await bob.goto(site + 'admin/index.html#bug');
+  await bob.locator('#bugForm').waitFor();
+  ok(/personal details/.test(await bob.locator('#v-bug .warn').textContent()), 'bug form warns against personal details in screenshots');
+  await bob.selectOption('#bugScreen', 'Mini-site: quiz');
+  await bob.fill('#bugText', 'Test report: the quiz froze after question 3 on my Android phone.');
+  await bob.setInputFiles('#bugFiles', [out + '/admin-manual.png']);
+  await bob.locator('#bugThumbs img').waitFor();
+  const shrunk = await bob.evaluate(() => document.querySelector('#bugThumbs img').src);
+  ok(/^data:image\/jpeg/.test(shrunk) && shrunk.length < 780000, `screenshot shrunk on the phone before upload (${Math.round(shrunk.length / 1024)} KB as text)`);
+  await bob.click('#bugSend');
+  await bob.waitForFunction(() => /Report #\d+ sent/.test((document.querySelector('#bverdict') || {}).textContent || ''));
+  const bugNo = (await bob.locator('#bverdict').textContent()).match(/Report #(\d+)/)[1];
+  ok(true, 'officer sends a bug report with a screenshot (#' + bugNo + ')');
+  await bob.screenshot({ path: out + '/admin-bug.png', fullPage: true });
+
   // ---- superadmin ----
   const sup = await phone('super');
   await sup.setViewportSize({ width: 1100, height: 900 });
@@ -183,6 +199,18 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await dl.saveAs(out + '/claims.csv');
   const csv = fs.readFileSync(out + '/claims.csv', 'utf8');
   ok(csv.includes(idA) && csv.split('\r\n').length === 6, 'claims CSV downloads (5 claims + header)');
+
+  await sup.click('[data-tab="bugs"]');
+  const card = sup.locator('.bug', { hasText: '#' + bugNo + ' · Mini-site: quiz' });
+  await card.waitFor();
+  ok(/bob@mom\.gov\.sg/.test(await card.textContent()) && /froze after question 3/.test(await card.textContent()) && /New/.test(await card.locator('.badge').textContent()),
+    'bug log shows the report: officer, description, status New');
+  await sup.waitForFunction((n) => { const c = [...document.querySelectorAll('.bug')].find((x) => x.textContent.includes('#' + n + ' ·')); const i = c && c.querySelector('.bugshots img'); return i && i.complete && i.naturalWidth > 0; }, bugNo);
+  ok(true, 'bug log shows the screenshot');
+  await card.locator('select').selectOption('fixed');
+  await sup.waitForFunction((n) => { const c = [...document.querySelectorAll('.bug')].find((x) => x.textContent.includes('#' + n + ' ·')); return c && /Fixed/.test(c.querySelector('.badge').textContent) && /min\)/.test(c.textContent); }, bugNo);
+  ok(/\d+ fixed/.test(await sup.locator('#bugSummary').textContent()), 'superadmin can mark it fixed; time to fix and summary shown');
+  await sup.screenshot({ path: out + '/superadmin-bugs.png', fullPage: true });
 
   ok(!errs.length, 'no page errors ' + (errs.length ? JSON.stringify(errs) : ''));
   await b.close();
