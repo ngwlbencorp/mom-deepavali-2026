@@ -1,5 +1,15 @@
 (function () {
   'use strict';
+  // ducks.ai adds a "presenter gate" for slide decks to every hosted page: unless the page was
+  // opened in presenter mode in this tab, it cancels every n and t key press, so officers could not
+  // type those letters (emails, password, codes, bug reports). It is switched off by a per-tab flag
+  // (sessionStorage "ducks-presenter:<page>"); set it and reload once. See tests/gate.test.js.
+  if (document.documentElement.dataset.ducksOwnerGate === 'locked') {
+    var gateFlag = 'ducks-presenter:' + (location.pathname.split('/')[2] || '');
+    try {
+      if (!sessionStorage.getItem(gateFlag)) { sessionStorage.setItem(gateFlag, '1'); location.reload(); return; }
+    } catch (e) {} // no storage: cannot switch it off; the page still works for Android keyboards and pasting
+  }
   var Api = window.ScamApi, C = window.SCAM_CONTENT;
   var ROLE = 'admin', POLL_MS = 5000;
   var $ = function (id) { return document.getElementById(id); };

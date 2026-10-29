@@ -1,0 +1,20 @@
+<!-- ducks.ai presenter gate, copied from a live ducks.ai page on 30 Oct 2026 (used by tests/gate.test.js) -->
+<script>
+  // Presenter chrome gate v2 (content-origin spec §3.4.1). Notes and timer are
+  // presenter tools. ?ducks-presenter=1 (the app's Present action) shows them
+  // and is remembered for this deck in this tab. Chrome, not access control.
+  (function () {
+    var key = 'ducks-presenter:' + (location.pathname.split('/')[2] || '');
+    var on = false;
+    try {
+      if (new URLSearchParams(location.search).get('ducks-presenter') === '1') sessionStorage.setItem(key, '1');
+      on = sessionStorage.getItem(key) === '1';
+    } catch (_) {}
+    if (on) return;
+    document.documentElement.dataset.ducksOwnerGate = 'locked';
+    window.addEventListener('keydown', function (e) {
+      var k = (e.key || '').toLowerCase();
+      if (k === 'n' || k === 't') { e.stopPropagation(); e.preventDefault(); }
+    }, true);
+  })();
+</script>
