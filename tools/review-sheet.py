@@ -41,6 +41,19 @@ def previous_draft(code):
     except Exception:
         return None
 
+def sealion(code):
+    """SEA-LION's second opinion (tools/sealion-review.js), if it has been run for this language."""
+    f = os.path.join(ROOT, 'review', 'sealion', code + '.json')
+    return json.load(open(f, encoding='utf-8')) if os.path.exists(f) else None
+
+def sealion_cell(sl, key, en, draft):
+    r = sl and sl['results'].get(key)
+    if not r: return ''
+    if r.get('english') != en or r.get('draft') != draft: return '(checked an older version of this line)'
+    text = 'OK' if r['verdict'] == 'ok' else 'Suggests: %s\nReason: %s' % (r['suggestion'], r['reason'])
+    if r.get('back'): text += '\nBack-translation: ' + r['back']
+    return text
+
 def where(key):
     m = re.match(r'learn\[(\d+)\]', key)
     if m: return 'Learn story %d: %s' % (int(m.group(1)) + 1, english['learn'][int(m.group(1))])
@@ -99,6 +112,7 @@ rows = [
     ('3. If the draft is right, leave column E empty.', False),
     ('4. If it needs changing, type the full corrected text in column E (yellow). Do not edit column D.', False),
     ('5. Use column F for questions or comments. Column G has notes about each line; lines marked CHANGED differ from the previous workbook.', False),
+    ('Column I, where filled, is a second opinion from SEA-LION (AI Singapore\'s language model), including a back-translation into English. It is a machine check, not a native speaker: use it as a pointer, not a ruling. SEA-LION is tuned for Burmese, Indonesian, Tagalog, Tamil, Thai and Vietnamese; it is weaker for Bengali, Chinese and Hindi.', False),
     ('6. Send the file back. Corrections in column E are applied automatically (tools/import-review.py).', False),
     ('', False),
     ('Rules for all languages', True),
@@ -118,8 +132,8 @@ for i, (text, bold) in enumerate(rows, start=1):
     c.alignment = Alignment(wrap_text=True, vertical='top')
 ws.column_dimensions['A'].width = 120
 ex_row = len(rows) + 1
-headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources']
-example = ['ui.tryAgain', 'Buttons and labels (all screens)', 'Try again', 'फिर से कोशिश करें', 'दोबारा कोशिश करें', 'Shorter and more common.', '', '']
+headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources', 'SEA-LION check']
+example = ['ui.tryAgain', 'Buttons and labels (all screens)', 'Try again', 'फिर से कोशिश करें', 'दोबारा कोशिश करें', 'Shorter and more common.', '', '', '']
 ws2col = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 for j, h in enumerate(headers):
     c = ws.cell(row=ex_row, column=j + 1, value=h)
@@ -166,7 +180,7 @@ for col, w in zip('ABC', [8, 60, 80]):
     src.column_dimensions[col].width = w
 
 for code, name in LANGS:
-    draft, prev = DRAFTS[code], previous_draft(code)
+    draft, prev, sl = DRAFTS[code], previous_draft(code), sealion(code)
     sh = wb.create_sheet(name)
     for j, h in enumerate(headers):
         c = sh.cell(row=1, column=j + 1, value=h)
@@ -175,17 +189,17 @@ for code, name in LANGS:
     r = 2
     for key, en in english['items']:
         if key not in draft: continue
-        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key)]
+        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key), sealion_cell(sl, key, en, draft[key])]
         for j, v in enumerate(vals):
             c = sh.cell(row=r, column=j + 1, value=v)
             c.font = Font(name=FONT, size=11, color='808080' if j == 0 else '000000')
             c.alignment, c.border = wrap, border
             if j == 4: c.fill = edit_fill
         r += 1
-    for col, w in zip('ABCDEFGH', [24, 28, 46, 46, 46, 30, 46, 16]):
+    for col, w in zip('ABCDEFGHI', [24, 28, 46, 46, 46, 30, 46, 16, 50]):
         sh.column_dimensions[col].width = w
     sh.freeze_panes = 'C2'
-    sh.auto_filter.ref = 'A1:H%d' % (r - 1)
+    sh.auto_filter.ref = 'A1:I%d' % (r - 1)
     sh.sheet_view.zoomScale = 110
 
 out = sys.argv[1]
