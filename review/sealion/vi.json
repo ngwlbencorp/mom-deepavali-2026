@@ -1,0 +1,1335 @@
+{
+ "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "checked": "2026-10-29",
+ "seaTuned": true,
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "Chúc mừng lễ Deepavali!",
+   "verdict": "ok",
+   "back": "Happy Deepavali festival!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "Cảnh giác lừa đảo",
+   "verdict": "ok",
+   "back": "Be alert to scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "Tìm hiểu các chiêu lừa đảo, rồi làm bài đố vui.",
+   "verdict": "ok",
+   "back": "Learn scam tricks, then do the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "Trả lời đúng tất cả và đưa mã QR cho nhân viên MOM để nhận quà lưu niệm. Chỉ dành cho 500 người đầu tiên!",
+   "verdict": "ok",
+   "back": "Answer all correctly and give QR code to MOM officer to get souvenir. Only for first 500 people!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "Đường dây nóng ScamShield",
+   "verdict": "ok",
+   "back": "ScamShield Hotline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "Ngôn ngữ",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "Trang chủ",
+   "verdict": "ok",
+   "back": "Home page",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "Quay lại",
+   "verdict": "ok",
+   "back": "Go back",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "Tiếp",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "Hoàn thành",
+   "verdict": "ok",
+   "back": "Complete",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "Thoát bài đố",
+   "verdict": "ok",
+   "back": "Exit quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "Thoát bài đố? Các câu trả lời của bạn sẽ bị mất.",
+   "verdict": "ok",
+   "back": "Exit quiz? Your answers will be lost.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "Đóng phần xem lại",
+   "verdict": "ok",
+   "back": "Close review section",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "Tìm hiểu về lừa đảo",
+   "verdict": "ok",
+   "back": "Learn about scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "5 short stories · 2 min",
+   "draft": "5 câu chuyện ngắn · 2 phút",
+   "verdict": "ok",
+   "back": "5 short stories · 2 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "Đố vui nhận quà",
+   "verdict": "ok",
+   "back": "Quiz to get gift",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "Làm bài đố",
+   "verdict": "ok",
+   "back": "Do the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 thử thách · 3 phút",
+   "verdict": "ok",
+   "back": "6 challenges · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "Hiện mã QR của tôi",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "Hiện kết quả của tôi",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 Còn {n} phần quà",
+   "verdict": "ok",
+   "back": "🎁 {n} gifts left",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "Đã phát hết quà lưu niệm. Cảm ơn bạn đã tham gia!",
+   "verdict": "ok",
+   "back": "All souvenirs given out. Thank you for participating!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "Giỏi lắm! Bạn biết cách nhận ra lừa đảo.",
+   "verdict": "ok",
+   "back": "Very good! You know how to spot scams.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "Xem lại đáp án, rồi thử lại.",
+   "verdict": "ok",
+   "back": "Review answers, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "Không chắc? Gọi",
+   "verdict": "ok",
+   "back": "Not sure? Call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "VÍ DỤ · KHÔNG CÓ THẬT",
+   "verdict": "ok",
+   "back": "EXAMPLE · NOT REAL",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "Nên làm gì",
+   "verdict": "ok",
+   "back": "Should do what",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "Làm bài đố",
+   "verdict": "ok",
+   "back": "Do the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "Chạm vào {n} dấu hiệu nguy hiểm",
+   "verdict": "ok",
+   "back": "Tap the {n} danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "Đã chọn {k}/{n}",
+   "verdict": "ok",
+   "back": "Chosen {k}/{n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "Lừa đảo",
+   "verdict": "ok",
+   "back": "Scam",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "An toàn",
+   "verdict": "ok",
+   "back": "Safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "Tin nhắn {i}/{n}",
+   "verdict": "ok",
+   "back": "Message {i}/{n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i}/{n}",
+   "verdict": "ok",
+   "back": "{i}/{n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "Đang lưu kết quả…",
+   "verdict": "ok",
+   "back": "Saving result...",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "Đúng hết!",
+   "verdict": "ok",
+   "back": "All correct!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "Đưa mã QR này cho nhân viên MOM để nhận quà lưu niệm.",
+   "verdict": "ok",
+   "back": "Give this QR code to an MOM officer to receive a souvenir.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "Bạn đã từng trả lời đúng hết, nên mã QR của bạn vẫn còn hiệu lực.",
+   "verdict": "ok",
+   "back": "You have answered all correctly before, so your QR code is still valid.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "Đúng {s}/{t}",
+   "verdict": "ok",
+   "back": "Correct {s}/{t}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "Xem lại đáp án, rồi thử lại để nhận quà.",
+   "verdict": "ok",
+   "back": "Review answers, then try again to receive a gift.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "Xem đáp án",
+   "verdict": "ok",
+   "back": "View answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "Thử lại",
+   "verdict": "ok",
+   "back": "Try again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "Về mã QR của tôi",
+   "verdict": "ok",
+   "back": "Back to my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "Đã lưu kết quả ✓",
+   "verdict": "ok",
+   "back": "Result saved ✓",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "Chưa lưu được (không có kết nối). Nhân viên vẫn có thể quét mã QR này.",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "Chưa lưu được (không có kết nối).",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "Lưu lại",
+   "verdict": "ok",
+   "back": "Save again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "Câu trả lời của bạn",
+   "verdict": "ok",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "Đáp án đúng",
+   "verdict": "ok",
+   "back": "Correct answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "Đúng",
+   "verdict": "ok",
+   "back": "Correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "Chưa đúng",
+   "verdict": "ok",
+   "back": "Not yet correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "Mã",
+   "verdict": "ok",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "Lần",
+   "verdict": "fix",
+   "back": "Time",
+   "suggestion": "Lần thử",
+   "reason": "Needs 'try' to mean 'attempt' clearly."
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "Nhân viên MOM giả",
+   "verdict": "ok",
+   "back": "Fake MOM officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "Kẻ lừa đảo giả làm MOM hoặc Cảnh sát.",
+   "verdict": "ok",
+   "back": "Scammers pretend to be MOM or Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "draft": "Cuộc gọi điện thoại",
+   "verdict": "ok",
+   "back": "Phone call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "draft": "Số lạ",
+   "verdict": "ok",
+   "back": "Strange number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "draft": "Xin chào, tôi gọi từ MOM. Giấy phép lao động của bạn có vấn đề.",
+   "verdict": "ok",
+   "back": "Hello, I call from MOM. Your work permit has a problem.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "draft": "Chuyển $500 ngay, nếu không bạn sẽ bị đưa về nước!",
+   "verdict": "ok",
+   "back": "Transfer $500 now, otherwise you will be sent home!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "draft": "Cài ứng dụng này từ đường link của tôi để tôi giúp bạn.",
+   "verdict": "ok",
+   "back": "Install this app from my link so I can help you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "draft": "Bây giờ tôi sẽ chuyển cuộc gọi của bạn sang Cảnh sát.",
+   "verdict": "ok",
+   "back": "Now I will transfer your call to Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "draft": "Bảo bạn chuyển tiền",
+   "verdict": "ok",
+   "back": "Tells you to transfer money",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "Ứng dụng từ link, không phải từ kho ứng dụng",
+   "verdict": "ok",
+   "back": "App from link, not from app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "draft": "Chuyển cuộc gọi của bạn sang Cảnh sát",
+   "verdict": "ok",
+   "back": "Transfers your call to Police",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "draft": "MOM có thể gọi cho bạn về công việc. Nhưng MOM sẽ không bao giờ bảo bạn chuyển tiền hay cung cấp thông tin đăng nhập ngân hàng.",
+   "verdict": "ok",
+   "back": "MOM may call you about work. But MOM will never tell you to transfer money or provide bank login info.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "draft": "MOM sẽ không bao giờ bảo bạn cài ứng dụng từ link, hay chuyển cuộc gọi của bạn sang Cảnh sát. Không chắc? Hãy cúp máy.",
+   "verdict": "ok",
+   "back": "MOM will never tell you to install app from link, or transfer your call to Police. Not sure? Please hang up.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "draft": "Khuyến mãi lễ hội giả",
+   "verdict": "ok",
+   "back": "Fake festival promotion",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "draft": "Ưu đãi rẻ bất thường, bắt bạn cài ứng dụng.",
+   "verdict": "fix",
+   "back": "Too cheap deals, force you to install app.",
+   "suggestion": "Ưu đãi rẻ bất thường, dụ bạn cài ứng dụng.",
+   "reason": "'Bắt' (force) is too strong; scammers 'lure' (dụ) or 'make' you do it. 'Dụ' fits scam context better."
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "draft": "Quảng cáo",
+   "verdict": "ok",
+   "back": "Advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "draft": "Bán vàng Deepavali",
+   "verdict": "fix",
+   "back": "Deepavali gold sale",
+   "suggestion": "Khuyến mãi Vàng Deepavali",
+   "reason": "Original is 'Deepavali Gold Sale' (Event Name). 'Bán vàng' sounds like 'selling gold' (action). 'Khuyến mãi' matches 'Sale'."
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "draft": "Khuyến mãi Deepavali! Vàng giảm 80%!",
+   "verdict": "ok",
+   "back": "Deepavali promotion! Gold 80% off!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "draft": "Tải ứng dụng của chúng tôi tại đây: deepavali-gold.example/app",
+   "verdict": "ok",
+   "back": "Download our app here: deepavali-gold.example/app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "draft": "Chỉ còn 1 giờ!",
+   "verdict": "ok",
+   "back": "Only 1 hour left!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "draft": "Giá rẻ đến khó tin",
+   "verdict": "ok",
+   "back": "Price cheap to hard to believe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "Ứng dụng từ link, không phải từ kho ứng dụng",
+   "verdict": "ok",
+   "back": "App from link, not from app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "draft": "Hối thúc bạn",
+   "verdict": "ok",
+   "back": "Rushes you",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "draft": "Chỉ cài ứng dụng từ kho ứng dụng chính thức (Google Play hoặc Apple App Store).",
+   "verdict": "ok",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "draft": "Ứng dụng giả có thể lấy cắp tiền trong tài khoản ngân hàng của bạn.",
+   "verdict": "ok",
+   "back": "Fake apps can steal money from your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "draft": "Tiền dễ kiếm (tiếp tay lừa đảo)",
+   "verdict": "ok",
+   "back": "Easy money (scam mule)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "draft": "Trả tiền để dùng tài khoản ngân hàng của bạn.",
+   "verdict": "ok",
+   "back": "Paying you to use your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "draft": "Tin nhắn chat",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "draft": "Muốn kiếm tiền dễ? $300 một tuần, không cần làm gì!",
+   "verdict": "ok",
+   "back": "Want easy money? $300 a week, no work!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "draft": "Chỉ cần cho tôi dùng tài khoản ngân hàng, thẻ SIM hoặc Singpass của bạn.",
+   "verdict": "ok",
+   "back": "Just let me use your bank account, SIM card or Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "draft": "Có tiền mà không cần làm",
+   "verdict": "ok",
+   "back": "Money for no work",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "draft": "Đòi tài khoản ngân hàng, thẻ SIM hoặc Singpass của bạn",
+   "verdict": "ok",
+   "back": "Wants your bank account, SIM card or Singpass",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "draft": "Không bao giờ bán, cho mượn hay đưa tài khoản ngân hàng, thẻ SIM hoặc Singpass của bạn cho ai.",
+   "verdict": "ok",
+   "back": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "draft": "Đây là tội phạm. Bạn có thể bị phạt tiền, phạt tù hoặc phạt roi.",
+   "verdict": "ok",
+   "back": "This is a crime. You can be fined, jailed or caned.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "draft": "Việc làm hoặc giấy phép lao động giả",
+   "verdict": "ok",
+   "back": "Fake job or work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].tagline": {
+   "english": "Official-looking offers that ask for money.",
+   "draft": "Lời mời trông như chính thức nhưng đòi tiền.",
+   "verdict": "ok",
+   "back": "Official-looking offers that ask for money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "draft": "Tin nhắn chat",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "draft": "Môi giới việc làm SG",
+   "verdict": "ok",
+   "back": "SG Jobs Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "draft": "Tin vui! Giấy phép lao động của bạn đã được duyệt.",
+   "verdict": "ok",
+   "back": "Good news! Your work permit is approved.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "draft": "Gửi $800 trong hôm nay để xác nhận công việc.",
+   "verdict": "ok",
+   "back": "Send $800 today to confirm your job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "draft": "Chúng tôi là công ty có giấy phép. Số giấy phép 99X9999.",
+   "verdict": "ok",
+   "back": "We are a licensed agency. Licence no. 99X9999.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "draft": "Bảo bạn trả tiền trước",
+   "verdict": "ok",
+   "back": "Asks you to pay first",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[1].label": {
+   "english": "A licence number does not prove it is real",
+   "draft": "Số giấy phép không chứng minh là thật",
+   "verdict": "ok",
+   "back": "A licence number does not prove it is real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[0]": {
+   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "draft": "Bị yêu cầu trả tiền trước là dấu hiệu thường gặp của lừa đảo việc làm. Chủ lao động phải trả phí giấy phép lao động cho bạn.",
+   "verdict": "ok",
+   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[1]": {
+   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "draft": "Kẻ lừa đảo có thể chép số giấy phép của một công ty thật. Hãy tự liên hệ với công ty.",
+   "verdict": "ok",
+   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].title": {
+   "english": "Secret codes (OTP)",
+   "draft": "Mã bí mật (OTP)",
+   "verdict": "ok",
+   "back": "Secret codes (OTP)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].tagline": {
+   "english": "Scammers ask for the code sent to your phone.",
+   "draft": "Kẻ lừa đảo xin mã được gửi đến điện thoại của bạn.",
+   "verdict": "ok",
+   "back": "Scammers ask for the code sent to your phone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[0]": {
+   "english": "Sorry, I sent a code to your phone by mistake.",
+   "draft": "Xin lỗi, tôi gửi nhầm một mã đến điện thoại của bạn.",
+   "verdict": "ok",
+   "back": "Sorry, I sent a code to your phone by mistake.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "draft": "Làm ơn gửi cho tôi mã 6 số đó. Nhanh lên!",
+   "verdict": "ok",
+   "back": "Please send me that 6-digit code. Quick!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].flags[0].label": {
+   "english": "Asks for your OTP and rushes you",
+   "draft": "Xin OTP của bạn và hối thúc",
+   "verdict": "fix",
+   "back": "Asks for your OTP and urges",
+   "suggestion": "Xin OTP của bạn và hối thúc bạn",
+   "reason": "Added 'bạn' (you) to make the verb 'hối thúc' (urge/rush) grammatically complete and natural in Vietnamese."
+  },
+  "learn[4].todo[0]": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone.",
+   "draft": "Không bao giờ đưa OTP (mã gửi đến điện thoại của bạn) cho bất kỳ ai.",
+   "verdict": "ok",
+   "back": "Never give OTP (code sent to your phone) to anyone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[1]": {
+   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "draft": "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK kiểm tra với 1799, TELL báo cho gia đình và bạn bè.",
+   "verdict": "fix",
+   "back": "Remember ACT: ADD install ScamShield app, CHECK check with 1799, TELL tell family and friends.",
+   "suggestion": "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK gọi 1799 để kiểm tra, TELL báo cho gia đình và bạn bè.",
+   "reason": "Changed 'kiểm tra với 1799' to 'gọi 1799 để kiểm tra' (call 1799 to check) because 1799 is a hotline number, not a person to check with. This is clearer for workers."
+  },
+  "quiz[0].title": {
+   "english": "Spot the red flags",
+   "draft": "Tìm dấu hiệu nguy hiểm",
+   "verdict": "ok",
+   "back": "Find danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "draft": "Gửi người lao động,",
+   "verdict": "fix",
+   "back": "To worker,",
+   "suggestion": "Gửi anh/chị,",
+   "reason": "'Người lao động' is too formal/official. 'Anh/chị' is the natural way to address a worker in a message."
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "draft": "bạn còn nợ tiền phạt giấy phép lao động $350.",
+   "verdict": "ok",
+   "back": "you still owe work permit fine $350.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "draft": "Thanh toán tại",
+   "verdict": "ok",
+   "back": "Pay at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][2].t": {
+   "english": "or reply with your bank login.",
+   "draft": "hoặc trả lời kèm thông tin đăng nhập ngân hàng.",
+   "verdict": "ok",
+   "back": "or reply with bank login info.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].explain": {
+   "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "draft": "SMS của chính phủ được gửi từ \"gov.sg\". Địa chỉ thật của MOM kết thúc bằng \".mom.gov.sg\". Chính phủ không bao giờ hỏi thông tin đăng nhập ngân hàng qua SMS. Không chắc? Gọi 1799.",
+   "verdict": "ok",
+   "back": "Government SMSes come from 'gov.sg'. Real MOM addresses end with '.mom.gov.sg'. Government never asks for bank login via SMS. Unsure? Call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].title": {
+   "english": "Scam or safe?",
+   "draft": "Lừa đảo hay an toàn?",
+   "verdict": "ok",
+   "back": "Scam or safe?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].from": {
+   "english": "Your employer",
+   "draft": "Chủ của bạn",
+   "verdict": "fix",
+   "back": "Your boss",
+   "suggestion": "Chủ nhà của bạn",
+   "reason": "'Chủ' alone can mean owner of anything. 'Chủ nhà' specifically means employer/landlord for migrant workers."
+  },
+  "quiz[1].cards[0].text": {
+   "english": "Please buy rice on the way home. Thank you!",
+   "draft": "Trên đường về nhớ mua gạo nhé. Cảm ơn!",
+   "verdict": "ok",
+   "back": "Remember to buy rice on the way home. Thanks!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].why": {
+   "english": "A normal message from someone you know, with no money or codes asked.",
+   "draft": "Tin nhắn bình thường từ người quen, không đòi tiền hay mã.",
+   "verdict": "ok",
+   "back": "Normal message from acquaintance, no money or code asked.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].from": {
+   "english": "Unknown number",
+   "draft": "Số lạ",
+   "verdict": "ok",
+   "back": "Strange number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].text": {
+   "english": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "draft": "Tài khoản ngân hàng của bạn bị khóa. Hãy trả lời bằng mã OTP chúng tôi vừa gửi.",
+   "verdict": "ok",
+   "back": "Your bank account is locked. Please reply with the OTP code we just sent.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "draft": "Không bao giờ đưa OTP (mã gửi đến điện thoại của bạn) cho ai, kể cả khi họ nói là ngân hàng của bạn.",
+   "verdict": "ok",
+   "back": "Never give OTP (code sent to your phone) to anyone, even if they say they are your bank.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].from": {
+   "english": "New contact",
+   "draft": "Liên hệ mới",
+   "verdict": "ok",
+   "back": "New contact",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].text": {
+   "english": "Lend me your bank card for one week. I will pay you $300.",
+   "draft": "Cho tôi mượn thẻ ngân hàng của bạn một tuần. Tôi sẽ trả bạn $300.",
+   "verdict": "ok",
+   "back": "Lend me your bank card for one week. I will pay you $300.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].why": {
+   "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "draft": "Đây là lời rủ tiếp tay lừa đảo. Cho người khác dùng thẻ ngân hàng của bạn là phạm tội.",
+   "verdict": "ok",
+   "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].from": {
+   "english": "Your friend",
+   "draft": "Bạn của bạn",
+   "verdict": "ok",
+   "back": "Your friend",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].text": {
+   "english": "Happy Deepavali! See you at the event on Sunday.",
+   "draft": "Chúc mừng Deepavali! Hẹn gặp ở sự kiện Chủ nhật nhé.",
+   "verdict": "ok",
+   "back": "Happy Deepavali! See you at the event Sunday.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].why": {
+   "english": "A normal greeting from a friend, with nothing asked.",
+   "draft": "Lời chúc bình thường từ bạn bè, không đòi gì cả.",
+   "verdict": "ok",
+   "back": "Normal greeting from friend, asking for nothing.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "draft": "Bạn sẽ trả lời thế nào?",
+   "verdict": "ok",
+   "back": "How would you reply?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "draft": "\"Anh họ\" (số mới)",
+   "verdict": "ok",
+   "back": "\"Cousin\" (new number)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "draft": "Chào, anh họ đây. Anh đổi số rồi.",
+   "verdict": "ok",
+   "back": "Hi, this is your cousin. I changed my number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "draft": "Anh gửi nhầm mã 6 số vào điện thoại em. Gửi lại cho anh được không? Gấp lắm!",
+   "verdict": "ok",
+   "back": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Very urgent!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "draft": "Được, mã đây: 482915",
+   "verdict": "ok",
+   "back": "OK, here is the code: 482915",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "draft": "Không. Em không bao giờ đưa mã. Em sẽ gọi số cũ của anh.",
+   "verdict": "ok",
+   "back": "No. I never give codes. I will call your old number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "draft": "Gửi ảnh của anh trước, rồi em gửi.",
+   "verdict": "ok",
+   "back": "Send your photo first, then I will send it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "draft": "Không bao giờ đưa OTP cho ai, kể cả người thân. Nếu ai đó nói họ đã đổi số, hãy gọi số cũ của họ để kiểm tra.",
+   "verdict": "ok",
+   "back": "Never give OTP to anyone, even family. If someone says they changed their number, call their old number to check.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "draft": "Chọn cách an toàn",
+   "verdict": "ok",
+   "back": "Choose the safe way",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "draft": "Bạn muốn có ứng dụng mua sắm để săn ưu đãi Deepavali. Nên tải ở đâu?",
+   "verdict": "ok",
+   "back": "You want a shopping app for Deepavali deals. Where should you download it?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "draft": "Kho ứng dụng chính thức trên điện thoại",
+   "verdict": "ok",
+   "back": "The official app store on your phone",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "draft": "Link gửi trong tin nhắn chat",
+   "verdict": "ok",
+   "back": "A link sent in a chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "draft": "Link trong quảng cáo trên mạng",
+   "verdict": "ok",
+   "back": "A link in an online advert",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "draft": "Chỉ cài ứng dụng từ kho ứng dụng chính thức (Google Play hoặc Apple App Store). Ứng dụng từ link có thể lấy cắp tiền của bạn.",
+   "verdict": "ok",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "draft": "Tìm dấu hiệu nguy hiểm",
+   "verdict": "ok",
+   "back": "Find the danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "draft": "Tin nhắn chat",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "draft": "Môi giới việc làm",
+   "verdict": "ok",
+   "back": "Job Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "draft": "Chủ của bạn muốn hủy giấy phép lao động của bạn.",
+   "verdict": "fix",
+   "back": "Your employer wants to cancel your work permit.",
+   "suggestion": "Chủ nhà bạn muốn hủy giấy phép lao động của bạn.",
+   "reason": "In Singapore, migrant workers call their employer 'chủ nhà' (house owner), not 'chủ' (boss/owner). 'Giấy phép lao động' is the correct term for Work Permit."
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "draft": "Trả tôi $500 để giữ việc.",
+   "verdict": "fix",
+   "back": "Pay me $500 to keep the job.",
+   "suggestion": "Trả tôi $500 để giữ việc làm.",
+   "reason": "Added 'làm' to 'việc' for natural flow ('việc làm' = job/work). 'Giữ việc' alone is slightly incomplete."
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "draft": "Kiểm tra giấy phép của bạn tại",
+   "verdict": "ok",
+   "back": "Check your permit at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "draft": "và gửi cho tôi mật khẩu Singpass của bạn.",
+   "verdict": "ok",
+   "back": "and send me your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "draft": "Bắt bạn trả tiền để giữ việc là phạm pháp. Địa chỉ thật của MOM kết thúc bằng \".mom.gov.sg\". Không bao giờ đưa mật khẩu Singpass cho ai.",
+   "verdict": "ok",
+   "back": "Forcing you to pay to keep the job is illegal. Real MOM addresses end with \".mom.gov.sg\". Never give your Singpass password to anyone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "draft": "Bạn sẽ trả lời thế nào?",
+   "verdict": "ok",
+   "back": "How would you reply?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "draft": "Số lạ",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "draft": "Tiền dễ kiếm! Nhận $200 mỗi tuần.",
+   "verdict": "ok",
+   "back": "Easy money! Get $200 every week.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "draft": "Chỉ cần cho tôi dùng tài khoản ngân hàng và Singpass của bạn.",
+   "verdict": "ok",
+   "back": "Just let me use your bank account and Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "draft": "Được, bắt đầu thế nào?",
+   "verdict": "ok",
+   "back": "Okay, how to start?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "draft": "Trả tôi $400 được không?",
+   "verdict": "ok",
+   "back": "Pay me $400, okay?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "draft": "Không. Đây là tội phạm. Tôi sẽ báo cáo.",
+   "verdict": "ok",
+   "back": "No. This is a criminal. I will report.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "draft": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là tiếp tay cho lừa đảo. Đây là tội phạm. Hãy từ chối và báo cáo.",
+   "verdict": "fix",
+   "back": "Letting others use your bank account or Singpass is helping scams. This is a criminal. Please refuse and report.",
+   "suggestion": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là tiếp tay cho lừa đảo. Đây là hành vi phạm pháp. Hãy từ chối và báo cáo.",
+   "reason": "'Tội phạm' means 'criminal' (person). 'Hành vi phạm pháp' means 'criminal act/crime'. The English says 'It is a crime'. Also 'tiếp tay cho lừa đảo' is good, but 'làm mule lừa đảo' is the specific term used in Singapore. However, 'tiếp tay' is plain. I will change 'tội phạm' to 'hành vi phạm pháp' for accuracy."
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "draft": "Một điều cuối",
+   "verdict": "ok",
+   "back": "One last thing",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "draft": "Bạn hài lòng thế nào với sự kiện hôm nay?",
+   "verdict": "fix",
+   "back": "How satisfied are you with today's event?",
+   "suggestion": "Bạn hài lòng thế nào với buổi học hôm nay?",
+   "reason": "'Sự kiện' means 'event' (like a conference). For a mini-site/quiz, 'buổi học' (session/class) or 'trải nghiệm' (experience) is better. 'Buổi học' is plain and clear for workers."
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "draft": "Rất không hài lòng",
+   "verdict": "ok",
+   "back": "Very unsatisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "draft": "Không hài lòng",
+   "verdict": "ok",
+   "back": "Unsatisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "draft": "Bình thường",
+   "verdict": "ok",
+   "back": "Normal",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "draft": "Hài lòng",
+   "verdict": "ok",
+   "back": "Satisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "draft": "Rất hài lòng",
+   "verdict": "ok",
+   "back": "Very satisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "draft": "Bạn có học được điều gì mới về lừa đảo không?",
+   "verdict": "ok",
+   "back": "Did you learn something new about scams?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "draft": "Có",
+   "verdict": "ok",
+   "back": "Yes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "draft": "Một chút",
+   "verdict": "ok",
+   "back": "A little",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "draft": "Không",
+   "verdict": "ok",
+   "back": "No",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "draft": "Xem kết quả",
+   "verdict": "fix",
+   "back": "See result",
+   "suggestion": "Xem kết quả của tôi",
+   "reason": "The English says 'See my result'. The draft 'Xem kết quả' drops 'my'. Adding 'của tôi' makes it personal and matches the English exactly."
+  }
+ }
+}

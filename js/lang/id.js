@@ -67,7 +67,7 @@ window.SCAM_TEXT["id"] = {
         "channel": "Panggilan telepon",
         "from": "Nomor tidak dikenal",
         "lines": [
-          "Halo, saya dari MOM. Ada masalah dengan izin kerja (Work Permit) Anda.",
+          "Halo, saya dari MOM. Ada masalah dengan izin kerja Anda.",
           "Transfer $500 sekarang, atau Anda akan dipulangkan!",
           "Pasang aplikasi ini dari link saya supaya saya bisa membantu Anda.",
           "Sekarang saya sambungkan telepon Anda ke Polisi."
@@ -316,13 +316,13 @@ window.SCAM_TEXT["id"] = {
   ],
   "feedback": {
     "title": "Satu hal lagi",
-    "csatQuestion": "Seberapa senang Anda dengan acara hari ini?",
+    "csatQuestion": "Seberapa puas Anda dengan acara hari ini?",
     "csatLabels": [
-      "Sangat tidak senang",
-      "Tidak senang",
+      "Sangat tidak puas",
+      "Tidak puas",
       "Biasa saja",
-      "Senang",
-      "Sangat senang"
+      "Puas",
+      "Sangat puas"
     ],
     "learnedQuestion": "Apakah Anda belajar hal baru tentang penipuan?",
     "learnedOptions": [

@@ -57,7 +57,7 @@ window.SCAM_TEXT["vi"] = {
     "correct": "Đúng",
     "wrong": "Chưa đúng",
     "codeLabel": "Mã",
-    "attempt": "Lần"
+    "attempt": "Lần thử"
   },
   "learn": [
     {
@@ -91,10 +91,10 @@ window.SCAM_TEXT["vi"] = {
     },
     {
       "title": "Khuyến mãi lễ hội giả",
-      "tagline": "Ưu đãi rẻ bất thường, bắt bạn cài ứng dụng.",
+      "tagline": "Ưu đãi rẻ bất thường, dụ bạn cài ứng dụng.",
       "chat": {
         "channel": "Quảng cáo",
-        "from": "Bán vàng Deepavali",
+        "from": "Khuyến mãi vàng Deepavali",
         "lines": [
           "Khuyến mãi Deepavali! Vàng giảm 80%!",
           "Tải ứng dụng của chúng tôi tại đây: deepavali-gold.example/app",
@@ -137,7 +137,7 @@ window.SCAM_TEXT["vi"] = {
       ],
       "todo": [
         "Không bao giờ bán, cho mượn hay đưa tài khoản ngân hàng, thẻ SIM hoặc Singpass của bạn cho ai.",
-        "Đây là tội phạm. Bạn có thể bị phạt tiền, phạt tù hoặc phạt roi."
+        "Đây là hành vi phạm pháp. Bạn có thể bị phạt tiền, phạt tù hoặc phạt roi."
       ]
     },
     {
@@ -176,12 +176,12 @@ window.SCAM_TEXT["vi"] = {
       },
       "flags": [
         {
-          "label": "Xin OTP của bạn và hối thúc"
+          "label": "Xin OTP của bạn và hối thúc bạn"
         }
       ],
       "todo": [
         "Không bao giờ đưa OTP (mã gửi đến điện thoại của bạn) cho bất kỳ ai.",
-        "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK kiểm tra với 1799, TELL báo cho gia đình và bạn bè."
+        "Nhớ ACT: ADD cài ứng dụng ScamShield, CHECK gọi 1799 để kiểm tra, TELL báo cho gia đình và bạn bè."
       ]
     }
   ],
@@ -192,7 +192,7 @@ window.SCAM_TEXT["vi"] = {
         "bubbles": [
           [
             {
-              "t": "Gửi người lao động,"
+              "t": "Gửi anh/chị,"
             },
             {
               "t": "bạn còn nợ tiền phạt giấy phép lao động $350."
@@ -281,7 +281,7 @@ window.SCAM_TEXT["vi"] = {
           ],
           [
             {
-              "t": "Trả tôi $500 để giữ việc."
+              "t": "Trả tôi $500 để giữ việc làm."
             }
           ],
           [
@@ -309,9 +309,9 @@ window.SCAM_TEXT["vi"] = {
       "options": [
         "Được, bắt đầu thế nào?",
         "Trả tôi $400 được không?",
-        "Không. Đây là tội phạm. Tôi sẽ báo cáo."
+        "Không. Đây là hành vi phạm pháp. Tôi sẽ báo cáo."
       ],
-      "explain": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là tiếp tay cho lừa đảo. Đây là tội phạm. Hãy từ chối và báo cáo."
+      "explain": "Cho người khác dùng tài khoản ngân hàng hoặc Singpass của bạn là tiếp tay cho lừa đảo. Đây là hành vi phạm pháp. Hãy từ chối và báo cáo."
     }
   ],
   "feedback": {
@@ -336,6 +336,6 @@ window.SCAM_TEXT["vi"] = {
         "label": "Không"
       }
     ],
-    "submit": "Xem kết quả"
+    "submit": "Xem kết quả của tôi"
   }
 };

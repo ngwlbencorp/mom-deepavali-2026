@@ -1,0 +1,1335 @@
+{
+ "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "checked": "2026-10-29",
+ "seaTuned": true,
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "Maligayang Deepavali!",
+   "verdict": "ok",
+   "back": "Happy Deepavali!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "Mag-ingat sa scam",
+   "verdict": "fix",
+   "back": "Be careful of scam",
+   "suggestion": "Mag-ingat sa mga scam",
+   "reason": "Added 'mga' for natural plural flow; 'scam' kept in English as per rules."
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "Alamin ang mga daya ng mga scammer, saka sagutan ang quiz.",
+   "verdict": "ok",
+   "back": "Know the tricks of the scammers, then answer the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "Sagutin nang tama ang lahat at ipakita ang iyong QR code sa isang MOM officer para sa souvenir. Para lang sa unang 500!",
+   "verdict": "ok",
+   "back": "Answer all correctly and show your QR code to an MOM officer for a souvenir. Only for the first 500!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "ScamShield Helpline",
+   "verdict": "ok",
+   "back": "ScamShield Helpline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "Wika",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "Home",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "Bumalik",
+   "verdict": "ok",
+   "back": "Go back",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "Susunod",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "Tapusin",
+   "verdict": "ok",
+   "back": "Finish",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "Umalis sa quiz",
+   "verdict": "ok",
+   "back": "Leave the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "Aalis sa quiz? Mawawala ang mga sagot mo.",
+   "verdict": "ok",
+   "back": "Leaving the quiz? Your answers will be lost.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "Isara ang review",
+   "verdict": "ok",
+   "back": "Close the review",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "Alamin ang tungkol sa scam",
+   "verdict": "fix",
+   "back": "Know about scam",
+   "suggestion": "Alamin ang tungkol sa mga scam",
+   "reason": "Added 'mga' for natural plural flow; 'scam' kept in English."
+  },
+  "ui.learnSub": {
+   "english": "5 short stories · 2 min",
+   "draft": "5 maikling kuwento · 2 min",
+   "verdict": "ok",
+   "back": "5 short stories · 2 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "Quiz para sa souvenir",
+   "verdict": "ok",
+   "back": "Quiz for a souvenir",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "Sagutan ang quiz",
+   "verdict": "ok",
+   "back": "Answer the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 na hamon · 3 min",
+   "verdict": "ok",
+   "back": "6 challenges · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "Ipakita ang QR code ko",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "Ipakita ang resulta ko",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 {n} souvenir na lang ang natitira",
+   "verdict": "ok",
+   "back": "🎁 {n} souvenirs left only",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "Naibigay na ang lahat ng souvenir. Salamat sa pagsali!",
+   "verdict": "ok",
+   "back": "All souvenirs have been given. Thank you for joining!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "Magaling! Alam mo kung paano makilala ang scam.",
+   "verdict": "fix",
+   "back": "Good job! You know how to spot scam.",
+   "suggestion": "Magaling! Alam mo kung paano makilala ang mga scam.",
+   "reason": "Added 'mga' for natural plural flow; 'scam' kept in English."
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "Tingnan ang mga sagot, saka subukan ulit.",
+   "verdict": "ok",
+   "back": "Look at the answers, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "Hindi sigurado? Tumawag sa",
+   "verdict": "ok",
+   "back": "Not sure? Call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "HALIMBAWA · PEKE",
+   "verdict": "ok",
+   "back": "EXAMPLE · FAKE",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "Ano ang gagawin",
+   "verdict": "ok",
+   "back": "What to do",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "Sagutan ang quiz",
+   "verdict": "ok",
+   "back": "Answer the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "I-tap ang {n} red flag",
+   "verdict": "fix",
+   "back": "Tap the {n} red flag",
+   "suggestion": "I-tap ang {n} red flags",
+   "reason": "English source uses plural 'flags'; Tagalog should match plural context for accuracy."
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "{k} sa {n} ang napili",
+   "verdict": "ok",
+   "back": "{k} of {n} chosen",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "Scam",
+   "verdict": "ok",
+   "back": "Scam",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "Ligtas",
+   "verdict": "ok",
+   "back": "Safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "Mensahe {i} sa {n}",
+   "verdict": "ok",
+   "back": "Message {i} of {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} sa {n}",
+   "verdict": "ok",
+   "back": "{i} of {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "Sine-save ang resulta mo…",
+   "verdict": "ok",
+   "back": "Saving your result…",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "Lahat tama!",
+   "verdict": "ok",
+   "back": "All correct!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "Ipakita ang QR code na ito sa isang MOM officer para sa iyong souvenir.",
+   "verdict": "fix",
+   "back": "Show this QR code to an MOM officer for your souvenir.",
+   "suggestion": "Ipakita ang QR code na ito sa MOM officer para sa souvenir mo.",
+   "reason": "Removed 'isang' (a/an) and 'iyong' (your) for shorter, more natural phrasing suitable for phone screens."
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "Nakuha mo nang tama ang lahat dati, kaya valid pa rin ang QR code mo.",
+   "verdict": "fix",
+   "back": "You got all correct before, so your QR code is still valid.",
+   "suggestion": "Tama na ang lahat dati, kaya valid pa rin ang QR code mo.",
+   "reason": "Simplified 'Nakuha mo nang tama ang lahat' to 'Tama na ang lahat' for brevity and natural flow."
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "{s} sa {t} ang tama",
+   "verdict": "ok",
+   "back": "{s} of {t} correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "Tingnan ang mga sagot, saka subukan ulit para sa souvenir.",
+   "verdict": "fix",
+   "back": "Review the answers, then try again for a souvenir.",
+   "suggestion": "Tingnan ang mga sagot, tapos subukan ulit para sa souvenir.",
+   "reason": "Changed 'saka' to 'tapos' which is more common in everyday speech for 'then'."
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "Tingnan ang mga sagot",
+   "verdict": "ok",
+   "back": "Review the answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "Subukan ulit",
+   "verdict": "ok",
+   "back": "Try again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "Bumalik sa QR code ko",
+   "verdict": "ok",
+   "back": "Back to my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "Na-save ang resulta ✓",
+   "verdict": "ok",
+   "back": "Result saved ✓",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "Hindi pa na-save (walang koneksyon). Maaari pa ring i-scan ng officer ang QR code na ito.",
+   "verdict": "fix",
+   "back": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "suggestion": "Hindi pa na-save (walang koneksyon). Ma-scan pa rin ng officer ang QR code na ito.",
+   "reason": "Shortened 'Maaari pa ring i-scan' to 'Ma-scan pa rin' to fit screen better while keeping meaning."
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "Hindi pa na-save (walang koneksyon).",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "I-save ulit",
+   "verdict": "fix",
+   "back": "Save again",
+   "suggestion": "Subukan ulit ang save",
+   "reason": "English is 'Retry saving' (action), draft 'I-save ulit' implies 'Save again' (command). 'Subukan ulit ang save' captures the 'retry' nuance better."
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "Sagot mo",
+   "verdict": "ok",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "Tamang sagot",
+   "verdict": "ok",
+   "back": "Right answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "Tama",
+   "verdict": "ok",
+   "back": "Correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "Mali",
+   "verdict": "ok",
+   "back": "Wrong",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "Code",
+   "verdict": "ok",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "Subok",
+   "verdict": "ok",
+   "back": "Try",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "Pekeng MOM officer",
+   "verdict": "ok",
+   "back": "Fake MOM officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "Nagpapanggap ang mga scammer na taga-MOM o Pulis.",
+   "verdict": "ok",
+   "back": "Scammers pretend to be from MOM or Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "draft": "Tawag sa telepono",
+   "verdict": "ok",
+   "back": "Phone call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "draft": "Hindi kilalang numero",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "draft": "Hello, taga-MOM ako. May problema sa work permit mo.",
+   "verdict": "ok",
+   "back": "Hello, I am from MOM. There is a problem with your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "draft": "Mag-transfer ka ng $500 ngayon, o pauuwiin ka!",
+   "verdict": "ok",
+   "back": "Transfer $500 now, or you will be sent home!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "draft": "I-install mo ang app na ito mula sa link ko para matulungan kita.",
+   "verdict": "ok",
+   "back": "Install this app from my link so I can help you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "draft": "Ililipat ko na ang tawag mo sa Pulis.",
+   "verdict": "ok",
+   "back": "I will now transfer your call to the Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "draft": "Pinapa-transfer ka ng pera",
+   "verdict": "ok",
+   "back": "They make you transfer money",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "App mula sa link, hindi sa app store",
+   "verdict": "ok",
+   "back": "App from a link, not from the app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "draft": "Inililipat ang tawag mo sa Pulis",
+   "verdict": "ok",
+   "back": "They transfer your call to the Police",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "draft": "Maaaring tumawag sa iyo ang MOM tungkol sa trabaho mo. Pero hindi ka kailanman uutusan ng MOM na mag-transfer ng pera o ibigay ang bank login mo.",
+   "verdict": "ok",
+   "back": "MOM may call you about your work. But MOM will never order you to transfer money or give your bank login.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "draft": "Hindi ka kailanman uutusan ng MOM na mag-install ng app mula sa link, at hindi nito ililipat ang tawag mo sa Pulis. Hindi sigurado? Ibaba ang telepono.",
+   "verdict": "ok",
+   "back": "MOM will never order you to install an app from a link, and they will not transfer your call to the Police. Not sure? Hang up.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "draft": "Pekeng holiday deal",
+   "verdict": "ok",
+   "back": "Fake holiday deal",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "draft": "Sobrang murang deal na nagpapa-install ng app.",
+   "verdict": "ok",
+   "back": "Too cheap deals that make you install an app.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "draft": "Advertisement",
+   "verdict": "ok",
+   "back": "Advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "draft": "Deepavali Gold Sale",
+   "verdict": "ok",
+   "back": "Deepavali Gold Sale",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "draft": "Deepavali sale! 80% off sa ginto!",
+   "verdict": "ok",
+   "back": "Deepavali sale! 80% off on gold!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "draft": "I-download ang app namin dito: deepavali-gold.example/app",
+   "verdict": "ok",
+   "back": "Download our app here: deepavali-gold.example/app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "draft": "1 oras na lang!",
+   "verdict": "ok",
+   "back": "Only 1 hour left!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "draft": "Sobrang mura para maging totoo",
+   "verdict": "ok",
+   "back": "Too cheap to be true",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "App mula sa link, hindi sa app store",
+   "verdict": "ok",
+   "back": "App from a link, not from the app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "draft": "Minamadali ka",
+   "verdict": "ok",
+   "back": "You are being rushed",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "draft": "Mag-install lang ng app mula sa opisyal na app store (Google Play o Apple App Store).",
+   "verdict": "ok",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "draft": "Kayang nakawin ng pekeng app ang pera sa bank account mo.",
+   "verdict": "ok",
+   "back": "Fake apps can steal money from your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "draft": "Madaling pera (scam mule)",
+   "verdict": "ok",
+   "back": "Easy money (scam mule)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "draft": "Babayaran ka para magamit ang bank account mo.",
+   "verdict": "ok",
+   "back": "You will be paid to use your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "draft": "Chat message",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "draft": "Gusto mo ng madaling pera? $300 kada linggo, walang trabaho!",
+   "verdict": "ok",
+   "back": "Want easy money? $300 per week, no work!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "draft": "Hayaan mo lang akong gamitin ang bank account, SIM card o Singpass mo.",
+   "verdict": "ok",
+   "back": "Just let me use your bank account, SIM card or Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "draft": "Pera nang walang trabaho",
+   "verdict": "ok",
+   "back": "Money without work",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "draft": "Hinihingi ang bank account, SIM card o Singpass mo",
+   "verdict": "ok",
+   "back": "Wants your bank account, SIM card or Singpass",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "draft": "Huwag kailanman ibenta, ipahiram o ibigay ang bank account, SIM card o Singpass mo.",
+   "verdict": "ok",
+   "back": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "draft": "Krimen ito. Maaari kang pagmultahin, makulong o hampasin ng yantok (caning).",
+   "verdict": "fix",
+   "back": "This is a crime. You can be fined, jailed or caned.",
+   "suggestion": "Krimen ito. Maaari kang pagmultahin, makulong o hampasin ng yantok.",
+   "reason": "Removed '(caning)' to keep it short and fit phone screen; 'hampasin ng yantok' is clear enough for the context."
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "draft": "Pekeng trabaho o work permit",
+   "verdict": "ok",
+   "back": "Fake job or work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].tagline": {
+   "english": "Official-looking offers that ask for money.",
+   "draft": "Mga alok na mukhang opisyal pero humihingi ng pera.",
+   "verdict": "ok",
+   "back": "Offers that look official but ask for money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "draft": "Chat message",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "draft": "SG Jobs Agent",
+   "verdict": "ok",
+   "back": "SG Jobs Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "draft": "Magandang balita! Aprubado na ang work permit mo.",
+   "verdict": "ok",
+   "back": "Good news! Your work permit is approved.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "draft": "Magpadala ng $800 ngayon para makumpirma ang trabaho mo.",
+   "verdict": "ok",
+   "back": "Send $800 today to confirm your job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "draft": "Lisensyadong ahensya kami. Licence no. 99X9999.",
+   "verdict": "ok",
+   "back": "We are a licensed agency. Licence no. 99X9999.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "draft": "Pinagbabayad ka muna",
+   "verdict": "ok",
+   "back": "You are made to pay first",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[1].label": {
+   "english": "A licence number does not prove it is real",
+   "draft": "Hindi patunay ang licence number na totoo ito",
+   "verdict": "ok",
+   "back": "A licence number does not prove it is real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[0]": {
+   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "draft": "Karaniwang senyales ng job scam ang pagpapabayad muna. Ang employer mo ang dapat magbayad ng mga fee ng work permit mo.",
+   "verdict": "ok",
+   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[1]": {
+   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "draft": "Kayang kopyahin ng mga scammer ang licence number ng totoong ahensya. Ikaw mismo ang kumontak sa ahensya.",
+   "verdict": "ok",
+   "back": "Scammers can copy a real agency's licence number. You yourself must contact the agency.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].title": {
+   "english": "Secret codes (OTP)",
+   "draft": "Mga lihim na code (OTP)",
+   "verdict": "ok",
+   "back": "Secret codes (OTP)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].tagline": {
+   "english": "Scammers ask for the code sent to your phone.",
+   "draft": "Hinihingi ng mga scammer ang code na ipinadala sa phone mo.",
+   "verdict": "ok",
+   "back": "Scammers ask for the code sent to your phone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[0]": {
+   "english": "Sorry, I sent a code to your phone by mistake.",
+   "draft": "Sorry, napadala ko sa phone mo ang isang code nang hindi sinasadya.",
+   "verdict": "ok",
+   "back": "Sorry, I sent a code to your phone unintentionally.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "draft": "Pakipadala sa akin ang 6-digit na code. Bilis!",
+   "verdict": "ok",
+   "back": "Please send me the 6-digit code. Fast!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].flags[0].label": {
+   "english": "Asks for your OTP and rushes you",
+   "draft": "Hinihingi ang OTP mo at minamadali ka",
+   "verdict": "ok",
+   "back": "Asks for your OTP and rushes you",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[0]": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone.",
+   "draft": "Huwag kailanman ibigay ang OTP mo (ang code na ipinadala sa phone mo) kahit kanino.",
+   "verdict": "ok",
+   "back": "Never give your OTP (the code sent to your phone) to anyone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[1]": {
+   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "draft": "Tandaan ang ACT: ADD ang ScamShield app, CHECK sa 1799, TELL sa pamilya at mga kaibigan.",
+   "verdict": "ok",
+   "back": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].title": {
+   "english": "Spot the red flags",
+   "draft": "Hanapin ang mga red flag",
+   "verdict": "ok",
+   "back": "Find the red flags",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "draft": "Mahal na manggagawa,",
+   "verdict": "ok",
+   "back": "Dear worker,",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "draft": "may hindi ka pa nababayarang multa sa work permit na $350.",
+   "verdict": "ok",
+   "back": "you have an unpaid work permit fine of $350.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "draft": "Magbayad sa",
+   "verdict": "ok",
+   "back": "Pay at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][2].t": {
+   "english": "or reply with your bank login.",
+   "draft": "o mag-reply gamit ang bank login mo.",
+   "verdict": "ok",
+   "back": "or reply with your bank login.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].explain": {
+   "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "draft": "Galing sa \"gov.sg\" ang mga SMS ng gobyerno. Nagtatapos sa \".mom.gov.sg\" ang mga totoong address ng MOM. Hindi hihingin ng gobyerno ang bank login mo sa SMS. Hindi sigurado? Tumawag sa 1799.",
+   "verdict": "ok",
+   "back": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Not sure? Call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].title": {
+   "english": "Scam or safe?",
+   "draft": "Scam o ligtas?",
+   "verdict": "ok",
+   "back": "Scam or safe?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].from": {
+   "english": "Your employer",
+   "draft": "Ang employer mo",
+   "verdict": "ok",
+   "back": "Your employer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].text": {
+   "english": "Please buy rice on the way home. Thank you!",
+   "draft": "Pakibili ng bigas pauwi. Salamat!",
+   "verdict": "ok",
+   "back": "Please buy rice on the way home. Thank you!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].why": {
+   "english": "A normal message from someone you know, with no money or codes asked.",
+   "draft": "Karaniwang mensahe mula sa kakilala mo, walang hinihinging pera o code.",
+   "verdict": "ok",
+   "back": "Normal message from someone you know, no money or code asked.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].from": {
+   "english": "Unknown number",
+   "draft": "Hindi kilalang numero",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].text": {
+   "english": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "draft": "Naka-lock ang bank account mo. I-reply ang OTP na kakapadala namin.",
+   "verdict": "fix",
+   "back": "Your bank account is locked. Reply the OTP we just sent.",
+   "suggestion": "Naka-lock ang bank account mo. I-reply ang OTP na ipinadala namin.",
+   "reason": "Changed 'kakapadala' (will send) to 'ipinadala' (sent) to match English 'just sent'."
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "draft": "Huwag kailanman ibigay ang OTP mo (ang code na ipinadala sa phone mo) kahit kanino, kahit sabihin nilang sila ang bangko mo.",
+   "verdict": "ok",
+   "back": "Never give your OTP (the code sent to your phone) to anyone, even if they say they are your bank.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].from": {
+   "english": "New contact",
+   "draft": "Bagong contact",
+   "verdict": "ok",
+   "back": "New contact",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].text": {
+   "english": "Lend me your bank card for one week. I will pay you $300.",
+   "draft": "Ipahiram mo sa akin ang bank card mo nang isang linggo. Babayaran kita ng $300.",
+   "verdict": "ok",
+   "back": "Lend me your bank card for one week. I will pay you $300.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].why": {
+   "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "draft": "Alok ito para gawin kang scam mule. Krimen ang hayaang gamitin ng iba ang bank card mo.",
+   "verdict": "ok",
+   "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].from": {
+   "english": "Your friend",
+   "draft": "Ang kaibigan mo",
+   "verdict": "ok",
+   "back": "Your friend",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].text": {
+   "english": "Happy Deepavali! See you at the event on Sunday.",
+   "draft": "Maligayang Deepavali! Kita tayo sa event sa Linggo.",
+   "verdict": "ok",
+   "back": "Happy Deepavali! See you at the event on Sunday.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].why": {
+   "english": "A normal greeting from a friend, with nothing asked.",
+   "draft": "Karaniwang pagbati mula sa kaibigan, walang hinihingi.",
+   "verdict": "ok",
+   "back": "Normal greeting from a friend, nothing asked.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "draft": "Ano ang isasagot mo?",
+   "verdict": "ok",
+   "back": "What would you reply?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "draft": "\"Pinsan\" (bagong numero)",
+   "verdict": "ok",
+   "back": "\"Cousin\" (new number)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "draft": "Hi, pinsan mo ito. Nagpalit ako ng numero.",
+   "verdict": "ok",
+   "back": "Hi, this is your cousin. I changed my number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "draft": "Napadala ko sa phone mo ang 6-digit na code nang di sinasadya. Pakipasa sa akin. Urgent!",
+   "verdict": "ok",
+   "back": "I sent the 6-digit code to your phone by mistake. Please pass it to me. Urgent!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "draft": "Sige, ito ang code: 482915",
+   "verdict": "ok",
+   "back": "Okay, here is the code: 482915",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "draft": "Hindi. Hindi ako nagbibigay ng code. Tatawagan ko ang luma mong numero.",
+   "verdict": "ok",
+   "back": "No. I do not give codes. I will call your old number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "draft": "Ipadala mo muna ang litrato mo, saka ko ipapadala.",
+   "verdict": "ok",
+   "back": "Send me your photo first, then I will send it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "draft": "Huwag ibigay ang OTP mo kahit kanino, kahit sa pamilya. Kung may magsabing nagpalit siya ng numero, tawagan ang luma niyang numero para i-check.",
+   "verdict": "ok",
+   "back": "Do not give your OTP to anyone, even family. If someone says they changed their number, call their old number to check.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "draft": "Piliin ang ligtas na paraan",
+   "verdict": "ok",
+   "back": "Choose the safe way",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "draft": "Gusto mo ng shopping app para sa mga Deepavali deal. Saan mo ito dapat kunin?",
+   "verdict": "ok",
+   "back": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "draft": "Ang opisyal na app store sa phone mo",
+   "verdict": "ok",
+   "back": "The official app store on your phone",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "draft": "Isang link na ipinadala sa chat message",
+   "verdict": "ok",
+   "back": "A link sent in a chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "draft": "Isang link sa online na advertisement",
+   "verdict": "ok",
+   "back": "A link in an online advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "draft": "Mag-install lang ng app mula sa opisyal na app store (Google Play o Apple App Store). Kayang nakawin ng mga app mula sa link ang pera mo.",
+   "verdict": "ok",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "draft": "Hanapin ang mga red flag",
+   "verdict": "ok",
+   "back": "Find the red flags",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "draft": "Chat message",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "draft": "Job Agent",
+   "verdict": "ok",
+   "back": "Job Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "draft": "Gustong kanselahin ng employer mo ang work permit mo.",
+   "verdict": "ok",
+   "back": "Your employer wants to cancel your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "draft": "Bayaran mo ako ng $500 para manatili ka sa trabaho.",
+   "verdict": "ok",
+   "back": "Pay me $500 to stay in the job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "draft": "I-check ang permit mo sa",
+   "verdict": "ok",
+   "back": "Check your permit at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "draft": "at ipadala sa akin ang Singpass password mo.",
+   "verdict": "ok",
+   "back": "and send me your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "draft": "Ilegal ang pagbayarin ka para manatili sa trabaho. Nagtatapos sa \".mom.gov.sg\" ang totoong address ng MOM. Huwag ibigay ang Singpass password mo.",
+   "verdict": "ok",
+   "back": "It is illegal to make you pay to stay in the job. Real MOM addresses end with \".mom.gov.sg\". Do not give your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "draft": "Ano ang isasagot mo?",
+   "verdict": "ok",
+   "back": "What would you answer?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "draft": "Hindi kilalang numero",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "draft": "Madaling pera! Kumita ng $200 bawat linggo.",
+   "verdict": "ok",
+   "back": "Easy money! Earn $200 every week.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "draft": "Hayaan mo lang akong gamitin ang bank account at Singpass mo.",
+   "verdict": "ok",
+   "back": "Just let me use your bank account and Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "draft": "Sige, paano ako magsisimula?",
+   "verdict": "ok",
+   "back": "Okay, how do I start?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "draft": "Puwede bang $400 na lang ang ibayad mo?",
+   "verdict": "ok",
+   "back": "Can you pay $400 instead?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "draft": "Hindi. Krimen ito. Ire-report ko ito.",
+   "verdict": "ok",
+   "back": "No. This is a crime. I will report it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "draft": "Kapag hinayaan mong gamitin ng iba ang bank account o Singpass mo, nagiging scam mule ka. Krimen ito. Tumanggi at i-report ito.",
+   "verdict": "ok",
+   "back": "When you let others use your bank account or Singpass, you become a scam mule. This is a crime. Refuse and report it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "draft": "Isa pang bagay",
+   "verdict": "ok",
+   "back": "One more thing",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "draft": "Gaano ka kasaya sa event ngayong araw?",
+   "verdict": "ok",
+   "back": "How happy are you with today's event?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "draft": "Sobrang hindi masaya",
+   "verdict": "ok",
+   "back": "Very unhappy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "draft": "Hindi masaya",
+   "verdict": "ok",
+   "back": "Unhappy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "draft": "Okay lang",
+   "verdict": "ok",
+   "back": "Just okay",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "draft": "Masaya",
+   "verdict": "ok",
+   "back": "Happy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "draft": "Sobrang saya",
+   "verdict": "ok",
+   "back": "Very happy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "draft": "May natutunan ka bang bago tungkol sa scam?",
+   "verdict": "ok",
+   "back": "Did you learn something new about scams?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "draft": "Oo",
+   "verdict": "ok",
+   "back": "Yes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "draft": "Kaunti",
+   "verdict": "ok",
+   "back": "A little",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "draft": "Wala",
+   "verdict": "fix",
+   "back": "None",
+   "suggestion": "Hindi",
+   "reason": "Wala means 'none' (quantity), Hindi means 'No' (negation). For a Yes/No question, 'Hindi' is the correct answer."
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "draft": "Tingnan ang resulta ko",
+   "verdict": "ok",
+   "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}

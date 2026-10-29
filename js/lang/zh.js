@@ -31,26 +31,26 @@ window.SCAM_TEXT["zh"] = {
     "afterPartial": "看看答案，然后再试一次。",
     "unsure": "不确定？请拨打",
     "example": "示例 · 非真实",
-    "whatToDo": "应该怎么做",
-    "toQuiz": "参加问答",
+    "whatToDo": "该怎么做",
+    "toQuiz": "开始答题",
     "spotPrompt": "点出 {n} 个危险信号",
     "selected": "已选 {k}/{n}",
     "scam": "诈骗",
     "safe": "安全",
     "card": "第 {i}/{n} 条信息",
     "step": "{i}/{n}",
-    "saving": "正在保存您的成绩…",
+    "saving": "正在保存结果…",
     "allCorrect": "全部答对！",
-    "allCorrectMsg": "向MOM官员出示这个QR码，领取您的纪念品。",
-    "earnedBefore": "您之前已全部答对，所以您的QR码仍然有效。",
+    "allCorrectMsg": "向MOM官员出示这个QR码，领取纪念品。",
+    "earnedBefore": "您之前已全部答对，QR码依然有效。",
     "partial": "答对 {s}/{t}",
-    "partialMsg": "看看答案，然后再试一次，赢取纪念品。",
+    "partialMsg": "查看答案，再试一次赢取纪念品。",
     "review": "查看答案",
     "tryAgain": "再试一次",
     "backToResult": "返回我的QR码",
-    "saved": "成绩已保存 ✓",
-    "notSaved": "尚未保存（没有网络）。官员仍可扫描这个QR码。",
-    "notSavedAfter": "尚未保存（没有网络）。",
+    "saved": "结果已保存 ✓",
+    "notSaved": "尚未保存（无网络）。官员仍可扫描这个QR码。",
+    "notSavedAfter": "尚未保存（无网络）。",
     "retry": "重新保存",
     "yourAnswer": "您的答案",
     "rightAnswer": "正确答案",
@@ -67,9 +67,9 @@ window.SCAM_TEXT["zh"] = {
         "channel": "电话",
         "from": "陌生号码",
         "lines": [
-          "您好，我是MOM的官员。您的工作准证有问题。",
+          "您好，我是MOM打来的。您的工作准证有问题。",
           "马上转账$500，否则您会被遣送回国！",
-          "从我的链接安装这个应用程序，我才能帮您。",
+          "从我的链接安装这个应用，我才能帮您。",
           "现在我把您的电话转给警察。"
         ]
       },
@@ -86,17 +86,17 @@ window.SCAM_TEXT["zh"] = {
       ],
       "todo": [
         "MOM可能会打电话给您，询问您的工作情况。但MOM绝不会要求您转账或提供银行登录资料。",
-        "MOM绝不会要求您从链接安装应用程序，也绝不会把您的电话转给警察。不确定？挂断电话。"
+        "MOM绝不会要求您从链接安装应用，也绝不会把电话转给警察。不确定？挂断。"
       ]
     },
     {
       "title": "假冒节日优惠",
-      "tagline": "便宜得离谱的优惠，要您安装应用程序。",
+      "tagline": "便宜得离谱的优惠，要您安装应用。",
       "chat": {
         "channel": "广告",
         "from": "屠妖节黄金特卖",
         "lines": [
-          "屠妖节特卖！黄金打两折！",
+          "屠妖节特卖！黄金便宜80%！",
           "在这里下载我们的应用：deepavali-gold.example/app",
           "只剩1小时！"
         ]
@@ -113,8 +113,8 @@ window.SCAM_TEXT["zh"] = {
         }
       ],
       "todo": [
-        "只从官方应用商店（Google Play 或 Apple App Store）安装应用程序。",
-        "假应用程序会盗取您银行户口里的钱。"
+        "只从官方应用商店（Google Play 或 Apple App Store）安装应用。",
+        "假应用会盗取您银行户口里的钱。"
       ]
     },
     {
@@ -200,7 +200,7 @@ window.SCAM_TEXT["zh"] = {
           ],
           [
             {
-              "t": "缴付网址："
+              "t": "在以下网址缴付："
             },
             null,
             {
@@ -266,7 +266,7 @@ window.SCAM_TEXT["zh"] = {
           "label": "网上广告里的链接"
         }
       ],
-      "explain": "只从官方应用商店（Google Play 或 Apple App Store）安装应用程序。来自链接的应用程序会盗取您的钱。"
+      "explain": "只从官方应用商店（Google Play 或 Apple App Store）安装应用。来自链接的应用会盗取您的钱。"
     },
     {
       "title": "找出危险信号",
@@ -315,7 +315,7 @@ window.SCAM_TEXT["zh"] = {
     }
   ],
   "feedback": {
-    "title": "最后一个问题",
+    "title": "最后一件事",
     "csatQuestion": "您对今天的活动满意吗？",
     "csatLabels": [
       "非常不满意",
@@ -336,6 +336,6 @@ window.SCAM_TEXT["zh"] = {
         "label": "没有"
       }
     ],
-    "submit": "查看我的成绩"
+    "submit": "查看我的结果"
   }
 };

@@ -46,13 +46,22 @@ def sealion(code):
     f = os.path.join(ROOT, 'review', 'sealion', code + '.json')
     return json.load(open(f, encoding='utf-8')) if os.path.exists(f) else None
 
-def sealion_cell(sl, key, en, draft):
+TRIAGE_FILE = os.path.join(ROOT, 'review', 'sealion', 'triage.json')
+TRIAGE = json.load(open(TRIAGE_FILE, encoding='utf-8'))['notApplied'] if os.path.exists(TRIAGE_FILE) else {}
+
+def sealion_cell(sl, key, en, draft, code):
     r = sl and sl['results'].get(key)
     if not r: return ''
-    if r.get('english') != en or r.get('draft') != draft: return '(checked an older version of this line)'
-    text = 'OK' if r['verdict'] == 'ok' else 'Suggests: %s\nReason: %s' % (r['suggestion'], r['reason'])
-    if r.get('back'): text += '\nBack-translation: ' + r['back']
-    return text
+    if r.get('english') != en: return '(checked an older English version of this line)'
+    back = '\nBack-translation of the checked text: ' + r['back'] if r.get('back') else ''
+    if r['verdict'] == 'ok':
+        return ('OK' if r['draft'] == draft else 'OK (this line was changed after the check)') + back
+    if draft == r['suggestion']:
+        return 'APPLIED its suggestion. Earlier draft: %s\nReason given: %s%s' % (r['draft'], r['reason'], back)
+    why = TRIAGE.get(code, {}).get(key)
+    if draft != r['draft']:
+        return 'ADJUSTED: suggested "%s" (%s). %s%s' % (r['suggestion'], r['reason'], why or 'Applied with small changes.', back)
+    return 'NOT APPLIED: suggested "%s" (%s). Why not: %s%s' % (r['suggestion'], r['reason'], why or 'see triage', back)
 
 def where(key):
     m = re.match(r'learn\[(\d+)\]', key)
@@ -75,8 +84,6 @@ def note(key, en, code, prev):
         n.append('First-person verbs use the masculine form (most attendees are men). Change if MOM prefers neutral wording.')
     if code == 'vi' and key.startswith('quiz[2]'):
         n.append('Pronouns assume an older male cousin ("anh") writing to a younger relative ("em").')
-    if code == 'zh' and key == 'learn[1].chat.lines[0]':
-        n.append('"80% off" is written the Chinese way (打两折 = pay 20%).')
     if code == 'ta' and key in TA_SHORT: n.append('Shortened to fit a phone screen; please keep a similar length.')
     if key == 'ui.example' and code == 'ta': n.append('Shortened to "sample · fake" to fit the message header.')
     if any(t in en for t in ('Singpass', 'ScamShield', 'MOM', 'OTP', 'ACT', 'ADD', 'CHECK', 'TELL')):
@@ -189,7 +196,7 @@ for code, name in LANGS:
     r = 2
     for key, en in english['items']:
         if key not in draft: continue
-        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key), sealion_cell(sl, key, en, draft[key])]
+        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key), sealion_cell(sl, key, en, draft[key], code)]
         for j, v in enumerate(vals):
             c = sh.cell(row=r, column=j + 1, value=v)
             c.font = Font(name=FONT, size=11, color='808080' if j == 0 else '000000')

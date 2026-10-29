@@ -1,0 +1,1335 @@
+{
+ "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "checked": "2026-10-29",
+ "seaTuned": true,
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "สุขสันต์วันดีปาวลี!",
+   "verdict": "ok",
+   "back": "Happy Deepavali!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "ระวังมิจฉาชีพ",
+   "verdict": "ok",
+   "back": "Beware of scammers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "เรียนรู้กลโกงของมิจฉาชีพ แล้วมาทำแบบทดสอบ",
+   "verdict": "ok",
+   "back": "Learn scammers' tricks, then take the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "ตอบถูกทุกข้อ แล้วแสดง QR code ให้เจ้าหน้าที่ MOM ดูเพื่อรับของที่ระลึก เฉพาะ 500 คนแรกเท่านั้น!",
+   "verdict": "ok",
+   "back": "Answer all correctly, then show QR code to MOM officer for souvenir. First 500 only!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "สายด่วน ScamShield",
+   "verdict": "ok",
+   "back": "ScamShield Helpline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "ภาษา",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "หน้าหลัก",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "ก่อนหน้า",
+   "verdict": "ok",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "ถัดไป",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "เสร็จสิ้น",
+   "verdict": "ok",
+   "back": "Finish",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "ออกจากแบบทดสอบ",
+   "verdict": "ok",
+   "back": "Exit quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "ออกจากแบบทดสอบหรือไม่? คำตอบที่ทำไว้จะหายไป",
+   "verdict": "ok",
+   "back": "Exit quiz or not? Answers done will disappear.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "ปิดเฉลย",
+   "verdict": "ok",
+   "back": "Close answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "เรียนรู้เรื่องมิจฉาชีพ",
+   "verdict": "ok",
+   "back": "Learn about scammers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "5 short stories · 2 min",
+   "draft": "5 เรื่องสั้น · 2 นาที",
+   "verdict": "ok",
+   "back": "5 short stories · 2 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "แบบทดสอบรับของที่ระลึก",
+   "verdict": "ok",
+   "back": "Quiz to get souvenir",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "ทำแบบทดสอบ",
+   "verdict": "ok",
+   "back": "Take quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 ด่าน · 3 นาที",
+   "verdict": "ok",
+   "back": "6 levels · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "แสดง QR code ของฉัน",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "แสดงผลของฉัน",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 ของที่ระลึกเหลือ {n} ชิ้น",
+   "verdict": "ok",
+   "back": "🎁 {n} souvenirs left",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "แจกของที่ระลึกหมดแล้ว ขอบคุณที่ร่วมกิจกรรม!",
+   "verdict": "ok",
+   "back": "Souvenirs given out all. Thank you for joining!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "เยี่ยมมาก! คุณรู้วิธีจับผิดมิจฉาชีพ",
+   "verdict": "ok",
+   "back": "Great job! You know how to catch scammers.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "ดูเฉลย แล้วลองอีกครั้ง",
+   "verdict": "ok",
+   "back": "Check answers, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "ไม่แน่ใจ? โทร",
+   "verdict": "ok",
+   "back": "Unsure? Call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "ตัวอย่าง · ไม่ใช่ของจริง",
+   "verdict": "ok",
+   "back": "Example · Not real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "สิ่งที่ควรทำ",
+   "verdict": "ok",
+   "back": "Things that should be done",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "ทำแบบทดสอบ",
+   "verdict": "ok",
+   "back": "Do the test",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "แตะสัญญาณอันตราย {n} จุด",
+   "verdict": "ok",
+   "back": "Tap {n} danger signals",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "เลือกแล้ว {k} จาก {n}",
+   "verdict": "ok",
+   "back": "Chosen {k} from {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "หลอกลวง",
+   "verdict": "fix",
+   "back": "Deception",
+   "suggestion": "มิจฉาชีพ",
+   "reason": "Scam in this context refers to the scammer or the act of scamming by criminals. 'หลอกลวง' is the abstract concept of deception. 'มิจฉาชีพ' is the common term for scammers used in Singapore safety campaigns."
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "ปลอดภัย",
+   "verdict": "ok",
+   "back": "Safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "ข้อความ {i} จาก {n}",
+   "verdict": "ok",
+   "back": "Message {i} from {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} จาก {n}",
+   "verdict": "ok",
+   "back": "{i} from {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "กำลังบันทึกผล…",
+   "verdict": "ok",
+   "back": "Saving results...",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "ถูกทุกข้อ!",
+   "verdict": "ok",
+   "back": "Correct every item!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "แสดง QR code นี้ให้เจ้าหน้าที่ MOM ดูเพื่อรับของที่ระลึก",
+   "verdict": "ok",
+   "back": "Show this QR code to an MOM officer to receive a souvenir",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "คุณเคยตอบถูกทุกข้อแล้ว QR code ของคุณจึงยังใช้ได้",
+   "verdict": "ok",
+   "back": "You have answered correctly every item before, so your QR code is still usable",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "ถูก {s} จาก {t} ข้อ",
+   "verdict": "ok",
+   "back": "Correct {s} from {t} items",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "ดูเฉลย แล้วลองอีกครั้งเพื่อรับของที่ระลึก",
+   "verdict": "ok",
+   "back": "Look at answers, then try again to receive a souvenir",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "ดูเฉลย",
+   "verdict": "ok",
+   "back": "Look at answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "ลองอีกครั้ง",
+   "verdict": "ok",
+   "back": "Try again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "กลับไปที่ QR code ของฉัน",
+   "verdict": "ok",
+   "back": "Go back to my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "บันทึกผลแล้ว ✓",
+   "verdict": "ok",
+   "back": "Saved results ✓",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "ยังไม่ได้บันทึก (ไม่มีสัญญาณ) เจ้าหน้าที่ยังสแกน QR code นี้ได้",
+   "verdict": "ok",
+   "back": "Not saved yet (no signal) Officer can still scan this QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "ยังไม่ได้บันทึก (ไม่มีสัญญาณ)",
+   "verdict": "ok",
+   "back": "Not saved yet (no signal)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "บันทึกอีกครั้ง",
+   "verdict": "fix",
+   "back": "Save again",
+   "suggestion": "ลองบันทึกอีกครั้ง",
+   "reason": "The English is 'Retry saving'. The draft 'บันทึกอีกครั้ง' means 'Save again'. While close, 'ลอง...อีกครั้ง' (Try... again) captures the 'Retry' nuance better, implying an attempt to fix a failed action."
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "คำตอบของคุณ",
+   "verdict": "ok",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "คำตอบที่ถูก",
+   "verdict": "ok",
+   "back": "The correct answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "ถูก",
+   "verdict": "ok",
+   "back": "Correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "ไม่ถูก",
+   "verdict": "ok",
+   "back": "Not correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "รหัส",
+   "verdict": "ok",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "ครั้งที่",
+   "verdict": "fix",
+   "back": "Time",
+   "suggestion": "ครั้ง",
+   "reason": "Draft 'ครั้งที่' means 'the ... time' (ordinal), but English is 'Attempt' (noun). 'ครั้ง' is the plain word for 'attempt' or 'time'."
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "เจ้าหน้าที่ MOM ปลอม",
+   "verdict": "ok",
+   "back": "Fake MOM officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "มิจฉาชีพแอบอ้างเป็น MOM หรือตำรวจ",
+   "verdict": "ok",
+   "back": "Scammers pretend to be MOM or police",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "draft": "โทรศัพท์",
+   "verdict": "fix",
+   "back": "Telephone",
+   "suggestion": "สายโทรศัพท์",
+   "reason": "Draft 'โทรศัพท์' is the device. 'สายโทรศัพท์' means 'phone call', matching the English context of a channel."
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "draft": "เบอร์ที่ไม่รู้จัก",
+   "verdict": "ok",
+   "back": "Number not known",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "draft": "สวัสดีครับ ผมโทรจาก MOM ใบอนุญาตทำงานของคุณมีปัญหา",
+   "verdict": "ok",
+   "back": "Hello, I call from MOM. Your work permit has problem.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "draft": "โอนเงิน $500 เดี๋ยวนี้ ไม่อย่างนั้นคุณจะถูกส่งกลับประเทศ!",
+   "verdict": "ok",
+   "back": "Transfer money $500 now, otherwise you will be sent back country!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "draft": "ติดตั้งแอปนี้จากลิงก์ของผม ผมจะได้ช่วยคุณ",
+   "verdict": "ok",
+   "back": "Install this app from my link, I will help you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "draft": "ตอนนี้ผมจะโอนสายคุณไปที่ตำรวจ",
+   "verdict": "ok",
+   "back": "Now I will transfer your line to police",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "draft": "ให้คุณโอนเงิน",
+   "verdict": "ok",
+   "back": "Let you transfer money",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "แอปจากลิงก์ ไม่ใช่จากแอปสโตร์",
+   "verdict": "ok",
+   "back": "App from link, not from app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "draft": "โอนสายคุณไปที่ตำรวจ",
+   "verdict": "ok",
+   "back": "Transfer your line to police",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "draft": "MOM อาจโทรหาคุณเรื่องงาน แต่ MOM จะไม่ขอให้คุณโอนเงินหรือให้ข้อมูลเข้าสู่ระบบธนาคารเด็ดขาด",
+   "verdict": "ok",
+   "back": "MOM may call you about work. But MOM will not ask you to transfer money or give bank login info absolutely.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "draft": "MOM จะไม่ขอให้คุณติดตั้งแอปจากลิงก์ และจะไม่โอนสายคุณไปที่ตำรวจ ไม่แน่ใจ? วางสายไป",
+   "verdict": "ok",
+   "back": "MOM will not ask you to install app from link, and will not transfer your line to police. Not sure? Hang up.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "draft": "โปรเทศกาลปลอม",
+   "verdict": "ok",
+   "back": "Fake festival promo",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "draft": "ดีลถูกเกินจริงที่ให้คุณติดตั้งแอป",
+   "verdict": "ok",
+   "back": "Deal too cheap real that let you install app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "draft": "โฆษณา",
+   "verdict": "ok",
+   "back": "Advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "draft": "ทองลดราคาดีปาวลี",
+   "verdict": "fix",
+   "back": "Gold discount Deepavali",
+   "suggestion": "โปรโมชั่นทองดีปาวลี",
+   "reason": "Draft 'ทองลดราคาดีปาวลี' sounds like a description, not a sender name. 'โปรโมชั่นทองดีปาวลี' (Deepavali Gold Promo) sounds more like a sender ID for an ad."
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "draft": "ลดราคาดีปาวลี! ทองลด 80%!",
+   "verdict": "ok",
+   "back": "Discount Deepavali! Gold discount 80%!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "draft": "ดาวน์โหลดแอปของเราที่นี่: deepavali-gold.example/app",
+   "verdict": "ok",
+   "back": "Download our app here: deepavali-gold.example/app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "draft": "เหลือเวลาแค่ 1 ชั่วโมง!",
+   "verdict": "ok",
+   "back": "Left time just 1 hour!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "draft": "ราคาถูกเกินจริง",
+   "verdict": "ok",
+   "back": "Price cheap too real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "แอปจากลิงก์ ไม่ใช่จากแอปสโตร์",
+   "verdict": "ok",
+   "back": "App from link, not from app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "draft": "เร่งให้คุณรีบ",
+   "verdict": "fix",
+   "back": "Hurries you to be quick",
+   "suggestion": "เร่งให้คุณรีบตัดสินใจ",
+   "reason": "Original means 'rushes you' (pressure). Draft is redundant ('hurries you to be quick'). Added 'decision' to clarify the pressure context."
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "draft": "ติดตั้งแอปจากแอปสโตร์ทางการ (Google Play หรือ Apple App Store) เท่านั้น",
+   "verdict": "ok",
+   "back": "Install apps from official app store (Google Play or Apple App Store) only",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "draft": "แอปปลอมขโมยเงินจากบัญชีธนาคารของคุณได้",
+   "verdict": "ok",
+   "back": "Fake apps can steal money from your bank account",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "draft": "เงินง่าย (บัญชีม้า)",
+   "verdict": "ok",
+   "back": "Easy money (mule account)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "draft": "จ่ายเงินให้คุณเพื่อขอใช้บัญชีธนาคารของคุณ",
+   "verdict": "fix",
+   "back": "Paying you to ask to use your bank account",
+   "suggestion": "จ่ายเงินให้คุณเพื่อขอใช้บัญชีธนาคาร",
+   "reason": "Draft adds 'ของคุณ' (your) at the end which is redundant with 'ให้คุณ' (to you). Simplified for flow."
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "draft": "ข้อความแชท",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "draft": "อยากได้เงินง่ายๆ ไหม? สัปดาห์ละ $300 ไม่ต้องทำงาน!",
+   "verdict": "ok",
+   "back": "Want easy money? $300 a week, no work!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "draft": "แค่ให้ผมใช้บัญชีธนาคาร ซิมการ์ด หรือ Singpass ของคุณ",
+   "verdict": "ok",
+   "back": "Just let me use your bank account, SIM card or Singpass",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "draft": "ได้เงินโดยไม่ต้องทำงาน",
+   "verdict": "ok",
+   "back": "Get money without working",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "draft": "ขอบัญชีธนาคาร ซิมการ์ด หรือ Singpass ของคุณ",
+   "verdict": "ok",
+   "back": "Ask for your bank account, SIM card or Singpass",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "draft": "ห้ามขาย ให้ยืม หรือยกบัญชีธนาคาร ซิมการ์ด หรือ Singpass ของคุณให้ใครเด็ดขาด",
+   "verdict": "ok",
+   "back": "Do not sell, lend or give your bank account, SIM card or Singpass to anyone absolutely",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "draft": "นี่คือความผิดทางอาญา คุณอาจถูกปรับ จำคุก หรือเฆี่ยน",
+   "verdict": "ok",
+   "back": "This is a criminal offense. You may be fined, jailed or caned",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "draft": "งานปลอมหรือใบอนุญาตทำงานปลอม",
+   "verdict": "ok",
+   "back": "Fake job or fake work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].tagline": {
+   "english": "Official-looking offers that ask for money.",
+   "draft": "ข้อเสนอที่ดูเหมือนของทางการแต่ขอเงิน",
+   "verdict": "ok",
+   "back": "Offers that look official but ask for money",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "draft": "ข้อความแชท",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "draft": "เอเจนต์จัดหางาน SG",
+   "verdict": "ok",
+   "back": "SG Job Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "draft": "ข่าวดี! ใบอนุญาตทำงานของคุณได้รับอนุมัติแล้ว",
+   "verdict": "ok",
+   "back": "Good news! Your work permit has been approved",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "draft": "ส่งเงิน $800 ภายในวันนี้เพื่อยืนยันงานของคุณ",
+   "verdict": "fix",
+   "back": "Send $800 within today to confirm your job",
+   "suggestion": "ส่งเงิน $800 วันนี้เพื่อยืนยันงานของคุณ",
+   "reason": "Draft 'ภายในวันนี้' (within today) is slightly formal/awkward for a scam chat. 'วันนี้' (today) is more natural and urgent."
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "draft": "เราเป็นบริษัทจัดหางานที่มีใบอนุญาต เลขที่ใบอนุญาต 99X9999",
+   "verdict": "ok",
+   "back": "We are a licensed recruitment company. License number 99X9999",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "draft": "ให้คุณจ่ายเงินก่อน",
+   "verdict": "ok",
+   "back": "Let you pay first",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[1].label": {
+   "english": "A licence number does not prove it is real",
+   "draft": "เลขใบอนุญาตไม่ได้พิสูจน์ว่าเป็นของจริง",
+   "verdict": "ok",
+   "back": "License number does not prove it is real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[0]": {
+   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "draft": "การให้จ่ายเงินก่อนเป็นสัญญาณที่พบบ่อยของการหลอกลวงเรื่องงาน นายจ้างของคุณต้องเป็นผู้จ่ายค่าธรรมเนียมใบอนุญาตทำงาน",
+   "verdict": "ok",
+   "back": "Being asked to pay first is a common sign of job scam. Your employer must pay your work permit fees",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[1]": {
+   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "draft": "มิจฉาชีพลอกเลขใบอนุญาตของบริษัทจัดหางานจริงได้ ติดต่อบริษัทจัดหางานด้วยตัวเอง",
+   "verdict": "ok",
+   "back": "Scammers can copy real recruitment company license number. Contact recruitment company yourself",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].title": {
+   "english": "Secret codes (OTP)",
+   "draft": "รหัสลับ (OTP)",
+   "verdict": "ok",
+   "back": "Secret codes (OTP)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].tagline": {
+   "english": "Scammers ask for the code sent to your phone.",
+   "draft": "มิจฉาชีพขอรหัสที่ส่งมาที่โทรศัพท์ของคุณ",
+   "verdict": "ok",
+   "back": "Scammers ask for the code sent to your phone",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[0]": {
+   "english": "Sorry, I sent a code to your phone by mistake.",
+   "draft": "ขอโทษครับ ผมส่งรหัสไปที่โทรศัพท์ของคุณโดยไม่ได้ตั้งใจ",
+   "verdict": "ok",
+   "back": "Sorry, I sent the code to your phone unintentionally.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "draft": "ช่วยส่งรหัส 6 หลักมาให้ผมหน่อย เร็วๆ!",
+   "verdict": "ok",
+   "back": "Please send the 6-digit code to me, quickly!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].flags[0].label": {
+   "english": "Asks for your OTP and rushes you",
+   "draft": "ขอ OTP ของคุณและเร่งให้รีบ",
+   "verdict": "ok",
+   "back": "Asks for your OTP and rushes you to hurry.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[0]": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone.",
+   "draft": "ห้ามบอก OTP (รหัสที่ส่งมาที่โทรศัพท์ของคุณ) กับใครเด็ดขาด",
+   "verdict": "ok",
+   "back": "Do not tell OTP (the code sent to your phone) to anyone absolutely.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[1]": {
+   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "draft": "จำ ACT ไว้: ADD ติดตั้งแอป ScamShield, CHECK ตรวจสอบกับ 1799, TELL บอกครอบครัวและเพื่อน",
+   "verdict": "ok",
+   "back": "Remember ACT: ADD install ScamShield app, CHECK verify with 1799, TELL tell family and friends.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].title": {
+   "english": "Spot the red flags",
+   "draft": "หาสัญญาณอันตราย",
+   "verdict": "ok",
+   "back": "Find danger signals.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "draft": "เรียน คนงาน",
+   "verdict": "ok",
+   "back": "Dear worker",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "draft": "คุณมีค่าปรับใบอนุญาตทำงานค้างชำระ $350",
+   "verdict": "ok",
+   "back": "You have an unpaid work permit fine of $350.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "draft": "ชำระได้ที่",
+   "verdict": "ok",
+   "back": "Pay at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][2].t": {
+   "english": "or reply with your bank login.",
+   "draft": "หรือตอบกลับพร้อมข้อมูลเข้าสู่ระบบธนาคารของคุณ",
+   "verdict": "ok",
+   "back": "Or reply with your bank login information.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].explain": {
+   "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "draft": "SMS จากรัฐบาลส่งมาจาก \"gov.sg\" ที่อยู่จริงของ MOM ลงท้ายด้วย \".mom.gov.sg\" รัฐบาลจะไม่ขอข้อมูลเข้าสู่ระบบธนาคารทาง SMS เด็ดขาด ไม่แน่ใจ? โทร 1799",
+   "verdict": "ok",
+   "back": "SMS from government come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". Government will not ask for bank login via SMS absolutely. Unsure? Call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].title": {
+   "english": "Scam or safe?",
+   "draft": "หลอกลวงหรือปลอดภัย?",
+   "verdict": "ok",
+   "back": "Scam or safe?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].from": {
+   "english": "Your employer",
+   "draft": "นายจ้างของคุณ",
+   "verdict": "ok",
+   "back": "Your employer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].text": {
+   "english": "Please buy rice on the way home. Thank you!",
+   "draft": "ขากลับบ้านช่วยซื้อข้าวสารด้วยนะ ขอบคุณ!",
+   "verdict": "ok",
+   "back": "On the way home, please help buy rice. Thank you!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].why": {
+   "english": "A normal message from someone you know, with no money or codes asked.",
+   "draft": "ข้อความธรรมดาจากคนที่คุณรู้จัก ไม่ได้ขอเงินหรือรหัส",
+   "verdict": "ok",
+   "back": "Normal message from someone you know, did not ask for money or code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].from": {
+   "english": "Unknown number",
+   "draft": "เบอร์ที่ไม่รู้จัก",
+   "verdict": "ok",
+   "back": "Number not recognized",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].text": {
+   "english": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "draft": "บัญชีธนาคารของคุณถูกล็อก ตอบกลับด้วย OTP ที่เราเพิ่งส่งไป",
+   "verdict": "ok",
+   "back": "Your bank account is locked. Reply with the OTP we just sent.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "draft": "ห้ามบอก OTP (รหัสที่ส่งมาที่โทรศัพท์ของคุณ) กับใครเด็ดขาด แม้เขาจะบอกว่าเป็นธนาคารของคุณ",
+   "verdict": "ok",
+   "back": "Do not tell OTP (the code sent to your phone) to anyone absolutely, even if they say they are your bank.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].from": {
+   "english": "New contact",
+   "draft": "ผู้ติดต่อใหม่",
+   "verdict": "ok",
+   "back": "New contact",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].text": {
+   "english": "Lend me your bank card for one week. I will pay you $300.",
+   "draft": "ขอยืมบัตรธนาคารของคุณหนึ่งสัปดาห์ ผมจะจ่ายให้ $300",
+   "verdict": "ok",
+   "back": "Borrow your bank card for one week. I will pay you $300.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].why": {
+   "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "draft": "นี่คือข้อเสนอให้เป็นบัญชีม้า การให้คนอื่นใช้บัตรธนาคารของคุณเป็นความผิดทางอาญา",
+   "verdict": "ok",
+   "back": "This is an offer to be a scam mule. Letting others use your bank card is a criminal offense.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].from": {
+   "english": "Your friend",
+   "draft": "เพื่อนของคุณ",
+   "verdict": "ok",
+   "back": "Your friend",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].text": {
+   "english": "Happy Deepavali! See you at the event on Sunday.",
+   "draft": "สุขสันต์วันดีปาวลี! เจอกันที่งานวันอาทิตย์นะ",
+   "verdict": "ok",
+   "back": "Happy Deepavali! See you at the event on Sunday.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].why": {
+   "english": "A normal greeting from a friend, with nothing asked.",
+   "draft": "คำอวยพรธรรมดาจากเพื่อน ไม่ได้ขออะไร",
+   "verdict": "ok",
+   "back": "Normal greeting from a friend, did not ask for anything.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "draft": "คุณจะตอบว่าอะไร?",
+   "verdict": "ok",
+   "back": "What will you reply?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "draft": "\"ลูกพี่ลูกน้อง\" (เบอร์ใหม่)",
+   "verdict": "ok",
+   "back": "\"Cousin\" (new number)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "draft": "หวัดดี นี่ลูกพี่ลูกน้องเธอเอง ฉันเปลี่ยนเบอร์แล้ว",
+   "verdict": "ok",
+   "back": "Hi, this is your cousin myself. I changed number already.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "draft": "ฉันส่งรหัส 6 หลักไปที่โทรศัพท์เธอโดยไม่ได้ตั้งใจ ส่งมาให้ฉันหน่อยได้ไหม? ด่วน!",
+   "verdict": "ok",
+   "back": "I sent 6-digit code to your phone by mistake. Send to me please? Urgent!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "draft": "ได้ นี่รหัส: 482915",
+   "verdict": "ok",
+   "back": "OK, here code: 482915",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "draft": "ไม่ ฉันไม่บอกรหัสใครเลย ฉันจะโทรเบอร์เก่าของเธอ",
+   "verdict": "ok",
+   "back": "No. I never tell code to anyone. I will call your old number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "draft": "ส่งรูปเธอมาก่อน แล้วฉันจะส่งให้",
+   "verdict": "ok",
+   "back": "Send your photo first, then I will send.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "draft": "ห้ามบอก OTP กับใคร แม้แต่ครอบครัว ถ้ามีคนบอกว่าเปลี่ยนเบอร์ ให้โทรเบอร์เก่าของเขาเพื่อตรวจสอบ",
+   "verdict": "ok",
+   "back": "Do not tell OTP to anyone, even family. If someone says changed number, call their old number to check.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "draft": "เลือกวิธีที่ปลอดภัย",
+   "verdict": "ok",
+   "back": "Choose safe way",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "draft": "คุณอยากได้แอปช้อปปิ้งสำหรับโปรดีปาวลี ควรดาวน์โหลดจากที่ไหน?",
+   "verdict": "ok",
+   "back": "You want shopping app for Deepavali promo. Should download from where?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "draft": "แอปสโตร์ทางการในโทรศัพท์ของคุณ",
+   "verdict": "ok",
+   "back": "Official app store in your phone",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "draft": "ลิงก์ที่ส่งมาในข้อความแชท",
+   "verdict": "ok",
+   "back": "Link sent in chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "draft": "ลิงก์ในโฆษณาออนไลน์",
+   "verdict": "ok",
+   "back": "Link in online advert",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "draft": "ติดตั้งแอปจากแอปสโตร์ทางการ (Google Play หรือ Apple App Store) เท่านั้น แอปจากลิงก์ขโมยเงินของคุณได้",
+   "verdict": "ok",
+   "back": "Install app from official app store (Google Play or Apple App Store) only. App from link can steal your money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "draft": "หาสัญญาณอันตราย",
+   "verdict": "ok",
+   "back": "Find danger signal",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "draft": "ข้อความแชท",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "draft": "เอเจนต์จัดหางาน",
+   "verdict": "ok",
+   "back": "Job Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "draft": "นายจ้างของคุณต้องการยกเลิกใบอนุญาตทำงานของคุณ",
+   "verdict": "ok",
+   "back": "Your employer wants to cancel your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "draft": "จ่ายผม $500 แล้วคุณจะได้ทำงานต่อ",
+   "verdict": "fix",
+   "back": "Pay me $500 then you will get to work continue.",
+   "suggestion": "จ่ายผม $500 เพื่อรักษางานของคุณ",
+   "reason": "Original says 'to keep your job'. Draft adds 'then you will get to work continue' which changes meaning to a promise of future work rather than the condition of keeping the current job."
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "draft": "ตรวจสอบใบอนุญาตของคุณที่",
+   "verdict": "ok",
+   "back": "Check your permit at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "draft": "และส่งรหัสผ่าน Singpass ของคุณมาให้ผม",
+   "verdict": "ok",
+   "back": "and send your Singpass password to me.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "draft": "การเรียกเงินเพื่อแลกกับการได้ทำงานต่อเป็นสิ่งผิดกฎหมาย ที่อยู่จริงของ MOM ลงท้ายด้วย \".mom.gov.sg\" ห้ามบอกรหัสผ่าน Singpass กับใครเด็ดขาด",
+   "verdict": "ok",
+   "back": "Asking money to exchange for getting to work continue is illegal. Real MOM address ends with \".mom.gov.sg\". Do not tell Singpass password to anyone absolutely.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "draft": "คุณจะตอบว่าอะไร?",
+   "verdict": "ok",
+   "back": "You will answer what?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "draft": "เบอร์ที่ไม่รู้จัก",
+   "verdict": "ok",
+   "back": "Number not know",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "draft": "เงินง่ายๆ! รับ $200 ทุกสัปดาห์",
+   "verdict": "ok",
+   "back": "Easy money! Receive $200 every week",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "draft": "แค่ให้ผมใช้บัญชีธนาคารและ Singpass ของคุณ",
+   "verdict": "ok",
+   "back": "Just let me use your bank account and Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "draft": "ได้ เริ่มยังไง?",
+   "verdict": "ok",
+   "back": "OK, how to start?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "draft": "จ่ายฉัน $400 แทนได้ไหม?",
+   "verdict": "ok",
+   "back": "Can you pay me $400 instead?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "draft": "ไม่ นี่คือความผิดทางอาญา ฉันจะแจ้งเจ้าหน้าที่",
+   "verdict": "fix",
+   "back": "No. This is a criminal offense. I will report to officials.",
+   "suggestion": "ไม่ นี่คืออาชญากรรม ฉันจะแจ้งตำรวจ",
+   "reason": "Simplified 'criminal offense' to 'crime' and 'officials' to 'police' for better understanding by workers with limited schooling."
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "draft": "การให้คนอื่นใช้บัญชีธนาคารหรือ Singpass ของคุณทำให้คุณเป็นบัญชีม้า ซึ่งเป็นความผิดทางอาญา ปฏิเสธและแจ้งเจ้าหน้าที่",
+   "verdict": "fix",
+   "back": "Letting others use your bank account or Singpass makes you a scam mule, which is a criminal offense. Refuse and report to officials.",
+   "suggestion": "การให้คนอื่นใช้บัญชีธนาคารหรือ Singpass ของคุณ ทำให้คุณเป็น 'บัญชีม้า' ซึ่งเป็นอาชญากรรม ต้องปฏิเสธและแจ้งตำรวจ",
+   "reason": "Added quotes around 'scam mule' term for clarity, simplified 'criminal offense' to 'crime', and changed 'officials' to 'police' for directness."
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "draft": "อีกเรื่องสุดท้าย",
+   "verdict": "ok",
+   "back": "One last thing",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "draft": "คุณพอใจกับงานวันนี้แค่ไหน?",
+   "verdict": "fix",
+   "back": "How satisfied are you with today's event?",
+   "suggestion": "คุณพอใจกับกิจกรรมวันนี้แค่ไหน?",
+   "reason": "Changed 'event' (งาน) to 'activity' (กิจกรรม) as 'event' can imply a large formal gathering, whereas this is a learning session."
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "draft": "ไม่พอใจมาก",
+   "verdict": "ok",
+   "back": "Very unsatisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "draft": "ไม่พอใจ",
+   "verdict": "ok",
+   "back": "Unsatisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "draft": "เฉยๆ",
+   "verdict": "fix",
+   "back": "Indifferent",
+   "suggestion": "พอใช้ได้",
+   "reason": "'เฉยๆ' is too casual/slangy for a formal feedback scale; 'พอใช้ได้' (acceptable/okay) is more standard and polite."
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "draft": "พอใจ",
+   "verdict": "ok",
+   "back": "Satisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "draft": "พอใจมาก",
+   "verdict": "ok",
+   "back": "Very satisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "draft": "คุณได้เรียนรู้เรื่องใหม่เกี่ยวกับมิจฉาชีพไหม?",
+   "verdict": "ok",
+   "back": "Did you learn something new about scammers?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "draft": "ได้",
+   "verdict": "fix",
+   "back": "Got it",
+   "suggestion": "ใช่",
+   "reason": "'ได้' (Got it/Can do) is ambiguous for a Yes/No question. 'ใช่' (Yes) is clear."
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "draft": "นิดหน่อย",
+   "verdict": "ok",
+   "back": "A little bit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "draft": "ไม่ได้",
+   "verdict": "fix",
+   "back": "Did not get it",
+   "suggestion": "ไม่",
+   "reason": "'ไม่ได้' (Did not get it/Can't do) is ambiguous. 'ไม่' (No) is clear and matches the 'Yes' option."
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "draft": "ดูผลของฉัน",
+   "verdict": "ok",
+   "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}

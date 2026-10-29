@@ -1,0 +1,1335 @@
+{
+ "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "checked": "2026-10-29",
+ "seaTuned": true,
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "Selamat Hari Deepavali!",
+   "verdict": "ok",
+   "back": "Happy Deepavali Day!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "Lindungi diri dari penipuan",
+   "verdict": "ok",
+   "back": "Protect yourself from scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "Pelajari trik para penipu, lalu ikuti kuis.",
+   "verdict": "ok",
+   "back": "Learn the tricks of scammers, then take the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "Jawab semua dengan benar, lalu tunjukkan kode QR Anda ke petugas MOM untuk mendapat suvenir. Hanya untuk 500 orang pertama!",
+   "verdict": "ok",
+   "back": "Answer all correctly, then show your QR code to an MOM officer to get a souvenir. Only for the first 500 people!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "Saluran Bantuan ScamShield",
+   "verdict": "ok",
+   "back": "ScamShield Help Line",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "Bahasa",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "Beranda",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "Sebelumnya",
+   "verdict": "ok",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "Berikutnya",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "Selesai",
+   "verdict": "ok",
+   "back": "Finish",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "Keluar kuis",
+   "verdict": "ok",
+   "back": "Exit quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "Keluar dari kuis? Jawaban Anda sejauh ini akan hilang.",
+   "verdict": "ok",
+   "back": "Exit from quiz? Your answers so far will be lost.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "Tutup ulasan",
+   "verdict": "ok",
+   "back": "Close review",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "Belajar tentang penipuan",
+   "verdict": "ok",
+   "back": "Learn about scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "5 short stories · 2 min",
+   "draft": "5 cerita pendek · 2 menit",
+   "verdict": "ok",
+   "back": "5 short stories · 2 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "Kuis berhadiah suvenir",
+   "verdict": "ok",
+   "back": "Quiz with souvenir prize",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "Ikuti kuis",
+   "verdict": "ok",
+   "back": "Take the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 tantangan · 3 menit",
+   "verdict": "ok",
+   "back": "6 challenges · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "Tampilkan kode QR saya",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "Tampilkan hasil saya",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 Sisa {n} suvenir",
+   "verdict": "ok",
+   "back": "🎁 Remaining {n} souvenirs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "Semua suvenir sudah habis. Terima kasih sudah ikut!",
+   "verdict": "ok",
+   "back": "All souvenirs are already gone. Thank you for joining!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "Bagus! Anda tahu cara mengenali penipuan.",
+   "verdict": "ok",
+   "back": "Good! You know how to recognize scams.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "Lihat jawabannya, lalu coba lagi.",
+   "verdict": "ok",
+   "back": "Look at the answers, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "Ragu? Telepon",
+   "verdict": "ok",
+   "back": "Doubtful? Call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "CONTOH · BUKAN ASLI",
+   "verdict": "ok",
+   "back": "EXAMPLE · NOT REAL",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "Yang harus dilakukan",
+   "verdict": "ok",
+   "back": "What must be done",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "Ikuti kuis",
+   "verdict": "fix",
+   "back": "Follow the quiz",
+   "suggestion": "Ikuti kuis ini",
+   "reason": "Added 'ini' (this) for natural flow in a button context, though 'Ikuti kuis' is acceptable. Keeping it simple."
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "Ketuk {n} tanda bahaya",
+   "verdict": "ok",
+   "back": "Tap {n} danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "{k} dari {n} dipilih",
+   "verdict": "ok",
+   "back": "{k} of {n} chosen",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "Penipuan",
+   "verdict": "ok",
+   "back": "Fraud",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "Aman",
+   "verdict": "ok",
+   "back": "Safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "Pesan {i} dari {n}",
+   "verdict": "ok",
+   "back": "Message {i} of {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} dari {n}",
+   "verdict": "ok",
+   "back": "{i} of {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "Menyimpan hasil Anda…",
+   "verdict": "ok",
+   "back": "Saving your result…",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "Semua benar!",
+   "verdict": "ok",
+   "back": "All correct!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "Tunjukkan kode QR ini ke petugas MOM untuk mendapat suvenir.",
+   "verdict": "ok",
+   "back": "Show this QR code to an MOM officer to get a souvenir.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "Anda pernah menjawab semua dengan benar, jadi kode QR Anda masih berlaku.",
+   "verdict": "ok",
+   "back": "You once answered all correctly, so your QR code is still valid.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "{s} dari {t} benar",
+   "verdict": "ok",
+   "back": "{s} of {t} correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "Lihat jawabannya, lalu coba lagi untuk mendapat suvenir.",
+   "verdict": "ok",
+   "back": "Look at the answers, then try again to get a souvenir.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "Lihat jawaban",
+   "verdict": "ok",
+   "back": "Look at answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "Coba lagi",
+   "verdict": "ok",
+   "back": "Try again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "Kembali ke kode QR saya",
+   "verdict": "ok",
+   "back": "Back to my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "Hasil tersimpan ✓",
+   "verdict": "ok",
+   "back": "Result saved ✓",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "Belum tersimpan (tidak ada koneksi). Petugas tetap bisa memindai kode QR ini.",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "Belum tersimpan (tidak ada koneksi).",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "Coba simpan lagi",
+   "verdict": "ok",
+   "back": "Try save again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "Jawaban Anda",
+   "verdict": "ok",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "Jawaban benar",
+   "verdict": "ok",
+   "back": "Correct answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "Benar",
+   "verdict": "ok",
+   "back": "Correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "Salah",
+   "verdict": "ok",
+   "back": "Wrong",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "Kode",
+   "verdict": "ok",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "Percobaan",
+   "verdict": "ok",
+   "back": "Attempt",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "Petugas MOM palsu",
+   "verdict": "ok",
+   "back": "Fake MOM officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "Penipu mengaku dari MOM atau Polisi.",
+   "verdict": "ok",
+   "back": "Scammers claim to be from MOM or Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "draft": "Panggilan telepon",
+   "verdict": "ok",
+   "back": "Phone call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "draft": "Nomor tidak dikenal",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "draft": "Halo, saya dari MOM. Ada masalah dengan izin kerja (Work Permit) Anda.",
+   "verdict": "fix",
+   "back": "Hello, I am from MOM. There is a problem with your work permit (Work Permit).",
+   "suggestion": "Halo, saya dari MOM. Ada masalah dengan izin kerja Anda.",
+   "reason": "Removed redundant English text in parentheses to keep it natural and short for a phone screen."
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "draft": "Transfer $500 sekarang, atau Anda akan dipulangkan!",
+   "verdict": "ok",
+   "back": "Transfer $500 now, or you will be sent home!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "draft": "Pasang aplikasi ini dari link saya supaya saya bisa membantu Anda.",
+   "verdict": "ok",
+   "back": "Install this app from my link so I can help you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "draft": "Sekarang saya sambungkan telepon Anda ke Polisi.",
+   "verdict": "ok",
+   "back": "Now I will connect your call to the Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "draft": "Meminta Anda transfer uang",
+   "verdict": "ok",
+   "back": "Asks you to transfer money",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "Aplikasi dari link, bukan dari app store",
+   "verdict": "ok",
+   "back": "App from a link, not from app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "draft": "Menyambungkan telepon Anda ke Polisi",
+   "verdict": "ok",
+   "back": "Connects your call to the Police",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "draft": "MOM bisa menelepon Anda soal pekerjaan. Tapi MOM tidak pernah meminta Anda transfer uang atau memberi data login bank.",
+   "verdict": "ok",
+   "back": "MOM can call you about work. But MOM never asks you to transfer money or give bank login data.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "draft": "MOM tidak pernah menyuruh Anda memasang aplikasi dari link atau menyambungkan telepon ke Polisi. Ragu? Tutup teleponnya.",
+   "verdict": "ok",
+   "back": "MOM never tells you to install an app from a link or connect the call to the Police. Unsure? Hang up.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "draft": "Promo hari raya palsu",
+   "verdict": "ok",
+   "back": "Fake holiday promo",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "draft": "Promo terlalu murah yang menyuruh Anda memasang aplikasi.",
+   "verdict": "ok",
+   "back": "Promos too cheap that tell you to install an app.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "draft": "Iklan",
+   "verdict": "ok",
+   "back": "Advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "draft": "Promo Emas Deepavali",
+   "verdict": "ok",
+   "back": "Deepavali Gold Promo",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "draft": "Promo Deepavali! Diskon emas 80%!",
+   "verdict": "ok",
+   "back": "Deepavali promo! Gold discount 80%!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "draft": "Unduh aplikasi kami di sini: deepavali-gold.example/app",
+   "verdict": "ok",
+   "back": "Download our app here: deepavali-gold.example/app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "draft": "Tinggal 1 jam lagi!",
+   "verdict": "ok",
+   "back": "Only 1 hour left!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "draft": "Harga terlalu murah, tidak masuk akal",
+   "verdict": "ok",
+   "back": "Price too cheap, doesn't make sense",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "Aplikasi dari link, bukan dari app store",
+   "verdict": "ok",
+   "back": "App from a link, not from app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "draft": "Membuat Anda terburu-buru",
+   "verdict": "ok",
+   "back": "Makes you rush",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "draft": "Hanya pasang aplikasi dari app store resmi (Google Play atau Apple App Store).",
+   "verdict": "ok",
+   "back": "Only install apps from the official app store (Google Play or Apple App Store).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "draft": "Aplikasi palsu bisa mencuri uang dari rekening bank Anda.",
+   "verdict": "ok",
+   "back": "Fake apps can steal money from your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "draft": "Uang mudah (scam mule)",
+   "verdict": "ok",
+   "back": "Easy money (scam mule)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "draft": "Membayar Anda untuk memakai rekening bank Anda.",
+   "verdict": "ok",
+   "back": "Paying you to use your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "draft": "Pesan chat",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "draft": "Mau uang mudah? $300 per minggu, tanpa kerja!",
+   "verdict": "ok",
+   "back": "Want easy money? $300 per week, without work!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "draft": "Cukup biarkan saya memakai rekening bank, kartu SIM, atau Singpass Anda.",
+   "verdict": "ok",
+   "back": "Just let me use your bank account, SIM card, or Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "draft": "Uang tanpa kerja",
+   "verdict": "ok",
+   "back": "Money without work",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "draft": "Meminta rekening bank, kartu SIM, atau Singpass Anda",
+   "verdict": "ok",
+   "back": "Asking for your bank account, SIM card, or Singpass",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "draft": "Jangan pernah menjual, meminjamkan, atau memberikan rekening bank, kartu SIM, atau Singpass Anda.",
+   "verdict": "ok",
+   "back": "Never sell, lend, or give away your bank account, SIM card, or Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "draft": "Ini kejahatan. Anda bisa didenda, dipenjara, atau dihukum cambuk.",
+   "verdict": "ok",
+   "back": "This is a crime. You can be fined, jailed, or caned.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "draft": "Pekerjaan atau izin kerja palsu",
+   "verdict": "ok",
+   "back": "Fake job or work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].tagline": {
+   "english": "Official-looking offers that ask for money.",
+   "draft": "Tawaran yang tampak resmi tapi meminta uang.",
+   "verdict": "ok",
+   "back": "Offers that look official but ask for money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "draft": "Pesan chat",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "draft": "Agen Kerja SG",
+   "verdict": "ok",
+   "back": "SG Jobs Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "draft": "Kabar baik! Izin kerja Anda sudah disetujui.",
+   "verdict": "ok",
+   "back": "Good news! Your work permit has been approved.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "draft": "Kirim $800 hari ini untuk memastikan pekerjaan Anda.",
+   "verdict": "ok",
+   "back": "Send $800 today to confirm your job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "draft": "Kami agen berlisensi. No. lisensi 99X9999.",
+   "verdict": "ok",
+   "back": "We are a licensed agency. Licence no. 99X9999.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "draft": "Meminta Anda membayar dulu",
+   "verdict": "ok",
+   "back": "Asks you to pay first",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[1].label": {
+   "english": "A licence number does not prove it is real",
+   "draft": "Nomor lisensi tidak membuktikan itu asli",
+   "verdict": "ok",
+   "back": "A licence number does not prove it is real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[0]": {
+   "english": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "draft": "Diminta membayar dulu adalah tanda umum penipuan kerja. Biaya izin kerja Anda wajib dibayar oleh majikan.",
+   "verdict": "ok",
+   "back": "Being asked to pay first is a common job scam sign. Your employer must pay your work permit fees.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[1]": {
+   "english": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "draft": "Penipu bisa meniru nomor lisensi agen yang asli. Hubungi agennya sendiri.",
+   "verdict": "ok",
+   "back": "Scammers can copy a real agency's licence number. Contact the agency yourself.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].title": {
+   "english": "Secret codes (OTP)",
+   "draft": "Kode rahasia (OTP)",
+   "verdict": "ok",
+   "back": "Secret codes (OTP)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].tagline": {
+   "english": "Scammers ask for the code sent to your phone.",
+   "draft": "Penipu meminta kode yang dikirim ke ponsel Anda.",
+   "verdict": "ok",
+   "back": "Scammers ask for the code sent to your phone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[0]": {
+   "english": "Sorry, I sent a code to your phone by mistake.",
+   "draft": "Maaf, saya salah kirim kode ke ponsel Anda.",
+   "verdict": "ok",
+   "back": "Sorry, I sent a code to your phone by mistake.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "draft": "Tolong kirimkan kode 6 angka itu ke saya. Cepat!",
+   "verdict": "ok",
+   "back": "Please send that 6-digit code to me. Quick!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].flags[0].label": {
+   "english": "Asks for your OTP and rushes you",
+   "draft": "Meminta OTP Anda dan membuat terburu-buru",
+   "verdict": "ok",
+   "back": "Asks for your OTP and makes you rush",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[0]": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone.",
+   "draft": "Jangan pernah memberikan OTP Anda (kode yang dikirim ke ponsel Anda) kepada siapa pun.",
+   "verdict": "ok",
+   "back": "Never give your OTP (the code sent to your phone) to anyone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[1]": {
+   "english": "Remember ACT: ADD the ScamShield app, CHECK with 1799, TELL family and friends.",
+   "draft": "Ingat ACT: ADD (pasang) aplikasi ScamShield, CHECK (cek) ke 1799, TELL (beri tahu) keluarga dan teman.",
+   "verdict": "ok",
+   "back": "Remember ACT: ADD (install) ScamShield app, CHECK (check) with 1799, TELL (inform) family and friends.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].title": {
+   "english": "Spot the red flags",
+   "draft": "Temukan tanda bahaya",
+   "verdict": "ok",
+   "back": "Find the danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "draft": "Pekerja yang terhormat,",
+   "verdict": "ok",
+   "back": "Respected worker,",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "draft": "Anda punya denda izin kerja $350 yang belum dibayar.",
+   "verdict": "ok",
+   "back": "You have an unpaid work permit fine of $350.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "draft": "Bayar di",
+   "verdict": "ok",
+   "back": "Pay at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][2].t": {
+   "english": "or reply with your bank login.",
+   "draft": "atau balas dengan data login bank Anda.",
+   "verdict": "ok",
+   "back": "or reply with your bank login data.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].explain": {
+   "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "draft": "SMS pemerintah dikirim dari \"gov.sg\". Alamat MOM yang asli berakhiran \".mom.gov.sg\". Pemerintah tidak pernah meminta data login bank lewat SMS. Ragu? Telepon 1799.",
+   "verdict": "ok",
+   "back": "Government SMSes are sent from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for bank login data via SMS. Unsure? Call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].title": {
+   "english": "Scam or safe?",
+   "draft": "Penipuan atau aman?",
+   "verdict": "ok",
+   "back": "Scam or safe?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].from": {
+   "english": "Your employer",
+   "draft": "Majikan Anda",
+   "verdict": "ok",
+   "back": "Your employer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].text": {
+   "english": "Please buy rice on the way home. Thank you!",
+   "draft": "Tolong beli beras sambil pulang. Terima kasih!",
+   "verdict": "ok",
+   "back": "Please buy rice on the way home. Thank you!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].why": {
+   "english": "A normal message from someone you know, with no money or codes asked.",
+   "draft": "Pesan biasa dari orang yang Anda kenal, tidak meminta uang atau kode.",
+   "verdict": "ok",
+   "back": "A normal message from someone you know, not asking for money or codes.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].from": {
+   "english": "Unknown number",
+   "draft": "Nomor tidak dikenal",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].text": {
+   "english": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "draft": "Rekening bank Anda diblokir. Balas dengan OTP yang baru kami kirim.",
+   "verdict": "ok",
+   "back": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "draft": "Jangan pernah memberikan OTP Anda (kode yang dikirim ke ponsel Anda) kepada siapa pun, meskipun mereka mengaku dari bank Anda.",
+   "verdict": "ok",
+   "back": "Never give your OTP (the code sent to your phone) to anyone, even if they claim to be from your bank.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].from": {
+   "english": "New contact",
+   "draft": "Kontak baru",
+   "verdict": "ok",
+   "back": "New contact",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].text": {
+   "english": "Lend me your bank card for one week. I will pay you $300.",
+   "draft": "Pinjamkan kartu bank Anda selama satu minggu. Saya akan bayar Anda $300.",
+   "verdict": "ok",
+   "back": "Lend me your bank card for one week. I will pay you $300.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].why": {
+   "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "draft": "Ini tawaran scam mule. Membiarkan orang lain memakai kartu bank Anda adalah kejahatan.",
+   "verdict": "ok",
+   "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].from": {
+   "english": "Your friend",
+   "draft": "Teman Anda",
+   "verdict": "ok",
+   "back": "Your friend",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].text": {
+   "english": "Happy Deepavali! See you at the event on Sunday.",
+   "draft": "Selamat Deepavali! Sampai jumpa di acara hari Minggu.",
+   "verdict": "ok",
+   "back": "Happy Deepavali! See you at the event on Sunday.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].why": {
+   "english": "A normal greeting from a friend, with nothing asked.",
+   "draft": "Ucapan biasa dari teman, tidak meminta apa pun.",
+   "verdict": "ok",
+   "back": "A normal greeting from a friend, asking for nothing.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "draft": "Apa balasan Anda?",
+   "verdict": "ok",
+   "back": "What is your reply?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "draft": "\"Sepupu\" (nomor baru)",
+   "verdict": "ok",
+   "back": "\"Cousin\" (new number)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "draft": "Hai, ini sepupumu. Aku ganti nomor.",
+   "verdict": "ok",
+   "back": "Hi, this is your cousin. I changed number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "draft": "Aku salah kirim kode 6 angka ke ponselmu. Bisa kirim ke aku? Penting!",
+   "verdict": "ok",
+   "back": "I mistakenly sent a 6-digit code to your phone. Can you send to me? Important!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "draft": "Oke, ini kodenya: 482915",
+   "verdict": "ok",
+   "back": "OK, here is the code: 482915",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "draft": "Tidak. Aku tidak pernah memberi kode. Aku akan telepon nomor lamamu.",
+   "verdict": "ok",
+   "back": "No. I never give codes. I will call your old number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "draft": "Kirim fotomu dulu, nanti aku kirim.",
+   "verdict": "ok",
+   "back": "Send your photo first, later I send.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "draft": "Jangan pernah memberikan OTP Anda, termasuk ke keluarga. Jika seseorang bilang sudah ganti nomor, telepon nomor lamanya untuk cek.",
+   "verdict": "ok",
+   "back": "Never give your OTP, including to family. If someone says they changed number, call their old number to check.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "draft": "Pilih cara yang aman",
+   "verdict": "ok",
+   "back": "Choose the safe way",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "draft": "Anda ingin aplikasi belanja untuk promo Deepavali. Dari mana Anda harus mendapatkannya?",
+   "verdict": "ok",
+   "back": "You want a shopping app for Deepavali promos. Where should you get it?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "draft": "App store resmi di ponsel Anda",
+   "verdict": "ok",
+   "back": "Official app store on your phone",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "draft": "Link yang dikirim lewat pesan chat",
+   "verdict": "ok",
+   "back": "Link sent via chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "draft": "Link di iklan online",
+   "verdict": "ok",
+   "back": "Link in online ad",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "draft": "Hanya pasang aplikasi dari app store resmi (Google Play atau Apple App Store). Aplikasi dari link bisa mencuri uang Anda.",
+   "verdict": "ok",
+   "back": "Only install apps from official app store (Google Play or Apple App Store). Apps from links can steal your money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "draft": "Temukan tanda bahaya",
+   "verdict": "ok",
+   "back": "Find danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "draft": "Pesan chat",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "draft": "Agen Kerja",
+   "verdict": "ok",
+   "back": "Job Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "draft": "Majikan Anda ingin membatalkan izin kerja Anda.",
+   "verdict": "ok",
+   "back": "Your employer wants to cancel your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "draft": "Bayar saya $500 agar Anda tidak kehilangan pekerjaan.",
+   "verdict": "ok",
+   "back": "Pay me $500 so you don't lose your job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "draft": "Cek izin kerja Anda di",
+   "verdict": "ok",
+   "back": "Check your work permit at",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "draft": "dan kirimkan kata sandi Singpass Anda ke saya.",
+   "verdict": "ok",
+   "back": "and send your Singpass password to me.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "draft": "Meminta Anda membayar agar tetap bekerja itu ilegal. Alamat MOM yang asli berakhiran \".mom.gov.sg\". Jangan pernah memberikan kata sandi Singpass Anda.",
+   "verdict": "ok",
+   "back": "Asking you to pay to keep working is illegal. Real MOM addresses end with \".mom.gov.sg\". Never give your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "draft": "Apa balasan Anda?",
+   "verdict": "ok",
+   "back": "What is your reply?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "draft": "Nomor tidak dikenal",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "draft": "Uang mudah! Dapat $200 setiap minggu.",
+   "verdict": "ok",
+   "back": "Easy money! Get $200 every week.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "draft": "Cukup biarkan saya memakai rekening bank dan Singpass Anda.",
+   "verdict": "ok",
+   "back": "Just let me use your bank account and Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "draft": "Oke, bagaimana cara mulainya?",
+   "verdict": "ok",
+   "back": "Okay, how to start it?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "draft": "Bisa bayar saya $400 saja?",
+   "verdict": "ok",
+   "back": "Can pay me $400 only?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "draft": "Tidak. Ini kejahatan. Saya akan melaporkannya.",
+   "verdict": "ok",
+   "back": "No. This is crime. I will report it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "draft": "Membiarkan orang lain memakai rekening bank atau Singpass Anda membuat Anda menjadi scam mule. Ini kejahatan. Tolak dan laporkan.",
+   "verdict": "fix",
+   "back": "Letting others use your bank account or Singpass makes you a scam mule. This is crime. Say no and report.",
+   "suggestion": "Membiarkan orang lain memakai rekening bank atau Singpass Anda membuat Anda menjadi scam mule. Ini kejahatan. Kata tidak dan laporkan.",
+   "reason": "'Tolak' is too formal/commanding for 'Say no'. 'Kata tidak' is the natural everyday phrase."
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "draft": "Satu hal lagi",
+   "verdict": "ok",
+   "back": "One more thing",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "draft": "Seberapa senang Anda dengan acara hari ini?",
+   "verdict": "fix",
+   "back": "How happy are you with today's event?",
+   "suggestion": "Seberapa puas Anda dengan acara hari ini?",
+   "reason": "'Senang' (happy) is emotional. For feedback on an event/service, 'puas' (satisfied) is the standard and correct word. 'Senang' sounds like 'Are you happy?'. 'Puas' means 'Are you satisfied?'."
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "draft": "Sangat tidak senang",
+   "verdict": "fix",
+   "back": "Very not happy",
+   "suggestion": "Sangat tidak puas",
+   "reason": "Consistency with 'puas' (satisfied) from the question. 'Tidak senang' is okay but 'tidak puas' is better for feedback scales."
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "draft": "Tidak senang",
+   "verdict": "fix",
+   "back": "Not happy",
+   "suggestion": "Tidak puas",
+   "reason": "Consistency with 'puas'."
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "draft": "Biasa saja",
+   "verdict": "fix",
+   "back": "Just so-so",
+   "suggestion": "Cukup puas",
+   "reason": "'Biasa saja' means 'average/mediocre'. In a satisfaction scale, 'Cukup puas' (Fairly satisfied) or 'Netral' is better. Given the options are Happy/Unhappy, 'Cukup puas' fits the middle ground of satisfaction better than 'Biasa saja' which implies indifference."
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "draft": "Senang",
+   "verdict": "fix",
+   "back": "Happy",
+   "suggestion": "Puas",
+   "reason": "Consistency with 'puas'."
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "draft": "Sangat senang",
+   "verdict": "fix",
+   "back": "Very happy",
+   "suggestion": "Sangat puas",
+   "reason": "Consistency with 'puas'."
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "draft": "Apakah Anda belajar hal baru tentang penipuan?",
+   "verdict": "ok",
+   "back": "Did you learn new things about scams?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "draft": "Ya",
+   "verdict": "ok",
+   "back": "Yes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "draft": "Sedikit",
+   "verdict": "ok",
+   "back": "A little",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "draft": "Tidak",
+   "verdict": "ok",
+   "back": "No",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "draft": "Lihat hasil saya",
+   "verdict": "ok",
+   "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}
