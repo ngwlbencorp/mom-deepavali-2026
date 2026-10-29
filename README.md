@@ -103,13 +103,14 @@ The ducks.ai page (the address in the QR code) holds a small **shell**, uploaded
 - **Storage:** the scripts run in the ducks.ai page, so claim IDs, device keys and the chosen language are stored for the ducks.ai address, as before.
 - **Settings:** `shell/config.js` (`base`, the Vercel address; `timeoutMs`). `js/config.js` holds the API address, `https://ducks-vercel-api.vercel.app`.
 - **A bad push is live at once.** Run the tests before pushing. If something breaks during the event, use Vercel's **Instant Rollback** to the previous deployment (Vercel → project → Deployments).
-- **Admin and superadmin pages** stay on Vercel: `https://ducks-vercel-api.vercel.app/admin/` and `/superadmin/`.
+- **Officer page on ducks.ai:** `node tools/build-shell.js --admin` writes `dist/ducks-admin-shell.zip`, the same shell set to load `admin/index.html`. Upload it once to its own ducks.ai page (e.g. `deepavali-2026-officers`) and give officers that address. It bundles no copy (the page cannot work without the API); if Vercel cannot be reached it says "Cannot reach the server". The camera works there because the ducks.ai page is served over HTTPS with no policy blocking it; test it on real phones. The Vercel address (`https://ducks-vercel-api.vercel.app/admin/`) keeps working as a backup.
+- **Superadmin** stays on Vercel: `https://ducks-vercel-api.vercel.app/superadmin/`.
 
 ## Superadmin prep (before the event)
 
 1. Log in at `/superadmin/index.html`.
 2. **Admins tab:** upload a CSV of officer work emails. Any cell containing an email is used, so a column with a header is fine. Choose **Add** or **Replace**. Removing an email locks that officer out on their next action.
-3. Give officers the admin page URL and the shared admin password.
+3. Give officers the officer page's ducks.ai address and the shared admin password.
 4. Rehearse end to end on the real venue network.
 5. **Data tab → Clear rehearsal data** (type RESET). Rehearsal souvenirs count towards the cap until you do this.
 
@@ -204,5 +205,12 @@ The ducks.ai shell (`tests/shell.test.js`): serve a copy of the pages with CORS 
 
 ```bash
 node tests/shell.test.js http://127.0.0.1:8890/ <copy> <remote shell> <dead shell> <frozen shell>   # 10 checks
+```
+
+The officer page through the shell: build `--admin` shells with `--base http://127.0.0.1:8890/` (and one with a dead port), unpack, add `hostOverlay: true` to a third copy's `config.js`, serve them, then:
+
+```bash
+node tests/admin-shell.test.js <admin shell> <dead admin shell> <overlay admin shell> <adminPw>   # 6 checks, simulated camera
+ADMIN_URL=<admin shell>index.html node tests/e2e-server.js ...                                  # the whole officer flow, through the shell
 node tests/fit.test.js <remote shell> 360 640 && node tests/nav.test.js <remote shell>             # same site, through the shell
 ```

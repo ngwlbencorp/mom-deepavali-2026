@@ -1,9 +1,11 @@
 // End-to-end browser test: MW phones, two admins, superadmin. Site and API on different origins.
 // Usage: node tests/e2e-server.js <siteBase> <apiOrigin> <adminPw> <superUser> <superPw> <outDir>
+// ADMIN_URL=<url> runs the officer part through another address (e.g. the ducks.ai shell) instead of <siteBase>admin/index.html.
 // The site copy at <siteBase> must have js/config.js pointing at <apiOrigin>. The database is reset.
 const fs = require('fs');
 const { chromium, devices } = require('playwright');
 const [site, api, ADMIN_PW, SUPER_USER, SUPER_PW, out] = process.argv.slice(2);
+const ADMIN = process.env.ADMIN_URL || site + 'admin/index.html';
 let fails = 0;
 const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++; };
 const post = (path, body, token) => fetch(api + path, { method: 'POST', headers: { 'content-type': 'application/json', ...(token ? { authorization: 'Bearer ' + token } : {}) }, body: JSON.stringify(body) }).then((r) => r.json());
@@ -79,7 +81,7 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   // ---- admins ----
   async function admin(email) {
     const pg = await phone(email);
-    await pg.goto(site + 'admin/index.html');
+    await pg.goto(ADMIN);
     await pg.fill('#email', email); await pg.fill('#password', ADMIN_PW);
     await pg.click('#loginForm button');
     await pg.locator('#v-home').waitFor();
@@ -87,7 +89,7 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
     return pg;
   }
   const bad = await phone('bad');
-  await bad.goto(site + 'admin/index.html');
+  await bad.goto(ADMIN);
   await bad.fill('#email', 'mallory@mom.gov.sg'); await bad.fill('#password', ADMIN_PW); await bad.click('#loginForm button');
   await bad.locator('#loginErr').waitFor();
   ok(/Wrong login/.test(await bad.locator('#loginErr').textContent()), 'unlisted email cannot log in');
@@ -126,7 +128,7 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await alice.waitForFunction(() => /Recorded/.test(document.querySelector('#verdict .big').textContent));
 
   // manual path
-  await bob.goto(site + 'admin/index.html#manual');
+  await bob.goto(ADMIN + '#manual');
   await bob.locator('#v-manual').waitFor();
   ok(await bob.locator('.mq li').count() === 3 && await bob.locator('.mq .expect').count() === 3, 'manual page lists 3 questions with their answers, as a guide');
   ok(await bob.locator('.mq button').count() === 0 && !(await bob.locator('#manualSubmit').isDisabled()), 'no marking: one button records the claim');
@@ -150,7 +152,7 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await alice.screenshot({ path: out + '/admin-offline.png', fullPage: true });
 
   // bug report from the officer page, with a real (tall, full-page) screenshot
-  await bob.goto(site + 'admin/index.html#bug');
+  await bob.goto(ADMIN + '#bug');
   await bob.locator('#bugForm').waitFor();
   ok(await bob.locator('#bugForm select').count() === 0, 'bug form asks only what went wrong (no list to choose from)');
   await bob.fill('#bugText', 'Test report: the quiz froze after question 3 on my Android phone.');

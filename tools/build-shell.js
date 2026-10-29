@@ -1,32 +1,49 @@
-// Builds the zip to upload to ducks.ai for the mini-site: the shell (shell/), which loads the live
-// site from Vercel, plus a fallback copy of the site in fallback/ (index.html and every stylesheet
-// and script it refers to), used if Vercel cannot be reached.
-// Usage: node tools/build-shell.js [--frozen] [--out <file.zip>] [--root <dir>]
-//   --frozen  always use the bundled copy, never Vercel
+// Builds a zip to upload to ducks.ai: the shell (shell/), which loads one page of the live site
+// from Vercel.
+//   Mini-site (default): also bundles a fallback copy of the site in fallback/ (index.html and every
+//   stylesheet and script it refers to), used if Vercel cannot be reached.
+//   Officer page (--admin): loads admin/index.html; nothing bundled, since it cannot work without
+//   the API anyway.
+// Usage: node tools/build-shell.js [--admin] [--frozen] [--out <file.zip>] [--root <dir>] [--base <url>]
+//   --frozen  mini-site only: always use the bundled copy, never Vercel
 //   --root    take the site files from another copy of the site (for tests)
-// Output: dist/ducks-site-shell.zip (or dist/ducks-site-shell-frozen.zip). No dependencies.
+//   --base    the site address to load from, instead of the one in shell/config.js (for tests)
+// Output: dist/ducks-site-shell.zip, dist/ducks-site-shell-frozen.zip or dist/ducks-admin-shell.zip.
+// No dependencies.
 const fs = require('fs'), path = require('path'), zlib = require('zlib');
 const repo = path.join(__dirname, '..');
 const args = process.argv.slice(2);
-const frozen = args.includes('--frozen');
-const outArg = args.indexOf('--out'), rootArg = args.indexOf('--root');
-const site = rootArg >= 0 ? path.resolve(args[rootArg + 1]) : repo;
-const out = outArg >= 0 ? args[outArg + 1] : path.join(repo, 'dist', frozen ? 'ducks-site-shell-frozen.zip' : 'ducks-site-shell.zip');
+const opt = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : null; };
+const admin = args.includes('--admin'), frozen = args.includes('--frozen');
+if (admin && frozen) { console.error('--frozen is for the mini-site only: the officer page needs the API.'); process.exit(1); }
+const site = opt('--root') ? path.resolve(opt('--root')) : repo;
+const page = admin ? 'admin/index.html' : 'index.html';
+const out = opt('--out') || path.join(repo, 'dist', admin ? 'ducks-admin-shell.zip' : frozen ? 'ducks-site-shell-frozen.zip' : 'ducks-site-shell.zip');
 
+const pageHtml = fs.readFileSync(path.join(site, page), 'utf8');
 const files = []; // [name in zip, Buffer]
-for (const f of ['index.html', 'shell.js']) files.push([f, fs.readFileSync(path.join(repo, 'shell', f))]);
+let shellHtml = fs.readFileSync(path.join(repo, 'shell', 'index.html'), 'utf8');
+const title = (pageHtml.match(/<title>([^<]*)<\/title>/) || [])[1];
+if (title) shellHtml = shellHtml.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
+if (admin) shellHtml = shellHtml.replace(/<noscript>[\s\S]*?<\/noscript>/, '<noscript><p>Please turn on JavaScript.</p></noscript>')
+  .replace('<meta name="color-scheme" content="light">', '<meta name="color-scheme" content="light">\n<meta name="robots" content="noindex, nofollow">');
+files.push(['index.html', Buffer.from(shellHtml)]);
+files.push(['shell.js', fs.readFileSync(path.join(repo, 'shell', 'shell.js'))]);
 let config = fs.readFileSync(path.join(repo, 'shell', 'config.js'), 'utf8');
 if (frozen) config = config.replace(/mode:\s*'remote'/, "mode: 'local'");
+if (admin) config = config.replace(/page:\s*'[^']*'/, `page: '${page}'`).replace(/fallback:\s*true/, 'fallback: false');
+if (opt('--base')) config = config.replace(/base:\s*'[^']*'/, `base: '${opt('--base')}'`);
 files.push(['config.js', Buffer.from(config)]);
-const index = fs.readFileSync(path.join(site, 'index.html'), 'utf8');
-files.push(['fallback/index.html', Buffer.from(index)]);
-const refs = [...index.replace(/<!--[\s\S]*?-->/g, '').matchAll(/<(?:script|link)\b[^>]*?\b(?:src|href)="(?:\.\/)?([^"#?:]+)"/g)].map((m) => m[1]);
-for (const ref of refs) {
-  const p = path.join(site, ref);
-  if (!fs.existsSync(p)) { console.error('index.html refers to a missing file: ' + ref); process.exit(1); }
-  files.push(['fallback/' + ref, fs.readFileSync(p)]);
+if (!admin) {
+  files.push(['fallback/index.html', Buffer.from(pageHtml)]);
+  const refs = [...pageHtml.replace(/<!--[\s\S]*?-->/g, '').matchAll(/<(?:script|link)\b[^>]*?\b(?:src|href)="(?:\.\/)?([^"#?:]+)"/g)].map((m) => m[1]);
+  for (const ref of refs) {
+    const p = path.join(site, ref);
+    if (!fs.existsSync(p)) { console.error(page + ' refers to a missing file: ' + ref); process.exit(1); }
+    files.push(['fallback/' + ref, fs.readFileSync(p)]);
+  }
+  for (const extra of ['js/vendor/LICENSES.txt']) if (fs.existsSync(path.join(site, extra))) files.push(['fallback/' + extra, fs.readFileSync(path.join(site, extra))]);
 }
-for (const extra of ['js/vendor/LICENSES.txt']) if (fs.existsSync(path.join(site, extra))) files.push(['fallback/' + extra, fs.readFileSync(path.join(site, extra))]);
 
 // Only file types ducks.ai accepts.
 const ALLOWED = /\.(avif|cjs|css|gif|html|ico|jpe?g|js|json|m4v|map|md|mjs|mov|mp4|ogv|otf|pdf|png|svg|ttf|txt|vtt|webm|webp|woff2?|xml|ya?ml)$/i;

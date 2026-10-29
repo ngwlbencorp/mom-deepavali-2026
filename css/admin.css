@@ -1,5 +1,7 @@
 /* Shared by the admin and superadmin pages. */
 .top.slim { padding: 16px 16px 36px; border-radius: 0 0 20px 20px; }
+/* On ducks.ai the platform's floating buttons cover about 150 x 56 px at the top-left (the shell marks the page). */
+html.on-ducks .top.slim { padding-top: 64px; }
 .small { font-size: .85rem; margin: 8px 0 0; }
 .field { display: block; font-size: .85rem; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
 .field input, .typecode input, .field select {
