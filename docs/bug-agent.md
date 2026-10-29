@@ -8,8 +8,9 @@ Instructions for the scheduled Claude session that checks the bug reports office
 2. If today is after 9 Nov 2026 (Singapore time), the event is over: disable this scheduled task (update its trigger to `enabled: false`), send one push notification saying so, and stop.
 3. Get the repository: add `ngwlbencorp/mom-deepavali-2026` with push access, clone it, and work on `main`.
 4. `NODE_USE_ENV_PROXY=1 node tools/bugs.js list new`
-   - No new reports: stop. No output, no notification.
+   - No new reports and no server errors in the last hour (step 5): stop. No output, no notification.
    - Also look at `list in_progress`: a report left there by a run that did not finish is yours to continue.
+5. `NODE_USE_ENV_PROXY=1 node tools/bugs.js errors` lists unexpected errors inside the API (route, error, where in the code). Use them to find the cause of a reported problem. Errors from the last hour with no matching report: investigate them the same way (section 2, steps 3 to 5); if you fix one, say so in the notification, since there is no report to record it against.
 
 ## 2. For each new report, oldest first
 

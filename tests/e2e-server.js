@@ -209,6 +209,8 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await card.locator('select').selectOption('fixed');
   await sup.waitForFunction((n) => { const c = document.querySelector(`.bug[data-id="${n}"]`); return c && /Fixed/.test(c.querySelector('.badge').textContent) && /min\)/.test(c.textContent); }, bugNo);
   ok(/\d+ fixed/.test(await sup.locator('#bugSummary').textContent()), 'superadmin can mark it fixed; time to fix and summary shown');
+  await sup.waitForFunction(() => document.querySelector('#errList table, #errList p'));
+  ok(true, 'bug log shows the server errors section');
   await sup.screenshot({ path: out + '/superadmin-bugs.png', fullPage: true });
 
   ok(!errs.length, 'no page errors ' + (errs.length ? JSON.stringify(errs) : ''));

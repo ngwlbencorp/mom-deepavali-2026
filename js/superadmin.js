@@ -289,6 +289,23 @@
       $('bugErr').hidden = true;
       renderBugs(r.body.reports, r.body.statuses);
     }, function () { $('bugErr').textContent = 'Cannot reach the server.'; $('bugErr').hidden = false; });
+    Api.call('GET', '/api/apierrors', null, ROLE).then(function (r) { if (guard(r) && r.ok) renderErrors(r.body.errors.slice(0, 50)); }, function () {});
+  }
+  function renderErrors(list) {
+    var box = $('errList');
+    box.innerHTML = '';
+    if (!list.length) { box.appendChild(node('p', 'muted', 'None recorded.')); return; }
+    var t = node('table'), head = node('tr');
+    ['When', 'API', 'Error'].forEach(function (h) { head.appendChild(node('th', null, h)); });
+    t.appendChild(head);
+    list.forEach(function (x) {
+      var tr = node('tr');
+      tr.appendChild(node('td', null, new Date(x.created_at).toLocaleString()));
+      tr.appendChild(node('td', null, x.route));
+      tr.appendChild(node('td', 'errmsg', x.message));
+      t.appendChild(tr);
+    });
+    box.appendChild(t);
   }
   function renderBugs(list, statuses) {
     var fixed = list.filter(function (b) { return b.status === 'fixed' && b.fixed_at; });

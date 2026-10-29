@@ -92,6 +92,11 @@
           <p class="error" id="bugErr" hidden></p>
         </div>
         <div id="bugList"></div>
+        <div class="card">
+          <h3>Server errors</h3>
+          <p class="muted small">Unexpected errors inside the API, recorded automatically (the latest 50; the same error at most once a minute). They help find the cause of a reported problem.</p>
+          <div class="tablewrap" id="errList"></div>
+        </div>
       </section>
 
       <!-- data -->
@@ -102,6 +107,7 @@
           <button class="btn secondary" data-export="submissions">Quiz submissions (one row per attempt)</button>
           <button class="btn secondary" data-export="admins">Admin list</button>
           <button class="btn secondary" data-export="bugs">Bug log (without screenshots)</button>
+          <button class="btn secondary" data-export="errors">Server errors</button>
           <p class="error" id="exportErr" hidden></p>
         </div>
         <div class="card danger">

@@ -170,6 +170,10 @@ const call = (method, path, body, token) => fetch(base + path, {
     ok((await call('GET', '/api/bugs', null, BUG_TOKEN + 'x')).status === 401, 'a wrong bug-agent token is refused');
     ok((await call('GET', '/api/dashboard', null, BUG_TOKEN)).status === 401 && (await call('GET', '/api/stats', null, BUG_TOKEN)).status === 401, 'bug-agent token opens nothing else');
   }
+  const ae = await call('GET', '/api/apierrors', null, SUP);
+  ok(ae.status === 200 && Array.isArray(ae.body.errors), 'superadmin can read the server error log');
+  ok((await call('GET', '/api/apierrors', null, ADM)).status === 403 && (await call('GET', '/api/apierrors')).status === 401, 'officers and visitors cannot read the server error log');
+  if (BUG_TOKEN) ok((await call('GET', '/api/apierrors?since=0', null, BUG_TOKEN)).status === 200, 'bug-agent token can read the server error log');
   await call('POST', '/api/reset', { confirm: 'RESET' }, SUP);
   ok((await call('GET', '/api/bugs', null, SUP)).body.reports.some((x) => x.id === bugId), 'clearing rehearsal data keeps the bug log');
 
