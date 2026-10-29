@@ -91,9 +91,17 @@ Logins last 14 hours, and only for the browser tab they were made in.
 5. Check from a phone on mobile data: `https://<app>.vercel.app/api/ping` should show `{"ok":true,...}`.
 6. All API routes run in **one** Vercel function: `vercel.json` rewrites `/api/<name>` to `api/index.js`, which dispatches to `lib/routes/<name>.js`. This keeps the deployment far below Vercel's per-deployment function limit, and the admins' polling keeps that one function warm. To add a route, add a file in `lib/routes/` and one line in `api/index.js`.
 
-## Hosting the pages on ducks instead
+## The mini-site on ducks.ai: a shell that loads from Vercel
 
-`js/config.js` is already set to `https://ducks-vercel-api.vercel.app` (origin only; change it if the project URL changes). Zip and upload `index.html`, `css/`, `js/`, `admin/` and `superadmin/`. The API stays on Vercel. Admins and the superadmin use the ducks URLs.
+The ducks.ai page (the address in the QR code) holds a small **shell**, uploaded once. On each visit the shell fetches `index.html` from the Vercel project, puts its page structure in place, and loads its stylesheets and scripts from Vercel. A push to `main` therefore changes the live mini-site with no new upload: the next visit gets the new version. A page already open keeps the version it loaded, so nobody's quiz changes mid-way.
+
+- **Build:** `node tools/build-shell.js` writes `dist/ducks-site-shell.zip`. Upload it to the ducks.ai page in place of the old files.
+- **Fallback:** the zip also carries a copy of the site (`fallback/`: `index.html` and every file it refers to) taken when it was built. It is used if Vercel does not answer within 5 seconds, or if one of its files fails to load. Quiz submissions still need the API, so a full Vercel outage still stops souvenir claims. The copy is only as fresh as the last build, so rebuild and re-upload the zip before the event if the site changed a lot since.
+- **Frozen:** `node tools/build-shell.js --frozen` makes a zip that never contacts Vercel for the pages (the API is still on Vercel).
+- **Storage:** the scripts run in the ducks.ai page, so claim IDs, device keys and the chosen language are stored for the ducks.ai address, as before.
+- **Settings:** `shell/config.js` (`base`, the Vercel address; `timeoutMs`). `js/config.js` holds the API address, `https://ducks-vercel-api.vercel.app`.
+- **A bad push is live at once.** Run the tests before pushing. If something breaks during the event, use Vercel's **Instant Rollback** to the previous deployment (Vercel → project → Deployments).
+- **Admin and superadmin pages** stay on Vercel: `https://ducks-vercel-api.vercel.app/admin/` and `/superadmin/`.
 
 ## Superadmin prep (before the event)
 
@@ -105,7 +113,7 @@ Logins last 14 hours, and only for the browser tab they were made in.
 
 ## Reporting
 
-- **Dashboard** (refreshes every 15 seconds): souvenirs given vs cap; quiz submissions (self and manual); MWs reached (claim IDs); first-try full-score rate; eventual full-score rate; average attempts to full score; average satisfaction and its distribution; "learned something new". There is also a cumulative chart over time, with a table view.
+- **Dashboard** (refreshes every 15 seconds): a **Database** tile, superadmin only, showing whether the database was awake and how fast it answered (Neon's free plan sleeps after 5 minutes without queries; the first query after that takes a second or more); souvenirs given vs cap; quiz submissions (self and manual); MWs reached (claim IDs); first-try full-score rate; eventual full-score rate; average attempts to full score; average satisfaction and its distribution; "learned something new". There is also a cumulative chart over time, with a table view.
 - **Data tab:** CSV downloads of `claims` (one row per claim ID), `submissions` (one row per quiz attempt) and `admins`.
 
 ### ⚠ Check whether the site can really measure first-try and multiple-try success
@@ -163,6 +171,8 @@ No names, FINs or phone numbers are stored. The claim ID is random, and officer 
 - [ ] Camera scanning tested on iPhone and Android over the live HTTPS site (the only path not tested in automation).
 - [ ] MOM language team has reviewed the chosen languages; corrections imported and `tests/fit.test.js` re-run for each.
 - [ ] Rehearsal data cleared.
+- [ ] ducks.ai page shows the current site (the shell zip is uploaded once; rebuild it before the event so its fallback copy is current).
+- [ ] On the day: an officer logs in before distribution starts (this wakes the database; the superadmin **Database** tile confirms it), and at least one station screen stays unlocked.
 
 ## Tests (local)
 
@@ -177,3 +187,10 @@ node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b .
 ```
 
 Both test scripts reset data. Never run them against the production database.
+
+The ducks.ai shell (`tests/shell.test.js`): serve a copy of the pages with CORS as a stand-in for Vercel (`python3 tests/serve-cors.py 8890 <copy>`), build the zips from it (`node tools/build-shell.js --root <copy> --out …`, and again with `--frozen`), unpack three shells (base set to the stand-in, with a `<div id="ducks-extra">` added before the scripts; base set to a dead port; frozen), serve each, then:
+
+```bash
+node tests/shell.test.js http://127.0.0.1:8890/ <copy> <remote shell> <dead shell> <frozen shell>   # 10 checks
+node tests/fit.test.js <remote shell> 360 640 && node tests/nav.test.js <remote shell>             # same site, through the shell
+```

@@ -69,7 +69,10 @@
       ['Eventually full score', pct(d.eventualFullRate), d.selfFull + ' of ' + d.selfClaims + ' self claims'],
       ['Avg attempts to full score', d.avgAttemptsToFull == null ? '–' : d.avgAttemptsToFull.toFixed(2), 'self claims that reached full score'],
       ['Avg satisfaction', d.csatAvg == null ? '–' : d.csatAvg.toFixed(2) + ' / 5', d.csatN + ' ratings'],
-      ['Learned something new', (d.learned.Y + d.learned.S + d.learned.N) ? d.learned.Y + ' yes' : '–', d.learned.S + ' a little · ' + d.learned.N + ' no']
+      ['Learned something new', (d.learned.Y + d.learned.S + d.learned.N) ? d.learned.Y + ' yes' : '–', d.learned.S + ' a little · ' + d.learned.N + ' no'],
+      // Over ~0.8 s means the database was asleep and this request woke it. Superadmin only.
+      ['Database', d.dbMs == null ? '–' : d.dbMs < 800 ? 'Awake' : 'Was asleep, now awake',
+        d.dbMs == null ? '' : 'responded in ' + (d.dbMs < 1000 ? d.dbMs + ' ms' : (d.dbMs / 1000).toFixed(1) + ' s')]
     ];
     var box = $('tiles'); box.innerHTML = '';
     tiles.forEach(function (t) {

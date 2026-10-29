@@ -29,6 +29,7 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await pg.goto(site + 'index.html');
   await pg.evaluate((l) => { localStorage.clear(); localStorage.setItem('scamsite.lang', l); }, LANG);
   await pg.reload();
+  await pg.locator('#app h1').waitFor(); // via the ducks.ai shell the site arrives a moment after load
   ok(await pg.evaluate(() => document.documentElement.lang) === LANG, `page is in ${LANG}`);
   await fits('home');
 

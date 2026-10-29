@@ -157,10 +157,12 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await sup.locator('#loginErr').waitFor();
   ok(true, 'superadmin login refuses the admin password');
   await sup.fill('#password', SUPER_PW); await sup.click('#loginForm button');
-  await sup.waitForFunction(() => document.querySelectorAll('.tile').length === 8);
+  await sup.waitForFunction(() => document.querySelectorAll('.tile').length === 9);
   const tiles = await sup.locator('.tile').allInnerTexts();
   ok(/4 \/ 500/.test(tiles[0]) && /2 via manual/.test(tiles[0]), 'dashboard: souvenirs given 4 / 500, 2 via manual');
   ok(/^Quiz submissions\s+5\s/.test(tiles[1]), 'dashboard: 5 quiz submissions (3 phones + 2 manual)');
+  ok(/^Database\s+Awake\s+responded in \d+ ms/.test(tiles[8]), 'dashboard: database indicator says awake, with response time (' + tiles[8].replace(/\s+/g, ' ') + ')');
+  ok(!/Database|responded in/.test(await alice.locator('body').innerText()), 'officers do not see the database indicator');
   ok(await sup.locator('#lineChart path').count() === 2 && await sup.locator('#csatChart path').count() >= 1, 'line chart (2 series) and satisfaction chart render');
   await sup.locator('#lineChart rect').hover();
   ok(!(await sup.locator('#tip').isHidden()), 'hover shows tooltip');

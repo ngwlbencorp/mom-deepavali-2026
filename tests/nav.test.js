@@ -12,6 +12,7 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await pg.goto(site + 'index.html');
   await pg.evaluate(() => localStorage.clear());
   await pg.reload();
+  await pg.locator('#app h1').waitFor(); // via the ducks.ai shell the site arrives a moment after load
   const navLabels = () => pg.locator('#nav .btn').allTextContents();
   const exit = () => pg.locator('.exitbtn');
   const quiz = await pg.evaluate(() => window.SCAM_TEXT.en.quiz);
