@@ -110,7 +110,7 @@ rows = [
     ('Translation review: Deepavali scam-awareness mini-site', True),
     ('', False),
     ('What this is', True),
-    ('Draft translations of the mini-site text (Learn stories, Quiz, Feedback, buttons) in every language MOM publishes worker materials in. They were machine-drafted by Claude and have NOT been checked by a native speaker. A language only goes live after your review.', False),
+    ('Draft translations of the mini-site text (Learn stories, Quiz, Feedback, buttons) in the nine languages MOM uses for its migrant-worker guides and scam materials (see SOURCES.md in the repository for the evidence). MOM also publishes a domestic-worker safety agreement in Khmer and Sinhalese; there are no drafts for those two. They were machine-drafted by Claude and have NOT been checked by a native speaker. A language only goes live after your review.', False),
     ('Every rule in the text comes from a public MOM, ScamShield, Police or GovTech page. Column H names the sources (see the Sources tab), so you can check the meaning against the official wording.', False),
     ('', False),
     ('How to review', True),

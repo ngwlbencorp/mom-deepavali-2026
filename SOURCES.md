@@ -15,6 +15,9 @@ Mock messages, names, numbers, prices and web addresses in the stories are ficti
 | M5 | MOM, "A Guide for Migrant Workers" (handy guide, PDF) | [mom.gov.sg](https://www.mom.gov.sg/-/media/mom/documents/publications/mw-guides/mw-handy-guide-english.pdf) |
 | M6 | MOM, 2025 scam alert: impersonation phone calls | [mom.gov.sg](https://www.mom.gov.sg/newsroom/announcements/2025/2025-scam-alert-impersonation-phone-call) |
 | M7 | MOM eService, "Check work pass and application status" | [mom.gov.sg](https://www.mom.gov.sg/eservices/services/check-work-pass-and-application-status) |
+| M8 | MOM, Resources for employers of migrant domestic workers (MDW guidebooks) | [mom.gov.sg](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker/publications-and-resources/resources) |
+| M9 | MOM, Health and well-being resources for migrant workers | [mom.gov.sg](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/recreation-well-being-and-other-resources-for-migrant-workers/health-well-being-resources-for-mws) |
+| M10 | MOM, Contracts and safety agreement for migrant domestic workers | [mom.gov.sg](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker/employers-guide/contracts-and-safety-agreement) |
 | S1 | ScamShield, Government officials impersonation scams | [scamshield.gov.sg](https://www.scamshield.gov.sg/i-want-protection-from-scams/learn-to-recognise-scams/government-officials-impersonation-scams/) |
 | S2 | ScamShield, Job scams | [scamshield.gov.sg](https://www.scamshield.gov.sg/i-want-protection-from-scams/learn-to-recognise-scams/job-scams/) |
 | S3 | ScamShield, Phishing scams | [scamshield.gov.sg](https://www.scamshield.gov.sg/i-want-protection-from-scams/learn-to-recognise-scams/phishing-scams/) |
@@ -111,18 +114,24 @@ Total 9 points. Every right answer rests on an official rule. Items that look su
 | True or false: it is safe to tell a caller the OTP sent to your phone. | False | S3; S5 |
 | What number can you call to check if something is a scam? | 1799 | S7; M2 |
 
-## Language references for translators
+## Languages MOM publishes in
 
-MOM already publishes worker materials in these languages. Translators should reuse MOM's own terms (for example for "work permit", "employment agency", "employer") where they exist.
+Which languages the site is drafted in, and why. Checked on 29 Oct 2026 across MOM's worker pages: M2 (MDW scams), M3 (Work Permit publications), M8 (MDW guidebooks), M9 (health resources) and M10 (MDW contracts). MOM calls Chinese "Mandarin".
 
-| Language | MOM material in that language |
-|---|---|
-| Bahasa Indonesia | M5 handy guide; M2 real stories and ACT resources |
-| Bengali | M5 handy guide; M3 kickback materials |
-| Burmese | M5 handy guide; M2 video and ACT resources; M3 |
-| Chinese (Mandarin) | M5 handy guide; M3 kickback materials |
-| Hindi | M2 video and ACT resources |
-| Tagalog | M2 ACT resources |
-| Tamil | M5 handy guide; M2 video and ACT resources; M3 |
-| Thai | M3 kickback materials |
-| Vietnamese | M3 kickback materials |
+| Language | Drafted? | MOM worker material in that language (source) |
+|---|---|---|
+| Bahasa Indonesia | Yes | Handy guide, e-remittance guide (M3); ACT resource, real-stories video (M2); self-care journal, salary guide (M8); health tips (M9); safety agreement (M10) |
+| Bengali | Yes | Handy guide, kickback leaflets, e-remittance guide, "Contact MOM" (M3); health tips (M9) |
+| Burmese | Yes | Handy guide, "Do not pay to keep your job", e-remittance guide, "Contact MOM" (M3); ACT video and resource, real-stories video (M2); self-care journal, salary guide (M8); some health tips (M9); safety agreement (M10) |
+| Chinese | Yes | Handy guide, kickback leaflets, e-remittance guide, "Contact MOM" (M3); health tips (M9) |
+| Hindi | Yes | ACT video and resource, real-stories video (M2); salary guide (M8). Domestic-worker materials only |
+| Tagalog | Yes | ACT resource (M2); e-remittance guide (M3); self-care journal, salary guide (M8); safety agreement (M10) |
+| Tamil | Yes | Handy guide, kickback leaflets, e-remittance guide, "Contact MOM" (M3); ACT video and resource, real-stories video (M2); guidebooks (M8); health tips (M9); safety agreement (M10) |
+| Thai | Yes | Kickback leaflets, e-remittance guide, "Contact MOM" (M3); health tips (M9); safety agreement (M10) |
+| Vietnamese | Yes | Kickback leaflets, "Only one job" (M3); health tips (M9) |
+| Khmer | **No** | Safety agreement only (M10), a legal form for domestic workers. No guides or scam materials found |
+| Sinhalese | **No** | Safety agreement only (M10). No guides or scam materials found |
+
+No Malay, Telugu or other language versions were found on these pages. MOM's site may hold other translated documents not linked from them, so this is a check of the main worker pages, not a full audit of mom.gov.sg.
+
+Translators should reuse MOM's own terms from these materials (for example for "work permit", "employment agency", "employer") where they exist.

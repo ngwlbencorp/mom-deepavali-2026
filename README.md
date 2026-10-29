@@ -26,7 +26,7 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 
 ### Languages
 
-English is live. Drafts exist for **every language MOM publishes worker materials in**: Bahasa Indonesia, Bengali, Burmese, Chinese, Hindi, Tagalog, Tamil, Thai and Vietnamese. **None is switched on**: they were machine-drafted and must be checked by MOM's language team first. MOM decides which ones to publish.
+English is live. Drafts exist for the **nine languages MOM uses for its migrant-worker guides and scam materials**: Bahasa Indonesia, Bengali, Burmese, Chinese, Hindi, Tagalog, Tamil, Thai and Vietnamese. MOM also publishes one document, the domestic-worker safety agreement, in Khmer and Sinhalese; those two have no drafts. The evidence, language by language, is in [SOURCES.md](SOURCES.md#languages-mom-publishes-in) (pages checked 29 Oct 2026). **None is switched on**: they were machine-drafted and must be checked by MOM's language team first. MOM decides which ones to publish.
 
 - **Source of truth:** `i18n/<code>.json` (flat `"key": "text"` pairs). `js/lang/<code>.js` is generated from it by `node tools/build-lang.js`, which rejects unknown keys, broken `{n}` placeholders, and any line where a web address, amount or number from the English (`mom-sg.org/pay`, `$500`, `1799`) was changed or dropped.
 - **Language list:** `tools/languages.json` (code, menu name, workbook tab). Key terms per language: `tools/glossary.json`.
