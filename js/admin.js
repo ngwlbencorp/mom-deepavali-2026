@@ -202,47 +202,34 @@
   });
 
   // ---------- manual path ----------
-  var marks = [], manualId = null;
+  // The questions are a guide for the officer; there is no marking. The officer judges the MW's
+  // understanding and, if satisfied, records the claim, which gives the souvenir (subject to the cap).
   $('manualIntro').textContent = C.manual.intro;
   function resetManual() {
-    marks = C.manual.questions.map(function () { return null; });
-    manualId = null;
     $('mverdict').hidden = true;
     var list = $('mq');
     list.innerHTML = '';
-    C.manual.questions.forEach(function (item, i) {
+    C.manual.questions.forEach(function (item) {
       var li = document.createElement('li');
-      li.innerHTML = '<p class="q"></p><p class="expect">Correct answer: <b></b></p><div class="pair"><button type="button" class="yes" aria-pressed="false">✓ Correct</button><button type="button" class="no" aria-pressed="false">✕ Wrong</button></div>';
+      li.innerHTML = '<p class="q"></p><p class="expect">Answer: <b></b></p>';
       li.querySelector('.q').textContent = item.q;
       li.querySelector('b').textContent = item.answer;
-      var yes = li.querySelector('.yes'), no = li.querySelector('.no');
-      function pick(v) {
-        marks[i] = v;
-        yes.setAttribute('aria-pressed', String(v === true));
-        no.setAttribute('aria-pressed', String(v === false));
-        $('manualSubmit').disabled = marks.indexOf(null) >= 0;
-      }
-      yes.addEventListener('click', function () { pick(true); });
-      no.addEventListener('click', function () { pick(false); });
       list.appendChild(li);
     });
-    $('manualSubmit').disabled = true;
+    $('manualSubmit').disabled = false;
   }
   var nextPerson = { label: 'Next person', secondary: true, run: function () { resetManual(); window.scrollTo(0, 0); } };
 
   function submitManual() {
     $('manualSubmit').disabled = true;
-    Api.call('POST', '/api/manual', { answers: marks.slice(), id: manualId }, ROLE).then(function (r) {
+    var answers = C.manual.questions.map(function () { return true; });
+    Api.call('POST', '/api/manual', { answers: answers }, ROLE).then(function (r) {
       if (!r.ok) return failed('mverdict', r, submitManual);
       if (r.body.stats) showStats(r.body.stats);
-      var b = r.body, info = 'Code ' + b.id + ' · ' + b.score + '/' + b.total + ' · attempt ' + b.attempts;
-      if (b.status === 'given') { manualId = null; return verdict('mverdict', 'give', 'Give a souvenir ✓', 'Recorded. ' + info, [nextPerson]); }
-      if (b.status === 'cap_reached') return verdict('mverdict', 'stop', 'No souvenirs left', 'All correct, but all souvenirs have been given out. ' + info, [nextPerson]);
-      manualId = b.id;
-      verdict('mverdict', 'retry', 'Not all correct', info + '. Explain the right answers, then ask again and mark their new replies.', [
-        { label: 'Ask again', run: function () { $('mverdict').hidden = true; $('manualSubmit').disabled = false; window.scrollTo(0, 0); } },
-        nextPerson
-      ]);
+      var info = 'Code ' + r.body.id;
+      if (r.body.status === 'given') return verdict('mverdict', 'give', 'Give a souvenir ✓', 'Recorded. ' + info, [nextPerson]);
+      if (r.body.status === 'cap_reached') return verdict('mverdict', 'stop', 'No souvenirs left', 'All souvenirs have been given out. ' + info, [nextPerson]);
+      verdict('mverdict', 'stop', 'Not recorded', 'Unexpected reply: ' + r.body.status, [nextPerson]);
     }, function (e) { failed('mverdict', e, submitManual); });
   }
   $('manualSubmit').addEventListener('click', submitManual);

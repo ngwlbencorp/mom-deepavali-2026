@@ -37,7 +37,7 @@ const NAME = { bn: 'Bengali', zh: 'Simplified Chinese', hi: 'Hindi', id: 'Bahasa
 global.window = {};
 require(path.join(root, 'js/content.js'));
 const en = window.SCAM_TEXT.en;
-const FIXED = new Set(['type', 'icon', 'code', 'helpline', 'video']);
+const FIXED = new Set(['type', 'icon', 'code', 'helpline', 'video', 'app']);
 const english = {};
 (function walk(v, p) {
   if (typeof v === 'string') { english[p] = v; return; }

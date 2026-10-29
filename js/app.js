@@ -131,8 +131,10 @@
   function updatePill() {
     var p = document.getElementById('leftPill');
     if (!p) return;
+    var wasHidden = p.hidden;
     p.textContent = leftText();
     p.hidden = live.left === null;
+    if (wasHidden !== p.hidden) fit(); // the pill appearing can push a small screen over the edge
   }
   document.addEventListener('visibilitychange', function () { if (pollTimer && document.visibilityState === 'visible') pollLive(); });
 
@@ -151,10 +153,17 @@
   function helpline() {
     return el('a', { class: 'helpline', href: 'tel:' + T.event.helpline }, [T.ui.unsure + ' ', el('b', { text: T.event.helpline })]);
   }
-  // Phone-style message mock-up, always labelled EXAMPLE.
-  function phone(from, channel, body) {
-    return el('div', { class: 'phone' }, [
+  // Phone-style message mock-up, always labelled EXAMPLE. app (from content.js) sets the look:
+  // "sms" (a phone's Messages app), "call", "ad" (social media advert); anything else is a chat app.
+  // Generic look only: no app names or logos.
+  var AVATAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="4.2"/><path d="M3.8 21.5c.6-4.4 4-6.9 8.2-6.9s7.6 2.5 8.2 6.9z"/></svg>';
+  function phone(from, channel, body, app) {
+    var avatar = el('span', { class: 'avatar' });
+    avatar.innerHTML = AVATAR;
+    return el('div', { class: 'phone ' + ({ sms: 'sms', call: 'call', ad: 'ad' }[app] || 'chat') }, [
       el('div', { class: 'phone-head' }, [
+        el('span', { class: 'back', 'aria-hidden': 'true', text: '‹' }),
+        avatar,
         el('span', { class: 'who' }, [typeof from === 'string' ? el('strong', { text: from }) : el('strong', {}, [from]), channel ? el('small', { text: channel }) : null]),
         el('span', { class: 'phone-tag', text: T.ui.example })
       ]),
@@ -233,7 +242,7 @@
           { '--d': i * STEP + 's', '--fd': fl ? fl.at + 's' : '0s' }));
       });
       if (extra) bubbles.push(vars(el('p', { class: 'bubble file', text: '📄 ' + s.chat.attachment }), { '--d': s.chat.lines.length * STEP + 's' }));
-      body = [el('h2', { text: s.title }), el('p', { class: 'sub', text: s.tagline }), phone(s.chat.from, s.chat.channel, bubbles)];
+      body = [el('h2', { text: s.title }), el('p', { class: 'sub', text: s.tagline }), phone(s.chat.from, s.chat.channel, bubbles, s.chat.app)];
     } else {
       body = [
         el('h2', { text: s.title }),
@@ -329,8 +338,8 @@
     var bubbles = q.msg.bubbles.map(function (b, bi) {
       return el('p', { class: 'bubble static' }, b.map(function (part, si) { return seg(bi + '-' + si, part.t); }));
     });
-    if (review) return [phone(from, q.msg.channel, bubbles)];
-    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(from, q.msg.channel, bubbles), counter];
+    if (review) return [phone(from, q.msg.channel, bubbles, q.msg.app)];
+    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(from, q.msg.channel, bubbles, q.msg.app), counter];
   }
 
 

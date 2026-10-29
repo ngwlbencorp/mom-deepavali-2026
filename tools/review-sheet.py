@@ -11,11 +11,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = [(l['code'], l['sheet']) for l in json.load(open(os.path.join(ROOT, 'tools', 'languages.json'), encoding='utf-8'))]
 BASE = sys.argv[2] if len(sys.argv) > 2 else 'HEAD'
 GLOSSARY = json.load(open(os.path.join(ROOT, 'tools', 'glossary.json'), encoding='utf-8'))
-FIXED = {'type', 'icon', 'code', 'helpline', 'video'}
+FIXED = {'type', 'icon', 'code', 'helpline', 'video', 'app'}
 
 english = json.loads(subprocess.check_output(['node', '-e', r'''
 global.window = {}; require(process.argv[1]);
-const out = []; const FIXED = new Set(['type','icon','code','helpline','video']);
+const out = []; const FIXED = new Set(['type','icon','code','helpline','video','app']);
 (function walk(v, p) {
   if (typeof v === 'string') { out.push([p, v]); return; }
   if (Array.isArray(v)) return v.forEach((x, i) => walk(x, `${p}[${i}]`));

@@ -71,7 +71,7 @@ body.app main.screen {
 
 /* ---------- home tiles ---------- */
 .tile {
-  display: flex; align-items: center; gap: 14px; width: 100%;
+  display: flex; align-items: center; gap: 14px; width: 100%; flex: none; /* never squeeze: text would overlap */
   min-height: 78px; padding: 12px 16px; border-radius: var(--radius);
   background: var(--plum); color: #fff; border: 0; text-align: left; font: inherit; cursor: pointer;
   box-shadow: 0 6px 20px rgba(74, 29, 94, .15);
@@ -80,17 +80,56 @@ body.app main.screen {
 .tile-ico { font-size: 2rem; line-height: 1; }
 .tile-txt b { display: block; font-size: 1.2rem; }
 .tile-txt small { display: block; font-size: .9rem; opacity: .85; }
+.screen.tight .tile { min-height: 0; padding: 8px 14px; gap: 12px; }
+.screen.tight .tile-txt b { line-height: 1.2; }
+.screen.tighter .tile-ico { font-size: 1.6rem; }
+.screen.tighter .tile-txt b { font-size: 1.05rem; }
+.screen.tighter .tile-txt small { font-size: .82rem; }
 .tile:focus-visible, .seg:focus-visible, .sortbtn:focus-visible, .reply:focus-visible, .pick:focus-visible, .langbtn:focus-visible, .iconbtn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
-/* ---------- phone mock-up ---------- */
-.screen .phone { flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; margin: 0; }
-.screen .phone-head { align-items: center; padding: 6px 10px; flex-wrap: wrap; row-gap: 4px; }
-.phone-head .who { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; flex: 1 1 45%; }
-.phone-head .who small { color: var(--muted); font-size: .75rem; }
-.phone-head .phone-tag { color: #fff; background: var(--no); font-weight: 800; }
+/* ---------- phone mock-up: looks like the app it imitates (chat app by default; SMS, call, advert) ---------- */
+.screen .phone { flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; margin: 0;
+  border: 0; border-radius: 14px; box-shadow: 0 2px 10px rgba(0, 0, 0, .14); }
+.screen .phone-head { align-items: center; justify-content: flex-start; gap: 8px; row-gap: 4px; flex-wrap: wrap; padding: 6px 10px 6px 6px; }
+.phone-head .back { font-size: 1.6rem; line-height: 1; margin: -2px -2px 0 0; flex: none; }
+.phone-head .avatar { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: end center; overflow: hidden; }
+.phone-head .avatar svg { width: 30px; height: 30px; fill: #fff; }
+/* the name keeps at least ~40% of the row; a long EXAMPLE tag moves to its own row instead of squeezing it */
+.phone-head .who { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; flex: 1 1 40%; }
+.phone-head .who strong { overflow-wrap: anywhere; }
+.phone-head .who small { font-size: .75rem; }
+.phone-head .phone-tag { color: #fff; background: var(--no); font-weight: 800; margin-left: auto; }
+/* cramped screens (see fit() in app.js): drop the back arrow, then the avatar */
+.screen.tight .phone-head .back { display: none; }
+.screen.tight .phone-head { padding-left: 8px; }
+.screen.tighter .phone-head .avatar { display: none; }
+.screen.tighter .phone-head { padding-top: 4px; padding-bottom: 4px; }
 .screen .phone-tag { flex: none; font-size: .7rem; padding: 3px 8px; border-radius: 6px; letter-spacing: .04em; }
 .screen .phone-body { overflow-y: auto; padding: 8px 10px 0; }
-.screen .bubble { margin: 0 0 8px; padding: 7px 11px; font-size: .97rem; line-height: 1.38; }
+.screen .bubble { margin: 0 0 8px; padding: 7px 11px; font-size: .97rem; line-height: 1.38; box-shadow: none; }
+.screen .phone-head .who, .screen .phone-head .back { color: inherit; }
+/* chat app: green bar, beige wallpaper, white bubbles with a corner "tail" */
+.phone.chat { background: #efeae2; }
+.phone.chat .phone-head { background: #008069; color: #fff; }
+.phone.chat .who small { color: rgba(255, 255, 255, .82); }
+.phone.chat .avatar { background: #dfe5e7; }
+.phone.chat .bubble { background: #fff; border-radius: 0 10px 10px 10px; box-shadow: 0 1px .5px rgba(11, 20, 26, .16); }
+/* SMS: light bar, white screen, grey bubbles */
+.phone.sms { background: #fff; }
+.phone.sms .phone-head { background: #f2f2f5; color: var(--ink); border-bottom: 1px solid #e3e3e8; }
+.phone.sms .who small, .phone.ad .who small { color: #6b6b72; }
+.phone.sms .avatar, .phone.ad .avatar { background: #a7acb5; }
+.phone.sms .bubble { background: #e9e9eb; border-radius: 18px 18px 18px 5px; }
+/* phone call: dark caller bar, spoken lines as light speech bubbles */
+.phone.call { background: #eef1f3; }
+.phone.call .phone-head { background: #202124; color: #fff; }
+.phone.call .who small { color: #8fd19e; }
+.phone.call .avatar { background: #5f6368; }
+.phone.call .bubble { background: #fff; border-radius: 14px; }
+/* social media advert */
+.phone.ad { background: #fff; }
+.phone.ad .phone-head { background: #fff; color: var(--ink); border-bottom: 1px solid #e4e6eb; }
+.phone.ad .bubble { background: #f0f2f5; border-radius: 10px; }
 .bubble:not(.static) { opacity: 0; transform: translateY(8px); animation: bubbleIn .35s ease-out var(--d, 0s) forwards; }
 .bubble.flag { animation: bubbleIn .35s ease-out var(--d, 0s) forwards, flagOn .4s ease-out var(--fd, 0s) forwards; }
 .flaglabel {

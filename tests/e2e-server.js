@@ -128,24 +128,16 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   // manual path
   await bob.goto(site + 'admin/index.html#manual');
   await bob.locator('#v-manual').waitFor();
-  ok(await bob.locator('.mq li').count() === 3, 'manual page lists 3 questions with correct answers');
-  ok(await bob.locator('#manualSubmit').isDisabled(), 'submit disabled until every question is marked');
-  const mark = async (pg, arr) => { for (let i = 0; i < arr.length; i++) await pg.locator('.mq li').nth(i).locator(arr[i] ? '.yes' : '.no').click(); };
-  await mark(bob, [true, false, true]);
+  ok(await bob.locator('.mq li').count() === 3 && await bob.locator('.mq .expect').count() === 3, 'manual page lists 3 questions with their answers, as a guide');
+  ok(await bob.locator('.mq button').count() === 0 && !(await bob.locator('#manualSubmit').isDisabled()), 'no marking: one button records the claim');
   await bob.click('#manualSubmit');
-  await bob.locator('#mverdict .big').waitFor();
-  ok((await bob.locator('#mverdict .big').textContent()) === 'Not all correct', 'manual with one wrong: not all correct');
-  await bob.click('text=Ask again');
-  await mark(bob, [true, true, true]);
-  await bob.click('#manualSubmit');
-  await bob.waitForFunction(() => /Give a souvenir/.test(document.querySelector('#mverdict .big').textContent));
-  ok(true, 'ask again, all correct: give a souvenir');
+  await bob.waitForFunction(() => /Give a souvenir/.test((document.querySelector('#mverdict .big') || {}).textContent));
+  ok(true, 'officer satisfied: give a souvenir');
   await bob.screenshot({ path: out + '/admin-manual.png', fullPage: true });
   await bob.click('text=Next person');
-  await mark(bob, [true, true, true]);
   await bob.click('#manualSubmit');
-  await bob.waitForFunction(() => /Give a souvenir/.test(document.querySelector('#mverdict .big').textContent));
-  ok(true, 'next person with the same answers is not treated as a duplicate');
+  await bob.waitForFunction(() => /Give a souvenir/.test((document.querySelector('#mverdict .big') || {}).textContent));
+  ok(true, 'next person is a new claim, not treated as a duplicate');
   await alice.waitForFunction(() => document.getElementById('left').textContent === '496', null, { timeout: 8000 });
   ok(true, "alice's counter reflects bob's manual claims live (496)");
 
@@ -168,7 +160,7 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await sup.waitForFunction(() => document.querySelectorAll('.tile').length === 8);
   const tiles = await sup.locator('.tile').allInnerTexts();
   ok(/4 \/ 500/.test(tiles[0]) && /2 via manual/.test(tiles[0]), 'dashboard: souvenirs given 4 / 500, 2 via manual');
-  ok(/^Quiz submissions\s+6\s/.test(tiles[1]), 'dashboard: 6 quiz submissions (3 phones + 3 manual)');
+  ok(/^Quiz submissions\s+5\s/.test(tiles[1]), 'dashboard: 5 quiz submissions (3 phones + 2 manual)');
   ok(await sup.locator('#lineChart path').count() === 2 && await sup.locator('#csatChart path').count() >= 1, 'line chart (2 series) and satisfaction chart render');
   await sup.locator('#lineChart rect').hover();
   ok(!(await sup.locator('#tip').isHidden()), 'hover shows tooltip');

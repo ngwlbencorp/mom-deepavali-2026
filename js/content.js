@@ -76,12 +76,14 @@ window.SCAM_TEXT.en = {
   },
 
   // Learn: one story per scam type in the deck. Each story: an animated example message, its red
-  // flags lighting up one by one, then "What to do".
+  // flags lighting up one by one, then "What to do". chat.app sets how the message looks: "sms",
+  // "call" or "ad"; anything else looks like a chat app. Fake SMS senders show as "Likely-SCAM",
+  // as Singapore phones label SMS from Sender IDs not registered with the SMS Sender ID Registry.
   learn: [
     {
       title: "Fake MOM officer",
       tagline: "Scammers pretend to be MOM or the Police.",
-      chat: { channel: "Phone call", from: "Unknown number", lines: [
+      chat: { app: "call", channel: "Phone call", from: "Unknown number", lines: [
         "Hello, I am from MOM. There is a problem with your work permit.",
         "Transfer $500 now, or you will be sent home!",
         "Install this app from my link so I can help you.",
@@ -101,7 +103,7 @@ window.SCAM_TEXT.en = {
     {
       title: "Fake festive deal",
       tagline: "Too-good deals that make you install an app.",
-      chat: { channel: "Advertisement", from: "Deepavali Gold Sale", lines: [
+      chat: { app: "ad", channel: "Advertisement", from: "Deepavali Gold Sale", lines: [
         "Deepavali sale! Gold 80% off!",
         "Download our app here: deepavali-gold.example/app",
         "Only 1 hour left!"
@@ -155,7 +157,7 @@ window.SCAM_TEXT.en = {
     {
       title: "Secret codes (OTP)",
       tagline: "Scammers ask for the code sent to your phone.",
-      chat: { channel: "SMS", from: "+65 9XXX XXXX", lines: [
+      chat: { app: "sms", channel: "SMS", from: "+65 9XXX XXXX", lines: [
         "Sorry, I sent a code to your phone by mistake.",
         "Please send me the 6-digit code. Quick!"
       ] },
@@ -173,7 +175,7 @@ window.SCAM_TEXT.en = {
       // fakes MOM itself publishes (M1); the quiz's fake addresses are deliberately not used here.
       title: "Fake MOM message",
       tagline: "Check who sent it, and where the link goes.",
-      chat: { channel: "SMS", from: "MOM-NOTICE", lines: [
+      chat: { app: "sms", channel: "SMS", from: "Likely-SCAM", lines: [
         "MOM: your work permit will expire soon.",
         "Renew it now: www.mom.gov.sg.official.com.net"
       ] },
@@ -200,11 +202,12 @@ window.SCAM_TEXT.en = {
     {
       type: "spot",
       title: "Spot the red flags",
-      // Red flags, each an official rule: government SMSes come from "gov.sg" (MOM, ScamShield);
+      // Red flags, each an official rule: government SMSes come from "gov.sg" (MOM, ScamShield), and
+      // the "Likely-SCAM" label means an unregistered sender (IMDA);
       // mom-sg.org is a fake site MOM itself lists; government agencies do not ask for banking
       // details by SMS (ScamShield). The greeting and the fine are NOT red flags: no official
       // rule says so, and the topic alone does not prove a scam.
-      msg: { channel: "SMS", from: "MOM-ALERT", fromFlag: true, bubbles: [
+      msg: { app: "sms", channel: "SMS", from: "Likely-SCAM", fromFlag: true, bubbles: [
         [{ t: "Dear worker," }, { t: "you have an unpaid work permit fine of $350." }],
         [{ t: "Pay at" }, { t: "mom-sg.org/pay", flag: true }, { t: "or reply with your bank login.", flag: true }]
       ] },
@@ -297,7 +300,7 @@ window.SCAM_TEXT.en = {
   // Admin "Manual input" page (officers only, English): for MWs without a phone, or whose code does
   // not work. The officer asks each question aloud and marks the reply. All correct = souvenir.
   manual: {
-    intro: "Use this for MWs without a phone, or whose QR code does not work. Ask each question and mark their reply.",
+    intro: "Use this for MWs without a phone, or whose QR code does not work. Ask these questions and explain any they get wrong. When you are satisfied they understand, record the claim.",
     questions: [
       { q: "Someone says they are from MOM and asks you to transfer money. Should you do it?", answer: "No" },
       { q: "True or false: it is safe to tell a caller the secret code (OTP) sent to your phone.", answer: "False" },
