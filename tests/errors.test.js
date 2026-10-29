@@ -21,6 +21,9 @@ const rows = async (tag) => (await db().query('SELECT route, message FROM api_er
   ok(!found[0].message.includes('SHOULDNOTBESTORED'), 'request data (the query string) is not recorded');
   await call(boom, '/api/testboom');
   ok((await rows(tag)).length === 1, 'the same error again within a minute is not recorded twice');
+  const dbFail = route(['GET'], null, async () => { const e = new Error('connect ECONNREFUSED 10.0.0.5:5432 ' + tag); e.code = 'ECONNREFUSED'; throw e; });
+  const d = await call(dbFail, '/api/testdb');
+  ok(d.status === 500 && d.body.error === 'server_error' && d.body.message === 'Server error', 'a database error does not reveal its details (host, code) to the caller');
   const refuse = route(['GET'], null, async () => { throw httpError(400, 'bad_thing', tag + '-400'); });
   ok((await call(refuse, '/api/testrefuse')).status === 400 && (await rows(tag + '-400')).length === 0, 'ordinary refusals (4xx) are not recorded');
   await db().query('DELETE FROM api_errors WHERE message LIKE $1', ['%' + tag + '%']);

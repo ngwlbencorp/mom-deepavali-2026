@@ -58,7 +58,7 @@
     live.textContent = 'live ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
   }
   function markStale() {
-    if (Date.now() - lastOk < POLL_MS * 2.5) return;
+    if (Date.now() - lastOk < interval() * 2.5) return;
     var live = $('live');
     live.classList.add('stale');
     live.textContent = 'offline: do not give souvenirs';
@@ -70,9 +70,22 @@
       if (r.ok) showStats(r.body); else markStale();
     }, markStale);
   }
-  function startPolling() { if (!pollTimer) { poll(); pollTimer = setInterval(poll, POLL_MS); } }
-  function stopPolling() { clearInterval(pollTimer); pollTimer = null; }
-  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible' && pollTimer) poll(); });
+  // Every 5 s while officers are using the page; once a minute after 10 minutes without a tap or
+  // key press (a screen left open all day would otherwise use ~17,000 of Vercel's requests a day).
+  // Once a minute still keeps the database awake (Neon sleeps after 5 idle minutes).
+  var T = window.ADMIN_POLL_TEST || {}; // tests only: shorter times
+  var IDLE_AFTER = T.idleAfter || 10 * 60 * 1000, IDLE_POLL_MS = T.idlePoll || 60000, lastAction = Date.now(), polling = false;
+  function interval() { return Date.now() - lastAction > IDLE_AFTER ? IDLE_POLL_MS : POLL_MS; }
+  function schedule() { clearTimeout(pollTimer); pollTimer = polling ? setTimeout(function () { poll(); schedule(); }, interval()) : null; }
+  function startPolling() { if (!polling) { polling = true; poll(); schedule(); } }
+  function stopPolling() { polling = false; schedule(); }
+  function activity() {
+    var wasIdle = interval() === IDLE_POLL_MS;
+    lastAction = Date.now();
+    if (wasIdle && polling) { poll(); schedule(); }
+  }
+  ['pointerdown', 'keydown'].forEach(function (ev) { document.addEventListener(ev, activity, true); });
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible' && polling) { lastAction = Date.now(); poll(); schedule(); } });
 
   // ---------- verdict card ----------
   function verdict(box, cls, big, detail, actions) {
@@ -103,6 +116,7 @@
   var nextScan = { label: 'Scan next', secondary: true, run: function () { $('verdict').hidden = true; resume(); } };
 
   function check(code) {
+    activity(); // a camera scan involves no tap
     pause();
     var info = function (rec) { return 'Code ' + rec.id + ' · ' + rec.score + '/' + rec.total + (rec.source === 'admin' ? ' · manual' : ' · attempt ' + rec.attempts); };
     Api.call('POST', '/api/scan', { code: code }, ROLE).then(function (r) {

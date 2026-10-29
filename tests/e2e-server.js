@@ -175,7 +175,8 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   ok(true, 'superadmin login refuses the admin password');
   await sup.fill('#password', SUPER_PW); await sup.click('#loginForm button');
   await sup.waitForFunction(() => document.querySelectorAll('.tile').length === 9);
-  const tiles = await sup.locator('.tile').allInnerTexts();
+  // label, value and note joined with spaces (innerText can come back without them before layout)
+  const tiles = await sup.$$eval('.tile', (ts) => ts.map((t) => [...t.children].map((c) => c.textContent).join('\n')));
   ok(/4 \/ 500/.test(tiles[0]) && /2 via manual/.test(tiles[0]), 'dashboard: souvenirs given 4 / 500, 2 via manual');
   ok(/^Quiz submissions\s+5\s/.test(tiles[1]), 'dashboard: 5 quiz submissions (3 phones + 2 manual)');
   ok(/^Database\s+Awake\s+responded in \d+ ms/.test(tiles[8]), 'dashboard: database indicator says awake, with response time (' + tiles[8].replace(/\s+/g, ' ') + ')');

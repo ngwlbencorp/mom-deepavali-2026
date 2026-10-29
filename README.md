@@ -106,6 +106,23 @@ The ducks.ai page (the address in the QR code) holds a small **shell**, uploaded
 - **Officer page on ducks.ai:** `node tools/build-shell.js --admin` writes `dist/ducks-admin-shell.zip`, the same shell set to load `admin/index.html`. Upload it once to its own ducks.ai page (e.g. `deepavali-2026-officers`) and give officers that address. It bundles no copy (the page cannot work without the API); if Vercel cannot be reached it says "Cannot reach the server". The camera works there because the ducks.ai page is served over HTTPS with no policy blocking it; test it on real phones. The Vercel address (`https://ducks-vercel-api.vercel.app/admin/`) keeps working as a backup.
 - **Superadmin** stays on Vercel: `https://ducks-vercel-api.vercel.app/superadmin/`.
 
+## Vercel Hobby plan: usage budget
+
+Hobby limits (Vercel's Hobby plan page, via search on 29 Oct 2026; vercel.com was not reachable from the drafting environment): per month, 1,000,000 function invocations, 1,000,000 CDN requests, 100 GB fast data transfer, 4 hours active CPU, 360 GB-hours provisioned memory. They are per **account**, so `remoteducks` shares them. **Exceeding one pauses that feature for up to 30 days**: on event day, that would take the site down.
+
+Estimated use for the event month (measured locally: about 1 ms of CPU per API request; a mini-site visit downloads about 45 KB compressed):
+
+| Meter | Main users | Estimate | Share of limit |
+|---|---|---|---|
+| Function invocations | officer counters (every 5 s while in use), quiz submits, superadmin | ~90,000 | ~9% |
+| CDN requests | the above, plus page files and phones' souvenir-count checks (cached 10 s) | ~150,000 | ~15% |
+| Data transfer | ~2,000 visits × 45 KB, officer pages, screenshots | < 1 GB | < 1% |
+| Active CPU | ~100,000 requests × 1–10 ms | < 0.3 h | < 8% |
+
+The one meter without a natural ceiling was an officer screen left open: every 5 s is ~17,000 requests a day. After 10 minutes without a tap, the counter now refreshes once a minute (~1,400 a day), which still keeps the database awake; any tap brings back 5 s.
+
+Check **Vercel → Usage** after the briefing and the day before the event. Hobby is limited to personal, non-commercial use by Vercel's terms; for an organisation's event, the Pro plan for the event month removes that question and replaces the 30-day pause with pay-as-you-go.
+
 ## Superadmin prep (before the event)
 
 1. Log in at `/superadmin/index.html`.
