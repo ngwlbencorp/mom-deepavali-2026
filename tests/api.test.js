@@ -147,10 +147,25 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok((await call('GET', '/api/bugs', null, ADM)).status === 403, 'officers cannot read the bug log');
   const officerView = async (tok) => ((await call('GET', '/api/bugreport', null, tok)).body.reports || []).find((x) => x.id === bugId);
   let ov = await officerView(ADM);
-  ok(ov && ov.status === 'new' && ov.mine === true && ov.note === '', 'officer sees their own report as new, marked as theirs');
-  ok(ov && !('reporter_email' in ov) && !('fix_ref' in ov) && !('screenshots' in ov) && !('screen' in ov), 'officers see no reporter, commit or screenshots');
+  ok(ov && ov.status === 'new' && ov.mine === true && ov.note === '' && ov.reporter === 'alice@mom.gov.sg', 'officer sees their own report as new, marked as theirs, with who reported it');
+  ok(ov && !('fix_ref' in ov) && !('screenshots' in ov) && !('screen' in ov), 'officers see no commit or screenshots');
   ov = await officerView(ADM2);
-  ok(ov && ov.mine === false, "another officer sees the report too, but not as theirs");
+  ok(ov && ov.mine === false && ov.reporter === 'alice@mom.gov.sg', "another officer sees the report too, and who sent it, but not as theirs");
+  // reports about the superadmin page never reach officers
+  const ownIds = [];
+  ownIds.push((await call('POST', '/api/bugreport', { description: 'The Super-Admin bug log tab is slow' }, ADM)).body.id);
+  ownIds.push((await call('POST', '/api/bugreport', { description: 'Tab bar is cut off on my phone' }, SUP)).body.id);
+  const marked = (await call('POST', '/api/bugreport', { description: 'Download button does nothing' }, ADM)).body.id;
+  ok((await call('GET', '/api/bugreport', null, ADM2)).body.reports.some((x) => x.id === marked), 'a report is listed for officers until marked otherwise');
+  ok((await call('POST', '/api/bugs', { id: marked, status: 'new', screen: 'superadmin' }, SUP)).body.report.screen === 'superadmin', 'superadmin can mark a report as about their page');
+  ownIds.push(marked);
+  const fixedNote = (await call('POST', '/api/bugreport', { description: 'Counter looked wrong' }, ADM)).body.id;
+  await call('POST', '/api/bugs', { id: fixedNote, status: 'fixed', fix_note: 'Counter fixed on the officer and superadmin pages' }, SUP);
+  ownIds.push(fixedNote);
+  const offList = (await call('GET', '/api/bugreport', null, ADM2)).body.reports;
+  ok(ownIds.every((id) => !offList.some((x) => x.id === id)) && !JSON.stringify(offList).match(/super[\s_-]*admin/i),
+    'officers never see a report that mentions the superadmin page, is marked as about it, or was sent from its login');
+  ok((await call('GET', '/api/bugs', null, SUP)).body.reports.filter((x) => ownIds.includes(x.id)).length === 4, 'the superadmin still sees all of them');
   ok((await call('GET', '/api/bugreport')).status === 401, 'report status needs an officer login');
   ok((await call('GET', '/api/bugs')).status === 401, 'bug log needs a login');
   let bl = await call('GET', '/api/bugs', null, SUP);

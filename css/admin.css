@@ -1,4 +1,4 @@
-/* Shared by the admin and superadmin pages. */
+/* Shared by the site's staff pages. */
 .top.slim { padding: 16px 16px 36px; border-radius: 0 0 20px 20px; }
 /* On ducks.ai the platform's floating buttons cover about 150 x 56 px at the top-left (the shell marks the page). */
 html.on-ducks .top.slim { padding-top: 64px; }
@@ -93,12 +93,12 @@ html.on-ducks .top.slim { padding-top: 64px; }
 .bugitem.done { border-left-color: var(--ok); }
 .bugitem.closed { border-left-color: var(--muted); }
 .bugitem p { margin: 4px 0; }
-.bughead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.bitemhead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .bstat { font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; background: var(--gold-soft); color: var(--plum); }
 .bstat.done { background: var(--ok-bg); color: var(--ok); }
 .bstat.closed { background: #eee9f1; color: var(--muted); }
 .bstat.mine { background: var(--plum); color: #fff; }
-.bugdesc { white-space: pre-line; overflow-wrap: anywhere; }
+.bitemdesc { white-space: pre-line; overflow-wrap: anywhere; }
 .bugnote { background: var(--ok-bg); border-radius: 8px; padding: 6px 10px; font-size: .92rem; }
 
 /* iOS Safari zooms in when a text box under 16px gets focus, and does not zoom back out.

@@ -59,6 +59,7 @@ main.wide { max-width: 960px; }
 #errList td, #errList th { text-align: left; vertical-align: top; }
 #errList .errmsg { font-family: ui-monospace, monospace; font-size: .8rem; overflow-wrap: anywhere; }
 .bug { margin-top: 12px; }
+.bug .ownpage { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
 .bughead { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 .bugdesc { white-space: pre-wrap; overflow-wrap: anywhere; }
 .bugshots { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }

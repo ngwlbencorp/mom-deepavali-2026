@@ -2,7 +2,8 @@
 // Needs the BUG_API_TOKEN secret in the environment (the same value as in Vercel); never in a file.
 //   node tools/bugs.js list [status]               newest first; status: new, in_progress, needs_decision, fixed, wont_fix, duplicate
 //   node tools/bugs.js show <id> [folder]          full report; screenshots saved to folder (default ./bug-<id>)
-//   node tools/bugs.js set <id> <status> [--ref <commit>] [--note "<what was done>"]
+//   node tools/bugs.js set <id> <status> [--ref <commit>] [--note "<what was done>"] [--screen superadmin]
+//                                                  (--screen superadmin: about the owner's page; hidden from officers)
 //   node tools/bugs.js errors [since-id]           unexpected server errors the API recorded, newest first
 // Optional: BUG_API_BASE (default https://ducks-vercel-api.vercel.app).
 // Behind an HTTPS proxy (e.g. a cloud session), Node's fetch needs NODE_USE_ENV_PROXY=1.
@@ -53,10 +54,10 @@ const mins = (b) => b.fixed_at ? Math.round((new Date(b.fixed_at) - new Date(b.c
     for (const e of errors) console.log(`#${e.id} ${e.created_at} /api/${e.route}: ${e.message}`);
   } else if (cmd === 'set' && a && b) {
     const opt = (n) => { const i = rest.indexOf(n); return i >= 0 ? rest[i + 1] : undefined; };
-    const { report } = await api('POST', '/api/bugs', { id: a, status: b, fix_ref: opt('--ref'), fix_note: opt('--note') });
+    const { report } = await api('POST', '/api/bugs', { id: a, status: b, fix_ref: opt('--ref'), fix_note: opt('--note'), screen: opt('--screen') });
     console.log(`#${report.id} is now ${report.status} ${mins(report)}`);
   } else {
-    console.log(fs.readFileSync(__filename, 'utf8').split('\n').filter((l) => l.startsWith('//')).slice(0, 6).join('\n'));
+    console.log(fs.readFileSync(__filename, 'utf8').split('\n').filter((l) => l.startsWith('//')).slice(0, 7).join('\n'));
     process.exit(1);
   }
 })().catch((e) => { console.error(e.message); process.exit(1); });

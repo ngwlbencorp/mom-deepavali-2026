@@ -1,4 +1,4 @@
-// Browser helper for the API, shared by the quiz, admin and superadmin pages.
+// Browser helper for the API, shared by the site's pages.
 // Login tokens live in sessionStorage only: closing the tab logs out.
 (function (g) {
   'use strict';

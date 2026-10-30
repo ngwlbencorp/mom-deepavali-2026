@@ -169,8 +169,9 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   const mineItem = bob.locator(`.bugitem[data-id="${bugNo}"]`);
   await mineItem.waitFor();
   const mineText = await mineItem.textContent();
-  ok(/Received/.test(mineText) && /Yours/.test(mineText) && /froze after question 3/.test(mineText) && !/@/.test(mineText),
-    'officer sees the report under "Reported problems": Received, marked Yours, no email shown');
+  ok(/Received/.test(mineText) && /Yours/.test(mineText) && /froze after question 3/.test(mineText) && /by bob@mom\.gov\.sg/.test(mineText),
+    'officer sees the report under "Reported problems": Received, marked Yours, with who reported it');
+  ok(await bob.locator('#v-bugs select, #v-bugs input, #v-bugs textarea').count() === 0, 'the list is read only');
 
   // ---- superadmin ----
   const sup = await phone('super');
@@ -223,6 +224,13 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await bob.waitForFunction((n) => { const c = document.querySelector(`.bugitem[data-id="${n}"]`); return c && /Fixed/.test(c.querySelector('.bstat').textContent) && /took \d+ min/.test(c.textContent); }, bugNo);
   ok(true, 'the officer sees it as Fixed, with the time it took');
   await bob.screenshot({ path: out + '/admin-bugs.png', fullPage: true });
+  await sup.locator(`.bug[data-id="${bugNo}"] .ownpage input`).check();
+  await sup.waitForFunction((n) => { const c = document.querySelector(`.bug[data-id="${n}"] .ownpage input`); return c && c.checked; }, bugNo);
+  await bob.goto(ADMIN + '#home');
+  await bob.goto(ADMIN + '#bugs');
+  await bob.waitForFunction(() => !document.getElementById('bugsLoading').hidden && !/Loading/.test(document.getElementById('bugsLoading').textContent));
+  ok(await bob.locator(`.bugitem[data-id="${bugNo}"]`).count() === 0 && !/super/i.test(await bob.locator('#v-bugs').textContent()),
+    'a report the superadmin marks as about their page disappears from the officers\' list');
   await sup.waitForFunction(() => document.querySelector('#errList table, #errList p'));
   ok(true, 'bug log shows the server errors section');
   await sup.screenshot({ path: out + '/superadmin-bugs.png', fullPage: true });

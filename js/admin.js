@@ -325,7 +325,7 @@
     }, function () { $('bugErr').textContent = 'Cannot reach the server. Try again.'; $('bugErr').hidden = false; $('bugSend').disabled = false; });
   });
 
-  // ---------- reported problems (officers see status, not who reported or the screenshots) ----------
+  // ---------- reported problems: every officer's reports and their status, read only ----------
   var BUG_STATUS = {
     new: ['Received', 'open'], in_progress: ['Being fixed', 'open'], needs_decision: ['Under review', 'open'],
     fixed: ['Fixed', 'done'], wont_fix: ['No change needed', 'closed'], duplicate: ['Already reported', 'closed']
@@ -341,15 +341,15 @@
     li.className = 'bugitem ' + st[1];
     li.setAttribute('data-id', b.id);
     var head = document.createElement('p');
-    head.className = 'bughead';
+    head.className = 'bitemhead';
     var no = document.createElement('b'); no.textContent = '#' + b.id;
     var chip = document.createElement('span'); chip.className = 'bstat ' + st[1]; chip.textContent = st[0];
     head.appendChild(no); head.appendChild(chip);
     if (b.mine) { var y = document.createElement('span'); y.className = 'bstat mine'; y.textContent = 'Yours'; head.appendChild(y); }
-    var desc = document.createElement('p'); desc.className = 'bugdesc';
+    var desc = document.createElement('p'); desc.className = 'bitemdesc';
     desc.textContent = b.description.length > 300 ? b.description.slice(0, 300) + '…' : b.description;
     var meta = document.createElement('p'); meta.className = 'muted small';
-    meta.textContent = 'Reported ' + when(b.created_at) + (b.status === 'fixed' && b.fixed_at ? ' · Fixed ' + when(b.fixed_at) + ' (took ' + took(b.created_at, b.fixed_at) + ')' : '');
+    meta.textContent = 'Reported ' + when(b.created_at) + (b.reporter ? ' by ' + b.reporter : '') + (b.status === 'fixed' && b.fixed_at ? ' · Fixed ' + when(b.fixed_at) + ' (took ' + took(b.created_at, b.fixed_at) + ')' : '');
     li.appendChild(head); li.appendChild(desc); li.appendChild(meta);
     if (b.note) { var n = document.createElement('p'); n.className = 'bugnote'; n.textContent = 'What was done: ' + b.note; li.appendChild(n); }
     return li;

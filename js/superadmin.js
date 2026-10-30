@@ -351,6 +351,13 @@
         Api.call('POST', '/api/bugs', { id: b.id, status: sel.value }, ROLE).then(function (r) { if (guard(r)) loadBugs(); });
       });
       var lab = node('label', 'field small', 'Status '); lab.appendChild(sel); card.appendChild(lab);
+      // Reports about this page are left out of the officers' list of reported problems.
+      var own = node('input'); own.type = 'checkbox'; own.checked = b.screen === 'superadmin';
+      own.addEventListener('change', function () {
+        Api.call('POST', '/api/bugs', { id: b.id, status: b.status, screen: own.checked ? 'superadmin' : '' }, ROLE).then(function (r) { if (guard(r)) loadBugs(); });
+      });
+      var ownLab = node('label', 'small ownpage'); ownLab.appendChild(own); ownLab.appendChild(document.createTextNode(' About this page: hide from officers'));
+      card.appendChild(ownLab);
       box.appendChild(card);
     });
   }
