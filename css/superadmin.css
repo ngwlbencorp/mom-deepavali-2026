@@ -15,11 +15,18 @@ main.wide { max-width: 960px; }
 /* Phones: tighter tabs; "Log out" moves to a second row rather than running off the screen */
 @media (max-width: 480px) { .tabs { gap: 4px; } .tabs button[role="tab"] { padding: 8px 9px; font-size: .95rem; } }
 
-.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.tile.wide { grid-column: 1 / -1; }
 .tile { background: var(--card); border-radius: 14px; padding: 14px 16px; box-shadow: 0 6px 20px rgba(74, 29, 94, .08); }
 .tile .label { color: var(--muted); font-size: .85rem; font-weight: 600; margin: 0; }
 .tile .value { font-size: 2rem; font-weight: 800; color: var(--ink); margin: 2px 0; line-height: 1.15; }
 .tile .sub { color: var(--muted); font-size: .8rem; margin: 0; }
+/* phones: two tiles a row */
+@media (max-width: 480px) {
+  .tiles { gap: 10px; }
+  .tile { padding: 12px; }
+  .tile .value { font-size: 1.6rem; }
+}
 
 .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .9rem; color: var(--text-secondary); margin-bottom: 6px; }
 .legend i { display: inline-block; width: 16px; height: 2px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }

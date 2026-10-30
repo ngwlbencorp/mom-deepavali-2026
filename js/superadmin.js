@@ -89,11 +89,11 @@
       ['Learned something new', (d.learned.Y + d.learned.S + d.learned.N) ? d.learned.Y + ' yes' : '–', d.learned.S + ' a little · ' + d.learned.N + ' no'],
       // Over ~0.8 s means the database was asleep and this request woke it. Superadmin only.
       ['Database', d.dbMs == null ? '–' : d.dbMs < 800 ? 'Awake' : 'Was asleep, now awake',
-        d.dbMs == null ? '' : 'responded in ' + (d.dbMs < 1000 ? d.dbMs + ' ms' : (d.dbMs / 1000).toFixed(1) + ' s')]
+        d.dbMs == null ? '' : 'responded in ' + (d.dbMs < 1000 ? d.dbMs + ' ms' : (d.dbMs / 1000).toFixed(1) + ' s'), 'wide']
     ];
     var box = $('tiles'); box.innerHTML = '';
     tiles.forEach(function (t) {
-      var div = document.createElement('div'); div.className = 'tile';
+      var div = document.createElement('div'); div.className = 'tile' + (t[3] ? ' ' + t[3] : '');
       div.innerHTML = '<p class="label"></p><p class="value"></p><p class="sub"></p>';
       div.children[0].textContent = t[0]; div.children[1].textContent = t[1]; div.children[2].textContent = t[2];
       box.appendChild(div);
