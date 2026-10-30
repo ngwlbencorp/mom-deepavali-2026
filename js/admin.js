@@ -3,18 +3,19 @@
   // ducks.ai adds a "presenter gate" for slide decks to every hosted page: unless the tab is in
   // presenter mode, it cancels every n and t key press, so officers could not type those letters
   // (emails, password, codes, bug reports). Presenter mode would also show ducks.ai's "edit text"
-  // button, so instead the page puts those letters back into its own text boxes. An earlier version
-  // switched presenter mode on: clear that. See tests/gate.test.js.
+  // button, so it stays off (an earlier version switched it on: clear that). Instead, a cancel of
+  // an n or t key press in one of this page's text boxes is ignored, so the letter is typed by the
+  // phone itself. (Putting the letter back by script, as an earlier version did, left iPhone
+  // keyboards thinking the box was still empty: the next letter came out as a capital.)
+  // See tests/gate.test.js.
   try { sessionStorage.removeItem('ducks-presenter:' + (location.pathname.split('/')[2] || '')); } catch (e) {}
-  window.addEventListener('keydown', function (e) {
-    var t = e.target, k = e.key || '';
-    if (!e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey || !/^[nt]$/i.test(k)) return; // only what the gate blocked
-    if (!t || !(t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && /^(text|email|password|search|tel|url)$/.test(t.type)))) return;
-    if (!(document.execCommand && document.execCommand('insertText', false, k))) {
-      try { t.setRangeText(k, t.selectionStart, t.selectionEnd, 'end'); } catch (x) { t.value += k; } // email boxes have no selection
-      t.dispatchEvent(new Event('input', { bubbles: true }));
-    }
-  }, true);
+  var cancel = KeyboardEvent.prototype.preventDefault;
+  KeyboardEvent.prototype.preventDefault = function () {
+    var t = this.target;
+    if (this.type === 'keydown' && !this.ctrlKey && !this.metaKey && !this.altKey && /^[nt]$/i.test(this.key || '') && t &&
+        (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && /^(text|email|password|search|tel|url)$/.test(t.type)))) return;
+    return cancel.call(this);
+  };
   var Api = window.ScamApi, C = window.SCAM_CONTENT;
   var ROLE = 'admin', POLL_MS = 5000;
   var $ = function (id) { return document.getElementById(id); };

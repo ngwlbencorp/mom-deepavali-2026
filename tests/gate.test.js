@@ -30,8 +30,14 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
     await pg.click('a[href="#scan"]'); await pg.click('#typed'); await pg.keyboard.type('TN23ABCD');
     ok(await pg.inputValue('#typed') === 'TN23ABCD', `${name}: typed code keeps its T and N`);
     await pg.click('a[href="#home"]').catch(() => {}); await pg.evaluate(() => { location.hash = '#bug'; });
+    // The phone must type n and t itself: if the key press stays cancelled and the letter is put back
+    // by script, iPhone keyboards think the box is still empty and capitalise the next letter.
+    await pg.evaluate(() => { window.__cancelled = []; window.addEventListener('keydown', (e) => { if (e.defaultPrevented) window.__cancelled.push(e.key); }, true); });
     await pg.click('#bugText'); await pg.keyboard.type('Nothing to tap');
     ok(await pg.inputValue('#bugText') === 'Nothing to tap', `${name}: bug report keeps its n and t`);
+    ok((await pg.evaluate(() => window.__cancelled)).length === 0, `${name}: n and t key presses reach the phone uncancelled (typed natively)`);
+    ok(await pg.evaluate(() => { const e = new KeyboardEvent('keydown', { key: 'n', cancelable: true }); document.body.dispatchEvent(e); e.preventDefault(); return e.defaultPrevented; }),
+      `${name}: n and t can still be cancelled outside text boxes`);
     await ctx.close();
   }
   await b.close();

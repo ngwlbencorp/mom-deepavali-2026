@@ -25,7 +25,8 @@ const mins = (b) => b.fixed_at ? Math.round((new Date(b.fixed_at) - new Date(b.c
 (async () => {
   const [cmd, a, b, ...rest] = process.argv.slice(2);
   if (cmd === 'list') {
-    const { reports } = await api('GET', '/api/bugs' + (a ? '?status=' + encodeURIComponent(a) : ''));
+    const { reports, emailAlerts } = await api('GET', '/api/bugs' + (a ? '?status=' + encodeURIComponent(a) : ''));
+    console.log('Email alerts: ' + (emailAlerts || 'unknown'));
     if (!reports.length) return console.log('No reports' + (a ? ` with status ${a}` : '') + '.');
     for (const r of reports) {
       console.log(`#${r.id} [${r.status}] ${r.created_at} · ${r.screen || '-'} · ${r.reporter_email} · ${r.screenshots.length} screenshot(s) ${mins(r)}`);
