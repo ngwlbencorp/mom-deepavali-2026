@@ -51,6 +51,7 @@
       Api.setSession(ROLE, { token: r.body.token, user: r.body.user });
       $('password').value = '';
       show();
+      window.scrollTo(0, 0); // the phone keyboard had scrolled the login form up; start at the tabs
     }, function () { err.textContent = 'Cannot reach the server.'; err.hidden = false; });
   });
   $('logout').addEventListener('click', function () { loggedOut(''); });
@@ -62,7 +63,14 @@
     if (name === 'bugs') loadBugs();
     if (name === 'dash') loadDash();
   }
-  [].forEach.call(document.querySelectorAll('[data-tab]'), function (b) { b.addEventListener('click', function () { tab(b.dataset.tab); }); });
+  [].forEach.call(document.querySelectorAll('[data-tab]'), function (b) {
+    b.addEventListener('click', function () {
+      tab(b.dataset.tab);
+      // switching tabs from far down a long page: bring the tab bar back into view
+      var bar = document.querySelector('.tabs').getBoundingClientRect();
+      if (bar.top < 0) window.scrollBy(0, bar.top - 8);
+    });
+  });
 
   function guard(r) { if (r.status === 401 || r.status === 403) { loggedOut(r.body.message); return false; } return true; }
 
@@ -76,6 +84,9 @@
     }, function () { $('updated').textContent = 'Cannot reach the server. Showing the last data received.'; });
   }
 
+  // Refreshed every 15 s. The charts are only redrawn when their data or the page width changed, so a
+  // refresh does not rebuild the page under someone scrolling it (on iPhones that made it jump).
+  var drawn = '';
   function renderDash(d) {
     $('updated').textContent = 'Live · updated ' + new Date(d.generatedAt).toLocaleTimeString() + ' · refreshes every ' + REFRESH_MS / 1000 + 's';
     var tiles = [
@@ -98,6 +109,9 @@
       div.children[0].textContent = t[0]; div.children[1].textContent = t[1]; div.children[2].textContent = t[2];
       box.appendChild(div);
     });
+    var key = JSON.stringify([d.timeline, d.bucketMinutes, d.cap, d.csat, d.csatN, window.innerWidth]);
+    if (key === drawn) return;
+    drawn = key;
     lineChart(d);
     csatChart(d);
   }
@@ -108,7 +122,7 @@
     { key: 'given', label: 'Souvenirs given', color: 'var(--series-2)' }
   ];
   function lineChart(d) {
-    var host = $('lineChart'); host.innerHTML = '';
+    var host = $('lineChart'), hostW = host.clientWidth; host.innerHTML = ''; // width read before clearing
     $('legend').innerHTML = SERIES.map(function (s) { return '<span><i style="background:' + s.color + '"></i>' + s.label + '</span>'; }).join('') +
       '<span><i class="ref"></i>Cap (' + d.cap + ')' + (Math.max(d.submissions, d.given) < d.cap * 0.4 ? ': shown once totals reach ' + Math.ceil(d.cap * 0.4) : '') + '</span>';
     var step = d.bucketMinutes * 60000, pts = [], sub = 0, giv = 0;
@@ -122,7 +136,7 @@
 
     // On a phone the line-end labels show only the number (the legend names the series), so the
     // time axis keeps most of the width.
-    var W = Math.max(300, host.clientWidth), narrow = W < 480, H = 260, m = { t: 12, r: narrow ? 34 : 130, b: 28, l: 44 };
+    var W = Math.max(300, hostW), narrow = W < 480, H = 260, m = { t: 12, r: narrow ? 34 : 130, b: 28, l: 44 };
     var iw = W - m.l - m.r, ih = H - m.t - m.b;
     var t0 = pts[0].t, t1 = pts[pts.length - 1].t;
     // Scale to the data; include the cap only once the data is within reach of it, so early
@@ -206,9 +220,9 @@
 
   // Single-series columns: rating counts, value on each cap.
   function csatChart(d) {
-    var host = $('csatChart'); host.innerHTML = '';
+    var host = $('csatChart'), hostW = host.clientWidth; host.innerHTML = ''; // width read before clearing
     if (!d.csatN) { host.innerHTML = '<p class="empty">No ratings yet.</p>'; return; }
-    var W = Math.max(320, host.clientWidth), H = 200, m = { t: 22, r: 8, b: 28, l: 8 };
+    var W = Math.max(320, hostW), H = 200, m = { t: 22, r: 8, b: 28, l: 8 };
     var iw = W - m.l - m.r, ih = H - m.t - m.b, band = iw / 5, bw = Math.min(24, band * 0.6);
     var max = Math.max.apply(null, d.csat.concat([1]));
     var root = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Count of satisfaction ratings from 1 to 5' }, host);
@@ -229,7 +243,14 @@
   }
 
   var resizeT;
-  window.addEventListener('resize', function () { clearTimeout(resizeT); resizeT = setTimeout(function () { if (last && !$('t-dash').hidden) renderDash(last); }, 150); });
+  // iPhones report a resize whenever the address bar shows or hides while scrolling; only a change
+  // of width needs the charts redrawn.
+  var lastW = window.innerWidth;
+  window.addEventListener('resize', function () {
+    if (window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    clearTimeout(resizeT); resizeT = setTimeout(function () { if (last && !$('t-dash').hidden) renderDash(last); }, 150);
+  });
 
   // ---------- admins ----------
   var pending = [];
