@@ -1,15 +1,20 @@
 (function () {
   'use strict';
-  // ducks.ai adds a "presenter gate" for slide decks to every hosted page: unless the page was
-  // opened in presenter mode in this tab, it cancels every n and t key press, so officers could not
-  // type those letters (emails, password, codes, bug reports). It is switched off by a per-tab flag
-  // (sessionStorage "ducks-presenter:<page>"); set it and reload once. See tests/gate.test.js.
-  if (document.documentElement.dataset.ducksOwnerGate === 'locked') {
-    var gateFlag = 'ducks-presenter:' + (location.pathname.split('/')[2] || '');
-    try {
-      if (!sessionStorage.getItem(gateFlag)) { sessionStorage.setItem(gateFlag, '1'); location.reload(); return; }
-    } catch (e) {} // no storage: cannot switch it off; the page still works for Android keyboards and pasting
-  }
+  // ducks.ai adds a "presenter gate" for slide decks to every hosted page: unless the tab is in
+  // presenter mode, it cancels every n and t key press, so officers could not type those letters
+  // (emails, password, codes, bug reports). Presenter mode would also show ducks.ai's "edit text"
+  // button, so instead the page puts those letters back into its own text boxes. An earlier version
+  // switched presenter mode on: clear that. See tests/gate.test.js.
+  try { sessionStorage.removeItem('ducks-presenter:' + (location.pathname.split('/')[2] || '')); } catch (e) {}
+  window.addEventListener('keydown', function (e) {
+    var t = e.target, k = e.key || '';
+    if (!e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey || !/^[nt]$/i.test(k)) return; // only what the gate blocked
+    if (!t || !(t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && /^(text|email|password|search|tel|url)$/.test(t.type)))) return;
+    if (!(document.execCommand && document.execCommand('insertText', false, k))) {
+      try { t.setRangeText(k, t.selectionStart, t.selectionEnd, 'end'); } catch (x) { t.value += k; } // email boxes have no selection
+      t.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  }, true);
   var Api = window.ScamApi, C = window.SCAM_CONTENT;
   var ROLE = 'admin', POLL_MS = 5000;
   var $ = function (id) { return document.getElementById(id); };

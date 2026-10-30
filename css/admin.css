@@ -89,3 +89,6 @@ html.on-ducks .top.slim { padding-top: 64px; }
 /* iOS Safari zooms in when a text box under 16px gets focus, and does not zoom back out.
    This rule wins over any other font setting on form controls (tests/zoom.test.js checks it). */
 input, select, textarea { font-size: 16px !important; }
+
+/* ducks.ai's "edit text" button (shown to tabs in presenter mode) has no place on the officer page. */
+#ducks-edit-text { display: none !important; }
