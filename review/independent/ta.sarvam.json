@@ -1,0 +1,743 @@
+{
+ "provider": "sarvam",
+ "model": "sarvam-105b",
+ "checked": "2026-10-30",
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "translation": "தீபாவளி வாழ்த்துக்கள்!"
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "translation": "மோசடிகளிலிருந்து பாதுகாப்பாக இரு."
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "translation": "மோசடிக்காரங்க பயன்படுத்தும் தந்திரங்களைக் கற்றுக்கோ, அப்புறம் சோதனை போட்டுப் பாரு."
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "translation": "எல்லா பதிலும் சரியா போடணும், உங்க QR code-அ MOM அதிகாரியிடம் காட்டி ஒரு பரிசு வாங்கிக்கோ. முதல் 500 பேருக்கு மட்டும்தான்!"
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "translation": "ScamShield Helpline"
+  },
+  "ui.language": {
+   "english": "Language",
+   "translation": "மொழி"
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "translation": "GovTech-ன் சமூக பொறுப்புணர்வு முயற்சி"
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "translation": "இந்த site-ஐ பயன்படுத்தும்போது, {terms} மற்றும் {privacy} க்கு நீங்கள் உடன்படுகிறீர்கள்."
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "translation": "பயன்பாட்டு நிபந்தனைகள்"
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "translation": "தனியுரிமை அறிக்கை"
+  },
+  "ui.translated": {
+   "english": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "translation": "AI மூலம் மாற்றப்பட்டு, machine-ஆல் சரிபார்க்கப்பட்டுள்ளது. அர்த்தம் புரியவில்லையா? English-க்கு மாற்றுங்கள், இல்லையெனில் 1799-க்கு call பண்ணுங்கள்."
+  },
+  "ui.translations": {
+   "english": "Translations are made with AI. English is the reference.",
+   "translation": "AI மூலம் மாற்றப்படுகிறது. English தான் reference."
+  },
+  "ui.home": {
+   "english": "Home",
+   "translation": "முகப்பு"
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "translation": "முந்தையது"
+  },
+  "ui.next": {
+   "english": "Next",
+   "translation": "அடுத்து"
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "translation": "முடித்துவிடு"
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "translation": "கேள்வியை விட்டுவிடு"
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "translation": "கேள்வியை விட்டு வெளியேறவா? இதுவரை கொடுத்த பதில்கள் காண்�ாம போயிடும்."
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "translation": "மூடு"
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "translation": "மோசடி பற்றி தெரிஞ்சுக்கோ"
+  },
+  "ui.learnSub": {
+   "english": "6 short stories · 3 min",
+   "translation": "6 சின்ன கதைகள் · 3 நிமிடம்"
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "translation": "வினாடி போட்டு பரிசு வாங்கு"
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "translation": "வினாடி போடு"
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "translation": "6 சவால்கள் · 3 நிமிடம்"
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "translation": "என் QR code-ஐக் காட்டு"
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "translation": "என் முடிவைக் காட்டு"
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "translation": "🎁 {n} ஞாபகார்த்தங்கள் மீதம்"
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "translation": "ஞாபகார்த்தங்கள் அனைத்தையும் கொடுத்துவிட்டோம். பங்கேற்றதற்கு நன்றி!"
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "translation": "அருமையான வேலை! ஏமாற்றுத் திட்டங்களை கண்டுபிடிக்க முடியும்."
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "translation": "பதில்களைப் பார்த்துவிட்டு மீண்டும் முயற்சிக்கவும்."
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "translation": "தெரியலையா? கால் பண்ணு"
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "translation": "உதாரணம் · நிஜம் இல்லை"
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "translation": "என்ன செய்ய"
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "translation": "வினாடி வினா எடுத்துக்கோ"
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "translation": "அதிகாரப்பூர்வ வீடியோவை பாரு"
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "translation": "இந்த {n} சிவப்பு கொடிகளை தட்டு"
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "translation": "{n}-ல் {k} தேர்ந்தெடுக்கப்பட்டது"
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "translation": "மோசடி"
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "translation": "பாதுகாப்பு"
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "translation": "{n}-ல் {i} வது செய்தி"
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "translation": "{n}-ல் {i}"
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "translation": "உங்கள் முடிவைச் சேமிக்கிறது…"
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "translation": "எல்லாம் சரி!"
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "translation": "உங்க souvenir-க்காக இந்த QR code-ஐ MOM officer-கிட்ட காட்டுங்க."
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "translation": "முன்னாடி எல்லாம் சரியா இருந்துச்சு, அதனால உங்க QR code இன்னும் வேலை செய்யும்."
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "translation": "{s} / {t} சரி"
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "translation": "பதில்களை பாருங்க, அப்புறம் மீண்டும் try பண்ணுங்க, souvenir-க்காக."
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "translation": "பதில்களை பாருங்க"
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "translation": "மீண்டும் முயற்சி செய்"
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "translation": "என் QR குறியீட்டுக்கு"
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "translation": "சேமிச்சது ✓"
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "translation": "இன்னும் சேமிக்கல (இணையம் இல்லை). அலுவலர் இந்த QR ஸ்கேன் பண்ணலாம்."
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "translation": "இன்னும் சேமிக்கல (இணையம் இல்லை)."
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "translation": "மீண்டும் சேமி"
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "translation": "உங்க பதில்"
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "translation": "சரியான பதில்"
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "translation": "சரி"
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "translation": "தவறு"
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "translation": "கோடு"
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "translation": "முயற்சி"
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "translation": "போலி MOM அதிகாரி"
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "translation": "மோசடி பேர்வழிகள் MOM அல்லது போலீஸ் என்று பொய் சொல்லுவாங்க"
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "translation": "போன் கால்"
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "translation": "தெரியாத நம்பர்"
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "translation": "ஹலோ, நான் MOM-ல இருந்து பேசுறேன். உங்க வேலை அனுமதி-ல பிரச்சனை இருக்கு."
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "translation": "இப்போவே $500 அனுப்பு, இல்லைனா உன்னை வீட்டுக்கு அனுப்பிடுவோம்!"
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "translation": "எனக்கு உதவி பண்ண, இந்த link-ல இருந்து app-அ install பண்ணு."
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "translation": "இப்போ உன் call-அ police-க்கு transfer பண்றேன்."
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "translation": "உங்களை காசு transfer பண்ணச் சொல்றாங்க."
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "translation": "App store-ல இல்ல, link-ல இருந்துதான் app."
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "translation": "உன் call-அ police-க்கு transfer பண்றாங்க."
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "translation": "உன் வேலையைப் பத்தி MOM கூப்பிடலாம். ஆனா காசு transfer பண்ணச் சொல்லவோ bank login கேக்கிறதோ MOM-வே மாட்ட."
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "translation": "MOM உங்களுக்கு லிங்க்ல இருந்து ஆப் இன்ஸ்டால் பண்ணச் சொல்லாது. போலீஸ்க்கு உங்க காலை கொடுக்கச் சொல்லாது. டவுட்டா? கட் பண்ணுங்க."
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "translation": "போலி கொண்டாட்ட சேல்"
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "translation": "ஆப் இன்ஸ்டால் பண்ண வைக்கும் அளவுக்கு அதிக டீல்."
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "translation": "விளம்பரம்"
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "translation": "தீபாவளி கோல்ட் சேல்"
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "translation": "தீபாவளி சேல்! கோல்ட் 80% off!"
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "translation": "எங்க app-ஐ இங்கே download பண்ணுங்க: deepavali-gold.example/app"
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "translation": "வெறும் 1 மணி நேரம் தான் இருக்கு!"
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "translation": "இந்த விலை நம்பவே முடியல"
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "translation": "லிங்க்ல இருந்து app, app store-ல இல்ல"
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "translation": "அவசரப்படுத்துறாங்க"
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store on your phone.",
+   "translation": "உங்க போன்ல அதிகாரப்பூர்வ app store-ல இருந்து மட்டும் app install பண்ணுங்க"
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "translation": "போலியான ஆப் உங்கள் பேங்க் கணக்கிலிருந்து பணத்தை திருடலாம்."
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "translation": "எளிதான பணம் (மோசடி நபர்)"
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "translation": "உங்கள் கணக்கை பயன்படுத்த காசு தருவது."
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "translation": "சாட் செய்தி"
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "translation": "சுலபமா பணம் வேணுமா? வாரத்துக்கு $300, வேலை இல்லை!"
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "translation": "உங்க பேங்க் கணக்கையும், சிம் கார்டையும், Singpass-ஐயும் பயன்படுத்திக்கிறேன்."
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "translation": "எந்த வேலையும் இல்லாமல் பணம்"
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "translation": "உங்க bank account, SIM card, அல்லது Singpass வேண்டும்."
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "translation": "உங்க bank account, SIM card, Singpass-ஐ விற்க, கடன் கொடுக்க, யாருக்கும் கொடுக்காதீங்க."
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "translation": "இது தப்பு. fine, jail, jail-ல போடலாம், அல்லது அடிக்கலாம்."
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "translation": "Fake வேலை அல்லது work permit"
+  },
+  "learn[3].tagline": {
+   "english": "Fake approval letters that ask for money.",
+   "translation": "பணம் கேட்கும் fake approval letters."
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "translation": "சாட் செய்தி"
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "translation": "SG Jobs முகவர்"
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "translation": "நல்ல செய்தி! உங்க work permit ஒப்புதல் வந்திருக்கு."
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "translation": "இன்னைக்கு $800 அனுப்புங்க; job confirm ஆகும்."
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "translation": "நாங்க licensed agency. நம்பர்: 99X9999."
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "translation": "முதல்லயே பணம் கட்ட சொல்றது"
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "translation": "6-digit code-அ quick-ஆ அனுப்பு."
+  },
+  "learn[4].flags[0].label": {
+   "english": "Asks for your OTP and rushes you",
+   "translation": "உங்க OTP-அ கேட்டு உங்களை அவசரப்படுத்துறா."
+  },
+  "learn[4].todo[0]": {
+   "english": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "translation": "உங்க phone-க்கு வரும் OTP-அ, Singpass password-அ யாரு கிட்டயும் கொடுக்காதீங்க."
+  },
+  "learn[4].todo[1]": {
+   "english": "Someone says they changed their number? Call their old number to check.",
+   "translation": "Number-அ change பண்ணிட்டேன்னு சொன்னா? பழைய number-க்கு call பண்ணி check பண்ணு."
+  },
+  "learn[5].title": {
+   "english": "Fake MOM message",
+   "translation": "போலி MOM message"
+  },
+  "learn[5].tagline": {
+   "english": "Check who sent it, and where the link goes.",
+   "translation": "அனுப்பினது யாரு, link-அ எங்கு போகும்னு check பண்ணு."
+  },
+  "learn[5].chat.lines[0]": {
+   "english": "MOM: your work permit will expire soon.",
+   "translation": "MOM: உங்க வேலை அனுமதி சீக்கிரம் முடியப்போகுது."
+  },
+  "learn[5].chat.lines[1]": {
+   "english": "Renew it now: www.mom.gov.sg.official.com.net",
+   "translation": "இப்போவே புதுப்பிக்க: www.mom.gov.sg.official.com.net"
+  },
+  "learn[5].flags[0].label": {
+   "english": "Fake website: it does not end with .mom.gov.sg",
+   "translation": "கள்ள site: இது .mom.gov.sg-ல முடியாது."
+  },
+  "learn[5].todo[0]": {
+   "english": "Government SMS come from the sender \"gov.sg\".",
+   "translation": "அரசு SMS 'gov.sg'னு வரும்."
+  },
+  "learn[5].todo[1]": {
+   "english": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "translation": "அசலான MOM sites .mom.gov.sg-ல முடியும். முதல் '/' முன்னாடி site name-அ பாருங்க."
+  },
+  "act.title": {
+   "english": "Remember ACT",
+   "translation": "ACT-அ ஞாபகம் வெச்சுக்கோங்க."
+  },
+  "act.items[0]": {
+   "english": "ADD the ScamShield app",
+   "translation": "ScamShield ஆப்பை ADD பண்ணுங்க"
+  },
+  "act.items[1]": {
+   "english": "CHECK with 1799",
+   "translation": "1799-அ CHECK பண்ணுங்க"
+  },
+  "act.items[2]": {
+   "english": "TELL family and friends",
+   "translation": "குடும்பத்துக்கும் நண்பர்களுக்கும் TELL பண்ணுங்க"
+  },
+  "quiz[0].title": {
+   "english": "Spot the red flags",
+   "translation": "Red flags-அ கண்டுபிடிங்க"
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "translation": "அன்புள்ள தொழிலாளியே,"
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "translation": "உங்க work permit fine $350 கட்டாம இருக்கு."
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "translation": "இதற்கு செலுத்தவும்"
+  },
+  "quiz[0].msg.bubbles[1][2].t": {
+   "english": "or reply with your bank login.",
+   "translation": "அல்லது உங்கள் bank login reply அனுப்பவும்"
+  },
+  "quiz[0].explain": {
+   "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "translation": "Government SMS gov.sg-ல் இருந்து வரும். உண்மையான MOM முகவரிகள் .mom.gov.sg-ல் முடியும். Government உங்கள் bank login-ஐ SMS-ல் கேட்காது. தெரியவில்லையா? 1799-க்கு call பண்ணு."
+  },
+  "quiz[1].title": {
+   "english": "Scam or safe?",
+   "translation": "மோசடியா? பாதுகாப்பா?"
+  },
+  "quiz[1].cards[0].from": {
+   "english": "Your employer",
+   "translation": "உங்கள் முதலாளி"
+  },
+  "quiz[1].cards[0].text": {
+   "english": "Please buy rice on the way home. Thank you!",
+   "translation": "வீட்டுக்கு போகும்போது அரிசி வாங்கிக்கோங்க. நன்றி!"
+  },
+  "quiz[1].cards[0].why": {
+   "english": "A normal message from someone you know, with no money or codes asked.",
+   "translation": "உங்களுக்குத் தெரிஞ்சவா கிட்ட இருந்து வர்ற மெசேஜ், பணம், கோட் எதுவும் கேக்காம."
+  },
+  "quiz[1].cards[1].from": {
+   "english": "Unknown number",
+   "translation": "தெரியாத நம்பர்"
+  },
+  "quiz[1].cards[1].text": {
+   "english": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "translation": "உங்க பேங்க் அக்கவுண்ட் லாக் ஆயிடுச்சு. நாங்க அனுப்புன OTP-ய ரிப்ளை பண்ணுங்க."
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "translation": "அவங்க பேங்க்னு சொன்னாலும், போனுக்கு வந்த OTP (கோட்) யாருக்கும் கொடுக்காதீங்க."
+  },
+  "quiz[1].cards[2].from": {
+   "english": "New contact",
+   "translation": "புது நம்பர்"
+  },
+  "quiz[1].cards[2].text": {
+   "english": "Lend me your bank card for one week. I will pay you $300.",
+   "translation": "உங்க பேங்க் கார்ட ஒரு வாரத்துக்கு கொடுங்க. நான் $300 தருவேன்."
+  },
+  "quiz[1].cards[2].why": {
+   "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "translation": "இது ஒரு மோசடி மியூல் வாய்ப்பு. உங்கள் வங்கி அட்டையை பிறர் பயன்படுத்த விடுவது ஒரு குற்றம்."
+  },
+  "quiz[1].cards[3].from": {
+   "english": "Your friend",
+   "translation": "உங்கள் நண்பர்"
+  },
+  "quiz[1].cards[3].text": {
+   "english": "Happy Deepavali! See you at the event on Sunday.",
+   "translation": "ஹேப்பி தீபாவளி! ஞாயிறு நிகழ்ச்சிக்கு பாப்போம்!"
+  },
+  "quiz[1].cards[3].why": {
+   "english": "A normal greeting from a friend, with nothing asked.",
+   "translation": "நண்பர் சாதாரணமா வாழ்த்திட்டாரு. எதுவும் கேட்கல."
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "translation": "என்ன பதில் சொல்வீங்க?"
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "translation": "உறவினர் (new number)"
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "translation": "ஹாய், நான் உங்க கசின். நம்பரை மாத்திட்டேன்."
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "translation": "தப்பா உங்க போனுக்கு 6-digit code அனுப்பிட்டேன். அதை எனக்கு அனுப்புங்க. ரொம்ப அவசரம்!"
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "translation": "சரி, இதுதான் கோட்: 482915"
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "translation": "இல்ல. நான் கோட் தர மாட்டேன். உங்க பழைய நம்பருக்கு கூப்பிடுவேன்."
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "translation": "முதல்ல உங்க போட்டோவை அனுப்புங்க, அப்புறம் நான் அனுப்புவேன்."
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "translation": "உங்க OTP-வை குடும்பத்துல கூட யாருக்கும் சொல்லாதீங்க. நம்பரை மாத்தினேன்னு சொன்னா, பழைய நம்பருக்கு கூப்பிட்டு பாருங்க."
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "translation": "பாதுகாப்பான வழியைத் தேர்ந்தெடு"
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "translation": "தீபவாலிக்கு ஷாப்பிங் ஆப் வேணும். அதை எங்க இருந்து எடுக்கணும்?"
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "translation": "உங்க போன்ல இருக்குற அதிகாரப்பூர்வ ஆப் ஸ்டோர்"
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "translation": "சாட்ல வந்த லிங்க்"
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "translation": "ஆன்லைன் விளம்பரத்துல வர்ற லிங்க்"
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "translation": "உங்க போன்ல இருக்குற அதிகாரப்பூர்வ ஆப் ஸ்டோர்ல மட்டும் ஆப் போடணும். லிங்க்கல இருந்து வர்ற ஆப் உங்க பணத்தை திருடிடும்."
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "translation": "சிவப்புக் கொடிகளைக் கண்டுபிடி"
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "translation": "சாட் செய்தி"
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "translation": "வேலை முகவர்"
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "translation": "உங்க முதலாளி உங்க permit-அ ரத்து பண்ணணும்னு நினைக்கிறார்"
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "translation": "உங்க வேலையை காப்பாத்த $500 எனக்கு கொடுங்க"
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "translation": "CHECK உங்க permit-அ இங்கே"
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "translation": "உங்க Singpass password-ஐ அனுப்புங்க."
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "translation": "வேலையை வைக்க பணம் கொடுக்கச் சொல்றது illegal. உண்மையான MOM address \".mom.gov.sg\"ன்னு முடியும். உங்க Singpass password-ஐ யாருக்கும் சொல்லாதீங்க."
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "translation": "என்ன reply பண்ணுவீங்க?"
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "translation": "தெரியாத number"
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "translation": "Easy money! வாரத்துக்கு $200 சம்பாதிக்கலாம்."
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "translation": "எனக்கு உங்க bank account-ஐயும் Singpass-ஐயும் use பண்ணிக்கலாம்."
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "translation": "ஓகே, எப்படி ஆரம்பிக்கிறது?"
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "translation": "அப்புறம் எனக்கு $400 குடுக்க முடியுமா?"
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "translation": "இல்ல. இது தப்பு. நான் ரிப்போர்ட் பண்றேன்."
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "translation": "மத்தவங்கள உங்க பேங்க் அக்கவுண்ட் அல்லது Singpass-ஐ யூஸ் பண்ண விட்டா, நீங்க ஸ்காம் மியூலா மாறுவீங்க. இது தப்பு. வேண்டாம்னு சொல்லிட்டு, ரிப்போர்ட் பண்ணுங்க."
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "translation": "கடைசி ஒரு விஷயம்"
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "translation": "இன்னைக்கு நடந்த விஷயத்துல நீங்க எவ்வளவு சந்தோஷம்?"
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "translation": "ரொம்ப சந்தோஷம் இல்லை"
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "translation": "சந்தோஷம் இல்லை"
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "translation": "சரி"
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "translation": "சந்தோஷம்"
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "translation": "ரொம்ப சந்தோஷம்"
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "translation": "Scams பத்தி புதுசா ஏதாச்சும் கத்துக்கிட்டீங்களா?"
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "translation": "ஆம்"
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "translation": "கொஞ்சம்"
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "translation": "இல்லை"
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "translation": "என் முடிவைப் பார்"
+  },
+  "learn[3].flags[1].label": {
+   "english": "A licence number does not prove it is real",
+   "translation": "உரிம எண் இருந்தால் மட்டும் அது உண்மை என்று சொல்லிவிட முடியாது"
+  },
+  "learn[3].todo[0]": {
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "translation": "உங்கள் வேலை அனுமதியை நீங்களே MOM இணையதளத்தில் சரிபாருங்கள்: \"Check work pass and application status\". பதிவு தேவையில்லை."
+  },
+  "learn[3].todo[1]": {
+   "english": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "translation": "முதலில் பணம் கேட்கிறது வேலை மோசடியின் அடையாளம். வேலையை தக்கவைக்க பணம் கட்ட வேண்டும் என்று யாரும் கட்டாயப்படுத்த முடியாது: அது சட்டத்துக்கு எதிரானது."
+  },
+  "learn[4].title": {
+   "english": "Secret codes (OTP)",
+   "translation": "ரகசிய குறியீடுகள் (OTP)"
+  },
+  "learn[4].tagline": {
+   "english": "Scammers ask for the code sent to your phone.",
+   "translation": "மோசடிக்காரர்கள் உங்கள் போனுக்கு வரும் குறியீட்டை கேட்பார்கள்"
+  },
+  "learn[4].chat.lines[0]": {
+   "english": "Sorry, I sent a code to your phone by mistake.",
+   "translation": "மன்னிச்சிடுங்க, தவறுதால உங்க போனுக்கு ஒரு OTP அனுப்பிட்டேன்"
+  }
+ }
+}

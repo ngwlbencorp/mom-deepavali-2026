@@ -38,5 +38,16 @@
   ],
   "liveChanged": 0,
   "outcome": "No meaning errors found in the live Burmese. The independent version was much worse: 'scams' and 'scammers' as 'words' (event.title, event.intro), 'quiz' as 'representative', 'transfer money' as 'feed fish', 'caned' as 'managed', 'employer' as 'worker', 'cousin' as 'uncle', the feedback scale as 'love feeling', and Arabic, Thai, Georgian and Malay fragments inside Burmese words. The missing lines failed in every run (SEA-LION returned broken JSON for that batch); not pursued given the quality of the rest."
+ },
+ "ta-sarvam": {
+  "model": "sarvam-105b",
+  "lines": 184,
+  "liveChanged": 0,
+  "outcome": "No meaning errors found in the live Tamil. The independent version is colloquial with many English loanwords, and its meaning differences were its own errors, e.g. 'scam mule' as 'scam person', 'crime' as 'wrong', 'instead' as 'later', 'Licence' and 'sender' dropped, 'registration' for login, CHECK inserted into a scam message, a garbled penalties line.",
+  "noted": {
+   "quiz[4].msg.bubbles[0][0].t": "Live 'is going to cancel' vs English 'wants to cancel': slight shift, same threat; kept for length.",
+   "learn[3].todo[1]": "Both drop 'common'; live says no one can 'ask' you to pay vs 'make you pay': same warning.",
+   "ui.example": "Live 'போலி' (fake) vs independent 'not real': same intent."
+  }
  }
 }
