@@ -1,6 +1,6 @@
 {
  "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
- "checked": "2026-10-29",
+ "checked": "2026-10-30",
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -1423,6 +1423,30 @@
    "draft": "TELL (beri tahu) keluarga dan teman",
    "verdict": "ok",
    "back": "TELL (inform) family and friends",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "Dengan menggunakan situs ini, Anda menyetujui {terms} dan {privacy}.",
+   "verdict": "ok",
+   "back": "By using this site, you agree to the {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "Ketentuan Penggunaan",
+   "verdict": "ok",
+   "back": "Terms of Use",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "Pernyataan Privasi",
+   "verdict": "ok",
+   "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
   }

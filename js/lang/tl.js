@@ -11,6 +11,9 @@ window.SCAM_TEXT["tl"] = {
   },
   "ui": {
     "language": "Wika",
+    "legal": "Sa paggamit ng site na ito, sumasang-ayon ka sa {terms} at {privacy}.",
+    "terms": "Mga Tuntunin ng Paggamit",
+    "privacy": "Pahayag sa Privacy",
     "home": "Home",
     "previous": "Bumalik",
     "next": "Susunod",

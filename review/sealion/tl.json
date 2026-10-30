@@ -1,6 +1,6 @@
 {
  "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
- "checked": "2026-10-29",
+ "checked": "2026-10-30",
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -1423,6 +1423,30 @@
    "draft": "TELL sa pamilya at mga kaibigan",
    "verdict": "ok",
    "back": "TELL to family and friends",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "Sa paggamit ng site na ito, sumasang-ayon ka sa {terms} at {privacy}.",
+   "verdict": "ok",
+   "back": "By using this site, you agree to the {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "Mga Tuntunin ng Paggamit",
+   "verdict": "ok",
+   "back": "Terms of Use",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "Pahayag sa Privacy",
+   "verdict": "ok",
+   "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
   }

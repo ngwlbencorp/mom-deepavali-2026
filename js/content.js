@@ -25,6 +25,9 @@ window.SCAM_TEXT.en = {
 
   ui: {
     language: "Language",
+    legal: "By using this site, you agree to the {terms} and {privacy}.",
+    terms: "Terms of Use",
+    privacy: "Privacy Statement",
     home: "Home",
     previous: "Previous",
     next: "Next",

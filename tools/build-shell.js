@@ -43,6 +43,9 @@ if (!admin) {
     files.push(['fallback/' + ref, fs.readFileSync(p)]);
   }
   for (const extra of ['js/vendor/LICENSES.txt']) if (fs.existsSync(path.join(site, extra))) files.push(['fallback/' + extra, fs.readFileSync(path.join(site, extra))]);
+  // images the scripts show (logos): not referenced from index.html, so bundle the whole folder
+  const img = path.join(site, 'img');
+  if (fs.existsSync(img)) for (const f of fs.readdirSync(img).sort()) files.push(['fallback/img/' + f, fs.readFileSync(path.join(img, f))]);
 }
 
 // Only file types ducks.ai accepts.

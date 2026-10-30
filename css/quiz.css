@@ -12,8 +12,12 @@ body.app {
 .bar {
   flex: none; display: flex; align-items: center; gap: 8px;
   height: 52px; padding: 0 12px;
-  background: linear-gradient(160deg, var(--plum), var(--plum-2)); color: #fff;
+  /* white, so the MOM logo shows in its own colours; a purple-gold rule keeps the festive look */
+  background: #fff; color: var(--plum);
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--plum), var(--plum-2) 60%, var(--gold)) 1;
 }
+.bar-title .momlogo { height: 38px; width: auto; display: block; }
 .iconbtn { background: none; border: 0; padding: 4px; width: 44px; height: 44px; cursor: pointer; border-radius: 10px; }
 .iconbtn svg { width: 34px; height: 34px; display: block; }
 .iconbtn .lamp { fill: var(--gold); }
@@ -21,7 +25,7 @@ body.app {
 .bar-title { flex: 1; margin: 0; font-weight: 600; font-size: .95rem; opacity: .95; }
 .langbtn {
   min-width: 52px; height: 36px; padding: 0 12px; border-radius: 18px;
-  background: rgba(255, 255, 255, .15); color: #fff; border: 2px solid rgba(255, 255, 255, .6);
+  background: #fff; color: var(--plum); border: 2px solid var(--plum);
   font: inherit; font-weight: 700; font-size: .85rem; cursor: pointer;
 }
 
@@ -54,6 +58,13 @@ body.app main.screen {
 .note { font-size: .9rem; color: var(--muted); }
 .center { text-align: center; }
 .helpline { margin-top: auto; text-align: center; color: var(--ink); text-decoration: none; font-weight: 600; padding: 6px; }
+/* home page footer: GovTech logo, then the terms and privacy line */
+.legal { flex: none; text-align: center; margin: 2px 0 0; padding-top: 8px; border-top: 1px solid var(--line); }
+.legal .gtlogo { height: 22px; width: auto; display: block; margin: 0 auto 4px; }
+.legal p { margin: 0; font-size: .72rem; line-height: 1.35; color: var(--muted); }
+.legal a { color: var(--plum); }
+.screen.tighter .legal { padding-top: 4px; }
+.screen.tighter .legal .gtlogo { height: 16px; margin-bottom: 2px; }
 .helpline b { font-size: 1.3rem; color: var(--plum); background: var(--gold-soft); padding: 2px 10px; border-radius: 8px; margin-left: 4px; }
 .progress { height: 6px; background: var(--line); border-radius: 6px; overflow: hidden; flex: none; padding: 0; box-shadow: none; }
 .progress i { display: block; height: 100%; width: var(--p, 0%); background: var(--gold); transition: width .3s; }
@@ -292,6 +303,7 @@ html:lang(ta) .screen .bubble, html:lang(ta) .reply { font-size: .93rem; }
 /* Small phones (e.g. 320 x 568): tighter type and spacing. */
 @media (max-height: 600px) {
   .bar { height: 44px; }
+  .bar-title .momlogo { height: 32px; }
   body.app main.screen { gap: 7px; padding-top: 8px; padding-bottom: 6px; }
   .screen h1 { font-size: 1.45rem; }
   .screen h2 { font-size: 1.1rem; }

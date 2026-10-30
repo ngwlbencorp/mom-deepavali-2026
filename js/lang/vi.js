@@ -11,6 +11,9 @@ window.SCAM_TEXT["vi"] = {
   },
   "ui": {
     "language": "Ngôn ngữ",
+    "legal": "Khi dùng trang này, bạn đồng ý với {terms} và {privacy}.",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Tuyên bố về quyền riêng tư",
     "home": "Trang chủ",
     "previous": "Quay lại",
     "next": "Tiếp",

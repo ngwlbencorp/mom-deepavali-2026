@@ -11,6 +11,9 @@ window.SCAM_TEXT["zh"] = {
   },
   "ui": {
     "language": "语言",
+    "legal": "使用本网站即表示您同意{terms}和{privacy}。",
+    "terms": "使用条款",
+    "privacy": "隐私声明",
     "home": "主页",
     "previous": "上一步",
     "next": "下一步",

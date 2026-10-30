@@ -66,6 +66,9 @@
     (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
     return n;
   }
+  // Images live with the site on Vercel. Loaded through the ducks.ai shell, relative paths would
+  // point at the ducks.ai page, so they are taken from where the shell loaded the site.
+  function asset(p) { return ((window.SITE_SHELL && window.SITE_SHELL.base) || './') + p; }
   // Animation timings go through the style property (CSSOM), which a strict host CSP allows.
   function vars(node, map) { for (var k in map) node.style.setProperty(k, map[k]); return node; }
   var f = I.fmt;
@@ -93,8 +96,11 @@
 
   // If a screen does not fit (long translation, small phone, large system font), step the text
   // down, at most twice. Past that, only the middle area scrolls.
+  // The home page's legal footer may sit below the fold on a short screen, as footers do: it does
+  // not count, so the main content is not shrunk to make room for it.
   function overflowing() {
-    if (app.scrollHeight > app.clientHeight + 1) return true;
+    var foot = app.querySelector('.legal'), allow = foot ? foot.offsetHeight + 8 : 0;
+    if (app.scrollHeight - allow > app.clientHeight + 1) return true;
     return [].some.call(app.querySelectorAll('.phone-body'), function (b) { return b.scrollHeight > b.clientHeight + 1; });
   }
   function fit() {
@@ -198,6 +204,22 @@
   document.documentElement.lang = I.current();
   setupLang();
 
+  // ---------- header logo and the home page's legal footer ----------
+  var barTitle = document.querySelector('.bar-title');
+  if (barTitle) barTitle.replaceChildren(el('img', { class: 'momlogo', src: asset('img/mom-logo.png'), alt: 'Ministry of Manpower' }));
+  var LEGAL = { terms: 'https://www.tech.gov.sg/terms-of-use/', privacy: 'https://www.tech.gov.sg/privacy/' };
+  function legal() {
+    // "{terms}" and "{privacy}" in the sentence become links, in any language's word order.
+    var parts = T.ui.legal.split(/(\{terms\}|\{privacy\})/).map(function (p) {
+      var k = p === '{terms}' ? 'terms' : p === '{privacy}' ? 'privacy' : null;
+      return k ? el('a', { href: LEGAL[k], target: '_blank', rel: 'noopener', text: T.ui[k] }) : p;
+    });
+    return el('footer', { class: 'legal' }, [
+      el('img', { class: 'gtlogo', src: asset('img/govtech-logo.png'), alt: 'GovTech Singapore' }),
+      el('p', {}, parts)
+    ]);
+  }
+
   // ---------- home ----------
   function home() {
     var open = eventOpen();
@@ -216,7 +238,8 @@
       state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [souvenirsOn() && (state.last.score === state.last.total || state.firstFull) ? T.ui.showQr : T.ui.showResult]) : null,
       open ? el('p', { class: 'note', text: T.event.souvenirNote }) : null,
       open ? pill() : null,
-      helpline()
+      helpline(),
+      legal()
     ], [], home, true);
   }
 

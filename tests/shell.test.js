@@ -31,6 +31,10 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   ok(await pg.evaluate((s) => [...document.scripts].some((x) => x.src === s + 'js/app.js'), standIn), 'app.js came from the stand-in, not the bundle');
   ok(await pg.locator('#shell-loading').count() === 0 && await pg.locator('header.bar').count() === 1, 'page structure from index.html is in place; loading text removed');
   ok(await pg.locator('#ducks-extra').count() === 1, "ducks.ai's own additions to the page are left alone");
+  const logos = () => pg.evaluate(() => [...document.querySelectorAll('img.momlogo, img.gtlogo')].map((i) => i.complete && i.naturalWidth > 0 && i.src));
+  await pg.waitForFunction(() => [...document.querySelectorAll('img.momlogo, img.gtlogo')].every((i) => i.complete));
+  const shown = await logos();
+  ok(shown.length === 2 && shown.every((s) => s && s.startsWith(standIn + 'img/')), 'MOM and GovTech logos load from the site, not the ducks.ai page');
   ok(await pg.evaluate(() => document.body.className) === 'app' && (await pg.title()) === 'Stay Safe from Scams', 'body class and title copied');
   await pg.close();
 
@@ -47,6 +51,8 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   const t0 = Date.now();
   pg = await open(dead);
   ok(await source(pg) === 'fallback' && Date.now() - t0 < 9000, `Vercel unreachable: bundled copy shown (${Date.now() - t0} ms)`);
+  await pg.waitForFunction(() => [...document.querySelectorAll('img.momlogo, img.gtlogo')].every((i) => i.complete));
+  ok(await pg.evaluate(() => [...document.querySelectorAll('img.momlogo, img.gtlogo')].filter((i) => i.naturalWidth > 0).length) === 2, 'the bundled copy has the logos too');
   await pg.close();
 
   // 4) the stand-in answers but one of its files fails: the bundled copy is used, after one reload

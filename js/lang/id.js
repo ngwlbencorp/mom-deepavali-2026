@@ -11,6 +11,9 @@ window.SCAM_TEXT["id"] = {
   },
   "ui": {
     "language": "Bahasa",
+    "legal": "Dengan menggunakan situs ini, Anda menyetujui {terms} dan {privacy}.",
+    "terms": "Ketentuan Penggunaan",
+    "privacy": "Pernyataan Privasi",
     "home": "Beranda",
     "previous": "Sebelumnya",
     "next": "Berikutnya",

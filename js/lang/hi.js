@@ -11,6 +11,9 @@ window.SCAM_TEXT["hi"] = {
   },
   "ui": {
     "language": "भाषा",
+    "legal": "इस साइट का उपयोग करके आप {terms} और {privacy} से सहमत होते हैं।",
+    "terms": "उपयोग की शर्तें",
+    "privacy": "गोपनीयता कथन",
     "home": "होम",
     "previous": "पिछला",
     "next": "आगे",

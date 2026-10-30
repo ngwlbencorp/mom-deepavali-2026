@@ -11,6 +11,9 @@ window.SCAM_TEXT["bn"] = {
   },
   "ui": {
     "language": "ভাষা",
+    "legal": "এই সাইট ব্যবহার করে আপনি {terms} ও {privacy}-এ সম্মত হচ্ছেন।",
+    "terms": "ব্যবহারের শর্তাবলি",
+    "privacy": "গোপনীয়তা বিবৃতি",
     "home": "হোম",
     "previous": "আগের",
     "next": "পরের",

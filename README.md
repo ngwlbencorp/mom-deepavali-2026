@@ -24,6 +24,8 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 - **Fits the screen:** every screen fits without scrolling at 320×568, 360×640 and 390×844 (checked by `tests/fit.test.js`). If text is ever longer (big system font, long translation), only the middle area scrolls.
 - **Wording** lives in `js/content.js`, in short plain-English sentences so it translates cleanly. Every rule it teaches, and every quiz answer, is traced to a public MOM, ScamShield, Police or GovTech page in [SOURCES.md](SOURCES.md).
 
+- **Branding and legal footer:** the header shows the MOM logo (`img/mom-logo.png`, on a white bar); the home page ends with the GovTech logo (`img/govtech-logo.png`) and "By using this site, you agree to the Terms of Use and Privacy Statement", linking to GovTech's pages (`https://www.tech.gov.sg/terms-of-use/`, `https://www.tech.gov.sg/privacy/`). The footer may sit below the fold on a short screen; the fit check ignores it. Images go through `asset()` in `js/app.js`, so they load from Vercel when the page comes through the ducks.ai shell.
+
 ### Languages
 
 English is live. Drafts exist for the **nine languages MOM uses for its migrant-worker guides and scam materials**: Bahasa Indonesia, Bengali, Burmese, Chinese, Hindi, Tagalog, Tamil, Thai and Vietnamese. MOM also publishes one document, the domestic-worker safety agreement, in Khmer and Sinhalese; those two have no drafts. The evidence, language by language, is in [SOURCES.md](SOURCES.md#languages-mom-publishes-in) (pages checked 29 Oct 2026). **None is switched on**: they were machine-drafted and must be checked by MOM's language team first. MOM decides which ones to publish.

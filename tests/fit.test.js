@@ -17,8 +17,9 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   async function fits(name) {
     const r = await pg.evaluate(() => {
       const d = document.documentElement, m = document.getElementById('app');
+      const foot = m.querySelector('.legal'), allow = foot ? foot.offsetHeight + 8 : 0; // the home footer may sit below the fold
       const inner = [...document.querySelectorAll('.phone-body')].some((x) => x.scrollHeight > x.clientHeight + 1);
-      return { pageY: d.scrollHeight > innerHeight + 1, pageX: d.scrollWidth > innerWidth + 1, main: m.scrollHeight > m.clientHeight + 1, inner, over: m.scrollHeight - m.clientHeight };
+      return { pageY: d.scrollHeight > innerHeight + 1, pageX: d.scrollWidth > innerWidth + 1, main: m.scrollHeight - allow > m.clientHeight + 1, inner, over: m.scrollHeight - allow - m.clientHeight };
     });
     const good = !r.pageY && !r.pageX && !r.main && !r.inner;
     ok(good, `${LANG} ${W}x${H} fits without scrolling: ${name}` + (good ? '' : ` (page-y ${r.pageY}, page-x ${r.pageX}, main overflow ${r.over}px, message box ${r.inner})`));
