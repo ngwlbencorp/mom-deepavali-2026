@@ -31,7 +31,7 @@ const PLAN = {
 };
 const PROVIDERS = {
   sealion: { base: 'https://api.sea-lion.ai/v1', key: 'SEALION_API_KEY', gap: 7000, batch: 20, auth: (k) => ({ Authorization: 'Bearer ' + k }) },
-  sarvam: { base: 'https://api.sarvam.ai', key: 'SARVAM_API_KEY', gap: 1500, batch: 15, auth: (k) => ({ 'api-subscription-key': k }) },
+  sarvam: { base: 'https://api.sarvam.ai', key: 'SARVAM_API_KEY', gap: 1500, batch: 6, auth: (k) => ({ 'api-subscription-key': k }) },
   // Gemini's OpenAI-compatible endpoint; the free tier allows a few requests a minute.
   gemini: { base: 'https://generativelanguage.googleapis.com/v1beta/openai', key: 'GEMINI_API_KEY', gap: 13000, batch: 25, auth: (k) => ({ Authorization: 'Bearer ' + k }), model: 'gemini-2.5-pro' }
 };
@@ -60,7 +60,7 @@ async function chatBatch(code, plan, keys) {
     { role: 'user', content: `Language: ${NAME[code]}.\nTranslate these ${lines.length} lines:\n${JSON.stringify(lines, null, 1)}` }] };
   if (plan.provider === 'sealion') Object.assign(body, { max_completion_tokens: 16000, chat_template_kwargs: { enable_thinking: !!(CONFIG.models[model] || {}).thinking } });
   else if (plan.provider === 'gemini') body.max_tokens = 32000; // includes its thinking
-  else body.max_tokens = 12000;
+  else body.max_tokens = 40000; // Sarvam-105B spends most of it thinking (see tools/sarvam-review.js)
   const got = {};
   for (const r of parseReply(await post(p, url, body))) {
     if (r && keys.includes(r.key) && typeof r.translation === 'string' && r.translation.trim()) got[r.key] = r.translation.trim();

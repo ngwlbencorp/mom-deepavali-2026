@@ -28,7 +28,9 @@ const CHAT_MODEL = 'sarvam-105b', TRANSLATE_MODEL = 'sarvam-translate:v1';
 // 10 Indian languages + English, without Urdu; Sarvam Translate covers all 22 scheduled languages).
 const PLAN = { hi: 'review', bn: 'review', ur: 'back-translate' };
 const LOCALE = { hi: 'hi-IN', bn: 'bn-IN', ur: 'ur-IN' };
-const GAP_MS = 1500, BATCH = 15; // limits are 60 requests a minute; small batches keep replies within max_tokens
+// Sarvam-105B thinks before answering (about 1,700 tokens per line), so batches stay small and the
+// token budget large; with 15 lines and 12,000 tokens its replies came back empty.
+const GAP_MS = 1500, BATCH = 6; // limits are 60 requests a minute
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let last = 0;
@@ -51,7 +53,7 @@ async function post(url, body) {
 async function reviewBatch(code, keys, draft) {
   const lines = keys.map((k) => ({ key: k, where: where(k), note: hint(k), english: english[k], draft: draft[k] }));
   const json = await post('/v1/chat/completions', {
-    model: CHAT_MODEL, temperature: 0.2, max_tokens: 12000,
+    model: CHAT_MODEL, temperature: 0.2, max_tokens: 40000,
     messages: [{ role: 'system', content: SYSTEM },
       { role: 'user', content: `Language: ${NAME[code]}.\nCheck these ${lines.length} lines:\n${JSON.stringify(lines, null, 1)}` }]
   });
