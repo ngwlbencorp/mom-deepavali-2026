@@ -43,6 +43,11 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok(a.status === 200 && a.body.admins.length === 2 && a.body.admins[0].email === 'alice@mom.gov.sg', 'upload admins: lowercased, de-duplicated');
   a = await call('POST', '/api/admins', { emails: ['carol@mom.gov.sg'], mode: 'add' }, SUP);
   ok(a.body.admins.length === 3, 'add mode keeps existing admins');
+  const carolAdded = a.body.admins.find((x) => x.email === 'carol@mom.gov.sg').added_at;
+  a = await call('POST', '/api/admins', { emails: [' CAROL@mom.gov.sg', 'bob@mom.gov.sg', 'dave@mom.gov.sg'], mode: 'add' }, SUP);
+  ok(a.status === 200 && a.body.admins.length === 4 && a.body.admins.find((x) => x.email === 'carol@mom.gov.sg').added_at === carolAdded,
+    'uploading emails already listed: no error, no duplicates, existing entries untouched, new ones added');
+  await call('POST', '/api/admins', { remove: 'dave@mom.gov.sg' }, SUP);
   ok((await call('POST', '/api/admins', { emails: ['not-an-email'] }, SUP)).status === 400, 'invalid email rejected');
 
   // ---- admin login ----
@@ -199,8 +204,11 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok(ae.status === 200 && Array.isArray(ae.body.errors), 'superadmin can read the server error log');
   ok((await call('GET', '/api/apierrors', null, ADM)).status === 403 && (await call('GET', '/api/apierrors')).status === 401, 'officers and visitors cannot read the server error log');
   if (BUG_TOKEN) ok((await call('GET', '/api/apierrors?since=0', null, BUG_TOKEN)).status === 200, 'bug-agent token can read the server error log');
+  const adminsBefore = JSON.stringify((await call('GET', '/api/admins', null, SUP)).body.admins);
   await call('POST', '/api/reset', { confirm: 'RESET' }, SUP);
   ok((await call('GET', '/api/bugs', null, SUP)).body.reports.some((x) => x.id === bugId), 'clearing rehearsal data keeps the bug log');
+  ok(JSON.parse(adminsBefore).length > 0 && JSON.stringify((await call('GET', '/api/admins', null, SUP)).body.admins) === adminsBefore && (await call('POST', '/api/login', { role: 'admin', email: 'bob@mom.gov.sg', password: ADMIN_PW })).status === 200,
+    'clearing rehearsal data keeps every admin, and they can still log in');
 
   console.log(fails ? `${fails} FAILED` : 'ALL PASSED');
   process.exit(fails ? 1 : 0);
