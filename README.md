@@ -149,7 +149,7 @@ Attempts are counted **per claim ID, which means per phone browser, not per pers
 - each phone's submissions reach the server. A submission made offline and never retried is not counted; if the officer's scan registers it, the phone's own count is used;
 - you accept that answers are shown after each question, so a second attempt is close to guaranteed to be full marks. "Attempts to full score" therefore mostly measures whether people retried, not how much they learned.
 
-Manual claims use 3 spoken questions, not the 8-question quiz, so they're excluded from the self-submit try rates. Decide whether this is good enough before reporting these as outcome measures. If it isn't, the first-attempt score distribution (in the `submissions` CSV, `attempt = 1`) is the more defensible learning signal.
+Manual claims use 3 spoken questions, not the 6-question quiz, so they're excluded from the self-submit try rates. Decide whether this is good enough before reporting these as outcome measures. If it isn't, the first-attempt score distribution (in the `submissions` CSV, `attempt = 1`) is the more defensible learning signal.
 
 ## Database (Neon Postgres)
 
