@@ -1,0 +1,406 @@
+{
+ "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "checked": "2026-10-30",
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "دیپاولی مبارک!",
+   "verdict": "ok",
+   "back": "Happy Deepavali!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "اسکیم (دھوکا دہی) سے محفوظ رہیں",
+   "verdict": "fix",
+   "back": "Stay safe from scam (fraud)",
+   "suggestion": "دھوکہ دہی سے محفوظ رہیں",
+   "reason": "Remove English word 'scam' and parentheses; use plain Urdu 'dhokha dehi' for clarity."
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "جانیں کہ اسکیمر کون سی چالیں چلتے ہیں، پھر کوئز دیں۔",
+   "verdict": "fix",
+   "back": "Know which tricks scammers play, then take the quiz.",
+   "suggestion": "جانیں کہ دھوکہ باز کون سی چالیں چلاتے ہیں، پھر کوئز دیں۔",
+   "reason": "Replace 'scammer' with 'dhokha baz' (fraudster) for better understanding; fix grammar."
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "تمام جواب درست دیں اور تحفہ لینے کے لیے MOM افسر کو اپنا QR کوڈ دکھائیں۔ صرف پہلے 500 افراد کے لیے!",
+   "verdict": "fix",
+   "back": "Give all answers correct and show your QR code to MOM officer to get gift. Only for first 500 people!",
+   "suggestion": "سب جواب درست دیں اور تحفہ لینے کے لیے MOM افسر کو اپنا QR کوڈ دکھائیں۔ صرف پہلے 500 کے لیے!",
+   "reason": "Simplify 'individuals' to 'people' (implied) and shorten for phone screen."
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "ScamShield ہیلپ لائن",
+   "verdict": "ok",
+   "back": "ScamShield Helpline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "زبان",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech کا ایک کارپوریٹ سماجی ذمہ داری کا اقدام",
+   "verdict": "fix",
+   "back": "A GovTech corporate social responsibility initiative",
+   "suggestion": "GovTech کا ایک سماجی ذمہ داری کا اقدام",
+   "reason": "Remove 'corporate' as it is too formal/technical for workers; 'social responsibility' is sufficient."
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "اس سائٹ کو استعمال کر کے آپ {terms} اور {privacy} سے اتفاق کرتے ہیں۔",
+   "verdict": "ok",
+   "back": "By using this site, you agree to {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "شرائطِ استعمال",
+   "verdict": "ok",
+   "back": "Terms of Use",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "رازداری کا بیان",
+   "verdict": "ok",
+   "back": "Privacy Statement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "ہوم",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "پچھلا",
+   "verdict": "ok",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "اگلا",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "ختم",
+   "verdict": "fix",
+   "back": "End",
+   "suggestion": "مکمل کریں",
+   "reason": "'Khatam' means 'end/stop'; 'Mukammal karein' means 'complete/finish' which is better for a quiz."
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "کوئز چھوڑیں",
+   "verdict": "ok",
+   "back": "Leave quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "کوئز چھوڑنا چاہتے ہیں؟ اب تک کے آپ کے جواب مٹ جائیں گے۔",
+   "verdict": "ok",
+   "back": "Want to leave quiz? Your answers so far will be deleted.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "جائزہ بند کریں",
+   "verdict": "ok",
+   "back": "Close review",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "اسکیم کے بارے میں جانیں",
+   "verdict": "fix",
+   "back": "Learn about scam",
+   "suggestion": "دھوکہ دہی کے بارے میں جانیں",
+   "reason": "Replace 'scam' with 'dhokha dehi' for consistency and clarity."
+  },
+  "ui.learnSub": {
+   "english": "6 short stories · 3 min",
+   "draft": "6 مختصر کہانیاں · 3 منٹ",
+   "verdict": "ok",
+   "back": "6 short stories · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "تحفے کے لیے کوئز",
+   "verdict": "ok",
+   "back": "Quiz for gift",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "کوئز دیں",
+   "verdict": "ok",
+   "back": "Take quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 چیلنج · 3 منٹ",
+   "verdict": "ok",
+   "back": "6 challenges · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "میرا QR کوڈ دکھائیں",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "میرا نتیجہ دکھائیں",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 {n} تحفے باقی ہیں",
+   "verdict": "ok",
+   "back": "🎁 {n} gifts left",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "تمام تحفے دیے جا چکے ہیں۔ حصہ لینے کا شکریہ!",
+   "verdict": "ok",
+   "back": "All gifts have been given. Thanks for participating!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "بہت خوب! آپ اسکیم پہچان سکتے ہیں۔",
+   "verdict": "ok",
+   "back": "Very good! You can recognize scams.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "جواب دیکھیں، پھر دوبارہ کوشش کریں۔",
+   "verdict": "ok",
+   "back": "See answers, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "یقین نہیں؟ کال کریں",
+   "verdict": "ok",
+   "back": "Not sure? Call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "مثال · اصلی نہیں",
+   "verdict": "ok",
+   "back": "Example · Not real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "کیا کریں",
+   "verdict": "ok",
+   "back": "What to do",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "کوئز دیں",
+   "verdict": "ok",
+   "back": "Give quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "سرکاری ویڈیو دیکھیں",
+   "verdict": "ok",
+   "back": "Watch official video",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "خطرے کی {n} علامتوں پر ٹیپ کریں",
+   "verdict": "ok",
+   "back": "Tap the {n} danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "{n} میں سے {k} منتخب",
+   "verdict": "ok",
+   "back": "{k} of {n} selected",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "اسکیم",
+   "verdict": "ok",
+   "back": "Scam",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "محفوظ",
+   "verdict": "ok",
+   "back": "Safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "پیغام {i} / {n}",
+   "verdict": "ok",
+   "back": "Message {i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} / {n}",
+   "verdict": "ok",
+   "back": "{i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "آپ کا نتیجہ محفوظ ہو رہا ہے…",
+   "verdict": "ok",
+   "back": "Your result is being saved...",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "سب درست!",
+   "verdict": "ok",
+   "back": "All correct!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "اپنا تحفہ لینے کے لیے یہ QR کوڈ MOM افسر کو دکھائیں۔",
+   "verdict": "ok",
+   "back": "Show this QR code to an MOM officer to get your gift.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "آپ نے پہلے سب جواب درست دیے تھے، اس لیے آپ کا QR کوڈ اب بھی کارآمد ہے۔",
+   "verdict": "ok",
+   "back": "You gave all correct answers before, so your QR code is still valid.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "{t} میں سے {s} درست",
+   "verdict": "ok",
+   "back": "{s} of {t} correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "جواب دیکھیں، پھر تحفے کے لیے دوبارہ کوشش کریں۔",
+   "verdict": "ok",
+   "back": "See answers, then try again for a gift.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "جواب دیکھیں",
+   "verdict": "ok",
+   "back": "See answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "دوبارہ کوشش کریں",
+   "verdict": "ok",
+   "back": "Try again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "میرے QR کوڈ پر واپس",
+   "verdict": "ok",
+   "back": "Back to my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "نتیجہ محفوظ ہو گیا ✓",
+   "verdict": "ok",
+   "back": "Result saved ✓",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "ابھی محفوظ نہیں ہوا (کنکشن نہیں)۔ افسر پھر بھی یہ QR کوڈ اسکین کر سکتا ہے۔",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}
