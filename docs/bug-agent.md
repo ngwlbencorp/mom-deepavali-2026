@@ -20,9 +20,9 @@ Instructions for the scheduled Claude session that checks the bug reports office
 4. Decide:
    - **Fix and push** when all of these hold: the problem is clear; the cause is found; the fix is small and local (wording, layout, a contained bug); it does not touch login or passwords, the souvenir cap, the event cutoff, the database tables, the API's security checks, or `SOURCES.md` facts; and every test passes.
    - **Otherwise** (unclear, cannot reproduce, a content or policy question, a larger change, or anything in the list above): set `needs_decision` with a note of what you found and what you propose, and notify the owner.
-   - **Not a bug** (works as designed, or a duplicate): set `wont_fix` or `duplicate` with a one-line note.
+   - **Not a bug** (works as designed, or a duplicate): set `wont_fix` or `duplicate` with a one-line note for officers (same rules as step 6; for a duplicate, name the report number).
 5. To fix: change the code, run the tests in the README that cover what you touched (fit tests in every live language for any mini-site layout or text change), and push to `main` (Vercel deploys it; the ducks.ai page loads it on the next visit). Commit message: what was wrong and what changed, ending with `Bug report #<id>`. Then check the live site shows the change.
-6. Record it: `node tools/bugs.js set <id> fixed --ref <commit sha> --note "<what was wrong and what changed, in plain English>"`. The Bug log measures time to fix from the report to this step.
+6. Record it: `node tools/bugs.js set <id> fixed --ref <commit sha> --note "<what was wrong and what changed, in plain English>"`. The Bug log measures time to fix from the report to this step. **Officers read this note** on the admin page ("Reported problems and fixes") once a report is fixed, won't fix or duplicate: write it for them, in plain English, about what they will see change. No names of hosting services, code files, commits or people; never an email address.
 7. Text an officer reads (mini-site content) changes only for a clear error such as a typo or broken wording. Any change of meaning is `needs_decision`: the content is sourced and reviewed (`SOURCES.md`, the language team).
 
 ## 3. Tell the owner

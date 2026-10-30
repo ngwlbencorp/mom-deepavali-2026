@@ -86,6 +86,21 @@ html.on-ducks .top.slim { padding-top: 64px; }
 .bugthumbs button { position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; border-radius: 50%; border: 0; background: var(--no); color: #fff; font-weight: 800; cursor: pointer; }
 .warn { color: var(--no); background: var(--no-bg); border-radius: 10px; padding: 8px 10px; }
 
+/* ---------- reported problems ---------- */
+.bugsum { font-weight: 700; color: var(--plum); margin: 6px 0; }
+.buglist { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 10px; }
+.bugitem { border: 1px solid var(--line); border-left: 5px solid var(--gold); border-radius: 10px; padding: 8px 12px; }
+.bugitem.done { border-left-color: var(--ok); }
+.bugitem.closed { border-left-color: var(--muted); }
+.bugitem p { margin: 4px 0; }
+.bughead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.bstat { font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; background: var(--gold-soft); color: var(--plum); }
+.bstat.done { background: var(--ok-bg); color: var(--ok); }
+.bstat.closed { background: #eee9f1; color: var(--muted); }
+.bstat.mine { background: var(--plum); color: #fff; }
+.bugdesc { white-space: pre-line; overflow-wrap: anywhere; }
+.bugnote { background: var(--ok-bg); border-radius: 8px; padding: 6px 10px; font-size: .92rem; }
+
 /* iOS Safari zooms in when a text box under 16px gets focus, and does not zoom back out.
    This rule wins over any other font setting on form controls (tests/zoom.test.js checks it). */
 input, select, textarea { font-size: 16px !important; }

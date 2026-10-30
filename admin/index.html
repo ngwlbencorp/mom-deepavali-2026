@@ -39,6 +39,7 @@
       <a class="bigbtn" href="#scan"><span class="ico" aria-hidden="true">▣</span>Scan QR<small>MW shows their quiz QR code</small></a>
       <a class="bigbtn alt" href="#manual"><span class="ico" aria-hidden="true">✎</span>Manual input<small>No phone, or the code does not work</small></a>
       <a class="bigbtn alt" href="#bug"><span class="ico" aria-hidden="true">⚑</span>Report a problem<small>Something wrong with the mini-site or this page</small></a>
+      <p class="center"><a class="linkbtn" href="#bugs">Reported problems and fixes →</a></p>
       <p class="whoami muted small"><span id="who"></span> · <button class="linkbtn inline" id="logout">Log out</button></p>
     </section>
 
@@ -83,6 +84,20 @@
         <p class="error" id="bugErr" hidden></p>
       </form>
       <section class="card verdict" id="bverdict" hidden></section>
+      <p class="center"><a class="linkbtn" href="#bugs">See reported problems and fixes</a></p>
+      <p class="center"><a class="linkbtn" href="#home">← Back to menu</a></p>
+    </section>
+
+    <!-- reported problems: what happened to each report -->
+    <section class="view" id="v-bugs" hidden>
+      <div class="card">
+        <h2>Reported problems</h2>
+        <p class="muted small">Every problem officers have reported, newest first. <b>Received</b>: waiting for a fix. <b>Being fixed</b>: work has started. <b>Under review</b>: needs a decision first. <b>Fixed</b>: live now; reload the page you were on to see it.</p>
+        <p class="bugsum" id="bugsLoading">Loading…</p>
+        <p class="error" id="bugsErr" hidden></p>
+        <ul class="buglist" id="bugList"></ul>
+      </div>
+      <p class="center"><a class="linkbtn" href="#bug">Report a problem</a></p>
       <p class="center"><a class="linkbtn" href="#home">← Back to menu</a></p>
     </section>
   </main>

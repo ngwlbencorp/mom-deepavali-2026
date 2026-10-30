@@ -145,6 +145,13 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok((await call('POST', '/api/bugreport', { description: 'Not a picture', screenshots: ['data:image/png;base64,' + Buffer.from('<script>alert(1)</script>').toString('base64')] }, ADM)).body.error === 'bad_image', 'bug report: a file that is not really an image is refused');
   ok((await call('POST', '/api/bugreport', { description: 'Huge picture', screenshots: ['data:image/jpeg;base64,' + Buffer.concat([Buffer.from([0xff, 0xd8, 0xff]), Buffer.alloc(700 * 1024)]).toString('base64')] }, ADM)).body.error === 'image_too_large', 'bug report: screenshot over 600 KB refused');
   ok((await call('GET', '/api/bugs', null, ADM)).status === 403, 'officers cannot read the bug log');
+  const officerView = async (tok) => ((await call('GET', '/api/bugreport', null, tok)).body.reports || []).find((x) => x.id === bugId);
+  let ov = await officerView(ADM);
+  ok(ov && ov.status === 'new' && ov.mine === true && ov.note === '', 'officer sees their own report as new, marked as theirs');
+  ok(ov && !('reporter_email' in ov) && !('fix_ref' in ov) && !('screenshots' in ov) && !('screen' in ov), 'officers see no reporter, commit or screenshots');
+  ov = await officerView(ADM2);
+  ok(ov && ov.mine === false, "another officer sees the report too, but not as theirs");
+  ok((await call('GET', '/api/bugreport')).status === 401, 'report status needs an officer login');
   ok((await call('GET', '/api/bugs')).status === 401, 'bug log needs a login');
   let bl = await call('GET', '/api/bugs', null, SUP);
   const rep = bl.body.reports && bl.body.reports.find((x) => x.id === bugId);
@@ -158,8 +165,11 @@ const call = (method, path, body, token) => fetch(base + path, {
   const firstFixed = up.body.report.fixed_at;
   up = await call('POST', '/api/bugs', { id: bugId, status: 'fixed', fix_note: 'Also checked on iPhone' }, SUP);
   ok(up.body.report.fixed_at === firstFixed && up.body.report.fix_ref === 'abc1234', 'marking fixed again keeps the first fix time');
+  ov = await officerView(ADM2);
+  ok(ov.status === 'fixed' && ov.fixed_at === firstFixed && ov.note === 'Also checked on iPhone', 'officers see a fixed report with its fix time and note');
   up = await call('POST', '/api/bugs', { id: bugId, status: 'in_progress' }, SUP);
   ok(up.body.report.fixed_at === null, 'reopening clears the fix time');
+  ok((await officerView(ADM)).note === '', "an open report's note (the fixer's working notes) is not shown to officers");
   ok((await call('POST', '/api/bugs', { id: bugId, status: 'done' }, SUP)).status === 400, 'unknown status refused');
   ok((await call('POST', '/api/bugs', { id: 999999, status: 'fixed' }, SUP)).status === 404, 'unknown report: 404');
   const BUG_TOKEN = process.env.BUG_API_TOKEN;

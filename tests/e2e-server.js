@@ -165,6 +165,12 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   const bugNo = (await bob.locator('#bverdict').textContent()).match(/Report #(\d+)/)[1];
   ok(true, 'officer sends a bug report with a screenshot (#' + bugNo + ')');
   await bob.screenshot({ path: out + '/admin-bug.png', fullPage: true });
+  await bob.click('#v-bug a[href="#bugs"]');
+  const mineItem = bob.locator(`.bugitem[data-id="${bugNo}"]`);
+  await mineItem.waitFor();
+  const mineText = await mineItem.textContent();
+  ok(/Received/.test(mineText) && /Yours/.test(mineText) && /froze after question 3/.test(mineText) && !/@/.test(mineText),
+    'officer sees the report under "Reported problems": Received, marked Yours, no email shown');
 
   // ---- superadmin ----
   const sup = await phone('super');
@@ -212,6 +218,11 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await card.locator('select').selectOption('fixed');
   await sup.waitForFunction((n) => { const c = document.querySelector(`.bug[data-id="${n}"]`); return c && /Fixed/.test(c.querySelector('.badge').textContent) && /min\)/.test(c.textContent); }, bugNo);
   ok(/\d+ fixed/.test(await sup.locator('#bugSummary').textContent()), 'superadmin can mark it fixed; time to fix and summary shown');
+  await bob.goto(ADMIN + '#home');
+  await bob.goto(ADMIN + '#bugs');
+  await bob.waitForFunction((n) => { const c = document.querySelector(`.bugitem[data-id="${n}"]`); return c && /Fixed/.test(c.querySelector('.bstat').textContent) && /took \d+ min/.test(c.textContent); }, bugNo);
+  ok(true, 'the officer sees it as Fixed, with the time it took');
+  await bob.screenshot({ path: out + '/admin-bugs.png', fullPage: true });
   await sup.waitForFunction(() => document.querySelector('#errList table, #errList p'));
   ok(true, 'bug log shows the server errors section');
   await sup.screenshot({ path: out + '/superadmin-bugs.png', fullPage: true });

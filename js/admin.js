@@ -20,8 +20,8 @@
   var $ = function (id) { return document.getElementById(id); };
   var time = function (iso) { return iso ? new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''; };
 
-  // ---------- views (hash routes: #home, #scan, #manual, #bug) ----------
-  var views = ['login', 'home', 'scan', 'manual', 'bug'];
+  // ---------- views (hash routes: #home, #scan, #manual, #bug, #bugs) ----------
+  var views = ['login', 'home', 'scan', 'manual', 'bug', 'bugs'];
   function route() {
     var s = Api.session(ROLE);
     var want = (location.hash || '#home').slice(1);
@@ -32,6 +32,7 @@
     if (want !== 'scan') stopCamera();
     if (want === 'manual') resetManual();
     if (want === 'bug') resetBug();
+    if (want === 'bugs') loadBugs();
     if (want === 'scan') { $('verdict').hidden = true; startCamera(); }
     if (s) { $('who').textContent = s.user; startPolling(); } else stopPolling();
     window.scrollTo(0, 0);
@@ -318,11 +319,62 @@
       if (r.status === 401) return loggedOut(r.body.message);
       if (!r.ok) { $('bugErr').textContent = r.body.message || 'Could not send. Try again.'; $('bugErr').hidden = false; $('bugSend').disabled = false; return; }
       $('bugForm').hidden = true;
-      verdict('bverdict', 'give', 'Thank you ✓', 'Report #' + r.body.id + ' sent. You can carry on.', [
+      verdict('bverdict', 'give', 'Thank you ✓', 'Report #' + r.body.id + ' sent. You can carry on, and check "Reported problems and fixes" on the menu to see when it is fixed.', [
         { label: 'Report another problem', secondary: true, run: function () { resetBug(); window.scrollTo(0, 0); } }
       ]);
     }, function () { $('bugErr').textContent = 'Cannot reach the server. Try again.'; $('bugErr').hidden = false; $('bugSend').disabled = false; });
   });
+
+  // ---------- reported problems (officers see status, not who reported or the screenshots) ----------
+  var BUG_STATUS = {
+    new: ['Received', 'open'], in_progress: ['Being fixed', 'open'], needs_decision: ['Under review', 'open'],
+    fixed: ['Fixed', 'done'], wont_fix: ['No change needed', 'closed'], duplicate: ['Already reported', 'closed']
+  };
+  function when(iso) { return new Date(iso).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); }
+  function took(a, b) {
+    var m = Math.max(1, Math.round((new Date(b) - new Date(a)) / 60000));
+    return m < 60 ? m + ' min' : Math.floor(m / 60) + ' h' + (m % 60 ? ' ' + (m % 60) + ' min' : '');
+  }
+  function bugItem(b) {
+    var st = BUG_STATUS[b.status] || [b.status, 'open'];
+    var li = document.createElement('li');
+    li.className = 'bugitem ' + st[1];
+    li.setAttribute('data-id', b.id);
+    var head = document.createElement('p');
+    head.className = 'bughead';
+    var no = document.createElement('b'); no.textContent = '#' + b.id;
+    var chip = document.createElement('span'); chip.className = 'bstat ' + st[1]; chip.textContent = st[0];
+    head.appendChild(no); head.appendChild(chip);
+    if (b.mine) { var y = document.createElement('span'); y.className = 'bstat mine'; y.textContent = 'Yours'; head.appendChild(y); }
+    var desc = document.createElement('p'); desc.className = 'bugdesc';
+    desc.textContent = b.description.length > 300 ? b.description.slice(0, 300) + '…' : b.description;
+    var meta = document.createElement('p'); meta.className = 'muted small';
+    meta.textContent = 'Reported ' + when(b.created_at) + (b.status === 'fixed' && b.fixed_at ? ' · Fixed ' + when(b.fixed_at) + ' (took ' + took(b.created_at, b.fixed_at) + ')' : '');
+    li.appendChild(head); li.appendChild(desc); li.appendChild(meta);
+    if (b.note) { var n = document.createElement('p'); n.className = 'bugnote'; n.textContent = 'What was done: ' + b.note; li.appendChild(n); }
+    return li;
+  }
+  function loadBugs() {
+    var list = $('bugList');
+    list.innerHTML = '';
+    $('bugsErr').hidden = true;
+    $('bugsLoading').textContent = 'Loading…';
+    $('bugsLoading').hidden = false;
+    Api.call('GET', '/api/bugreport', null, ROLE).then(function (r) {
+      $('bugsLoading').hidden = true;
+      if (r.status === 401) return loggedOut(r.body.message);
+      if (!r.ok) { $('bugsErr').textContent = r.body.message || 'Could not load the reports. Try again.'; $('bugsErr').hidden = false; return; }
+      if (!r.body.reports.length) { $('bugsLoading').textContent = 'No problems reported yet.'; $('bugsLoading').hidden = false; return; }
+      var n = { fixed: 0, open: 0, mine: 0 };
+      r.body.reports.forEach(function (b) {
+        if (b.status === 'fixed') n.fixed++; else if ((BUG_STATUS[b.status] || [])[1] === 'open') n.open++;
+        if (b.mine) n.mine++;
+        list.appendChild(bugItem(b));
+      });
+      $('bugsLoading').textContent = n.fixed + ' fixed · ' + n.open + ' still open' + (n.mine ? ' · ' + n.mine + ' reported by you' : '');
+      $('bugsLoading').hidden = false;
+    }, function () { $('bugsLoading').hidden = true; $('bugsErr').textContent = 'Cannot reach the server. Try again.'; $('bugsErr').hidden = false; });
+  }
 
   route();
 })();
