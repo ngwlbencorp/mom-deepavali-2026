@@ -336,7 +336,7 @@
       card.appendChild(head);
       card.appendChild(node('p', 'muted small', 'Reported ' + new Date(b.created_at).toLocaleString() + ' by ' + (b.reporter_email || '–') +
         (b.fixed_at ? ' · fixed ' + new Date(b.fixed_at).toLocaleString() + ' (' + took(b.created_at, b.fixed_at) + ')' : '')));
-      card.appendChild(node('p', 'bugdesc', b.description));
+      var desc = node('p', 'bugdesc', b.description); desc.dir = 'auto'; card.appendChild(desc); // e.g. Urdu reads right to left
       if (b.screenshots.length) {
         var row = node('div', 'bugshots');
         b.screenshots.forEach(function (id) {

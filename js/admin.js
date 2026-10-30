@@ -347,7 +347,7 @@
     var chip = document.createElement('span'); chip.className = 'bstat ' + st[1]; chip.textContent = st[0];
     head.appendChild(no); head.appendChild(chip);
     if (b.mine) { var y = document.createElement('span'); y.className = 'bstat mine'; y.textContent = 'Yours'; head.appendChild(y); }
-    var desc = document.createElement('p'); desc.className = 'bitemdesc';
+    var desc = document.createElement('p'); desc.className = 'bitemdesc'; desc.dir = 'auto'; // e.g. Urdu reads right to left
     desc.textContent = b.description.length > 300 ? b.description.slice(0, 300) + '…' : b.description;
     var meta = document.createElement('p'); meta.className = 'muted small';
     meta.textContent = 'Reported ' + when(b.created_at) + (b.reporter ? ' by ' + b.reporter : '') + (b.status === 'fixed' && b.fixed_at ? ' · Fixed ' + when(b.fixed_at) + ' (took ' + took(b.created_at, b.fixed_at) + ')' : '');
