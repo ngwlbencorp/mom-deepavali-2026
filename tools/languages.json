@@ -7,5 +7,6 @@
   { "code": "ta", "sheet": "Tamil", "name": "தமிழ் (Tamil)" },
   { "code": "tl", "sheet": "Tagalog", "name": "Tagalog" },
   { "code": "th", "sheet": "Thai", "name": "ไทย (Thai)" },
-  { "code": "vi", "sheet": "Vietnamese", "name": "Tiếng Việt (Vietnamese)" }
+  { "code": "vi", "sheet": "Vietnamese", "name": "Tiếng Việt (Vietnamese)" },
+  { "code": "ur", "sheet": "Urdu", "name": "اردو (Urdu)" }
 ]

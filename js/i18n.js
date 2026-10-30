@@ -6,6 +6,8 @@
   var KEY = 'scamsite.lang';
   // Strings that are identifiers, not text: never taken from a translation.
   var FIXED = { type: 1, icon: 1, code: 1, helpline: 1, video: 1, app: 1 };
+  // Languages written right to left: the page is mirrored for them (css/quiz.css, [dir="rtl"]).
+  var RTL = { ur: 1 };
 
   // Overlay "over" onto "base", keeping base's shape: arrays by index, objects by key, and only
   // values of the same type (so a translation can never change a boolean flag or an answer index).
@@ -32,7 +34,11 @@
   function set(code) {
     if (!known(code)) return;
     try { localStorage.setItem(KEY, code); } catch (e) {}
+    apply(code);
+  }
+  function apply(code) {
     document.documentElement.lang = code;
+    document.documentElement.dir = RTL[code] ? 'rtl' : 'ltr';
   }
   function text(code) {
     var en = g.SCAM_TEXT.en;
@@ -43,5 +49,5 @@
     return String(s).replace(/\{(\w+)\}/g, function (m, k) { return vars && vars[k] !== undefined ? vars[k] : m; });
   }
 
-  g.ScamI18n = { langs: langs, current: current, set: set, text: text, fmt: fmt };
+  g.ScamI18n = { langs: langs, current: current, set: set, apply: apply, text: text, fmt: fmt };
 })(window);

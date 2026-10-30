@@ -1,14 +1,16 @@
 """Builds the translation review workbook for MOM's language team.
 Usage: python tools/review-sheet.py <out.xlsx> [git ref of the last workbook sent, default HEAD]
 Reads English from js/content.js (via node), drafts from i18n/<code>.json, languages from
-tools/languages.json, key terms from tools/glossary.json and sources from SOURCES.md."""
+tools/languages.json (only those live on the site: a js/lang/<code>.js script in index.html),
+key terms from tools/glossary.json and sources from SOURCES.md."""
 import json, os, re, subprocess, sys
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, PatternFill, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LANGS = [(l['code'], l['sheet']) for l in json.load(open(os.path.join(ROOT, 'tools', 'languages.json'), encoding='utf-8'))]
+LIVE = re.findall(r'js/lang/(\w+)\.js', open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read())
+LANGS = sorted([(l['code'], l['sheet']) for l in json.load(open(os.path.join(ROOT, 'tools', 'languages.json'), encoding='utf-8')) if l['code'] in LIVE], key=lambda x: x[1])
 BASE = sys.argv[2] if len(sys.argv) > 2 else 'HEAD'
 GLOSSARY = json.load(open(os.path.join(ROOT, 'tools', 'glossary.json'), encoding='utf-8'))
 FIXED = {'type', 'icon', 'code', 'helpline', 'video', 'app'}
@@ -91,7 +93,11 @@ def note(key, en, code, prev):
     if '.msg.bubbles' in key: n.append('Part of a fake message split into tappable parts. Parts always appear in this order, so each part must read naturally in sequence. Do not move a red-flag phrase into another part.')
     if '.chat.' in key or '.cards[' in key and key.endswith('.text') or '.options[' in key and '.label' not in key:
         n.append('Fictional scam/example message: keep it casual, as a real message would read.')
-    if code == 'hi' and key.startswith('quiz[') and ('.options[' in key):
+    if code == 'ur' and key == 'event.greeting':
+        n.append('Deepavali is written دیپاولی, the name used in Singapore; دیوالی is also common. Change it everywhere if MOM prefers.')
+    if code == 'ur' and ('$' in en or 'mom.gov.sg' in en or re.search(r'\d{3,}', en)):
+        n.append('Urdu reads right to left; numbers, amounts and web addresses stay in Latin script and read left to right inside the line. Check it on a phone.')
+    if code in ('hi', 'ur') and key.startswith('quiz[') and ('.options[' in key):
         n.append('First-person verbs use the masculine form (most attendees are men). Change if MOM prefers neutral wording.')
     if code == 'vi' and key.startswith('quiz[2]'):
         n.append('Pronouns assume an older male cousin ("anh") writing to a younger relative ("em").')
@@ -121,7 +127,7 @@ rows = [
     ('Translation review: Deepavali scam-awareness mini-site', True),
     ('', False),
     ('What this is', True),
-    ('Draft translations of the mini-site text (Learn stories, Quiz, Feedback, buttons) in the nine languages MOM uses for its migrant-worker guides and scam materials (see SOURCES.md in the repository for the evidence). MOM also publishes a domestic-worker safety agreement in Khmer and Sinhalese; there are no drafts for those two. They were machine-drafted by Claude and have NOT been checked by a native speaker. A language only goes live after your review.', False),
+    ('Draft translations of the mini-site text (Learn stories, Quiz, Feedback, buttons) in the languages chosen for the event: %s. They were machine-drafted by Claude and have NOT been checked by a native speaker. They are live on the site so they can be tested; corrections from this review replace them.' % ', '.join(n for _, n in LANGS), False),
     ('Every rule in the text comes from a public MOM, ScamShield, Police or GovTech page. Column H names the sources (see the Sources tab), so you can check the meaning against the official wording.', False),
     ('', False),
     ('How to review', True),
@@ -130,7 +136,7 @@ rows = [
     ('3. If the draft is right, leave column E empty.', False),
     ('4. If it needs changing, type the full corrected text in column E (yellow). Do not edit column D.', False),
     ('5. Use column F for questions or comments. Column G has notes about each line; lines marked CHANGED differ from the previous workbook.', False),
-    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). Hindi and Bengali are not supported by any SEA-LION model, so they have no SEA-LION check. It is a machine check, not a native speaker: use it as a pointer, not a ruling.', False),
+    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). %s: not supported by any SEA-LION model, so no SEA-LION check. It is a machine check, not a native speaker: use it as a pointer, not a ruling.' % (lambda u: ', '.join(u[:-1]) + ' and ' + u[-1] if len(u) > 1 else ''.join(u))([n for c, n in LANGS if not SL_CONFIG['languages'].get(c)]), False),
     ('6. Send the file back. Corrections in column E are applied automatically (tools/import-review.py).', False),
     ('', False),
     ('Rules for all languages', True),
@@ -139,7 +145,7 @@ rows = [
     ('Keep placeholders such as {n}, {k}, {i}, {s}, {t} exactly as written. The site replaces them with numbers.', False),
     ('Keep a similar length to the draft. Every screen must fit on a phone without scrolling.', False),
     ('Scam examples are fictional. They should sound like a real scam message, but must not name real people or companies.', False),
-    ('Not translated (stays in English on purpose): masked phone numbers (+65 9XXX XXXX), the fake sender "MOM-ALERT", the fake addresses mom-sg.org/pay and wponlinemomgov.sg.com, the file name "WORK PERMIT APPROVAL.pdf", and "SMS".', False),
+    ('Not translated (stays in English on purpose): masked phone numbers (+65 9XXX XXXX), the fake sender "Likely-SCAM" (the label Singapore phones show for unregistered SMS senders), the fake addresses mom-sg.org/pay and wponlinemomgov.sg.com, the file name "IPA LETTER.pdf", and "SMS".', False),
     ('Web addresses, amounts and numbers ($500, 1799, 99X9999, ".mom.gov.sg") must stay exactly as written. The build tool rejects a line where one is changed.', False),
     ('', False),
     ('Example of a filled-in row', True),

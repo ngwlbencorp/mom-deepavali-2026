@@ -201,7 +201,7 @@
     sheet.hidden = false;
   });
   document.getElementById('homeBtn').addEventListener('click', function () { sheet.hidden = true; leave(home); });
-  document.documentElement.lang = I.current();
+  I.apply(I.current());
   setupLang();
 
   // ---------- header logo and the home page's legal footer ----------
