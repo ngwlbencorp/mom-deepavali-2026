@@ -8,10 +8,12 @@ main.wide { max-width: 960px; }
   --series-2: #eb6834; /* souvenirs given */
   --ref: #8a8781;      /* cap reference line */
 }
-.tabs { display: flex; gap: 6px; align-items: center; margin-bottom: 12px; background: var(--card); border-radius: 12px; padding: 6px; box-shadow: 0 6px 20px rgba(74, 29, 94, .08); }
-.tabs button[role="tab"] { font: inherit; font-weight: 700; border: 0; background: none; padding: 10px 14px; border-radius: 8px; color: var(--muted); cursor: pointer; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; background: var(--card); border-radius: 12px; padding: 6px; box-shadow: 0 6px 20px rgba(74, 29, 94, .08); }
+.tabs button[role="tab"] { font: inherit; font-weight: 700; border: 0; background: none; padding: 10px 14px; border-radius: 8px; color: var(--muted); cursor: pointer; white-space: nowrap; }
 .tabs button[aria-selected="true"] { background: var(--plum); color: #fff; }
-.tabs .right { margin-left: auto; padding-right: 8px; }
+.tabs .right { margin-left: auto; padding-right: 8px; white-space: nowrap; }
+/* Phones: tighter tabs; "Log out" moves to a second row rather than running off the screen */
+@media (max-width: 480px) { .tabs { gap: 4px; } .tabs button[role="tab"] { padding: 8px 9px; font-size: .95rem; } }
 
 .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
 .tile { background: var(--card); border-radius: 14px; padding: 14px 16px; box-shadow: 0 6px 20px rgba(74, 29, 94, .08); }
