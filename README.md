@@ -130,7 +130,7 @@ Check **Vercel → Usage** after the briefing and the day before the event. Hobb
 ## Superadmin prep (before the event)
 
 1. Log in at `/superadmin/index.html`.
-2. **Admins tab:** upload a CSV of officer work emails. Any cell containing an email is used, so a column with a header is fine. Choose **Add** or **Replace**. Removing an email locks that officer out on their next action.
+2. **Admins tab:** upload a CSV of officer work emails. Any cell containing an email is used, so a column with a header is fine. Choose **Add** or **Replace**. Removing an email locks that officer out on their next action. The list shows who has logged in (last login and number of logins; successful logins only), officers who have not logged in yet first. Officers stay logged in for a while, so the last login is not their last activity. Re-uploading an email and clearing rehearsal data keep this history; the admins CSV download includes it.
 3. Give officers the officer page's ducks.ai address and the shared admin password.
 4. Rehearse end to end on the real venue network.
 5. **Data tab → Clear rehearsal data** (type RESET). Rehearsal souvenirs count towards the cap until you do this.

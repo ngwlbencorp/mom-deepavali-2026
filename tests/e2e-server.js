@@ -201,6 +201,9 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await sup.click('#uploadBtn');
   await sup.waitForFunction(() => document.getElementById('adminCount').textContent === '4');
   ok(true, 'upload (add mode): 4 admins listed');
+  const firstRow = await sup.locator('#adminList li').first().textContent(), loggedRow = await sup.locator('#adminList li').last().textContent();
+  ok(/^\d+ of 4 have logged in$/.test(await sup.locator('#loginSummary').textContent()) && /Not logged in yet/.test(firstRow) && /Last login .* \d+ logins?/.test(loggedRow),
+    'admin list shows who has logged in (last login, count), not-yet first');
   await sup.screenshot({ path: out + '/superadmin-admins.png', fullPage: true });
 
   await sup.click('[data-tab="data"]');

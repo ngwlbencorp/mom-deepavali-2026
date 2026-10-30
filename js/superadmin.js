@@ -213,12 +213,23 @@
   // ---------- admins ----------
   var pending = [];
   function adminError(msg) { var e = $('adminErr'); e.textContent = msg || ''; e.hidden = !msg; }
+  // Officers who have not logged in yet come first, so they are easy to chase.
   function renderAdmins(list) {
     $('adminCount').textContent = list.length;
+    var seen = list.filter(function (a) { return a.login_count > 0; }).length;
+    $('loginSummary').textContent = seen + ' of ' + list.length + ' have logged in';
+    list = list.slice().sort(function (a, b) { return (a.login_count > 0) - (b.login_count > 0) || (a.email < b.email ? -1 : 1); });
     var ul = $('adminList'); ul.innerHTML = '';
     list.forEach(function (a) {
       var li = document.createElement('li'), span = document.createElement('span'), b = document.createElement('button');
-      span.textContent = a.email; b.textContent = 'Remove';
+      span.textContent = a.email;
+      var seenText = document.createElement('small');
+      seenText.className = 'lastlogin' + (a.login_count > 0 ? '' : ' never');
+      seenText.textContent = a.login_count > 0
+        ? 'Last login ' + new Date(a.last_login_at).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' · ' + a.login_count + (a.login_count === 1 ? ' login' : ' logins')
+        : 'Not logged in yet';
+      span.appendChild(seenText);
+      b.textContent = 'Remove';
       b.addEventListener('click', function () {
         if (!confirm('Remove ' + a.email + '? They will be logged out on their next action.')) return;
         Api.call('POST', '/api/admins', { remove: a.email }, ROLE).then(function (r) { if (guard(r) && r.ok) renderAdmins(r.body.admins); });

@@ -57,6 +57,10 @@ const call = (method, path, body, token) => fetch(base + path, {
   const ADM2 = (await call('POST', '/api/login', { role: 'admin', email: 'bob@mom.gov.sg', password: ADMIN_PW })).body.token;
   const ADM3 = (await call('POST', '/api/login', { role: 'admin', email: 'carol@mom.gov.sg', password: ADMIN_PW })).body.token;
   ok(ADM && ADM2 && ADM3, 'listed admins log in (email case and spaces ignored)');
+  let seen = (await call('GET', '/api/admins', null, SUP)).body.admins;
+  ok(seen.every((x) => x.login_count === 1 && x.last_login_at), 'each successful login is recorded: last login time and count (failed tries are not counted)');
+  seen = (await call('POST', '/api/admins', { emails: ['alice@mom.gov.sg'], mode: 'add' }, SUP)).body.admins;
+  ok(seen.find((x) => x.email === 'alice@mom.gov.sg').login_count === 1, 're-uploading an admin keeps their login history');
   ok((await call('GET', '/api/dashboard', null, ADM)).status === 403, 'admin cannot open the superadmin dashboard');
   ok((await call('GET', '/api/export?table=claims', null, ADM)).status === 403, 'admin cannot export data');
 
