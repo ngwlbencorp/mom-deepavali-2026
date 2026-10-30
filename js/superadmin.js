@@ -90,22 +90,23 @@
   var drawn = '';
   function renderDash(d) {
     $('updated').textContent = 'Live · updated ' + new Date(d.generatedAt).toLocaleTimeString() + ' · refreshes every ' + REFRESH_MS / 1000 + 's';
+    // Over ~0.8 s means the database was asleep and this request woke it. Superadmin only.
+    $('dbline').textContent = d.dbMs == null ? '' : 'Database ' + (d.dbMs < 800 ? 'awake' : 'was asleep, now awake') +
+      ' · responded in ' + (d.dbMs < 1000 ? d.dbMs + ' ms' : (d.dbMs / 1000).toFixed(1) + ' s');
+    // Short labels so two tiles a row fit a phone screen without scrolling.
     var tiles = [
-      ['Souvenirs given', d.given + ' / ' + d.cap, d.capRemaining + ' left · ' + d.adminGiven + ' via manual'],
+      ['Souvenirs given', d.given + ' / ' + d.cap, d.capRemaining + ' left · ' + d.adminGiven + ' manual'],
       ['Quiz submissions', d.submissions, d.selfSubmissions + ' self · ' + d.adminSubmissions + ' manual'],
-      ['MWs reached (claim IDs)', d.uniqueClaims, d.selfClaims + ' self · ' + d.adminClaims + ' manual'],
-      ['First-try full score', pct(d.firstTryRate), d.selfFirstTry + ' of ' + d.selfClaims + ' self claims'],
-      ['Eventually full score', pct(d.eventualFullRate), d.selfFull + ' of ' + d.selfClaims + ' self claims'],
-      ['Avg attempts to full score', d.avgAttemptsToFull == null ? '–' : d.avgAttemptsToFull.toFixed(2), 'self claims that reached full score'],
-      ['Avg satisfaction', d.csatAvg == null ? '–' : d.csatAvg.toFixed(2) + ' / 5', d.csatN + ' ratings'],
-      ['Learned something new', (d.learned.Y + d.learned.S + d.learned.N) ? d.learned.Y + ' yes' : '–', d.learned.S + ' a little · ' + d.learned.N + ' no'],
-      // Over ~0.8 s means the database was asleep and this request woke it. Superadmin only.
-      ['Database', d.dbMs == null ? '–' : d.dbMs < 800 ? 'Awake' : 'Was asleep, now awake',
-        d.dbMs == null ? '' : 'responded in ' + (d.dbMs < 1000 ? d.dbMs + ' ms' : (d.dbMs / 1000).toFixed(1) + ' s'), 'wide']
+      ['MWs reached', d.uniqueClaims, d.selfClaims + ' self · ' + d.adminClaims + ' manual'],
+      ['1st-try full score', pct(d.firstTryRate), d.selfFirstTry + ' of ' + d.selfClaims + ' self'],
+      ['Eventual full score', pct(d.eventualFullRate), d.selfFull + ' of ' + d.selfClaims + ' self'],
+      ['Tries to full score', d.avgAttemptsToFull == null ? '–' : d.avgAttemptsToFull.toFixed(2), 'average, self'],
+      ['Satisfaction', d.csatAvg == null ? '–' : d.csatAvg.toFixed(2) + ' / 5', d.csatN + ' ratings'],
+      ['Learned something', (d.learned.Y + d.learned.S + d.learned.N) ? d.learned.Y + ' yes' : '–', d.learned.S + ' a little · ' + d.learned.N + ' no']
     ];
     var box = $('tiles'); box.innerHTML = '';
     tiles.forEach(function (t) {
-      var div = document.createElement('div'); div.className = 'tile' + (t[3] ? ' ' + t[3] : '');
+      var div = document.createElement('div'); div.className = 'tile';
       div.innerHTML = '<p class="label"></p><p class="value"></p><p class="sub"></p>';
       div.children[0].textContent = t[0]; div.children[1].textContent = t[1]; div.children[2].textContent = t[2];
       box.appendChild(div);

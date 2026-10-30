@@ -1,14 +1,39 @@
+/* Dark theme, superadmin only (the event's plum and gold stay on the officer and MW pages).
+   These override the shared colour variables in site.css; --plum is the accent here. */
+:root {
+  --plum: #4f5bd5;   /* accent: selected tab, buttons (white text 5.5:1) */
+  --plum-2: #4f5bd5;
+  --accent-text: #a9b1ff;
+  --gold: #c98500;
+  --gold-soft: #26231b;
+  --ink: #f0efec;
+  --muted: #a8a7a0;
+  --bg: #0d0d0d;
+  --card: #1a1a19;
+  --line: #383835;
+  --ok: #4cc27a;
+  --ok-bg: #13291c;
+  --no: #ff7b72;
+  --no-bg: #3a1714;
+  color-scheme: dark;
+}
+a { color: var(--accent-text); }
+.top { background: #1f2230; }
+.card, .tabs, .tile { box-shadow: none; border: 1px solid rgba(255, 255, 255, .08); }
+.field input, .field select { background: #111110; color: var(--ink); border-color: var(--line); }
+.btn.secondary { background: #242423; color: var(--ink); border-color: var(--line); }
+
 main.wide { max-width: 960px; }
 .viz {
-  --surface-1: #fcfcfb;
-  --text-primary: #0b0b0b;
-  --text-secondary: #52514e;
-  --grid: #e4e2dd;
-  --series-1: #2a78d6; /* quiz submissions */
-  --series-2: #eb6834; /* souvenirs given */
-  --ref: #8a8781;      /* cap reference line */
+  --surface-1: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --grid: #2c2c2a;
+  --series-1: #3987e5; /* quiz submissions */
+  --series-2: #d95926; /* souvenirs given */
+  --ref: #898781;      /* cap reference line */
 }
-.tabs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; background: var(--card); border-radius: 12px; padding: 6px; box-shadow: 0 6px 20px rgba(74, 29, 94, .08); }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; background: var(--card); border-radius: 12px; padding: 6px; }
 .tabs button[role="tab"] { font: inherit; font-weight: 700; border: 0; background: none; padding: 10px 14px; border-radius: 8px; color: var(--muted); cursor: pointer; white-space: nowrap; }
 .tabs button[aria-selected="true"] { background: var(--plum); color: #fff; }
 /* Header: the title is centred on the login screen; once logged in it sits left with Log out on the right. */
@@ -17,20 +42,27 @@ main.wide { max-width: 960px; }
 .top.bar #logout { order: 2; margin: 0; padding: 6px 0 6px 8px; color: #fff; white-space: nowrap; }
 .top.bar #logout:not([hidden]) + .brand { text-align: left; }
 @media (max-width: 360px) { .top.bar .brand { font-size: .92rem; letter-spacing: 0; } .top.bar #logout { font-size: .9rem; } }
-/* Phones: tighter tabs; "Log out" moves to a second row rather than running off the screen */
+/* Phones: tighter tabs */
 @media (max-width: 480px) { .tabs { gap: 4px; } .tabs button[role="tab"] { padding: 8px 9px; font-size: .95rem; } }
 
 .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
-.tile.wide { grid-column: 1 / -1; }
-.tile { background: var(--card); border-radius: 14px; padding: 14px 16px; box-shadow: 0 6px 20px rgba(74, 29, 94, .08); }
+.tile { background: var(--card); border-radius: 14px; padding: 12px 14px; }
 .tile .label { color: var(--muted); font-size: .85rem; font-weight: 600; margin: 0; }
-.tile .value { font-size: 2rem; font-weight: 800; color: var(--ink); margin: 2px 0; line-height: 1.15; }
+.tile .value { font-size: 1.8rem; font-weight: 800; color: var(--ink); margin: 0; line-height: 1.2; }
 .tile .sub { color: var(--muted); font-size: .8rem; margin: 0; }
-/* phones: two tiles a row */
+.tile p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#updated, #dbline { margin: 0; }
+#dbline { margin-bottom: 8px; }
+/* phones: two tiles a row, all eight visible on load without scrolling */
 @media (max-width: 480px) {
-  .tiles { gap: 10px; }
-  .tile { padding: 12px; }
-  .tile .value { font-size: 1.6rem; }
+  .top.slim { padding: 12px 16px 30px; }
+  .tabs { margin-bottom: 8px; }
+  .tiles { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tile { padding: 8px 10px; border-radius: 12px; }
+  .tile .label { font-size: .75rem; line-height: 1.3; }
+  .tile .value { font-size: 1.35rem; line-height: 1.15; }
+  .tile .sub { font-size: .72rem; line-height: 1.3; }
+  #updated, #dbline { font-size: .75rem; }
 }
 
 .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .9rem; color: var(--text-secondary); margin-bottom: 6px; }
@@ -44,7 +76,7 @@ main.wide { max-width: 960px; }
 
 .tooltip {
   position: fixed; z-index: 20; pointer-events: none;
-  background: #1f1a24; color: #fff; font-size: .85rem; line-height: 1.4;
+  background: #2c2c2a; color: #f0efec; font-size: .85rem; line-height: 1.4; border: 1px solid #383835;
   padding: 8px 10px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
 }
 .tooltip .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
@@ -59,10 +91,10 @@ main.wide { max-width: 960px; }
 .adminlist li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
 .adminlist .lastlogin { display: block; color: var(--muted); font-size: .8rem; }
 .adminlist .lastlogin.never { color: var(--no); }
-#loginSummary { font-weight: 700; color: var(--plum); margin: 0 0 6px; }
-.adminlist button { font: inherit; font-size: .85rem; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; cursor: pointer; color: var(--no); }
+#loginSummary { font-weight: 700; color: var(--accent-text); margin: 0 0 6px; }
+.adminlist button { white-space: nowrap; font: inherit; font-size: .85rem; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; cursor: pointer; color: var(--no); }
 .danger { border-left: 5px solid var(--no); }
-.danger-btn { background: var(--no); }
+.danger-btn { background: #b3261e; } /* white text 6.5:1; --no is a light red here */
 .addone { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: end; margin-top: 16px; }
 .addone .field { margin: 0; }
 .addone .btn { margin: 0; width: auto; }
@@ -76,10 +108,10 @@ main.wide { max-width: 960px; }
 .bughead { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 .bugdesc { white-space: pre-wrap; overflow-wrap: anywhere; }
 .bugshots { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
-.bugshots img { width: 96px; height: 150px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); background: #f3f0f6; display: block; }
-.badge { font-size: .8rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: #eee; }
-.badge.new { background: #fff4dc; color: #7a4d00; }
-.badge.in_progress { background: #e8f0fe; color: #1a4fa0; }
+.bugshots img { width: 96px; height: 150px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); background: #242423; display: block; }
+.badge { font-size: .8rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: #2c2c2a; }
+.badge.new { background: #33280f; color: #f2c46b; }
+.badge.in_progress { background: #15253d; color: #8fbaff; }
 .badge.needs_decision { background: var(--no-bg); color: var(--no); }
 .badge.fixed { background: var(--ok-bg); color: var(--ok); }
 .bug select { margin-left: 6px; font: inherit; padding: 4px 8px; border-radius: 8px; }
