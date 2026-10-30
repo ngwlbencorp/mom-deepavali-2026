@@ -77,6 +77,33 @@ def sealion_cell(sl, key, en, draft, code):
         return 'ADJUSTED: suggested "%s" (%s). %s%s' % (r['suggestion'], r['reason'], why or 'Applied with small changes.', back)
     return 'NOT APPLIED: suggested "%s" (%s). Why not: %s%s' % (r['suggestion'], r['reason'], why or 'see triage', back)
 
+def sarvam(code):
+    """Sarvam AI's check (tools/sarvam-review.js), for languages SEA-LION was not trained on."""
+    f = os.path.join(ROOT, 'review', 'sarvam', code + '.json')
+    return json.load(open(f, encoding='utf-8')) if os.path.exists(f) else None
+
+SV_TRIAGE_FILE = os.path.join(ROOT, 'review', 'sarvam', 'triage.json')
+SV_TRIAGE = json.load(open(SV_TRIAGE_FILE, encoding='utf-8'))['notApplied'] if os.path.exists(SV_TRIAGE_FILE) else {}
+
+def sarvam_cell(sv, key, en, draft, code):
+    if not sv: return ''
+    r = sv['results'].get(key)
+    if not r: return ''
+    if r.get('english') != en: return '(checked an older English version of this line)'
+    model = sv['model'].split('/')[-1]
+    if sv.get('mode') == 'back-translate':
+        return 'Back-translation by %s (no review: Sarvam\'s chat model does not support this language): %s%s' % (
+            model, r['back'], '' if r['draft'] == draft else '\n(this line was changed after the check)')
+    back = '\nBack-translation of the checked text: ' + r['back'] if r.get('back') else ''
+    if r['verdict'] == 'ok':
+        return ('OK' if r['draft'] == draft else 'OK (this line was changed after the check)') + back
+    if draft == r['suggestion']:
+        return 'APPLIED its suggestion. Earlier draft: %s\nReason given: %s%s' % (r['draft'], r['reason'], back)
+    why = SV_TRIAGE.get(code, {}).get(key)
+    if draft != r['draft']:
+        return 'ADJUSTED: suggested "%s" (%s). %s%s' % (r['suggestion'], r['reason'], why or 'Applied with small changes.', back)
+    return 'NOT APPLIED: suggested "%s" (%s). Why not: %s%s' % (r['suggestion'], r['reason'], why or 'see triage', back)
+
 def where(key):
     m = re.match(r'learn\[(\d+)\]', key)
     if m: return 'Learn story %d: %s' % (int(m.group(1)) + 1, english['learn'][int(m.group(1))])
@@ -137,7 +164,7 @@ rows = [
     ('3. If the draft is right, leave column E empty.', False),
     ('4. If it needs changing, type the full corrected text in column E (yellow). Do not edit column D.', False),
     ('5. Use column F for questions or comments. Column G has notes about each line; lines marked CHANGED differ from the previous workbook.', False),
-    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). %s: no SEA-LION model was trained for them; they are checked with Qwen-SEA-LION-v4.5, relying on what its base model (Qwen3.6) knows of them, so give its comments less weight there. It is a machine check, not a native speaker: use it as a pointer, not a ruling.' % (lambda u: ', '.join(u[:-1]) + ' and ' + u[-1] if len(u) > 1 else ''.join(u))([n for c, n in LANGS if (SL_CONFIG['languages'].get(c) or {}).get('coverage') == 'base']), False),
+    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). %s: no SEA-LION model was trained for them; they are checked with Qwen-SEA-LION-v4.5, relying on what its base model (Qwen3.6) knows of them, so give its comments less weight there. Column K is a second opinion from Sarvam AI, whose models are trained on Indian languages: for Hindi and Bengali a review like column I (Sarvam-105B), for Urdu an independent back-translation into English only (Sarvam Translate; its chat model does not support Urdu), to compare with column C. Both are machine checks, not native speakers: use them as pointers, not rulings.' % (lambda u: ', '.join(u[:-1]) + ' and ' + u[-1] if len(u) > 1 else ''.join(u))([n for c, n in LANGS if (SL_CONFIG['languages'].get(c) or {}).get('coverage') == 'base']), False),
     ('6. Send the file back. Corrections in column E are applied automatically (tools/import-review.py).', False),
     ('', False),
     ('Rules for all languages', True),
@@ -157,8 +184,8 @@ for i, (text, bold) in enumerate(rows, start=1):
     c.alignment = Alignment(wrap_text=True, vertical='top')
 ws.column_dimensions['A'].width = 120
 ex_row = len(rows) + 1
-headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources', 'SEA-LION check', 'SEA-LION model (newest that supports this language)']
-example = ['ui.tryAgain', 'Buttons and labels (all screens)', 'Try again', 'फिर से कोशिश करें', 'दोबारा कोशिश करें', 'Shorter and more common.', '', '', '', '']
+headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources', 'SEA-LION check', 'SEA-LION model (newest that supports this language)', 'Sarvam AI check (Hindi, Bengali, Urdu)']
+example = ['ui.tryAgain', 'Buttons and labels (all screens)', 'Try again', 'फिर से कोशिश करें', 'दोबारा कोशिश करें', 'Shorter and more common.', '', '', '', '', '']
 ws2col = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 for j, h in enumerate(headers):
     c = ws.cell(row=ex_row, column=j + 1, value=h)
@@ -234,7 +261,7 @@ for col, w in zip('ABCDEF', [20, 36, 10, 22, 60, 14]):
     slm.column_dimensions[col].width = w
 
 for code, name in LANGS:
-    draft, prev, sl = DRAFTS[code], previous_draft(code), sealion(code)
+    draft, prev, sl, sv = DRAFTS[code], previous_draft(code), sealion(code), sarvam(code)
     model_cell = sealion_model_cell(code, sl)
     sh = wb.create_sheet(name)
     for j, h in enumerate(headers):
@@ -244,17 +271,17 @@ for code, name in LANGS:
     r = 2
     for key, en in english['items']:
         if key not in draft: continue
-        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key), sealion_cell(sl, key, en, draft[key], code), model_cell]
+        vals = [key, where(key), en, draft[key], None, None, note(key, en, code, prev), sources_for(key), sealion_cell(sl, key, en, draft[key], code), model_cell, sarvam_cell(sv, key, en, draft[key], code)]
         for j, v in enumerate(vals):
             c = sh.cell(row=r, column=j + 1, value=v)
             c.font = Font(name=FONT, size=11, color='808080' if j == 0 else '000000')
             c.alignment, c.border = wrap, border
             if j == 4: c.fill = edit_fill
         r += 1
-    for col, w in zip('ABCDEFGHIJ', [24, 28, 46, 46, 46, 30, 46, 16, 50, 30]):
+    for col, w in zip('ABCDEFGHIJK', [24, 28, 46, 46, 46, 30, 46, 16, 50, 30, 50]):
         sh.column_dimensions[col].width = w
     sh.freeze_panes = 'C2'
-    sh.auto_filter.ref = 'A1:J%d' % (r - 1)
+    sh.auto_filter.ref = 'A1:K%d' % (r - 1)
     sh.sheet_view.zoomScale = 110
 
 out = sys.argv[1]
