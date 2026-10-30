@@ -198,6 +198,7 @@
         if (redraw) redraw();
       } }, [l.name]));
     });
+    sheet.appendChild(el('p', { class: 'sheet-note', text: T.ui.translations }));
     sheet.hidden = false;
   });
   document.getElementById('homeBtn').addEventListener('click', function () { sheet.hidden = true; leave(home); });
@@ -215,6 +216,8 @@
       return k ? el('a', { href: LEGAL[k], target: '_blank', rel: 'noopener', text: T.ui[k] }) : p;
     });
     return el('footer', { class: 'legal' }, [
+      // In a translated language: how the translation was made, and where to turn if unsure.
+      I.current() === 'en' ? null : el('p', { class: 'tnote', text: T.ui.translated }),
       el('div', { class: 'gtrow' }, [
         el('img', { class: 'gtlogo', src: asset('img/govtech-logo.png'), alt: 'GovTech Singapore' }),
         el('span', { text: T.ui.csr })

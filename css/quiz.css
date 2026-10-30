@@ -63,6 +63,7 @@ body.app main.screen {
 .legal .gtrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px; }
 .legal .gtlogo { height: 22px; width: auto; display: block; flex: none; }
 .legal .gtrow span { font-size: .72rem; line-height: 1.25; color: var(--muted); text-align: left; }
+.legal .tnote { margin: 0 0 6px; font-weight: 600; color: var(--ink); }
 .legal p { margin: 0; font-size: .72rem; line-height: 1.35; color: var(--muted); }
 .legal a { color: var(--plum); }
 .screen.tighter .legal { padding-top: 4px; }
@@ -285,9 +286,11 @@ body.app main.screen {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
   max-width: 560px; margin: 0 auto; padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
   background: var(--card); border-radius: 18px 18px 0 0; box-shadow: 0 -8px 30px rgba(0, 0, 0, .2);
+  max-height: 88vh; overflow-y: auto; /* many languages on a short phone: the list scrolls instead of running off the top */
 }
 .sheet .btn { margin-top: 8px; }
 .sheet-title { font-weight: 700; margin: 0 0 4px; }
+.sheet-note { margin: 10px 0 0; font-size: .8rem; color: var(--muted); text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
   .bubble:not(.static), .flaglabel { animation: none; opacity: 1; transform: none; }

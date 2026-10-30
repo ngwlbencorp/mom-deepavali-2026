@@ -9,6 +9,8 @@
   "ui.legal": "By using this site, you agree to the {terms} and {privacy}.",
   "ui.terms": "Terms of Use",
   "ui.privacy": "Privacy Statement",
+  "ui.translated": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+  "ui.translations": "Translations are made with AI. English is the reference.",
   "ui.home": "Home",
   "ui.previous": "Previous",
   "ui.next": "Next",

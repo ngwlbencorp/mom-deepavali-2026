@@ -29,6 +29,9 @@ window.SCAM_TEXT.en = {
     legal: "By using this site, you agree to the {terms} and {privacy}.",
     terms: "Terms of Use",
     privacy: "Privacy Statement",
+    // shown only in a translated language: in the home footer, and under the language menu
+    translated: "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+    translations: "Translations are made with AI. English is the reference.",
     home: "Home",
     previous: "Previous",
     next: "Next",
