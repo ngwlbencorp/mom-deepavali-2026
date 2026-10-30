@@ -1,0 +1,1479 @@
+{
+ "model": "sarvam-105b",
+ "mode": "review",
+ "checked": "2026-10-30",
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "தீபாவளி வாழ்த்துகள்!",
+   "verdict": "ok",
+   "back": "Deepavali wishes!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "மோசடிகளிடமிருந்து பாதுகாப்பாக இருங்கள்",
+   "verdict": "ok",
+   "back": "Be safely from scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "மோசடித் தந்திரங்களை அறிந்து, பிறகு வினாடி வினாவில் பங்கேற்கவும்.",
+   "verdict": "ok",
+   "back": "Having learned the fraud tricks, then participate in the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "எல்லாக் கேள்விகளுக்கும் சரியாகப் பதிலளித்து, QR குறியீட்டை MOM அதிகாரியிடம் காட்டி நினைவுப் பரிசு பெறுங்கள். முதல் 500 பேருக்கு மட்டும்!",
+   "verdict": "ok",
+   "back": "Having correctly answered all questions, show the QR code to MOM officer and get souvenir. First 500 people only!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "ScamShield உதவி எண்",
+   "verdict": "ok",
+   "back": "ScamShield help number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "மொழி",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech-இன் பெருநிறுவன சமூகப் பொறுப்பு முன்முயற்சி",
+   "verdict": "ok",
+   "back": "GovTech's corporate social responsibility initiative.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "இந்தத் தளத்தைப் பயன்படுத்தும்போது {terms} மற்றும் {privacy} ஆகியவற்றை ஏற்கிறீர்கள்.",
+   "verdict": "ok",
+   "back": "When using this site, you accept the {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "பயன்பாட்டு விதிமுறைகள்",
+   "verdict": "ok",
+   "back": "Usage terms.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "தனியுரிமை அறிக்கை",
+   "verdict": "ok",
+   "back": "Privacy statement.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translated": {
+   "english": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "draft": "AI மூலம் மொழிபெயர்க்கப்பட்டு, இயந்திரத்தால் சரிபார்க்கப்பட்டது. ஏதாவது புரியவில்லை என்றால், ஆங்கிலத்துக்கு மாறுங்கள் அல்லது 1799-ஐ அழையுங்கள்.",
+   "verdict": "ok",
+   "back": "Translated by AI and checked by machine. If anything is not understood, switch to English or call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translations": {
+   "english": "Translations are made with AI. English is the reference.",
+   "draft": "மொழிபெயர்ப்புகள் AI மூலம் செய்யப்பட்டவை. ஆங்கிலப் பதிப்பே மூலம்.",
+   "verdict": "fix",
+   "back": "Translations made by AI. English edition is the source.",
+   "suggestion": "மொழிபெயர்ப்புகள் AI மூலம் செய்யப்படுகின்றன. ஆங்கிலம் மூலம்.",
+   "reason": "Second sentence is a fragment and adds 'edition' not in original English; grammar is unnatural for limited schooling audience."
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "முகப்பு",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "முந்தையது",
+   "verdict": "ok",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "அடுத்து",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "முடி",
+   "verdict": "ok",
+   "back": "End",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "வெளியேறு",
+   "verdict": "fix",
+   "back": "Exit",
+   "suggestion": "வினாடி வினாவை வெளியேறு",
+   "reason": "Missing the word 'quiz' from the English source and inconsistent with the quiz term used in ui.exitConfirm."
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "வினாடி வினாவை விட்டு வெளியேறவா? இதுவரை அளித்த பதில்கள் அழிந்துவிடும்.",
+   "verdict": "ok",
+   "back": "Will leave the quiz? Answers given so far will be lost.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "மூடு",
+   "verdict": "ok",
+   "back": "Close",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "மோசடிகளைப் பற்றி அறியுங்கள்",
+   "verdict": "ok",
+   "back": "Learn about scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "6 short stories · 3 min",
+   "draft": "6 சிறு கதைகள் · 3 நிமிடம்",
+   "verdict": "ok",
+   "back": "6 short stories · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "நினைவுப் பரிசுக்கான வினாடி வினா",
+   "verdict": "fix",
+   "back": "Quiz for a souvenir",
+   "suggestion": "நினைவுப் பரிசுக்கான குவிஸ்",
+   "reason": "\"வினாடி வினா\" is not a standard term for quiz and may confuse workers; use \"குவிஸ்\" for clarity and consistency."
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "வினாடி வினாவில் பங்கேற்கவும்",
+   "verdict": "fix",
+   "back": "Participate in the quiz",
+   "suggestion": "குவிஸில் பங்கேற்கவும்",
+   "reason": "Inconsistent and non-intuitive quiz term; using \"குவிஸ்\" aligns with the English and other lines."
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 சவால்கள் · 3 நிமிடம்",
+   "verdict": "ok",
+   "back": "6 challenges · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "என் QR குறியீட்டைக் காட்டு",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "என் முடிவைக் காட்டு",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 இன்னும் {n} நினைவுப் பரிசுகள் உள்ளன",
+   "verdict": "ok",
+   "back": "🎁 {n} souvenir gifts are still there",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "எல்லா நினைவுப் பரிசுகளும் வழங்கப்பட்டுவிட்டன. பங்கேற்றதற்கு நன்றி!",
+   "verdict": "ok",
+   "back": "All souvenir gifts have been given out. Thanks for participating!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "அருமை! மோசடிகளை அடையாளம் காண உங்களுக்குத் தெரியும்.",
+   "verdict": "fix",
+   "back": "Great! You know to identify scams.",
+   "suggestion": "அருமை! மோசடிகளைக் கண்டுபிடிக்கத் தெரியும்.",
+   "reason": "Fix grammar: 'அடையாளம் காண' with 'தெரியும்' is awkward; 'கண்டுபிடிக்கத் தெரியும்' is the natural idiom for 'know how to spot'."
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "பதில்களைப் பாருங்கள், பிறகு மீண்டும் முயலுங்கள்.",
+   "verdict": "fix",
+   "back": "Look at the answers, then attempt again.",
+   "suggestion": "பதில்களைப் பாருங்கள், பிறகு மீண்டும் முயற்சி செய்யுங்கள்.",
+   "reason": "Fix unnatural/rare word 'முயலுங்கள்'; use the plain and common phrase 'முயற்சி செய்யுங்கள்'."
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "சந்தேகமா? அழையுங்கள்",
+   "verdict": "ok",
+   "back": "Unsure? Call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "மாதிரி · போலி",
+   "verdict": "fix",
+   "back": "Model · Fake",
+   "suggestion": "மாதிரி · நிஜமில்லை",
+   "reason": "Fix: 'போலி' means fake, not 'not real'. 'நிஜமில்லை' matches the English exactly."
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "என்ன செய்ய வேண்டும்",
+   "verdict": "ok",
+   "back": "What to do",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "வினாடி வினா எழுதுங்கள்",
+   "verdict": "fix",
+   "back": "Write quiz",
+   "suggestion": "வினாடி வினா விளையாடு",
+   "reason": "Fix: 'எழுதுங்கள்' means write. 'விளையாடு' (play) is clearer for taking a screen quiz."
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "அதிகாரப்பூர்வ வீடியோவைப் பாருங்கள்",
+   "verdict": "ok",
+   "back": "Official video watch",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "{n} அபாய அறிகுறிகளைத் தொடுங்கள்",
+   "verdict": "ok",
+   "back": "Touch the {n} danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "{n} இல் {k} தேர்வு",
+   "verdict": "ok",
+   "back": "{k} selection in {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "மோசடி",
+   "verdict": "ok",
+   "back": "Fraud",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "பாதுகாப்பானது",
+   "verdict": "ok",
+   "back": "Safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "செய்தி {i} / {n}",
+   "verdict": "ok",
+   "back": "Message {i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} / {n}",
+   "verdict": "ok",
+   "back": "{i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "உங்கள் முடிவு சேமிக்கப்படுகிறது…",
+   "verdict": "ok",
+   "back": "Your result is being saved…",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "எல்லாம் சரி!",
+   "verdict": "ok",
+   "back": "Everything correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "நினைவுப் பரிசைப் பெற இந்த QR குறியீட்டை MOM அதிகாரியிடம் காட்டுங்கள்.",
+   "verdict": "fix",
+   "back": "To get a souvenir, show this QR code to an MOM officer",
+   "suggestion": "உங்கள் நினைவுப் பரிசுக்காக இந்த QR குறியீட்டை MOM அதிகாரியிடம் காட்டுங்கள்",
+   "reason": "Awkward phrasing 'பரிசைப் பெற' and lacks 'your'; better wording and consistency with line 5"
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "முன்பே எல்லாம் சரியாகப் பதிலளித்ததால், உங்கள் QR குறியீடு இன்னும் செல்லுபடியாகும்.",
+   "verdict": "fix",
+   "back": "Because all answered correctly before, your QR code is still valid",
+   "suggestion": "முன்பே எல்லாம் சரியா இருந்ததால, இந்த QR இன்னும் வேலை செய்யும்",
+   "reason": "Too formal; 'பதிலளித்ததால்' and 'செல்லுபடியாகும்' are beyond everyday use"
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "{t} இல் {s} சரி",
+   "verdict": "ok",
+   "back": "{t} in {s} correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "பதில்களைப் பாருங்கள், பிறகு நினைவுப் பரிசுக்காக மீண்டும் முயலுங்கள்.",
+   "verdict": "ok",
+   "back": "Look at the answers, then try again for a souvenir",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "பதில்களைப் பாருங்கள்",
+   "verdict": "ok",
+   "back": "Look at the answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "மீண்டும் முயலுங்கள்",
+   "verdict": "ok",
+   "back": "Again, try.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "என் QR குறியீட்டுக்குத் திரும்பு",
+   "verdict": "ok",
+   "back": "To my QR code return.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "முடிவு சேமிக்கப்பட்டது ✓",
+   "verdict": "ok",
+   "back": "Result was saved ✓.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "இன்னும் சேமிக்கப்படவில்லை (இணைப்பு இல்லை). அதிகாரி இந்த QR குறியீட்டை இன்னும் ஸ்கேன் செய்யலாம்.",
+   "verdict": "ok",
+   "back": "Not yet saved (no connection). Officer this QR code can still scan.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "இன்னும் சேமிக்கப்படவில்லை (இணைப்பு இல்லை).",
+   "verdict": "ok",
+   "back": "Not yet saved (no connection).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "மீண்டும் சேமிக்கவும்",
+   "verdict": "ok",
+   "back": "Again, save.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "உங்கள் பதில்",
+   "verdict": "ok",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "சரியான பதில்",
+   "verdict": "ok",
+   "back": "Correct answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "சரி",
+   "verdict": "ok",
+   "back": "Correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "சரியல்ல",
+   "verdict": "fix",
+   "back": "Not correct",
+   "suggestion": "சரி இல்லை",
+   "reason": "Colloquial spelling 'சரியல்ல' is non-standard; use standard 'சரி இல்லை'."
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "குறியீடு",
+   "verdict": "ok",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "முயற்சி",
+   "verdict": "ok",
+   "back": "Attempt",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "போலி MOM அதிகாரி",
+   "verdict": "ok",
+   "back": "Fake MOM officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "மோசடிக்காரர்கள் MOM அல்லது காவல்துறை போல நடிக்கிறார்கள்.",
+   "verdict": "ok",
+   "back": "Scammers MOM or police like are acting",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "draft": "தொலைபேசி அழைப்பு",
+   "verdict": "ok",
+   "back": "Phone call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "draft": "தெரியாத எண்",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "draft": "வணக்கம், நான் MOM-இலிருந்து பேசுகிறேன். உங்கள் வேலை அனுமதியில் பிரச்சினை உள்ளது.",
+   "verdict": "ok",
+   "back": "Hello I MOM-from speak Your work permit-in problem is",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "draft": "இப்போதே $500 அனுப்புங்கள், இல்லையேல் ஊருக்கு அனுப்புவோம்!",
+   "verdict": "ok",
+   "back": "Now only $500 send else to-home will-send",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "draft": "என் இணைப்பிலிருந்து இந்தச் செயலியை நிறுவுங்கள், நான் உங்களுக்கு உதவுவேன்.",
+   "verdict": "ok",
+   "back": "Install this app from my link, I will help you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "draft": "இப்போது அழைப்பைக் காவல்துறைக்கு மாற்றுகிறேன்.",
+   "verdict": "fix",
+   "back": "Now I am transferring the call to the Police.",
+   "suggestion": "இப்போது அழைப்பை காவல்துறைக்கு மாற்றுகிறேன்.",
+   "reason": "Remove unnecessary accusative-sandhi 'க்' before 'க'; it should be 'அழைப்பை'. 'க்' is not required before 'காவல்துறை'. "
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "draft": "பணம் அனுப்பச் சொல்கிறார்",
+   "verdict": "ok",
+   "back": "Tells to send money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "இணைப்பிலிருந்து செயலி, ஆப் ஸ்டோர் அல்ல",
+   "verdict": "ok",
+   "back": "App from link, not app store.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "draft": "அழைப்பைக் காவல்துறைக்கு மாற்றுகிறார்",
+   "verdict": "fix",
+   "back": "Transfers the call to the Police.",
+   "suggestion": "அழைப்பை காவல்துறைக்கு மாற்றுகிறார்.",
+   "reason": "Remove unnecessary accusative-sandhi 'க்' before 'க'; it should be 'அழைப்பை'. 'க்' is not required before 'காவல்துறை'. "
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "draft": "உங்கள் வேலை பற்றி MOM அழைக்கலாம். ஆனால் பணம் அனுப்பவோ, வங்கி உள்நுழைவு விவரங்களைத் தரவோ MOM ஒருபோதும் கேட்காது.",
+   "verdict": "ok",
+   "back": "MOM may call about your work. But MOM will never ask to transfer money or give bank login details.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "draft": "இணைப்பிலிருந்து செயலியை நிறுவ MOM ஒருபோதும் சொல்லாது; அழைப்பைக் காவல்துறைக்கு மாற்றாது. சந்தேகமா? அழைப்பைத் துண்டியுங்கள்.",
+   "verdict": "fix",
+   "back": "MOM will never say install app from link; call to police transfer. Unsure? Call cut.",
+   "suggestion": "இணைப்பிலிருந்து செயலியை நிறுவவோ; உங்க அழைப்பை போலீசுக்கு மாற்றவோ MOM ஒருபோதும் கேட்காது. சந்தேகமா? அழைப்பைத் துண்டியுங்கள்.",
+   "reason": "Awkward word order and the missing adverbial accusative make the warning unclear; a compound-verb structure with everyday words like 'போலீசு' reads more naturally."
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "draft": "போலி பண்டிகைச் சலுகை",
+   "verdict": "ok",
+   "back": "Fake festival deal",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "draft": "செயலியை நிறுவச் சொல்லும், நம்ப முடியாத அளவு நல்ல சலுகைகள்.",
+   "verdict": "fix",
+   "back": "App install tell unbelievable amount good deals.",
+   "suggestion": "செயலியை நிறுவச் சொல்லும் நம்ப முடியாத அளவுக்கு நல்ல சலுகைகள்.",
+   "reason": "The adverbial phrase needs the accusative ending 'அளவுக்கு' to modify 'good' correctly and the relative clause reads more like everyday speech."
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "draft": "விளம்பரம்",
+   "verdict": "ok",
+   "back": "Advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "draft": "தீபாவளி தங்க விற்பனை",
+   "verdict": "ok",
+   "back": "Deepavali gold sale",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "draft": "தீபாவளி விற்பனை! தங்கத்துக்கு 80% தள்ளுபடி!",
+   "verdict": "ok",
+   "back": "Deepavali sale! Gold for 80% discount!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "draft": "எங்கள் செயலியை இங்கே பதிவிறக்குங்கள்: deepavali-gold.example/app",
+   "verdict": "ok",
+   "back": "Download our app here: deepavali-gold.example/app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "draft": "இன்னும் 1 மணி நேரம் மட்டுமே!",
+   "verdict": "ok",
+   "back": "Only 1 hour still!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "draft": "நம்ப முடியாத அளவு குறைந்த விலை",
+   "verdict": "ok",
+   "back": "Unbelievably low price",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "இணைப்பிலிருந்து செயலி, ஆப் ஸ்டோர் அல்ல",
+   "verdict": "ok",
+   "back": "App from link, not app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "draft": "அவசரப்படுத்துகிறது",
+   "verdict": "ok",
+   "back": "Hurrying",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store on your phone.",
+   "draft": "உங்கள் தொலைபேசியின் அதிகாரப்பூர்வ ஆப் ஸ்டோரிலிருந்து மட்டுமே செயலிகளை நிறுவுங்கள்.",
+   "verdict": "ok",
+   "back": "Only install apps from official app store of your phone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "draft": "போலிச் செயலிகள் உங்கள் வங்கிக் கணக்கிலிருந்து பணத்தைத் திருடலாம்.",
+   "verdict": "ok",
+   "back": "Fake apps your bank account-from money can steal.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "draft": "எளிதான பணம் (scam mule)",
+   "verdict": "ok",
+   "back": "Easy money (scam mule)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "draft": "உங்கள் வங்கிக் கணக்கைப் பயன்படுத்த உங்களுக்குப் பணம் தருவது.",
+   "verdict": "ok",
+   "back": "Your bank account use you money giving.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "draft": "அரட்டைச் செய்தி",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "draft": "எளிதாகப் பணம் வேண்டுமா? வாரம் $300, வேலை இல்லை!",
+   "verdict": "fix",
+   "back": "Want easy money? $300 a week, no work!",
+   "suggestion": "எளிதான பணம் வேண்டுமா? வாரம் $300, வேலை இல்லை!",
+   "reason": "எளிதாகப் பணம்' uses the adverb instead of the standard adjective 'எளிதான'; should be 'எளிதான பணம்' for 'easy money'."
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "draft": "உங்கள் வங்கிக் கணக்கு, சிம் கார்டு அல்லது Singpass-ஐ நான் பயன்படுத்த விடுங்கள், போதும்.",
+   "verdict": "fix",
+   "back": "Your bank account, SIM card or Singpass I use let, enough.",
+   "suggestion": "வெறும் உங்கள் வங்கிக் கணக்கையோ, சிம் கார்டையோ அல்லது Singpass-ஐயோ நான் பயன்படுத்திக்கொள்ள விடுங்கள்.",
+   "reason": "Accusative case markers missing for the listed items and 'போதாது' adds an unneeded 'that's all'; 'பயன்படுத்திக்கொள்ள விடுங்கள்' is also more natural than 'பயன்படுத்த விடுங்கள்'."
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "draft": "வேலை இல்லாமல் பணம்",
+   "verdict": "ok",
+   "back": "Money without work",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "draft": "வங்கிக் கணக்கு, சிம் கார்டு அல்லது Singpass-ஐக் கேட்கிறார்",
+   "verdict": "ok",
+   "back": "Bank account, sim card or singpass asks",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "draft": "உங்கள் வங்கிக் கணக்கு, சிம் கார்டு அல்லது Singpass-ஐ ஒருபோதும் விற்கவோ, கடன் கொடுக்கவோ, பிறருக்குக் கொடுக்கவோ வேண்டாம்.",
+   "verdict": "ok",
+   "back": "Your bank account, sim card or singpass one-ever don't sell, don't lend, or don't give to others",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "draft": "இது குற்றம். உங்களுக்கு அபராதம், சிறை அல்லது பிரம்படி விதிக்கப்படலாம்.",
+   "verdict": "ok",
+   "back": "This is a crime. You can be fined, jailed or caned.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "draft": "போலி வேலை அல்லது வேலை அனுமதி",
+   "verdict": "ok",
+   "back": "Fake job or work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].tagline": {
+   "english": "Fake approval letters that ask for money.",
+   "draft": "பணம் கேட்கும் போலி அனுமதிக் கடிதங்கள்.",
+   "verdict": "ok",
+   "back": "Money asking fake permission letters.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "draft": "அரட்டைச் செய்தி",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "draft": "SG வேலை முகவர்",
+   "verdict": "ok",
+   "back": "SG job agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "draft": "நல்ல செய்தி! உங்கள் வேலை அனுமதி அங்கீகரிக்கப்பட்டது.",
+   "verdict": "fix",
+   "back": "Good news! Your work permit approved.",
+   "suggestion": "நல்ல செய்தி! உங்கள் வேலை அனுமதி சரி.",
+   "reason": "அங்கீகரிக்கப்பட்டது is too formal; use simple 'சரி' to show 'approved'."
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "draft": "உங்கள் வேலையை உறுதிசெய்ய இன்றே $800 அனுப்புங்கள்.",
+   "verdict": "ok",
+   "back": "Your job confirm today $800 send.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "draft": "நாங்கள் உரிமம் பெற்ற நிறுவனம். உரிம எண் 99X9999.",
+   "verdict": "fix",
+   "back": "We licensed company. Licence number 99X9999.",
+   "suggestion": "நாங்கள் உரிமம் பெற்ற நிறுவனம். உரிமம் எண் 99X9999.",
+   "reason": "Inconsistent term 'உரிம' omits final 'ம்' versus 'உரிமம்'; fix to full consistent form."
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "draft": "முதலில் பணம் கேட்கிறார்",
+   "verdict": "ok",
+   "back": "He asks money first.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[1].label": {
+   "english": "A licence number does not prove it is real",
+   "draft": "உரிம எண் இருந்தால் உண்மை என்று அர்த்தமில்லை",
+   "verdict": "fix",
+   "back": "If a licence number exists, it does not mean it is real.",
+   "suggestion": "லைசென்ஸ் நம்பர் இருந்தால் அது உண்மை என்று அர்த்தமில்லை",
+   "reason": "Use everyday terms like லைசென்ஸ் நம்பர்; formal உரிம எண் is not common among workers."
+  },
+  "learn[3].todo[0]": {
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "MOM இணையதளத்தில் வேலை அனுமதியை நீங்களே சரிபாருங்கள்: \"Check work pass and application status\". உள்நுழைவு தேவையில்லை.",
+   "verdict": "ok",
+   "back": "On MOM website, you yourself check work permit: \"Check work pass and application status\". Login is not needed.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[1]": {
+   "english": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "draft": "முதலில் பணம் கேட்பது வேலை மோசடியின் அறிகுறி. வேலையைக் காக்க யாரும் உங்களிடம் பணம் கேட்க முடியாது: அது சட்டவிரோதம்.",
+   "verdict": "fix",
+   "back": "Asking for money first is work fraud's sign. To save the job, no one can ask you for money: that is illegal.",
+   "suggestion": "முதலில் பணம் கேட்பது பொதுவான வேலை மோசடி அறிகுறி. வேலையைக் காக்க யாரும் உங்களிடம் பணம் கேட்க முடியாது: அது சட்டவிரோதம்.",
+   "reason": "Missing word meaning 'common' from the English."
+  },
+  "learn[4].title": {
+   "english": "Secret codes (OTP)",
+   "draft": "ரகசியக் குறியீடுகள் (OTP)",
+   "verdict": "ok",
+   "back": "Secret codes (OTP)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].tagline": {
+   "english": "Scammers ask for the code sent to your phone.",
+   "draft": "உங்கள் தொலைபேசிக்கு வந்த குறியீட்டை மோசடிக்காரர்கள் கேட்கிறார்கள்.",
+   "verdict": "ok",
+   "back": "Fraudsters ask the code that came to your phone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[0]": {
+   "english": "Sorry, I sent a code to your phone by mistake.",
+   "draft": "மன்னிக்கவும், தவறுதலாக உங்கள் தொலைபேசிக்கு ஒரு குறியீட்டை அனுப்பிவிட்டேன்.",
+   "verdict": "ok",
+   "back": "Sorry, by mistake to your phone a code I sent.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "draft": "அந்த 6 இலக்கக் குறியீட்டை எனக்கு அனுப்புங்கள். சீக்கிரம்!",
+   "verdict": "ok",
+   "back": "That 6 digit code-ACC to me send. Quick!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].flags[0].label": {
+   "english": "Asks for your OTP and rushes you",
+   "draft": "OTP-ஐக் கேட்டு அவசரப்படுத்துகிறார்",
+   "verdict": "ok",
+   "back": "Asks for OTP and rushes (resp).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[0]": {
+   "english": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "draft": "உங்கள் OTP-ஐ (தொலைபேசிக்கு வரும் குறியீடு) அல்லது Singpass கடவுச்சொல்லை யாரிடமும் ஒருபோதும் பகிர வேண்டாம்.",
+   "verdict": "ok",
+   "back": "Your OTP-ACC (phone-to coming code) or Singpass password-ACC anyone-with ever not-share.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[1]": {
+   "english": "Someone says they changed their number? Call their old number to check.",
+   "draft": "எண்ணை மாற்றியதாக யாராவது சொல்கிறார்களா? அவர்களின் பழைய எண்ணை அழைத்துச் சரிபாருங்கள்.",
+   "verdict": "fix",
+   "back": "Number changed-ACC anyone says? Their old number-ACC call-and check.",
+   "suggestion": "எண்ணை மாற்றியதாக யாராவது சொல்கிறார்களா? அவர்களின் பழைய எண்ணுக்குப் போன் போட்டுச் சரிபார்க்கவும்.",
+   "reason": "Dative needed: 'old number' must be dative when calling; 'சரிபார்க்கவும்' better matches 'Check'."
+  },
+  "learn[5].title": {
+   "english": "Fake MOM message",
+   "draft": "போலி MOM செய்தி",
+   "verdict": "ok",
+   "back": "Fake MOM message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].tagline": {
+   "english": "Check who sent it, and where the link goes.",
+   "draft": "யார் அனுப்பியது, இணைப்பு எங்கே செல்கிறது என்று பாருங்கள்.",
+   "verdict": "fix",
+   "back": "Who it-was-sent-by, link where goes that check.",
+   "suggestion": "யார் அனுப்பினது, இணைப்பு எங்கே செல்கிறது என்று சரிபார்க்கவும்.",
+   "reason": "'யார் அனுப்பியது?' is ungrammatical for 'who sent it'; 'யார் அனுப்பினது' is the correct cleft. 'சரிபார்க்கவும்' matches 'Check'."
+  },
+  "learn[5].chat.lines[0]": {
+   "english": "MOM: your work permit will expire soon.",
+   "draft": "MOM: உங்கள் வேலை அனுமதி விரைவில் காலாவதியாகும்.",
+   "verdict": "ok",
+   "back": "MOM: your work permit will expire soon.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[1]": {
+   "english": "Renew it now: www.mom.gov.sg.official.com.net",
+   "draft": "இப்போதே புதுப்பியுங்கள்: www.mom.gov.sg.official.com.net",
+   "verdict": "fix",
+   "back": "Right now, renew: www.mom.gov.sg.official.com.net",
+   "suggestion": "இப்போதே புதுப்பிங்க: www.mom.gov.sg.official.com.net",
+   "reason": "Formal imperative 'புதுப்பியுங்கள்' is too stiff for a casual scam message; casual form 'புதுப்பிங்க' is clearer for workers."
+  },
+  "learn[5].flags[0].label": {
+   "english": "Fake website: it does not end with .mom.gov.sg",
+   "draft": "போலி இணையதளம்: .mom.gov.sg என்று முடியவில்லை",
+   "verdict": "fix",
+   "back": "Fake website: .mom.gov.sg unable.",
+   "suggestion": "போலி இணையதளம்: .mom.gov.sg-இல் முடிவதில்லை",
+   "reason": "Conclusion 'முடியவில்லை' is ungrammatical and does not mean 'does not end with'."
+  },
+  "learn[5].todo[0]": {
+   "english": "Government SMS come from the sender \"gov.sg\".",
+   "draft": "அரசாங்க SMS-கள் \"gov.sg\" என்ற அனுப்புநரிடமிருந்து வரும்.",
+   "verdict": "ok",
+   "back": "Government SMS-es will come from the sender 'gov.sg'.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[1]": {
+   "english": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "draft": "உண்மையான MOM இணையதளங்கள் \".mom.gov.sg\" என்று முடியும். முதல் \"/\"-க்கு முன் உள்ள இணையதளப் பெயரைப் பாருங்கள்.",
+   "verdict": "ok",
+   "back": "Real MOM websites end with '.mom.gov.sg'. Look at the website name before the first '/'.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.title": {
+   "english": "Remember ACT",
+   "draft": "ACT நினைவில் கொள்ளுங்கள்",
+   "verdict": "ok",
+   "back": "Remember ACT",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[0]": {
+   "english": "ADD the ScamShield app",
+   "draft": "ADD – ScamShield செயலியைப் பதிவிறக்குங்கள்",
+   "verdict": "ok",
+   "back": "ADD – Download the ScamShield app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[1]": {
+   "english": "CHECK with 1799",
+   "draft": "CHECK – 1799-ல் சரிபாருங்கள்",
+   "verdict": "fix",
+   "back": "CHECK – Verify at 1799",
+   "suggestion": "CHECK – 1799-ஐ அழைக்கவும்",
+   "reason": "1799-ல் implies a place, not a phone; use 'call 1799'"
+  },
+  "act.items[2]": {
+   "english": "TELL family and friends",
+   "draft": "TELL – குடும்பத்தினர், நண்பர்களிடம் சொல்லுங்கள்",
+   "verdict": "ok",
+   "back": "TELL – Tell your family [and] friends",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].title": {
+   "english": "Spot the red flags",
+   "draft": "அபாய அறிகுறிகளைக் கண்டறியுங்கள்",
+   "verdict": "ok",
+   "back": "Spot the danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "draft": "அன்புள்ள ஊழியரே,",
+   "verdict": "ok",
+   "back": "Dear worker,",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "draft": "உங்கள் வேலை அனுமதிக்கு $350 அபராதம் நிலுவையில் உள்ளது.",
+   "verdict": "ok",
+   "back": "Your work permit has a $350 fine outstanding",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "draft": "இங்கே செலுத்துங்கள்:",
+   "verdict": "ok",
+   "back": "Pay here:",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][2].t": {
+   "english": "or reply with your bank login.",
+   "draft": "அல்லது வங்கி உள்நுழைவு விவரங்களைப் பதிலாக அனுப்புங்கள்.",
+   "verdict": "ok",
+   "back": "Or send bank login details as a reply.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].explain": {
+   "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "draft": "அரசாங்க SMS-கள் \"gov.sg\"-இலிருந்து வரும். உண்மையான MOM முகவரிகள் \".mom.gov.sg\" என்று முடியும். அரசாங்கம் SMS மூலம் வங்கி உள்நுழைவு விவரங்களைக் கேட்காது. சந்தேகமா? 1799-ஐ அழையுங்கள்.",
+   "verdict": "ok",
+   "back": "Government SMSes will come from \"gov.sg\". Real MOM addresses will end with \".mom.gov.sg\". The Government will not ask for bank login details via SMS. Unsure? Call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].title": {
+   "english": "Scam or safe?",
+   "draft": "மோசடியா, பாதுகாப்பானதா?",
+   "verdict": "ok",
+   "back": "Scam or safe?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].from": {
+   "english": "Your employer",
+   "draft": "உங்கள் முதலாளி",
+   "verdict": "ok",
+   "back": "Your employer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].text": {
+   "english": "Please buy rice on the way home. Thank you!",
+   "draft": "வீட்டுக்கு வரும்போது தயவுசெய்து அரிசி வாங்கி வாருங்கள். நன்றி!",
+   "verdict": "ok",
+   "back": "When coming home, please buy rice and come. Thank you!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].why": {
+   "english": "A normal message from someone you know, with no money or codes asked.",
+   "draft": "உங்களுக்குத் தெரிந்தவரின் சாதாரணச் செய்தி. பணமோ குறியீடோ கேட்கவில்லை.",
+   "verdict": "fix",
+   "back": "A normal message from someone you know. Money or code asked not.",
+   "suggestion": "உங்களுக்குத் தெரிந்தவர் அனுப்பிய சாதாரணச் செய்தி. அவர் பணம், குறியீடு எதையும் கேட்கவில்லை.",
+   "reason": "Original ending 'பணமோ குறியீடோ கேட்கவில்லை' lacks a clear subject and sounds grammatically clipped; needs an explicit subject and clearer negation."
+  },
+  "quiz[1].cards[1].from": {
+   "english": "Unknown number",
+   "draft": "தெரியாத எண்",
+   "verdict": "ok",
+   "back": "Unknown number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].text": {
+   "english": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "draft": "உங்கள் வங்கிக் கணக்கு முடக்கப்பட்டுள்ளது. நாங்கள் அனுப்பிய OTP-ஐப் பதிலாக அனுப்புங்கள்.",
+   "verdict": "fix",
+   "back": "Your bank account is frozen. Send as reply the OTP we sent.",
+   "suggestion": "உங்கள் வங்கியின் கணக்கு லாக் ஆனது. நாங்கள் அனுப்பி வைத்த OTP-ஐப் பதிலாக அனுப்புங்கள்.",
+   "reason": "'முடக்கப்பட்டுள்ளது' is formal; 'லாக் ஆனது' is everyday spoken Tamil. 'நாங்கள் அனுப்பி வைத்த' is smoother than 'நாங்கள் அனுப்பிய'."
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "draft": "உங்கள் OTP-ஐ (தொலைபேசிக்கு வரும் குறியீடு) யாரிடமும் பகிர வேண்டாம், அவர்கள் வங்கி என்று சொன்னாலும்.",
+   "verdict": "fix",
+   "back": "Your OTP (code coming to your phone) do not share with anyone, even if they say they are a bank.",
+   "suggestion": "உங்கள் OTP-ஐ (உங்கள் போனுக்கு வரும் குறியீடு) யாரிடமும் கொடுக்க வேண்டாம். அவர்கள் உங்கள் வங்கி என்று சொன்னாலும் கொடுக்க வேண்டாம்.",
+   "reason": "'பகிர வேண்டாம்' and 'தொலைபேசி' are slightly formal; use everyday 'கொடுக்க வேண்டாம்' and 'போன்' for workers with limited schooling."
+  },
+  "quiz[1].cards[2].from": {
+   "english": "New contact",
+   "draft": "புதிய தொடர்பு",
+   "verdict": "ok",
+   "back": "New contact.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].text": {
+   "english": "Lend me your bank card for one week. I will pay you $300.",
+   "draft": "உங்கள் வங்கி அட்டையை ஒரு வாரத்துக்கு எனக்குக் கடனாகக் கொடுங்கள். உங்களுக்கு $300 தருகிறேன்.",
+   "verdict": "ok",
+   "back": "Your bank card lend to me for one week. I will give you $300.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].why": {
+   "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "draft": "இது scam mule சதி. பிறர் உங்கள் வங்கி அட்டையைப் பயன்படுத்த விடுவது குற்றம்.",
+   "verdict": "fix",
+   "back": "This is a scam mule offer. Allowing others to use your bank card is a crime.",
+   "suggestion": "இது ஒரு scam mule வாய்ப்பு. மற்றவர்கள் உங்கள் வங்கி அட்டையைப் பயன்படுத்த அனுமதிப்பது குற்றம்.",
+   "reason": "சதி means 'plot', not 'offer'; பிறர் is uncommon; விடுவது is unclear."
+  },
+  "quiz[1].cards[3].from": {
+   "english": "Your friend",
+   "draft": "உங்கள் நண்பர்",
+   "verdict": "ok",
+   "back": "Your friend",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].text": {
+   "english": "Happy Deepavali! See you at the event on Sunday.",
+   "draft": "தீபாவளி வாழ்த்துகள்! ஞாயிற்றுக்கிழமை நிகழ்ச்சியில் சந்திப்போம்.",
+   "verdict": "ok",
+   "back": "Happy Deepavali! We will meet at the event on Sunday.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].why": {
+   "english": "A normal greeting from a friend, with nothing asked.",
+   "draft": "நண்பரின் சாதாரண வாழ்த்து, எதுவும் கேட்கவில்லை.",
+   "verdict": "ok",
+   "back": "Normal greeting from a friend, with nothing asked.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "draft": "நீங்கள் என்ன பதில் சொல்வீர்கள்?",
+   "verdict": "ok",
+   "back": "What reply will you say?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "draft": "\"உறவினர்\" (புதிய எண்)",
+   "verdict": "fix",
+   "back": "\"Cousin\" (new number)",
+   "suggestion": "\"Cousin\" (புதிய எண்)",
+   "reason": "உறவினர் means 'relative', not 'cousin'; the specific relationship must be preserved."
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "draft": "வணக்கம், நான் உங்கள் உறவினர். எண்ணை மாற்றிவிட்டேன்.",
+   "verdict": "ok",
+   "back": "Hi, it's your cousin. I changed my number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "draft": "தவறுதலாக உங்கள் போனுக்கு 6 இலக்கக் குறியீடு அனுப்பிவிட்டேன். அதை எனக்கு அனுப்புங்கள். அவசரம்!",
+   "verdict": "fix",
+   "back": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "suggestion": "தவறுதலாக உங்கள் போனுக்கு 6 இலக்கக் குறியீட்டை அனுப்பிவிட்டேன். அதை எனக்கு அனுப்புங்கள். அவசரம்!",
+   "reason": "Missing accusative case; should be குறியீட்டை not குறியீடு."
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "draft": "சரி, குறியீடு இதோ: 482915",
+   "verdict": "ok",
+   "back": "OK, here is the code: 482915",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "draft": "இல்லை. குறியீட்டை யாருக்கும் தரமாட்டேன். உங்கள் பழைய எண்ணை அழைக்கிறேன்.",
+   "verdict": "fix",
+   "back": "No. I never share codes. I will call your old number.",
+   "suggestion": "இல்லை. குறியீட்டை யாருக்கும் தரமாட்டேன். உங்கள் பழைய எண்ணுக்கு அழைக்கிறேன்.",
+   "reason": "Call requires dative case; should be எண்ணுக்கு not எண்ணை."
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "draft": "முதலில் உங்கள் படத்தை அனுப்புங்கள், பிறகு தருகிறேன்.",
+   "verdict": "ok",
+   "back": "Send me your photo first, then I will send it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "draft": "OTP-ஐக் குடும்பத்தினர் உட்பட யாரிடமும் பகிர வேண்டாம். எண்ணை மாற்றியதாகச் சொன்னால், பழைய எண்ணை அழைத்துச் சரிபாருங்கள்.",
+   "verdict": "fix",
+   "back": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "suggestion": "OTP-ஐக் குடும்பத்தினர் உட்பட யாரிடமும் பகிர வேண்டாம். எண்ணை மாற்றியதாகச் சொன்னால், பழைய எண்ணுக்கு அழைத்துப் சரிபாருங்கள்.",
+   "reason": "Dative case missing on old number; 'யாரிடமும்' is more natural than 'யாரோடும்'."
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "draft": "பாதுகாப்பான வழியைத் தேர்ந்தெடுங்கள்",
+   "verdict": "ok",
+   "back": "Select the safe way",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "draft": "தீபாவளிச் சலுகைகளுக்கு ஒரு ஷாப்பிங் செயலி வேண்டும். அதை எங்கே பெறலாம்?",
+   "verdict": "ok",
+   "back": "For Deepavali discounts, a shopping app is needed. Where can it be obtained?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "draft": "உங்கள் தொலைபேசியில் உள்ள அதிகாரப்பூர்வ ஆப் ஸ்டோர்",
+   "verdict": "ok",
+   "back": "The official app store in your phone",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "draft": "அரட்டைச் செய்தியில் அனுப்பப்பட்ட இணைப்பு",
+   "verdict": "fix",
+   "back": "A link in a chat message",
+   "suggestion": "சாட் செய்தியில் உள்ள இணைப்பு",
+   "reason": "அரட்டை means general chitchat; சாட் is clearer for digital chat. உள்ள is simpler than அனுப்பப்பட்ட."
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "draft": "இணைய விளம்பரத்தில் உள்ள இணைப்பு",
+   "verdict": "ok",
+   "back": "A link in an online advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "draft": "உங்கள் தொலைபேசியின் அதிகாரப்பூர்வ ஆப் ஸ்டோரிலிருந்து மட்டுமே செயலிகளை நிறுவுங்கள். இணைப்புகளிலிருந்து வரும் செயலிகள் உங்கள் பணத்தைத் திருடலாம்.",
+   "verdict": "ok",
+   "back": "From your phone's official app store only install apps. Apps coming from links can steal your money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "draft": "அபாய அறிகுறிகளைக் கண்டறியுங்கள்",
+   "verdict": "ok",
+   "back": "Find the danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "draft": "அரட்டைச் செய்தி",
+   "verdict": "ok",
+   "back": "chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "draft": "வேலை முகவர்",
+   "verdict": "ok",
+   "back": "work agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "draft": "உங்கள் முதலாளி வேலை அனுமதியை ரத்து செய்யப் போகிறார்.",
+   "verdict": "ok",
+   "back": "your boss will cancel work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "draft": "வேலை தொடர எனக்கு $500 கொடுங்கள்.",
+   "verdict": "ok",
+   "back": "to continue work give me $500",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "draft": "அனுமதியை இங்கே பாருங்கள்:",
+   "verdict": "fix",
+   "back": "look at the permit here",
+   "suggestion": "உங்கள் அனுமதியை இங்கே CHECK:",
+   "reason": "CHECK must remain in English; draft translated 'Check' as 'பாருங்கள்'."
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "draft": "பிறகு Singpass கடவுச்சொல்லை எனக்கு அனுப்புங்கள்.",
+   "verdict": "fix",
+   "back": "Then send me Singpass password.",
+   "suggestion": "அப்புறம் உங்க Singpass கடவுச்சொல்லை எனக்கு அனுப்புங்க.",
+   "reason": "Drops 'your' before Singpass password and uses the formal verb 'அனுப்புங்கள்' instead of the plain, everyday 'அனுப்புங்க'."
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "draft": "வேலையைக் காக்கப் பணம் கேட்பது சட்டவிரோதம். உண்மையான MOM முகவரிகள் \".mom.gov.sg\" என்று முடியும். Singpass கடவுச்சொல்லை யாரிடமும் பகிர வேண்டாம்.",
+   "verdict": "fix",
+   "back": "Asking money to keep job is illegal. Real MOM addresses end with .mom.gov.sg. Singpass password to-anyone share do-not.",
+   "suggestion": "வேலையைக் காக்கப் பணம் கேட்பது சட்டவிரோதம். உண்மையான MOM முகவரிகள் \".mom.gov.sg\" என்று முடியும். உங்கள் Singpass கடவுச்சொல்லை யாரிடமும் பகிர வேண்டாம்.",
+   "reason": "Drops 'your' before Singpass password, which is the specific detail the sentence warns about."
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "draft": "நீங்கள் என்ன பதில் சொல்வீர்கள்?",
+   "verdict": "ok",
+   "back": "You what reply will-you-say?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "draft": "தெரியாத எண்",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "draft": "எளிதான பணம்! ஒவ்வொரு வாரமும் $200 சம்பாதியுங்கள்.",
+   "verdict": "ok",
+   "back": "Easy money! Earn $200 every week.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "draft": "உங்கள் வங்கிக் கணக்கையும் Singpass-ஐயும் நான் பயன்படுத்த அனுமதியுங்கள்.",
+   "verdict": "fix",
+   "back": "Your bank account and Singpass too, myself I use let-me.",
+   "suggestion": "உங்கள் வங்கி கணக்கையும் Singpass-ஐயும் நான் பயன்படுக்க அனுமதி கொடுங்கள்.",
+   "reason": "Natural Tamil order requires 'நான் ... பயன்படுக்க அனுமதி கொடுங்கள்' instead of the ungrammatical 'நான் ... பயன்படுத்த அனுமதியுங்கள்'."
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "draft": "சரி, எப்படித் தொடங்குவது?",
+   "verdict": "ok",
+   "back": "Okay, how to start?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "draft": "அதற்குப் பதிலாக $400 தர முடியுமா?",
+   "verdict": "ok",
+   "back": "Can you give $400 instead?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "draft": "இல்லை. இது குற்றம். நான் புகார் செய்வேன்.",
+   "verdict": "ok",
+   "back": "No. This is crime. I will complaint do.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "draft": "உங்கள் வங்கிக் கணக்கையோ Singpass-ஐயோ பிறர் பயன்படுத்த அனுமதித்தால், நீங்கள் scam mule ஆகிவிடுவீர்கள். இது குற்றம். மறுத்து, புகார் செய்யுங்கள்.",
+   "verdict": "fix",
+   "back": "If others are allowed to use your bank account or Singpass, you will become a scam mule. This is a crime. Refuse and file a complaint.",
+   "suggestion": "உங்கள் வங்கிக் கணக்கையோ Singpass-ஐயோ வேறவங்க பயன்படுத்த அனுமதித்தால், நீங்கள் scam mule ஆகிவிடுவீர்கள். இது குற்றம். வேண்டாம் என்று சொல்லுங்க, புகார் செய்யுங்கள்.",
+   "reason": "பிறர் and மறுத்து are too formal for everyday usage; use plain alternatives."
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "draft": "கடைசியாக ஒன்று",
+   "verdict": "ok",
+   "back": "Finally one",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "draft": "இன்றைய நிகழ்ச்சி உங்களுக்கு எப்படி இருந்தது?",
+   "verdict": "fix",
+   "back": "Today's event for-you how was?",
+   "suggestion": "இன்றைய நிகழ்ச்சி உங்களுக்கு எவ்வளவு சந்தோஷம்?",
+   "reason": "Draft misses 'happy' (சந்தோஷம்) from 'How happy are you with today's event?'."
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "draft": "மிகவும் அதிருப்தி",
+   "verdict": "ok",
+   "back": "Very dissatisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "draft": "அதிருப்தி",
+   "verdict": "ok",
+   "back": "Dissatisfied",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "draft": "பரவாயில்லை",
+   "verdict": "ok",
+   "back": "It is not bad / passable",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "draft": "மகிழ்ச்சி",
+   "verdict": "ok",
+   "back": "Happiness",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "draft": "மிகவும் மகிழ்ச்சி",
+   "verdict": "ok",
+   "back": "Very much happiness",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "draft": "மோசடிகளைப் பற்றிப் புதிதாக ஏதாவது கற்றுக்கொண்டீர்களா?",
+   "verdict": "ok",
+   "back": "Did you learn anything newly about scams?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "draft": "ஆம்",
+   "verdict": "ok",
+   "back": "Yes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "draft": "கொஞ்சம்",
+   "verdict": "ok",
+   "back": "A little",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "draft": "இல்லை",
+   "verdict": "ok",
+   "back": "No",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "draft": "என் முடிவைப் பார்",
+   "verdict": "ok",
+   "back": "See my result",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}

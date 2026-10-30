@@ -44,5 +44,16 @@
   "lines": 184,
   "liveChanged": 4,
   "outcome": "Fluent, natural Burmese, far better than SEA-LION's; it agreed with the meaning of every live line. Two improvements applied: 'Dear worker' in the fake fine SMS used an affectionate 'dear' (ချစ်လှစွာသော, as to a loved one) and now uses the formal-notice opening လေးစားရပါသော; 'scam mule' stood alone in Latin script in 3 lines and now has the Burmese gloss ငွေလိမ်ကြားခံ, with 'scam mule' kept in brackets (glossary updated). Other differences are register only: Gemini's Burmese is more colloquial (မင်း, တယ်), the live text more formal written style (သည်, ပါနှင့်); kept."
+ },
+ "ta-sarvam": {
+  "model": "sarvam-105b",
+  "lines": 184,
+  "liveChanged": 0,
+  "outcome": "No meaning errors found in the live Tamil. The independent version is colloquial with many English loanwords, and its meaning differences were its own errors, e.g. 'scam mule' as 'scam person', 'crime' as 'wrong', 'instead' as 'later', 'Licence' and 'sender' dropped, 'registration' for login, CHECK inserted into a scam message, a garbled penalties line.",
+  "noted": {
+   "quiz[4].msg.bubbles[0][0].t": "Live 'is going to cancel' vs English 'wants to cancel': slight shift, same threat; kept for length.",
+   "learn[3].todo[1]": "Both drop 'common'; live says no one can 'ask' you to pay vs 'make you pay': same warning.",
+   "ui.example": "Live 'போலி' (fake) vs independent 'not real': same intent."
+  }
  }
 }

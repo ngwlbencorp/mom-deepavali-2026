@@ -202,7 +202,7 @@ window.SCAM_TEXT["ta"] = {
       },
       "flags": [
         {
-          "label": "போலி இணையதளம்: .mom.gov.sg என்று முடியவில்லை"
+          "label": "போலி இணையதளம்: .mom.gov.sg என்று முடிவதில்லை"
         }
       ],
       "todo": [

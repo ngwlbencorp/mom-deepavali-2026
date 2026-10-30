@@ -164,7 +164,7 @@ rows = [
     ('3. If the draft is right, leave column E empty.', False),
     ('4. If it needs changing, type the full corrected text in column E (yellow). Do not edit column D.', False),
     ('5. Use column F for questions or comments. Column G has notes about each line; lines marked CHANGED differ from the previous workbook.', False),
-    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). %s: no SEA-LION model was trained for them; they are checked with Qwen-SEA-LION-v4.5, relying on what its base model (Qwen3.6) knows of them, so give its comments less weight there. Column K is a second opinion from Sarvam AI, whose models are trained on Indian languages: for Hindi and Bengali a review like column I (Sarvam-105B), for Urdu an independent back-translation into English only (Sarvam Translate; its chat model does not support Urdu), to compare with column C. Both are machine checks, not native speakers: use them as pointers, not rulings.' % (lambda u: ', '.join(u[:-1]) + ' and ' + u[-1] if len(u) > 1 else ''.join(u))([n for c, n in LANGS if (SL_CONFIG['languages'].get(c) or {}).get('coverage') == 'base']), False),
+    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). %s: no SEA-LION model was trained for them; they are checked with Qwen-SEA-LION-v4.5, relying on what its base model (Qwen3.6) knows of them, so give its comments less weight there. Column K is a second opinion from Sarvam AI, whose models are trained on Indian languages: for Hindi, Bengali and Tamil a review like column I (Sarvam-105B), for Urdu an independent back-translation into English only (Sarvam Translate; its chat model does not support Urdu), to compare with column C. Both are machine checks, not native speakers: use them as pointers, not rulings.' % (lambda u: ', '.join(u[:-1]) + ' and ' + u[-1] if len(u) > 1 else ''.join(u))([n for c, n in LANGS if (SL_CONFIG['languages'].get(c) or {}).get('coverage') == 'base']), False),
     ('6. Send the file back. Corrections in column E are applied automatically (tools/import-review.py).', False),
     ('', False),
     ('Rules for all languages', True),
@@ -184,7 +184,7 @@ for i, (text, bold) in enumerate(rows, start=1):
     c.alignment = Alignment(wrap_text=True, vertical='top')
 ws.column_dimensions['A'].width = 120
 ex_row = len(rows) + 1
-headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources', 'SEA-LION check', 'SEA-LION model (newest that supports this language)', 'Sarvam AI check (Hindi, Bengali, Urdu)']
+headers = ['Key', 'Where it appears', 'English', 'Draft translation', 'Your correction', 'Reviewer comments', 'Notes', 'Sources', 'SEA-LION check', 'SEA-LION model (newest that supports this language)', 'Sarvam AI check']
 example = ['ui.tryAgain', 'Buttons and labels (all screens)', 'Try again', 'फिर से कोशिश करें', 'दोबारा कोशिश करें', 'Shorter and more common.', '', '', '', '', '']
 ws2col = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 for j, h in enumerate(headers):
