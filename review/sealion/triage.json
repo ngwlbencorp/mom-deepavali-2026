@@ -107,6 +107,16 @@
    "event.souvenirNote": "Applied পেতে, but kept শুধু: it carries 'only' in 'First 500 only!', which the suggestion dropped.",
    "ui.csr": "The programme's name (Corporate Social Responsibility) is fixed wording set by the owner.",
    "feedback.csatQuestion": "The five answer labels use খুশি (happy/unhappy); changing only the question would mismatch them. The event is a real gathering, so অনুষ্ঠান fits."
+  },
+  "ur": {
+   "event.title": "Its point was right: اسکیم reads as 'scheme' in Urdu. Every 'scam' is now فراڈ, the everyday word; دھوکا دہی kept as a gloss in the title.",
+   "event.intro": "Applied دھوکے باز; kept چلتے, since چال چلنا is the idiom (چلاتے is not).",
+   "event.souvenirNote": "Style only; dropping افراد leaves 'first 500' without saying 500 of what.",
+   "ui.csr": "The programme's name (Corporate Social Responsibility) is fixed wording set by the owner.",
+   "ui.learnTitle": "Applied as فراڈ, the term now used throughout (see event.title).",
+   "quiz[0].msg.bubbles[1][0].t": "'Pay here:' reads naturally before the address in the next part of the message, as in the Hindi and Bengali.",
+   "quiz[4].msg.bubbles[2][0].t": "The colon introduces the web address in the next part of the message.",
+   "feedback.learnedQuestion": "Its point was right (اسکیم reads as 'scheme'); applied as فراڈ, the term used throughout, rather than the English plural اسکامز."
   }
  }
 }
