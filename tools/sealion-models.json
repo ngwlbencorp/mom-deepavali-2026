@@ -1,25 +1,55 @@
 {
-  "_about": "Which SEA-LION model checks each language: the newest model whose documentation lists that language and that the API offers. A language no model lists is not checked. Re-verify against docs.sea-lion.ai before re-running; update 'checked' when you do.",
-  "checked": "2026-10-29",
-  "evidence": {
-    "v4.8": "Nemotron-SEA-LION-v4.8 (released Sep 2026, the latest): Balinese, Burmese, English, Indonesian, Javanese, Khmer, Lao, Malay, Mandarin, Sundanese, Tamil, Thai, Vietnamese. https://docs.sea-lion.ai/models/sea-lion-v4.8/nemotron-sea-lion-v4.8",
-    "v4.5": "Qwen-SEA-LION-v4.5 and Gemma-SEA-LION-v4.5 (released May 2026): Burmese, Indonesian, Filipino, Malay, Tamil, Thai, Vietnamese. https://docs.sea-lion.ai/models/sea-lion-v4.5/qwen-sea-lion-v4.5",
-    "v4": "SEA-LION v4 models (released Aug 2025): Burmese, English, Indonesian, Khmer, Lao, Malay, Mandarin, Tagalog, Tamil, Thai, Vietnamese. https://docs.sea-lion.ai/models/sea-lion-v4",
-    "none": "No SEA-LION model page (v3 to v4.8, Guard v2) lists Hindi or Bengali."
+ "_about": "Which SEA-LION model checks each language: the newest model whose documentation lists that language and that the API offers. A language no model lists is not checked. Re-verify against docs.sea-lion.ai before re-running; update 'checked' when you do.",
+ "checked": "2026-10-30",
+ "evidence": {
+  "v4.8": "Nemotron-SEA-LION-v4.8 (released Sep 2026, the latest): Balinese, Burmese, English, Indonesian, Javanese, Khmer, Lao, Malay, Mandarin, Sundanese, Tamil, Thai, Vietnamese. https://docs.sea-lion.ai/models/sea-lion-v4.8/nemotron-sea-lion-v4.8",
+  "v4.5": "Qwen-SEA-LION-v4.5 and Gemma-SEA-LION-v4.5 (released May 2026): Burmese, Indonesian, Filipino, Malay, Tamil, Thai, Vietnamese. https://docs.sea-lion.ai/models/sea-lion-v4.5/qwen-sea-lion-v4.5",
+  "v4": "SEA-LION v4 models (released Aug 2025): Burmese, English, Indonesian, Khmer, Lao, Malay, Mandarin, Tagalog, Tamil, Thai, Vietnamese. https://docs.sea-lion.ai/models/sea-lion-v4",
+  "none": "No SEA-LION model page (v3 to v4.8, Guard v2) lists Hindi, Bengali (Bangla) or Urdu (re-checked 30 Oct 2026; the API offers no newer model than v4.8). Qwen-SEA-LION-v4.5's page says it supports '201 languages globally', but that is inherited from its base model (Qwen3.6); SEA-LION's own training covers English and Burmese, Indonesian, Filipino, Malay, Tamil, Thai, Vietnamese."
+ },
+ "models": {
+  "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B": {
+   "release": "v4.8",
+   "thinking": true
   },
-  "models": {
-    "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B": { "release": "v4.8", "thinking": true },
-    "aisingapore/Qwen-SEA-LION-v4.5-27B-IT": { "release": "v4.5", "thinking": false, "why": "thinking off: with it on, each request was ~20x slower and could use up the token budget" }
-  },
-  "languages": {
-    "id": { "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B", "listedAs": "Indonesian" },
-    "my": { "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B", "listedAs": "Burmese" },
-    "zh": { "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B", "listedAs": "Mandarin" },
-    "ta": { "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B", "listedAs": "Tamil" },
-    "th": { "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B", "listedAs": "Thai" },
-    "vi": { "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B", "listedAs": "Vietnamese" },
-    "tl": { "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT", "listedAs": "Filipino", "note": "v4.8 does not list Filipino/Tagalog; v4.5 is the newest release that does. Gemma-SEA-LION-v4.5 is not offered by the API." },
-    "hi": null,
-    "bn": null
+  "aisingapore/Qwen-SEA-LION-v4.5-27B-IT": {
+   "release": "v4.5",
+   "thinking": false,
+   "why": "thinking off: with it on, each request was ~20x slower and could use up the token budget"
   }
+ },
+ "languages": {
+  "id": {
+   "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+   "listedAs": "Indonesian"
+  },
+  "my": {
+   "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+   "listedAs": "Burmese"
+  },
+  "zh": {
+   "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+   "listedAs": "Mandarin"
+  },
+  "ta": {
+   "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+   "listedAs": "Tamil"
+  },
+  "th": {
+   "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+   "listedAs": "Thai"
+  },
+  "vi": {
+   "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+   "listedAs": "Vietnamese"
+  },
+  "tl": {
+   "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+   "listedAs": "Filipino",
+   "note": "v4.8 does not list Filipino/Tagalog; v4.5 is the newest release that does. Gemma-SEA-LION-v4.5 is not offered by the API."
+  },
+  "hi": null,
+  "bn": null,
+  "ur": null
+ }
 }
