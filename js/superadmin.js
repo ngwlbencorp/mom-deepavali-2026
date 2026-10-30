@@ -94,7 +94,7 @@
       ['Souvenirs given', d.given + ' / ' + d.cap, d.capRemaining + ' left · ' + d.adminGiven + ' via manual'],
       ['Quiz submissions', d.submissions, d.selfSubmissions + ' self · ' + d.adminSubmissions + ' manual'],
       ['MWs reached (claim IDs)', d.uniqueClaims, d.selfClaims + ' self · ' + d.adminClaims + ' manual'],
-      ['First-try full score', pct(d.firstTryRate), d.selfFirstTry + ' of ' + d.selfClaims + ' self claims (see note below)'],
+      ['First-try full score', pct(d.firstTryRate), d.selfFirstTry + ' of ' + d.selfClaims + ' self claims'],
       ['Eventually full score', pct(d.eventualFullRate), d.selfFull + ' of ' + d.selfClaims + ' self claims'],
       ['Avg attempts to full score', d.avgAttemptsToFull == null ? '–' : d.avgAttemptsToFull.toFixed(2), 'self claims that reached full score'],
       ['Avg satisfaction', d.csatAvg == null ? '–' : d.csatAvg.toFixed(2) + ' / 5', d.csatN + ' ratings'],
