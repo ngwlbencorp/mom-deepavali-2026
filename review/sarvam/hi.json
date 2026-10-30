@@ -194,6 +194,294 @@
    "back": "Show my result",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 {n} स्मृति-चिह्न बचे हैं",
+   "verdict": "ok",
+   "back": "🎁 {n} souvenirs remain",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "सभी स्मृति-चिह्न दिए जा चुके हैं। भाग लेने के लिए धन्यवाद!",
+   "verdict": "ok",
+   "back": "All souvenirs have been given out. Thank you for taking part!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "बहुत बढ़िया! आप स्कैम पहचान सकते हैं।",
+   "verdict": "ok",
+   "back": "Very good! You can spot scams.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "उत्तर देखें, फिर दोबारा कोशिश करें।",
+   "verdict": "ok",
+   "back": "See answers, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "पक्का नहीं? कॉल करें",
+   "verdict": "ok",
+   "back": "Not sure? Call.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "उदाहरण · असली नहीं",
+   "verdict": "ok",
+   "back": "Example · not real.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "क्या करें",
+   "verdict": "ok",
+   "back": "What to do",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "क्विज़ दें",
+   "verdict": "fix",
+   "back": "Give quiz",
+   "suggestion": "क्विज़ लें",
+   "reason": "क्विज़ दें means give the quiz, not take it; क्विज़ लें is correct."
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "आधिकारिक वीडियो देखें",
+   "verdict": "ok",
+   "back": "Watch official video",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "{n} खतरे के संकेतों पर टैप करें",
+   "verdict": "ok",
+   "back": "Tap on {n} danger signs",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "{n} में से {k} चुने",
+   "verdict": "ok",
+   "back": "{k} chosen from {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "स्कैम",
+   "verdict": "fix",
+   "back": "Scam",
+   "suggestion": "ठगी",
+   "reason": "स्कैम is just the English word in Hindi script; ठगी is the plain Hindi word for fraud."
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "सुरक्षित",
+   "verdict": "ok",
+   "back": "safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "संदेश {i} / {n}",
+   "verdict": "ok",
+   "back": "message {i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} / {n}",
+   "verdict": "ok",
+   "back": "{i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "आपका परिणाम सेव हो रहा है…",
+   "verdict": "fix",
+   "back": "your result is being saved…",
+   "suggestion": "आपका नतीजा सेव हो रहा है…",
+   "reason": "परिणाम is formal; नतीजा is more everyday for workers"
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "सभी सही!",
+   "verdict": "ok",
+   "back": "all correct!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "अपना स्मृति-चिह्न पाने के लिए यह QR कोड MOM अधिकारी को दिखाएँ।",
+   "verdict": "fix",
+   "back": "your souvenir to get for this QR code MOM officer to show",
+   "suggestion": "MOM अधिकारी को यह QR कोड दिखाएँ और souvenir लें।",
+   "reason": "स्मृति-चिह्न is too formal and the sentence is too long for a short label"
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "आपने पहले सभी उत्तर सही दिए थे, इसलिए आपका QR कोड अभी भी मान्य है।",
+   "verdict": "ok",
+   "back": "You had given all answers correct before, so your QR code is still valid.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "{t} में से {s} सही",
+   "verdict": "ok",
+   "back": "Out of {t}, {s} correct.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "उत्तर देखें, फिर स्मृति-चिह्न के लिए दोबारा कोशिश करें।",
+   "verdict": "fix",
+   "back": "View answers, then again try for a souvenir.",
+   "suggestion": "उत्तर देखें, फिर souvenir के लिए दोबारा कोशिश करें।",
+   "reason": "स्मृति-चिह्न is too formal for everyday use; souvenir as a loanword is clearer."
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "उत्तर देखें",
+   "verdict": "ok",
+   "back": "View answers.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "फिर से कोशिश करें",
+   "verdict": "ok",
+   "back": "Try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "मेरे QR कोड पर वापस",
+   "verdict": "ok",
+   "back": "Back on my QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "परिणाम सेव हो गया ✓",
+   "verdict": "ok",
+   "back": "Result saved ✓",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "अभी सेव नहीं हुआ (कनेक्शन नहीं है)। अधिकारी फिर भी यह QR कोड स्कैन कर सकते हैं।",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "अभी सेव नहीं हुआ (कनेक्शन नहीं है)।",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "फिर से सेव करें",
+   "verdict": "ok",
+   "back": "Save again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "आपका उत्तर",
+   "verdict": "ok",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "सही उत्तर",
+   "verdict": "ok",
+   "back": "Right answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "सही",
+   "verdict": "ok",
+   "back": "Right",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "सही नहीं",
+   "verdict": "ok",
+   "back": "Not correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "कोड",
+   "verdict": "ok",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "प्रयास",
+   "verdict": "fix",
+   "back": "Attempt",
+   "suggestion": "कोशिश",
+   "reason": "Word 'प्रयास' is formal/literary; workers use 'कोशिश' daily."
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "नकली MOM अधिकारी",
+   "verdict": "ok",
+   "back": "Fake MOM officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "स्कैमर MOM या पुलिस होने का नाटक करते हैं।",
+   "verdict": "fix",
+   "back": "Scammers pretend to be MOM or the Police.",
+   "suggestion": "ठग MOM या पुलिस होने का नाटक करते हैं।",
+   "reason": "'स्कैमर' is not everyday Hindi; 'ठग' is the common word for scammer among workers."
   }
  }
 }
