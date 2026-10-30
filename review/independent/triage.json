@@ -1,0 +1,42 @@
+{
+ "_about": "Outcome of the independent translations in this folder: each was translated from the English only, without the live draft, and compared with the live text line by line. Lines where the meaning differed were checked to see which version was wrong.",
+ "ta": {
+  "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+  "lines": 182,
+  "liveChanged": 0,
+  "outcome": "No meaning errors found in the live Tamil. Every meaning difference was an error in the independent version, e.g. 'scam' as 'sound' (quiz[1].title), 'account is locked' as 'is zero', 'cousin' as 'elder brother', 'scam mule' as 'source', 'MOM addresses' as 'MOM emails', 'gov.sg' senders said to 'start with' gov.sg, the work permit fine dropped from quiz[0], Korean characters inside Tamil words.",
+  "noted": {
+   "feedback.csatQuestion": "Live asks 'How was today's event for you?' where the English asks 'How happy...'; kept: it reads naturally with the happy/unhappy answer scale and came from an earlier SEA-LION suggestion."
+  }
+ },
+ "my": {
+  "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
+  "lines": 162,
+  "missing": [
+   "ui.translated",
+   "ui.translations",
+   "learn[3].flags[1].label",
+   "learn[3].todo[0]",
+   "learn[3].todo[1]",
+   "learn[4].title",
+   "learn[4].tagline",
+   "learn[4].chat.lines[0]",
+   "learn[4].chat.lines[1]",
+   "learn[4].flags[0].label",
+   "learn[4].todo[0]",
+   "learn[4].todo[1]",
+   "learn[5].title",
+   "learn[5].tagline",
+   "learn[5].chat.lines[0]",
+   "learn[5].chat.lines[1]",
+   "learn[5].flags[0].label",
+   "learn[5].todo[0]",
+   "learn[5].todo[1]",
+   "act.title",
+   "act.items[0]",
+   "act.items[1]"
+  ],
+  "liveChanged": 0,
+  "outcome": "No meaning errors found in the live Burmese. The independent version was much worse: 'scams' and 'scammers' as 'words' (event.title, event.intro), 'quiz' as 'representative', 'transfer money' as 'feed fish', 'caned' as 'managed', 'employer' as 'worker', 'cousin' as 'uncle', the feedback scale as 'love feeling', and Arabic, Thai, Georgian and Malay fragments inside Burmese words. The missing lines failed in every run (SEA-LION returned broken JSON for that batch); not pursued given the quality of the rest."
+ }
+}
