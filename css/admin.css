@@ -36,11 +36,20 @@ html.on-ducks .top.slim { padding-top: 64px; }
 /* menu */
 .bigbtn {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-  min-height: 150px; margin-bottom: 16px; border-radius: var(--radius);
+  min-height: 124px; margin-bottom: 12px; padding: 10px 12px; border-radius: var(--radius); text-align: center;
   background: var(--plum); color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 800;
   box-shadow: 0 6px 20px rgba(74, 29, 94, .15);
 }
-.bigbtn.alt { background: var(--card); color: var(--plum); border: 3px solid var(--gold); }
+.bigbtn.alt { background: var(--card); color: var(--plum); border: 3px solid var(--gold); min-height: 100px; font-size: 1.35rem; }
+/* the menu, the "Reported problems" link and the login line fit on one phone screen */
+.bigbtn.alt .ico { font-size: 1.6rem; }
+#v-home > p.center { margin: 4px 0 6px; }
+@media (max-height: 600px) { /* e.g. iPhone SE in Safari */
+  .bigbtn { min-height: 88px; margin-bottom: 8px; padding: 6px 10px; gap: 2px; font-size: 1.3rem; }
+  .bigbtn.alt { min-height: 72px; font-size: 1.2rem; }
+  .bigbtn .ico { font-size: 1.5rem; }
+  .bigbtn small { font-size: .82rem; }
+}
 .bigbtn .ico { font-size: 2rem; line-height: 1; }
 .bigbtn small { font-size: .9rem; font-weight: 500; opacity: .85; }
 .bigbtn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
