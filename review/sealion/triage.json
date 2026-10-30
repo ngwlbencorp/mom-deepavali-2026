@@ -91,6 +91,16 @@
   },
   "th": {
    "learn[3].todo[1]": "Draft (already shortened from the first suggestion) keeps the final \"ได้\" (can): without it the line says \"no one forces you\", not \"no one can make you\". \"เจอบ่อย\" vs \"พบบ่อย\" is style only."
+  },
+  "hi": {
+   "event.title": "Kept the gloss (धोखाधड़ी): not every reader knows the loanword स्कैम; the title fits every screen.",
+   "ui.csr": "The programme's name (Corporate Social Responsibility) is fixed wording set by the owner.",
+   "ui.toQuiz": "क्विज़/परीक्षा देना is the usual Hindi idiom for taking a test; its own suggestion for event.intro keeps दें.",
+   "ui.spotPrompt": "लाल झंडा is a word-for-word copy of an English idiom many readers would not know; the glossary term खतरे का संकेत is plainer.",
+   "act.items[0]": "Applied as इंस्टॉल करें (Devanagari, as in the rest of the Hindi) rather than the Latin-script 'install'.",
+   "quiz[0].msg.bubbles[1][0].t": "Both are correct; भुगतान करें is the wording real payment demands use, which suits a fake message.",
+   "quiz[5].options[2]": "Both are correct; शिकायत is the everyday word. A style preference, not an error.",
+   "quiz[5].explain": "Kept शिकायत to match quiz[5].options[2]."
   }
  }
 }

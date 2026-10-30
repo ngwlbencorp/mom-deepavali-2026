@@ -1,0 +1,206 @@
+{
+ "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "checked": "2026-10-30",
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "শুভ দীপাবলি!",
+   "verdict": "ok",
+   "back": "Happy Deepavali!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "প্রতারণা (স্ক্যাম) থেকে নিরাপদ থাকুন",
+   "verdict": "fix",
+   "back": "Stay safe from scams (scam)",
+   "suggestion": "প্রতারণা থেকে নিরাপদ থাকুন",
+   "reason": "Remove redundant English word in brackets; 'প্রতারণা' is clear enough for the target audience."
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "প্রতারকদের কৌশলগুলো জানুন, তারপর কুইজ দিন।",
+   "verdict": "ok",
+   "back": "Know the scammers' tricks, then take the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "সব উত্তর সঠিক করুন এবং স্মারক উপহারের জন্য MOM কর্মকর্তাকে আপনার QR কোড দেখান। শুধু প্রথম 500 জনের জন্য!",
+   "verdict": "fix",
+   "back": "Make all answers correct and show your QR code to an MOM officer for a souvenir gift. Only for the first 500 people!",
+   "suggestion": "সব উত্তর সঠিক করুন এবং স্মারক উপহার পেতে MOM কর্মকর্তাকে আপনার QR কোড দেখান। প্রথম 500 জনের জন্য!",
+   "reason": "Simplified phrasing for better flow on mobile; removed redundant 'gift' after 'souvenir'."
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "ScamShield হেল্পলাইন",
+   "verdict": "ok",
+   "back": "ScamShield Helpline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "ভাষা",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech-এর একটি কর্পোরেট সামাজিক দায়বদ্ধতা উদ্যোগ",
+   "verdict": "fix",
+   "back": "A corporate social responsibility initiative of GovTech",
+   "suggestion": "GovTech-এর একটি সামাজিক দায়বদ্ধতা উদ্যোগ",
+   "reason": "Removed 'কর্পোরেট' (corporate) as it is jargon; 'সামাজিক দায়বদ্ধতা' is the standard, simpler term used in Singapore."
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "এই সাইট ব্যবহার করে আপনি {terms} ও {privacy}-এ সম্মত হচ্ছেন।",
+   "verdict": "ok",
+   "back": "By using this site, you agree to {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "ব্যবহারের শর্তাবলি",
+   "verdict": "ok",
+   "back": "Terms of Use",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "গোপনীয়তা বিবৃতি",
+   "verdict": "ok",
+   "back": "Privacy Statement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "হোম",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "আগের",
+   "verdict": "ok",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "পরের",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "শেষ করুন",
+   "verdict": "ok",
+   "back": "Finish",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "কুইজ থেকে বের হন",
+   "verdict": "ok",
+   "back": "Exit the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "কুইজ ছেড়ে যাবেন? এখন পর্যন্ত দেওয়া আপনার উত্তরগুলো মুছে যাবে।",
+   "verdict": "ok",
+   "back": "Will you leave the quiz? Your answers given so far will be erased.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "রিভিউ বন্ধ করুন",
+   "verdict": "ok",
+   "back": "Close review",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "প্রতারণা সম্পর্কে জানুন",
+   "verdict": "ok",
+   "back": "Learn about scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "6 short stories · 3 min",
+   "draft": "6টি ছোট গল্প · 3 মিনিট",
+   "verdict": "ok",
+   "back": "6 short stories · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "স্মারক উপহারের জন্য কুইজ",
+   "verdict": "ok",
+   "back": "Quiz for a souvenir gift",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "কুইজ দিন",
+   "verdict": "ok",
+   "back": "Take the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6টি চ্যালেঞ্জ · 3 মিনিট",
+   "verdict": "ok",
+   "back": "6 challenges · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "আমার QR কোড দেখান",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "আমার ফলাফল দেখান",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 আর {n}টি স্মারক উপহার বাকি",
+   "verdict": "ok",
+   "back": "🎁 {n} more souvenir gifts left",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}
