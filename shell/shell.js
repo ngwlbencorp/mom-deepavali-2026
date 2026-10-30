@@ -16,8 +16,10 @@
   var FLAG = 'siteShell.fallback:' + PAGE; // set for this tab when a remote file failed, so a reload uses the bundle
   var flagged = false;
   try { flagged = HAS_FALLBACK && sessionStorage.getItem(FLAG) === '1'; } catch (e) {}
-  // ducks.ai lays its own buttons over the top-left of hosted pages; pages can make room for them.
-  if (C.hostOverlay === true || /(^|\.)ducks\.ai\.tech\.gov\.sg$/.test(location.hostname)) document.documentElement.classList.add('on-ducks');
+  // ducks.ai lays its own buttons over the top-left of hosted pages, unless switched off (this
+  // shell's index.html does, with meta ducks-home); pages make room for them only when they can appear.
+  var ducksButtonsOff = !!document.querySelector('meta[name="ducks-home"][content="off"]');
+  if (C.hostOverlay === true || (!ducksButtonsOff && /(^|\.)ducks\.ai\.tech\.gov\.sg$/.test(location.hostname))) document.documentElement.classList.add('on-ducks');
 
   function abs(base, url) { return new URL(url, new URL(base, location.href)).href; }
   function getText(url, ms) {

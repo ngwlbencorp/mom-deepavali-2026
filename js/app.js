@@ -11,9 +11,11 @@
   // messages. The server's answer (from /api/remaining) wins over the phone's clock.
   var CFG = window.SCAM_CONFIG || {};
 
-  // ducks.ai lays its own "back to ducks" and "report" buttons over the top-left of hosted pages.
-  // Keep that corner of the header clear when running there.
-  if (CFG.hostOverlay === true || /(^|\.)ducks\.ai\.tech\.gov\.sg$/.test(location.hostname)) {
+  // ducks.ai lays its own "back to ducks" and "report" buttons over the top-left of hosted pages,
+  // unless the page switches them off (the shell does: meta ducks-home). Keep that corner clear only
+  // when they can appear.
+  var ducksButtonsOff = !!document.querySelector('meta[name="ducks-home"][content="off"]');
+  if (CFG.hostOverlay === true || (!ducksButtonsOff && /(^|\.)ducks\.ai\.tech\.gov\.sg$/.test(location.hostname))) {
     document.body.classList.add('on-ducks');
   }
   var EVENT_END = Date.parse(CFG.eventEnd || '2026-11-08T21:00:00+08:00');
