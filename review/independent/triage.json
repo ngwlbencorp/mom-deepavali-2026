@@ -38,5 +38,11 @@
   ],
   "liveChanged": 0,
   "outcome": "No meaning errors found in the live Burmese. The independent version was much worse: 'scams' and 'scammers' as 'words' (event.title, event.intro), 'quiz' as 'representative', 'transfer money' as 'feed fish', 'caned' as 'managed', 'employer' as 'worker', 'cousin' as 'uncle', the feedback scale as 'love feeling', and Arabic, Thai, Georgian and Malay fragments inside Burmese words. The missing lines failed in every run (SEA-LION returned broken JSON for that batch); not pursued given the quality of the rest."
+ },
+ "my-gemini": {
+  "model": "gemini-3.8-flash (free API tier; Pro was not available on the key)",
+  "lines": 184,
+  "liveChanged": 4,
+  "outcome": "Fluent, natural Burmese, far better than SEA-LION's; it agreed with the meaning of every live line. Two improvements applied: 'Dear worker' in the fake fine SMS used an affectionate 'dear' (ချစ်လှစွာသော, as to a loved one) and now uses the formal-notice opening လေးစားရပါသော; 'scam mule' stood alone in Latin script in 3 lines and now has the Burmese gloss ငွေလိမ်ကြားခံ, with 'scam mule' kept in brackets (glossary updated). Other differences are register only: Gemini's Burmese is more colloquial (မင်း, တယ်), the live text more formal written style (သည်, ပါနှင့်); kept."
  }
 }
