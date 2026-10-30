@@ -1449,6 +1449,14 @@
    "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "Một sáng kiến trách nhiệm xã hội doanh nghiệp của GovTech",
+   "verdict": "fix",
+   "back": "A GovTech Corporate Social Responsibility initiative",
+   "suggestion": "Sáng kiến CSR GovTech",
+   "reason": "Draft is too long for a button/label. 'CSR' is widely understood; 'doanh nghiệp' redundant. Shortened to fit phone screen."
   }
  }
 }

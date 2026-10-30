@@ -215,7 +215,10 @@
       return k ? el('a', { href: LEGAL[k], target: '_blank', rel: 'noopener', text: T.ui[k] }) : p;
     });
     return el('footer', { class: 'legal' }, [
-      el('img', { class: 'gtlogo', src: asset('img/govtech-logo.png'), alt: 'GovTech Singapore' }),
+      el('div', { class: 'gtrow' }, [
+        el('img', { class: 'gtlogo', src: asset('img/govtech-logo.png'), alt: 'GovTech Singapore' }),
+        el('span', { text: T.ui.csr })
+      ]),
       el('p', {}, parts)
     ]);
   }

@@ -60,11 +60,13 @@ body.app main.screen {
 .helpline { margin-top: auto; text-align: center; color: var(--ink); text-decoration: none; font-weight: 600; padding: 6px; }
 /* home page footer: GovTech logo, then the terms and privacy line */
 .legal { flex: none; text-align: center; margin: 2px 0 0; padding-top: 8px; border-top: 1px solid var(--line); }
-.legal .gtlogo { height: 22px; width: auto; display: block; margin: 0 auto 4px; }
+.legal .gtrow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px; }
+.legal .gtlogo { height: 22px; width: auto; display: block; flex: none; }
+.legal .gtrow span { font-size: .72rem; line-height: 1.25; color: var(--muted); text-align: left; }
 .legal p { margin: 0; font-size: .72rem; line-height: 1.35; color: var(--muted); }
 .legal a { color: var(--plum); }
 .screen.tighter .legal { padding-top: 4px; }
-.screen.tighter .legal .gtlogo { height: 16px; margin-bottom: 2px; }
+.screen.tighter .legal .gtlogo { height: 16px; }
 .helpline b { font-size: 1.3rem; color: var(--plum); background: var(--gold-soft); padding: 2px 10px; border-radius: 8px; margin-left: 4px; }
 .progress { height: 6px; background: var(--line); border-radius: 6px; overflow: hidden; flex: none; padding: 0; box-shadow: none; }
 .progress i { display: block; height: 100%; width: var(--p, 0%); background: var(--gold); transition: width .3s; }

@@ -11,6 +11,7 @@ window.SCAM_TEXT["id"] = {
   },
   "ui": {
     "language": "Bahasa",
+    "csr": "Inisiatif Tanggung Jawab Sosial Perusahaan GovTech",
     "legal": "Dengan menggunakan situs ini, Anda menyetujui {terms} dan {privacy}.",
     "terms": "Ketentuan Penggunaan",
     "privacy": "Pernyataan Privasi",

@@ -1428,11 +1428,11 @@
   },
   "ui.legal": {
    "english": "By using this site, you agree to the {terms} and {privacy}.",
-   "draft": "การใช้เว็บไซต์นี้ถือว่าคุณยอมรับ{terms}และ{privacy}",
-   "verdict": "fix",
-   "back": "Using this website is considered that you accept {terms} and {privacy}.",
-   "suggestion": "ใช้เว็บไซต์นี้หมายความว่าคุณตกลง{terms}และ{privacy}",
-   "reason": "Draft uses formal/legal phrasing 'ถือว่า' and 'ยอมรับ'. For migrant workers with limited schooling, 'หมายความว่า' and 'ตกลง' are clearer everyday words. Meaning unchanged, length similar."
+   "draft": "ใช้เว็บไซต์นี้หมายความว่าคุณตกลง{terms}และ{privacy}",
+   "verdict": "ok",
+   "back": "Using this website means you agree {terms} and {privacy}",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.terms": {
    "english": "Terms of Use",
@@ -1447,6 +1447,14 @@
    "draft": "คำแถลงความเป็นส่วนตัว",
    "verdict": "ok",
    "back": "Privacy Statement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "โครงการความรับผิดชอบต่อสังคมของ GovTech",
+   "verdict": "ok",
+   "back": "GovTech's Corporate Social Responsibility project",
    "suggestion": "",
    "reason": ""
   }

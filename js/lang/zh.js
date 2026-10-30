@@ -11,6 +11,7 @@ window.SCAM_TEXT["zh"] = {
   },
   "ui": {
     "language": "语言",
+    "csr": "GovTech企业社会责任项目",
     "legal": "使用本网站即表示您同意{terms}和{privacy}。",
     "terms": "使用条款",
     "privacy": "隐私声明",

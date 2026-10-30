@@ -1449,6 +1449,14 @@
    "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "Isang inisyatiba ng GovTech para sa Corporate Social Responsibility",
+   "verdict": "fix",
+   "back": "A GovTech initiative for Corporate Social Responsibility",
+   "suggestion": "Isang proyekto ng GovTech para sa kapakanang panlipunan",
+   "reason": "The draft uses the English term 'Corporate Social Responsibility' which is too long and complex for workers with limited schooling. 'Kapakanang panlipunan' is the natural Tagalog equivalent. Also changed 'inisyatiba' to 'proyekto' as it is a more common, everyday word for a project/program."
   }
  }
 }

@@ -1449,6 +1449,14 @@
    "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech-இன் பெருநிறுவன சமூகப் பொறுப்பு முன்முயற்சி",
+   "verdict": "ok",
+   "back": "GovTech's corporate social responsibility initiative",
+   "suggestion": "",
+   "reason": ""
   }
  }
 }

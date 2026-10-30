@@ -1449,6 +1449,14 @@
    "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech企业社会责任项目",
+   "verdict": "ok",
+   "back": "GovTech Corporate Social Responsibility project",
+   "suggestion": "",
+   "reason": ""
   }
  }
 }

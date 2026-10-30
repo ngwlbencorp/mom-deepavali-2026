@@ -11,6 +11,7 @@ window.SCAM_TEXT["vi"] = {
   },
   "ui": {
     "language": "Ngôn ngữ",
+    "csr": "Một sáng kiến trách nhiệm xã hội doanh nghiệp của GovTech",
     "legal": "Khi dùng trang này, bạn đồng ý với {terms} và {privacy}.",
     "terms": "Điều khoản sử dụng",
     "privacy": "Tuyên bố về quyền riêng tư",

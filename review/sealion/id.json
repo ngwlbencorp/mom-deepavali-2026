@@ -1449,6 +1449,14 @@
    "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "Inisiatif Tanggung Jawab Sosial Perusahaan GovTech",
+   "verdict": "fix",
+   "back": "A GovTech Corporate Social Responsibility initiative",
+   "suggestion": "Inisiatif CSR GovTech",
+   "reason": "Draft is too long for a phone button and uses formal terminology; 'CSR' is the standard term in Indonesian business context and fits the screen better."
   }
  }
 }

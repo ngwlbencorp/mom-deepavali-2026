@@ -1449,6 +1449,14 @@
    "back": "Privacy Statement",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech ၏ ကော်ပိုရိတ် လူမှုတာဝန်ယူမှု အစီအစဉ်",
+   "verdict": "ok",
+   "back": "A GovTech Corporate Social Responsibility initiative",
+   "suggestion": "",
+   "reason": ""
   }
  }
 }

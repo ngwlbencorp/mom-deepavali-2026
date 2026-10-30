@@ -7,7 +7,8 @@
    "ui.retry": "\"Subukan ulit ang save\" is clumsy; \"I-save ulit\" is clear.",
    "learn[2].todo[1]": "Kept \"(caning)\": the Tagalog alone may not read as a court sentence.",
    "quiz[1].cards[1].text": "\"Kakapadala\" already means \"just sent\"; SEA-LION misread it.",
-   "feedback.learnedOptions[2].label": "\"Wala\" pairs naturally with \"Kaunti\" for \"Did you learn anything new?\"."
+   "feedback.learnedOptions[2].label": "\"Wala\" pairs naturally with \"Kaunti\" for \"Did you learn anything new?\".",
+   "ui.csr": "The suggestion (\"a GovTech project for social welfare\") drops \"Corporate Social Responsibility\", which is the point of the line."
   },
   "ta": {
    "event.souvenirNote": "SEA-LION was wrong: \"எல்லாக் கேள்விகளுக்கும்\" is correct sandhi.",
@@ -62,7 +63,8 @@
    "quiz[3].explain": "Keeps the standard everyday register used on every other line (\"pasang\", \"ponsel\", \"memberikan\", \"kata sandi\"); the suggestion switches to slang (\"cuma\", \"hp\", \"kasih\"), inconsistently with the rest of the site.",
    "learn[4].todo[0]": "Keeps the standard everyday register used on every other line (\"pasang\", \"ponsel\", \"memberikan\", \"kata sandi\"); the suggestion switches to slang (\"cuma\", \"hp\", \"kasih\"), inconsistently with the rest of the site.",
    "learn[4].todo[1]": "\"Telepon\" is the standard spelling; \"telpon\" is non-standard.",
-   "learn[3].todo[1]": "\"Tidak ada yang boleh\" (no one is allowed to) carries the legal point; \"bisa memaksa\" (is able to force) does not. The rest is style only."
+   "learn[3].todo[1]": "\"Tidak ada yang boleh\" (no one is allowed to) carries the legal point; \"bisa memaksa\" (is able to force) does not. The rest is style only.",
+   "ui.csr": "Footer text, not a button: there is room for the full phrase, and the abbreviation \"CSR\" would mean nothing to most readers."
   },
   "zh": {
    "event.greeting": "SEA-LION was wrong: Singapore uses 屠妖节 for Deepavali.",
@@ -84,7 +86,8 @@
    "learn[4].flags[0].label": "\"Ép bạn nhanh\" is awkward; \"hối thúc\" is clear.",
    "quiz[0].explain": "\"Kết thúc là\" is less natural than \"kết thúc bằng\".",
    "quiz[1].cards[1].text": "Fake official messages are written formally on purpose, as real scams are.",
-   "quiz[1].cards[1].why": "The suggestion repeats \"cho\", which is clumsy."
+   "quiz[1].cards[1].why": "The suggestion repeats \"cho\", which is clumsy.",
+   "ui.csr": "Footer text, not a button: there is room for the full phrase, and the abbreviation \"CSR\" would mean nothing to most readers."
   },
   "th": {
    "learn[3].todo[1]": "Draft (already shortened from the first suggestion) keeps the final \"ได้\" (can): without it the line says \"no one forces you\", not \"no one can make you\". \"เจอบ่อย\" vs \"พบบ่อย\" is style only."
