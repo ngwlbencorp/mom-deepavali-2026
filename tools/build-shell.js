@@ -4,21 +4,24 @@
 //   stylesheet and script it refers to), used if Vercel cannot be reached.
 //   Officer page (--admin): loads admin/index.html; nothing bundled, since it cannot work without
 //   the API anyway.
-// Usage: node tools/build-shell.js [--admin] [--frozen] [--out <file.zip>] [--root <dir>] [--base <url>]
+//   Superadmin page (--super): loads superadmin/index.html, likewise with nothing bundled; dark
+//   loading screen to match the page.
+// Usage: node tools/build-shell.js [--admin | --super] [--frozen] [--out <file.zip>] [--root <dir>] [--base <url>]
 //   --frozen  mini-site only: always use the bundled copy, never Vercel
 //   --root    take the site files from another copy of the site (for tests)
 //   --base    the site address to load from, instead of the one in shell/config.js (for tests)
-// Output: dist/ducks-site-shell.zip, dist/ducks-site-shell-frozen.zip or dist/ducks-admin-shell.zip.
+// Output: dist/ducks-site-shell.zip, dist/ducks-site-shell-frozen.zip, dist/ducks-admin-shell.zip or
+// dist/ducks-superadmin-shell.zip.
 // No dependencies.
 const fs = require('fs'), path = require('path'), zlib = require('zlib');
 const repo = path.join(__dirname, '..');
 const args = process.argv.slice(2);
 const opt = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : null; };
-const admin = args.includes('--admin'), frozen = args.includes('--frozen');
-if (admin && frozen) { console.error('--frozen is for the mini-site only: the officer page needs the API.'); process.exit(1); }
+const sup = args.includes('--super'), admin = sup || args.includes('--admin'), frozen = args.includes('--frozen');
+if (admin && frozen) { console.error('--frozen is for the mini-site only: the staff pages need the API.'); process.exit(1); }
 const site = opt('--root') ? path.resolve(opt('--root')) : repo;
-const page = admin ? 'admin/index.html' : 'index.html';
-const out = opt('--out') || path.join(repo, 'dist', admin ? 'ducks-admin-shell.zip' : frozen ? 'ducks-site-shell-frozen.zip' : 'ducks-site-shell.zip');
+const page = sup ? 'superadmin/index.html' : admin ? 'admin/index.html' : 'index.html';
+const out = opt('--out') || path.join(repo, 'dist', sup ? 'ducks-superadmin-shell.zip' : admin ? 'ducks-admin-shell.zip' : frozen ? 'ducks-site-shell-frozen.zip' : 'ducks-site-shell.zip');
 
 const pageHtml = fs.readFileSync(path.join(site, page), 'utf8');
 const files = []; // [name in zip, Buffer]
@@ -27,6 +30,8 @@ const title = (pageHtml.match(/<title>([^<]*)<\/title>/) || [])[1];
 if (title) shellHtml = shellHtml.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
 if (admin) shellHtml = shellHtml.replace(/<noscript>[\s\S]*?<\/noscript>/, '<noscript><p>Please turn on JavaScript.</p></noscript>')
   .replace('<meta name="color-scheme" content="light">', '<meta name="color-scheme" content="light">\n<meta name="robots" content="noindex, nofollow">');
+if (sup) shellHtml = shellHtml.replace('content="light"', 'content="dark"').replace('content="#4a1d5e"', 'content="#1f2230"')
+  .replace('background: #fbf6ef;', 'background: #0d0d0d;').replace('color: #4a1d5e;', 'color: #a8a7a0;');
 files.push(['index.html', Buffer.from(shellHtml)]);
 files.push(['shell.js', fs.readFileSync(path.join(repo, 'shell', 'shell.js'))]);
 let config = fs.readFileSync(path.join(repo, 'shell', 'config.js'), 'utf8');
