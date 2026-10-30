@@ -35,6 +35,7 @@
     var s = Api.session(ROLE);
     $('v-login').hidden = !!s;
     $('v-app').hidden = !s;
+    $('logout').hidden = !s;
     clearInterval(timer); timer = null;
     if (s) { tab('dash'); loadDash(); timer = setInterval(function () { if (document.visibilityState !== 'visible') return; if (!$('t-dash').hidden) loadDash(); if (!$('t-bugs').hidden) loadBugs(); }, REFRESH_MS); }
   }
