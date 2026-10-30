@@ -26,8 +26,9 @@ const BASE = 'https://api.sarvam.ai';
 const CHAT_MODEL = 'sarvam-105b', TRANSLATE_MODEL = 'sarvam-translate:v1';
 // Which check each language gets (docs.sarvam.ai, checked 30 Oct 2026: Sarvam-105B and Mayura cover
 // 10 Indian languages + English, without Urdu; Sarvam Translate covers all 22 scheduled languages).
-const PLAN = { hi: 'review', bn: 'review', ur: 'back-translate' };
-const LOCALE = { hi: 'hi-IN', bn: 'bn-IN', ur: 'ur-IN' };
+// Tamil is also covered by Sarvam-105B: a second review alongside SEA-LION's (run with: ta).
+const PLAN = { hi: 'review', bn: 'review', ur: 'back-translate', ta: 'review' };
+const LOCALE = { hi: 'hi-IN', bn: 'bn-IN', ur: 'ur-IN', ta: 'ta-IN' };
 // Sarvam-105B thinks before answering (about 1,700 tokens per line), so batches stay small and the
 // token budget large; with 15 lines and 12,000 tokens its replies came back empty.
 const GAP_MS = 1500, BATCH = 6; // limits are 60 requests a minute
@@ -79,7 +80,7 @@ async function backTranslate(code, key, draft) {
 (async () => {
   const dir = path.join(root, 'review', 'sarvam');
   fs.mkdirSync(dir, { recursive: true });
-  for (const code of codes.length ? codes : Object.keys(PLAN)) {
+  for (const code of codes.length ? codes : ['hi', 'bn', 'ur']) {
     if (!PLAN[code]) { console.log(`${code}: no Sarvam check planned (see PLAN in this file), skipped`); continue; }
     const model = PLAN[code] === 'review' ? CHAT_MODEL : TRANSLATE_MODEL;
     const draft = JSON.parse(fs.readFileSync(path.join(root, 'i18n', code + '.json'), 'utf8'));

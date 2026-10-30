@@ -31,7 +31,7 @@ const PLAN = {
 };
 const PROVIDERS = {
   sealion: { base: 'https://api.sea-lion.ai/v1', key: 'SEALION_API_KEY', gap: 7000, batch: 20, auth: (k) => ({ Authorization: 'Bearer ' + k }) },
-  sarvam: { base: 'https://api.sarvam.ai', key: 'SARVAM_API_KEY', gap: 1500, batch: 6, auth: (k) => ({ 'api-subscription-key': k }) },
+  sarvam: { base: 'https://api.sarvam.ai', key: 'SARVAM_API_KEY', gap: 1500, batch: 6, model: 'sarvam-105b', auth: (k) => ({ 'api-subscription-key': k }) },
   // Gemini's OpenAI-compatible endpoint; the free tier allows a few requests a minute.
   gemini: { base: 'https://generativelanguage.googleapis.com/v1beta/openai', key: 'GEMINI_API_KEY', gap: 13000, batch: 25, auth: (k) => ({ Authorization: 'Bearer ' + k }), model: 'gemini-2.5-pro' }
 };
