@@ -1,0 +1,199 @@
+{
+ "model": "sarvam-105b",
+ "mode": "review",
+ "checked": "2026-10-30",
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "दीपावली की शुभकामनाएँ!",
+   "verdict": "ok",
+   "back": "Deepavali wishes!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "स्कैम (धोखाधड़ी) से सुरक्षित रहें",
+   "verdict": "ok",
+   "back": "Safe from scam (deception) remain",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "जानिए स्कैमर कौन-सी चालें चलते हैं, फिर क्विज़ दें।",
+   "verdict": "ok",
+   "back": "Know what tricks scammers play, then take the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "सभी उत्तर सही करें और स्मृति-चिह्न पाने के लिए MOM अधिकारी को अपना QR कोड दिखाएँ। केवल पहले 500 लोगों के लिए!",
+   "verdict": "fix",
+   "back": "All answers correct do and memento to-get for MOM officer show your QR code. Only first 500 people for!",
+   "suggestion": "सभी उत्तर सही करें और एक सोवणियर पाने के लिए MOM अधिकारी को अपना QR कोड दिखाएँ। सिर्फ पहले 500 को!",
+   "reason": "'स्मृति-चिह्न' is too formal for workers; everyday 'सोवणियर' is better. 'सिर्फ पहले 500 को' is shorter and matches 'First 500 only!'"
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "ScamShield हेल्पलाइन",
+   "verdict": "ok",
+   "back": "ScamShield helpline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "भाषा",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech की एक कॉर्पोरेट सामाजिक उत्तरदायित्व पहल",
+   "verdict": "ok",
+   "back": "GovTech's one Corporate Social Responsibility initiative",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "इस साइट का उपयोग करके आप {terms} और {privacy} से सहमत होते हैं।",
+   "verdict": "ok",
+   "back": "By using this site, you agree to the {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "उपयोग की शर्तें",
+   "verdict": "ok",
+   "back": "Terms of Use",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "गोपनीयता कथन",
+   "verdict": "ok",
+   "back": "Privacy Statement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "होम",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "पिछला",
+   "verdict": "ok",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "आगे",
+   "verdict": "ok",
+   "back": "Forward",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "खत्म करें",
+   "verdict": "ok",
+   "back": "End them",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "क्विज़ छोड़ें",
+   "verdict": "ok",
+   "back": "Leave quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "क्विज़ छोड़ना चाहते हैं? अब तक के आपके उत्तर मिट जाएँगे।",
+   "verdict": "ok",
+   "back": "Do you want to leave the quiz? Your answers till now will be erased.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "समीक्षा बंद करें",
+   "verdict": "ok",
+   "back": "Close review",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "स्कैम के बारे में जानें",
+   "verdict": "ok",
+   "back": "Learn about scam",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "6 short stories · 3 min",
+   "draft": "6 छोटी कहानियाँ · 3 मिनट",
+   "verdict": "ok",
+   "back": "6 short stories · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "स्मृति-चिह्न के लिए क्विज़",
+   "verdict": "ok",
+   "back": "Quiz for a souvenir",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "क्विज़ दें",
+   "verdict": "ok",
+   "back": "Take quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 चुनौतियाँ · 3 मिनट",
+   "verdict": "ok",
+   "back": "6 challenges · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "मेरा QR कोड दिखाएँ",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "मेरा परिणाम दिखाएँ",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}
