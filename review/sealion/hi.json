@@ -601,6 +601,206 @@
    "back": "Deepavali Gold Sale",
    "suggestion": "",
    "reason": ""
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "draft": "दीपावली सेल! सोने पर 80% छूट!",
+   "verdict": "ok",
+   "back": "Deepavali sale! 80% discount on gold!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "draft": "हमारा ऐप यहाँ से डाउनलोड करें: deepavali-gold.example/app",
+   "verdict": "ok",
+   "back": "Download our app here: deepavali-gold.example/app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "draft": "सिर्फ़ 1 घंटा बाकी!",
+   "verdict": "ok",
+   "back": "Only 1 hour left!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "draft": "दाम इतना कम कि सच नहीं हो सकता",
+   "verdict": "ok",
+   "back": "Price so low it can't be true",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "ऐप लिंक से, ऐप स्टोर से नहीं",
+   "verdict": "ok",
+   "back": "App from link, not from app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "draft": "आपको जल्दबाज़ी कराता है",
+   "verdict": "ok",
+   "back": "Makes you hurry",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store on your phone.",
+   "draft": "ऐप केवल अपने फ़ोन के आधिकारिक ऐप स्टोर से इंस्टॉल करें।",
+   "verdict": "ok",
+   "back": "Install apps only from your phone's official app store.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "draft": "नकली ऐप आपके बैंक खाते से पैसे चुरा सकते हैं।",
+   "verdict": "ok",
+   "back": "Fake apps can steal money from your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "draft": "आसान पैसा (स्कैम म्यूल)",
+   "verdict": "ok",
+   "back": "Easy money (scam mule)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "draft": "आपके बैंक खाते के इस्तेमाल के बदले पैसे देना।",
+   "verdict": "ok",
+   "back": "Giving money in exchange for using your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "draft": "चैट संदेश",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "draft": "आसान पैसा चाहिए? हर हफ़्ते $300, कोई काम नहीं!",
+   "verdict": "ok",
+   "back": "Want easy money? $300 every week, no work!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "draft": "बस मुझे अपना बैंक खाता, SIM कार्ड या Singpass इस्तेमाल करने दो।",
+   "verdict": "ok",
+   "back": "Just let me use your bank account, SIM card or Singpass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "draft": "बिना काम के पैसे",
+   "verdict": "ok",
+   "back": "Money without work",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "draft": "आपका बैंक खाता, SIM कार्ड या Singpass माँगता है",
+   "verdict": "ok",
+   "back": "Asks for your bank account, SIM card or Singpass",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "draft": "अपना बैंक खाता, सिम कार्ड या Singpass कभी न बेचें, न उधार दें, न किसी को दें।",
+   "verdict": "ok",
+   "back": "Never sell, lend or give your bank account, SIM card or Singpass to anyone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "draft": "यह अपराध है। आप पर जुर्माना, जेल या बेंत की सज़ा हो सकती है।",
+   "verdict": "ok",
+   "back": "This is a crime. You can be fined, jailed or caned.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "draft": "नकली नौकरी या वर्क परमिट",
+   "verdict": "ok",
+   "back": "Fake job or work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].tagline": {
+   "english": "Fake approval letters that ask for money.",
+   "draft": "नकली मंज़ूरी पत्र, जो पैसे माँगते हैं।",
+   "verdict": "ok",
+   "back": "Fake approval letters that ask for money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "draft": "चैट संदेश",
+   "verdict": "ok",
+   "back": "Chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "draft": "SG जॉब्स एजेंट",
+   "verdict": "ok",
+   "back": "SG Jobs Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "draft": "खुशखबरी! आपका वर्क परमिट मंज़ूर हो गया है।",
+   "verdict": "ok",
+   "back": "Good news! Your work permit is approved.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "draft": "अपनी नौकरी पक्की करने के लिए आज ही $800 भेजें।",
+   "verdict": "ok",
+   "back": "Send $800 today to confirm your job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "draft": "हम लाइसेंस वाली एजेंसी हैं। लाइसेंस नं. 99X9999।",
+   "verdict": "ok",
+   "back": "We are a licensed agency. Licence no. 99X9999.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "draft": "पहले पैसे माँगता है",
+   "verdict": "ok",
+   "back": "Asks you to pay first",
+   "suggestion": "",
+   "reason": ""
   }
  }
 }
