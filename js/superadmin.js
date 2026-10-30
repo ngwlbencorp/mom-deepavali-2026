@@ -3,7 +3,23 @@
   var Api = window.ScamApi, ROLE = 'super', REFRESH_MS = 15000;
   var $ = function (id) { return document.getElementById(id); };
   var SVGNS = 'http://www.w3.org/2000/svg';
-  var hhmm = function (d) { return new Date(d).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); };
+  var hhmm = function (d) { return new Date(d).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }); };
+  var dayMonth = function (d) { return new Date(d).toLocaleDateString([], { day: 'numeric', month: 'short' }); };
+  var when = function (d) { return dayMonth(d) + ', ' + hhmm(d); }; // tooltip and table: the data can span days
+  // Time-axis ticks that fit: round times within a day, else one per day (local midnight).
+  function timeTicks(t0, t1, max) {
+    var out = [];
+    if (t1 - t0 >= 20 * 3600e3) {
+      var d = new Date(t0); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + 1);
+      for (; d.getTime() <= t1; d.setDate(d.getDate() + 1)) out.push(d.getTime());
+      var every = Math.ceil(out.length / max);
+      return { ticks: out.filter(function (_, i) { return i % every === 0; }), fmt: dayMonth };
+    }
+    var step = [5, 10, 15, 30, 60, 120, 180, 240, 360, 720].map(function (n) { return n * 60000; })
+      .filter(function (st) { return (t1 - t0) / st <= max - 1; })[0] || 720 * 60000;
+    for (var t = Math.ceil(t0 / step) * step; t <= t1; t += step) out.push(t);
+    return { ticks: out.length ? out : [t1], fmt: hhmm };
+  }
   var pct = function (v) { return v == null ? '–' : Math.round(v * 100) + '%'; };
 
   function svg(tag, attrs, parent) {
@@ -104,7 +120,9 @@
     if (!pts.length) { host.innerHTML = '<p class="empty">No submissions yet.</p>'; return; }
     pts.unshift({ t: pts[0].t - step, submissions: 0, given: 0 });
 
-    var W = Math.max(320, host.clientWidth), H = 260, m = { t: 12, r: 130, b: 28, l: 44 };
+    // On a phone the line-end labels show only the number (the legend names the series), so the
+    // time axis keeps most of the width.
+    var W = Math.max(300, host.clientWidth), narrow = W < 480, H = 260, m = { t: 12, r: narrow ? 34 : 130, b: 28, l: 44 };
     var iw = W - m.l - m.r, ih = H - m.t - m.b;
     var t0 = pts[0].t, t1 = pts[pts.length - 1].t;
     // Scale to the data; include the cap only once the data is within reach of it, so early
@@ -124,11 +142,14 @@
       svg('line', { x1: m.l, x2: m.l + iw, y1: yy, y2: yy, stroke: 'var(--grid)', 'stroke-width': 1 }, root);
       svg('text', { x: m.l - 6, y: yy + 4, 'text-anchor': 'end' }, root).textContent = Math.round(v);
     }
-    var ticks = Math.min(5, pts.length);
-    for (var j = 0; j < ticks; j++) {
-      var tt = t0 + (t1 - t0) * (ticks === 1 ? 1 : j / (ticks - 1));
-      svg('text', { x: x(tt), y: H - 8, 'text-anchor': j === 0 ? 'start' : j === ticks - 1 ? 'end' : 'middle' }, root).textContent = hhmm(tt);
-    }
+    // as many labels as fit (about 64 px each), never overlapping
+    var tk = timeTicks(t0, t1, Math.max(2, Math.floor(iw / 64)));
+    tk.ticks.forEach(function (tt) {
+      var tx = x(tt), half = 22;
+      var anchor = tx - half < m.l - 8 ? 'start' : tx + half > W - 2 ? 'end' : 'middle';
+      svg('line', { x1: tx, x2: tx, y1: m.t + ih, y2: m.t + ih + 4, stroke: 'var(--grid)', 'stroke-width': 1 }, root);
+      svg('text', { x: tx, y: H - 8, 'text-anchor': anchor }, root).textContent = tk.fmt(tt);
+    });
     if (showCap) {
       svg('line', { x1: m.l, x2: m.l + iw, y1: y(d.cap), y2: y(d.cap), stroke: 'var(--ref)', 'stroke-width': 1 }, root);
       svg('text', { x: m.l + 4, y: y(d.cap) - 5 }, root).textContent = 'Cap ' + d.cap;
@@ -148,7 +169,7 @@
     ends.forEach(function (e) {
       var ly = e.ly == null ? e.y : e.ly;
       if (ly !== e.y) svg('line', { x1: e.x + 6, x2: e.x + 12, y1: e.y, y2: ly, stroke: e.s.color, 'stroke-width': 1 }, root);
-      svg('text', { x: e.x + 14, y: ly + 4, class: 'lbl' }, root).textContent = e.s.label + ' ' + e.v;
+      svg('text', { x: e.x + 14, y: ly + 4, class: 'lbl' }, root).textContent = narrow ? String(e.v) : e.s.label + ' ' + e.v;
     });
 
     // hover: crosshair + tooltip
@@ -163,7 +184,7 @@
       var p = pts[best], cx = x(p.t);
       cross.setAttribute('x1', cx); cross.setAttribute('x2', cx); cross.setAttribute('visibility', 'visible');
       SERIES.forEach(function (s, k) { dots[k].setAttribute('cx', cx); dots[k].setAttribute('cy', y(p[s.key])); dots[k].setAttribute('visibility', 'visible'); });
-      tip.innerHTML = '<b>' + hhmm(p.t) + '</b><br>' + SERIES.map(function (s) {
+      tip.innerHTML = '<b>' + when(p.t) + '</b><br>' + SERIES.map(function (s) {
         return '<span class="sw" style="background:' + s.color + '"></span>' + s.label + ': ' + p[s.key];
       }).join('<br>');
       tip.hidden = false;
@@ -178,7 +199,7 @@
   }
 
   function renderTable(pts) {
-    var rows = pts.map(function (p) { return '<tr><td>' + hhmm(p.t) + '</td><td>' + p.submissions + '</td><td>' + p.given + '</td></tr>'; }).join('');
+    var rows = pts.map(function (p) { return '<tr><td>' + when(p.t) + '</td><td>' + p.submissions + '</td><td>' + p.given + '</td></tr>'; }).join('');
     $('lineTable').innerHTML = '<table><thead><tr><th>Up to</th><th>Quiz submissions</th><th>Souvenirs given</th></tr></thead><tbody>' +
       (rows || '<tr><td colspan="3">No data yet</td></tr>') + '</tbody></table>';
   }
