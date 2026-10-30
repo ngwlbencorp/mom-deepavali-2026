@@ -300,7 +300,7 @@ window.SCAM_TEXT.en = {
   // Admin "Manual input" page (officers only, English): for MWs without a phone, or whose code does
   // not work. The officer asks each question aloud and marks the reply. All correct = souvenir.
   manual: {
-    intro: "Use this for MWs without a phone, or whose QR code does not work. Ask these questions and explain any they get wrong. When you are satisfied they understand, record the claim.",
+    intro: "For MWs with no phone or working QR code. Ask each question, explain wrong answers, record once they understand.",
     questions: [
       { q: "Someone says they are from MOM and asks you to transfer money. Should you do it?", answer: "No" },
       { q: "True or false: it is safe to tell a caller the secret code (OTP) sent to your phone.", answer: "False" },

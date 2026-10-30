@@ -66,7 +66,7 @@ html.on-ducks .top.slim { padding-top: 64px; }
 
 /* manual questions */
 .mq { padding-left: 22px; margin: 12px 0; }
-.mq li { margin-bottom: 16px; }
+.mq li { margin-bottom: 10px; }
 .mq .q { font-weight: 600; margin-bottom: 4px; }
 .mq .expect { color: var(--muted); font-size: .9rem; margin-bottom: 8px; }
 .mq .expect b { color: var(--ink); }
