@@ -101,6 +101,12 @@
    "quiz[0].msg.bubbles[1][0].t": "Both are correct; भुगतान करें is the wording real payment demands use, which suits a fake message.",
    "quiz[5].options[2]": "Both are correct; शिकायत is the everyday word. A style preference, not an error.",
    "quiz[5].explain": "Kept शिकायत to match quiz[5].options[2]."
+  },
+  "bn": {
+   "event.title": "Kept the gloss (স্ক্যাম): it links the native word to the loanword used across the site; the title fits every screen.",
+   "event.souvenirNote": "Applied পেতে, but kept শুধু: it carries 'only' in 'First 500 only!', which the suggestion dropped.",
+   "ui.csr": "The programme's name (Corporate Social Responsibility) is fixed wording set by the owner.",
+   "feedback.csatQuestion": "The five answer labels use খুশি (happy/unhappy); changing only the question would mismatch them. The event is a real gathering, so অনুষ্ঠান fits."
   }
  }
 }
