@@ -1,0 +1,1463 @@
+{
+ "model": "sarvam-translate:v1",
+ "mode": "back-translate",
+ "checked": "2026-10-30",
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "دیپاولی مبارک!",
+   "verdict": "back-translation",
+   "back": "Happy Diwali!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "فراڈ (دھوکا دہی) سے محفوظ رہیں",
+   "verdict": "back-translation",
+   "back": "Be wary of scams.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "جانیں کہ دھوکے باز کون سی چالیں چلتے ہیں، پھر کوئز دیں۔",
+   "verdict": "back-translation",
+   "back": "Learn what tricks scammers use, then take the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "تمام جواب درست دیں اور تحفہ لینے کے لیے MOM افسر کو اپنا QR کوڈ دکھائیں۔ صرف پہلے 500 افراد کے لیے!",
+   "verdict": "back-translation",
+   "back": "Answer all questions correctly and show your QR code to the MOM officer to receive the gift. Only for the first 500 people!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "ScamShield ہیلپ لائن",
+   "verdict": "back-translation",
+   "back": "ScamShield Helpline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "زبان",
+   "verdict": "back-translation",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech کا ایک کارپوریٹ سماجی ذمہ داری کا اقدام",
+   "verdict": "back-translation",
+   "back": "GovTech is a corporate social responsibility initiative.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "اس سائٹ کو استعمال کر کے آپ {terms} اور {privacy} سے اتفاق کرتے ہیں۔",
+   "verdict": "back-translation",
+   "back": "By continuing to use this site you agree to the {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "شرائطِ استعمال",
+   "verdict": "back-translation",
+   "back": "Terms of Use",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "رازداری کا بیان",
+   "verdict": "back-translation",
+   "back": "Privacy Statement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "ہوم",
+   "verdict": "back-translation",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "پچھلا",
+   "verdict": "back-translation",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "اگلا",
+   "verdict": "back-translation",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "مکمل کریں",
+   "verdict": "back-translation",
+   "back": "Complete it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "کوئز چھوڑیں",
+   "verdict": "back-translation",
+   "back": "Leave the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "کوئز چھوڑنا چاہتے ہیں؟ اب تک کے آپ کے جواب مٹ جائیں گے۔",
+   "verdict": "back-translation",
+   "back": "Want to quit the quiz? Your answers will be erased.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "جائزہ بند کریں",
+   "verdict": "back-translation",
+   "back": "Stop reviewing",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "فراڈ کے بارے میں جانیں",
+   "verdict": "back-translation",
+   "back": "Learn about fraud.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "6 short stories · 3 min",
+   "draft": "6 مختصر کہانیاں · 3 منٹ",
+   "verdict": "back-translation",
+   "back": "6 short stories · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "تحفے کے لیے کوئز",
+   "verdict": "back-translation",
+   "back": "Quiz for a gift",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "کوئز دیں",
+   "verdict": "back-translation",
+   "back": "Take the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 چیلنج · 3 منٹ",
+   "verdict": "back-translation",
+   "back": "6 Challenges · 3 minutes",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "میرا QR کوڈ دکھائیں",
+   "verdict": "back-translation",
+   "back": "Show me my QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "میرا نتیجہ دکھائیں",
+   "verdict": "back-translation",
+   "back": "Show my result.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 {n} تحفے باقی ہیں",
+   "verdict": "back-translation",
+   "back": "🎁 {n} gifts remaining",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "تمام تحفے دیے جا چکے ہیں۔ حصہ لینے کا شکریہ!",
+   "verdict": "back-translation",
+   "back": "All the prizes have been given away. Thank you for participating!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "بہت خوب! آپ فراڈ پہچان سکتے ہیں۔",
+   "verdict": "back-translation",
+   "back": "Wow! You can spot a fraud in a mile.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "جواب دیکھیں، پھر دوبارہ کوشش کریں۔",
+   "verdict": "back-translation",
+   "back": "Check the answer, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "یقین نہیں؟ کال کریں",
+   "verdict": "back-translation",
+   "back": "Don't believe it? Call.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "مثال · اصلی نہیں",
+   "verdict": "back-translation",
+   "back": "Example: Not original.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "کیا کریں",
+   "verdict": "back-translation",
+   "back": "What to do?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "کوئز دیں",
+   "verdict": "back-translation",
+   "back": "Take the quiz.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "سرکاری ویڈیو دیکھیں",
+   "verdict": "back-translation",
+   "back": "Watch the official video.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "خطرے کی {n} علامتوں پر ٹیپ کریں",
+   "verdict": "back-translation",
+   "back": "Tap on the danger {n} symbols.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "{n} میں سے {k} منتخب",
+   "verdict": "back-translation",
+   "back": "{k} selected from {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "فراڈ",
+   "verdict": "back-translation",
+   "back": "Fraud",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "محفوظ",
+   "verdict": "back-translation",
+   "back": "Protected",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "پیغام {i} / {n}",
+   "verdict": "back-translation",
+   "back": "Message {i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} / {n}",
+   "verdict": "back-translation",
+   "back": "{i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "آپ کا نتیجہ محفوظ ہو رہا ہے…",
+   "verdict": "back-translation",
+   "back": "Your result is being saved...",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "سب درست!",
+   "verdict": "back-translation",
+   "back": "All correct!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "اپنا تحفہ لینے کے لیے یہ QR کوڈ MOM افسر کو دکھائیں۔",
+   "verdict": "back-translation",
+   "back": "Show this QR code to a MOM officer to get your gift.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "آپ نے پہلے سب جواب درست دیے تھے، اس لیے آپ کا QR کوڈ اب بھی کارآمد ہے۔",
+   "verdict": "back-translation",
+   "back": "You answered all the questions correctly earlier, so your QR code is still valid.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "{t} میں سے {s} درست",
+   "verdict": "back-translation",
+   "back": "{s} out of {t} is correct.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "جواب دیکھیں، پھر تحفے کے لیے دوبارہ کوشش کریں۔",
+   "verdict": "back-translation",
+   "back": "Check the reply, then try gift wrap again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "جواب دیکھیں",
+   "verdict": "back-translation",
+   "back": "See the answer.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "دوبارہ کوشش کریں",
+   "verdict": "back-translation",
+   "back": "Try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "میرے QR کوڈ پر واپس",
+   "verdict": "back-translation",
+   "back": "Back to my QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "نتیجہ محفوظ ہو گیا ✓",
+   "verdict": "back-translation",
+   "back": "The result is saved.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "ابھی محفوظ نہیں ہوا (کنکشن نہیں)۔ افسر پھر بھی یہ QR کوڈ اسکین کر سکتا ہے۔",
+   "verdict": "back-translation",
+   "back": "Not saved yet (no connection). The officer can still scan this QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "ابھی محفوظ نہیں ہوا (کنکشن نہیں)۔",
+   "verdict": "back-translation",
+   "back": "Not yet saved (no connection).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "دوبارہ محفوظ کریں",
+   "verdict": "back-translation",
+   "back": "Save again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "آپ کا جواب",
+   "verdict": "back-translation",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "درست جواب",
+   "verdict": "back-translation",
+   "back": "Correct Answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "درست",
+   "verdict": "back-translation",
+   "back": "Correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "غلط",
+   "verdict": "back-translation",
+   "back": "Incorrect",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "کوڈ",
+   "verdict": "back-translation",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "کوشش",
+   "verdict": "back-translation",
+   "back": "The translation of the input text \"کوشش\" from English to Nepali is:\n\n\"Effort\"",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "جعلی MOM افسر",
+   "verdict": "back-translation",
+   "back": "Fake MOM Officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "دھوکے باز MOM یا پولیس ہونے کا ڈھونگ کرتے ہیں۔",
+   "verdict": "back-translation",
+   "back": "The conmen act as a MOM or a police officer.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "draft": "فون کال",
+   "verdict": "back-translation",
+   "back": "Phone call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "draft": "نامعلوم نمبر",
+   "verdict": "back-translation",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "draft": "ہیلو، میں MOM سے بول رہا ہوں۔ آپ کے ورک پرمٹ میں مسئلہ ہے۔",
+   "verdict": "back-translation",
+   "back": "Hello, I am calling from MOM. There is a problem with your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "draft": "ابھی $500 ٹرانسفر کریں، ورنہ آپ کو واپس گھر بھیج دیا جائے گا!",
+   "verdict": "back-translation",
+   "back": "Transfer $500 now or you'll be sent packing!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "draft": "میرے لنک سے یہ ایپ انسٹال کریں تاکہ میں آپ کی مدد کر سکوں۔",
+   "verdict": "back-translation",
+   "back": "Install this app from my link so I can help you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "draft": "اب میں آپ کی کال پولیس کو ٹرانسفر کر رہا ہوں۔",
+   "verdict": "back-translation",
+   "back": "Now I am transferring your call to the police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "draft": "پیسے ٹرانسفر کرنے کو کہتا ہے",
+   "verdict": "back-translation",
+   "back": "It says to transfer the money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "ایپ لنک سے، ایپ اسٹور سے نہیں",
+   "verdict": "back-translation",
+   "back": "From the App Link, not the App Store.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "draft": "آپ کی کال پولیس کو ٹرانسفر کرتا ہے",
+   "verdict": "back-translation",
+   "back": "Your call is being transferred to a police officer.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "draft": "MOM آپ کے کام کے بارے میں آپ کو کال کر سکتا ہے۔ لیکن MOM کبھی پیسے ٹرانسفر کرنے یا اپنا بینک لاگ اِن دینے کو نہیں کہے گا۔",
+   "verdict": "back-translation",
+   "back": "MOM may call you regarding your work. But MOM will never ask you to transfer money or give her bank login.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "draft": "MOM کبھی لنک سے ایپ انسٹال کرنے کو نہیں کہے گا، نہ آپ کی کال پولیس کو ٹرانسفر کرے گا۔ یقین نہیں؟ فون بند کر دیں۔",
+   "verdict": "back-translation",
+   "back": "MOM will never ask you to download an app from a link, nor will she ever ask you to transfer your call to a police officer. Don't believe it!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "draft": "جعلی تہوار آفر",
+   "verdict": "back-translation",
+   "back": "Fake festival offers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "draft": "بہت اچھی آفرز جو آپ سے ایپ انسٹال کرواتی ہیں۔",
+   "verdict": "back-translation",
+   "back": "Very good offers that make you install the app.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "draft": "اشتہار",
+   "verdict": "back-translation",
+   "back": "Advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "draft": "دیپاولی گولڈ سیل",
+   "verdict": "back-translation",
+   "back": "Deepavali Gold Sale",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[0]": {
+   "english": "Deepavali sale! Gold 80% off!",
+   "draft": "دیپاولی سیل! سونے پر 80% چھوٹ!",
+   "verdict": "back-translation",
+   "back": "Deepawali Sale! 80% off Gold!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[1]": {
+   "english": "Download our app here: deepavali-gold.example/app",
+   "draft": "ہماری ایپ یہاں سے ڈاؤن لوڈ کریں: deepavali-gold.example/app",
+   "verdict": "back-translation",
+   "back": "Download our app from here: deepavali-gold.example/app",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.lines[2]": {
+   "english": "Only 1 hour left!",
+   "draft": "صرف 1 گھنٹہ باقی!",
+   "verdict": "back-translation",
+   "back": "Only 1 hour left!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[0].label": {
+   "english": "Price is too good to be true",
+   "draft": "قیمت اتنی کم کہ سچ نہیں ہو سکتی",
+   "verdict": "back-translation",
+   "back": "The price is so low, it's unbelievable!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "ایپ لنک سے، ایپ اسٹور سے نہیں",
+   "verdict": "back-translation",
+   "back": "From the App Link, not the App Store.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].flags[2].label": {
+   "english": "Rushes you",
+   "draft": "آپ سے جلدی کرواتا ہے",
+   "verdict": "back-translation",
+   "back": "I will make you do it quickly.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[0]": {
+   "english": "Only install apps from the official app store on your phone.",
+   "draft": "ایپ صرف اپنے فون کے آفیشل ایپ اسٹور سے انسٹال کریں۔",
+   "verdict": "back-translation",
+   "back": "Only install apps from your phone's official app store.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].todo[1]": {
+   "english": "Fake apps can steal money from your bank account.",
+   "draft": "جعلی ایپس آپ کے بینک اکاؤنٹ سے پیسے چرا سکتی ہیں۔",
+   "verdict": "back-translation",
+   "back": "Phishing apps can steal money from your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].title": {
+   "english": "Easy money (scam mule)",
+   "draft": "آسان پیسہ (فراڈ میول)",
+   "verdict": "back-translation",
+   "back": "Easy Money (Fraud Revealed)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].tagline": {
+   "english": "Paying you to use your bank account.",
+   "draft": "آپ کا بینک اکاؤنٹ استعمال کرنے کے بدلے پیسے دینا۔",
+   "verdict": "back-translation",
+   "back": "Pay with cash instead of using your bank account.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.channel": {
+   "english": "Chat message",
+   "draft": "چیٹ پیغام",
+   "verdict": "back-translation",
+   "back": "Chat Message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[0]": {
+   "english": "Want easy money? $300 a week, no work!",
+   "draft": "آسان پیسہ چاہیے؟ ہر ہفتے $300، کوئی کام نہیں!",
+   "verdict": "back-translation",
+   "back": "Want easy money? I have $300 a week for no work!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].chat.lines[1]": {
+   "english": "Just let me use your bank account, SIM card or Singpass.",
+   "draft": "بس مجھے اپنا بینک اکاؤنٹ، SIM کارڈ یا Singpass استعمال کرنے دو۔",
+   "verdict": "back-translation",
+   "back": "Just let me use my bank account, SIM card, or SingPass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[0].label": {
+   "english": "Money for no work",
+   "draft": "بغیر کام کے پیسے",
+   "verdict": "back-translation",
+   "back": "Money without work",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].flags[1].label": {
+   "english": "Wants your bank account, SIM card or Singpass",
+   "draft": "آپ کا بینک اکاؤنٹ، SIM کارڈ یا Singpass مانگتا ہے",
+   "verdict": "back-translation",
+   "back": "Your bank account, SIM card, or SingPass asks for it.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[0]": {
+   "english": "Never sell, lend or give away your bank account, SIM card or Singpass.",
+   "draft": "اپنا بینک اکاؤنٹ، SIM کارڈ یا Singpass کبھی نہ بیچیں، نہ ادھار دیں، نہ کسی کو دیں۔",
+   "verdict": "back-translation",
+   "back": "Never sell, loan or give your bank account, SIM card or SingPass to anyone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[2].todo[1]": {
+   "english": "This is a crime. You can be fined, jailed or caned.",
+   "draft": "یہ جرم ہے۔ آپ کو جرمانہ، جیل یا بید کی سزا ہو سکتی ہے۔",
+   "verdict": "back-translation",
+   "back": "This is a crime. You may get a fine, a jail sentence, or worse.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].title": {
+   "english": "Fake job or work permit",
+   "draft": "جعلی نوکری یا ورک پرمٹ",
+   "verdict": "back-translation",
+   "back": "Fake job or work permit",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].tagline": {
+   "english": "Fake approval letters that ask for money.",
+   "draft": "جعلی منظوری کے خط جو پیسے مانگتے ہیں۔",
+   "verdict": "back-translation",
+   "back": "Fake acceptance letters that ask for money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.channel": {
+   "english": "Chat message",
+   "draft": "چیٹ پیغام",
+   "verdict": "back-translation",
+   "back": "Chat Message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.from": {
+   "english": "SG Jobs Agent",
+   "draft": "SG جابز ایجنٹ",
+   "verdict": "back-translation",
+   "back": "SG Jobs Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[0]": {
+   "english": "Good news! Your work permit is approved.",
+   "draft": "خوشخبری! آپ کا ورک پرمٹ منظور ہو گیا ہے۔",
+   "verdict": "back-translation",
+   "back": "Good news! Your work permit has been approved.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[1]": {
+   "english": "Send $800 today to confirm your job.",
+   "draft": "اپنی نوکری پکی کرنے کے لیے آج ہی $800 بھیجیں۔",
+   "verdict": "back-translation",
+   "back": "Send $800 now to secure your job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].chat.lines[2]": {
+   "english": "We are a licensed agency. Licence no. 99X9999.",
+   "draft": "ہم لائسنس یافتہ ایجنسی ہیں۔ لائسنس نمبر 99X9999۔",
+   "verdict": "back-translation",
+   "back": "We are a licensed agency. The license number is 99X9999.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[0].label": {
+   "english": "Asks you to pay first",
+   "draft": "پہلے پیسے مانگتا ہے",
+   "verdict": "back-translation",
+   "back": "First, he asks for money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].flags[1].label": {
+   "english": "A licence number does not prove it is real",
+   "draft": "لائسنس نمبر سے ثابت نہیں ہوتا کہ یہ اصلی ہے",
+   "verdict": "back-translation",
+   "back": "The license number does not prove that it is the real one.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[0]": {
+   "english": "Check your work pass yourself on MOM's website: \"Check work pass and application status\". No login needed.",
+   "draft": "اپنا ورک پاس خود MOM کی ویب سائٹ پر چیک کریں: \"Check work pass and application status\"۔ لاگ اِن کی ضرورت نہیں۔",
+   "verdict": "back-translation",
+   "back": "Check your work pass status on the MOM website here: \"Check work pass and application status\". No need to log in.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[3].todo[1]": {
+   "english": "Asking you to pay first is a common job scam sign. No one can make you pay to keep your job: that is illegal.",
+   "draft": "پہلے پیسے مانگنا نوکری کے فراڈ کی عام نشانی ہے۔ نوکری بچانے کے لیے کوئی آپ سے پیسے نہیں مانگ سکتا: یہ غیر قانونی ہے۔",
+   "verdict": "back-translation",
+   "back": "A common sign of job scams is that they don’t ask for any money in advance.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].title": {
+   "english": "Secret codes (OTP)",
+   "draft": "خفیہ کوڈ (OTP)",
+   "verdict": "back-translation",
+   "back": "One-Time Password (OTP)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].tagline": {
+   "english": "Scammers ask for the code sent to your phone.",
+   "draft": "دھوکے باز آپ کے فون پر آیا ہوا کوڈ مانگتے ہیں۔",
+   "verdict": "back-translation",
+   "back": "Fraudsters may ask for the code you entered while dialing your phone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[0]": {
+   "english": "Sorry, I sent a code to your phone by mistake.",
+   "draft": "معاف کیجیے، میں نے غلطی سے آپ کے فون پر کوڈ بھیج دیا۔",
+   "verdict": "back-translation",
+   "back": "I'm sorry, I accidentally sent the code to your phone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].chat.lines[1]": {
+   "english": "Please send me the 6-digit code. Quick!",
+   "draft": "براہِ کرم مجھے وہ 6 ہندسوں کا کوڈ بھیج دیں۔ جلدی!",
+   "verdict": "back-translation",
+   "back": "Please send me that 6-digit code. Hurry!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].flags[0].label": {
+   "english": "Asks for your OTP and rushes you",
+   "draft": "آپ کا OTP مانگتا ہے اور جلدی کرواتا ہے",
+   "verdict": "back-translation",
+   "back": "It asks for your OTP and gets it done quickly.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[0]": {
+   "english": "Never share your OTP (the code sent to your phone) or your Singpass password with anyone.",
+   "draft": "اپنا OTP (آپ کے فون پر آیا کوڈ) یا Singpass پاس ورڈ کبھی کسی کو نہ بتائیں۔",
+   "verdict": "back-translation",
+   "back": "Never share your OTP (One-Time Password on your phone) or SingPass password with anyone.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[4].todo[1]": {
+   "english": "Someone says they changed their number? Call their old number to check.",
+   "draft": "کوئی کہے کہ اس نے نمبر بدل لیا ہے؟ تصدیق کے لیے اس کے پرانے نمبر پر کال کریں۔",
+   "verdict": "back-translation",
+   "back": "Someone says they changed their number? Call their old number to verify.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].title": {
+   "english": "Fake MOM message",
+   "draft": "جعلی MOM پیغام",
+   "verdict": "back-translation",
+   "back": "Fake MOM message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].tagline": {
+   "english": "Check who sent it, and where the link goes.",
+   "draft": "دیکھیں کس نے بھیجا، اور لنک کہاں لے جاتا ہے۔",
+   "verdict": "back-translation",
+   "back": "See who sent it, and where the link says it goes.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[0]": {
+   "english": "MOM: your work permit will expire soon.",
+   "draft": "MOM: آپ کا ورک پرمٹ جلد ختم ہونے والا ہے۔",
+   "verdict": "back-translation",
+   "back": "Mother: Your work permit is about to expire.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].chat.lines[1]": {
+   "english": "Renew it now: www.mom.gov.sg.official.com.net",
+   "draft": "ابھی رینیو کریں: www.mom.gov.sg.official.com.net",
+   "verdict": "back-translation",
+   "back": "Renew now: www.mom.gov.sg.official.com.net",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].flags[0].label": {
+   "english": "Fake website: it does not end with .mom.gov.sg",
+   "draft": "جعلی ویب سائٹ: یہ .mom.gov.sg پر ختم نہیں ہوتی",
+   "verdict": "back-translation",
+   "back": "Fake Website  It does not end in .mom.gov.sg",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[0]": {
+   "english": "Government SMS come from the sender \"gov.sg\".",
+   "draft": "سرکاری SMS \"gov.sg\" نام کے بھیجنے والے سے آتے ہیں۔",
+   "verdict": "back-translation",
+   "back": "Official SMS messages come from a sender with the prefix \"gov.sg\".",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[5].todo[1]": {
+   "english": "Real MOM websites end with \".mom.gov.sg\". Look at the website name, before the first \"/\".",
+   "draft": "MOM کی اصلی ویب سائٹس \".mom.gov.sg\" پر ختم ہوتی ہیں۔ پہلے \"/\" سے پہلے والا ویب سائٹ کا نام دیکھیں۔",
+   "verdict": "back-translation",
+   "back": "The actual \"MOM\" websites end with \".mom.gov.sg\". Note the website name prefix with \"/\" before.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.title": {
+   "english": "Remember ACT",
+   "draft": "ACT یاد رکھیں",
+   "verdict": "back-translation",
+   "back": "Remember the ACT.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[0]": {
+   "english": "ADD the ScamShield app",
+   "draft": "ADD – ScamShield ایپ ڈالیں",
+   "verdict": "back-translation",
+   "back": "ADD – Add ScamShield app.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[1]": {
+   "english": "CHECK with 1799",
+   "draft": "CHECK – 1799 پر تصدیق کریں",
+   "verdict": "back-translation",
+   "back": "CHECK – Verify on 1799",
+   "suggestion": "",
+   "reason": ""
+  },
+  "act.items[2]": {
+   "english": "TELL family and friends",
+   "draft": "TELL – گھر والوں اور دوستوں کو بتائیں",
+   "verdict": "back-translation",
+   "back": "TELL – Tell your family and friends.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].title": {
+   "english": "Spot the red flags",
+   "draft": "خطرے کی علامتیں پہچانیں",
+   "verdict": "back-translation",
+   "back": "Recognize the signs of danger.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][0].t": {
+   "english": "Dear worker,",
+   "draft": "محترم کارکن،",
+   "verdict": "back-translation",
+   "back": "Respected worker,",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[0][1].t": {
+   "english": "you have an unpaid work permit fine of $350.",
+   "draft": "آپ کے ورک پرمٹ کا $350 جرمانہ باقی ہے۔",
+   "verdict": "back-translation",
+   "back": "You owe the immigration office $350 in late fees.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][0].t": {
+   "english": "Pay at",
+   "draft": "یہاں ادائیگی کریں:",
+   "verdict": "back-translation",
+   "back": "Pay it here:",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].msg.bubbles[1][2].t": {
+   "english": "or reply with your bank login.",
+   "draft": "یا اپنے بینک لاگ اِن کے ساتھ جواب دیں۔",
+   "verdict": "back-translation",
+   "back": "Or respond with your bank login information.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[0].explain": {
+   "english": "Government SMSes come from \"gov.sg\". Real MOM addresses end with \".mom.gov.sg\". The Government never asks for your bank login by SMS. Unsure? Call 1799.",
+   "draft": "سرکاری SMS \"gov.sg\" سے آتے ہیں۔ MOM کے اصلی پتے \".mom.gov.sg\" پر ختم ہوتے ہیں۔ حکومت SMS کے ذریعے کبھی آپ کا بینک لاگ اِن نہیں مانگتی۔ یقین نہیں؟ 1799 پر کال کریں۔",
+   "verdict": "back-translation",
+   "back": "Official SMS messages come from \"gov.sg\". The actual address of MOM ends in \".mom.gov.sg\". The government never asks for your bank login via SMS. Don't believe it? Call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].title": {
+   "english": "Scam or safe?",
+   "draft": "فراڈ یا محفوظ؟",
+   "verdict": "back-translation",
+   "back": "Fraud or safe?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].from": {
+   "english": "Your employer",
+   "draft": "آپ کا مالک",
+   "verdict": "back-translation",
+   "back": "Your Lord",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].text": {
+   "english": "Please buy rice on the way home. Thank you!",
+   "draft": "گھر آتے ہوئے براہِ کرم چاول لے آنا۔ شکریہ!",
+   "verdict": "back-translation",
+   "back": "Please bring rice when you come home. Thank you!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[0].why": {
+   "english": "A normal message from someone you know, with no money or codes asked.",
+   "draft": "کسی جاننے والے کا عام پیغام۔ نہ پیسے مانگے، نہ کوڈ۔",
+   "verdict": "back-translation",
+   "back": "A common message from an acquaintance. No money, no code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].from": {
+   "english": "Unknown number",
+   "draft": "نامعلوم نمبر",
+   "verdict": "back-translation",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].text": {
+   "english": "Your bank account is locked. Reply with the OTP we just sent you.",
+   "draft": "آپ کا بینک اکاؤنٹ بند کر دیا گیا ہے۔ ہم نے جو OTP بھیجا ہے، وہ جواب میں بھیجیں۔",
+   "verdict": "back-translation",
+   "back": "Your bank account has been closed. Please send the OTP we sent in response.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[1].why": {
+   "english": "Never share your OTP (the code sent to your phone) with anyone, even if they say they are your bank.",
+   "draft": "اپنا OTP (آپ کے فون پر آیا کوڈ) کبھی کسی کو نہ بتائیں، چاہے وہ خود کو آپ کا بینک ہی کیوں نہ بتائیں۔",
+   "verdict": "back-translation",
+   "back": "Never share your OTP (One-Time Password sent to your phone) with anyone, including your own bank.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].from": {
+   "english": "New contact",
+   "draft": "نیا رابطہ",
+   "verdict": "back-translation",
+   "back": "New Contact",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].text": {
+   "english": "Lend me your bank card for one week. I will pay you $300.",
+   "draft": "ایک ہفتے کے لیے مجھے اپنا بینک کارڈ دو۔ میں تمہیں $300 دوں گا۔",
+   "verdict": "back-translation",
+   "back": "Give me your bank card for one week and I'll give you $300.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[2].why": {
+   "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
+   "draft": "یہ فراڈ میول بنانے کی پیشکش ہے۔ دوسروں کو اپنا بینک کارڈ استعمال کرنے دینا جرم ہے۔",
+   "verdict": "back-translation",
+   "back": "This is fraud. It is a crime to let others use your bank card.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].from": {
+   "english": "Your friend",
+   "draft": "آپ کا دوست",
+   "verdict": "back-translation",
+   "back": "Your friend",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].text": {
+   "english": "Happy Deepavali! See you at the event on Sunday.",
+   "draft": "دیپاولی مبارک! اتوار کو پروگرام میں ملتے ہیں۔",
+   "verdict": "back-translation",
+   "back": "Happy Diwali! See you at the event on Sunday.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[1].cards[3].why": {
+   "english": "A normal greeting from a friend, with nothing asked.",
+   "draft": "دوست کا عام مبارکباد کا پیغام، کچھ نہیں مانگا۔",
+   "verdict": "back-translation",
+   "back": "A friend's usual congratulatory message, asking for nothing.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].title": {
+   "english": "What would you reply?",
+   "draft": "آپ کیا جواب دیں گے؟",
+   "verdict": "back-translation",
+   "back": "What will you answer?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.from": {
+   "english": "\"Cousin\" (new number)",
+   "draft": "\"کزن\" (نیا نمبر)",
+   "verdict": "back-translation",
+   "back": "\"Kisan\" (New Number)",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[0]": {
+   "english": "Hi, it's your cousin. I changed my number.",
+   "draft": "ہائے، میں تمہارا کزن ہوں۔ میں نے اپنا نمبر بدل لیا ہے۔",
+   "verdict": "back-translation",
+   "back": "Hi, I'm your cousin. I've changed my number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].chat.lines[1]": {
+   "english": "I sent a 6-digit code to your phone by mistake. Can you send it to me? Urgent!",
+   "draft": "غلطی سے تمہارے فون پر 6 ہندسوں کا کوڈ چلا گیا۔ پلیز وہ مجھے بھیج دو۔ جلدی ہے!",
+   "verdict": "back-translation",
+   "back": "A 6-digit code has been sent to your phone by mistake. Please send it to me. Hurry!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[0]": {
+   "english": "OK, here is the code: 482915",
+   "draft": "ٹھیک ہے، کوڈ یہ ہے: 482915",
+   "verdict": "back-translation",
+   "back": "Okay, the code is: 482915.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[1]": {
+   "english": "No. I never share codes. I will call your old number.",
+   "draft": "نہیں۔ میں کبھی کوڈ نہیں بتاتا۔ میں تمہارے پرانے نمبر پر کال کروں گا۔",
+   "verdict": "back-translation",
+   "back": "No. I never tell the code. I will call your old number.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].options[2]": {
+   "english": "Send me your photo first, then I will send it.",
+   "draft": "پہلے اپنی تصویر بھیجو، پھر میں کوڈ بھیجوں گا۔",
+   "verdict": "back-translation",
+   "back": "First, send your photo, then I will send the code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[2].explain": {
+   "english": "Never share your OTP, even with family. If someone says they changed their number, call their old number to check.",
+   "draft": "اپنا OTP کبھی کسی کو نہ بتائیں، گھر والوں کو بھی نہیں۔ اگر کوئی کہے کہ اس نے نمبر بدل لیا ہے تو تصدیق کے لیے اس کے پرانے نمبر پر کال کریں۔",
+   "verdict": "back-translation",
+   "back": "Never share your OTP, not even with family members. If someone says they've changed their number, call their old number for verification.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].title": {
+   "english": "Pick the safe way",
+   "draft": "محفوظ طریقہ چنیں",
+   "verdict": "back-translation",
+   "back": "Choose a safe method.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].prompt": {
+   "english": "You want a shopping app for Deepavali deals. Where should you get it?",
+   "draft": "آپ کو دیپاولی آفرز کے لیے شاپنگ ایپ چاہیے۔ اسے کہاں سے لیں؟",
+   "verdict": "back-translation",
+   "back": "You need a shopping app for Diwali offers. Where should I get it from?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[0].label": {
+   "english": "The official app store on your phone",
+   "draft": "آپ کے فون کا آفیشل ایپ اسٹور",
+   "verdict": "back-translation",
+   "back": "Your phone's official app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[1].label": {
+   "english": "A link sent in a chat message",
+   "draft": "چیٹ پیغام میں بھیجا گیا لنک",
+   "verdict": "back-translation",
+   "back": "Link sent in a chat message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].options[2].label": {
+   "english": "A link in an online advert",
+   "draft": "آن لائن اشتہار میں دیا گیا لنک",
+   "verdict": "back-translation",
+   "back": "The link provided in the online advertisement.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[3].explain": {
+   "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
+   "draft": "ایپ صرف اپنے فون کے آفیشل ایپ اسٹور سے انسٹال کریں۔ لنک والی ایپس آپ کے پیسے چرا سکتی ہیں۔",
+   "verdict": "back-translation",
+   "back": "Only install apps from your phone's official app store. Apps with links can steal your money.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].title": {
+   "english": "Spot the red flags",
+   "draft": "خطرے کی علامتیں پہچانیں",
+   "verdict": "back-translation",
+   "back": "Recognize the signs of danger.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.channel": {
+   "english": "Chat message",
+   "draft": "چیٹ پیغام",
+   "verdict": "back-translation",
+   "back": "Chat Message",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.from": {
+   "english": "Job Agent",
+   "draft": "جاب ایجنٹ",
+   "verdict": "back-translation",
+   "back": "Job Agent",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[0][0].t": {
+   "english": "Your employer wants to cancel your work permit.",
+   "draft": "آپ کا مالک آپ کا ورک پرمٹ منسوخ کرنا چاہتا ہے۔",
+   "verdict": "back-translation",
+   "back": "Your employer wants to cancel your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[1][0].t": {
+   "english": "Pay me $500 to keep your job.",
+   "draft": "اپنی نوکری بچانے کے لیے مجھے $500 دو۔",
+   "verdict": "back-translation",
+   "back": "Give me $500 to keep me from losing my job.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][0].t": {
+   "english": "Check your permit at",
+   "draft": "اپنا پرمٹ یہاں چیک کریں:",
+   "verdict": "back-translation",
+   "back": "Check your own permit here:",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].msg.bubbles[2][2].t": {
+   "english": "and send me your Singpass password.",
+   "draft": "اور مجھے اپنا Singpass پاس ورڈ بھیجو۔",
+   "verdict": "back-translation",
+   "back": "And send me your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[4].explain": {
+   "english": "It is illegal to make you pay to keep your job. Real MOM addresses end with \".mom.gov.sg\". Never share your Singpass password.",
+   "draft": "نوکری بچانے کے لیے آپ سے پیسے مانگنا غیر قانونی ہے۔ MOM کے اصلی پتے \".mom.gov.sg\" پر ختم ہوتے ہیں۔ اپنا Singpass پاس ورڈ کبھی کسی کو نہ بتائیں۔",
+   "verdict": "back-translation",
+   "back": "It is illegal to ask you for money in order to keep your job. MOM's real addresses end in \".mom.gov.sg\". Never tell anyone your Singpass password.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].title": {
+   "english": "What would you reply?",
+   "draft": "آپ کیا جواب دیں گے؟",
+   "verdict": "back-translation",
+   "back": "What will you answer?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.from": {
+   "english": "Unknown number",
+   "draft": "نامعلوم نمبر",
+   "verdict": "back-translation",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[0]": {
+   "english": "Easy money! Earn $200 every week.",
+   "draft": "آسان پیسہ! ہر ہفتے $200 کمائیں۔",
+   "verdict": "back-translation",
+   "back": "Easy money! Earn $200 a week.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].chat.lines[1]": {
+   "english": "Just let me use your bank account and Singpass.",
+   "draft": "بس مجھے اپنا بینک اکاؤنٹ اور Singpass استعمال کرنے دو۔",
+   "verdict": "back-translation",
+   "back": "Just let me use my bank account and SingPass.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[0]": {
+   "english": "OK, how do I start?",
+   "draft": "ٹھیک ہے، شروع کیسے کروں؟",
+   "verdict": "back-translation",
+   "back": "Okay, how do I get started?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[1]": {
+   "english": "Can you pay me $400 instead?",
+   "draft": "کیا اس کے بدلے $400 دے سکتے ہو؟",
+   "verdict": "back-translation",
+   "back": "Can I make it $400?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].options[2]": {
+   "english": "No. This is a crime. I will report it.",
+   "draft": "نہیں۔ یہ جرم ہے۔ میں اس کی شکایت کروں گا۔",
+   "verdict": "back-translation",
+   "back": "No! That is a crime. I will report him.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "quiz[5].explain": {
+   "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
+   "draft": "دوسروں کو اپنا بینک اکاؤنٹ یا Singpass استعمال کرنے دینے سے آپ فراڈ میول بن جاتے ہیں۔ یہ جرم ہے۔ انکار کریں اور شکایت کریں۔",
+   "verdict": "back-translation",
+   "back": "Giving up your bank account or SingPass to others makes you vulnerable to fraud. It's a crime. Refuse and file a report.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.title": {
+   "english": "One last thing",
+   "draft": "آخری بات",
+   "verdict": "back-translation",
+   "back": "The Last Word",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatQuestion": {
+   "english": "How happy are you with today's event?",
+   "draft": "آج کے پروگرام سے آپ کتنے خوش ہیں؟",
+   "verdict": "back-translation",
+   "back": "How happy are you with today's program?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[0]": {
+   "english": "Very unhappy",
+   "draft": "بہت ناخوش",
+   "verdict": "back-translation",
+   "back": "Very unhappy.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[1]": {
+   "english": "Unhappy",
+   "draft": "ناخوش",
+   "verdict": "back-translation",
+   "back": "Unhappy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[2]": {
+   "english": "Okay",
+   "draft": "ٹھیک ہے",
+   "verdict": "back-translation",
+   "back": "Okay.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[3]": {
+   "english": "Happy",
+   "draft": "خوش",
+   "verdict": "back-translation",
+   "back": "Happy",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.csatLabels[4]": {
+   "english": "Very happy",
+   "draft": "بہت خوش",
+   "verdict": "back-translation",
+   "back": "Very happy.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedQuestion": {
+   "english": "Did you learn something new about scams?",
+   "draft": "کیا آپ نے فراڈ کے بارے میں کچھ نیا سیکھا؟",
+   "verdict": "back-translation",
+   "back": "Did you learn anything new about fraud?",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[0].label": {
+   "english": "Yes",
+   "draft": "ہاں",
+   "verdict": "back-translation",
+   "back": "Yes.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[1].label": {
+   "english": "A little",
+   "draft": "تھوڑا",
+   "verdict": "back-translation",
+   "back": "A little",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.learnedOptions[2].label": {
+   "english": "No",
+   "draft": "نہیں",
+   "verdict": "back-translation",
+   "back": "No.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "feedback.submit": {
+   "english": "See my result",
+   "draft": "میرا نتیجہ دیکھیں",
+   "verdict": "back-translation",
+   "back": "See my result.",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}
