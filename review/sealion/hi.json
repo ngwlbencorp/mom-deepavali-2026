@@ -1,0 +1,606 @@
+{
+ "model": "aisingapore/Qwen-SEA-LION-v4.5-27B-IT",
+ "checked": "2026-10-30",
+ "results": {
+  "event.greeting": {
+   "english": "Happy Deepavali!",
+   "draft": "दीपावली की शुभकामनाएँ!",
+   "verdict": "ok",
+   "back": "Happy Deepavali!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.title": {
+   "english": "Stay safe from scams",
+   "draft": "स्कैम (धोखाधड़ी) से सुरक्षित रहें",
+   "verdict": "fix",
+   "back": "Stay safe from scams (fraud)",
+   "suggestion": "स्कैम से बचें",
+   "reason": "Remove parenthetical explanation; 'स्कैम' is widely understood and fits screen space better."
+  },
+  "event.intro": {
+   "english": "Learn the tricks scammers use, then take the quiz.",
+   "draft": "जानिए स्कैमर कौन-सी चालें चलते हैं, फिर क्विज़ दीजिए।",
+   "verdict": "fix",
+   "back": "Find out what tricks scammers use, then take the quiz.",
+   "suggestion": "जानिए स्कैमर कौन-सी चालें चलते हैं, फिर क्विज़ दें।",
+   "reason": "Changed 'दीजिए' (give) to 'दें' (take/do) for natural quiz context."
+  },
+  "event.souvenirNote": {
+   "english": "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+   "draft": "सभी उत्तर सही करें और स्मृति-चिह्न पाने के लिए MOM अधिकारी को अपना QR कोड दिखाएँ। केवल पहले 500 लोगों के लिए!",
+   "verdict": "ok",
+   "back": "Make all answers correct and show your QR code to an MOM officer to get a souvenir. Only for the first 500 people!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "event.helplineName": {
+   "english": "ScamShield Helpline",
+   "draft": "ScamShield हेल्पलाइन",
+   "verdict": "ok",
+   "back": "ScamShield Helpline",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.language": {
+   "english": "Language",
+   "draft": "भाषा",
+   "verdict": "ok",
+   "back": "Language",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.csr": {
+   "english": "A GovTech Corporate Social Responsibility initiative",
+   "draft": "GovTech की एक कॉर्पोरेट सामाजिक उत्तरदायित्व पहल",
+   "verdict": "fix",
+   "back": "A GovTech Corporate Social Responsibility initiative",
+   "suggestion": "GovTech की एक सामाजिक उत्तरदायित्व पहल",
+   "reason": "Remove 'कॉर्पोरेट' (Corporate) as it is redundant and complex for this audience; 'सामाजिक उत्तरदायित्व' implies the corporate aspect in this context."
+  },
+  "ui.legal": {
+   "english": "By using this site, you agree to the {terms} and {privacy}.",
+   "draft": "इस साइट का उपयोग करके आप {terms} और {privacy} से सहमत होते हैं।",
+   "verdict": "ok",
+   "back": "By using this site, you agree to the {terms} and {privacy}.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.terms": {
+   "english": "Terms of Use",
+   "draft": "उपयोग की शर्तें",
+   "verdict": "ok",
+   "back": "Terms of Use",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.privacy": {
+   "english": "Privacy Statement",
+   "draft": "गोपनीयता कथन",
+   "verdict": "ok",
+   "back": "Privacy Statement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.home": {
+   "english": "Home",
+   "draft": "होम",
+   "verdict": "ok",
+   "back": "Home",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.previous": {
+   "english": "Previous",
+   "draft": "पिछला",
+   "verdict": "ok",
+   "back": "Previous",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.next": {
+   "english": "Next",
+   "draft": "आगे",
+   "verdict": "ok",
+   "back": "Next",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.finish": {
+   "english": "Finish",
+   "draft": "समाप्त",
+   "verdict": "fix",
+   "back": "Finish",
+   "suggestion": "खत्म करें",
+   "reason": "'समाप्त' is too formal/literary; 'खत्म करें' is the common everyday word for finishing a task."
+  },
+  "ui.exitQuiz": {
+   "english": "Exit quiz",
+   "draft": "क्विज़ छोड़ें",
+   "verdict": "ok",
+   "back": "Exit quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.exitConfirm": {
+   "english": "Leave the quiz? Your answers so far will be lost.",
+   "draft": "क्विज़ छोड़ना चाहते हैं? अब तक के आपके उत्तर मिट जाएँगे।",
+   "verdict": "ok",
+   "back": "Do you want to leave the quiz? Your answers so far will be deleted.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.closeReview": {
+   "english": "Close review",
+   "draft": "समीक्षा बंद करें",
+   "verdict": "ok",
+   "back": "Close review",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnTitle": {
+   "english": "Learn about scams",
+   "draft": "स्कैम के बारे में जानें",
+   "verdict": "ok",
+   "back": "Learn about scams",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.learnSub": {
+   "english": "6 short stories · 3 min",
+   "draft": "6 छोटी कहानियाँ · 3 मिनट",
+   "verdict": "ok",
+   "back": "6 short stories · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitle": {
+   "english": "Quiz for a souvenir",
+   "draft": "स्मृति-चिह्न के लिए क्विज़",
+   "verdict": "ok",
+   "back": "Quiz for a souvenir",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizTitleAfter": {
+   "english": "Take the quiz",
+   "draft": "क्विज़ दें",
+   "verdict": "ok",
+   "back": "Take the quiz",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.quizSub": {
+   "english": "6 challenges · 3 min",
+   "draft": "6 चुनौतियाँ · 3 मिनट",
+   "verdict": "ok",
+   "back": "6 challenges · 3 min",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showQr": {
+   "english": "Show my QR code",
+   "draft": "मेरा QR कोड दिखाएँ",
+   "verdict": "ok",
+   "back": "Show my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.showResult": {
+   "english": "Show my result",
+   "draft": "मेरा परिणाम दिखाएँ",
+   "verdict": "ok",
+   "back": "Show my result",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.left": {
+   "english": "🎁 {n} souvenirs left",
+   "draft": "🎁 {n} स्मृति-चिह्न बचे हैं",
+   "verdict": "ok",
+   "back": "🎁 {n} souvenirs left",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.soldOut": {
+   "english": "All souvenirs have been given out. Thank you for taking part!",
+   "draft": "सभी स्मृति-चिह्न दिए जा चुके हैं। भाग लेने के लिए धन्यवाद!",
+   "verdict": "ok",
+   "back": "All souvenirs have been given. Thank you for participating!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterFull": {
+   "english": "Great job! You know how to spot scams.",
+   "draft": "बहुत बढ़िया! आप स्कैम पहचान सकते हैं।",
+   "verdict": "ok",
+   "back": "Very good! You can identify scams.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.afterPartial": {
+   "english": "Review the answers, then try again.",
+   "draft": "उत्तर देखें, फिर दोबारा कोशिश करें।",
+   "verdict": "ok",
+   "back": "See answers, then try again.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.unsure": {
+   "english": "Unsure? Call",
+   "draft": "पक्का नहीं? कॉल करें",
+   "verdict": "ok",
+   "back": "Not sure? Call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.example": {
+   "english": "EXAMPLE · NOT REAL",
+   "draft": "उदाहरण · असली नहीं",
+   "verdict": "ok",
+   "back": "Example · Not real",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.whatToDo": {
+   "english": "What to do",
+   "draft": "क्या करें",
+   "verdict": "ok",
+   "back": "What to do",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.toQuiz": {
+   "english": "Take the quiz",
+   "draft": "क्विज़ दें",
+   "verdict": "fix",
+   "back": "Give quiz",
+   "suggestion": "क्विज़ करें",
+   "reason": "'Give quiz' is unnatural; 'Do/Take quiz' is better."
+  },
+  "ui.watch": {
+   "english": "Watch the official video",
+   "draft": "आधिकारिक वीडियो देखें",
+   "verdict": "ok",
+   "back": "Watch official video",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.spotPrompt": {
+   "english": "Tap the {n} red flags",
+   "draft": "{n} खतरे के संकेतों पर टैप करें",
+   "verdict": "fix",
+   "back": "Tap {n} danger signs",
+   "suggestion": "{n} लाल झंडों पर टैप करें",
+   "reason": "English uses 'red flags'; 'danger signs' changes meaning slightly. 'Red flags' is a common scam term."
+  },
+  "ui.selected": {
+   "english": "{k} of {n} chosen",
+   "draft": "{n} में से {k} चुने",
+   "verdict": "ok",
+   "back": "{k} chosen out of {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.scam": {
+   "english": "Scam",
+   "draft": "स्कैम",
+   "verdict": "ok",
+   "back": "Scam",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.safe": {
+   "english": "Safe",
+   "draft": "सुरक्षित",
+   "verdict": "ok",
+   "back": "Safe",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.card": {
+   "english": "Message {i} of {n}",
+   "draft": "संदेश {i} / {n}",
+   "verdict": "ok",
+   "back": "Message {i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.step": {
+   "english": "{i} of {n}",
+   "draft": "{i} / {n}",
+   "verdict": "ok",
+   "back": "{i} / {n}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saving": {
+   "english": "Saving your result…",
+   "draft": "आपका परिणाम सेव हो रहा है…",
+   "verdict": "ok",
+   "back": "Your result is being saved…",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrect": {
+   "english": "All correct!",
+   "draft": "सभी सही!",
+   "verdict": "ok",
+   "back": "All correct!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.allCorrectMsg": {
+   "english": "Show this QR code to an MOM officer for your souvenir.",
+   "draft": "अपना स्मृति-चिह्न पाने के लिए यह QR कोड MOM अधिकारी को दिखाएँ।",
+   "verdict": "ok",
+   "back": "Show this QR code to an MOM officer to get your souvenir.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.earnedBefore": {
+   "english": "You got all correct before, so your QR code is still valid.",
+   "draft": "आपने पहले सभी उत्तर सही दिए थे, इसलिए आपका QR कोड अभी भी मान्य है।",
+   "verdict": "ok",
+   "back": "You gave all correct answers before, so your QR code is still valid.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partial": {
+   "english": "{s} of {t} correct",
+   "draft": "{t} में से {s} सही",
+   "verdict": "ok",
+   "back": "{s} correct out of {t}",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.partialMsg": {
+   "english": "Review the answers, then try again for a souvenir.",
+   "draft": "उत्तर देखें, फिर स्मृति-चिह्न के लिए दोबारा कोशिश करें।",
+   "verdict": "ok",
+   "back": "See answers, then try again for a souvenir.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.review": {
+   "english": "Review answers",
+   "draft": "उत्तर देखें",
+   "verdict": "ok",
+   "back": "See answers",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.tryAgain": {
+   "english": "Try again",
+   "draft": "फिर से कोशिश करें",
+   "verdict": "ok",
+   "back": "Try again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.backToResult": {
+   "english": "Back to my QR code",
+   "draft": "मेरे QR कोड पर वापस",
+   "verdict": "ok",
+   "back": "Back to my QR code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.saved": {
+   "english": "Result saved ✓",
+   "draft": "परिणाम सेव हो गया ✓",
+   "verdict": "ok",
+   "back": "Result saved ✓",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSaved": {
+   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "draft": "अभी सेव नहीं हुआ (कनेक्शन नहीं है)। अधिकारी फिर भी यह QR कोड स्कैन कर सकते हैं।",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.notSavedAfter": {
+   "english": "Not saved yet (no connection).",
+   "draft": "अभी सेव नहीं हुआ (कनेक्शन नहीं है)।",
+   "verdict": "ok",
+   "back": "Not saved yet (no connection).",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.retry": {
+   "english": "Retry saving",
+   "draft": "फिर से सेव करें",
+   "verdict": "ok",
+   "back": "Save again",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.yourAnswer": {
+   "english": "Your answer",
+   "draft": "आपका उत्तर",
+   "verdict": "ok",
+   "back": "Your answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.rightAnswer": {
+   "english": "Right answer",
+   "draft": "सही उत्तर",
+   "verdict": "ok",
+   "back": "Correct answer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.correct": {
+   "english": "Correct",
+   "draft": "सही",
+   "verdict": "ok",
+   "back": "Correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.wrong": {
+   "english": "Not correct",
+   "draft": "सही नहीं",
+   "verdict": "ok",
+   "back": "Not correct",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.codeLabel": {
+   "english": "Code",
+   "draft": "कोड",
+   "verdict": "ok",
+   "back": "Code",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.attempt": {
+   "english": "Attempt",
+   "draft": "प्रयास",
+   "verdict": "ok",
+   "back": "Attempt",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].title": {
+   "english": "Fake MOM officer",
+   "draft": "नकली MOM अधिकारी",
+   "verdict": "ok",
+   "back": "Fake MOM officer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].tagline": {
+   "english": "Scammers pretend to be MOM or the Police.",
+   "draft": "स्कैमर MOM या पुलिस होने का नाटक करते हैं।",
+   "verdict": "ok",
+   "back": "Scammers pretend to be MOM or the Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.channel": {
+   "english": "Phone call",
+   "draft": "फ़ोन कॉल",
+   "verdict": "ok",
+   "back": "Phone call",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.from": {
+   "english": "Unknown number",
+   "draft": "अनजान नंबर",
+   "verdict": "ok",
+   "back": "Unknown number",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[0]": {
+   "english": "Hello, I am from MOM. There is a problem with your work permit.",
+   "draft": "नमस्ते, मैं MOM से बोल रहा हूँ। आपके वर्क परमिट में समस्या है।",
+   "verdict": "ok",
+   "back": "Hello, I am speaking from MOM. There is a problem with your work permit.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[1]": {
+   "english": "Transfer $500 now, or you will be sent home!",
+   "draft": "अभी $500 ट्रांसफ़र करें, वरना आपको वापस घर भेज दिया जाएगा!",
+   "verdict": "ok",
+   "back": "Transfer $500 now, otherwise you will be sent back home!",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[2]": {
+   "english": "Install this app from my link so I can help you.",
+   "draft": "मेरे लिंक से यह ऐप इंस्टॉल करें, ताकि मैं आपकी मदद कर सकूँ।",
+   "verdict": "ok",
+   "back": "Install this app from my link so I can help you.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].chat.lines[3]": {
+   "english": "Now I will transfer your call to the Police.",
+   "draft": "अब मैं आपकी कॉल पुलिस को ट्रांसफ़र कर रहा हूँ।",
+   "verdict": "ok",
+   "back": "Now I am transferring your call to the Police.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[0].label": {
+   "english": "Asks you to transfer money",
+   "draft": "पैसे ट्रांसफ़र करने को कहता है",
+   "verdict": "ok",
+   "back": "Asks you to transfer money",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[1].label": {
+   "english": "App from a link, not the app store",
+   "draft": "ऐप लिंक से, ऐप स्टोर से नहीं",
+   "verdict": "ok",
+   "back": "App from a link, not from the app store",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].flags[2].label": {
+   "english": "Transfers your call to the Police",
+   "draft": "आपकी कॉल पुलिस को ट्रांसफ़र करता है",
+   "verdict": "ok",
+   "back": "Transfers your call to the Police",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[0]": {
+   "english": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "draft": "MOM आपके काम के बारे में आपको कॉल कर सकता है। लेकिन MOM कभी आपसे पैसे ट्रांसफ़र करने या आपका बैंक लॉगिन देने को नहीं कहेगा।",
+   "verdict": "ok",
+   "back": "MOM may call you about your work. But MOM will never ask you to transfer money or give your bank login.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[0].todo[1]": {
+   "english": "MOM will never ask you to install an app from a link, or transfer your call to the Police. Unsure? Hang up.",
+   "draft": "MOM कभी लिंक से ऐप इंस्टॉल करने को नहीं कहेगा, न ही आपकी कॉल पुलिस को ट्रांसफ़र करेगा। पक्का न हो? फ़ोन काट दें।",
+   "verdict": "ok",
+   "back": "MOM will never ask you to install an app from a link, nor transfer your call to the Police. Not sure? Hang up.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].title": {
+   "english": "Fake festive deal",
+   "draft": "नकली त्योहार ऑफ़र",
+   "verdict": "ok",
+   "back": "Fake festival offer",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].tagline": {
+   "english": "Too-good deals that make you install an app.",
+   "draft": "बहुत अच्छे ऑफ़र, जो आपसे ऐप इंस्टॉल करवाते हैं।",
+   "verdict": "ok",
+   "back": "Very good offers, which make you install an app.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.channel": {
+   "english": "Advertisement",
+   "draft": "विज्ञापन",
+   "verdict": "ok",
+   "back": "Advertisement",
+   "suggestion": "",
+   "reason": ""
+  },
+  "learn[1].chat.from": {
+   "english": "Deepavali Gold Sale",
+   "draft": "दीपावली गोल्ड सेल",
+   "verdict": "ok",
+   "back": "Deepavali Gold Sale",
+   "suggestion": "",
+   "reason": ""
+  }
+ }
+}

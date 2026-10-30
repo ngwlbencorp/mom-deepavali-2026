@@ -9,7 +9,8 @@
 //   SEALION_API_KEY=... node tools/sealion-review.js ta my           some languages
 //   SEALION_API_KEY=... node tools/sealion-review.js --models        list the models the key can use
 // Each language is checked by the model set for it in tools/sealion-models.json: the newest SEA-LION
-// model whose documentation lists that language. Languages no model lists are skipped.
+// model whose documentation lists that language. Hindi, Bengali and Urdu, which no model lists, are
+// checked with Qwen-SEA-LION-v4.5 on the strength of its base model (Qwen3.6); a weaker check.
 // Options: --model <id> (overrides the config, for experiments), --base <url> (default https://api.sea-lion.ai/v1),
 //          --fresh (ignore earlier results; by default, lines already reviewed are skipped).
 // Windows PowerShell: $env:SEALION_API_KEY = '<key>'; node tools/sealion-review.js   (key lasts for that window only)
@@ -32,7 +33,7 @@ if (!KEY) { console.error('Set SEALION_API_KEY first.'); process.exit(1); }
 const LANGS = require('./languages.json');
 const CONFIG = require('./sealion-models.json');
 const modelFor = (code) => MODEL_OVERRIDE || (CONFIG.languages[code] && CONFIG.languages[code].model) || null;
-const NAME = { bn: 'Bengali', zh: 'Simplified Chinese', hi: 'Hindi', id: 'Bahasa Indonesia', my: 'Burmese (Unicode)', ta: 'Tamil', tl: 'Tagalog (Filipino)', th: 'Thai', vi: 'Vietnamese' };
+const NAME = { bn: 'Bengali', zh: 'Simplified Chinese', hi: 'Hindi', id: 'Bahasa Indonesia', my: 'Burmese (Unicode)', ta: 'Tamil', tl: 'Tagalog (Filipino)', th: 'Thai', vi: 'Vietnamese', ur: 'Urdu' };
 
 global.window = {};
 require(path.join(root, 'js/content.js'));

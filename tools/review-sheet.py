@@ -54,9 +54,10 @@ NOT_SUPPORTED = 'Not supported by SEA-LION'
 def sealion_model_cell(code, sl):
     cfg = SL_CONFIG['languages'].get(code)
     if not cfg: return NOT_SUPPORTED
-    if not sl: return '%s (not run yet)' % cfg['model'].split('/')[-1]
+    base = ' (base-model check: not a SEA-LION-trained language)' if cfg.get('coverage') == 'base' else ''
+    if not sl: return '%s (not run yet)%s' % (cfg['model'].split('/')[-1], base)
     if sl['model'] != cfg['model']: return '%s (OUTDATED: config now says %s)' % (sl['model'].split('/')[-1], cfg['model'].split('/')[-1])
-    return '%s, checked %s' % (sl['model'].split('/')[-1], sl['checked'])
+    return '%s, checked %s%s' % (sl['model'].split('/')[-1], sl['checked'], base)
 
 TRIAGE_FILE = os.path.join(ROOT, 'review', 'sealion', 'triage.json')
 TRIAGE = json.load(open(TRIAGE_FILE, encoding='utf-8'))['notApplied'] if os.path.exists(TRIAGE_FILE) else {}
@@ -136,7 +137,7 @@ rows = [
     ('3. If the draft is right, leave column E empty.', False),
     ('4. If it needs changing, type the full corrected text in column E (yellow). Do not edit column D.', False),
     ('5. Use column F for questions or comments. Column G has notes about each line; lines marked CHANGED differ from the previous workbook.', False),
-    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). %s: not supported by any SEA-LION model, so no SEA-LION check. It is a machine check, not a native speaker: use it as a pointer, not a ruling.' % (lambda u: ', '.join(u[:-1]) + ' and ' + u[-1] if len(u) > 1 else ''.join(u))([n for c, n in LANGS if not SL_CONFIG['languages'].get(c)]), False),
+    ('Column I is a second opinion from SEA-LION (AI Singapore\'s language models), including a back-translation into English. Column J names the model: for each language, the newest SEA-LION model whose documentation lists that language (see the "SEA-LION models" tab). %s: no SEA-LION model was trained for them; they are checked with Qwen-SEA-LION-v4.5, relying on what its base model (Qwen3.6) knows of them, so give its comments less weight there. It is a machine check, not a native speaker: use it as a pointer, not a ruling.' % (lambda u: ', '.join(u[:-1]) + ' and ' + u[-1] if len(u) > 1 else ''.join(u))([n for c, n in LANGS if (SL_CONFIG['languages'].get(c) or {}).get('coverage') == 'base']), False),
     ('6. Send the file back. Corrections in column E are applied automatically (tools/import-review.py).', False),
     ('', False),
     ('Rules for all languages', True),
@@ -206,16 +207,17 @@ for col, w in zip('ABC', [8, 60, 80]):
 # SEA-LION models: which model checked each language, and the evidence that it is the newest one
 # whose documentation lists that language.
 slm = wb.create_sheet('SEA-LION models')
-slm.cell(row=1, column=1, value='Each language is checked by the newest SEA-LION model whose documentation lists it (verified on %s). Languages no model lists are not checked.' % SL_CONFIG['checked']).font = Font(name=FONT, bold=True)
-for j, h in enumerate(['Language', 'SEA-LION model used', 'Release', 'Listed in its documentation as', 'Newest model supporting this language?', 'Last run']):
+slm.cell(row=1, column=1, value='Each language is checked by the newest SEA-LION model whose documentation lists it (verified on %s). Languages no model lists are checked with Qwen-SEA-LION-v4.5, relying on its base model (Qwen3.6).' % SL_CONFIG['checked']).font = Font(name=FONT, bold=True)
+for j, h in enumerate(['Language', 'SEA-LION model used', 'Release', 'Listed in its documentation as', 'Why this model', 'Last run']):
     c = slm.cell(row=3, column=j + 1, value=h)
     c.font, c.fill, c.border, c.alignment = head_font, head_fill, border, wrap
 for i, (code, name) in enumerate(LANGS, start=4):
     cfg, sl = SL_CONFIG['languages'].get(code), sealion(code)
     if cfg:
         rel = SL_CONFIG['models'][cfg['model']]['release']
-        newest = 'Yes. ' + (cfg.get('note') or 'v4.8 (Sep 2026) is the latest SEA-LION release and lists %s.' % cfg['listedAs'])
-        row = [name, cfg['model'].split('/')[-1], rel, cfg['listedAs'], newest, sl['checked'] if sl and sl['model'] == cfg['model'] else 'not run with this model yet']
+        if cfg.get('coverage') == 'base': newest = cfg['note']
+        else: newest = 'Newest model that lists it. ' + (cfg.get('note') or 'v4.8 (Sep 2026) is the latest SEA-LION release and lists %s.' % cfg['listedAs'])
+        row = [name, cfg['model'].split('/')[-1], rel, cfg['listedAs'] or 'not listed (base model: Qwen3.6)', newest, sl['checked'] if sl and sl['model'] == cfg['model'] else 'not run with this model yet']
     else:
         row = [name, NOT_SUPPORTED, '', '', 'No SEA-LION model lists this language. ' + SL_CONFIG['evidence']['none'], '']
     for j, v in enumerate(row):
