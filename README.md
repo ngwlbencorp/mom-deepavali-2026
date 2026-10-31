@@ -110,7 +110,6 @@ The ducks.ai page (the address in the QR code) holds a small **shell**, uploaded
 - **Officer page on ducks.ai:** `node tools/build-shell.js --admin` writes `dist/ducks-admin-shell.zip`, the same shell set to load `admin/index.html`. Upload it once to its own ducks.ai page (e.g. `deepavali-2026-officers`) and give officers that address. It bundles no copy (the page cannot work without the API); if Vercel cannot be reached it says "Cannot reach the server". The camera works there because the ducks.ai page is served over HTTPS with no policy blocking it; test it on real phones. The Vercel address (`https://ducks-vercel-api.vercel.app/admin/`) keeps working as a backup.
 - **Superadmin page on ducks.ai:** `node tools/build-shell.js --super` writes `dist/ducks-superadmin-shell.zip`, the same shell set to load `superadmin/index.html` (dark loading screen, no bundled copy, not indexed). Upload it once to its own ducks.ai page with an unremarkable name, and keep that address to yourself. The Vercel address keeps working as a backup.
 - **ducks.ai's presenter gate:** ducks.ai adds a script for slide decks to every hosted page that cancels every **n** and **t** key press unless the tab is in presenter mode, and presenter mode shows ducks.ai's **edit text** button. The officer and superadmin pages keep presenter mode off and let the phone type those letters in their own text boxes (`js/ducks-keys.js`); the edit button stays hidden. The shells switch off all of ducks.ai's page buttons (catalog link, report, edit, likes, download) with ducks.ai's own switch, `<meta name="ducks-home" content="off">`, and hide the plain "← decks" link it writes into every page; its report page only opens on government networks, so it is no use to the public. With the buttons off, the pages no longer leave room for them. `tests/gate.test.js` checks it with ducks.ai's gate script (`tests/fixtures/ducks-gate.html`) and its `/shared/deck-home.js` served at `/p/<page>/`. The mini-site has no text boxes. For the slides, present with `?ducks-presenter=1` (or ducks.ai's Present action), or the N key (notes) does nothing.
-- **Superadmin** stays on Vercel: `https://ducks-vercel-api.vercel.app/superadmin/`.
 
 ## Vercel Hobby plan: usage budget
 
@@ -139,15 +138,15 @@ Check **Vercel → Usage** after the briefing and the day before the event. Hobb
 
 ## Reporting
 
-- **Dashboard** (refreshes every 15 seconds): a **Database** tile, superadmin only, showing whether the database was awake and how fast it answered (Neon's free plan sleeps after 5 minutes without queries; the first query after that takes a second or more); souvenirs given vs cap; quiz submissions (self and manual); MWs reached (claim IDs); first-try full-score rate; eventual full-score rate; average attempts to full score; average satisfaction and its distribution; "learned something new". There is also a cumulative chart over time, with a table view.
+- **Dashboard** (refreshes every 15 seconds): a **Database** line under the refresh time, superadmin only, showing whether the database was awake and how fast it answered (Neon's free plan sleeps after 5 minutes without queries; the first query after that takes a second or more); souvenirs given vs cap; quiz submissions (self and manual); MWs reached (claim IDs); first-try full-score rate; eventual full-score rate; average attempts to full score; average satisfaction and its distribution; "learned something new". There is also a cumulative chart over time, with a table view.
 - **Data tab:** CSV downloads of `claims` (one row per claim ID), `submissions` (one row per quiz attempt) and `admins`.
 
 ### ⚠ Check whether the site can really measure first-try and multiple-try success
 
 Attempts are counted **per claim ID, which means per phone browser, not per person**. The figures are only reliable if:
 - each MW uses one phone and one browser, and does not clear browser data;
-- each phone's submissions reach the server. A submission made offline and never retried is not counted; if the officer's scan registers it, the phone's own count is used;
-- you accept that answers are shown after each question, so a second attempt is close to guaranteed to be full marks. "Attempts to full score" therefore mostly measures whether people retried, not how much they learned.
+- each phone's submissions reach the server. An attempt made offline is counted once the phone saves it (automatically when back online); one never saved is not counted;
+- you accept that the answers can be reviewed after each attempt, so a second attempt is close to guaranteed to be full marks. "Attempts to full score" therefore mostly measures whether people retried, not how much they learned.
 
 Manual claims use 3 spoken questions, not the 6-question quiz, so they're excluded from the self-submit try rates. Decide whether this is good enough before reporting these as outcome measures. If it isn't, the first-attempt score distribution (in the `submissions` CSV, `attempt = 1`) is the more defensible learning signal.
 
@@ -207,7 +206,7 @@ No names, FINs or phone numbers are stored. The claim ID is random, and officer 
 - [ ] MOM language team has reviewed the chosen languages; corrections imported and `tests/fit.test.js` re-run for each.
 - [ ] Rehearsal data cleared.
 - [ ] ducks.ai page shows the current site (the shell zip is uploaded once; rebuild it before the event so its fallback copy is current).
-- [ ] On the day: an officer logs in before distribution starts (this wakes the database; the superadmin **Database** tile confirms it), and at least one station screen stays unlocked.
+- [ ] On the day: an officer logs in before distribution starts (this wakes the database; the superadmin dashboard's **Database** line confirms it), and at least one station screen stays unlocked.
 
 ## Tests (local)
 
