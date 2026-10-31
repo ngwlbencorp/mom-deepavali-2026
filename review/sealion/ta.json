@@ -1,6 +1,6 @@
 {
  "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
- "checked": "2026-10-30",
+ "checked": "2026-10-31",
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -363,10 +363,10 @@
    "reason": ""
   },
   "ui.notSaved": {
-   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "draft": "இன்னும் சேமிக்கப்படவில்லை (இணைப்பு இல்லை). அதிகாரி இந்த QR குறியீட்டை இன்னும் ஸ்கேன் செய்யலாம்.",
+   "english": "Not saved yet (no connection). Your QR code will show once it is saved.",
+   "draft": "இன்னும் சேமிக்கப்படவில்லை (இணைப்பு இல்லை). சேமித்த பிறகு உங்கள் QR குறியீட்டைப் பார்க்கலாம்.",
    "verdict": "ok",
-   "back": "Not yet saved (no connection). Officer can still scan this QR code.",
+   "back": "Not saved yet (no connection). Your QR code will show once it is saved.",
    "suggestion": "",
    "reason": ""
   },
@@ -1372,9 +1372,9 @@
   },
   "learn[5].flags[0].label": {
    "english": "Fake website: it does not end with .mom.gov.sg",
-   "draft": "போலி இணையதளம்: .mom.gov.sg என்று முடியவில்லை",
+   "draft": "போலி இணையதளம்: .mom.gov.sg என்று முடிவதில்லை",
    "verdict": "ok",
-   "back": "Fake website: it does not end with .mom.gov.sg",
+   "back": "Fake website: does not end with .mom.gov.sg",
    "suggestion": "",
    "reason": ""
   },
@@ -1457,6 +1457,22 @@
    "back": "GovTech's corporate social responsibility initiative",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.translated": {
+   "english": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "draft": "AI மூலம் மொழிபெயர்க்கப்பட்டு, இயந்திரத்தால் சரிபார்க்கப்பட்டது. ஏதாவது புரியவில்லை என்றால், ஆங்கிலத்துக்கு மாறுங்கள் அல்லது 1799-ஐ அழையுங்கள்.",
+   "verdict": "ok",
+   "back": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translations": {
+   "english": "Translations are made with AI. English is the reference.",
+   "draft": "மொழிபெயர்ப்புகள் AI மூலம் செய்யப்பட்டவை. ஆங்கிலப் பதிப்பே மூலம்.",
+   "verdict": "fix",
+   "back": "Translations are made with AI. By the English version.",
+   "suggestion": "மொழிபெயர்ப்புகள் AI மூலம் செய்யப்பட்டவை. ஆங்கிலம் மாதிரியாக.",
+   "reason": "Draft says 'by the English version' (wrong meaning). Should be 'English is the reference'."
   }
  }
 }

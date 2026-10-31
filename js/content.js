@@ -71,7 +71,7 @@ window.SCAM_TEXT.en = {
     tryAgain: "Try again",
     backToResult: "Back to my QR code",
     saved: "Result saved ✓",
-    notSaved: "Not saved yet (no connection). An officer can still scan this QR code.",
+    notSaved: "Not saved yet (no connection). Your QR code will show once it is saved.",
     notSavedAfter: "Not saved yet (no connection).",
     retry: "Retry saving",
     yourAnswer: "Your answer",

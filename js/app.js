@@ -497,6 +497,7 @@
         if (res.status === 409 && tries++ < 5) {
           state.id = newId();
           state.key = newKey();
+          state.registered = false;
           state.attempts = 1;
           state.firstFull = state.last.score === state.last.total ? 1 : null;
           save(state);
@@ -506,12 +507,16 @@
         state.attempts = res.body.attempts;
         state.firstFull = res.body.firstFull;
         state.pending = false;
+        state.registered = true; // this ID is now in the database, so its QR code can be scanned
         state.redeemed = res.body.redeemed;
         save(state);
       });
     }
     attempt().catch(function () { state.pending = true; save(state); }).then(result);
   }
+
+  // An unsaved result is saved as soon as the phone is back online, if its result screen is showing.
+  window.addEventListener('online', function () { if (state.pending && redraw === result) submitResult(); });
 
   function feedbackScreen() {
     var F = T.feedback, csat = null, learned = null, go;
@@ -553,13 +558,23 @@
     // best score, so a later lower score does not take the souvenir away).
     var earned = full || !!state.firstFull;
     var withQr = earned && souvenirsOn();
+    function score() { return el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }); }
     var buttons = [];
     if (last.answers) buttons.push({ label: T.ui.review, run: function () { review(0); } });
     buttons.push({ label: T.ui.tryAgain, run: startQuiz, primary: !full });
     var pending = state.pending
       ? el('p', { class: 'notice' }, [(withQr ? T.ui.notSaved : T.ui.notSavedAfter) + ' ', el('button', { class: 'linkbtn inline', type: 'button', onclick: submitResult }, [T.ui.retry])])
       : null;
-    var score = el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) });
+    // Officers' scans accept registered claims only, so a phone that has never saved its result
+    // gets no QR code yet. (One saved before keeps its QR code: the new attempt is just not counted yet.)
+    if (withQr && pending && !state.registered) {
+      show([
+        topbar('⌂ ' + T.ui.home, home),
+        el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [score(), el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.earnedBefore }), pending, pill()])
+      ], buttons, result, true);
+      return;
+    }
+
     if (!withQr) {
       // Not all correct yet, after the event, or once all souvenirs are gone: no QR code.
       var msgs = souvenirsOn() ? [T.ui.partialMsg]
@@ -567,7 +582,7 @@
         : [full ? T.ui.afterFull : T.ui.afterPartial];
       show([
         topbar('⌂ ' + T.ui.home, home),
-        el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [score]
+        el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [score()]
           .concat(msgs.map(function (m) { return m ? el('p', { class: 'msg', text: m }) : null; }))
           .concat([pending, souvenirsOn() ? pill() : null]))
       ], buttons, result, eventOpen());
@@ -585,11 +600,12 @@
     show([
       topbar('⌂ ' + T.ui.home, home),
       el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [
-        score,
+        score(),
         el('p', { class: 'msg', text: full ? T.ui.allCorrectMsg : T.ui.earnedBefore }),
         qrBox,
         el('p', { class: 'code' }, [T.ui.codeLabel + ': ', el('strong', { text: state.id }), ' · ' + T.ui.attempt + ' ' + state.attempts]),
-        pending || el('p', { class: 'saved', text: T.ui.saved }),
+        pending ? el('p', { class: 'notice' }, [T.ui.notSavedAfter + ' ', el('button', { class: 'linkbtn inline', type: 'button', onclick: submitResult }, [T.ui.retry])])
+          : el('p', { class: 'saved', text: T.ui.saved }),
         pill()
       ])
     ], buttons, result, true);

@@ -1,7 +1,7 @@
 {
  "model": "sarvam-105b",
  "mode": "review",
- "checked": "2026-10-30",
+ "checked": "2026-10-31",
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -396,12 +396,12 @@
    "reason": ""
   },
   "ui.notSaved": {
-   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "draft": "এখনও সেভ হয়নি (সংযোগ নেই)। কর্মকর্তা তবুও এই QR কোড স্ক্যান করতে পারবেন।",
-   "verdict": "fix",
-   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
-   "suggestion": "এখনো সেভ হয়নি (সংযোগ নেই)। কর্মকর্তা তবুও এই QR কোড স্ক্যান করতে পারবেন।",
-   "reason": "Spelling error: 'সংযোগ' should be 'সংযোগ'."
+   "english": "Not saved yet (no connection). Your QR code will show once it is saved.",
+   "draft": "এখনও সেভ হয়নি (সংযোগ নেই)। সেভ হলেই আপনার QR কোড দেখা যাবে।",
+   "verdict": "ok",
+   "back": "Still not saved (no connection). Once saved, your QR code will be seen.",
+   "suggestion": "",
+   "reason": ""
   },
   "ui.notSavedAfter": {
    "english": "Not saved yet (no connection).",
@@ -1458,6 +1458,22 @@
    "back": "See my result",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.translated": {
+   "english": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "draft": "AI দিয়ে অনুবাদ করা এবং মেশিন দিয়ে যাচাই করা। কিছু বুঝতে না পারলে ইংরেজি বেছে নিন বা 1799-এ কল করুন।",
+   "verdict": "ok",
+   "back": "Translated with AI and checked by machine. If you do not understand anything, choose English or call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translations": {
+   "english": "Translations are made with AI. English is the reference.",
+   "draft": "অনুবাদগুলো AI দিয়ে করা। ইংরেজি সংস্করণটিই মূল।",
+   "verdict": "fix",
+   "back": "Translations are done with AI. The English version itself is main.",
+   "suggestion": "অনুবাদগুলো AI দিয়ে করা। ইংরেজি{(\"}|{(\")}[{(\"}|{(\")}|{(\")}”",
+   "reason": "Adds 'version' which is not in the English and changes 'reference' to 'main'."
   }
  }
 }

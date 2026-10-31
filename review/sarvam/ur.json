@@ -1,7 +1,7 @@
 {
  "model": "sarvam-translate:v1",
  "mode": "back-translate",
- "checked": "2026-10-30",
+ "checked": "2026-10-31",
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -396,10 +396,10 @@
    "reason": ""
   },
   "ui.notSaved": {
-   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "draft": "ابھی محفوظ نہیں ہوا (کنکشن نہیں)۔ افسر پھر بھی یہ QR کوڈ اسکین کر سکتا ہے۔",
+   "english": "Not saved yet (no connection). Your QR code will show once it is saved.",
+   "draft": "ابھی محفوظ نہیں ہوا (کنکشن نہیں)۔ محفوظ ہوتے ہی آپ کا QR کوڈ نظر آئے گا۔",
    "verdict": "back-translation",
-   "back": "Not saved yet (no connection). The officer can still scan this QR code.",
+   "back": "Not yet saved (no connection). Your QR code will be displayed as soon as it is saved.",
    "suggestion": "",
    "reason": ""
   },
@@ -1456,6 +1456,22 @@
    "draft": "میرا نتیجہ دیکھیں",
    "verdict": "back-translation",
    "back": "See my result.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translated": {
+   "english": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "draft": "AI سے ترجمہ کیا گیا اور مشین سے جانچا گیا۔ کچھ سمجھ نہ آئے تو انگریزی منتخب کریں یا 1799 پر کال کریں۔",
+   "verdict": "back-translation",
+   "back": "Translated by AI and tested by a machine. If you don't understand anything, choose English or call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translations": {
+   "english": "Translations are made with AI. English is the reference.",
+   "draft": "ترجمے AI سے کیے گئے ہیں۔ انگریزی ورژن ہی اصل ہے۔",
+   "verdict": "back-translation",
+   "back": "Translations have been done by AI. The English version is the original.",
    "suggestion": "",
    "reason": ""
   }

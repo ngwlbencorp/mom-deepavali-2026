@@ -48,7 +48,7 @@
  "ui.tryAgain": "Coba lagi",
  "ui.backToResult": "Kembali ke kode QR saya",
  "ui.saved": "Hasil tersimpan ✓",
- "ui.notSaved": "Belum tersimpan (tidak ada koneksi). Petugas tetap bisa memindai kode QR ini.",
+ "ui.notSaved": "Belum tersimpan (tidak ada koneksi). Kode QR Anda akan muncul setelah tersimpan.",
  "ui.notSavedAfter": "Belum tersimpan (tidak ada koneksi).",
  "ui.retry": "Coba simpan lagi",
  "ui.yourAnswer": "Jawaban Anda",

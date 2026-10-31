@@ -54,7 +54,7 @@ window.SCAM_TEXT["id"] = {
     "tryAgain": "Coba lagi",
     "backToResult": "Kembali ke kode QR saya",
     "saved": "Hasil tersimpan ✓",
-    "notSaved": "Belum tersimpan (tidak ada koneksi). Petugas tetap bisa memindai kode QR ini.",
+    "notSaved": "Belum tersimpan (tidak ada koneksi). Kode QR Anda akan muncul setelah tersimpan.",
     "notSavedAfter": "Belum tersimpan (tidak ada koneksi).",
     "retry": "Coba simpan lagi",
     "yourAnswer": "Jawaban Anda",

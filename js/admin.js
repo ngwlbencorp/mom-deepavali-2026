@@ -122,7 +122,7 @@
     var info = function (rec) { return 'Code ' + rec.id + ' · ' + rec.score + '/' + rec.total + (rec.source === 'admin' ? ' · manual' : ' · attempt ' + rec.attempts); };
     Api.call('POST', '/api/scan', { code: code }, ROLE).then(function (r) {
       if (!r.ok) {
-        if (r.status === 400 || r.status === 404) return verdict('verdict', 'stop', r.status === 404 ? 'Code not found' : 'Not valid', r.body.message, [nextScan]);
+        if (r.status === 400 || r.status === 404) return verdict('verdict', 'stop', r.status === 404 ? (r.body.error === 'not_registered' ? 'Not saved yet' : 'Code not found') : 'Not valid', r.body.message, [nextScan]);
         return failed('verdict', r, function () { check(code); });
       }
       var rec = r.body.record;

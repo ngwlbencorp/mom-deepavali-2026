@@ -54,7 +54,7 @@ window.SCAM_TEXT["vi"] = {
     "tryAgain": "Thử lại",
     "backToResult": "Về mã QR của tôi",
     "saved": "Đã lưu kết quả ✓",
-    "notSaved": "Chưa lưu được (không có kết nối). Nhân viên vẫn có thể quét mã QR này.",
+    "notSaved": "Chưa lưu được (không có kết nối). Mã QR của bạn sẽ hiện ra khi đã lưu.",
     "notSavedAfter": "Chưa lưu được (không có kết nối).",
     "retry": "Lưu lại",
     "yourAnswer": "Câu trả lời của bạn",

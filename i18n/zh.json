@@ -48,7 +48,7 @@
  "ui.tryAgain": "再试一次",
  "ui.backToResult": "返回我的QR码",
  "ui.saved": "结果已保存 ✓",
- "ui.notSaved": "尚未保存（无网络）。官员仍可扫描这个QR码。",
+ "ui.notSaved": "尚未保存（无网络）。保存后会显示您的QR码。",
  "ui.notSavedAfter": "尚未保存（无网络）。",
  "ui.retry": "重新保存",
  "ui.yourAnswer": "您的答案",

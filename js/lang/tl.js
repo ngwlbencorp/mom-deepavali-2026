@@ -54,7 +54,7 @@ window.SCAM_TEXT["tl"] = {
     "tryAgain": "Subukan ulit",
     "backToResult": "Bumalik sa QR code ko",
     "saved": "Na-save ang resulta ✓",
-    "notSaved": "Hindi pa na-save (walang koneksyon). Ma-scan pa rin ng officer ang QR code na ito.",
+    "notSaved": "Hindi pa na-save (walang koneksyon). Lalabas ang iyong QR code kapag na-save na.",
     "notSavedAfter": "Hindi pa na-save (walang koneksyon).",
     "retry": "I-save ulit",
     "yourAnswer": "Sagot mo",

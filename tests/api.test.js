@@ -84,13 +84,15 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok((await call('POST', '/api/scan', { code: id() }, ADM)).status === 404, 'unknown typed code: 404');
   ok((await call('POST', '/api/scan', { code: encode({ id: A, score: 8, total: 8, attempts: 1 }).replace('|8/8|', '|7/8|') }, ADM)).status === 400, 'edited QR rejected');
 
-  // A phone that could not register: the officer's scan creates the claim, the phone claims it later.
+  // A phone that could not register: its QR is refused until it has (no claim is created from a QR).
   const B = id(), keyB = key();
   sc = await call('POST', '/api/scan', { code: encode({ id: B, score: 8, total: 8, attempts: 1, firstFull: 1, csat: 5, learned: 'Y' }) }, ADM);
-  ok(sc.status === 200 && sc.body.eligible && sc.body.record.source === 'self', 'offline phone QR: scan creates the claim');
-  s = await call('POST', '/api/submit', { id: B, key: keyB, score: 8, total: 8 });
-  ok(s.status === 200 && s.body.attempts === 2, 'that phone can still register its own ID later');
-  ok((await call('POST', '/api/submit', { id: B, key: key(), score: 8, total: 8 })).status === 409, 'and after that, other phones are locked out of it');
+  ok(sc.status === 404 && sc.body.error === 'not_registered', 'unregistered phone QR: refused as not saved yet');
+  s = await call('POST', '/api/submit', { id: B, key: keyB, score: 8, total: 8, csat: 5, learned: 'Y' });
+  ok(s.status === 200 && s.body.attempts === 1, 'that phone registers once back online');
+  sc = await call('POST', '/api/scan', { code: encode({ id: B, score: 8, total: 8, attempts: 1, firstFull: 1 }) }, ADM);
+  ok(sc.status === 200 && sc.body.eligible, 'then its QR scans as normal');
+  ok((await call('POST', '/api/submit', { id: B, key: key(), score: 8, total: 8 })).status === 409, 'and other phones are locked out of its ID');
 
   // ---- redeem ----
   ok((await call('POST', '/api/redeem', { id: A })).status === 401, 'redeem needs login');
@@ -132,7 +134,7 @@ const call = (method, path, body, token) => fetch(base + path, {
   // ---- dashboard and export ----
   const d = (await call('GET', '/api/dashboard', null, SUP)).body;
   ok(d.given === CAP && d.submissions === d.selfSubmissions + d.adminSubmissions && d.adminClaims > 0 && d.timeline.length >= 1, 'dashboard totals add up');
-  ok(d.csatN === 2 && d.csat[3] === 1 && d.csat[4] === 1 && d.learned.Y === 2, 'dashboard rating counts (phone submit + scanned offline QR)');
+  ok(d.csatN === 2 && d.csat[3] === 1 && d.csat[4] === 1 && d.learned.Y === 2, 'dashboard rating counts (two phone submits)');
   ok(d.firstTryRate !== null && d.selfFirstTry >= 1, `first-try rate computed (${Math.round(d.firstTryRate * 100)}%)`);
   const ex = await call('GET', '/api/export?table=claims', null, SUP);
   ok(ex.status === 200 && /text\/csv/.test(ex.h.get('content-type')) && ex.body.text.includes(A) && !ex.body.text.includes('device_key_hash'), 'claims CSV export, without device keys');

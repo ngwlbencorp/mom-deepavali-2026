@@ -48,7 +48,7 @@
  "ui.tryAgain": "Thử lại",
  "ui.backToResult": "Về mã QR của tôi",
  "ui.saved": "Đã lưu kết quả ✓",
- "ui.notSaved": "Chưa lưu được (không có kết nối). Nhân viên vẫn có thể quét mã QR này.",
+ "ui.notSaved": "Chưa lưu được (không có kết nối). Mã QR của bạn sẽ hiện ra khi đã lưu.",
  "ui.notSavedAfter": "Chưa lưu được (không có kết nối).",
  "ui.retry": "Lưu lại",
  "ui.yourAnswer": "Câu trả lời của bạn",

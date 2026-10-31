@@ -49,7 +49,8 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
       await pg.locator('#nav .btn').click();
     }
     await pg.locator('.result').waitFor();
-    return pg.locator('.code strong').textContent();
+    // no claim code while the result is unsaved (offline)
+    return (await pg.locator('.code strong').count()) ? pg.locator('.code strong').textContent() : null;
   }
 
   // ---- MW phone A ----
@@ -67,16 +68,24 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   const idB = await doQuiz(B);
   ok(idB !== idA && await B.locator('.saved').count() === 1, `phone B: clash detected, new ID issued and saved (${idA} -> ${idB})`);
 
-  // ---- MW phone C: no connection, then retry ----
+  // ---- MW phone C: no connection, then back online ----
   const Cp = await phone('C');
   await Cp.goto(site + 'index.html');
   await Cp.route(api + '/**', (r) => r.abort());
   await doQuiz(Cp);
   ok(await Cp.locator('.notice').count() === 1, 'phone C offline: shows "not saved yet" with Retry');
+  ok(await Cp.locator('.qr').count() === 0, 'phone C offline: no QR code until the result is saved');
   await Cp.unroute(api + '/**');
-  await Cp.click('text=Retry saving');
-  await Cp.locator('.saved').waitFor();
-  ok(true, 'phone C: retry saves once back online');
+  // the phone notices the connection is back (the browser's "online" event) and saves by itself
+  await Cp.context().setOffline(true); await Cp.context().setOffline(false);
+  await Cp.locator('.saved').waitFor({ timeout: 10000 });
+  ok(await Cp.locator('.qr').count() === 1, 'phone C: saves by itself once back online (no tap on Retry), and the QR code appears');
+  // phone C plays again with no connection: its ID is already registered, so its QR code stays
+  await Cp.route(api + '/**', (r) => r.abort());
+  await Cp.goto(site + 'index.html');
+  await doQuiz(Cp);
+  ok(await Cp.locator('.qr').count() === 1 && await Cp.locator('.notice').count() === 1, 'phone C replays offline: keeps its QR code (already registered), new attempt marked not saved');
+  await Cp.unroute(api + '/**');
 
   // ---- admins ----
   async function admin(email) {

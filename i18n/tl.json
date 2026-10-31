@@ -48,7 +48,7 @@
  "ui.tryAgain": "Subukan ulit",
  "ui.backToResult": "Bumalik sa QR code ko",
  "ui.saved": "Na-save ang resulta ✓",
- "ui.notSaved": "Hindi pa na-save (walang koneksyon). Ma-scan pa rin ng officer ang QR code na ito.",
+ "ui.notSaved": "Hindi pa na-save (walang koneksyon). Lalabas ang iyong QR code kapag na-save na.",
  "ui.notSavedAfter": "Hindi pa na-save (walang koneksyon).",
  "ui.retry": "I-save ulit",
  "ui.yourAnswer": "Sagot mo",

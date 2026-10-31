@@ -61,7 +61,7 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
    - **Same ID, same key:** the same phone retrying, so attempts +1.
    - **Same ID, different key:** another phone already owns it, so the server answers **409**. The phone makes a new ID and key and resubmits, up to 5 times. The MW never sees this.
 3. The QR code shows the registered ID. Officers scan it, or type the 8 characters. The database is the source of truth, not the QR contents.
-4. **No connection when submitting:** the result page says "not saved yet" with a Retry button, and still shows the QR. An officer's scan of that QR creates the claim from the QR, and the phone can still register it later.
+4. **No connection when submitting:** the result page says "not saved yet" with a Retry button, and shows no QR code. The phone saves by itself as soon as it is back online (or when Retry is tapped), and the QR code then appears. Only registered claims can be redeemed: registering is what stops two phones holding the same claim ID, so an officer's scan of a QR whose ID is not in the database is refused ("Not saved yet"). If a phone cannot get online, use manual input.
 
 **Odds of a random clash:** about 1 in 2.2 million at 1,000 phones. When one does happen, step 2 handles it.
 
@@ -216,9 +216,9 @@ These need Node 20+, Postgres, and Playwright with Chromium.
 ```bash
 npm install
 DATABASE_URL=postgres://... ADMIN_PASSWORD=a SUPERADMIN_USER=boss SUPERADMIN_PASSWORD=b REDEEM_CAP=15 node tests/dev-server.js 3000
-node tests/api.test.js http://127.0.0.1:3000 a boss b 15        # 46 API checks; needs an EMPTY database
+node tests/api.test.js http://127.0.0.1:3000 a boss b 15        # 87 API checks; needs an EMPTY database
 # restart the dev server with REDEEM_CAP=500, serve a copy of the pages whose js/config.js points at :3000, then:
-node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b ./shots   # 31 browser checks
+node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b ./shots   # 46 browser checks
 ```
 
 Both test scripts reset data. Never run them against the production database.

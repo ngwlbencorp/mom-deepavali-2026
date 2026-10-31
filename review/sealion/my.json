@@ -1,6 +1,6 @@
 {
  "model": "aisingapore/Nemotron-SEA-LION-v4.8-120B-A12B",
- "checked": "2026-10-30",
+ "checked": "2026-10-31",
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -363,10 +363,10 @@
    "reason": ""
   },
   "ui.notSaved": {
-   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "draft": "မသိမ်းရသေးပါ (အင်တာနက် မရှိပါ)။ အရာရှိက ဤ QR ကုဒ်ကို စကင်ဖတ်နိုင်ပါသေးသည်။",
+   "english": "Not saved yet (no connection). Your QR code will show once it is saved.",
+   "draft": "မသိမ်းရသေးပါ (အင်တာနက် မရှိပါ)။ သိမ်းပြီးတာနဲ့ သင့် QR ကုဒ် ပေါ်လာပါမယ်။",
    "verdict": "ok",
-   "back": "Not saved yet (no connection). An officer can still scan this QR code.",
+   "back": "Not saved yet (no connection). Your QR code will show once it is saved.",
    "suggestion": "",
    "reason": ""
   },
@@ -636,7 +636,7 @@
   },
   "learn[2].title": {
    "english": "Easy money (scam mule)",
-   "draft": "လွယ်ကူသော ငွေ (scam mule)",
+   "draft": "လွယ်ကူသော ငွေ (ငွေလိမ်ကြားခံ၊ scam mule)",
    "verdict": "ok",
    "back": "Easy money (scam mule)",
    "suggestion": "",
@@ -836,11 +836,11 @@
   },
   "quiz[0].msg.bubbles[0][0].t": {
    "english": "Dear worker,",
-   "draft": "ချစ်လှစွာသော အလုပ်သမား၊",
-   "verdict": "fix",
+   "draft": "လေးစားရပါသော အလုပ်သမား၊",
+   "verdict": "ok",
    "back": "Dear worker,",
-   "suggestion": "အလုပ်သမား၊",
-   "reason": "ချစ်လှစွာသော is too formal/literary for a fake SMS. Scam messages usually just say 'Dear worker' or similar without extra adjectives."
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[0].msg.bubbles[0][1].t": {
    "english": "you have an unpaid work permit fine of $350.",
@@ -1100,9 +1100,9 @@
   },
   "quiz[5].explain": {
    "english": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
-   "draft": "သင့်ဘဏ်အကောင့် သို့မဟုတ် Singpass ကို တခြားသူ သုံးခွင့်ပေးလျှင် သင်သည် scam mule ဖြစ်သွားမည်။ ဤသည်မှာ ရာဇဝတ်မှု ဖြစ်သည်။ ငြင်းဆိုပြီး တိုင်ကြားပါ။",
+   "draft": "သင့်ဘဏ်အကောင့် သို့မဟုတ် Singpass ကို တခြားသူ သုံးခွင့်ပေးလျှင် သင်သည် ငွေလိမ်ကြားခံ (scam mule) ဖြစ်သွားမည်။ ဤသည်မှာ ရာဇဝတ်မှု ဖြစ်သည်။ ငြင်းဆိုပြီး တိုင်ကြားပါ။",
    "verdict": "ok",
-   "back": "If you let others use your bank account or Singpass, you will become a scam mule. This is a crime. Say no and report it.",
+   "back": "Letting others use your bank account or Singpass makes you a scam mule. It is a crime. Say no and report it.",
    "suggestion": "",
    "reason": ""
   },
@@ -1308,7 +1308,7 @@
   },
   "quiz[1].cards[2].why": {
    "english": "This is a scam mule offer. Letting others use your bank card is a crime.",
-   "draft": "ဤသည်မှာ scam mule ကမ်းလှမ်းချက် ဖြစ်သည်။ သင့်ဘဏ်ကတ်ကို အခြားသူ သုံးခွင့်ပေးခြင်းသည် ရာဇဝတ်မှု ဖြစ်သည်။",
+   "draft": "ဤသည်မှာ ငွေလိမ်ကြားခံ (scam mule) ဖြစ်ရန် ကမ်းလှမ်းချက် ဖြစ်သည်။ သင့်ဘဏ်ကတ်ကို အခြားသူ သုံးခွင့်ပေးခြင်းသည် ရာဇဝတ်မှု ဖြစ်သည်။",
    "verdict": "ok",
    "back": "This is a scam mule offer. Letting others use your bank card is a crime.",
    "suggestion": "",
@@ -1455,6 +1455,22 @@
    "draft": "GovTech ၏ ကော်ပိုရိတ် လူမှုတာဝန်ယူမှု အစီအစဉ်",
    "verdict": "ok",
    "back": "A GovTech Corporate Social Responsibility initiative",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translated": {
+   "english": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "draft": "AI ဖြင့် ဘာသာပြန်ပြီး စက်ဖြင့် စစ်ဆေးထားပါသည်။ နားမလည်ပါက အင်္ဂလိပ်ဘာသာသို့ ပြောင်းပါ သို့မဟုတ် 1799 ကို ဖုန်းခေါ်ပါ။",
+   "verdict": "ok",
+   "back": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translations": {
+   "english": "Translations are made with AI. English is the reference.",
+   "draft": "ဘာသာပြန်များကို AI ဖြင့် ပြုလုပ်ထားပါသည်။ အင်္ဂလိပ်ဘာသာသည် မူရင်းဖြစ်ပါသည်။",
+   "verdict": "ok",
+   "back": "Translations are made with AI. English is the reference.",
    "suggestion": "",
    "reason": ""
   }

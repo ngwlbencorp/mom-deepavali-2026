@@ -54,7 +54,7 @@ window.SCAM_TEXT["zh"] = {
     "tryAgain": "再试一次",
     "backToResult": "返回我的QR码",
     "saved": "结果已保存 ✓",
-    "notSaved": "尚未保存（无网络）。官员仍可扫描这个QR码。",
+    "notSaved": "尚未保存（无网络）。保存后会显示您的QR码。",
     "notSavedAfter": "尚未保存（无网络）。",
     "retry": "重新保存",
     "yourAnswer": "您的答案",

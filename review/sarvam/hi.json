@@ -1,7 +1,7 @@
 {
  "model": "sarvam-105b",
  "mode": "review",
- "checked": "2026-10-30",
+ "checked": "2026-10-31",
  "results": {
   "event.greeting": {
    "english": "Happy Deepavali!",
@@ -396,10 +396,10 @@
    "reason": ""
   },
   "ui.notSaved": {
-   "english": "Not saved yet (no connection). An officer can still scan this QR code.",
-   "draft": "अभी सेव नहीं हुआ (कनेक्शन नहीं है)। अधिकारी फिर भी यह QR कोड स्कैन कर सकते हैं।",
+   "english": "Not saved yet (no connection). Your QR code will show once it is saved.",
+   "draft": "अभी सेव नहीं हुआ (कनेक्शन नहीं है)। सेव होते ही आपका QR कोड दिखेगा।",
    "verdict": "ok",
-   "back": "Not saved yet (no connection). Officer can still scan this QR code.",
+   "back": "Not saved yet (connection is not). As soon as saved, your QR code will show.",
    "suggestion": "",
    "reason": ""
   },
@@ -1229,11 +1229,11 @@
   },
   "quiz[3].explain": {
    "english": "Only install apps from the official app store on your phone. Apps from links can steal your money.",
-   "draft": "ऐप केवल अपने फ़ोन के आधिकारिक ऐप स्टोर से इंस्टॉल करें। लिंक वाले ऐप आपके पैसे चुरा सकते हैं।",
-   "verdict": "fix",
+   "draft": "ऐप केवल अपने फ़ोन के आधिकारिक ऐप स्टोर से इंस्टॉल करें। लिंक से मिले ऐप आपके पैसे चुरा सकते हैं।",
+   "verdict": "ok",
    "back": "Install apps only from your phone's official app store. Apps obtained from links can steal your money.",
-   "suggestion": "ऐप केवल आपके फ़ोन के आधिकारिक ऐप स्टोर से इंस्टॉल करें। लिंक से मिले ऐप्स आपके पैसे चुरा सकते हैं।",
-   "reason": "Clarify that apps obtained from links can steal money, not just apps that contain links. Also use 'आपके' for consistency."
+   "suggestion": "",
+   "reason": ""
   },
   "quiz[4].title": {
    "english": "Spot the red flags",
@@ -1458,6 +1458,22 @@
    "back": "See my result",
    "suggestion": "",
    "reason": ""
+  },
+  "ui.translated": {
+   "english": "Translated with AI and checked by machine. If anything is unclear, switch to English or call 1799.",
+   "draft": "AI से अनुवाद किया गया और मशीन से जाँचा गया। कुछ समझ न आए, तो अंग्रेज़ी चुनें या 1799 पर कॉल करें।",
+   "verdict": "ok",
+   "back": "Translation was done by AI and checked by machine. If something is not understood, choose English or call 1799.",
+   "suggestion": "",
+   "reason": ""
+  },
+  "ui.translations": {
+   "english": "Translations are made with AI. English is the reference.",
+   "draft": "अनुवाद AI से किए गए हैं। अंग्रेज़ी संस्करण ही मूल है।",
+   "verdict": "fix",
+   "back": "Translations by AI were done. English version only is original.",
+   "suggestion": "अनुवाद AI से किए गए हैं। अंग्रेज़ी मूल है।",
+   "reason": "Added 'hi' (only) not in source; 'sansakaran' (version) is imprecise for 'reference'."
   }
  }
 }
