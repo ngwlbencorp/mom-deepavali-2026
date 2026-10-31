@@ -215,6 +215,9 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event (e
   scores are accepted risks: a fake score still needs an officer to scan the phone in person.
 - **Origin checks do not protect the public API**: every ducks.ai page shares one origin, and
   scripts can send any origin they like. Only logins truly protect data.
+- **`ALLOWED_ORIGINS=https://view.ducks.ai.tech.gov.sg`** is set in Vercel (owner, 31 Oct; live
+  and checked). It stops other websites' pages from using the API in visitors' browsers. The
+  value must include `view.`, the pages' real origin, or the live pages' own calls are refused.
 - Login tokens last 14 hours and only in the browser tab that logged in.
 
 ## ducks.ai
@@ -327,10 +330,6 @@ Full commands are in README, "Tests (local)". In short:
 
 ## Open items (not yet decided)
 
-- `ALLOWED_ORIGINS` is not set in Vercel, so the API accepts calls from any website. The value
-  would be `https://view.ducks.ai.tech.gov.sg` (the pages' real origin, with `view.`; without it
-  the live pages' own API calls would be refused). It blocks other websites' browsers, not
-  scripts or other ducks.ai pages. The owner's step.
 - Failed-login throttling: proposed, waiting for the owner to approve table and field names.
 - Vercel's Hobby plan is for personal, non-commercial use; whether to move to Pro for the event
   month is the owner's call.
