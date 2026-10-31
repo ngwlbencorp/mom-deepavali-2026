@@ -82,7 +82,7 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 | `REDEEM_CAP` | `500` |
 | `EVENT_END` | optional; when redemption closes, default `2026-11-08T21:00:00+08:00`. Keep it equal to `eventEnd` in `js/config.js` |
 | `SESSION_SECRET` | optional; signs login tokens. If unset, it is derived from the passwords, so changing any password logs everyone out |
-| `ALLOWED_ORIGINS` | optional, e.g. `https://ducks.ai.tech.gov.sg`; if unset, any origin is accepted (logins still protect everything except the quiz submit) |
+| `ALLOWED_ORIGINS` | optional; for the ducks.ai pages it must be `https://view.ducks.ai.tech.gov.sg` (with `view.`, the pages' real origin), or their API calls are refused. If unset, any origin is accepted (logins still protect everything except the quiz submit). It only binds browsers on other websites: every ducks.ai page shares this origin, and scripts can send any origin |
 | `BUG_API_TOKEN` | optional; a long random secret (at least 32 characters) that lets the bug-fixing agent read bug reports and record fixes, and nothing else. Put the same value in the Claude environment's secrets. Unset = only the superadmin can read reports |
 | `RESEND_API_KEY`, `BUG_NOTIFY_EMAIL` | optional; with both set, each new bug report sends a short email (report number only) through [Resend](https://resend.com). `BUG_NOTIFY_FROM` overrides the sender |
 
