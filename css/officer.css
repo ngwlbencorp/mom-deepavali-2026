@@ -1,0 +1,62 @@
+/* Officer page only: a neutral look, light or dark following the phone's setting. The event's plum
+   and gold stay on the mini-site; officers need a clear working tool, not the festive theme.
+   These override the shared colour variables in site.css; --plum is the accent here, and
+   --accent-text is its readable form for text on the page background. */
+:root {
+  --plum: #3d4bc0;   /* accent: buttons and selected states (white text 7:1) */
+  --plum-2: #3d4bc0;
+  --accent-text: #3d4bc0;
+  --gold: #b7791f;   /* amber: scan frame, "try again" verdicts, open reports */
+  --gold-soft: #fdf4e3;
+  --ink: #1a1d23;
+  --muted: #59606b;
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --line: #dde0e5;
+  --ok: #1b7a43;
+  --ok-bg: #e7f5ec;
+  --no: #b42318;
+  --no-bg: #fdecea;
+  --field: #ffffff;
+  --chip: #eceef1;
+  --header: #2b3240;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --plum: #4f5bd5;   /* white text 5.5:1 */
+    --plum-2: #4f5bd5;
+    --accent-text: #a9b1ff;
+    --gold: #d69e2e;
+    --gold-soft: #2b2416;
+    --ink: #ecedf0;
+    --muted: #a3a8b3;
+    --bg: #0f1115;
+    --card: #1a1d23;
+    --line: #343944;
+    --ok: #4cc27a;
+    --ok-bg: #13291c;
+    --no: #ff7b72;
+    --no-bg: #3a1714;
+    --field: #111318;
+    --chip: #2a2e37;
+    --header: #1f2230;
+  }
+}
+
+a { color: var(--accent-text); }
+.top { background: var(--header); }
+.card, .counter, .bigbtn { box-shadow: none; }
+.card, .counter { border: 1px solid var(--line); }
+
+.counter-main b, .bugsum { color: var(--accent-text); }
+.bigbtn.alt { color: var(--accent-text); border-color: var(--line); }
+.btn.secondary { background: var(--chip); color: var(--ink); border-color: var(--line); }
+.bstat { color: var(--ink); }
+.bstat.closed { background: var(--chip); }
+
+.field input, .typecode input, .field select, .mq .pair button,
+#bugForm select, #bugForm textarea { background: var(--field); color: var(--ink); border-color: var(--line); }
+
+/* white text on these needs a dark red whatever the scheme */
+.bugthumbs button { background: #b42318; }

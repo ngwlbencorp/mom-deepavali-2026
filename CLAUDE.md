@@ -168,6 +168,9 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event (e
   screen (owner, 28 and 30 Oct).
 - **Typing the 8-character code is a fallback for the camera**, and manual input covers MWs
   without a phone.
+- **Neutral look, light or dark following the phone's setting** (owner, 31 Oct). The page is a
+  working tool for officers only, so it does not follow the Deepavali theme. `css/officer.css`
+  overrides the shared colour variables for this page alone; the mini-site keeps plum and gold.
 
 ### Superadmin page
 

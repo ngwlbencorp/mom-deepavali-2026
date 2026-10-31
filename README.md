@@ -11,7 +11,7 @@ The Deepavali scam quiz, with:
 | Page | Who | What |
 |---|---|---|
 | `/index.html` | MWs | the quiz; the slide QR code points here |
-| `/admin/index.html` | officers | log in → **Scan QR** or **Manual input**; live "souvenirs left" counter |
+| `/admin/index.html` | officers | log in → **Scan QR** or **Manual input**; live "souvenirs left" counter. Neutral colours (`css/officer.css`), light or dark following the phone's setting; the Deepavali theme stays on the mini-site |
 | `/superadmin/index.html` | you | Dashboard · Admins (CSV upload) · Data (CSV download, reset) |
 
 The admin and superadmin pages are not linked from the quiz. Bookmark them.

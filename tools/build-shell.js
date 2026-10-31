@@ -30,6 +30,10 @@ const title = (pageHtml.match(/<title>([^<]*)<\/title>/) || [])[1];
 if (title) shellHtml = shellHtml.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
 if (admin) shellHtml = shellHtml.replace(/<noscript>[\s\S]*?<\/noscript>/, '<noscript><p>Please turn on JavaScript.</p></noscript>')
   .replace('<meta name="color-scheme" content="light">', '<meta name="color-scheme" content="light">\n<meta name="robots" content="noindex, nofollow">');
+// Officer page: neutral loading screen, light or dark with the phone's setting (as css/officer.css).
+if (admin && !sup) shellHtml = shellHtml.replace('content="light"', 'content="light dark"').replace('content="#4a1d5e"', 'content="#2b3240"')
+  .replace('html, body { margin: 0; background: #fbf6ef; }', 'html, body { margin: 0; background: #f4f5f7; }\n  @media (prefers-color-scheme: dark) { html, body { background: #0f1115; } #shell-loading { color: #a3a8b3 !important; } }')
+  .replace('color: #4a1d5e;', 'color: #59606b;');
 if (sup) shellHtml = shellHtml.replace('content="light"', 'content="dark"').replace('content="#4a1d5e"', 'content="#1f2230"')
   .replace('background: #fbf6ef;', 'background: #0d0d0d;').replace('color: #4a1d5e;', 'color: #a8a7a0;');
 files.push(['index.html', Buffer.from(shellHtml)]);
