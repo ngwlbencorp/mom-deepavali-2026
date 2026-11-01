@@ -112,11 +112,44 @@
       box.appendChild(div);
     });
     renderLanguages(d.languages || []);
+    renderBreakdowns(d);
     var key = JSON.stringify([d.timeline, d.bucketMinutes, d.cap, d.csat, d.csatN, window.innerWidth]);
     if (key === drawn) return;
     drawn = key;
     lineChart(d);
     csatChart(d);
+  }
+
+  // A small table: header cells, then rows of cell values.
+  function table(id, head, rows) {
+    var t = document.createElement('table'), tr = document.createElement('tr');
+    head.forEach(function (h) { var th = document.createElement('th'); th.textContent = h; tr.appendChild(th); });
+    var th = document.createElement('thead'); th.appendChild(tr); t.appendChild(th);
+    var body = document.createElement('tbody');
+    rows.forEach(function (r) {
+      var row = document.createElement('tr');
+      r.forEach(function (v) { var td = document.createElement('td'); td.textContent = v; row.appendChild(td); });
+      body.appendChild(row);
+    });
+    t.appendChild(body);
+    $(id).replaceChildren(t);
+  }
+  var pctOf = function (a, b) { return b ? Math.round(a * 100 / b) + '%' : '–'; };
+  var REASONS = { no_phone: 'No phone', phone_issue: "Phone didn't work", '?': 'Not recorded' };
+  function renderBreakdowns(d) {
+    var quiz = (window.SCAM_CONTENT && window.SCAM_CONTENT.quiz) || [];
+    var fa = d.firstAttemptItems || { attempts: 0, items: [] };
+    $('itemNote').textContent = 'Each phone\'s first attempt (' + fa.attempts + ' so far): the share of points scored on each question. The lowest shows which scam is least understood.';
+    table('itemTable', ['Question', 'Points scored', 'All correct'], fa.items.map(function (x, i) {
+      return ['Q' + (i + 1) + ' ' + ((quiz[i] && quiz[i].title) || ''), x.share == null ? '–' : Math.round(x.share * 100) + '%', x.allCorrect + ' of ' + x.n];
+    }));
+    var st = d.storiesFirstTry || [];
+    table('storyTable', ['Before the quiz', 'Phones', 'First-try full score'], [true, false].map(function (v) {
+      var r = st.filter(function (x) { return x.viewed === v; })[0] || { claims: 0, firstTry: 0 };
+      return [v ? 'Viewed stories' : 'No stories', r.claims, r.firstTry + ' (' + pctOf(r.firstTry, r.claims) + ')'];
+    }));
+    var mr = d.manualReasons || [], mt = mr.reduce(function (s, x) { return s + x.claims; }, 0);
+    table('reasonTable', ['Reason', 'Manual claims', 'Share'], mr.map(function (x) { return [REASONS[x.reason] || x.reason, x.claims, pctOf(x.claims, mt)]; }));
   }
 
   var LANG_NAMES = { en: 'English', bn: 'Bengali', my: 'Burmese', hi: 'Hindi', ta: 'Tamil', ur: 'Urdu', '?': 'Not recorded' };

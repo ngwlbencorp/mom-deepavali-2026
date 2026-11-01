@@ -40,10 +40,19 @@
         <p class="muted small" id="updated">Loading…</p>
         <p class="muted small" id="dbline"></p>
         <div class="tiles" id="tiles"></div>
-        <div class="card" id="langCard" hidden>
-          <h3>Claims by language</h3>
+        <div class="card breakdowns" id="langCard" hidden>
+          <h3>Breakdowns</h3>
+          <h4>Claims by language</h4>
           <p class="muted small">Phones' claims, by the language of their latest attempt. Manual claims have no language.</p>
           <div class="tablewrap" id="langTable"></div>
+          <h4>First attempt, question by question</h4>
+          <p class="muted small" id="itemNote">Each phone's first attempt: the share of points scored on each question. The lowest shows which scam is least understood.</p>
+          <div class="tablewrap" id="itemTable"></div>
+          <h4>Learning stories and first-try full score</h4>
+          <p class="muted small">Phones that viewed at least one learning story to the end before their first attempt, against those that did not.</p>
+          <div class="tablewrap" id="storyTable"></div>
+          <h4>Why manual input</h4>
+          <div class="tablewrap" id="reasonTable"></div>
         </div>
 
         <div class="card">
@@ -126,6 +135,7 @@
   <div class="tooltip" id="tip" hidden></div>
   <script src="../js/config.js"></script>
   <script src="../js/api.js"></script>
+  <script src="../js/content.js"></script>
   <script src="../js/ducks-keys.js"></script>
   <script src="../js/superadmin.js"></script>
 </body>

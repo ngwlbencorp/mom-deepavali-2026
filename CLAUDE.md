@@ -187,6 +187,14 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event (e
   Per attempt, because a worker can switch language between attempts; per claim (latest attempt)
   for simple counts. The dashboard shows claims by language. Not captured: visitors who never
   finish the quiz, and manual claims.
+- **Learning measures: `submissions.item_scores`, `scans.stories_viewed`, `scans.manual_reason`**
+  (owner approved, 1 Nov). Why: "tries to full score" is a weak learning signal because answers can
+  be reviewed after an attempt, so a retry is near-certain to score full marks. First attempts
+  question by question show which scam is least understood; stories viewed before the first
+  attempt test whether the learning section helps; the manual reason ("No phone" or "Phone didn't
+  work") makes manual claims a proxy for smartphone access. The officer picks the reason with one
+  tap on two large side-by-side buttons, no dropdown (owner, 1 Nov); two options, not three,
+  because the smartphone question only needs "has a phone or not".
 - **Database awake/asleep status is shown to the superadmin only** (owner, 29 Oct): officers do
   not need it. Neon's free plan sleeps after 5 minutes, and the first query after that takes a
   second or more. The owner wanted no lag on the first scan of the day: an officer logging in

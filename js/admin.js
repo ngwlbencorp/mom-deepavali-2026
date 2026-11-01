@@ -232,14 +232,25 @@
       li.querySelector('b').textContent = item.answer;
       list.appendChild(li);
     });
-    $('manualSubmit').disabled = false;
+    manualReason = null;
+    reasonButtons.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+    $('manualSubmit').disabled = true; // until the officer picks why manual input was needed
   }
+  // One tap: why manual input was needed (no phone, or a phone that did not work).
+  var manualReason = null, reasonButtons = [].slice.call(document.querySelectorAll('.reason button'));
+  reasonButtons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      manualReason = b.dataset.reason;
+      reasonButtons.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      $('manualSubmit').disabled = false;
+    });
+  });
   var nextPerson = { label: 'Next person', secondary: true, run: function () { resetManual(); window.scrollTo(0, 0); } };
 
   function submitManual() {
     $('manualSubmit').disabled = true;
     var answers = C.manual.questions.map(function () { return true; });
-    Api.call('POST', '/api/manual', { answers: answers }, ROLE).then(function (r) {
+    Api.call('POST', '/api/manual', { answers: answers, reason: manualReason }, ROLE).then(function (r) {
       if (!r.ok) return failed('mverdict', r, submitManual);
       if (r.body.stats) showStats(r.body.stats);
       var info = 'Code ' + r.body.id;

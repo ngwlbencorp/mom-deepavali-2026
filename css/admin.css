@@ -87,6 +87,15 @@ html.on-ducks .top.slim { padding-top: 64px; }
 .mq .pair button[aria-pressed="true"].yes { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
 .mq .pair button[aria-pressed="true"].no { background: var(--no-bg); border-color: var(--no); color: var(--no); }
 
+/* why manual input: two large one-tap choices side by side */
+.reasonq { font-weight: 700; margin: 8px 0 4px; }
+.reason { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 14px; }
+.reason button {
+  min-height: 52px; padding: 6px 8px; font: inherit; font-weight: 700; border-radius: 10px; cursor: pointer;
+  background: var(--field, #fff); color: var(--ink); border: 2px solid var(--line);
+}
+.reason button[aria-pressed="true"] { background: var(--plum); border-color: var(--plum); color: #fff; }
+
 /* ---------- bug report ---------- */
 #bugForm select, #bugForm textarea { width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 2px solid var(--line); background: #fff; box-sizing: border-box; }
 .bugthumbs { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }

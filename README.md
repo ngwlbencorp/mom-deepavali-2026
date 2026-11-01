@@ -139,7 +139,7 @@ Check **Vercel → Usage** after the briefing and the day before the event. Hobb
 ## Reporting
 
 - **Dashboard** (refreshes every 15 seconds): a **Database** line under the refresh time, superadmin only, showing whether the database was awake and how fast it answered (Neon's free plan sleeps after 5 minutes without queries; the first query after that takes a second or more); souvenirs given vs cap; quiz submissions (self and manual); MWs reached (claim IDs); first-try full-score rate; eventual full-score rate; average attempts to full score; average satisfaction and its distribution; "learned something new". There is also a cumulative chart over time, with a table view.
-- **Claims by language:** a table under the dashboard tiles: phones' claims by the language of their latest attempt.
+- **Breakdowns** (a card under the dashboard tiles): claims by language; each phone's first attempt question by question (share of points, and how many got it all correct), which shows the least understood scam; first-try full score for phones that viewed learning stories before the quiz against those that did not; manual claims by reason (no phone, or a phone that did not work: a proxy for smartphone access).
 - **Data tab:** CSV downloads of `claims` (one row per claim ID), `submissions` (one row per quiz attempt) and `admins`. Both claims and submissions include the language.
 
 ### ⚠ Check whether the site can really measure first-try and multiple-try success
@@ -170,6 +170,9 @@ The table `scans` keeps the original eight columns from the brief: `id, score, t
 | `scans` | `created_by` | officer email for manual claims |
 | `submissions` | `id, claim_id, attempt, score, total, source, submitted_by, created_at` | one row per quiz attempt or manual submission |
 | `submissions` | `language` | mini-site language of that attempt; empty for manual submissions |
+| `submissions` | `item_scores` | points per question in quiz order, e.g. `1,1,0,3/4,1,0` (`p/m` for a question worth m points); phones only, from 1 Nov 2026 |
+| `scans` | `stories_viewed` | learning stories viewed to the end before the first attempt (0 to 6); phones only, from 1 Nov 2026 |
+| `scans` | `manual_reason` | why the officer used manual input: `no_phone` or `phone_issue`; manual claims only, from 1 Nov 2026 |
 | `admins` | `email, added_at` | officers allowed to log in |
 
 No names, FINs or phone numbers are stored. The claim ID is random, and officer emails are the only personal data.

@@ -65,6 +65,8 @@ main.wide { max-width: 960px; }
   #updated, #dbline { font-size: .75rem; }
 }
 
+.breakdowns h4 { margin: 18px 0 2px; font-size: 1rem; }
+.breakdowns h4:first-of-type { margin-top: 4px; }
 .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .9rem; color: var(--text-secondary); margin-bottom: 6px; }
 .legend i { display: inline-block; width: 16px; height: 2px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
 .legend i.ref { height: 0; border-top: 1px solid var(--ref); }

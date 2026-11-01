@@ -66,13 +66,15 @@ const call = (method, path, body, token) => fetch(base + path, {
 
   // ---- self-submit: registration and clash ----
   const A = id(), keyA = key();
-  let s = await call('POST', '/api/submit', { id: A, key: keyA, score: 6, total: 8, csat: 4, learned: 'Y', language: 'en' });
+  let s = await call('POST', '/api/submit', { id: A, key: keyA, score: 6, total: 8, csat: 4, learned: 'Y', language: 'en', item_scores: '1,1,0,3/4,1,0', stories_viewed: 2 });
   ok(s.status === 200 && s.body.status === 'registered' && s.body.attempts === 1 && s.body.firstFull === null, 'first submit registers the ID');
   s = await call('POST', '/api/submit', { id: A, key: keyA, score: 8, total: 8, language: 'ta' });
   ok(s.body.status === 'updated' && s.body.attempts === 2 && s.body.firstFull === 2 && s.body.full, 'same phone retries: attempt 2, first full on attempt 2');
   s = await call('POST', '/api/submit', { id: A, key: key(), score: 8, total: 8 });
   ok(s.status === 409 && s.body.error === 'id_taken', 'another phone with the same ID gets 409 id_taken');
   ok((await call('POST', '/api/submit', { id: id(), key: key(), score: 8, total: 8, language: 'Tamil!' })).status === 400, 'invalid language rejected');
+  ok((await call('POST', '/api/submit', { id: id(), key: key(), score: 8, total: 8, item_scores: 'all right' })).status === 400, 'invalid item scores rejected');
+  ok((await call('POST', '/api/submit', { id: id(), key: key(), score: 8, total: 8, stories_viewed: -1 })).status === 400, 'invalid stories count rejected');
   ok((await call('POST', '/api/submit', { id: 'ILOU0000', key: keyA, score: 8, total: 8 })).status === 400, 'ID with excluded letters rejected');
   ok((await call('POST', '/api/submit', { id: id(), key: keyA, score: 9, total: 8 })).status === 400, 'score above total rejected');
   ok((await call('POST', '/api/submit', { id: id(), key: 'short', score: 8, total: 8 })).status === 400, 'bad device key rejected');
@@ -107,7 +109,8 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok((await call('POST', '/api/redeem', { id: P }, ADM)).body.status === 'not_eligible', 'partial score cannot redeem');
 
   // ---- manual (admin-assisted) ----
-  let m = await call('POST', '/api/manual', { answers: [true, true, true] }, ADM);
+  ok((await call('POST', '/api/manual', { answers: [true, true, true], reason: 'other' }, ADM)).status === 400, 'manual reason must be no_phone or phone_issue');
+  let m = await call('POST', '/api/manual', { answers: [true, true, true], reason: 'no_phone' }, ADM);
   const m2 = await call('POST', '/api/manual', { answers: [true, true, true] }, ADM);
   ok(m.body.status === 'given' && m2.body.status === 'given' && m.body.id !== m2.body.id, 'manual all-correct gives a souvenir; identical repeats are NOT treated as duplicates');
   m = await call('POST', '/api/manual', { answers: [true, false, true] }, ADM2);
@@ -138,6 +141,14 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok(d.csatN === 2 && d.csat[3] === 1 && d.csat[4] === 1 && d.learned.Y === 2, 'dashboard rating counts (two phone submits)');
   const langs = Object.fromEntries(d.languages.map((x) => [x.language, x.claims]));
   ok(langs.ta >= 1 && langs['?'] >= 1 && !('en' in langs), `dashboard claims by language use each claim's latest attempt (${JSON.stringify(d.languages)})`);
+  const fa = d.firstAttemptItems;
+  ok(fa.attempts === 1 && fa.items.length === 6 && fa.items[2].share === 0 && fa.items[3].share === 0.75 && fa.items[0].allCorrect === 1,
+    'dashboard: first attempts question by question (' + JSON.stringify(fa) + ')');
+  const viewed = d.storiesFirstTry.find((x) => x.viewed === true);
+  ok(viewed && viewed.claims === 1 && viewed.firstTry === 0, 'dashboard: stories viewed before the first attempt, against first-try full score');
+  ok(d.manualReasons.some((x) => x.reason === 'no_phone' && x.claims === 1), 'dashboard: manual claims by reason');
+  const claimsCsv0 = (await call('GET', '/api/export?table=claims', null, SUP)).body.text;
+  ok(/,stories_viewed,manual_reason,/.test(claimsCsv0.split('\n')[0]) && /,2,,/.test(claimsCsv0) && /,no_phone,/.test(claimsCsv0), 'claims export has stories viewed and manual reason');
   const subsCsv = await call('GET', '/api/export?table=submissions', null, SUP);
   ok(/,language,/.test(subsCsv.body.text.split('\n')[0]) && /,self,en,/.test(subsCsv.body.text) && /,self,ta,/.test(subsCsv.body.text), 'submissions export has each attempt\'s language');
   const claimsCsv = await call('GET', '/api/export?table=claims', null, SUP);

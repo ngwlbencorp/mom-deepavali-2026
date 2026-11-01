@@ -262,6 +262,8 @@
     var first = si === 0 && frame === 0;
     var prev = function () { if (frame) story(si, 0); else story(si - 1, 1); };
     var next = function () { if (!frame) story(si, 1); else if (si < T.learn.length - 1) story(si + 1, 0); else act(); };
+    // a story counts as viewed once its second screen is reached (sent with the quiz result)
+    if (frame === 1) { state.seen = state.seen || []; if (state.seen.indexOf(si) < 0) { state.seen.push(si); save(state); } }
     var body;
     if (frame === 0) {
       var STEP = 0.8, flagged = {}, extra = s.chat.attachment ? 1 : 0;
@@ -477,7 +479,9 @@
     var score = 0, total = 0;
     T.quiz.forEach(function (q, i) { score += itemPoints(q, run.answers[i]); total += itemMax(q); });
     state.attempts = (state.attempts || 0) + 1;
-    state.last = { score: score, total: total, answers: run.answers, language: I.current() }; // the language this attempt was taken in
+    // per question, in quiz order: points, or "points/max" for a question worth more than one
+    var items = T.quiz.map(function (q, i) { var p = itemPoints(q, run.answers[i]), m = itemMax(q); return m > 1 ? p + '/' + m : String(p); }).join(',');
+    state.last = { score: score, total: total, answers: run.answers, language: I.current(), items: items }; // language: the one this attempt was taken in
     if (score === total && !state.firstFull) state.firstFull = state.attempts;
     save(state);
     run = null;
@@ -492,7 +496,8 @@
     function attempt() {
       return window.ScamApi.call('POST', '/api/submit', {
         id: state.id, key: state.key, score: state.last.score, total: state.last.total,
-        csat: state.csat || null, learned: state.learned || null, language: state.last.language || I.current()
+        csat: state.csat || null, learned: state.learned || null, language: state.last.language || I.current(),
+        item_scores: state.last.items || null, stories_viewed: (state.seen || []).length
       }).then(function (res) {
         if (res.status === 409 && tries++ < 5) {
           state.id = newId();

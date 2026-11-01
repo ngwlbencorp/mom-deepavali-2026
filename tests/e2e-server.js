@@ -140,12 +140,17 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   await bob.goto(ADMIN + '#manual');
   await bob.locator('#v-manual').waitFor();
   ok(await bob.locator('.mq li').count() === 3 && await bob.locator('.mq .expect').count() === 3, 'manual page lists 3 questions with their answers, as a guide');
-  ok(await bob.locator('.mq button').count() === 0 && !(await bob.locator('#manualSubmit').isDisabled()), 'no marking: one button records the claim');
+  ok(await bob.locator('.mq button').count() === 0 && await bob.locator('.reason button').count() === 2, 'no marking; two one-tap reasons for manual input');
+  ok(await bob.locator('#manualSubmit').isDisabled(), 'record button waits until the officer picks a reason');
+  await bob.click('.reason button[data-reason="no_phone"]');
+  ok(!(await bob.locator('#manualSubmit').isDisabled()), 'one tap on a reason enables the record button');
   await bob.click('#manualSubmit');
   await bob.waitForFunction(() => /Give a souvenir/.test((document.querySelector('#mverdict .big') || {}).textContent));
   ok(true, 'officer satisfied: give a souvenir');
   await bob.screenshot({ path: out + '/admin-manual.png', fullPage: true });
   await bob.click('text=Next person');
+  ok(await bob.locator('#manualSubmit').isDisabled() && await bob.locator('.reason [aria-pressed="true"]').count() === 0, 'next person starts with no reason picked');
+  await bob.click('.reason button[data-reason="phone_issue"]');
   await bob.click('#manualSubmit');
   await bob.waitForFunction(() => /Give a souvenir/.test((document.querySelector('#mverdict .big') || {}).textContent));
   ok(true, 'next person is a new claim, not treated as a duplicate');
@@ -198,6 +203,9 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   const dbline = await sup.locator('#dbline').textContent();
   ok(/^Database awake · responded in \d+ ms$/.test(dbline), 'dashboard: database line says awake, with response time (' + dbline + ')');
   ok(!/Database|responded in/.test(await alice.locator('body').innerText()), 'officers do not see the database indicator');
+  const reasonText = (await sup.locator('#reasonTable').innerText()).replace(/\s+/g, ' ');
+  ok(/No phone 1 50%/.test(reasonText) && /Phone didn't work 1 50%/.test(reasonText), 'dashboard: why manual input (' + reasonText + ')');
+  ok(await sup.locator('#itemTable tbody tr').count() === 6, 'dashboard: first attempt, question by question (6 questions)');
   const langText = await sup.locator('#langTable').innerText();
   ok(/English\s+3\s+100%/.test(langText), 'dashboard: claims by language (the 3 test phones, all in English): ' + langText.replace(/\s+/g, ' '));
   ok(await sup.locator('#lineChart path').count() === 2 && await sup.locator('#csatChart path').count() >= 1, 'line chart (2 series) and satisfaction chart render');
