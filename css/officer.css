@@ -1,4 +1,5 @@
-/* Officer page only: a neutral look, light or dark following the phone's setting. The event's plum
+/* Officer page only: a neutral look, light or dark following the phone's setting, or the officer's
+   choice from the header button (js/theme.js). The event's plum
    and gold stay on the mini-site; officers need a clear working tool, not the festive theme.
    These override the shared colour variables in site.css; --plum is the accent here, and
    --accent-text is its readable form for text on the page background. */
@@ -22,8 +23,9 @@
   --header: #2b3240;
   color-scheme: light dark;
 }
+/* Dark: the phone's setting, unless the officer chose light with the header button (data-theme). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --plum: #4f5bd5;   /* white text 5.5:1 */
     --plum-2: #4f5bd5;
     --accent-text: #a9b1ff;
@@ -43,6 +45,27 @@
     --header: #1f2230;
   }
 }
+:root[data-theme="dark"] {
+  --plum: #4f5bd5;   /* white text 5.5:1 */
+  --plum-2: #4f5bd5;
+  --accent-text: #a9b1ff;
+  --gold: #d69e2e;
+  --gold-soft: #2b2416;
+  --ink: #ecedf0;
+  --muted: #a3a8b3;
+  --bg: #0f1115;
+  --card: #1a1d23;
+  --line: #343944;
+  --ok: #4cc27a;
+  --ok-bg: #13291c;
+  --no: #ff7b72;
+  --no-bg: #3a1714;
+  --field: #111318;
+  --chip: #2a2e37;
+  --header: #1f2230;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
 
 a { color: var(--accent-text); }
 .top { background: var(--header); }
@@ -60,3 +83,13 @@ a { color: var(--accent-text); }
 
 /* white text on these needs a dark red whatever the scheme */
 .bugthumbs button { background: #b42318; }
+
+/* Header: title on the left, light/dark button on the right. */
+.top.slim { display: flex; align-items: center; gap: 12px; }
+.top.slim .brand { flex: 1; min-width: 0; text-align: left; }
+.themebtn {
+  flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .35);
+  background: transparent; color: #fff; font-size: 1.25rem; line-height: 1; cursor: pointer;
+}
+.themebtn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+@media (max-width: 400px) { .top.slim .brand { font-size: .9rem; } }

@@ -171,6 +171,8 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event (e
 - **Neutral look, light or dark following the phone's setting** (owner, 31 Oct). The page is a
   working tool for officers only, so it does not follow the Deepavali theme. `css/officer.css`
   overrides the shared colour variables for this page alone; the mini-site keeps plum and gold.
+- **A light/dark button in the officer page's header** (owner, 1 Nov). The page follows the
+  phone's setting until an officer taps it; the choice is then kept on that phone (`js/theme.js`).
 
 ### Superadmin page
 
