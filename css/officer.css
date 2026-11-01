@@ -93,6 +93,7 @@ a { color: var(--accent-text); }
 }
 .themebtn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 @media (max-width: 400px) { .top.slim .brand { font-size: .9rem; } }
-/* The whole page, not just the cards: the ducks.ai shell paints its own background on <html>
-   (cream in the first officer upload), which would otherwise show around and below the content. */
-html, body { background: var(--bg); }
+/* The whole page, not just the cards. The ducks.ai shell's loading style sets
+   "html, body { background: cream }", and ducks.ai moves the uploaded page's head styles into the
+   body, after these stylesheets, so a rule of equal weight loses to it. :root raises the weight. */
+:root, :root body { background: var(--bg); }
