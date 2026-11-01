@@ -324,6 +324,9 @@ would remove these limits, but needs control of a government domain's DNS.
 
 ## Working habits
 
+- **Learning** (owner's rule, 1 Nov): write a lesson down as soon as it is understood (a tool call
+  that keeps failing, a correction, an environment difference) in this file or the README, and
+  commit it; review the session's lessons at its end. Compaction can start without warning.
 - Push straight to `main`, then confirm the live deploy: fetch the changed file from
   `https://ducks-vercel-api.vercel.app/...` with a cache-busting query and check for the new code.
 - Before pushing, run the tests that cover what you touched (below). Report failures as they are.
@@ -342,6 +345,9 @@ would remove these limits, but needs control of a government domain's DNS.
 ## Tests (local)
 
 Full commands are in README, "Tests (local)". In short:
+
+- `bash tests/local-stack.sh` brings up Postgres, the API on :3000 and a site copy on :8832 (test
+  passwords inside). It lives in the repo because a session's scratch folder can disappear.
 
 - Postgres plus `node tests/dev-server.js <port>` with test env vars (`ADMIN_PASSWORD`,
   `SUPERADMIN_USER`, `SUPERADMIN_PASSWORD`, `REDEEM_CAP`, `DATABASE_URL`, `BUG_API_TOKEN`).
