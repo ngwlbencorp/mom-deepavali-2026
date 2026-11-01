@@ -104,6 +104,21 @@ html.on-ducks .top.slim { padding-top: 64px; }
 .bugthumbs button { position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; border-radius: 50%; border: 0; background: var(--no); color: #fff; font-weight: 800; cursor: pointer; }
 .warn { color: var(--no); background: var(--no-bg); border-radius: 10px; padding: 8px 10px; }
 
+/* The report form fits one phone screen: compact card, buttons and links. */
+#bugForm { padding: 16px; margin-bottom: 10px; }
+#bugForm h2 { margin-bottom: 6px; }
+#bugForm > p.small { margin: 0 0 10px; }
+#bugForm .btn { min-height: 44px; margin-top: 8px; padding: 8px 14px; }
+#bugForm .field { margin-bottom: 0; }
+.linkrow { margin: 4px 0 0; }
+@media (max-height: 600px) { /* e.g. iPhone SE in a browser */
+  #bugForm { padding: 12px 14px; }
+  #bugForm h2 { font-size: 1.15rem; }
+  #bugForm > p.small { font-size: .8rem; line-height: 1.35; }
+  #bugText { height: 64px; }
+}
+.linkrow .linkbtn { display: inline; margin: 0; padding: 6px 4px; }
+
 /* ---------- reported problems ---------- */
 .bugsum { font-weight: 700; color: var(--plum); margin: 6px 0; }
 .buglist { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 10px; }

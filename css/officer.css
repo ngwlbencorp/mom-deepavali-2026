@@ -93,3 +93,6 @@ a { color: var(--accent-text); }
 }
 .themebtn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 @media (max-width: 400px) { .top.slim .brand { font-size: .9rem; } }
+/* The whole page, not just the cards: the ducks.ai shell paints its own background on <html>
+   (cream in the first officer upload), which would otherwise show around and below the content. */
+html, body { background: var(--bg); }

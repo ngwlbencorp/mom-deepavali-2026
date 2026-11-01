@@ -274,6 +274,10 @@ ducks.ai's own scripts).
     `js/ducks-keys.js`, which lets those key presses through in text boxes and keeps presenter
     mode off. Putting the letters back by script made iPhones capitalise the next letter, so the
     cancel itself is skipped. Checked by `tests/gate.test.js` against ducks.ai's real scripts.
+- **The shell paints the page background on `<html>`** (the first officer upload paints it
+  cream). A page that changes its own colours must also set `html, body { background: ... }`, or
+  the shell's colour shows around and below the content. Found 1 Nov: officer page in dark mode,
+  chosen with the header button on a phone set to light.
 - **Privacy settings:** a newer ducks.ai setting let officers on the government network edit page
   text with an "edit" button, so the owner reverted all pages to the earlier setting (30 Oct).
 - **The camera works** on a ducks.ai page in principle (HTTPS, nothing blocks it); real-device
