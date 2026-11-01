@@ -21,9 +21,10 @@
   --field: #ffffff;
   --chip: #eceef1;
   --header: #2b3240;
+  --box-text: var(--accent-text); /* text in the menu boxes and the counter */
   color-scheme: light dark;
 }
-/* Dark: the phone's setting, unless the officer chose light with the header button (data-theme). */
+/* Dark: the superadmin page's dark colours. The phone's setting decides, unless the officer chose light with the header button (data-theme). */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --plum: #4f5bd5;   /* white text 5.5:1 */
@@ -31,18 +32,19 @@
     --accent-text: #a9b1ff;
     --gold: #d69e2e;
     --gold-soft: #2b2416;
-    --ink: #ecedf0;
-    --muted: #a3a8b3;
-    --bg: #0f1115;
-    --card: #1a1d23;
-    --line: #343944;
+    --ink: #f0efec;
+    --muted: #a8a7a0;
+    --bg: #0d0d0d;
+    --card: #1a1a19;
+    --line: #383835;
     --ok: #4cc27a;
     --ok-bg: #13291c;
     --no: #ff7b72;
     --no-bg: #3a1714;
-    --field: #111318;
-    --chip: #2a2e37;
+    --field: #111110;
+    --chip: #242423;
     --header: #1f2230;
+    --box-text: var(--ink); /* white text in the boxes, as on the superadmin page */
   }
 }
 :root[data-theme="dark"] {
@@ -51,18 +53,19 @@
   --accent-text: #a9b1ff;
   --gold: #d69e2e;
   --gold-soft: #2b2416;
-  --ink: #ecedf0;
-  --muted: #a3a8b3;
-  --bg: #0f1115;
-  --card: #1a1d23;
-  --line: #343944;
+  --ink: #f0efec;
+  --muted: #a8a7a0;
+  --bg: #0d0d0d;
+  --card: #1a1a19;
+  --line: #383835;
   --ok: #4cc27a;
   --ok-bg: #13291c;
   --no: #ff7b72;
   --no-bg: #3a1714;
-  --field: #111318;
-  --chip: #2a2e37;
+  --field: #111110;
+  --chip: #242423;
   --header: #1f2230;
+  --box-text: var(--ink); /* white text in the boxes, as on the superadmin page */
   color-scheme: dark;
 }
 :root[data-theme="light"] { color-scheme: light; }
@@ -72,8 +75,9 @@ a { color: var(--accent-text); }
 .card, .counter, .bigbtn { box-shadow: none; }
 .card, .counter { border: 1px solid var(--line); }
 
-.counter-main b, .bugsum { color: var(--accent-text); }
-.bigbtn.alt { color: var(--accent-text); border-color: var(--line); }
+.bugsum { color: var(--accent-text); }
+.counter-main b, .bigbtn.alt { color: var(--box-text); }
+.bigbtn.alt { border-color: var(--line); }
 .btn.secondary { background: var(--chip); color: var(--ink); border-color: var(--line); }
 .bstat { color: var(--ink); }
 .bstat.closed { background: var(--chip); }
