@@ -111,11 +111,30 @@
       div.children[0].textContent = t[0]; div.children[1].textContent = t[1]; div.children[2].textContent = t[2];
       box.appendChild(div);
     });
+    renderLanguages(d.languages || []);
     var key = JSON.stringify([d.timeline, d.bucketMinutes, d.cap, d.csat, d.csatN, window.innerWidth]);
     if (key === drawn) return;
     drawn = key;
     lineChart(d);
     csatChart(d);
+  }
+
+  var LANG_NAMES = { en: 'English', bn: 'Bengali', my: 'Burmese', hi: 'Hindi', ta: 'Tamil', ur: 'Urdu', '?': 'Not recorded' };
+  function renderLanguages(rows) {
+    $('langCard').hidden = !rows.length;
+    var total = rows.reduce(function (s, r) { return s + r.claims; }, 0);
+    var t = document.createElement('table');
+    t.innerHTML = '<thead><tr><th>Language</th><th>Claims</th><th>Share</th></tr></thead>';
+    var body = document.createElement('tbody');
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      [LANG_NAMES[r.language] || r.language, r.claims, Math.round(r.claims * 100 / total) + '%'].forEach(function (v) {
+        var td = document.createElement('td'); td.textContent = v; tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+    t.appendChild(body);
+    $('langTable').replaceChildren(t);
   }
 
   // Cumulative submissions and souvenirs given, one shared count axis, cap as a reference line.

@@ -198,6 +198,8 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   const dbline = await sup.locator('#dbline').textContent();
   ok(/^Database awake · responded in \d+ ms$/.test(dbline), 'dashboard: database line says awake, with response time (' + dbline + ')');
   ok(!/Database|responded in/.test(await alice.locator('body').innerText()), 'officers do not see the database indicator');
+  const langText = await sup.locator('#langTable').innerText();
+  ok(/English\s+3\s+100%/.test(langText), 'dashboard: claims by language (the 3 test phones, all in English): ' + langText.replace(/\s+/g, ' '));
   ok(await sup.locator('#lineChart path').count() === 2 && await sup.locator('#csatChart path').count() >= 1, 'line chart (2 series) and satisfaction chart render');
   await sup.locator('#lineChart rect').hover();
   ok(!(await sup.locator('#tip').isHidden()), 'hover shows tooltip');

@@ -477,7 +477,7 @@
     var score = 0, total = 0;
     T.quiz.forEach(function (q, i) { score += itemPoints(q, run.answers[i]); total += itemMax(q); });
     state.attempts = (state.attempts || 0) + 1;
-    state.last = { score: score, total: total, answers: run.answers };
+    state.last = { score: score, total: total, answers: run.answers, language: I.current() }; // the language this attempt was taken in
     if (score === total && !state.firstFull) state.firstFull = state.attempts;
     save(state);
     run = null;
@@ -492,7 +492,7 @@
     function attempt() {
       return window.ScamApi.call('POST', '/api/submit', {
         id: state.id, key: state.key, score: state.last.score, total: state.last.total,
-        csat: state.csat || null, learned: state.learned || null
+        csat: state.csat || null, learned: state.learned || null, language: state.last.language || I.current()
       }).then(function (res) {
         if (res.status === 409 && tries++ < 5) {
           state.id = newId();

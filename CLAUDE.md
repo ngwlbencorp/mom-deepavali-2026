@@ -181,6 +181,12 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event (e
   and the bug reports** (owner, 30 Oct): the owner does not want to redo the upload after a demo.
 - **Login tracking: only `last_login_at` and `login_count`** (owner approved those two fields,
   30 Oct), to see which officers have tried logging in.
+- **Language tracking: `submissions.language` and `scans.language`** (owner approved, 1 Nov). The
+  phone sends the language each attempt was taken in when it saves the result, the same way tries
+  are recorded (the QR code carries no data into the database since registration became required).
+  Per attempt, because a worker can switch language between attempts; per claim (latest attempt)
+  for simple counts. The dashboard shows claims by language. Not captured: visitors who never
+  finish the quiz, and manual claims.
 - **Database awake/asleep status is shown to the superadmin only** (owner, 29 Oct): officers do
   not need it. Neon's free plan sleeps after 5 minutes, and the first query after that takes a
   second or more. The owner wanted no lag on the first scan of the day: an officer logging in

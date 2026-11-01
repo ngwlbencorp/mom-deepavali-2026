@@ -66,12 +66,13 @@ const call = (method, path, body, token) => fetch(base + path, {
 
   // ---- self-submit: registration and clash ----
   const A = id(), keyA = key();
-  let s = await call('POST', '/api/submit', { id: A, key: keyA, score: 6, total: 8, csat: 4, learned: 'Y' });
+  let s = await call('POST', '/api/submit', { id: A, key: keyA, score: 6, total: 8, csat: 4, learned: 'Y', language: 'en' });
   ok(s.status === 200 && s.body.status === 'registered' && s.body.attempts === 1 && s.body.firstFull === null, 'first submit registers the ID');
-  s = await call('POST', '/api/submit', { id: A, key: keyA, score: 8, total: 8 });
+  s = await call('POST', '/api/submit', { id: A, key: keyA, score: 8, total: 8, language: 'ta' });
   ok(s.body.status === 'updated' && s.body.attempts === 2 && s.body.firstFull === 2 && s.body.full, 'same phone retries: attempt 2, first full on attempt 2');
   s = await call('POST', '/api/submit', { id: A, key: key(), score: 8, total: 8 });
   ok(s.status === 409 && s.body.error === 'id_taken', 'another phone with the same ID gets 409 id_taken');
+  ok((await call('POST', '/api/submit', { id: id(), key: key(), score: 8, total: 8, language: 'Tamil!' })).status === 400, 'invalid language rejected');
   ok((await call('POST', '/api/submit', { id: 'ILOU0000', key: keyA, score: 8, total: 8 })).status === 400, 'ID with excluded letters rejected');
   ok((await call('POST', '/api/submit', { id: id(), key: keyA, score: 9, total: 8 })).status === 400, 'score above total rejected');
   ok((await call('POST', '/api/submit', { id: id(), key: 'short', score: 8, total: 8 })).status === 400, 'bad device key rejected');
@@ -135,6 +136,12 @@ const call = (method, path, body, token) => fetch(base + path, {
   const d = (await call('GET', '/api/dashboard', null, SUP)).body;
   ok(d.given === CAP && d.submissions === d.selfSubmissions + d.adminSubmissions && d.adminClaims > 0 && d.timeline.length >= 1, 'dashboard totals add up');
   ok(d.csatN === 2 && d.csat[3] === 1 && d.csat[4] === 1 && d.learned.Y === 2, 'dashboard rating counts (two phone submits)');
+  const langs = Object.fromEntries(d.languages.map((x) => [x.language, x.claims]));
+  ok(langs.ta >= 1 && langs['?'] >= 1 && !('en' in langs), `dashboard claims by language use each claim's latest attempt (${JSON.stringify(d.languages)})`);
+  const subsCsv = await call('GET', '/api/export?table=submissions', null, SUP);
+  ok(/,language,/.test(subsCsv.body.text.split('\n')[0]) && /,self,en,/.test(subsCsv.body.text) && /,self,ta,/.test(subsCsv.body.text), 'submissions export has each attempt\'s language');
+  const claimsCsv = await call('GET', '/api/export?table=claims', null, SUP);
+  ok(/,language,/.test(claimsCsv.body.text.split('\n')[0]), 'claims export has a language column');
   ok(d.firstTryRate !== null && d.selfFirstTry >= 1, `first-try rate computed (${Math.round(d.firstTryRate * 100)}%)`);
   const ex = await call('GET', '/api/export?table=claims', null, SUP);
   ok(ex.status === 200 && /text\/csv/.test(ex.h.get('content-type')) && ex.body.text.includes(A) && !ex.body.text.includes('device_key_hash'), 'claims CSV export, without device keys');

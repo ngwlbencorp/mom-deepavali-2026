@@ -139,7 +139,8 @@ Check **Vercel → Usage** after the briefing and the day before the event. Hobb
 ## Reporting
 
 - **Dashboard** (refreshes every 15 seconds): a **Database** line under the refresh time, superadmin only, showing whether the database was awake and how fast it answered (Neon's free plan sleeps after 5 minutes without queries; the first query after that takes a second or more); souvenirs given vs cap; quiz submissions (self and manual); MWs reached (claim IDs); first-try full-score rate; eventual full-score rate; average attempts to full score; average satisfaction and its distribution; "learned something new". There is also a cumulative chart over time, with a table view.
-- **Data tab:** CSV downloads of `claims` (one row per claim ID), `submissions` (one row per quiz attempt) and `admins`.
+- **Claims by language:** a table under the dashboard tiles: phones' claims by the language of their latest attempt.
+- **Data tab:** CSV downloads of `claims` (one row per claim ID), `submissions` (one row per quiz attempt) and `admins`. Both claims and submissions include the language.
 
 ### ⚠ Check whether the site can really measure first-try and multiple-try success
 
@@ -165,8 +166,10 @@ The table `scans` keeps the original eight columns from the brief: `id, score, t
 | `scans` | `attempts` | number of quiz submissions for this claim |
 | `scans` | `first_full` | the attempt number that first scored full marks |
 | `scans` | `csat`, `learned` | feedback answers (1–5; Y, S or N) |
+| `scans` | `language` | mini-site language of the claim's latest attempt (`en`, `bn`, `my`, `hi`, `ta`, `ur`); empty for manual claims and attempts saved before 1 Nov 2026 |
 | `scans` | `created_by` | officer email for manual claims |
 | `submissions` | `id, claim_id, attempt, score, total, source, submitted_by, created_at` | one row per quiz attempt or manual submission |
+| `submissions` | `language` | mini-site language of that attempt; empty for manual submissions |
 | `admins` | `email, added_at` | officers allowed to log in |
 
 No names, FINs or phone numbers are stored. The claim ID is random, and officer emails are the only personal data.
