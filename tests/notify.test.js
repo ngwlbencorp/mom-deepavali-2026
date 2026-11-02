@@ -77,7 +77,7 @@ const mode = (status) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { method: '
     const t = await call('POST', '/api/notify', { kind: 'welcome', test: 'me@example.test' }, SUP);
     const tm = got[got.length - 1];
     ok(t.status === 200 && tm.recipient === 'me@example.test' && tm.auth === 'Bearer ' + KEY, 'test email goes to the given address with the API key');
-    ok(tm.body.includes('<a href="https://example.test/mini/">') && tm.body.includes('<b>admin-pw-&lt;1&gt;</b>') && /^Deepavali event/.test(tm.subject), 'email has the links and the escaped password');
+    ok(tm.body.includes('<a href="https://example.test/mini/">') && tm.body.includes('<b>admin-pw-&lt;1&gt;</b>') && tm.subject === 'Digital4Good @ Kranji RC: Your access to the event mini-site and Admin Portal', 'email has the links and the escaped password');
     ok((await pending()).welcome === 3, 'a test marks nobody as sent');
 
     let n0 = got.length, s = await sendAll('welcome');
@@ -107,7 +107,7 @@ const mode = (status) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { method: '
     ok(c.reminder === 3, 'officers who logged in are not pending the reminder');
     n0 = got.length; s = await sendAll('reminder');
     const rem = got.slice(n0);
-    ok(s.sent === 3 && !rem.some((m) => m.recipient === 'a@example.test') && /^Reminder/.test(rem[0].subject) && rem[0].body.includes('https://example.slack.com/team/U0TEST'), 'reminder goes to the three who never logged in, with the Slack contact');
+    ok(s.sent === 3 && !rem.some((m) => m.recipient === 'a@example.test') && rem[0].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov' && rem[0].body.includes('https://example.slack.com/team/U0TEST'), 'reminder goes to the three who never logged in, with the Slack contact');
     ok((await sendAll('reminder')).sent === 0, 'nobody is reminded twice');
 
     // Failures: one bad address does not stop the rest, and stays pending.
