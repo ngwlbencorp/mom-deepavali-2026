@@ -12,7 +12,7 @@ Claude while building, which the owner accepted. Dates are 2026.
 
 ## What this is
 
-A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event (ends 8 Nov,
+A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, Digital4Good @ Kranji RC (ends 8 Nov,
 9 pm SGT), with an officer page for souvenir redemption and a private superadmin page.
 
 - Code, pages and API: Vercel project `ducks-vercel-api` (Singapore region), deployed from `main`.

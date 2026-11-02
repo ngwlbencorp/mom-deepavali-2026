@@ -19,7 +19,7 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await pg.goto(shell + 'index.html');
   await pg.locator('#loginForm').waitFor();
   ok(await pg.evaluate(() => window.SITE_SHELL && window.SITE_SHELL.source === 'remote' && window.SITE_SHELL.page === 'admin/index.html'), 'officer page loaded through the shell');
-  ok((await pg.title()) === 'Souvenir Station' && !/vercel/i.test(await pg.locator('body').innerText()), 'title is the officer page\'s; no mention of Vercel on screen');
+  ok((await pg.title()) === 'Admin Portal' && !/vercel/i.test(await pg.locator('body').innerText()), 'title is the officer page\'s; no mention of Vercel on screen');
   await pg.fill('#email', 'alice@mom.gov.sg'); await pg.fill('#password', ADMIN_PW); await pg.click('#loginForm button');
   await pg.locator('#v-home').waitFor();
   await pg.click('a[href="#scan"]');
