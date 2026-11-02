@@ -361,6 +361,12 @@ would remove these limits, but needs control of a government domain's DNS.
   `https://ducks-vercel-api.vercel.app/...` with a cache-busting query and check for the new code.
 - Before pushing, run the tests that cover what you touched (below). Report failures as they are.
 - Writing style for docs, notes and messages: plain English, short sentences, no em dashes.
+- **Stay inside the free plans** (owner, 2 Nov): Neon free is 1 GB storage and 100 CU-hours a
+  month per project; a database sleeps after 5 minutes without queries and uses 0.25 CU while
+  awake (about 180 CU-hours a month if it never sleeps). The officers' 5-second polling keeps it
+  awake only while the officer page is open, which is fine for the event days. Vercel Hobby caps
+  a request or response at 4.5 MB and a function's run time. Before any change that adds polling,
+  storage or traffic, estimate its cost against both plans and say so.
 - Text MWs read must fit a phone screen in every live language: run `tests/fit.test.js` per
   language after any wording or layout change.
 - Changing English text: edit `js/content.js`, update the line in every `i18n/<code>.json`, then
