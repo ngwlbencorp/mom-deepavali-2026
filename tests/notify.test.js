@@ -63,6 +63,7 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
   try {
     for (let i = 0; i < 40; i++) { try { await fetch(API + '/api/ping'); break; } catch (e) { await new Promise((r) => setTimeout(r, 250)); } }
     ok((await call('GET', '/api/notify')).status === 401, 'notify needs the superadmin login');
+    const dbs_unrecord = async (email) => { const c = new Client({ connectionString: PG + '/notifytest' }); await c.connect(); await c.query('UPDATE admins SET welcome_sent_at = NULL WHERE email = $1', [email]); await c.end(); };
     const SUP = (await call('POST', '/api/login', { role: 'super', username: 'boss', password: 'super-pw-2' })).body.token;
     const pending = async () => (await call('GET', '/api/notify', null, SUP)).body.counts;
     const admins = async () => Object.fromEntries((await call('GET', '/api/admins', null, SUP)).body.admins.map((a) => [a.email, a]));
@@ -168,6 +169,11 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ok(o['bounce@example.test'].welcome.status === 'BOUNCED' && /Hard Bounce/.test(o['bounce@example.test'].welcome.error), 'a bounced address shows as bounced with the reason');
     ok(o['a@example.test'].reminder === null && !o['fail@example.test'], 'no reminder sent = no status; never-sent officers are not listed');
     ok((await call('GET', '/api/notify?delivery=1')).status === 401, 'delivery check needs the superadmin login');
+    // An officer emailed but not recorded (a request stopped mid-send) is flagged before a resend.
+    await dbs_unrecord('a@example.test');
+    const un = (await call('GET', '/api/notify?delivery=1', null, SUP)).body.unrecorded;
+    ok(un.length === 1 && un[0].email === 'a@example.test' && un[0].status === 'DELIVERED' && !un.some((u) => u.email === 'fail@example.test'),
+      'a pending officer who already has an email in Postman is flagged; one who never got one is not');
 
     ok((await call('POST', '/api/notify', { kind: 'other', send: true }, SUP)).status === 400, 'unknown kind refused');
     ok((await call('POST', '/api/notify', { kind: 'welcome', test: 'not-an-email' }, SUP)).status === 400, 'bad test address refused');

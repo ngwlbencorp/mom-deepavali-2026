@@ -232,7 +232,7 @@ node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b .
 
 Both test scripts reset data. Never run them against the production database.
 
-Officer emails (`tests/notify.test.js`): runs its own API server (port 3020), a local stand-in for Postman (3021) and its own database `notifytest` on the local Postgres, so no real email is sent. `node tests/notify.test.js` (31 checks: who is pending, test sends, batches, failures, re-adding, Replace, the reset, the reminder, two tabs sending at once, a slow Postman, and delivery status with paging).
+Officer emails (`tests/notify.test.js`): runs its own API server (port 3020), a local stand-in for Postman (3021) and its own database `notifytest` on the local Postgres, so no real email is sent. `node tests/notify.test.js` (32 checks: who is pending, test sends, batches, failures, re-adding, Replace, the reset, the reminder, two tabs sending at once, a slow Postman, and delivery status with paging).
 
 iOS zoom (`tests/zoom.test.js`): every text box, list and file picker on the officer and superadmin pages must be at least 16px, or iPhones zoom in on tap and stay zoomed. Run `node tests/zoom.test.js <site copy> <adminPw> <superUser> <superPw>` after any style change to those pages.
 

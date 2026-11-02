@@ -417,9 +417,13 @@
       Object.keys(delivery).forEach(function (e) { ['welcome', 'reminder'].forEach(function (k) { var d = delivery[e][k]; if (d) { var s = STATUS[d.status] || d.status; tally[s] = (tally[s] || 0) + 1; } }); });
       var parts = Object.keys(tally).map(function (s) { return tally[s] + ' ' + s; });
       var bad = Object.keys(delivery).filter(function (e) { return ['welcome', 'reminder'].some(function (k) { return delivery[e][k] && BAD[delivery[e][k].status]; }); });
-      $('deliveryMsg').className = 'small' + (bad.length ? ' error' : '');
+      var un = r.body.unrecorded || [];
+      var pending = mail ? mail.counts.welcome : 0;
+      $('deliveryMsg').className = 'small' + (bad.length || un.length ? ' error' : '');
       $('deliveryMsg').textContent = (parts.length ? 'Emails: ' + parts.join(' · ') + '.' : 'No emails sent yet.') +
         (bad.length ? ' Check these addresses: ' + bad.join(', ') + '.' : '') +
+        (un.length ? ' Already emailed but not recorded, so "Send welcome" would send them a second copy: ' + un.map(function (u) { return u.email + ' (' + (STATUS[u.status] || u.status) + ', ' + when(u.at) + ')'; }).join(', ') + '.'
+          : pending ? ' None of the ' + pending + ' officer(s) pending the welcome has an email in Postman yet, so sending to them makes no duplicates.' : '') +
         (r.body.complete ? '' : ' (Postman had more emails than could be read in one go, so some may show as not found.)');
       loadAdmins();
     }, function () { b.disabled = false; $('deliveryMsg').className = 'small error'; $('deliveryMsg').textContent = 'Cannot reach the server.'; });
