@@ -12,6 +12,7 @@ const routes = {
   export: require('../lib/routes/export'),
   login: require('../lib/routes/login'),
   manual: require('../lib/routes/manual'),
+  notify: require('../lib/routes/notify'),
   ping: require('../lib/routes/ping'),
   redeem: require('../lib/routes/redeem'),
   remaining: require('../lib/routes/remaining'),

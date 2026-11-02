@@ -200,6 +200,29 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event (e
   work") makes manual claims a proxy for smartphone access. The officer picks the reason with one
   tap on two large side-by-side buttons, no dropdown (owner, 1 Nov); two options, not three,
   because the smartphone question only needs "has a phone or not".
+- **Officer emails through Postman** (owner, 2 Nov): a welcome email to every officer (both page
+  addresses, the login, try both sites before the 6 Nov briefing, report bugs through "Report a
+  problem", not Slack, Teams or email), and on 6 Nov at 4 pm a reminder to officers who never
+  logged in. The owner cleared both templates. Decisions and reasons:
+  - **Buttons on the superadmin page, not automatic sends**: a mistaken upload must not email
+    everyone at once. A test send to one address comes first. The reminder is a button pressed at
+    4 pm because Vercel's free plan schedules at most once a day, at an inexact time.
+  - **Tracked in `admins.welcome_sent_at` and `admins.reminder_sent_at`** (owner approved, 2 Nov):
+    officers added later are pending until sent; an officer removed and added back is a new row,
+    so they get the welcome again (owner's rule); the rehearsal reset never touches `admins`, so the
+    record survives data refreshes.
+  - **"Replace" now keeps officers who are in both lists** (Claude, 2 Nov). It used to delete
+    everyone and re-add them, which would have wiped the record and re-sent the welcome to all.
+  - **Password and page addresses come from Vercel settings** (`ADMIN_PASSWORD`, `MINISITE_URL`,
+    `OFFICER_SITE_URL`, `ADMIN_CONTACT`), never the code, because the repository is public. The
+    email shows the password that actually works. The owner accepted sending it in plain text: a
+    listed work email is also needed to log in.
+  - **The owner's contact is Slack only** (`ADMIN_CONTACT`), for login problems; the owner does not
+    want emails about this. The emails never mention the superadmin page.
+  - **Each email is sent under its own row lock**, so two tabs pressing Send never email anyone
+    twice. Postman's error text has addresses blanked out before it can reach `api_errors`.
+  - Postman's API details come from its older public guide; the current guide was not reachable
+    from the build session. The first live test send confirms them.
 - **Database awake/asleep status is shown to the superadmin only** (owner, 29 Oct): officers do
   not need it. Neon's free plan sleeps after 5 minutes, and the first query after that takes a
   second or more. The owner wanted no lag on the first scan of the day: an officer logging in
@@ -356,6 +379,8 @@ Full commands are in README, "Tests (local)". In short:
 - `tests/e2e-server.js` needs a copy of the site whose `js/config.js` `apiBase` points at the
   local API, served over HTTP.
 - Test scripts reset data. Never point them at the production database.
+- Run `tests/local-stack.sh` without piping its output (`| tail` hangs: Postgres keeps the pipe
+  open). Redirect to a file or `/dev/null` instead (2 Nov).
 - Stop local servers by PID (`ps -eo pid,args | awk ...`); `pkill -f` can match and kill its own
   shell.
 

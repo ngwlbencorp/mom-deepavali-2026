@@ -121,3 +121,13 @@ main.wide { max-width: 960px; }
 /* iOS Safari zooms in when a text box under 16px gets focus, and does not zoom back out.
    This rule wins over any other font setting on form controls (tests/zoom.test.js checks it). */
 input, select, textarea { font-size: 16px !important; }
+
+/* Email officers (Postman) */
+.mailrow { border-top: 1px solid var(--line); padding: 10px 0; }
+.mailrow p { margin: 0 0 6px; }
+.mailrow details { margin: 0 0 8px; }
+.mailrow summary { cursor: pointer; color: var(--accent-text); }
+.mailsubj { font-weight: 600; margin: 8px 0 4px; }
+.mailtext { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: .9rem; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin: 0; max-height: 320px; overflow: auto; }
+#testForm { grid-template-columns: 1fr auto auto; }
+@media (max-width: 560px) { #testForm { grid-template-columns: 1fr 1fr; } #testForm .field { grid-column: 1 / -1; } }

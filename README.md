@@ -12,7 +12,7 @@ The Deepavali scam quiz, with:
 |---|---|---|
 | `/index.html` | MWs | the quiz; the slide QR code points here |
 | `/admin/index.html` | officers | log in → **Scan QR** or **Manual input**; live "souvenirs left" counter. Neutral colours (`css/officer.css`), light or dark following the phone's setting, with a header button to switch (kept per phone); the Deepavali theme stays on the mini-site |
-| `/superadmin/index.html` | you | Dashboard · Admins (CSV upload) · Data (CSV download, reset) |
+| `/superadmin/index.html` | you | Dashboard · Admins (CSV upload, officer emails) · Data (CSV download, reset) |
 
 The admin and superadmin pages are not linked from the quiz. Bookmark them.
 
@@ -84,6 +84,8 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 | `SESSION_SECRET` | optional; signs login tokens. If unset, it is derived from the passwords, so changing any password logs everyone out |
 | `ALLOWED_ORIGINS` | optional; for the ducks.ai pages it must be `https://view.ducks.ai.tech.gov.sg` (with `view.`, the pages' real origin), or their API calls are refused. If unset, any origin is accepted (logins still protect everything except the quiz submit). It only binds browsers on other websites: every ducks.ai page shares this origin, and scripts can send any origin |
 | `BUG_API_TOKEN` | optional; a long random secret (at least 32 characters) that lets the bug-fixing agent read bug reports and record fixes, and nothing else. Put the same value in the Claude environment's secrets. Unset = only the superadmin can read reports |
+| `POSTMAN_API_KEY` | optional; lets the superadmin email officers through [Postman](https://guide.postman.gov.sg/api-guide/overview) (Admins tab). `POSTMAN_API_URL` overrides the send address (tests only) |
+| `MINISITE_URL`, `OFFICER_SITE_URL`, `ADMIN_CONTACT` | the mini-site and officer page addresses, and the Slack contact for officers who cannot log in, put into those emails. Kept here, not in the code, because the repository is public. Either upper or lower case works |
 | `RESEND_API_KEY`, `BUG_NOTIFY_EMAIL` | optional; with both set, each new bug report sends a short email (report number only) through [Resend](https://resend.com). `BUG_NOTIFY_FROM` overrides the sender |
 
 Logins last 14 hours, and only for the browser tab they were made in.
@@ -132,7 +134,7 @@ Check **Vercel → Usage** after the briefing and the day before the event. Hobb
 
 1. Log in at `/superadmin/index.html`.
 2. **Admins tab:** upload a CSV of officer work emails. Any cell containing an email is used, so a column with a header is fine. Choose **Add** or **Replace**. Removing an email locks that officer out on their next action. The list shows who has logged in (last login and number of logins; successful logins only), officers who have not logged in yet first. Officers stay logged in for a while, so the last login is not their last activity. Re-uploading an email and clearing rehearsal data keep this history; the admins CSV download includes it.
-3. Give officers the officer page's ducks.ai address and the shared admin password.
+3. **Admins tab → Email officers (Postman):** send a test to yourself first, then **Send welcome**. It goes to every officer not yet sent it: the mini-site and officer page addresses, the login (work email and the `ADMIN_PASSWORD` value), a request to try both sites before the 6 Nov briefing, and how to report bugs. Officers added later show up as pending, so press it again after adding them; an officer removed and added back gets it again. **Replace** keeps the record of officers in both lists. On **6 Nov at 4 pm**, press **Send reminder**: it goes once to officers who have never logged in, with the Slack contact for login problems. Each officer's row shows when each email was sent. Sending runs in batches of about 10 with a progress line; an address Postman refuses is listed and stays pending, and a wrong key stops at the first email. The rehearsal reset keeps this record.
 4. Rehearse end to end on the real venue network.
 5. **Data tab → Clear rehearsal data** (type RESET). Rehearsal souvenirs count towards the cap until you do this.
 
@@ -174,6 +176,7 @@ The table `scans` keeps the original eight columns from the brief: `id, score, t
 | `scans` | `stories_viewed` | learning stories viewed to the end before the first attempt (0 to 6); phones only, from 1 Nov 2026 |
 | `scans` | `manual_reason` | why the officer used manual input: `no_phone` or `phone_issue`; manual claims only, from 1 Nov 2026 |
 | `admins` | `email, added_at` | officers allowed to log in |
+| `admins` | `welcome_sent_at`, `reminder_sent_at` | when the welcome email and the 6 Nov reminder were sent through Postman; empty = not yet. From 2 Nov 2026 |
 
 No names, FINs or phone numbers are stored. The claim ID is random, and officer emails are the only personal data.
 
@@ -207,7 +210,8 @@ No names, FINs or phone numbers are stored. The claim ID is random, and officer 
 ## Before go-live checklist
 
 - [ ] Env vars set and the project redeployed; Deployment Protection off.
-- [ ] Admin CSV uploaded; one officer logs in on the venue network.
+- [ ] Admin CSV uploaded; welcome email sent (test to yourself first); one officer logs in on the venue network.
+- [ ] 6 Nov, 4 pm: reminder sent to officers who have not logged in.
 - [ ] Camera scanning tested on iPhone and Android over the live HTTPS site (the only path not tested in automation).
 - [ ] MOM language team has reviewed the chosen languages; corrections imported and `tests/fit.test.js` re-run for each.
 - [ ] Rehearsal data cleared.
@@ -221,12 +225,14 @@ These need Node 20+, Postgres, and Playwright with Chromium.
 ```bash
 npm install
 DATABASE_URL=postgres://... ADMIN_PASSWORD=a SUPERADMIN_USER=boss SUPERADMIN_PASSWORD=b REDEEM_CAP=15 node tests/dev-server.js 3000
-node tests/api.test.js http://127.0.0.1:3000 a boss b 15        # 87 API checks; needs an EMPTY database
+node tests/api.test.js http://127.0.0.1:3000 a boss b 15        # 98 API checks; needs an EMPTY database
 # restart the dev server with REDEEM_CAP=500, serve a copy of the pages whose js/config.js points at :3000, then:
-node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b ./shots   # 46 browser checks
+node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b ./shots   # 52 browser checks
 ```
 
 Both test scripts reset data. Never run them against the production database.
+
+Officer emails (`tests/notify.test.js`): runs its own API server (port 3020), a local stand-in for Postman (3021) and its own database `notifytest` on the local Postgres, so no real email is sent. `node tests/notify.test.js` (26 checks: who is pending, test sends, batches, failures, re-adding, Replace, the reset, the reminder, and two tabs sending at once).
 
 iOS zoom (`tests/zoom.test.js`): every text box, list and file picker on the officer and superadmin pages must be at least 16px, or iPhones zoom in on tap and stay zoomed. Run `node tests/zoom.test.js <site copy> <adminPw> <superUser> <superPw>` after any style change to those pages.
 

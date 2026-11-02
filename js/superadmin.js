@@ -325,6 +325,10 @@
         ? 'Last login ' + new Date(a.last_login_at).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' · ' + a.login_count + (a.login_count === 1 ? ' login' : ' logins')
         : 'Not logged in yet';
       span.appendChild(seenText);
+      var mailText = document.createElement('small');
+      mailText.className = 'lastlogin';
+      mailText.textContent = (a.welcome_sent_at ? 'Welcome sent ' + when(a.welcome_sent_at) : 'Welcome not sent') + (a.reminder_sent_at ? ' · Reminder sent ' + when(a.reminder_sent_at) : '');
+      span.appendChild(mailText);
       b.textContent = 'Remove';
       b.addEventListener('click', function () {
         if (!confirm('Remove ' + a.email + '? They will be logged out on their next action.')) return;
@@ -333,9 +337,68 @@
       li.appendChild(span); li.appendChild(b); ul.appendChild(li);
     });
   }
+  function when(t) { return new Date(t).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); }
   function loadAdmins() {
     Api.call('GET', '/api/admins', null, ROLE).then(function (r) { if (guard(r) && r.ok) renderAdmins(r.body.admins); }, function () { adminError('Cannot reach the server.'); });
+    loadMail();
   }
+
+  // ---------- emails to officers (Postman) ----------
+  var mail = null, sending = false;
+  function mailMsg(text, bad) { var m = $('mailMsg'); m.textContent = text || ''; m.className = 'small' + (bad ? ' error' : ''); }
+  function showMail(d) {
+    mail = d;
+    $('mailStatus').textContent = d.missing.length ? 'Missing Vercel settings: ' + d.missing.join(', ') + '.' : 'All settings are in place. The password is filled in from ADMIN_PASSWORD when sending.';
+    $('mailStatus').className = 'small' + (d.missing.length ? ' error' : '');
+    ['welcome', 'reminder'].forEach(function (k) {
+      $(k + 'Count').textContent = d.counts[k];
+      $(k + 'Subj').textContent = 'Subject: ' + d.preview[k].subject;
+      $(k + 'Text').textContent = d.preview[k].text;
+      $(k + 'Send').textContent = (k === 'welcome' ? 'Send welcome to ' : 'Send reminder to ') + d.counts[k];
+      $(k + 'Send').disabled = sending || !d.ready[k] || !d.counts[k];
+    });
+  }
+  function loadMail() {
+    Api.call('GET', '/api/notify', null, ROLE).then(function (r) { if (guard(r) && r.ok) showMail(r.body); }, function () { mailMsg('Cannot reach the server.', true); });
+  }
+  $('testForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var kind = (e.submitter && e.submitter.getAttribute('data-kind')) || 'welcome';
+    var to = $('testEmail').value.trim();
+    mailMsg('Sending a test ' + kind + ' email to ' + to + '…');
+    Api.call('POST', '/api/notify', { kind: kind, test: to }, ROLE).then(function (r) {
+      if (!guard(r)) return;
+      mailMsg(r.ok ? 'Test ' + kind + ' email sent to ' + to + '. Check the inbox (and junk folder) before sending to everyone.' : r.body.message, !r.ok);
+    }, function () { mailMsg('Cannot reach the server.', true); });
+  });
+  // Sends in batches of about 10 until none are left, showing progress; stops on a batch that sent nothing.
+  function sendAll(kind) {
+    var n = mail.counts[kind];
+    var what = kind === 'welcome' ? 'the welcome email' : 'the reminder';
+    if (!confirm('Send ' + what + ' to ' + n + ' officer(s) now?')) return;
+    sending = true; showMail(mail);
+    var total = 0, failed = [];
+    (function step(after) {
+      Api.call('POST', '/api/notify', { kind: kind, send: true, after: after }, ROLE).then(function (r) {
+        if (!guard(r)) return;
+        if (!r.ok) return done(r.body.message);
+        total += r.body.sent; failed = failed.concat(r.body.failed);
+        mailMsg('Sent ' + total + ' of ' + n + '…');
+        if (r.body.remaining > 0 && r.body.sent > 0) return step(r.body.after);
+        done();
+      }, function () { done('Lost the connection. Sent ' + total + ' so far; press Send again to continue.'); });
+    })('');
+    function done(err) {
+      sending = false;
+      var text = 'Sent ' + total + ' of ' + n + '.';
+      if (failed.length) text += ' Not sent (' + failed.length + '): ' + failed.map(function (f) { return f.email + ' (' + f.message + ')'; }).join('; ') + '. Press Send again to retry them.';
+      if (err) text += ' ' + err;
+      mailMsg(text, !!(err || failed.length));
+      loadAdmins();
+    }
+  }
+  $('welcomeSend').addEventListener('click', function () { sendAll('welcome'); });
+  $('reminderSend').addEventListener('click', function () { sendAll('reminder'); });
   $('csv').addEventListener('change', function () {
     var f = this.files && this.files[0];
     adminError('');

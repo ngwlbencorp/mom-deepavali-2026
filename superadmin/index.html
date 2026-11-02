@@ -87,6 +87,26 @@
           <p class="muted small">Emails are stored in lower case and login ignores capitals, so "Name@MOM.gov.sg" and "name@mom.gov.sg" are the same admin.</p>
           <p class="error" id="adminErr" hidden></p>
         </div>
+        <div class="card" id="mailCard">
+          <h3>Email officers (Postman)</h3>
+          <p class="small" id="mailStatus">Checking settings…</p>
+          <div class="mailrow">
+            <p><b>Welcome email</b>: <span id="welcomeCount">–</span> officer(s) not yet sent it. Officers added later, or removed and added back, are included.</p>
+            <details><summary>Preview</summary><p class="mailsubj" id="welcomeSubj"></p><pre class="mailtext" id="welcomeText"></pre></details>
+            <button class="btn" id="welcomeSend" disabled>Send welcome</button>
+          </div>
+          <div class="mailrow">
+            <p><b>Reminder</b>: <span id="reminderCount">–</span> officer(s) have never logged in and have not been reminded. Planned for 6 Nov, 4 pm.</p>
+            <details><summary>Preview</summary><p class="mailsubj" id="reminderSubj"></p><pre class="mailtext" id="reminderText"></pre></details>
+            <button class="btn" id="reminderSend" disabled>Send reminder</button>
+          </div>
+          <form class="addone" id="testForm">
+            <label class="field">Send a test to one address first <input id="testEmail" type="email" autocomplete="off" placeholder="your work email" required></label>
+            <button class="btn secondary" type="submit" data-kind="welcome">Test welcome</button>
+            <button class="btn secondary" type="submit" data-kind="reminder">Test reminder</button>
+          </form>
+          <p class="small" id="mailMsg" aria-live="polite"></p>
+        </div>
         <div class="card">
           <h3>Current admins (<span id="adminCount">0</span>)</h3>
           <p class="small" id="loginSummary"></p>
