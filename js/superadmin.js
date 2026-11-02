@@ -327,7 +327,9 @@
       span.appendChild(seenText);
       var mailText = document.createElement('small');
       mailText.className = 'lastlogin';
-      mailText.textContent = (a.welcome_sent_at ? 'Welcome sent ' + when(a.welcome_sent_at) : 'Welcome not sent') + (a.reminder_sent_at ? ' · Reminder sent ' + when(a.reminder_sent_at) : '');
+      var dv = delivery[a.email] || {};
+      mailText.textContent = (a.welcome_sent_at ? 'Welcome sent ' + when(a.welcome_sent_at) + statusText(dv.welcome) : 'Welcome not sent') + (a.reminder_sent_at ? ' · Reminder sent ' + when(a.reminder_sent_at) + statusText(dv.reminder) : '');
+      if ((dv.welcome && BAD[dv.welcome.status]) || (dv.reminder && BAD[dv.reminder.status])) mailText.className = 'lastlogin never';
       span.appendChild(mailText);
       b.textContent = 'Remove';
       b.addEventListener('click', function () {
@@ -337,6 +339,11 @@
       li.appendChild(span); li.appendChild(b); ul.appendChild(li);
     });
   }
+  // Postman delivery status per officer, from "Check delivery" (kept until the page reloads).
+  var delivery = {};
+  var STATUS = { DELIVERED: 'delivered', OPENED: 'opened', BOUNCED: 'BOUNCED', COMPLAINT: 'marked as spam', UNSENT: 'queued', ACCEPTED: 'on its way', SENT: 'on its way', NOT_FOUND: 'not found in Postman' };
+  var BAD = { BOUNCED: true, COMPLAINT: true, NOT_FOUND: true };
+  function statusText(d) { return d ? ' (' + (STATUS[d.status] || d.status) + (d.error ? ': ' + d.error : '') + ')' : ''; }
   function when(t) { return new Date(t).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); }
   function loadAdmins() {
     Api.call('GET', '/api/admins', null, ROLE).then(function (r) { if (guard(r) && r.ok) renderAdmins(r.body.admins); }, function () { adminError('Cannot reach the server.'); });
@@ -398,6 +405,25 @@
       loadAdmins();
     }
   }
+  $('deliveryBtn').addEventListener('click', function () {
+    var b = $('deliveryBtn'); b.disabled = true;
+    $('deliveryMsg').className = 'small'; $('deliveryMsg').textContent = 'Asking Postman…';
+    Api.call('GET', '/api/notify?delivery=1', null, ROLE).then(function (r) {
+      b.disabled = false;
+      if (!guard(r)) return;
+      if (!r.ok) { $('deliveryMsg').className = 'small error'; $('deliveryMsg').textContent = r.body.message; return; }
+      delivery = r.body.officers;
+      var tally = {};
+      Object.keys(delivery).forEach(function (e) { ['welcome', 'reminder'].forEach(function (k) { var d = delivery[e][k]; if (d) { var s = STATUS[d.status] || d.status; tally[s] = (tally[s] || 0) + 1; } }); });
+      var parts = Object.keys(tally).map(function (s) { return tally[s] + ' ' + s; });
+      var bad = Object.keys(delivery).filter(function (e) { return ['welcome', 'reminder'].some(function (k) { return delivery[e][k] && BAD[delivery[e][k].status]; }); });
+      $('deliveryMsg').className = 'small' + (bad.length ? ' error' : '');
+      $('deliveryMsg').textContent = (parts.length ? 'Emails: ' + parts.join(' · ') + '.' : 'No emails sent yet.') +
+        (bad.length ? ' Check these addresses: ' + bad.join(', ') + '.' : '') +
+        (r.body.complete ? '' : ' (Postman had more emails than could be read in one go, so some may show as not found.)');
+      loadAdmins();
+    }, function () { b.disabled = false; $('deliveryMsg').className = 'small error'; $('deliveryMsg').textContent = 'Cannot reach the server.'; });
+  });
   $('welcomeSend').addEventListener('click', function () { sendAll('welcome'); });
   $('reminderSend').addEventListener('click', function () { sendAll('reminder'); });
   $('csv').addEventListener('change', function () {

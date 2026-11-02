@@ -223,8 +223,13 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
     twice. **Every send request ends within 8 seconds** (Claude, 2 Nov): Vercel stops a request at
     the project's limit (10 s on older Hobby projects), and a request stopped mid-email would send
     it without recording it. The first version could reach 9 s with a slow Postman. Postman's error text has addresses blanked out before it can reach `api_errors`.
-  - Postman's API details come from its older public guide; the current guide was not reachable
-    from the build session. The first live test send confirms them.
+  - **Delivery status without new columns** (owner, 2 Nov): Postman's List endpoint returns every
+    email sent with the key, with recipient and status. Each officer's email is the one to their
+    address created nearest `welcome_sent_at` / `reminder_sent_at` (within 10 minutes), so no
+    Postman id is stored and the welcome emails sent before this existed are covered too.
+    Statuses are fetched on demand ("Check delivery"), not stored.
+  - Postman's API details come from its guide (send, get by id, list), pasted by the owner on
+    2 Nov because the guide is not reachable from the build session.
 - **Database awake/asleep status is shown to the superadmin only** (owner, 29 Oct): officers do
   not need it. Neon's free plan sleeps after 5 minutes, and the first query after that takes a
   second or more. The owner wanted no lag on the first scan of the day: an officer logging in

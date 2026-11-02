@@ -14,17 +14,27 @@ const ok = (cond, msg) => { console.log((cond ? 'PASS ' : 'FAIL ') + msg); if (!
 
 // The stand-in records every email; an address starting "fail" gets a 500; /mode sets a status for all.
 const got = [];
-let forceStatus = 0, delayMs = 60;
+let forceStatus = 0, delayMs = 60, listCalls = 0;
 const fake = http.createServer((req, res) => {
   let raw = '';
   req.on('data', (c) => { raw += c; });
   req.on('end', () => {
+    if (req.method === 'GET') {  // List emails: newest first, created_at[gte], limit, offset, has_more
+      const u = new URL(req.url, 'http://x');
+      if (u.pathname !== '/v1/transactional/email' || req.headers.authorization !== 'Bearer ' + KEY) { res.statusCode = 401; return res.end('{}'); }
+      const gte = u.searchParams.get('created_at[gte]'), limit = Math.min(10, +u.searchParams.get('limit') || 10), offset = +u.searchParams.get('offset') || 0;
+      const all = got.map((m, i) => ({ id: i + 1, recipient: m.recipient, status: /^bounce/.test(m.recipient) ? 'BOUNCED' : 'DELIVERED',
+        error_code: /^bounce/.test(m.recipient) ? 'Blacklisted recipeint' : null, error_sub_type: /^bounce/.test(m.recipient) ? 'Hard Bounce' : null, created_at: m.at }))
+        .filter((m) => !gte || m.created_at >= gte).reverse();
+      listCalls++;
+      return res.end(JSON.stringify({ has_more: offset + limit < all.length, data: all.slice(offset, offset + limit) }));
+    }
     if (req.url === '/mode') { const m = JSON.parse(raw); forceStatus = m.status || 0; delayMs = m.delay || 60; return res.end('{}'); }
     const b = JSON.parse(raw || '{}');
     setTimeout(() => {
       if (forceStatus) { res.statusCode = forceStatus; return res.end(JSON.stringify({ message: 'forced for ' + b.recipient })); }
       if (/^fail/.test(b.recipient)) { res.statusCode = 500; return res.end('{"message":"stand-in failure"}'); }
-      got.push({ auth: req.headers.authorization, ...b });
+      got.push({ auth: req.headers.authorization, at: new Date().toISOString(), ...b });
       res.statusCode = 201; res.end(JSON.stringify({ id: 'e' + got.length }));
     }, delayMs);
   });
@@ -45,7 +55,7 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
   await new Promise((r) => fake.listen(FAKE_PORT, '127.0.0.1', r));
   const env = {
     ...process.env, DATABASE_URL: PG + '/notifytest', ADMIN_PASSWORD: 'admin-pw-<1>', SUPERADMIN_USER: 'boss', SUPERADMIN_PASSWORD: 'super-pw-2',
-    POSTMAN_API_KEY: KEY, POSTMAN_API_URL: `http://127.0.0.1:${FAKE_PORT}/send`,
+    POSTMAN_API_KEY: KEY, POSTMAN_API_URL: `http://127.0.0.1:${FAKE_PORT}/v1/transactional/email/send`,
     MINISITE_URL: 'https://example.test/mini/', officer_site_url: 'https://example.test/officer/', // lower case on purpose
     ADMIN_CONTACT: 'https://example.slack.com/team/U0TEST'
   };
@@ -147,6 +157,17 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     const slowTo = got.slice(n0).map((m) => m.recipient);
     ok(longest < 8500 && slow.every((m) => slowTo.includes(m)) && new Set(slowTo).size === slowTo.length && (await admins().then((a) => slow.every((m) => a[m].welcome_sent_at))),
       `slow Postman (3 s per email): ${rounds} batches, longest ${longest} ms, all 6 sent once`);
+
+    // Delivery status from Postman's List endpoint, matched by address and send time.
+    await call('POST', '/api/admins', { emails: ['bounce@example.test'], mode: 'add' }, SUP);
+    await sendAll('welcome');
+    const dl = await call('GET', '/api/notify?delivery=1', null, SUP);
+    const o = dl.body.officers || {};
+    ok(dl.status === 200 && dl.body.complete && o['a@example.test'].welcome.status === 'DELIVERED' && o['b@example.test'].reminder.status === 'DELIVERED',
+      `delivery: welcome and reminder statuses found for each officer (${dl.body.checked} emails read, ${listCalls} list calls)`);
+    ok(o['bounce@example.test'].welcome.status === 'BOUNCED' && /Hard Bounce/.test(o['bounce@example.test'].welcome.error), 'a bounced address shows as bounced with the reason');
+    ok(o['a@example.test'].reminder === null && !o['fail@example.test'], 'no reminder sent = no status; never-sent officers are not listed');
+    ok((await call('GET', '/api/notify?delivery=1')).status === 401, 'delivery check needs the superadmin login');
 
     ok((await call('POST', '/api/notify', { kind: 'other', send: true }, SUP)).status === 400, 'unknown kind refused');
     ok((await call('POST', '/api/notify', { kind: 'welcome', test: 'not-an-email' }, SUP)).status === 400, 'bad test address refused');

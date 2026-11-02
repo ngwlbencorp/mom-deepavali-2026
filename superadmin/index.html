@@ -106,6 +106,11 @@
             <button class="btn secondary" type="submit" data-kind="reminder">Test reminder</button>
           </form>
           <p class="small" id="mailMsg" aria-live="polite"></p>
+          <div class="mailrow">
+            <p><b>Delivery</b>: Postman only accepts an email at first; this asks Postman whether each officer's emails were delivered, opened or bounced. Results show on each officer's row below.</p>
+            <button class="btn secondary" id="deliveryBtn">Check delivery</button>
+            <p class="small" id="deliveryMsg" aria-live="polite"></p>
+          </div>
         </div>
         <div class="card">
           <h3>Current admins (<span id="adminCount">0</span>)</h3>
