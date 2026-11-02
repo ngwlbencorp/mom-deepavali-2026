@@ -220,7 +220,9 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
   - **The owner's contact is Slack only** (`ADMIN_CONTACT`), for login problems; the owner does not
     want emails about this. The emails never mention the superadmin page.
   - **Each email is sent under its own row lock**, so two tabs pressing Send never email anyone
-    twice. Postman's error text has addresses blanked out before it can reach `api_errors`.
+    twice. **Every send request ends within 8 seconds** (Claude, 2 Nov): Vercel stops a request at
+    the project's limit (10 s on older Hobby projects), and a request stopped mid-email would send
+    it without recording it. The first version could reach 9 s with a slow Postman. Postman's error text has addresses blanked out before it can reach `api_errors`.
   - Postman's API details come from its older public guide; the current guide was not reachable
     from the build session. The first live test send confirms them.
 - **Database awake/asleep status is shown to the superadmin only** (owner, 29 Oct): officers do

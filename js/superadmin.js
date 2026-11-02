@@ -383,6 +383,7 @@
         if (!guard(r)) return;
         if (!r.ok) return done(r.body.message);
         total += r.body.sent; failed = failed.concat(r.body.failed);
+        mail.counts = r.body.counts; showMail(mail);  // the buttons count down as it goes
         mailMsg('Sent ' + total + ' of ' + n + '…');
         if (r.body.remaining > 0 && r.body.sent > 0) return step(r.body.after);
         done();

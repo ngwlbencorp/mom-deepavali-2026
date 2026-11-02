@@ -14,19 +14,19 @@ const ok = (cond, msg) => { console.log((cond ? 'PASS ' : 'FAIL ') + msg); if (!
 
 // The stand-in records every email; an address starting "fail" gets a 500; /mode sets a status for all.
 const got = [];
-let forceStatus = 0;
+let forceStatus = 0, delayMs = 60;
 const fake = http.createServer((req, res) => {
   let raw = '';
   req.on('data', (c) => { raw += c; });
   req.on('end', () => {
-    if (req.url === '/mode') { forceStatus = JSON.parse(raw).status; return res.end('{}'); }
+    if (req.url === '/mode') { const m = JSON.parse(raw); forceStatus = m.status || 0; delayMs = m.delay || 60; return res.end('{}'); }
     const b = JSON.parse(raw || '{}');
     setTimeout(() => {
       if (forceStatus) { res.statusCode = forceStatus; return res.end(JSON.stringify({ message: 'forced for ' + b.recipient })); }
       if (/^fail/.test(b.recipient)) { res.statusCode = 500; return res.end('{"message":"stand-in failure"}'); }
       got.push({ auth: req.headers.authorization, ...b });
       res.statusCode = 201; res.end(JSON.stringify({ id: 'e' + got.length }));
-    }, 60);
+    }, delayMs);
   });
 });
 
@@ -34,7 +34,7 @@ const call = (method, p, body, token) => fetch(API + p, {
   method, headers: { 'content-type': 'application/json', ...(token ? { authorization: 'Bearer ' + token } : {}) },
   body: body ? JSON.stringify(body) : undefined
 }).then(async (r) => ({ status: r.status, body: await r.json().catch(() => ({})) }));
-const mode = (status) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { method: 'POST', body: JSON.stringify({ status }) });
+const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { method: 'POST', body: JSON.stringify({ status, delay }) });
 
 (async () => {
   const admin = new Client({ connectionString: PG + '/postgres' });
@@ -129,6 +129,24 @@ const mode = (status) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { method: '
     const [x, y] = await Promise.all([sendAll('welcome'), sendAll('welcome')]);
     const to = got.slice(n0).map((m) => m.recipient);
     ok(new Set(to).size === to.length && many.every((m) => to.includes(m)), `parallel sends: ${to.length} emails, no officer twice (${x.sent} + ${y.sent})`);
+
+    // A slow Postman: every request still ends well inside Vercel's 10-second limit, and nobody is skipped.
+    const slow = Array.from({ length: 6 }, (_, i) => `s${i}@example.test`);
+    await call('POST', '/api/admins', { emails: slow, mode: 'add' }, SUP);
+    await mode(0, 3000);
+    n0 = got.length;
+    let longest = 0, after = '', rounds = 0;
+    for (;;) {
+      const t0 = Date.now();
+      const r = await call('POST', '/api/notify', { kind: 'welcome', send: true, after }, SUP);
+      longest = Math.max(longest, Date.now() - t0); rounds++;
+      after = r.body.after;
+      if (!(r.body.remaining > 0 && r.body.sent > 0)) break;
+    }
+    await mode(0, 60);
+    const slowTo = got.slice(n0).map((m) => m.recipient);
+    ok(longest < 8500 && slow.every((m) => slowTo.includes(m)) && new Set(slowTo).size === slowTo.length && (await admins().then((a) => slow.every((m) => a[m].welcome_sent_at))),
+      `slow Postman (3 s per email): ${rounds} batches, longest ${longest} ms, all 6 sent once`);
 
     ok((await call('POST', '/api/notify', { kind: 'other', send: true }, SUP)).status === 400, 'unknown kind refused');
     ok((await call('POST', '/api/notify', { kind: 'welcome', test: 'not-an-email' }, SUP)).status === 400, 'bad test address refused');
