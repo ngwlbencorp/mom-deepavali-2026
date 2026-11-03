@@ -310,7 +310,9 @@
   var pending = [];
   function adminError(msg) { var e = $('adminErr'); e.textContent = msg || ''; e.hidden = !msg; }
   // Officers who have not logged in yet come first, so they are easy to chase.
+  var currentAdmins = [];  // emails on the list as last loaded, for the upload preview
   function renderAdmins(list) {
+    currentAdmins = list.map(function (a) { return a.email; });
     $('adminCount').textContent = list.length;
     var seen = list.filter(function (a) { return a.login_count > 0; }).length;
     $('loginSummary').textContent = seen + ' of ' + list.length + ' have logged in';
@@ -442,18 +444,47 @@
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) found[v] = true;
       });
       pending = Object.keys(found);
-      $('previewText').textContent = pending.length
-        ? pending.length + ' email address(es) found, e.g. ' + pending.slice(0, 3).join(', ') + (pending.length > 3 ? ', …' : '')
-        : 'No email addresses found in this file.';
+      showUploadPreview();
       $('uploadBtn').disabled = !pending.length;
       $('preview').hidden = false;
     };
     reader.readAsText(f);
     this.value = '';
   });
+  // Before uploading, show exactly who would be added and, for Replace, who would be removed
+  // (owner, 3 Nov: dropping officers who never signed up).
+  function uploadChanges() {
+    var inFile = {}, onList = {};
+    pending.forEach(function (e) { inFile[e] = true; });
+    currentAdmins.forEach(function (e) { onList[e] = true; });
+    return {
+      added: pending.filter(function (e) { return !onList[e]; }).sort(),
+      removed: currentAdmins.filter(function (e) { return !inFile[e]; }).sort(),
+      kept: pending.filter(function (e) { return onList[e]; }).length
+    };
+  }
+  function showUploadPreview() {
+    var box = $('previewText'); box.innerHTML = '';
+    if (!pending.length) { box.textContent = 'No email addresses found in this file.'; return; }
+    var mode = document.querySelector('input[name="mode"]:checked').value, c = uploadChanges();
+    var head = document.createElement('b');
+    head.textContent = pending.length + ' email address(es) in the file: ' + c.kept + ' already on the list, ' + c.added.length + ' new' +
+      (mode === 'replace' ? ', and ' + c.removed.length + ' on the list but not in the file, who would be removed.' : '.');
+    box.appendChild(head);
+    function list(title, items, cls) {
+      if (!items.length) return;
+      var p = document.createElement('p'); p.className = 'small ' + cls; p.textContent = title + ' (' + items.length + '): ' + items.join(', ');
+      box.appendChild(p);
+    }
+    if (mode === 'replace') list('Would be removed', c.removed, 'error');
+    list(mode === 'replace' ? 'Would be added (and get the welcome email when you send it)' : 'Would be added', c.added, 'muted');
+  }
+  document.querySelectorAll('input[name="mode"]').forEach(function (r) { r.addEventListener('change', function () { if (pending.length) showUploadPreview(); }); });
+
   $('uploadBtn').addEventListener('click', function () {
     var mode = document.querySelector('input[name="mode"]:checked').value;
-    if (mode === 'replace' && !confirm('Replace the whole admin list with these ' + pending.length + ' emails? Admins not in the file lose access.')) return;
+    var c = uploadChanges();
+    if (mode === 'replace' && !confirm('Replace the list: remove ' + c.removed.length + ' admin(s) not in the file and add ' + c.added.length + '? Removed admins lose access on their next action.')) return;
     Api.call('POST', '/api/admins', { emails: pending, mode: mode }, ROLE).then(function (r) {
       if (!guard(r)) return;
       if (!r.ok) return adminError(r.body.message);
