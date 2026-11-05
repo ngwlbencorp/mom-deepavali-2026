@@ -277,6 +277,9 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
   superadmin page (also open to the bug agent's token) sends one of each through the real paths.
 - **Email alert per new report through Resend, carrying the report number only** (owner, 30 Oct),
   so no report text leaves the system.
+- **Alerts stay on Resend for the event** (owner, 5 Nov), although the officer emails use the
+  government email service: Resend works and was tested end to end on 5 Nov, and switching three
+  days before the event is not worth the risk. Revisit after the event.
 - **The agent fixes only small, local problems**; anything touching login, the cap, the event
   window, database structure, security checks or sourced content goes to the owner
   (`docs/bug-agent.md`).
