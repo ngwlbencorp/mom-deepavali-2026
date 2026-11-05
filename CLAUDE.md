@@ -59,6 +59,11 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **Neon in the Singapore region** (owner, 28 Oct): the first database was in the wrong region and
   was replaced, to keep latency down for the scan-to-redeem round trip.
 - **Push straight to `main`** (owner, 28 Oct): low risk for this project, and every push deploys.
+- **A new server instance skips the table setup when every column already exists** (Claude, 5 Nov;
+  owner said fix). The setup's `ALTER TABLE ... ADD COLUMN IF NOT EXISTS` takes an exclusive lock
+  even when nothing changes; on 5 Nov a cold start deadlocked with the dashboard's two-table query.
+  It now checks the catalog first (no table lock). Add every new column to `SCHEMA` in `lib/lib.js`
+  too; `tests/schema.test.js` fails otherwise.
 - **All API routes in one Vercel function** (Claude, 28 Oct). It avoids the Hobby plan's limit on
   functions per deployment, and the officers' 5-second polling keeps the one function warm, so
   redeems never hit a cold start.
@@ -260,6 +265,11 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **The agent checks hourly.** The owner asked for every 20 minutes (30 Oct); the scheduler's
   minimum is one hour. Claude did not work around the limit with offset tasks, because the
   platform sets it on purpose.
+- **Hourly checks switched off; the owner wakes the agent when needed** (owner, 5 Nov). Each
+  run resumed one long session, so even a quiet check re-read a very large history, and a server
+  error (not a bug report) set off a run the owner did not expect. The email alert for each new
+  report stays on. Server errors send no alert: they show only in the superadmin page's "Server
+  errors" card.
 - **Email alert per new report through Resend, carrying the report number only** (owner, 30 Oct),
   so no report text leaves the system.
 - **The agent fixes only small, local problems**; anything touching login, the cap, the event
