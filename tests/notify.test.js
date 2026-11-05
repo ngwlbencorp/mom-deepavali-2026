@@ -57,7 +57,8 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ...process.env, DATABASE_URL: PG + '/notifytest', ADMIN_PASSWORD: 'admin-pw-<1>', SUPERADMIN_USER: 'boss', SUPERADMIN_PASSWORD: 'super-pw-2',
     POSTMAN_API_KEY: KEY, POSTMAN_API_URL: `http://127.0.0.1:${FAKE_PORT}/v1/transactional/email/send`,
     MINISITE_URL: 'https://example.test/mini/', officer_site_url: 'https://example.test/officer/', // lower case on purpose
-    ADMIN_CONTACT: 'https://example.slack.com/team/U0TEST'
+    ADMIN_CONTACT: 'https://example.slack.com/team/U0TEST',
+    BRIEFING_URL: 'https://example.test/d/briefing/'
   };
   const server = spawn('node', [path.join(__dirname, 'dev-server.js'), '3020'], { env, stdio: 'inherit' });
   try {
@@ -118,7 +119,7 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ok(c.reminder === 3, 'officers who logged in are not pending the reminder');
     n0 = got.length; s = await sendAll('reminder');
     const rem = got.slice(n0);
-    ok(s.sent === 3 && !rem.some((m) => m.recipient === 'a@example.test') && rem[0].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov' && rem[0].body.includes('https://example.slack.com/team/U0TEST'), 'reminder goes to the three who never logged in, with the Slack contact');
+    ok(s.sent === 3 && !rem.some((m) => m.recipient === 'a@example.test') && rem[0].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov' && rem[0].body.includes('https://example.slack.com/team/U0TEST') && rem[0].body.includes('href="https://example.test/d/briefing/"') && rem[0].body.includes('COMET or SEED'), 'reminder goes to the three who never logged in, with the Slack contact and the briefing slides link');
     ok((await sendAll('reminder')).sent === 0, 'nobody is reminded twice');
 
     // Failures: one bad address does not stop the rest, and stays pending.

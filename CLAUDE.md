@@ -214,11 +214,15 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
   - **"Replace" now keeps officers who are in both lists** (Claude, 2 Nov). It used to delete
     everyone and re-add them, which would have wiped the record and re-sent the welcome to all.
   - **Password and page addresses come from Vercel settings** (`ADMIN_PASSWORD`, `MINISITE_URL`,
-    `OFFICER_SITE_URL`, `ADMIN_CONTACT`), never the code, because the repository is public. The
+    `OFFICER_SITE_URL`, `ADMIN_CONTACT`, `BRIEFING_URL`), never the code, because the repository is public. The
     email shows the password that actually works. The owner accepted sending it in plain text: a
     listed work email is also needed to log in.
   - **The owner's contact is Slack only** (`ADMIN_CONTACT`), for login problems; the owner does not
     want emails about this. The emails never mention the superadmin page.
+  - **The reminder links the briefing slides** (owner, 5 Nov), from `BRIEFING_URL`, with a note
+    that they open only on a COMET or SEED device, unlike the mini-site and Admin Portal, which
+    work on any device. The reminder cannot be sent until the setting exists, so it never goes
+    out with a blank link.
   - **Each email is sent under its own row lock**, so two tabs pressing Send never email anyone
     twice. **Every send request ends within 8 seconds** (Claude, 2 Nov): Vercel stops a request at
     the project's limit (10 s on older Hobby projects), and a request stopped mid-email would send
