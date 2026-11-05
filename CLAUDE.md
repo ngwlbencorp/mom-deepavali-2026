@@ -434,6 +434,11 @@ Full commands are in README, "Tests (local)". In short:
   claim, first check the records (the full session record, the site itself) and/or ask; never
   fit the correction into the old belief, and never act on either view until it is settled. The
   owner can be wrong too, so the check matters more than who is right (owner, 5 Nov).
+- **Ask before bringing in a new outside service, and look again when a better-fitting one
+  appears** (owner, 5 Nov). Claude added Resend for bug alerts on 29 Oct on its own (the owner had
+  asked for bug reporting, not email alerts) without asking which email service to use. When the
+  owner brought in Postman on 2 Nov, Claude did not suggest moving the alerts to it, and on 5 Nov
+  built the server-error alert on Resend again. Name the options and let the owner choose.
 - Stop local servers by PID (`ps -eo pid,args | awk ...`); `pkill -f` can match and kill its own
   shell.
 
