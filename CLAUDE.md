@@ -416,8 +416,9 @@ Full commands are in README, "Tests (local)". In short:
   slides, so the old MW deck and its `/p/` page have been unused since then; that fact was lost
   in a context summary, and Claude did not search the full record before acting. The old page
   and the new internal one share the same name after `/p/` and `/d/`. When the owner corrects a
-  claim, treat it as proof the claim is wrong: restate their point, check it, and ask if still
-  unclear; never fit the correction into the old belief.
+  claim, first check the records (the full session record, the site itself) and/or ask; never
+  fit the correction into the old belief, and never act on either view until it is settled. The
+  owner can be wrong too, so the check matters more than who is right (owner, 5 Nov).
 - Stop local servers by PID (`ps -eo pid,args | awk ...`); `pkill -f` can match and kill its own
   shell.
 
