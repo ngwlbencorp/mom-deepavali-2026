@@ -412,6 +412,12 @@ Full commands are in README, "Tests (local)". In short:
   `remote.ducks` because both had "deepavali-2026" in the name, overwrote that deck, and repeated
   the claim after the owner corrected it. On ducks.ai, `/p/` pages are public and `/d/` pages are
   internal only (403 from a cloud session). If a link cannot be opened from here, say so and ask.
+  Causes found in the session record: the owner said on 29 Oct that another team makes the MW
+  slides, so the old MW deck and its `/p/` page have been unused since then; that fact was lost
+  in a context summary, and Claude did not search the full record before acting. The old page
+  and the new internal one share the same name after `/p/` and `/d/`. When the owner corrects a
+  claim, treat it as proof the claim is wrong: restate their point, check it, and ask if still
+  unclear; never fit the correction into the old belief.
 - Stop local servers by PID (`ps -eo pid,args | awk ...`); `pkill -f` can match and kill its own
   shell.
 
