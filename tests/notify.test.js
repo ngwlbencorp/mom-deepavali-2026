@@ -130,6 +130,13 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ok(/Thank you for logging in/.test(byTo['a@example.test'].body) && !/have not logged in/.test(byTo['a@example.test'].body) && byTo['a@example.test'].subject.endsWith('your links and the briefing slides'), 'an officer who logged in gets the logged-in version');
     ok(/have not logged in/.test(byTo['b@example.test'].body) && byTo['b@example.test'].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov', 'an officer who never logged in gets the not-logged-in version');
     ok(rem.every((m) => m.body.includes('https://example.slack.com/team/U0TEST') && m.body.includes('href="https://example.test/d/briefing/"') && m.body.includes('href="https://example.test/mini/"') && m.body.includes('COMET or SEED') && m.tag === 'deepavali-reminder'), 'both versions carry the Slack contact, the slides, both sites and the same tag');
+    // The rehearsal reset clears only quiz and QR data (scans, submissions), never officers' records.
+    const before = await admins();
+    ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 200, 'rehearsal reset runs');
+    const after2 = await admins();
+    ok(Object.keys(after2).sort().join() === Object.keys(before).sort().join() && ['welcome_sent_at', 'reminder_sent_at', 'last_login_at', 'login_count'].every((f) =>
+      Object.keys(before).every((e) => String(before[e][f]) === String(after2[e][f]))) && after2['a@example.test'].last_login_at && after2['a@example.test'].login_count >= 1 && after2['a@example.test'].reminder_sent_at,
+      'the reset keeps every officer, their logins (last login, count) and their welcome and reminder records');
     ok((await sendAll('reminder')).sent === 0, 'nobody is reminded twice');
 
     // Failures: one bad address does not stop the rest, and stays pending.

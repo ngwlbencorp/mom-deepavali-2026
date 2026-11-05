@@ -237,7 +237,7 @@ Email alerts (`tests/alerts.test.js`): runs its own API server (port 3030), a st
 
 Schema setup (`tests/schema.test.js`): creates and drops its own database `schematest`. Checks that `SCHEMA` in `lib/lib.js` lists exactly the columns the setup creates, and that a new server instance skips the setup (and so takes no table lock) once they all exist. `node tests/schema.test.js` (3 checks). Add any new column to `SCHEMA` as well as to the setup, or this test fails.
 
-Officer emails (`tests/notify.test.js`): runs its own API server (port 3020), a local stand-in for Postman (3021) and its own database `notifytest` on the local Postgres, so no real email is sent. `node tests/notify.test.js` (38 checks: who is pending, test sends, batches, failures, re-adding, Replace, the reset, the reminder to everyone in two versions, two tabs sending at once, a slow Postman, and delivery status with paging).
+Officer emails (`tests/notify.test.js`): runs its own API server (port 3020), a local stand-in for Postman (3021) and its own database `notifytest` on the local Postgres, so no real email is sent. `node tests/notify.test.js` (40 checks: who is pending, test sends, batches, failures, re-adding, Replace, the reset, the reminder to everyone in two versions, two tabs sending at once, a slow Postman, and delivery status with paging).
 
 iOS zoom (`tests/zoom.test.js`): every text box, list and file picker on the officer and superadmin pages must be at least 16px, or iPhones zoom in on tap and stay zoomed. Run `node tests/zoom.test.js <site copy> <adminPw> <superUser> <superPw>` after any style change to those pages.
 
