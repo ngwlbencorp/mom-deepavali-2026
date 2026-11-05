@@ -379,6 +379,9 @@
       $(k + 'Send').textContent = (k === 'welcome' ? 'Send welcome to ' : 'Send reminder to ') + d.counts[k];
       $(k + 'Send').disabled = sending || !d.ready[k] || !d.counts[k];
     });
+    $('reminderNotIn').textContent = d.counts.reminder_not_logged_in;
+    $('reminderInSubj').textContent = 'Subject: ' + d.preview.reminder_loggedin.subject;
+    $('reminderInText').textContent = d.preview.reminder_loggedin.text;
   }
   function loadMail() {
     Api.call('GET', '/api/notify', null, ROLE).then(function (r) { if (guard(r) && r.ok) showMail(r.body); }, function () { mailMsg('Cannot reach the server.', true); });
@@ -390,7 +393,7 @@
     mailMsg('Sending a test ' + kind + ' email to ' + to + '…');
     Api.call('POST', '/api/notify', { kind: kind, test: to }, ROLE).then(function (r) {
       if (!guard(r)) return;
-      mailMsg(r.ok ? 'Test ' + kind + ' email sent to ' + to + '. Check the inbox (and junk folder) before sending to everyone.' : r.body.message, !r.ok);
+      mailMsg(r.ok ? (kind === 'reminder' ? 'Both test reminders (never logged in, and already logged in) sent to ' : 'Test ' + kind + ' email sent to ') + to + '. Check the inbox (and junk folder) before sending to everyone.' : r.body.message, !r.ok);
     }, function () { mailMsg('Cannot reach the server.', true); });
   });
   // Sends in batches of about 10 until none are left, showing progress; stops on a batch that sent nothing.

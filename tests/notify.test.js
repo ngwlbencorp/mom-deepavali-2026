@@ -113,13 +113,23 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ok(!a['d@example.test'] && a['a@example.test'].welcome_sent_at && !a['e@example.test'].welcome_sent_at, 'replace drops missing officers and keeps the others\' email record');
     ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 200 && (await admins())['a@example.test'].welcome_sent_at, 'the rehearsal reset keeps the email record');
 
-    // Reminder: only officers who never logged in, once.
+    // Reminder: every officer, once (owner, 5 Nov); the opening depends on whether they logged in.
     ok((await call('POST', '/api/login', { role: 'admin', email: 'A@example.test', password: 'admin-pw-<1>' })).status === 200, 'officer a logs in');
     c = await pending();
-    ok(c.reminder === 3, 'officers who logged in are not pending the reminder');
+    ok(c.reminder === 4 && c.reminder_not_logged_in === 3, `every officer is pending the reminder, 3 of them never logged in (${c.reminder}, ${c.reminder_not_logged_in})`);
+    g = (await call('GET', '/api/notify', null, SUP)).body;
+    ok(g.preview.reminder_loggedin && /Thank you for logging in/.test(g.preview.reminder_loggedin.text) && /have not logged in/.test(g.preview.reminder.text), 'the page previews both versions');
+    n0 = got.length;
+    const tr = await call('POST', '/api/notify', { kind: 'reminder', test: 'me@example.test' }, SUP);
+    ok(tr.status === 200 && tr.body.sent === 2 && got.slice(n0).map((m) => m.subject).join(' | ') ===
+      '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov | [Reminder] Digital4Good @ Kranji RC on 8 Nov: your links and the briefing slides', 'a test reminder sends both versions');
+    ok((await call('POST', '/api/notify', { kind: 'reminder_loggedin', test: 'me@example.test' }, SUP)).status === 400, 'the logged-in version is not a kind of its own');
     n0 = got.length; s = await sendAll('reminder');
-    const rem = got.slice(n0);
-    ok(s.sent === 3 && !rem.some((m) => m.recipient === 'a@example.test') && rem[0].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov' && rem[0].body.includes('https://example.slack.com/team/U0TEST') && rem[0].body.includes('href="https://example.test/d/briefing/"') && rem[0].body.includes('COMET or SEED'), 'reminder goes to the three who never logged in, with the Slack contact and the briefing slides link');
+    const rem = got.slice(n0), byTo = Object.fromEntries(rem.map((m) => [m.recipient, m]));
+    ok(s.sent === 4 && Object.keys(byTo).sort().join() === 'a@example.test,b@example.test,c@example.test,e@example.test', 'the reminder goes to every officer, logged in or not');
+    ok(/Thank you for logging in/.test(byTo['a@example.test'].body) && !/have not logged in/.test(byTo['a@example.test'].body) && byTo['a@example.test'].subject.endsWith('your links and the briefing slides'), 'an officer who logged in gets the logged-in version');
+    ok(/have not logged in/.test(byTo['b@example.test'].body) && byTo['b@example.test'].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov', 'an officer who never logged in gets the not-logged-in version');
+    ok(rem.every((m) => m.body.includes('https://example.slack.com/team/U0TEST') && m.body.includes('href="https://example.test/d/briefing/"') && m.body.includes('href="https://example.test/mini/"') && m.body.includes('COMET or SEED') && m.tag === 'deepavali-reminder'), 'both versions carry the Slack contact, the slides, both sites and the same tag');
     ok((await sendAll('reminder')).sent === 0, 'nobody is reminded twice');
 
     // Failures: one bad address does not stop the rest, and stays pending.
@@ -168,7 +178,7 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ok(dl.status === 200 && dl.body.complete && o['a@example.test'].welcome.status === 'DELIVERED' && o['b@example.test'].reminder.status === 'DELIVERED',
       `delivery: welcome and reminder statuses found for each officer (${dl.body.checked} emails read, ${listCalls} list calls)`);
     ok(o['bounce@example.test'].welcome.status === 'BOUNCED' && /Hard Bounce/.test(o['bounce@example.test'].welcome.error), 'a bounced address shows as bounced with the reason');
-    ok(o['a@example.test'].reminder === null && !o['fail@example.test'], 'no reminder sent = no status; never-sent officers are not listed');
+    ok(o['f1@example.test'].reminder === null && o['a@example.test'].reminder.status === 'DELIVERED' && !o['fail@example.test'], 'no reminder sent = no status (an officer added after the reminder); never-sent officers are not listed');
     ok((await call('GET', '/api/notify?delivery=1')).status === 401, 'delivery check needs the superadmin login');
     // An officer emailed but not recorded (a request stopped mid-send) is flagged before a resend.
     await dbs_unrecord('a@example.test');

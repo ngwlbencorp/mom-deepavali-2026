@@ -207,8 +207,7 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
   because the smartphone question only needs "has a phone or not".
 - **Officer emails through Postman** (owner, 2 Nov): a welcome email to every officer (both page
   addresses, the login, try both sites before the 6 Nov briefing, report bugs through "Report a
-  problem", not Slack, Teams or email), and on 6 Nov at 4 pm a reminder to officers who never
-  logged in. The owner cleared both templates. Decisions and reasons:
+  problem", not Slack, Teams or email), and on 6 Nov at 4 pm a reminder. The owner cleared both templates. Decisions and reasons:
   - **Buttons on the superadmin page, not automatic sends**: a mistaken upload must not email
     everyone at once. A test send to one address comes first. The reminder is a button pressed at
     4 pm because Vercel's free plan schedules at most once a day, at an inexact time.
@@ -224,6 +223,11 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
     listed work email is also needed to log in.
   - **The owner's contact is Slack only** (`ADMIN_CONTACT`), for login problems; the owner does not
     want emails about this. The emails never mention the superadmin page.
+  - **The reminder goes to every officer, in two versions** (owner, 5 Nov), so everyone present on
+    8 Nov has the same information and the slides: officers who never logged in get the "you have
+    not logged in yet" opening and the original subject; the rest get `reminder_loggedin`. The
+    version is picked per officer from `last_login_at` when sending; a test reminder sends both.
+    Wording of both versions to be cleared by the owner before the 6 Nov send.
   - **The reminder links the briefing slides** (owner, 5 Nov), from `BRIEFING_URL`, with a note
     that they open only on a COMET or SEED device, unlike the mini-site and Admin Portal, which
     work on any device. The reminder cannot be sent until the setting exists, so it never goes

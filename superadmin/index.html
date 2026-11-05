@@ -102,8 +102,9 @@
             <button class="btn" id="welcomeSend" disabled>Send welcome</button>
           </div>
           <div class="mailrow">
-            <p><b>Reminder</b>: <span id="reminderCount">–</span> officer(s) have never logged in and have not been reminded. Planned for 6 Nov, 4 pm.</p>
-            <details><summary>Preview</summary><p class="mailsubj" id="reminderSubj"></p><pre class="mailtext" id="reminderText"></pre></details>
+            <p><b>Reminder</b>: <span id="reminderCount">–</span> officer(s) not yet sent it, <span id="reminderNotIn">–</span> of them never logged in. Everyone gets the links and the briefing slides; those who never logged in also get "you have not logged in yet". Planned for 6 Nov, 4 pm.</p>
+            <details><summary>Preview: never logged in</summary><p class="mailsubj" id="reminderSubj"></p><pre class="mailtext" id="reminderText"></pre></details>
+            <details><summary>Preview: already logged in</summary><p class="mailsubj" id="reminderInSubj"></p><pre class="mailtext" id="reminderInText"></pre></details>
             <button class="btn" id="reminderSend" disabled>Send reminder</button>
           </div>
           <form class="addone" id="testForm">
