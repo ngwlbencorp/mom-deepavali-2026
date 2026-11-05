@@ -268,8 +268,13 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **Hourly checks switched off; the owner wakes the agent when needed** (owner, 5 Nov). Each
   run resumed one long session, so even a quiet check re-read a very large history, and a server
   error (not a bug report) set off a run the owner did not expect. The email alert for each new
-  report stays on. Server errors send no alert: they show only in the superadmin page's "Server
-  errors" card.
+  report stays on.
+- **Server errors are emailed too** (owner, 5 Nov), since no hourly check watches them now: the
+  first error after 15 quiet minutes, with the route and error number only (the message can hold
+  database values; it stays on the superadmin page). Later errors in the burst are recorded, not
+  emailed, so a broken route cannot flood the inbox. A failed alert is recorded directly, never
+  through `logError` again, so a broken email setup cannot loop. "Send test alerts" on the
+  superadmin page (also open to the bug agent's token) sends one of each through the real paths.
 - **Email alert per new report through Resend, carrying the report number only** (owner, 30 Oct),
   so no report text leaves the system.
 - **The agent fixes only small, local problems**; anything touching login, the cap, the event

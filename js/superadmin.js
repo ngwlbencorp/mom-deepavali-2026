@@ -536,6 +536,22 @@
     }, function () { $('bugErr').textContent = 'Cannot reach the server.'; $('bugErr').hidden = false; });
     Api.call('GET', '/api/apierrors', null, ROLE).then(function (r) { if (guard(r) && r.ok) renderErrors(r.body.errors.slice(0, 50)); }, function () {});
   }
+  // Sends one bug-report alert (numbered TEST, no report created) and one server-error alert
+  // through the real paths; the test error then shows in the list below.
+  $('alertTest').addEventListener('click', function () {
+    var b = $('alertTest'), note = $('alertTestNote');
+    b.disabled = true; note.textContent = 'Sending…';
+    Api.call('POST', '/api/alerttest', { kind: 'both' }, ROLE).then(function (r) {
+      b.disabled = false;
+      if (!guard(r)) return;
+      if (!r.ok) { note.textContent = 'Could not send: ' + ((r.body && r.body.message) || r.status); return; }
+      var bug = r.body.bug || {};
+      note.textContent = (bug.sent ? 'Bug alert sent.' : 'Bug alert not sent: ' + (bug.reason === 'off' ? 'alerts are switched off (no RESEND_API_KEY or BUG_NOTIFY_EMAIL)' : bug.reason) + '.') +
+        ' Server error alert: check your inbox, and the list below for a test row (and a "not sent" row if it failed).';
+      loadBugs();
+    }, function () { b.disabled = false; note.textContent = 'Could not reach the server.'; });
+  });
+
   function renderErrors(list) {
     var box = $('errList');
     box.innerHTML = '';

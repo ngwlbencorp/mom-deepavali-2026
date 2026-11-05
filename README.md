@@ -86,7 +86,7 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 | `BUG_API_TOKEN` | optional; a long random secret (at least 32 characters) that lets the bug-fixing agent read bug reports and record fixes, and nothing else. Put the same value in the Claude environment's secrets. Unset = only the superadmin can read reports |
 | `POSTMAN_API_KEY` | optional; lets the superadmin email officers through [Postman](https://guide.postman.gov.sg/api-guide/overview) (Admins tab). `POSTMAN_API_URL` overrides the send address (tests only) |
 | `MINISITE_URL`, `OFFICER_SITE_URL`, `ADMIN_CONTACT`, `BRIEFING_URL` | the mini-site and officer page addresses, the Slack contact for officers who cannot log in, and the briefing slides (reminder email only, which cannot be sent without it), put into those emails. Kept here, not in the code, because the repository is public. Either upper or lower case works |
-| `RESEND_API_KEY`, `BUG_NOTIFY_EMAIL` | optional; with both set, each new bug report sends a short email (report number only) through [Resend](https://resend.com). `BUG_NOTIFY_FROM` overrides the sender |
+| `RESEND_API_KEY`, `BUG_NOTIFY_EMAIL` | optional; with both set, each new bug report sends a short email (report number only) through [Resend](https://resend.com), and so does the first server error after 15 minutes without any (route and error number only; later errors in that burst are only recorded). "Send test alerts" in the superadmin page's Server errors card checks both. `BUG_NOTIFY_FROM` overrides the sender |
 
 Logins last 14 hours, and only for the browser tab they were made in.
 
@@ -232,6 +232,8 @@ node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b .
 ```
 
 Both test scripts reset data. Never run them against the production database.
+
+Email alerts (`tests/alerts.test.js`): runs its own API server (port 3030), a stand-in for Resend (3031) and its own database `alerttest`, so no real email is sent. `node tests/alerts.test.js` (15 checks: bug report alert without report text, server-error alert for the first error of a burst only, the test endpoint's logins, and a failing email service recorded once with no loop).
 
 Schema setup (`tests/schema.test.js`): creates and drops its own database `schematest`. Checks that `SCHEMA` in `lib/lib.js` lists exactly the columns the setup creates, and that a new server instance skips the setup (and so takes no table lock) once they all exist. `node tests/schema.test.js` (3 checks). Add any new column to `SCHEMA` as well as to the setup, or this test fails.
 

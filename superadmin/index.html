@@ -136,7 +136,8 @@
         <div id="bugList"></div>
         <div class="card">
           <h3>Server errors</h3>
-          <p class="muted small">Unexpected errors inside the API, recorded automatically (the latest 50; the same error at most once a minute). They help find the cause of a reported problem.</p>
+          <p class="muted small">Unexpected errors inside the API, recorded automatically (the latest 50; the same error at most once a minute). They help find the cause of a reported problem. The first error after 15 quiet minutes is emailed to you (route and number only), like each new bug report.</p>
+          <p><button class="btn secondary" type="button" id="alertTest">Send test alerts</button> <span class="muted small" id="alertTestNote"></span></p>
           <div class="tablewrap" id="errList"></div>
         </div>
       </section>
