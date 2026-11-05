@@ -394,7 +394,8 @@ Full commands are in README, "Tests (local)". In short:
 - Test scripts reset data. Never point them at the production database.
 - Run `tests/local-stack.sh` without piping its output (`| tail` hangs: Postgres keeps the pipe
   open). Redirect to a file or `/dev/null` instead (2 Nov).
-- **Test a site's reachability before saying it is blocked** (5 Nov). The web-fetch tool failed on
+- **Never conclude from one failed attempt; retry, especially when the test is cheap** (owner,
+  5 Nov). Example: test a site's reachability before saying it is blocked. The web-fetch tool failed on
   two government sites, and Claude told the owner government sites were blocked; plain `curl`
   reached mom.gov.sg and police.gov.sg fine. Check with `curl -sS -o /dev/null -w "%{http_code}"`
   first, and read pages with curl when the fetch tool fails.
