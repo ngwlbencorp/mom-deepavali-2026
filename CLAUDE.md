@@ -407,6 +407,11 @@ Full commands are in README, "Tests (local)". In short:
   two government sites, and Claude told the owner government sites were blocked; plain `curl`
   reached mom.gov.sg and police.gov.sg fine. Check with `curl -sS -o /dev/null -w "%{http_code}"`
   first, and read pages with curl when the fetch tool fails.
+- **Check a link itself before saying what it shows; a matching name is not evidence** (owner,
+  5 Nov). Claude took the officer briefing link (`/d/...`, internal) for the old MW talk deck in
+  `remote.ducks` because both had "deepavali-2026" in the name, overwrote that deck, and repeated
+  the claim after the owner corrected it. On ducks.ai, `/p/` pages are public and `/d/` pages are
+  internal only (403 from a cloud session). If a link cannot be opened from here, say so and ask.
 - Stop local servers by PID (`ps -eo pid,args | awk ...`); `pkill -f` can match and kill its own
   shell.
 
