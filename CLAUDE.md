@@ -230,6 +230,10 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
     Statuses are fetched on demand ("Check delivery"), not stored.
   - Postman's API details come from its guide (send, get by id, list), pasted by the owner on
     2 Nov because the guide is not reachable from the build session.
+- **Souvenirs by officer on the superadmin dashboard** (owner asked, 5 Nov): officers scan the
+  QR codes, so each souvenir can be credited to the officer account that gave it. Built from the
+  existing `scans.redeemed_station` (the logged-in officer's email), so no new column. Shows the
+  email before the @ so the table fits a phone. Superadmin only, like every other figure there.
 - **Database awake/asleep status is shown to the superadmin only** (owner, 29 Oct): officers do
   not need it. Neon's free plan sleeps after 5 minutes, and the first query after that takes a
   second or more. The owner wanted no lag on the first scan of the day: an officer logging in

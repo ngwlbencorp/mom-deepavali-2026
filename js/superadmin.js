@@ -113,6 +113,7 @@
     });
     renderLanguages(d.languages || []);
     renderBreakdowns(d);
+    renderOfficers(d);
     var key = JSON.stringify([d.timeline, d.bucketMinutes, d.cap, d.csat, d.csatN, window.innerWidth]);
     if (key === drawn) return;
     drawn = key;
@@ -150,6 +151,18 @@
     }));
     var mr = d.manualReasons || [], mt = mr.reduce(function (s, x) { return s + x.claims; }, 0);
     table('reasonTable', ['Reason', 'Manual claims', 'Share'], mr.map(function (x) { return [REASONS[x.reason] || x.reason, x.claims, pctOf(x.claims, mt)]; }));
+  }
+
+  // Each souvenir is credited to the officer account logged in when it was given (scan or manual).
+  function renderOfficers(d) {
+    var rows = d.byOfficer || [];
+    $('officerCard').hidden = !rows.length;
+    if (!rows.length) return;
+    $('officerNote').textContent = rows.length + ' of ' + d.listedOfficers + ' listed officer(s) have given at least one souvenir. Credited to the account logged in, not necessarily the person holding the phone. Full emails are in the claims CSV (redeemed_station).';
+    // Three columns and the email before the @, so the table fits a phone without scrolling sideways.
+    table('officerTable', ['Officer', 'Given', 'Manual'], rows.map(function (x) {
+      return [String(x.officer || '?').split('@')[0], x.given, x.manual];
+    }));
   }
 
   var LANG_NAMES = { en: 'English', bn: 'Bengali', my: 'Burmese', hi: 'Hindi', ta: 'Tamil', ur: 'Urdu', '?': 'Not recorded' };

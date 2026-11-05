@@ -147,6 +147,9 @@ const call = (method, path, body, token) => fetch(base + path, {
   const viewed = d.storiesFirstTry.find((x) => x.viewed === true);
   ok(viewed && viewed.claims === 1 && viewed.firstTry === 0, 'dashboard: stories viewed before the first attempt, against first-try full score');
   ok(d.manualReasons.some((x) => x.reason === 'no_phone' && x.claims === 1), 'dashboard: manual claims by reason');
+  const credited = d.byOfficer.reduce((s, x) => s + x.given, 0);
+  ok(credited === d.given && d.byOfficer.every((x) => x.officer && x.officer.includes('@')) && d.byOfficer.reduce((s, x) => s + x.manual, 0) === d.adminGiven && d.listedOfficers >= d.byOfficer.length,
+    'dashboard: souvenirs by officer add up to the total (' + JSON.stringify(d.byOfficer.map((x) => [x.given, x.manual])) + ')');
   const claimsCsv0 = (await call('GET', '/api/export?table=claims', null, SUP)).body.text;
   ok(/,stories_viewed,manual_reason,/.test(claimsCsv0.split('\n')[0]) && /,2,,/.test(claimsCsv0) && /,no_phone,/.test(claimsCsv0), 'claims export has stories viewed and manual reason');
   const subsCsv = await call('GET', '/api/export?table=submissions', null, SUP);
