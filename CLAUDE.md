@@ -394,6 +394,10 @@ Full commands are in README, "Tests (local)". In short:
 - Test scripts reset data. Never point them at the production database.
 - Run `tests/local-stack.sh` without piping its output (`| tail` hangs: Postgres keeps the pipe
   open). Redirect to a file or `/dev/null` instead (2 Nov).
+- **Test a site's reachability before saying it is blocked** (5 Nov). The web-fetch tool failed on
+  two government sites, and Claude told the owner government sites were blocked; plain `curl`
+  reached mom.gov.sg and police.gov.sg fine. Check with `curl -sS -o /dev/null -w "%{http_code}"`
+  first, and read pages with curl when the fetch tool fails.
 - Stop local servers by PID (`ps -eo pid,args | awk ...`); `pkill -f` can match and kill its own
   shell.
 
