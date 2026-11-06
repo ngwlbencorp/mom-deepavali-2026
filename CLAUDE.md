@@ -113,6 +113,11 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **Quiz questions do not repeat the presentation's**, and are interactive (owner, 28 Oct): spot
   the red flags, scam or safe, what would you reply, pick the safe way. Spot the red flags needs
   every flag found; wrong taps are allowed (owner).
+- **"Spot the red flags" shows how to answer** (bug report #8 and owner, 6 Nov). An officer did not
+  see that the parts of the message are what to tap. Each part is now a chip (bug agent), and a
+  finger animation glides over the message and taps one part, which flashes the picked colour
+  and returns to normal. It taps a part that is not a red flag and selects nothing, so it gives
+  no answer away; it plays twice at most, stops at the first touch, and is off for reduced motion.
 - **Answers are revealed only at the end**, under "Review answers" (owner, 28 Oct): common in
   e-learning, and it keeps the first attempt a real test.
 - **Feedback is required once, with no Skip** (owner, 28 Oct). Why: satisfaction and "learned

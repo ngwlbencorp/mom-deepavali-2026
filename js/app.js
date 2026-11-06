@@ -368,11 +368,65 @@
       return btn;
     }
     var from = q.msg.fromFlag ? seg('from', q.msg.from) : q.msg.from;
+    var parts = [], demoTarget = null;
     var bubbles = q.msg.bubbles.map(function (b, bi) {
-      return el('p', { class: 'bubble static' }, b.map(function (part, si) { return seg(bi + '-' + si, part.t); }));
+      return el('p', { class: 'bubble static' }, b.map(function (part, si) {
+        var btn = seg(bi + '-' + si, part.t);
+        parts.push(btn);
+        if (!demoTarget && !part.flag) demoTarget = btn;
+        return btn;
+      }));
     });
-    if (review) return [phone(from, q.msg.channel, bubbles, q.msg.app)];
-    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), phone(from, q.msg.channel, bubbles, q.msg.app), counter];
+    var ph = phone(from, q.msg.channel, bubbles, q.msg.app);
+    if (review) return [ph];
+    if (!picked.length) spotDemo(ph.querySelector('.phone-body'), parts, demoTarget, function () { return picked.length > 0; });
+    return [el('p', { class: 'prompt', text: f(T.ui.spotPrompt, { n: n }) }), ph, counter];
+  }
+
+  // Shows how to answer (owner, 6 Nov, after bug report #8): a finger glides over the message,
+  // then taps one part, which flashes the picked colour and returns to normal. It taps a part that
+  // is not a red flag and selects nothing, so it gives no answer away. It plays shortly after the
+  // screen opens and once more if still nothing is picked, stops at the first touch or key press,
+  // and is skipped when the phone asks for reduced motion. Positions are set through the style
+  // property (no inline style attributes), so it works under a strict content policy.
+  function spotDemo(body, parts, target, done) {
+    if (!body || !target || parts.length < 2) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var hand = el('span', { class: 'demo-hand', 'aria-hidden': 'true', text: '\uD83D\uDC46' });
+    var timers = [], stopped = false;
+    function later(fn, ms) { timers.push(setTimeout(function () { if (!stopped && body.isConnected && !done()) fn(); else stop(); }, ms)); }
+    function stop() {
+      if (stopped) return;
+      stopped = true;
+      timers.forEach(clearTimeout);
+      if (hand.parentNode) hand.parentNode.removeChild(hand);
+      target.classList.remove('demo-tap');
+      document.removeEventListener('pointerdown', stop, true);
+      document.removeEventListener('keydown', stop, true);
+    }
+    document.addEventListener('pointerdown', stop, true);
+    document.addEventListener('keydown', stop, true);
+    // Fingertip (top centre of the emoji) on a point near the start of a part.
+    function to(btn, ms) {
+      var b = body.getBoundingClientRect(), r = btn.getClientRects()[0] || btn.getBoundingClientRect();
+      var x = r.left - b.left + body.scrollLeft + Math.min(r.width / 2, 36), y = r.top - b.top + body.scrollTop + r.height * 0.6;
+      hand.style.transitionDuration = ms + 'ms';
+      hand.style.transform = 'translate(' + Math.round(x - 14) + 'px, ' + Math.round(y - 2) + 'px)';
+    }
+    var path = parts.filter(function (p) { return p !== target; }).slice(0, 2).concat([target]);
+    function play() {
+      if (!hand.parentNode) body.appendChild(hand);
+      to(path[0], 0);
+      later(function () { hand.classList.add('show'); }, 30);
+      later(function () { to(path[1], 650); }, 450);
+      later(function () { to(path[2], 650); }, 1250);
+      later(function () { hand.classList.add('press'); target.classList.add('demo-tap'); }, 2000);
+      later(function () { hand.classList.remove('press'); }, 2200);
+      later(function () { target.classList.remove('demo-tap'); hand.classList.remove('show'); }, 2900);
+    }
+    later(play, 700);
+    later(play, 8000);
+    later(stop, 11500);
   }
 
 

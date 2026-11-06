@@ -187,6 +187,14 @@ body.app main.screen {
 .seg.nudge { animation: nudge .3s; }
 @keyframes nudge { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
 .counter { text-align: center; color: var(--muted); font-weight: 600; font-size: .9rem; }
+/* How-to demo (js/app.js spotDemo): a finger taps one part, which flashes the picked colour. */
+.screen .phone-body { position: relative; }
+.demo-hand { position: absolute; left: 0; top: 0; z-index: 2; font-size: 30px; line-height: 1; pointer-events: none;
+  opacity: 0; transition-property: transform, opacity, scale; transition-timing-function: ease-in-out;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .35)); }
+.demo-hand.show { opacity: 1; }
+.demo-hand.press { scale: .82; transition-duration: .15s; }
+.seg.demo-tap { background: #ffe7b3; border-color: var(--gold); transition: background-color .15s, border-color .15s; }
 
 /* ---------- scam or safe ---------- */
 .sortwrap { display: flex; flex-direction: column; gap: 10px; }
@@ -300,6 +308,7 @@ body.app main.screen {
   .bubble:not(.static), .flaglabel { animation: none; opacity: 1; transform: none; }
   .bubble.flag { animation: none; opacity: 1; transform: none; box-shadow: 0 0 0 3px var(--no); background: #fff6f5; }
   .iconbtn .flame, .seg.nudge { animation: none; }
+  .demo-hand { display: none; }
 }
 /* Tamil script sets wider and taller than Latin: a slightly smaller base size keeps every screen
    on one page while staying readable (checked with Noto Sans Tamil, as on Android). */
