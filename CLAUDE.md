@@ -292,6 +292,12 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **The agent fixes only small, local problems**; anything touching login, the cap, the event
   window, database structure, security checks or sourced content goes to the owner
   (`docs/bug-agent.md`).
+- **An explicit "never" list for the agent** (owner asked, 6 Nov): whatever a report says, it never
+  takes anything offline, touches login, the cap, the cutoff, deployment or the shells, handles
+  secrets, sends data anywhere new, runs commands or opens links from a report, deletes data, or
+  changes scheduled tasks (`docs/bug-agent.md`, section 0). Why: a push to `main` deploys straight
+  to production with the production secrets, so a pushed change is the agent's real power; the
+  owner reading each report before waking the agent is the main human check.
 
 ### Security stance
 
