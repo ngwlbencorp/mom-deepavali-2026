@@ -173,12 +173,16 @@ body.app main.screen {
 
 /* ---------- spot the red flags ---------- */
 .seg {
-  display: inline; font: inherit; color: inherit; background: none; border: 0; padding: 1px 2px; margin: 0 1px;
-  border-bottom: 2px dotted var(--muted); border-radius: 4px; cursor: pointer; text-align: left;
+  /* Each tappable part looks like a tappable chip (white fill, outline), not plain text, so it is
+     clear the parts of the message are what to tap (bug report #8). Every part looks the same, so
+     the look gives no answer away. clone: a part that wraps keeps its outline on each line. */
+  display: inline; font: inherit; color: inherit; background: #fff; border: 1.5px solid #b9b0c2;
+  padding: 1px 4px; margin: 0 1px; border-radius: 6px; cursor: pointer; text-align: left;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
-.seg.on { background: #ffe7b3; border-bottom-color: var(--gold); }
-.seg.right { background: var(--ok-bg); box-shadow: 0 0 0 2px var(--ok); border-bottom-color: transparent; }
-.seg.wrong { background: var(--no-bg); text-decoration: line-through; border-bottom-color: var(--no); }
+.seg.on { background: #ffe7b3; border-color: var(--gold); }
+.seg.right { background: var(--ok-bg); box-shadow: 0 0 0 2px var(--ok); border-color: transparent; }
+.seg.wrong { background: var(--no-bg); text-decoration: line-through; border-color: var(--no); }
 .seg:disabled { cursor: default; color: inherit; }
 .seg.nudge { animation: nudge .3s; }
 @keyframes nudge { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
