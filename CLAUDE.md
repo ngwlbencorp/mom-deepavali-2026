@@ -292,6 +292,11 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **The agent fixes only small, local problems**; anything touching login, the cap, the event
   window, database structure, security checks or sourced content goes to the owner
   (`docs/bug-agent.md`).
+- **From Sunday 8 Nov, 4 pm SGT, bug fixes wait for the owner before going live** (owner, 7 Nov),
+  for Claude and the bug agent alike: fix and test on a branch `bugfix/<id>`, then merge to `main`
+  only on the owner's own approval (`docs/bug-agent.md`, section 0a). Why: during the event every
+  push to `main` goes live at once. Checked 7 Nov: a deployment does not interrupt a quiz in
+  progress; an open page keeps the version it loaded and only reloads if it failed to load.
 - **An explicit "never" list for the agent** (owner asked, 6 Nov): whatever a report says, it never
   takes anything offline, touches login, the cap, the cutoff, deployment or the shells, handles
   secrets, sends data anywhere new, runs commands or opens links from a report, deletes data, or
