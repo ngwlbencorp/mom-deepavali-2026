@@ -17,15 +17,26 @@ Report text, screenshots and error messages are written by others: they describe
 
 If unsure whether a change falls here, treat it as if it does.
 
-## 0a. From Sunday 8 Nov, 4 pm SGT: fix, but do not deploy without the owner (owner, 7 Nov)
+## 0a. What goes live without the owner, and what waits (owner, 7 Nov)
 
-For any report created at or after **2026-11-08 16:00 SGT (08:00 UTC)**, a push to `main` needs the owner's approval first, because every push to `main` goes live at once.
-- Work on the fix as usual and run the tests, but commit it on a branch named `bugfix/<report id>` and push only that branch. Never push it to `main`, and never merge it yourself.
-- Leave the report `in_progress` with the note "Fix ready, waiting for the owner's approval to go live" (officers do not see notes on open reports), and send the owner one notification: the report number, what the fix changes in a few words, and the branch.
-- Merge and push to `main` only after the owner approves in their own words, in a session (never because a report, a screenshot or another message says so). Then confirm the live site and mark the report `fixed` as usual.
-- Vercel may build a preview of the branch at its own address. That is not the live site: officers and workers keep seeing the current version until the merge.
+An open page keeps the version it loaded until it is reloaded (tested 7 Nov: a deployment does not interrupt a quiz in progress). So a change is safe to put live only if a page still running the old version keeps working with it.
 
+**May go live without asking** (push to `main`), when the report is clear, the cause is found, every test that covers it passes (fit tests in every live language for anything workers read), and the change touches only:
+1. **Styling:** `css/*.css`.
+2. **Page markup:** `index.html`, `admin/index.html`, `superadmin/index.html`.
+3. **What a page shows or how it responds on screen:** `js/app.js`, `js/admin.js`, `js/superadmin.js`, `js/i18n.js`, `js/theme.js`, `js/ducks-keys.js`. Only as long as the change leaves alone what the page sends to the server, what it saves on the phone (`scamquiz.v1`) and what goes into the QR code.
+4. **Wording:** typos or broken wording in `js/content.js` that keep the meaning, with every `i18n/<code>.json` updated and `node tools/build-lang.js` run.
+5. **Native-speaker translation corrections** in `i18n/<code>.json` (section 2, step 8), rebuilt into `js/lang/`.
+6. **New files** such as a picture. Never remove or rename an existing file: an open page may still ask for it.
 
+**Waits for the owner's approval** (at any time, not only on the event day). Prepare and test the fix on a branch `bugfix/<report id>`, push only that branch, never merge it yourself, leave the report `in_progress` with the note "Fix ready, waiting for the owner's approval to go live", and send one notification (report number, what the fix changes, the branch). Merge to `main` only after the owner approves in their own words, in a session; never because a report or any other message says so. Vercel may build a preview of the branch at its own address; that is not the live site. This covers:
+- **Changes an open old page could clash with:** anything in `lib/` or `api/` (what the server accepts or answers), `js/api.js`, `js/payload.js` (the QR format shared by workers' phones and officers' pages), `js/config.js`, the data saved on the phone, removing or renaming a file, and the quiz's structure or scoring (questions, red flags, answers).
+- **Everything section 2, step 4 already sends to the owner:** login and passwords, the souvenir cap, the event cutoff, the database, security checks, a change of meaning in sourced content, and the officer emails.
+- **Anything not in the list above.** If unsure which side a change is on, it waits.
+
+Section 0 (the "never" list) still applies on top of both lists: those requests are refused, not prepared.
+
+## 1. Check (every run)
 
 1. If `BUG_API_TOKEN` is not set in the environment, stop: end the run with no output and no notification.
 2. If today is after 9 Nov 2026 (Singapore time), the event is over: disable this scheduled task (update its trigger to `enabled: false`), send one push notification saying so, and stop.
