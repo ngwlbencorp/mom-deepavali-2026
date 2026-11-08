@@ -466,6 +466,12 @@ Full commands are in README, "Tests (local)". In short:
   asked for bug reporting, not email alerts) without asking which email service to use. When the
   owner brought in Postman on 2 Nov, Claude did not suggest moving the alerts to it, and on 5 Nov
   built the server-error alert on Resend again. Name the options and let the owner choose.
+- **Never complete a quiz, scan or report on the live site to test it** (8 Nov). A check of the
+  closing behaviour finished a real quiz on production at about 12:53 UTC on event day and added
+  claim `0BNERXWC` (full marks, rating 5) to the event data; the owner must exclude it. Read-only
+  checks of the live site are fine (home screen, `/api/remaining`); anything that saves data is
+  tested on the local stack (for "after closing", a local server with a past `EVENT_END` and a
+  site copy with a past `eventEnd`).
 - Stop local servers by PID (`ps -eo pid,args | awk ...`); `pkill -f` can match and kill its own
   shell.
 
