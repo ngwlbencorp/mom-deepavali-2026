@@ -10,6 +10,7 @@ const routes = {
   bugs: require('../lib/routes/bugs'),
   bugshot: require('../lib/routes/bugshot'),
   dashboard: require('../lib/routes/dashboard'),
+  events: require('../lib/routes/events'),
   export: require('../lib/routes/export'),
   login: require('../lib/routes/login'),
   manual: require('../lib/routes/manual'),

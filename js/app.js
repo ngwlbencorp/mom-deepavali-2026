@@ -18,8 +18,11 @@
   if (CFG.hostOverlay === true || (!ducksButtonsOff && /(^|\.)ducks\.ai\.tech\.gov\.sg$/.test(location.hostname))) {
     document.body.classList.add('on-ducks');
   }
+  // Several events (owner, 18 Nov): the server names the event whose window is open (from 5 days
+  // before it starts until it ends). config.js eventEnd is only the fallback for the bundled offline
+  // copy, when the server cannot be reached.
   var EVENT_END = Date.parse(CFG.eventEnd || '2026-11-08T21:00:00+08:00');
-  var live = { open: null, left: null }; // null = not known yet
+  var live = { open: null, left: null, event: null }; // null = not known yet
   function eventOpen() { return live.open !== null ? live.open : Date.now() < EVENT_END; }
   function souvenirsOn() { return eventOpen() && live.left !== 0; }
 
@@ -51,8 +54,35 @@
   }
 
   var state = load();
-  if (!state.id) { state = { id: newId(), attempts: 0 }; save(state); }
+  if (!state.id) { state = { id: newId(), attempts: 0, event: null }; save(state); }
   if (!state.key) { state.key = newKey(); save(state); }
+
+  // One claim ID per phone per event. A phone saved before events were recorded holds an 8 Nov claim.
+  // When the open event is not the one this phone's claim belongs to, the phone starts afresh with a
+  // new claim ID (no score carried over), keeps its device key, and remembers its earlier claim IDs:
+  // the server uses both to tell whether this phone was given a souvenir at an earlier event.
+  var FIRST_EVENT = '2026-11-08';
+  function claimEvent() { return 'event' in state ? state.event : FIRST_EVENT; }
+  function useEvent(ev) {
+    if (!ev || claimEvent() === ev.id) return false;
+    if (!state.last && !state.registered) { state.event = ev.id; save(state); return false; } // nothing saved yet: keep the ID
+    var history = (state.history || []).concat(state.registered || !('event' in state) ? [state.id] : []).slice(-20);
+    state = { id: newId(), key: state.key, attempts: 0, event: ev.id, history: history };
+    save(state);
+    return true;
+  }
+
+  // Event theme (css/event-themes.css, js/event-themes.js, from a separate helper): neutral until
+  // the server names the open event, and when no event is open. The page works without them.
+  var theme = null;
+  function applyTheme(name) {
+    name = name || 'neutral';
+    if (name === theme) return false;
+    theme = name;
+    try { if (window.EventThemes) window.EventThemes.apply(name, document); } catch (e) {}
+    return true;
+  }
+  applyTheme(null);
 
   // ---------- tiny DOM helpers ----------
   function el(tag, attrs, kids) {
@@ -126,8 +156,11 @@
       if (!r.ok) return;
       var before = souvenirsOn() + '|' + eventOpen();
       live.open = !!r.body.open;
-      live.left = r.body.capRemaining;
-      if (souvenirsOn() + '|' + eventOpen() !== before && redraw) redraw(); else updatePill();
+      live.left = r.body.capRemaining === undefined ? null : r.body.capRemaining;
+      live.event = r.body.event || null;
+      var themed = applyTheme(live.event && live.event.theme);
+      if (useEvent(live.event)) return home(); // a new event: this phone starts afresh
+      if ((themed || souvenirsOn() + '|' + eventOpen() !== before) && redraw) redraw(); else updatePill();
     }, function () {});
   }
   function leftText() { return live.left === null ? '' : live.left > 0 ? f(T.ui.left, { n: live.left }) : T.ui.soldOut; }
@@ -230,7 +263,7 @@
   function home() {
     var open = eventOpen();
     show([
-      el('p', { class: 'eyebrow', text: T.event.greeting }),
+      theme === 'deepavali' ? el('p', { class: 'eyebrow', text: T.event.greeting }) : null,
       el('h1', { text: T.event.title }),
       el('p', { class: 'lead', text: T.event.intro }),
       el('button', { class: 'tile', type: 'button', onclick: function () { story(0, 0); } }, [
@@ -241,7 +274,7 @@
         el('span', { class: 'tile-ico', 'aria-hidden': 'true', text: '🏆' }),
         el('span', { class: 'tile-txt' }, [el('b', { text: open ? T.ui.quizTitle : T.ui.quizTitleAfter }), el('small', { text: T.ui.quizSub })])
       ]),
-      state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [souvenirsOn() && (state.last.score === state.last.total || state.firstFull) ? T.ui.showQr : T.ui.showResult]) : null,
+      state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [souvenirsOn() && !state.redeemedBefore && (state.last.score === state.last.total || state.firstFull) ? T.ui.showQr : T.ui.showResult]) : null,
       open ? el('p', { class: 'note', text: T.event.souvenirNote }) : null,
       open ? pill() : null,
       helpline(),
@@ -551,11 +584,13 @@
       return window.ScamApi.call('POST', '/api/submit', {
         id: state.id, key: state.key, score: state.last.score, total: state.last.total,
         csat: state.csat || null, learned: state.learned || null, language: state.last.language || I.current(),
-        item_scores: state.last.items || null, stories_viewed: (state.seen || []).length
+        item_scores: state.last.items || null, stories_viewed: (state.seen || []).length,
+        prev: state.history && state.history.length ? state.history : undefined
       }).then(function (res) {
         if (res.status === 409 && tries++ < 5) {
+          // The device key is kept: it links this phone's claims across events.
+          if (state.registered) state.history = (state.history || []).concat([state.id]).slice(-20);
           state.id = newId();
-          state.key = newKey();
           state.registered = false;
           state.attempts = 1;
           state.firstFull = state.last.score === state.last.total ? 1 : null;
@@ -568,6 +603,8 @@
         state.pending = false;
         state.registered = true; // this ID is now in the database, so its QR code can be scanned
         state.redeemed = res.body.redeemed;
+        if ('event' in res.body) state.event = res.body.event;
+        state.redeemedBefore = !!res.body.redeemedBefore;
         save(state);
       });
     }
@@ -616,7 +653,9 @@
     // A QR code only for a full score: on this attempt, or an earlier one (the server keeps the
     // best score, so a later lower score does not take the souvenir away).
     var earned = full || !!state.firstFull;
-    var withQr = earned && souvenirsOn();
+    // A phone given a souvenir at an earlier event gets a message instead (owner, 18 Nov).
+    var before = !!state.redeemedBefore && souvenirsOn();
+    var withQr = earned && souvenirsOn() && !before;
     function score() { return el('p', { class: 'score', text: full ? T.ui.allCorrect : f(T.ui.partial, { s: last.score, t: last.total }) }); }
     var buttons = [];
     if (last.answers) buttons.push({ label: T.ui.review, run: function () { review(0); } });
@@ -636,14 +675,15 @@
 
     if (!withQr) {
       // Not all correct yet, after the event, or once all souvenirs are gone: no QR code.
-      var msgs = souvenirsOn() ? [T.ui.partialMsg]
+      var msgs = before ? [full ? T.ui.afterFull : T.ui.afterPartial, T.ui.redeemedBefore]
+        : souvenirsOn() ? [T.ui.partialMsg]
         : eventOpen() ? [T.ui.soldOut, full ? null : T.ui.afterPartial]
         : [full ? T.ui.afterFull : T.ui.afterPartial];
       show([
         topbar('⌂ ' + T.ui.home, home),
         el('div', { class: 'result ' + (full ? 'full' : 'partial') }, [score()]
           .concat(msgs.map(function (m) { return m ? el('p', { class: 'msg', text: m }) : null; }))
-          .concat([pending, souvenirsOn() ? pill() : null]))
+          .concat([pending, souvenirsOn() && !before ? pill() : null]))
       ], buttons, result, eventOpen());
       return;
     }

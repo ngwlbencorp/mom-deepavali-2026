@@ -50,6 +50,8 @@ window.SCAM_TEXT.en = {
     soldOut: "All souvenirs have been given out. Thank you for taking part!",
     afterFull: "Great job! You know how to spot scams.",
     afterPartial: "Review the answers, then try again.",
+    // shown at the end of the quiz, instead of the QR code, on a phone given a souvenir at an earlier event
+    redeemedBefore: "This phone already got a souvenir at an earlier event. It is one souvenir per person. Thank you for taking part!",
     unsure: "Unsure? Call",
     example: "EXAMPLE · NOT REAL",
     whatToDo: "What to do",

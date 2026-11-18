@@ -50,10 +50,13 @@
   var pollTimer = null, lastOk = 0;
   function showStats(st) {
     lastOk = Date.now();
-    $('left').textContent = st.capRemaining;
-    $('cap').textContent = st.cap;
+    // Each event has its own cap and count; the cap is null until the organiser sets it.
+    var noCap = st.cap === null || st.cap === undefined;
+    $('left').textContent = noCap ? '–' : st.capRemaining;
+    $('cap').textContent = noCap ? '(not set)' : st.cap;
     $('given').textContent = st.given + ' given';
-    $('counter').classList.toggle('low', st.capRemaining <= Math.max(10, st.cap * 0.05));
+    $('evname').textContent = st.event ? st.event.name + (st.event.open ? '' : st.event.ended ? ' (ended)' : ' (not open yet)') : '';
+    $('counter').classList.toggle('low', !noCap && st.capRemaining <= Math.max(10, st.cap * 0.05));
     var live = $('live');
     live.classList.remove('stale');
     live.textContent = 'live ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
@@ -123,12 +126,14 @@
     Api.call('POST', '/api/scan', { code: code }, ROLE).then(function (r) {
       if (!r.ok) {
         if (r.status === 400 || r.status === 404) return verdict('verdict', 'stop', r.status === 404 ? (r.body.error === 'not_registered' ? 'Not saved yet' : 'Code not found') : 'Not valid', r.body.message, [nextScan]);
+        if (r.body && r.body.error === 'other_event') return verdict('verdict', 'stop', 'Code from another event', r.body.message, [nextScan]);
         return failed('verdict', r, function () { check(code); });
       }
       var rec = r.body.record;
       if (rec.redeemed_at) {
         return verdict('verdict', 'stop', 'Already given', 'Collected at ' + time(rec.redeemed_at) + ' by ' + rec.redeemed_station + '. ' + info(rec), [nextScan]);
       }
+      if (r.body.redeemedBefore) return verdict('verdict', 'stop', 'Souvenir given before', 'This phone was given a souvenir at an earlier event. One souvenir per person: do not give another. ' + info(rec), [nextScan]);
       if (!r.body.eligible) return verdict('verdict', 'retry', 'Not all correct yet', info(rec) + '. Ask them to tap "Try again" on their phone.', [nextScan]);
       verdict('verdict', 'give', 'All correct', info(rec), [{ label: 'Souvenir given', run: function () { redeem(rec.id); } }, nextScan]);
     }, function (e) { failed('verdict', e, function () { check(code); }); });
@@ -142,6 +147,9 @@
       if (s === 'given') return verdict('verdict', 'give', 'Recorded ✓', 'Souvenir given to ' + id + '.', [nextScan]);
       if (s === 'already') return verdict('verdict', 'stop', 'Already given', 'Another officer gave this code a souvenir just now. Do not give another.', [nextScan]);
       if (s === 'cap_reached') return verdict('verdict', 'stop', 'No souvenirs left', 'All ' + r.body.stats.cap + ' souvenirs have been given out.', [nextScan]);
+      if (s === 'cap_not_set') return verdict('verdict', 'stop', 'Souvenir limit not set', 'The organiser has not set the number of souvenirs for this event yet. Do not give a souvenir; ask the organiser.', [nextScan]);
+      if (s === 'redeemed_before') return verdict('verdict', 'stop', 'Souvenir given before', 'This phone was given a souvenir at an earlier event. One souvenir per person: do not give another.', [nextScan]);
+      if (s === 'other_event') return verdict('verdict', 'stop', 'Code from another event', 'Ask them to take the quiz again on their phone for today\'s event.', [nextScan]);
       verdict('verdict', 'stop', 'Not recorded', 'Status: ' + s + '. Scan the code again.', [nextScan]);
     }, function (e) { failed('verdict', e, function () { redeem(id); }); });
   }
@@ -256,6 +264,7 @@
       var info = 'Code ' + r.body.id;
       if (r.body.status === 'given') return verdict('mverdict', 'give', 'Give a souvenir ✓', 'Recorded. ' + info, [nextPerson]);
       if (r.body.status === 'cap_reached') return verdict('mverdict', 'stop', 'No souvenirs left', 'All souvenirs have been given out. ' + info, [nextPerson]);
+      if (r.body.status === 'cap_not_set') return verdict('mverdict', 'stop', 'Souvenir limit not set', 'The organiser has not set the number of souvenirs for this event yet. Do not give a souvenir. ' + info, [nextPerson]);
       verdict('mverdict', 'stop', 'Not recorded', 'Unexpected reply: ' + r.body.status, [nextPerson]);
     }, function (e) { failed('mverdict', e, submitManual); });
   }
