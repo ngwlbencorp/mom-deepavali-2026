@@ -45,7 +45,21 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 - **Fitting the screen:** tested with Noto fonts (as on Android). Every language fits every screen at 360×640 and 390×844. At 320×568 (small, older phones) every language fits except Tamil, where the middle area scrolls on 6 screens. If a screen ever overflows (long translation, large system font), `fit()` in `js/app.js` steps the text down automatically, at most twice. Re-run `tests/fit.test.js` with the language code after corrections, because longer corrected text can change this.
 - **Burmese** is in Unicode Myanmar script. Very old phones that still use the Zawgyi font will show it garbled.
 
-## Event window and souvenirs left
+## Several events (owner, 18 Nov)
+
+After 8 Nov the site runs three more events: 22 Nov, 6 Dec and 25 Dec 2026, each 5 pm to 9 pm SGT. The 8 Nov event stays as history.
+
+- **Tables** (owner approved the names, 18 Nov): `events` (`id` such as `2026-11-22`, `name`, `starts_at`, `ends_at`, `souvenir_cap`, `test_cleared_at`, `theme`), `event_officers` (`event_id`, `email`, `added_at`, `reminder_sent_at`), and `event_id` on `scans` and `submissions`. The first new server instance creates them once and backfills: an 8 Nov event (cap from `REDEEM_CAP` at that moment, else 502; theme deepavali), `event_id = '2026-11-08'` on every existing row (nothing else changes), every admin on the 8 Nov officer list, and the three new events with no cap. `tests/multievent.test.js` proves the 8 Nov dashboard and downloads are identical before and after.
+- **Window:** QR codes and souvenir wording show from 5 days before an event starts until it ends (owner: the public cannot redeem without the officer page anyway). Outside every window the site behaves as after 8 Nov, and redemptions and manual claims are refused (`event_closed`). `REDEEM_CAP` and `EVENT_END` no longer govern anything; `eventEnd` in `js/config.js` is only the fallback for the bundled offline copy.
+- **One claim per phone per event.** A phone starts a new claim ID for each event, keeps its device key, and remembers its earlier claim IDs (a phone from 8 Nov, with no event stored, counts its claim as the 8 Nov one). The best score does not carry over. When it saves its result, the server checks the device key and those IDs: a phone given a souvenir at an earlier event sees a message instead of the QR code, the officer's scan shows "Souvenir given before", and `/api/redeem` refuses it (`redeemed_before`). A code from another event is refused (`other_event`).
+- **Cap per event**, set on the superadmin page (Data tab, Event settings). Until it is set, redemption is refused (`cap_not_set`) and the page shows it as a to-do. Counters, `/api/remaining` and the officer page's counter are per event; the mini-site's "First N only!" uses the open event's cap and is left out while none is set.
+- **Freeze:** once an event has ended, nothing can be written for it: no redeem, manual claim, saved quiz, cap, name, date, theme, officer-list change, reminder or test clear.
+- **Clear test data** (Data tab) replaces the rehearsal reset, which could have deleted a past event's data. It sets `events.test_cleared_at`; that event's claims, attempts and souvenirs from before it are hidden from the dashboard, counts, the cap, `/api/remaining` and the downloads, never deleted. A claim counts again if anything happens to it afterwards (saved again, scanned, redeemed). Only before the event starts: during it, a clear would hide real souvenirs and reset the count. `/api/reset` now answers 410.
+- **Officers:** the `admins` table stays the login list (any listed officer of any event can log in). Each event has its own list for tracking (Admins tab, "Officers for this event": CSV or one email; a new email is added to `admins` too, so the welcome flow finds it).
+- **Emails:** the welcome is still once per officer. The reminder is per event (`event_officers.reminder_sent_at`): officers who never logged in get the "not logged in yet" version; the rest are asked to log in again to check their access. Both carry the event's date and session time from its row. The briefing-slides line is removed for now, and `BRIEFING_URL` is no longer needed. Wording to be cleared by the owner before any real send.
+- **Theme** per event (`deepavali`, `neutral`, `christmas`), set on the superadmin page; `css/event-themes.css` and `js/event-themes.js` apply it. Neutral until the server names the open event, and when none is open. "Happy Deepavali!" shows only with the deepavali theme.
+
+## Event window and souvenirs left (8 Nov; see "Several events" for the rules since 18 Nov)
 
 - **After the event ends** (`EVENT_END` on the server, `eventEnd` in `js/config.js`; default 8 Nov 2026, 9 pm SGT):
   - the mini-site keeps working as a learning quiz but shows **no QR code, no claim code and no souvenir wording**;
@@ -79,13 +93,13 @@ The admin and superadmin pages are not linked from the quiz. Bookmark them.
 | `ADMIN_PASSWORD` | the shared password for all officers |
 | `SUPERADMIN_USER` | your superadmin login ID |
 | `SUPERADMIN_PASSWORD` | your superadmin password. **Must differ from `ADMIN_PASSWORD`**, or superadmin login is refused |
-| `REDEEM_CAP` | `500` |
-| `EVENT_END` | optional; when redemption closes, default `2026-11-08T21:00:00+08:00`. Keep it equal to `eventEnd` in `js/config.js` |
+| `REDEEM_CAP` | read once, when the `events` table is first created, as the 8 Nov cap (fallback 502). Caps are per event in the database since 18 Nov |
+| `EVENT_END` | no longer used: each event's times are in the `events` table |
 | `SESSION_SECRET` | optional; signs login tokens. If unset, it is derived from the passwords, so changing any password logs everyone out |
 | `ALLOWED_ORIGINS` | optional; for the ducks.ai pages it must be `https://view.ducks.ai.tech.gov.sg` (with `view.`, the pages' real origin), or their API calls are refused. If unset, any origin is accepted (logins still protect everything except the quiz submit). It only binds browsers on other websites: every ducks.ai page shares this origin, and scripts can send any origin |
 | `BUG_API_TOKEN` | optional; a long random secret (at least 32 characters) that lets the bug-fixing agent read bug reports and record fixes, and nothing else. Put the same value in the Claude environment's secrets. Unset = only the superadmin can read reports |
 | `POSTMAN_API_KEY` | optional; lets the superadmin email officers through [Postman](https://guide.postman.gov.sg/api-guide/overview) (Admins tab). `POSTMAN_API_URL` overrides the send address (tests only) |
-| `MINISITE_URL`, `OFFICER_SITE_URL`, `ADMIN_CONTACT`, `BRIEFING_URL` | the mini-site and officer page addresses, the Slack contact for officers who cannot log in, and the briefing slides (reminder email only, which cannot be sent without it), put into those emails. Kept here, not in the code, because the repository is public. Either upper or lower case works |
+| `MINISITE_URL`, `OFFICER_SITE_URL`, `ADMIN_CONTACT`, `BRIEFING_URL` | the mini-site and officer page addresses, the Slack contact for officers who cannot log in, put into those emails (`BRIEFING_URL` is no longer used: the reminder has no slides line for now). Kept here, not in the code, because the repository is public. Either upper or lower case works |
 | `RESEND_API_KEY`, `BUG_NOTIFY_EMAIL` | optional; with both set, each new bug report sends a short email (report number only) through [Resend](https://resend.com), and so does the first server error after 15 minutes without any (route and error number only; later errors in that burst are only recorded). "Send test alerts" in the superadmin page's Server errors card checks both. `BUG_NOTIFY_FROM` overrides the sender |
 
 Logins last 14 hours, and only for the browser tab they were made in.
@@ -225,13 +239,17 @@ These need Node 20+, Postgres, and Playwright with Chromium.
 
 ```bash
 npm install
-DATABASE_URL=postgres://... ADMIN_PASSWORD=a SUPERADMIN_USER=boss SUPERADMIN_PASSWORD=b REDEEM_CAP=15 node tests/dev-server.js 3000
+DATABASE_URL=postgres://... ADMIN_PASSWORD=a SUPERADMIN_USER=boss SUPERADMIN_PASSWORD=b node tests/dev-server.js 3000
+# api.test.js sets the open event's cap itself (from its last argument); e2e-server.js sets 500. Both need an event
+# whose window is open (22 Nov is, from 17 Nov 5 pm SGT) and a FRESH database: the reset they used is gone (18 Nov).
 node tests/api.test.js http://127.0.0.1:3000 a boss b 15        # 98 API checks; needs an EMPTY database
 # restart the dev server with REDEEM_CAP=500, serve a copy of the pages whose js/config.js points at :3000, then:
 node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b ./shots   # 52 browser checks
 ```
 
-Both test scripts reset data. Never run them against the production database.
+Never run test scripts against the production database.
+
+Several events (`tests/multievent.test.js`): runs its own API servers (3040, 3042, 3043), a site copy (3041) and its own databases (`metest`, `mebackfill`, `mecold`). `node tests/multievent.test.js` (60 checks: windows, per-event caps under concurrency, freeze, Clear test data, one souvenir per phone across events including an 8 Nov phone with old storage, per-event reminders, and the backfill on an 8 Nov-shaped fixture run first with the code from before the change, git ref `OLD_REF`, default `ff0510d`). Themes: `node tests/themes.test.js [shotDir]`.
 
 Email alerts (`tests/alerts.test.js`): runs its own API server (port 3030), a stand-in for Resend (3031) and its own database `alerttest`, so no real email is sent. `node tests/alerts.test.js` (15 checks: bug report alert without report text, server-error alert for the first error of a burst only, the test endpoint's logins, and a failing email service recorded once with no loop).
 

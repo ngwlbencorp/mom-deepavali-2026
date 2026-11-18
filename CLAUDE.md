@@ -101,10 +101,29 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **"Souvenirs left" on MWs' phones, from an edge-cached endpoint** (owner asked, Claude designed,
   28 Oct). It stops people queueing for souvenirs that have run out. The 10-second cache keeps the
   database at about one query per 10 seconds, however many phones are open.
-- **No QR code or souvenir wording after 8 Nov, 9 pm SGT** (owner, 28 Oct), so later visitors do
-  not demand prizes. The server also refuses redemptions after the end, whatever a phone's clock
+- **No QR code or souvenir wording after 8 Nov, 9 pm SGT** (owner, 28 Oct; since 18 Nov: outside
+  every event's window, see "Several events"), so later visitors do not demand prizes. The server also refuses redemptions after the end, whatever a phone's clock
   says. The end time is built into the code (`EVENT_END` default and `js/config.js`), so no
   environment variable is needed (owner asked, 29 Oct).
+
+### Several events (owner, 18 Nov)
+
+- **Three more events, 22 Nov, 6 Dec and 25 Dec, 5 pm to 9 pm SGT; 8 Nov stays as history.** Details
+  in README, "Several events". New names approved by the owner on 18 Nov: tables `events` and
+  `event_officers`, column `event_id` on `scans` and `submissions`.
+- **QR codes show from 5 days before each event** (owner: "it doesn't matter even if members of the
+  public can see them as they wont be able to redeem them anyway w/o the admin portal").
+- **One claim per phone per event; one souvenir per phone across events** (owner). Linked by the
+  device key and the phone's earlier claim IDs. The server's refusal rests on the device key;
+  the earlier IDs only add the phone's own message.
+- **Cap per event, in the database, no carry-over** (owner): "Ensure that the past event's
+  data/souvenir numbers/information are unaffected by any changes." The backfill only fills
+  `event_id`; `tests/multievent.test.js` compares the 8 Nov dashboard before and after.
+- **An ended event is locked; Clear test data hides, never deletes** (owner). The rehearsal reset is
+  gone, because it could delete a past event's data. Clear test data only before the event starts
+  (Claude, 18 Nov: during it, a clear would hide real souvenirs and reset the count; owner to confirm).
+- **`admins` stays the login list; per-event officer lists are for tracking; the reminder is per
+  event, without the briefing-slides line for now** (owner, 18 Nov).
 
 ### Mini-site content and flow
 
