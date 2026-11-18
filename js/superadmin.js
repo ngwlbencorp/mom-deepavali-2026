@@ -75,12 +75,72 @@
 
   function guard(r) { if (r.status === 401 || r.status === 403) { loggedOut(r.body.message); return false; } return true; }
 
+  // ---------- event picker (owner, 18 Nov) ----------
+  // Every figure, officer list, email count and download is for the event chosen here. The default
+  // is the server's: the current event, else the next one. Only the picker is redrawn on refresh;
+  // the settings form is filled when the chosen event changes or is saved, never under typing.
+  var EV = null, events = [], filledFor = null;
+  var evq = function (sep) { return EV ? (sep || '?') + 'event=' + encodeURIComponent(EV) : ''; };
+  var SGT = 8 * 3600e3;
+  var sgtLocal = function (iso) { return new Date(Date.parse(iso) + SGT).toISOString().slice(0, 16); };
+  var sgtText = function (iso) { var d = new Date(Date.parse(iso) + SGT); return d.toISOString().slice(0, 10) + ' ' + d.toISOString().slice(11, 16); };
+  function chosen() { return events.filter(function (e) { return e.id === EV; })[0] || null; }
+  function renderPicker() {
+    var sel = $('evPick'), ids = events.map(function (e) { return e.id + '|' + e.name; }).join();
+    if (sel.dataset.ids !== ids) {
+      sel.innerHTML = '';
+      events.forEach(function (e) { var o = document.createElement('option'); o.value = e.id; o.textContent = e.name; sel.appendChild(o); });
+      sel.dataset.ids = ids;
+    }
+    sel.value = EV;
+    var e = chosen();
+    if (!e) return;
+    var state = e.ended ? 'Ended: data locked' : e.open ? (e.started ? 'On now' : 'QR codes showing (opens 5 days before)') : 'Upcoming';
+    $('evInfo').textContent = state + ' · ' + sgtText(e.startsAt) + ' to ' + sgtText(e.endsAt).slice(11) + ' SGT · theme ' + e.theme +
+      (e.cap == null ? ' · To do: set the souvenir cap (Data tab)' : ' · cap ' + e.cap) + (e.testClearedAt ? ' · test data cleared ' + sgtText(e.testClearedAt) : '');
+    $('evInfo').className = 'small' + (e.cap == null && !e.ended ? ' error' : '');
+    [].forEach.call(document.querySelectorAll('.evName'), function (n) { n.textContent = e.name; });
+    if (filledFor !== e.id) fillSettings(e);
+  }
+  function fillSettings(e) {
+    filledFor = e.id;
+    $('evNameIn').value = e.name; $('evCap').value = e.cap == null ? '' : e.cap; $('evTheme').value = e.theme;
+    $('evStart').value = sgtLocal(e.startsAt); $('evEnd').value = sgtLocal(e.endsAt);
+    [].forEach.call($('evForm').elements, function (x) { x.disabled = !!e.ended; });
+    $('resetBtn').disabled = !!e.started; $('resetConfirm').disabled = !!e.started;
+    $('evMsg').textContent = e.ended ? 'This event has ended: its data is locked.' : '';
+    $('resetMsg').textContent = e.started ? (e.ended ? 'This event has ended: its data is locked.' : 'This event has started: test data can no longer be cleared.') : '';
+  }
+  $('evPick').addEventListener('change', function () {
+    EV = $('evPick').value; drawn = ''; renderPicker();
+    loadDash();
+    if (!$('t-admins').hidden) loadAdmins();
+  });
+  $('evForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var e = chosen(); if (!e) return;
+    var body = { id: e.id, name: $('evNameIn').value, theme: $('evTheme').value, cap: $('evCap').value === '' ? null : Number($('evCap').value) };
+    var st = $('evStart').value + ':00+08:00', en = $('evEnd').value + ':00+08:00';
+    if (Date.parse(st) !== Date.parse(e.startsAt)) body.startsAt = st;
+    if (Date.parse(en) !== Date.parse(e.endsAt)) body.endsAt = en;
+    $('evMsg').textContent = 'Saving…';
+    Api.call('POST', '/api/events', body, ROLE).then(function (r) {
+      if (!guard(r)) return;
+      $('evMsg').textContent = r.ok ? 'Saved.' : (r.body.message || 'Not saved');
+      if (r.ok) { filledFor = null; loadDash(); }
+    }, function () { $('evMsg').textContent = 'Cannot reach the server.'; });
+  });
+
   // ---------- dashboard ----------
   function loadDash() {
-    Api.call('GET', '/api/dashboard', null, ROLE).then(function (r) {
+    Api.call('GET', '/api/dashboard' + evq(), null, ROLE).then(function (r) {
       if (!guard(r)) return;
       if (!r.ok) { $('updated').textContent = 'Error: ' + (r.body.message || r.status); return; }
       last = r.body;
+      events = r.body.events || [];
+      if (!EV) EV = r.body.event.id;
+      if (r.body.event.id !== EV) return; // an answer for an event no longer chosen
+      renderPicker();
       renderDash(last);
     }, function () { $('updated').textContent = 'Cannot reach the server. Showing the last data received.'; });
   }
@@ -95,7 +155,8 @@
       ' · responded in ' + (d.dbMs < 1000 ? d.dbMs + ' ms' : (d.dbMs / 1000).toFixed(1) + ' s');
     // Short labels so two tiles a row fit a phone screen without scrolling.
     var tiles = [
-      ['Souvenirs given', d.given + ' / ' + d.cap, d.capRemaining + ' left · ' + d.adminGiven + ' manual'],
+      d.cap == null ? ['Souvenirs given', d.given + ' / –', 'cap not set · ' + d.adminGiven + ' manual']
+        : ['Souvenirs given', d.given + ' / ' + d.cap, d.capRemaining + ' left · ' + d.adminGiven + ' manual'],
       ['Quiz submissions', d.submissions, d.selfSubmissions + ' self · ' + d.adminSubmissions + ' manual'],
       ['MWs reached', d.uniqueClaims, d.selfClaims + ' self · ' + d.adminClaims + ' manual'],
       ['1st-try full score', pct(d.firstTryRate), d.selfFirstTry + ' of ' + d.selfClaims + ' self'],
@@ -363,7 +424,61 @@
   function loadAdmins() {
     Api.call('GET', '/api/admins', null, ROLE).then(function (r) { if (guard(r) && r.ok) renderAdmins(r.body.admins); }, function () { adminError('Cannot reach the server.'); });
     loadMail();
+    loadEvOfficers();
   }
+
+  // ---------- officers for the chosen event ----------
+  function evOffMsg(text, bad) { var m = $('evOffMsg'); m.textContent = text || ''; m.className = 'small' + (bad ? ' error' : ''); }
+  function renderEvOfficers(d) {
+    if (d.event.id !== EV) return;
+    $('evOffCount').textContent = d.officers.length;
+    var ul = $('evOffList'); ul.innerHTML = '';
+    d.officers.forEach(function (o) {
+      var li = document.createElement('li');
+      var span = document.createElement('span');
+      span.textContent = o.email + (o.last_login_at ? ' · last login ' + when(o.last_login_at) : ' · never logged in') + (o.reminder_sent_at ? ' · reminded ' + when(o.reminder_sent_at) : '');
+      li.appendChild(span);
+      if (!d.event.ended) {
+        var b = document.createElement('button'); b.className = 'linkbtn'; b.type = 'button'; b.textContent = 'Remove from event';
+        b.addEventListener('click', function () {
+          if (!confirm('Take ' + o.email + ' off ' + d.event.name + '? They keep their login.')) return;
+          evOfficers({ id: EV, remove: o.email });
+        });
+        li.appendChild(b);
+      }
+      ul.appendChild(li);
+    });
+    $('evAddForm').hidden = $('evCsv').parentNode.hidden = !!d.event.ended;
+  }
+  function loadEvOfficers() {
+    if (!EV) return;
+    Api.call('GET', '/api/events?officers=' + encodeURIComponent(EV), null, ROLE).then(function (r) { if (guard(r) && r.ok) renderEvOfficers(r.body); }, function () { evOffMsg('Cannot reach the server.', true); });
+  }
+  function evOfficers(body, done) {
+    Api.call('POST', '/api/events', body, ROLE).then(function (r) {
+      if (!guard(r)) return;
+      if (!r.ok) return evOffMsg(r.body.message, true);
+      evOffMsg(done || '');
+      renderEvOfficers(r.body);
+      Api.call('GET', '/api/admins', null, ROLE).then(function (x) { if (guard(x) && x.ok) renderAdmins(x.body.admins); });
+      loadMail();
+    }, function () { evOffMsg('Cannot reach the server.', true); });
+  }
+  $('evAddForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = $('evAddEmail').value.trim();
+    if (v) { evOfficers({ id: EV, add: [v] }, 'Added ' + v + '.'); $('evAddEmail').value = ''; }
+  });
+  $('evCsv').addEventListener('change', function () {
+    var f = $('evCsv').files[0]; if (!f) return;
+    f.text().then(function (t) {
+      var list = (t.match(/[^\s@,;"']+@[^\s@,;"']+\.[^\s@,;"']+/g) || []);
+      $('evCsv').value = '';
+      if (!list.length) return evOffMsg('No email addresses found in that file.', true);
+      if (!confirm('Add ' + list.length + ' email(s) to ' + (chosen() || {}).name + '?')) return;
+      evOfficers({ id: EV, add: list }, 'Added ' + list.length + ' email(s) from the file.');
+    });
+  });
 
   // ---------- emails to officers (Postman) ----------
   var mail = null, sending = false;
@@ -384,14 +499,14 @@
     $('reminderInText').textContent = d.preview.reminder_loggedin.text;
   }
   function loadMail() {
-    Api.call('GET', '/api/notify', null, ROLE).then(function (r) { if (guard(r) && r.ok) showMail(r.body); }, function () { mailMsg('Cannot reach the server.', true); });
+    Api.call('GET', '/api/notify' + evq(), null, ROLE).then(function (r) { if (guard(r) && r.ok && (!r.body.event || r.body.event.id === EV || !EV)) showMail(r.body); }, function () { mailMsg('Cannot reach the server.', true); });
   }
   $('testForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var kind = (e.submitter && e.submitter.getAttribute('data-kind')) || 'welcome';
     var to = $('testEmail').value.trim();
     mailMsg('Sending a test ' + kind + ' email to ' + to + '…');
-    Api.call('POST', '/api/notify', { kind: kind, test: to }, ROLE).then(function (r) {
+    Api.call('POST', '/api/notify', { kind: kind, test: to, event: EV }, ROLE).then(function (r) {
       if (!guard(r)) return;
       mailMsg(r.ok ? (kind === 'reminder' ? 'Both test reminders (never logged in, and already logged in) sent to ' : 'Test ' + kind + ' email sent to ') + to + '. Check the inbox (and junk folder) before sending to everyone.' : r.body.message, !r.ok);
     }, function () { mailMsg('Cannot reach the server.', true); });
@@ -399,12 +514,12 @@
   // Sends in batches of about 10 until none are left, showing progress; stops on a batch that sent nothing.
   function sendAll(kind) {
     var n = mail.counts[kind];
-    var what = kind === 'welcome' ? 'the welcome email' : 'the reminder';
+    var what = kind === 'welcome' ? 'the welcome email' : 'the reminder for ' + ((chosen() || {}).name || 'this event');
     if (!confirm('Send ' + what + ' to ' + n + ' officer(s) now?')) return;
     sending = true; showMail(mail);
     var total = 0, failed = [];
     (function step(after) {
-      Api.call('POST', '/api/notify', { kind: kind, send: true, after: after }, ROLE).then(function (r) {
+      Api.call('POST', '/api/notify', { kind: kind, send: true, after: after, event: EV }, ROLE).then(function (r) {
         if (!guard(r)) return;
         if (!r.ok) return done(r.body.message);
         total += r.body.sent; failed = failed.concat(r.body.failed);
@@ -426,7 +541,7 @@
   $('deliveryBtn').addEventListener('click', function () {
     var b = $('deliveryBtn'); b.disabled = true;
     $('deliveryMsg').className = 'small'; $('deliveryMsg').textContent = 'Asking Postman…';
-    Api.call('GET', '/api/notify?delivery=1', null, ROLE).then(function (r) {
+    Api.call('GET', '/api/notify?delivery=1' + evq('&'), null, ROLE).then(function (r) {
       b.disabled = false;
       if (!guard(r)) return;
       if (!r.ok) { $('deliveryMsg').className = 'small error'; $('deliveryMsg').textContent = r.body.message; return; }
@@ -631,24 +746,28 @@
     b.addEventListener('click', function () {
       var table = b.dataset.export, err = $('exportErr');
       err.hidden = true;
-      Api.call('GET', '/api/export?table=' + table, null, ROLE, true).then(function (r) {
+      var perEvent = { claims: 1, submissions: 1, event_officers: 1 }[table];
+      Api.call('GET', '/api/export?table=' + table + (perEvent ? evq('&') : ''), null, ROLE, true).then(function (r) {
         if (!guard(r)) return;
         if (!r.ok) { err.textContent = r.body.message || 'Download failed'; err.hidden = false; return; }
         var a = document.createElement('a');
         a.href = URL.createObjectURL(r.body);
-        a.download = 'scam-quiz-' + table + '-' + new Date().toISOString().slice(0, 10) + '.csv';
+        a.download = 'scam-quiz-' + table + (perEvent && EV ? '-' + EV : '') + '-' + new Date().toISOString().slice(0, 10) + '.csv';
         document.body.appendChild(a); a.click(); a.remove();
         setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
       }, function () { err.textContent = 'Cannot reach the server.'; err.hidden = false; });
     });
   });
+  // Clear test data for the chosen event (replaces the old reset, which deleted every event's data).
   $('resetBtn').addEventListener('click', function () {
-    var msg = $('resetMsg');
-    if ($('resetConfirm').value !== 'RESET') { msg.textContent = 'Type RESET first.'; return; }
-    Api.call('POST', '/api/reset', { confirm: 'RESET' }, ROLE).then(function (r) {
+    var msg = $('resetMsg'), e = chosen();
+    if (!e) return;
+    if ($('resetConfirm').value !== 'CLEAR') { msg.textContent = 'Type CLEAR first.'; return; }
+    Api.call('POST', '/api/events', { id: e.id, clearTest: true, confirm: 'CLEAR' }, ROLE).then(function (r) {
       if (!guard(r)) return;
-      msg.textContent = r.ok ? 'All claims and submissions deleted.' : (r.body.message || 'Failed');
+      msg.textContent = r.ok ? 'Test data for ' + e.name + ' cleared: hidden from every figure, nothing deleted.' : (r.body.message || 'Failed');
       $('resetConfirm').value = '';
+      if (r.ok) { drawn = ''; loadDash(); }
     }, function () { msg.textContent = 'Cannot reach the server.'; });
   });
 

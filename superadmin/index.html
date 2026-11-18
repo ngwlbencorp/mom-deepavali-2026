@@ -34,6 +34,11 @@
         <button role="tab" data-tab="data" aria-selected="false">Data</button>
         <button role="tab" data-tab="bugs" aria-selected="false">Bug log</button>
       </nav>
+      <!-- the event every figure, list and download below is for (owner, 18 Nov) -->
+      <div class="card evbar">
+        <label class="field">Event <select id="evPick"></select></label>
+        <p class="small" id="evInfo"></p>
+      </div>
 
       <!-- dashboard -->
       <section id="t-dash">
@@ -76,6 +81,17 @@
 
       <!-- admins -->
       <section id="t-admins" hidden>
+        <div class="card" id="evOfficerCard">
+          <h3>Officers for <span class="evName">this event</span> (<span id="evOffCount">0</span>)</h3>
+          <p class="muted small">Who is on duty for this event. Any listed officer of any event can log in. Adding a new email here also adds it to the admin list below, so the welcome email finds it.</p>
+          <label class="btn secondary filebtn">Add from CSV file<input type="file" id="evCsv" accept=".csv,text/csv,text/plain"></label>
+          <form class="addone" id="evAddForm">
+            <label class="field">Or add one email <input id="evAddEmail" type="email" autocomplete="off" placeholder="name@mom.gov.sg" required></label>
+            <button class="btn secondary" type="submit">Add</button>
+          </form>
+          <p class="small" id="evOffMsg" aria-live="polite"></p>
+          <ul class="adminlist" id="evOffList"></ul>
+        </div>
         <div class="card">
           <h3>Upload admin emails (CSV)</h3>
           <p class="muted small">Any cell containing an email address is used; headers and other columns are ignored. Admins log in with their email and the shared admin password.</p>
@@ -102,7 +118,7 @@
             <button class="btn" id="welcomeSend" disabled>Send welcome</button>
           </div>
           <div class="mailrow">
-            <p><b>Reminder</b>: <span id="reminderCount">–</span> officer(s) not yet sent it, <span id="reminderNotIn">–</span> of them never logged in. Everyone gets the links and the briefing slides; those who never logged in also get "you have not logged in yet". Planned for 6 Nov, 4 pm.</p>
+            <p><b>Reminder for <span class="evName">this event</span></b>: <span id="reminderCount">–</span> officer(s) on its list not yet sent it, <span id="reminderNotIn">–</span> of them never logged in. Those who never logged in get "you have not logged in yet"; the rest are asked to log in again to check their access.</p>
             <details><summary>Preview: never logged in</summary><p class="mailsubj" id="reminderSubj"></p><pre class="mailtext" id="reminderText"></pre></details>
             <details><summary>Preview: already logged in</summary><p class="mailsubj" id="reminderInSubj"></p><pre class="mailtext" id="reminderInText"></pre></details>
             <button class="btn" id="reminderSend" disabled>Send reminder</button>
@@ -147,18 +163,32 @@
       <section id="t-data" hidden>
         <div class="card">
           <h3>Download data (CSV)</h3>
+          <p class="muted small">Claims, submissions and event officers are for the event chosen above.</p>
           <button class="btn secondary" data-export="claims">Claims (one row per claim ID)</button>
           <button class="btn secondary" data-export="submissions">Quiz submissions (one row per attempt)</button>
+          <button class="btn secondary" data-export="event_officers">Officers for this event</button>
           <button class="btn secondary" data-export="admins">Admin list</button>
           <button class="btn secondary" data-export="bugs">Bug log (without screenshots)</button>
           <button class="btn secondary" data-export="errors">Server errors</button>
           <p class="error" id="exportErr" hidden></p>
         </div>
+        <div class="card" id="evSettings">
+          <h3>Event settings: <span class="evName">this event</span></h3>
+          <form id="evForm">
+            <label class="field">Name <input id="evNameIn" autocomplete="off" maxlength="60"></label>
+            <label class="field">Souvenirs (cap) <input id="evCap" type="number" min="0" step="1" inputmode="numeric" placeholder="not set"></label>
+            <label class="field">Theme <select id="evTheme"><option value="deepavali">Deepavali</option><option value="neutral">Neutral</option><option value="christmas">Christmas</option></select></label>
+            <label class="field">Starts (Singapore time) <input id="evStart" type="datetime-local"></label>
+            <label class="field">Ends (Singapore time) <input id="evEnd" type="datetime-local"></label>
+            <button class="btn" type="submit" id="evSave">Save</button>
+          </form>
+          <p class="small" id="evMsg" aria-live="polite"></p>
+        </div>
         <div class="card danger">
-          <h3>Clear rehearsal data</h3>
-          <p class="muted small">Deletes all claims and submissions (admin emails are kept). Do this after testing and before the event starts. It cannot be undone.</p>
-          <label class="field">Type RESET to confirm <input id="resetConfirm" autocomplete="off"></label>
-          <button class="btn danger-btn" id="resetBtn">Clear all claims and submissions</button>
+          <h3>Clear test data: <span class="evName">this event</span></h3>
+          <p class="muted small">Hides this event's claims, quiz attempts and souvenirs so far from every figure, count and download; the souvenir count starts again from 0. Nothing is deleted, and other events, officers and bug reports are not touched. Only before the event starts.</p>
+          <label class="field">Type CLEAR to confirm <input id="resetConfirm" autocomplete="off"></label>
+          <button class="btn danger-btn" id="resetBtn">Clear test data</button>
           <p class="small" id="resetMsg"></p>
         </div>
       </section>

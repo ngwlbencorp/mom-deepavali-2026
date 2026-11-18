@@ -131,3 +131,7 @@ input, select, textarea { font-size: 16px !important; }
 .mailtext { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: .9rem; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin: 0; max-height: 320px; overflow: auto; }
 #testForm { grid-template-columns: 1fr auto auto; }
 @media (max-width: 560px) { #testForm { grid-template-columns: 1fr 1fr; } #testForm .field { grid-column: 1 / -1; } }
+/* event picker (owner, 18 Nov): every figure below is for the chosen event */
+.evbar { padding: 10px 14px; margin-bottom: 12px; }
+.evbar .field { margin: 0 0 4px; }
+#evOffList li { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
