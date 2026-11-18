@@ -321,7 +321,7 @@ const figures = (d) => JSON.stringify(Object.keys(d).filter((k) => !DROP.has(k))
   await off.fill('#email', 'alice@example.test'); await off.fill('#password', 'admin-pw-1'); await off.click('#loginForm button');
   await off.locator('#v-home').waitFor();
   await off.waitForFunction(() => /25 Dec/.test(document.getElementById('evname').textContent));
-  ok(/25 Dec 2026/.test(await off.locator('#evname').innerText()) && (await off.locator('#cap').innerText()) === '10', 'officer page: the event\'s name and its own cap');
+  ok(/25 Dec/.test(await off.locator('#evname').innerText()) && (await off.locator('#cap').innerText()) === '10', 'officer page: the event\'s name and its own cap');
   await off.click('a[href="#scan"]');
   const check = async (code) => { await off.fill('#typed', code); await off.click('#typeForm button'); await off.locator('#verdict:not([hidden])').waitFor(); const t = await off.locator('#verdict').innerText(); await off.evaluate(() => { document.getElementById('verdict').hidden = true; }); return t; };
   ok(/Souvenir given before/.test(await check(newId)), 'officer scan of the 8 Nov phone\'s new code: "Souvenir given before"');

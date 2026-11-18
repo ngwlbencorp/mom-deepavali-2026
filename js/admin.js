@@ -55,7 +55,9 @@
     $('left').textContent = noCap ? '–' : st.capRemaining;
     $('cap').textContent = noCap ? '(not set)' : st.cap;
     $('given').textContent = st.given + ' given';
-    $('evname').textContent = st.event ? st.event.name + (st.event.open ? '' : st.event.ended ? ' (ended)' : ' (not open yet)') : '';
+    // the event's name, without a trailing year so the counter keeps its height on a 360 px phone
+    $('evname').textContent = st.event ? st.event.name.replace(/\s+20\d\d$/, '') + (st.event.open ? '' : st.event.ended ? ' (ended)' : ' (not open yet)') : '';
+    $('evname').title = st.event ? st.event.name : '';
     $('counter').classList.toggle('low', !noCap && st.capRemaining <= Math.max(10, st.cap * 0.05));
     var live = $('live');
     live.classList.remove('stale');

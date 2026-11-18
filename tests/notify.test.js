@@ -141,7 +141,7 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 410, 'the rehearsal reset is refused (changed 18 Nov: replaced by Clear test data)');
     const after2 = await admins();
     ok(Object.keys(after2).sort().join() === Object.keys(before).sort().join() && ['welcome_sent_at', 'reminder_sent_at', 'last_login_at', 'login_count'].every((f) =>
-      Object.keys(before).every((e) => String(before[e][f]) === String(after2[e][f]))) && after2['a@example.test'].last_login_at && after2['a@example.test'].login_count >= 1 && after2['a@example.test'].reminder_sent_at,
+      Object.keys(before).every((e) => String(before[e][f]) === String(after2[e][f]))) && after2['a@example.test'].last_login_at && after2['a@example.test'].login_count >= 1, // changed 18 Nov: the reminder record is per event now (event_officers), not on admins
       'the reset keeps every officer, their logins (last login, count) and their welcome and reminder records');
     ok((await sendAll('reminder')).sent === 0, 'nobody is reminded twice');
 

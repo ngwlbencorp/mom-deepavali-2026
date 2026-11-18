@@ -29,7 +29,7 @@ html.on-ducks .top.slim { padding-top: 64px; }
 .counter-side { text-align: right; font-size: .85rem; color: var(--muted); display: grid; gap: 2px; }
 .counter.low .counter-main b { color: var(--no); }
 #evname { color: var(--ink, inherit); font-weight: 700; }
-#evname:empty { display: none; }
+#evname:not(:empty)::after { content: " · "; font-weight: 400; color: var(--muted); }
 .live::before { content: "●"; margin-right: 4px; color: var(--ok); }
 .live.stale::before { color: var(--no); }
 .live.stale { color: var(--no); font-weight: 700; }
