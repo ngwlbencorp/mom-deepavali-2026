@@ -162,6 +162,9 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **Live languages: Bengali, Burmese, Hindi, Tamil and Urdu, plus English** (decided by the
   owner's management, 30 Oct). They went live without the MOM language team's review because
   that team had not responded; colleagues who speak Hindi, Tamil and Urdu now review instead.
+- **No new languages for the later events** (owner, 18 Nov). Research that day suggested Chinese
+  (Simplified) and Thai (MOM's own induction programme uses both); the owner decided against
+  adding any. The new "souvenir given before" message falls back to English in other languages.
 - **Drafted by Claude, then machine-checked by language-specialist models.** SEA-LION (AI
   Singapore, built for Southeast Asian languages) checks Tamil and Burmese. For each language the
   check uses the **newest SEA-LION model whose documentation lists that language**, and a
