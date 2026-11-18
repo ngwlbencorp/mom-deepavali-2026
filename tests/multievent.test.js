@@ -323,7 +323,8 @@ const figures = (d) => JSON.stringify(Object.keys(d).filter((k) => !DROP.has(k))
   await off.waitForFunction(() => /25 Dec/.test(document.getElementById('evname').textContent));
   ok(/25 Dec/.test(await off.locator('#evname').innerText()) && (await off.locator('#cap').innerText()) === '10', 'officer page: the event\'s name and its own cap');
   await off.click('a[href="#scan"]');
-  const check = async (code) => { await off.fill('#typed', code); await off.click('#typeForm button'); await off.locator('#verdict:not([hidden])').waitFor(); const t = await off.locator('#verdict').innerText(); await off.evaluate(() => { document.getElementById('verdict').hidden = true; }); return t; };
+  const check = async (code) => { await off.fill('#typed', code); await off.click('#typeForm button'); await off.locator('#verdict:not([hidden])').waitFor(); const t = await off.locator('#verdict').innerText(); await off.locator('#verdict button').last().click(); return t; };
+  // (18 Nov) the result is a popup that closes only through its buttons ("Scan next", or "Not given" after "All correct"), so the test taps the last one instead of hiding the card
   ok(/Souvenir given before/.test(await check(newId)), 'officer scan of the 8 Nov phone\'s new code: "Souvenir given before"');
   ok(/another event/.test(await check('R8NV0001')), 'officer scan of an 8 Nov code: "Code from another event"');
   ok(/All correct/.test(await check(fresh.id)), 'officer scan of a fresh phone\'s code: all correct');

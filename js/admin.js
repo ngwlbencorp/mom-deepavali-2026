@@ -18,13 +18,17 @@
     if (want === 'manual') resetManual();
     if (want === 'bug') resetBug();
     if (want === 'bugs') loadBugs();
-    if (want === 'scan') { $('verdict').hidden = true; startCamera(); }
+    // Leaving the scan screen (e.g. the phone's back button) closes a result popup, except
+    // "All correct", which stays until "Souvenir given" or "Not given" is chosen.
+    if (want !== 'scan' && !mustChoose) closeModal();
+    if (want === 'scan') startCamera();
     if (s) { $('who').textContent = s.user; startPolling(); } else stopPolling();
     window.scrollTo(0, 0);
   }
   window.addEventListener('hashchange', route);
 
   function loggedOut(msg) {
+    closeModal();
     Api.setSession(ROLE, null);
     location.hash = '#login';
     route();
@@ -94,32 +98,101 @@
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible' && polling) { lastAction = Date.now(); poll(); schedule(); } });
 
   // ---------- verdict card ----------
+  // The scan result ('verdict') opens as a popup over the scanner (owner, 18 Nov): on 8 Nov some
+  // officers handed over souvenirs after "All correct" without tapping "Souvenir given". The popup
+  // closes only through its own buttons: no tap outside, no Escape. Manual input and the report
+  // form keep their cards below the form.
+  // An action with `busy` disables every button in the card when tapped and shows that text.
   function verdict(box, cls, big, detail, actions) {
-    var v = $(box);
+    var v = $(box), modal = box === 'verdict';
+    // a scan answer that arrives after the officer left the scan screen is not shown
+    if (modal && !modalOpen() && location.hash !== '#scan') return;
+    if (modal) mustChoose = (actions || []).some(function (a) { return a.busy; });
     v.className = 'card verdict ' + cls;
     v.innerHTML = '';
+    v.removeAttribute('aria-busy');
     var p1 = document.createElement('p'); p1.className = 'big'; p1.textContent = big; v.appendChild(p1);
     var p2 = document.createElement('p'); p2.className = 'detail'; p2.textContent = detail; v.appendChild(p2);
-    (actions || []).forEach(function (a) {
+    if (modal) { p1.id = 'verdictTitle'; p2.id = 'verdictText'; }
+    var buttons = (actions || []).map(function (a) {
       var b = document.createElement('button');
+      b.type = 'button';
       b.className = 'btn' + (a.secondary ? ' secondary' : '');
       b.textContent = a.label;
-      b.addEventListener('click', function () { b.disabled = true; a.run(); });
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        if (a.busy) {
+          buttons.forEach(function (x) { x.disabled = true; });
+          b.textContent = a.busy;
+          v.setAttribute('aria-busy', 'true');
+          v.focus(); // a disabled button loses focus; keep it inside the popup
+        } else b.disabled = true;
+        a.run();
+      });
       v.appendChild(b);
+      return b;
     });
     v.hidden = false;
-    v.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (modal) openModal(buttons[0]);
+    else v.scrollIntoView({ behavior: 'smooth', block: 'center' });
     if (navigator.vibrate) navigator.vibrate(cls === 'give' ? 80 : [60, 60, 60]);
   }
+
+  // The popup: everything else on the page is inert while it is open, so it cannot be tapped,
+  // focused or scanned behind it; Tab cycles through the popup's own buttons.
+  var inerted = [], mustChoose = false;
+  function modalOpen() { return !$('scanModal').hidden; }
+  function openModal(first) {
+    var m = $('scanModal');
+    if (m.hidden) {
+      m.hidden = false;
+      for (var n = m; n && n !== document.body && n.parentNode; n = n.parentNode) {
+        [].forEach.call(n.parentNode.children, function (sib) {
+          if (sib !== n && !sib.inert && !/^(SCRIPT|STYLE|LINK)$/.test(sib.tagName)) { sib.inert = true; inerted.push(sib); }
+        });
+      }
+      document.documentElement.classList.add('modal-open');
+    }
+    (first || $('verdict')).focus();
+  }
+  function closeModal() {
+    var m = $('scanModal');
+    if (m.hidden) return;
+    if ($('verdict').contains(document.activeElement)) document.activeElement.blur(); // no focus left on a hidden button
+    m.hidden = true; $('verdict').hidden = true; mustChoose = false;
+    inerted.forEach(function (el) { el.inert = false; });
+    inerted = [];
+    document.documentElement.classList.remove('modal-open');
+  }
+  document.addEventListener('keydown', function (e) {
+    if (!modalOpen()) return;
+    if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); return; }
+    if (e.key !== 'Tab') return;
+    var v = $('verdict'), list = [].filter.call(v.querySelectorAll('button'), function (b) { return !b.disabled; });
+    e.preventDefault();
+    if (!list.length) { v.focus(); return; }
+    var i = list.indexOf(document.activeElement);
+    list[i < 0 ? 0 : (i + (e.shiftKey ? list.length - 1 : 1)) % list.length].focus();
+  }, true);
+  // A tap on the dimmed backdrop does nothing, and does not take focus out of the popup;
+  // focus that strays outside comes back.
+  $('scanModal').addEventListener('mousedown', function (e) { if (!$('verdict').contains(e.target)) e.preventDefault(); });
+  document.addEventListener('focusin', function (e) {
+    if (modalOpen() && !$('verdict').contains(e.target)) $('verdict').focus();
+  });
   function failed(box, r, next) {
     if (r && r.status === 401) return loggedOut(r.body.message);
     if (r && r.body && r.body.error === 'event_closed') return verdict(box, 'stop', 'Event has ended', r.body.message, [box === 'mverdict' ? nextPerson : nextScan]);
     var msg = r && r.network ? 'No connection to the server. Do NOT give a souvenir yet.' : ((r && r.body && r.body.message) || 'Server error') + '.';
-    verdict(box, 'stop', 'Not checked', msg, [{ label: 'Try again', run: next }]);
+    // In the scan popup, "Scan next" is the way out when the server stays unreachable.
+    verdict(box, 'stop', 'Not checked', msg, [{ label: 'Try again', run: next }].concat(box === 'verdict' ? [notNow] : []));
   }
 
   // ---------- scan path ----------
-  var nextScan = { label: 'Scan next', secondary: true, run: function () { $('verdict').hidden = true; resume(); } };
+  var nextScan = { label: 'Scan next', run: function () { closeModal(); resume(); } };
+  var notNow = { label: 'Scan next', secondary: true, run: nextScan.run };
+  // "All correct": the officer must say whether the souvenir was handed over.
+  var notGiven = { label: 'Not given', secondary: true, run: nextScan.run };
 
   function check(code) {
     activity(); // a camera scan involves no tap
@@ -137,12 +210,16 @@
       }
       if (r.body.redeemedBefore) return verdict('verdict', 'stop', 'Souvenir given before', 'This phone was given a souvenir at an earlier event. One souvenir per person: do not give another. ' + info(rec), [nextScan]);
       if (!r.body.eligible) return verdict('verdict', 'retry', 'Not all correct yet', info(rec) + '. Ask them to tap "Try again" on their phone.', [nextScan]);
-      verdict('verdict', 'give', 'All correct', info(rec), [{ label: 'Souvenir given', run: function () { redeem(rec.id); } }, nextScan]);
+      verdict('verdict', 'give', 'All correct', info(rec), [{ label: 'Souvenir given', busy: 'Recording…', run: function () { redeem(rec.id); } }, notGiven]);
     }, function (e) { failed('verdict', e, function () { check(code); }); });
   }
 
+  var redeeming = null; // one redeem request at a time, so a double tap records once
   function redeem(id) {
+    if (redeeming === id) return;
+    redeeming = id;
     Api.call('POST', '/api/redeem', { id: id }, ROLE).then(function (r) {
+      redeeming = null;
       if (!r.ok) return failed('verdict', r, function () { redeem(id); });
       if (r.body.stats) showStats(r.body.stats);
       var s = r.body.status;
@@ -153,7 +230,7 @@
       if (s === 'redeemed_before') return verdict('verdict', 'stop', 'Souvenir given before', 'This phone was given a souvenir at an earlier event. One souvenir per person: do not give another.', [nextScan]);
       if (s === 'other_event') return verdict('verdict', 'stop', 'Code from another event', 'Ask them to take the quiz again on their phone for today\'s event.', [nextScan]);
       verdict('verdict', 'stop', 'Not recorded', 'Status: ' + s + '. Scan the code again.', [nextScan]);
-    }, function (e) { failed('verdict', e, function () { redeem(id); }); });
+    }, function (e) { redeeming = null; failed('verdict', e, function () { redeem(id); }); });
   }
 
   $('typeForm').addEventListener('submit', function (e) {
@@ -173,12 +250,12 @@
     return r ? r.data : null;
   }
   function pause() { paused = true; }
-  function resume() { paused = false; }
+  function resume() { if (!modalOpen()) paused = false; } // the camera stays paused while the popup is open
   function tick() {
     if (!stream) return;
     if (!busy && !paused && video.readyState >= 2) {
       busy = true;
-      var done = function (text) { busy = false; if (text && !paused) check(text); };
+      var done = function (text) { busy = false; if (text && !paused && !modalOpen()) check(text); };
       if (detector) {
         detector.detect(video).then(function (codes) { done(codes.length ? codes[0].rawValue : null); }, function () { detector = null; done(null); });
       } else {

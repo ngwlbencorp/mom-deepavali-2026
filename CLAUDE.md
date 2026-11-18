@@ -206,6 +206,14 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
 - **Dark mode uses the superadmin page's dark colours, with white text in the boxes** (owner,
   1 Nov): the same near-black page, cards and borders as the superadmin page, so both staff pages
   look alike; the Scan QR button keeps the indigo accent.
+- **The scan result is a popup** (owner, 18 Nov: "why not have a model popup after a scan? Then
+  they select which vs the current buttons are below which isnt intuitive"). On 8 Nov some
+  officers handed over souvenirs after "All correct" without tapping "Souvenir given", so those
+  souvenirs were never recorded. After "All correct" the popup closes only with "Souvenir given"
+  or "Not given" (no Escape, no tap outside, and the back button leaves it open); the camera stays
+  paused until one is chosen. Every other result has one "Scan next" button; "Not checked" keeps
+  "Try again" and adds "Scan next" (Claude, 18 Nov), so a lost connection cannot trap the officer
+  in the popup. Messages are unchanged. Manual input and the report form keep their cards.
 - **A light/dark button in the officer page's header** (owner, 1 Nov). The page follows the
   phone's setting until an officer taps it; the choice is then kept on that phone (`js/theme.js`).
 

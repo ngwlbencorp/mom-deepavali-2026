@@ -11,7 +11,7 @@ The Deepavali scam quiz, with:
 | Page | Who | What |
 |---|---|---|
 | `/index.html` | MWs | the quiz; the slide QR code points here |
-| `/admin/index.html` | officers | log in → **Scan QR** or **Manual input**; live "souvenirs left" counter. Neutral colours (`css/officer.css`), light or dark following the phone's setting, with a header button to switch (kept per phone); the Deepavali theme stays on the mini-site |
+| `/admin/index.html` | officers | log in → **Scan QR** or **Manual input**; live "souvenirs left" counter. Each scan result opens as a popup over the scanner; after "All correct" it closes only with **Souvenir given** (records it) or **Not given** (records nothing), so a souvenir handed over cannot go unrecorded by forgetting a tap (owner, 18 Nov). Neutral colours (`css/officer.css`), light or dark following the phone's setting, with a header button to switch (kept per phone); the Deepavali theme stays on the mini-site |
 | `/superadmin/index.html` | you | Dashboard · Admins (CSV upload, officer emails) · Data (CSV download, reset) |
 
 The admin and superadmin pages are not linked from the quiz. Bookmark them.
@@ -250,6 +250,8 @@ node tests/e2e-server.js http://127.0.0.1:8832/ http://127.0.0.1:3000 a boss b .
 Never run test scripts against the production database.
 
 Several events (`tests/multievent.test.js`): runs its own API servers (3040, 3042, 3043), a site copy (3041) and its own databases (`metest`, `mebackfill`, `mecold`). `node tests/multievent.test.js` (60 checks: windows, per-event caps under concurrency, freeze, Clear test data, one souvenir per phone across events including an 8 Nov phone with old storage, per-event reminders, and the backfill on an 8 Nov-shaped fixture run first with the code from before the change, git ref `OLD_REF`, default `ff0510d`). Themes: `node tests/themes.test.js [shotDir]`.
+
+Scan result popup (`tests/popup.test.js`): `DATABASE_URL=<the API's local test database> node tests/popup.test.js <site copy> <apiOrigin> <adminPw> <superUser> <superPw> [shotDir]` (a fresh database and an open event; 40 checks: a popup for every verdict kind, role="dialog" and aria-modal, no closing by Escape, a tap outside or the back button (which does close a result that needs no choice), focus trapped and on the primary button, "Not given" records nothing, "Souvenir given" records once on a double tap with "Recording…" meanwhile, the counter updates, no connection keeps "Try again", and every kind fits 320x568 and 360x640 with buttons of 16px or more). With `shotDir`, screenshots of four popups in light and dark.
 
 Email alerts (`tests/alerts.test.js`): runs its own API server (port 3030), a stand-in for Resend (3031) and its own database `alerttest`, so no real email is sent. `node tests/alerts.test.js` (15 checks: bug report alert without report text, server-error alert for the first error of a burst only, the test endpoint's logins, and a failing email service recorded once with no loop).
 
