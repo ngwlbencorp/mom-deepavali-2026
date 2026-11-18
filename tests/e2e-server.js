@@ -1,7 +1,8 @@
 // End-to-end browser test: MW phones, two admins, superadmin. Site and API on different origins.
 // Usage: node tests/e2e-server.js <siteBase> <apiOrigin> <adminPw> <superUser> <superPw> <outDir>
 // ADMIN_URL=<url> runs the officer part through another address (e.g. the ducks.ai shell) instead of <siteBase>admin/index.html.
-// The site copy at <siteBase> must have js/config.js pointing at <apiOrigin>. The database is reset.
+// The site copy at <siteBase> must have js/config.js pointing at <apiOrigin>. Use a fresh database
+// (changed 18 Nov: the reset is gone); the open event's cap is set to 500 here.
 const fs = require('fs');
 const { chromium, devices } = require('playwright');
 const [site, api, ADMIN_PW, SUPER_USER, SUPER_PW, out] = process.argv.slice(2);
@@ -13,7 +14,8 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
 (async () => {
   // fresh data and two admins
   const SUP = (await post('/api/login', { role: 'super', username: SUPER_USER, password: SUPER_PW })).token;
-  await post('/api/reset', { confirm: 'RESET' }, SUP);
+  const EVT = (await fetch(api + '/api/remaining').then((r) => r.json())).event.id;
+  await post('/api/events', { id: EVT, cap: 500 }, SUP);
   await post('/api/admins', { emails: ['alice@mom.gov.sg', 'bob@mom.gov.sg'], mode: 'replace' }, SUP);
 
   const b = await chromium.launch(), errs = [];

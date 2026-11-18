@@ -83,6 +83,9 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     ok(/example\.test\/officer/.test(g.preview.welcome.text) && !g.preview.welcome.text.includes('admin-pw'), 'preview fills the links but not the password');
 
     await call('POST', '/api/admins', { emails: ['a@example.test', 'b@example.test', 'c@example.test'], mode: 'add' }, SUP);
+    // Changed 18 Nov: the reminder is per event, for the officers on that event's list (22 Nov is the open event on the test date).
+    const EVT = (await call('GET', '/api/notify', null, SUP)).body.event.id;
+    await call('POST', '/api/events', { id: EVT, add: ['a@example.test', 'b@example.test', 'c@example.test'] }, SUP);
     let c = await pending();
     ok(c.welcome === 3 && c.reminder === 3, 'three new officers are pending both emails');
 
@@ -111,28 +114,31 @@ const mode = (status, delay) => fetch(`http://127.0.0.1:${FAKE_PORT}/mode`, { me
     await call('POST', '/api/admins', { emails: ['a@example.test', 'b@example.test', 'c@example.test', 'e@example.test'], mode: 'replace' }, SUP);
     a = await admins();
     ok(!a['d@example.test'] && a['a@example.test'].welcome_sent_at && !a['e@example.test'].welcome_sent_at, 'replace drops missing officers and keeps the others\' email record');
-    ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 200 && (await admins())['a@example.test'].welcome_sent_at, 'the rehearsal reset keeps the email record');
+    // Changed 18 Nov: the reset is gone (410), replaced by per-event Clear test data; the email record stays either way.
+    ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 410 && (await admins())['a@example.test'].welcome_sent_at, 'the rehearsal reset is gone and the email record stays');
 
     // Reminder: every officer, once (owner, 5 Nov); the opening depends on whether they logged in.
     ok((await call('POST', '/api/login', { role: 'admin', email: 'A@example.test', password: 'admin-pw-<1>' })).status === 200, 'officer a logs in');
+    await call('POST', '/api/events', { id: EVT, add: ['e@example.test'] }, SUP); // changed 18 Nov: e joins the event's list
     c = await pending();
     ok(c.reminder === 4 && c.reminder_not_logged_in === 3, `every officer is pending the reminder, 3 of them never logged in (${c.reminder}, ${c.reminder_not_logged_in})`);
     g = (await call('GET', '/api/notify', null, SUP)).body;
-    ok(g.preview.reminder_loggedin && /Thank you for logging in/.test(g.preview.reminder_loggedin.text) && /have not logged in/.test(g.preview.reminder.text), 'the page previews both versions');
+    ok(g.preview.reminder_loggedin && /logged in to the Admin Portal for an earlier session/.test(g.preview.reminder_loggedin.text) && /have not logged in/.test(g.preview.reminder.text), 'the page previews both versions');
     n0 = got.length;
     const tr = await call('POST', '/api/notify', { kind: 'reminder', test: 'me@example.test' }, SUP);
     ok(tr.status === 200 && tr.body.sent === 2 && got.slice(n0).map((m) => m.subject).join(' | ') ===
-      '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov | [Reminder] Digital4Good @ Kranji RC on 8 Nov: your links and the briefing slides', 'a test reminder sends both versions');
+      '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 22 Nov | [Reminder] Digital4Good @ Kranji RC on 22 Nov: please log in again to check your access', 'a test reminder sends both versions (changed 18 Nov: event date from the event row)');
     ok((await call('POST', '/api/notify', { kind: 'reminder_loggedin', test: 'me@example.test' }, SUP)).status === 400, 'the logged-in version is not a kind of its own');
     n0 = got.length; s = await sendAll('reminder');
     const rem = got.slice(n0), byTo = Object.fromEntries(rem.map((m) => [m.recipient, m]));
     ok(s.sent === 4 && Object.keys(byTo).sort().join() === 'a@example.test,b@example.test,c@example.test,e@example.test', 'the reminder goes to every officer, logged in or not');
-    ok(/Thank you for logging in/.test(byTo['a@example.test'].body) && !/have not logged in/.test(byTo['a@example.test'].body) && byTo['a@example.test'].subject.endsWith('your links and the briefing slides'), 'an officer who logged in gets the logged-in version');
-    ok(/have not logged in/.test(byTo['b@example.test'].body) && byTo['b@example.test'].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 8 Nov', 'an officer who never logged in gets the not-logged-in version');
-    ok(rem.every((m) => m.body.includes('https://example.slack.com/team/U0TEST') && m.body.includes('href="https://example.test/d/briefing/"') && m.body.includes('href="https://example.test/mini/"') && m.body.includes('COMET or SEED') && m.tag === 'deepavali-reminder'), 'both versions carry the Slack contact, the slides, both sites and the same tag');
+    ok(/earlier session/.test(byTo['a@example.test'].body) && !/have not logged in/.test(byTo['a@example.test'].body) && byTo['a@example.test'].subject.endsWith('please log in again to check your access'), 'an officer who logged in gets the logged-in version');
+    ok(/have not logged in/.test(byTo['b@example.test'].body) && byTo['b@example.test'].subject === '[Reminder] Digital4Good @ Kranji RC: Log in to Admin Portal before 22 Nov', 'an officer who never logged in gets the not-logged-in version');
+    // Changed 18 Nov: no briefing-slides line for now (owner); the event date and session time come from the event row.
+    ok(rem.every((m) => m.body.includes('https://example.slack.com/team/U0TEST') && !m.body.includes('briefing') && !m.body.includes('COMET or SEED') && m.body.includes('href="https://example.test/mini/"') && m.body.includes('22 Nov, 5 pm to 9 pm') && m.tag === 'deepavali-reminder'), 'both versions carry the Slack contact, both sites, the event date and time, no slides, and the same tag');
     // The rehearsal reset clears only quiz and QR data (scans, submissions), never officers' records.
     const before = await admins();
-    ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 200, 'rehearsal reset runs');
+    ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 410, 'the rehearsal reset is refused (changed 18 Nov: replaced by Clear test data)');
     const after2 = await admins();
     ok(Object.keys(after2).sort().join() === Object.keys(before).sort().join() && ['welcome_sent_at', 'reminder_sent_at', 'last_login_at', 'login_count'].every((f) =>
       Object.keys(before).every((e) => String(before[e][f]) === String(after2[e][f]))) && after2['a@example.test'].last_login_at && after2['a@example.test'].login_count >= 1 && after2['a@example.test'].reminder_sent_at,

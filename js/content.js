@@ -18,7 +18,7 @@ window.SCAM_TEXT.en = {
     greeting: "Happy Deepavali!",
     title: "Stay safe from scams",
     intro: "Learn the tricks scammers use, then take the quiz.",
-    souvenirNote: "Get all answers correct and show your QR code to an MOM officer for a souvenir. First 500 only!",
+    souvenirNote: "Get all answers correct and show your QR code to an MOM officer for a souvenir. First {n} only!",
     helpline: "1799",
     helplineName: "ScamShield Helpline"
   },

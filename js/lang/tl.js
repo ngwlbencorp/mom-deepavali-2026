@@ -6,7 +6,7 @@ window.SCAM_TEXT["tl"] = {
     "greeting": "Maligayang Deepavali!",
     "title": "Mag-ingat sa mga scam",
     "intro": "Alamin ang mga daya ng mga scammer, saka sagutan ang quiz.",
-    "souvenirNote": "Sagutin nang tama ang lahat at ipakita ang iyong QR code sa isang MOM officer para sa souvenir. Para lang sa unang 500!",
+    "souvenirNote": "Sagutin nang tama ang lahat at ipakita ang iyong QR code sa isang MOM officer para sa souvenir. Para lang sa unang {n}!",
     "helplineName": "ScamShield Helpline"
   },
   "ui": {

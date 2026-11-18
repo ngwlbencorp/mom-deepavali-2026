@@ -6,7 +6,7 @@ window.SCAM_TEXT["zh"] = {
     "greeting": "屠妖节快乐！",
     "title": "防范诈骗",
     "intro": "了解骗子的伎俩，然后参加问答。",
-    "souvenirNote": "全部答对后，向人力部（MOM）官员出示您的QR码，即可领取纪念品。仅限前500名！",
+    "souvenirNote": "全部答对后，向人力部（MOM）官员出示您的QR码，即可领取纪念品。仅限前{n}名！",
     "helplineName": "ScamShield 热线"
   },
   "ui": {

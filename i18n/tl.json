@@ -2,7 +2,7 @@
  "event.greeting": "Maligayang Deepavali!",
  "event.title": "Mag-ingat sa mga scam",
  "event.intro": "Alamin ang mga daya ng mga scammer, saka sagutan ang quiz.",
- "event.souvenirNote": "Sagutin nang tama ang lahat at ipakita ang iyong QR code sa isang MOM officer para sa souvenir. Para lang sa unang 500!",
+ "event.souvenirNote": "Sagutin nang tama ang lahat at ipakita ang iyong QR code sa isang MOM officer para sa souvenir. Para lang sa unang {n}!",
  "event.helplineName": "ScamShield Helpline",
  "ui.language": "Wika",
  "ui.csr": "Isang inisyatiba ng GovTech para sa Corporate Social Responsibility",

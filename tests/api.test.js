@@ -37,7 +37,10 @@ const call = (method, path, body, token) => fetch(base + path, {
   const SUP = sl.body.token;
   ok((await call('GET', '/api/dashboard')).status === 401, 'dashboard needs login');
   ok((await call('GET', '/api/dashboard', null, SUP + 'x')).status === 401, 'tampered token rejected');
-  ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 200, 'reset clears data');
+  // Changed 18 Nov: the reset is gone (it could delete a past event's data); the cap is per event, set here instead of REDEEM_CAP.
+  ok((await call('POST', '/api/reset', { confirm: 'RESET' }, SUP)).status === 410, 'the old reset is refused');
+  const EVT = (await call('GET', '/api/remaining')).body.event.id;
+  ok((await call('POST', '/api/events', { id: EVT, cap: CAP }, SUP)).status === 200, 'the open event\'s cap is set');
 
   let a = await call('POST', '/api/admins', { emails: ['Alice@MOM.gov.sg', 'bob@mom.gov.sg', 'alice@mom.gov.sg'], mode: 'replace' }, SUP);
   ok(a.status === 200 && a.body.admins.length === 2 && a.body.admins[0].email === 'alice@mom.gov.sg', 'upload admins: lowercased, de-duplicated');
@@ -232,7 +235,8 @@ const call = (method, path, body, token) => fetch(base + path, {
   ok((await call('GET', '/api/apierrors', null, ADM)).status === 403 && (await call('GET', '/api/apierrors')).status === 401, 'officers and visitors cannot read the server error log');
   if (BUG_TOKEN) ok((await call('GET', '/api/apierrors?since=0', null, BUG_TOKEN)).status === 200, 'bug-agent token can read the server error log');
   const adminsBefore = JSON.stringify((await call('GET', '/api/admins', null, SUP)).body.admins);
-  await call('POST', '/api/reset', { confirm: 'RESET' }, SUP);
+  // Changed 18 Nov: Clear test data on an event replaces the reset; it keeps the bug log and every admin too.
+  await call('POST', '/api/events', { id: '2026-12-06', clearTest: true, confirm: 'CLEAR' }, SUP);
   ok((await call('GET', '/api/bugs', null, SUP)).body.reports.some((x) => x.id === bugId), 'clearing rehearsal data keeps the bug log');
   ok(JSON.parse(adminsBefore).length > 0 && JSON.stringify((await call('GET', '/api/admins', null, SUP)).body.admins) === adminsBefore && (await call('POST', '/api/login', { role: 'admin', email: 'bob@mom.gov.sg', password: ADMIN_PW })).status === 200,
     'clearing rehearsal data keeps every admin, and they can still log in');

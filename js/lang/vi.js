@@ -6,7 +6,7 @@ window.SCAM_TEXT["vi"] = {
     "greeting": "Chúc mừng lễ Deepavali!",
     "title": "Cảnh giác lừa đảo",
     "intro": "Tìm hiểu các chiêu lừa đảo, rồi làm bài đố vui.",
-    "souvenirNote": "Trả lời đúng tất cả và đưa mã QR cho nhân viên MOM để nhận quà lưu niệm. Chỉ dành cho 500 người đầu tiên!",
+    "souvenirNote": "Trả lời đúng tất cả và đưa mã QR cho nhân viên MOM để nhận quà lưu niệm. Chỉ dành cho {n} người đầu tiên!",
     "helplineName": "Đường dây nóng ScamShield"
   },
   "ui": {

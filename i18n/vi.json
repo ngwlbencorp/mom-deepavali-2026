@@ -2,7 +2,7 @@
  "event.greeting": "Chúc mừng lễ Deepavali!",
  "event.title": "Cảnh giác lừa đảo",
  "event.intro": "Tìm hiểu các chiêu lừa đảo, rồi làm bài đố vui.",
- "event.souvenirNote": "Trả lời đúng tất cả và đưa mã QR cho nhân viên MOM để nhận quà lưu niệm. Chỉ dành cho 500 người đầu tiên!",
+ "event.souvenirNote": "Trả lời đúng tất cả và đưa mã QR cho nhân viên MOM để nhận quà lưu niệm. Chỉ dành cho {n} người đầu tiên!",
  "event.helplineName": "Đường dây nóng ScamShield",
  "ui.language": "Ngôn ngữ",
  "ui.csr": "Một sáng kiến trách nhiệm xã hội doanh nghiệp của GovTech",

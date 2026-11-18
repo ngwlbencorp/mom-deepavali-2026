@@ -22,7 +22,7 @@
   // before it starts until it ends). config.js eventEnd is only the fallback for the bundled offline
   // copy, when the server cannot be reached.
   var EVENT_END = Date.parse(CFG.eventEnd || '2026-11-08T21:00:00+08:00');
-  var live = { open: null, left: null, event: null }; // null = not known yet
+  var live = { open: null, left: null, event: null, cap: null }; // null = not known yet
   function eventOpen() { return live.open !== null ? live.open : Date.now() < EVENT_END; }
   function souvenirsOn() { return eventOpen() && live.left !== 0; }
 
@@ -154,14 +154,23 @@
     if (document.visibilityState === 'hidden' || !window.ScamApi) return;
     window.ScamApi.call('GET', '/api/remaining').then(function (r) {
       if (!r.ok) return;
-      var before = souvenirsOn() + '|' + eventOpen();
+      var before = souvenirsOn() + '|' + eventOpen() + '|' + live.cap;
       live.open = !!r.body.open;
+      live.cap = typeof r.body.cap === 'number' ? r.body.cap : null;
       live.left = r.body.capRemaining === undefined ? null : r.body.capRemaining;
       live.event = r.body.event || null;
       var themed = applyTheme(live.event && live.event.theme);
       if (useEvent(live.event)) return home(); // a new event: this phone starts afresh
-      if ((themed || souvenirsOn() + '|' + eventOpen() !== before) && redraw) redraw(); else updatePill();
+      if ((themed || souvenirsOn() + '|' + eventOpen() + '|' + live.cap !== before) && redraw) redraw(); else updatePill();
     }, function () {});
+  }
+  // "… First {n} only!": n is the open event's cap (owner, 18 Nov). Until the cap is known (not set
+  // yet, or the server has not answered), the sentence holding {n} is left out rather than show a
+  // wrong number. Sentence ends: . ! and the Bengali/Hindi, Burmese, Urdu and Chinese full stops.
+  function souvenirNote() {
+    var t = T.event.souvenirNote;
+    if (typeof live.cap === 'number') return f(t, { n: live.cap });
+    return t.replace(/[^.!।။۔。！]*\{n\}[^.!।။۔。！]*[.!।။۔。！]?/, '').trim();
   }
   function leftText() { return live.left === null ? '' : live.left > 0 ? f(T.ui.left, { n: live.left }) : T.ui.soldOut; }
   function pill() {
@@ -275,7 +284,7 @@
         el('span', { class: 'tile-txt' }, [el('b', { text: open ? T.ui.quizTitle : T.ui.quizTitleAfter }), el('small', { text: T.ui.quizSub })])
       ]),
       state.last ? el('button', { class: 'linkbtn', type: 'button', onclick: result }, [souvenirsOn() && !state.redeemedBefore && (state.last.score === state.last.total || state.firstFull) ? T.ui.showQr : T.ui.showResult]) : null,
-      open ? el('p', { class: 'note', text: T.event.souvenirNote }) : null,
+      open ? el('p', { class: 'note', text: souvenirNote() }) : null,
       open ? pill() : null,
       helpline(),
       legal()
