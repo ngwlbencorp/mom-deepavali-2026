@@ -1,0 +1,88 @@
+/* Event themes for the mini-site (js/event-themes.js sets data-event-theme on <html>).
+   No attribute, or data-event-theme="deepavali", is the original plum-and-gold look: nothing in
+   this file applies to it. Every rule here is scoped to one theme.
+   Selectors start with :root[data-event-theme=...] so they outweigh both the page's own rules and
+   the ducks.ai shell's loading style (ducks.ai moves head styles after the page's stylesheets, and
+   the shell sets html, body { background: ... }). */
+
+/* ---------- neutral: calm and official (deep navy, teal, a warm amber accent) ---------- */
+:root[data-event-theme="neutral"] {
+  --plum: #1b3a5c;      /* deep navy: headings, main buttons, tiles; white text 11.6:1 */
+  --plum-2: #1d6670;    /* teal: eyebrow text and links; 6.6:1 on white */
+  --gold: #c9822b;      /* amber accent: borders, progress, focus ring (not used for text) */
+  --gold-soft: #fdf3e4; /* light amber fill; navy text on it 10.6:1 */
+  --ink: #17212b;
+  --muted: #4f5b68;     /* 6.4:1 on the page background */
+  --bg: #f3f6f9;
+  --card: #ffffff;
+  --line: #d9e1ea;
+}
+/* ---------- christmas: deep green and red with gold and cream ---------- */
+:root[data-event-theme="christmas"] {
+  --plum: #14532d;      /* deep green; white text 9.1:1 */
+  --plum-2: #a3192b;    /* berry red: eyebrow text and links; 7.7:1 on white */
+  --gold: #c99a2e;      /* gold accent (not used for text) */
+  --gold-soft: #fbf3dc; /* cream fill; green text on it 8.2:1 */
+  --ink: #1c2620;
+  --muted: #535b52;     /* 6.6:1 on the page background */
+  --bg: #fbf7ee;
+  --card: #ffffff;
+  --line: #e6dcc6;
+}
+
+/* page background: heavier than the shell's loading style */
+:root[data-event-theme="neutral"], :root[data-event-theme="neutral"] body,
+:root[data-event-theme="christmas"], :root[data-event-theme="christmas"] body { background: var(--bg); }
+
+/* Shadows and pressed fills that site.css and quiz.css tint plum by hand. */
+:root[data-event-theme="neutral"] .tile { box-shadow: 0 6px 20px rgba(27, 58, 92, .15); }
+:root[data-event-theme="neutral"] .card { box-shadow: 0 6px 20px rgba(27, 58, 92, .08); }
+:root[data-event-theme="neutral"] .todo li { box-shadow: 0 4px 14px rgba(27, 58, 92, .06); }
+:root[data-event-theme="neutral"] .opt[aria-pressed="true"],
+:root[data-event-theme="neutral"] .chip[aria-pressed="true"] { background: #e8f1f2; }
+:root[data-event-theme="neutral"] .seg { border-color: #a9b4c0; }
+
+:root[data-event-theme="christmas"] .tile { box-shadow: 0 6px 20px rgba(20, 83, 45, .16); }
+:root[data-event-theme="christmas"] .card { box-shadow: 0 6px 20px rgba(20, 83, 45, .08); }
+:root[data-event-theme="christmas"] .todo li { box-shadow: 0 4px 14px rgba(20, 83, 45, .06); }
+/* a picked feedback chip: green outline on cream, so it does not look like a red "wrong" mark */
+:root[data-event-theme="christmas"] .opt[aria-pressed="true"],
+:root[data-event-theme="christmas"] .chip[aria-pressed="true"] { background: var(--gold-soft); border-color: var(--plum); }
+:root[data-event-theme="christmas"] .opt[aria-pressed="true"] .box { background: var(--plum); border-color: var(--plum); }
+:root[data-event-theme="christmas"] .seg { border-color: #bdb39c; }
+/* header rule: green, red, gold */
+:root[data-event-theme="christmas"] .bar {
+  border-image: linear-gradient(90deg, var(--plum), var(--plum) 45%, var(--plum-2) 70%, var(--gold)) 1;
+}
+
+/* ---------- Deepavali motifs: hidden or replaced ---------- */
+/* The rangoli (old hero header) has no counterpart in the other themes. */
+:root[data-event-theme="neutral"] .rangoli,
+:root[data-event-theme="christmas"] .rangoli { display: none; }
+/* Until js/event-themes.js swaps the header icon, hide the lamp rather than show a Deepavali motif. */
+:root[data-event-theme="neutral"] .iconbtn svg:not(.evt-motif),
+:root[data-event-theme="christmas"] .iconbtn svg:not(.evt-motif),
+:root[data-event-theme="neutral"] svg.diya:not(.evt-motif),
+:root[data-event-theme="christmas"] svg.diya:not(.evt-motif) { visibility: hidden; }
+
+/* Theme icons (built by js/event-themes.js). Same box as the lamp they replace. */
+:root[data-event-theme] .iconbtn svg.evt-motif { width: 34px; height: 34px; display: block; }
+:root[data-event-theme] svg.diya.evt-motif { width: 56px; height: 56px; display: block; margin: 0 auto 6px; }
+
+/* neutral: a shield with a tick */
+:root[data-event-theme="neutral"] .evt-motif .evt-shield { fill: var(--plum); }
+:root[data-event-theme="neutral"] .evt-motif .evt-shield-edge { fill: none; stroke: var(--gold); stroke-width: 3; }
+:root[data-event-theme="neutral"] .evt-motif .evt-tick { fill: none; stroke: #ffffff; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* christmas: a tree with a star and two baubles; the star twinkles gently */
+:root[data-event-theme="christmas"] .evt-motif .evt-tree { fill: var(--plum); }
+:root[data-event-theme="christmas"] .evt-motif .evt-trunk { fill: #7a4a24; }
+:root[data-event-theme="christmas"] .evt-motif .evt-bauble-a { fill: var(--plum-2); }
+:root[data-event-theme="christmas"] .evt-motif .evt-bauble-b { fill: var(--gold); }
+:root[data-event-theme="christmas"] .evt-motif .evt-star {
+  fill: #f2c230; transform-origin: 32px 9px; animation: evtTwinkle 2.4s ease-in-out infinite;
+}
+@keyframes evtTwinkle { 50% { transform: scale(.82); opacity: .8; } }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-event-theme="christmas"] .evt-motif .evt-star { animation: none; }
+}
