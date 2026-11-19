@@ -114,6 +114,7 @@
   $('evPick').addEventListener('change', function () {
     EV = $('evPick').value; drawn = ''; renderPicker();
     loadDash();
+    hideEvPreview();
     if (!$('t-admins').hidden) loadAdmins();
   });
   $('evForm').addEventListener('submit', function (ev) {
@@ -381,20 +382,29 @@
   });
 
   // ---------- admins ----------
-  var pending = [];
   function adminError(msg) { var e = $('adminErr'); e.textContent = msg || ''; e.hidden = !msg; }
   // Officers who have not logged in yet come first by default, so they are easy to chase. With
   // 90+ officers (owner, 19 Nov) the list also filters (welcome not sent, not logged in, email
-  // problem), searches by email and sorts; the choice survives every refresh of the list.
-  var currentAdmins = [];  // emails on the list as last loaded, for the upload preview
+  // problem, no event), searches by email and sorts; the choice survives every refresh of the list.
+  // Each row names the events the officer is on, from the "events" field of /api/admins (owner,
+  // 19 Nov: every officer belongs to an event, so one with none stands out).
   var adminRows = [], adminFilter = 'all';
   function badMail(a) { var dv = delivery[a.email] || {}; return !!((dv.welcome && BAD[dv.welcome.status]) || (dv.reminder && BAD[dv.reminder.status])); }
   var FILTERS = {
     all: function () { return true; },
     nowelcome: function (a) { return !a.welcome_sent_at; },
     nologin: function (a) { return !(a.login_count > 0); },
-    bad: badMail
+    bad: badMail,
+    noevent: function (a) { return !(a.events && a.events.length); }
   };
+  // "2026-11-22" -> "22 Nov"; any other id shows the event's name.
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function evShort(id) {
+    var m = /^\d{4}-(\d{2})-(\d{2})$/.exec(id);
+    if (m) return Number(m[2]) + ' ' + MON[Number(m[1]) - 1];
+    var e = events.filter(function (x) { return x.id === id; })[0];
+    return e ? e.name : id;
+  }
   var SORTS = {
     login: function (a, b) { return (a.login_count > 0) - (b.login_count > 0) || (a.email < b.email ? -1 : 1); },
     email: function (a, b) { return a.email < b.email ? -1 : 1; },
@@ -403,7 +413,6 @@
   };
   function renderAdmins(list) {
     adminRows = list;
-    currentAdmins = list.map(function (a) { return a.email; });
     $('adminCount').textContent = list.length;
     var seen = list.filter(function (a) { return a.login_count > 0; }).length;
     $('loginSummary').textContent = seen + ' of ' + list.length + ' have logged in';
@@ -439,10 +448,23 @@
       mailText.textContent = (a.welcome_sent_at ? 'Welcome sent ' + when(a.welcome_sent_at) + statusText(dv.welcome) : 'Welcome not sent') + (a.reminder_sent_at ? ' · Reminder sent ' + when(a.reminder_sent_at) + statusText(dv.reminder) : '');
       if ((dv.welcome && BAD[dv.welcome.status]) || (dv.reminder && BAD[dv.reminder.status])) mailText.className = 'lastlogin never';
       span.appendChild(mailText);
+      var evText = document.createElement('small'), evs = a.events || [];
+      evText.className = 'lastlogin evline' + (evs.length ? '' : ' noevent');
+      evText.textContent = evs.length ? 'Events: ' + evs.map(evShort).join(', ') : 'No event';
+      span.appendChild(evText);
       b.textContent = 'Remove';
+      // Removes the login only (lib/routes/admins.js): the email stays on its events' lists, shown
+      // there as unable to log in, until it is added to an event again.
       b.addEventListener('click', function () {
-        if (!confirm('Remove ' + a.email + '? They will be logged out on their next action.')) return;
-        Api.call('POST', '/api/admins', { remove: a.email }, ROLE).then(function (r) { if (guard(r) && r.ok) renderAdmins(r.body.admins); });
+        if (!confirm('Remove ' + a.email + '? They will be logged out on their next action.' +
+          (evs.length ? ' They stay on the officer list of ' + evs.map(evShort).join(', ') + ', marked "cannot log in", until added again.' : ''))) return;
+        Api.call('POST', '/api/admins', { remove: a.email }, ROLE).then(function (r) {
+          if (!guard(r)) return;
+          if (!r.ok) return adminError(r.body.message);
+          adminError('');
+          renderAdmins(r.body.admins);
+          loadEvOfficers(); loadMail();
+        }, function () { adminError('Cannot reach the server.'); });
       });
       li.appendChild(span); li.appendChild(b); ul.appendChild(li);
     });
@@ -458,22 +480,28 @@
   });
   $('adminSearch').addEventListener('input', drawAdmins);
   $('adminSort').addEventListener('change', drawAdmins);
+  function reloadAdmins() {
+    Api.call('GET', '/api/admins', null, ROLE).then(function (r) { if (guard(r) && r.ok) { adminError(''); renderAdmins(r.body.admins); } }, function () { adminError('Cannot reach the server.'); });
+  }
   function loadAdmins() {
-    Api.call('GET', '/api/admins', null, ROLE).then(function (r) { if (guard(r) && r.ok) renderAdmins(r.body.admins); }, function () { adminError('Cannot reach the server.'); });
+    reloadAdmins();
     loadMail();
     loadEvOfficers();
   }
 
   // ---------- officers for the chosen event ----------
   function evOffMsg(text, bad) { var m = $('evOffMsg'); m.textContent = text || ''; m.className = 'small' + (bad ? ' error' : ''); }
+  var evOffNow = [];  // the chosen event's list as last loaded, for the CSV preview
   function renderEvOfficers(d) {
     if (d.event.id !== EV) return;
+    evOffNow = d.officers.map(function (o) { return o.email; });
     $('evOffCount').textContent = d.officers.length;
     var ul = $('evOffList'); ul.innerHTML = '';
     d.officers.forEach(function (o) {
       var li = document.createElement('li');
       var span = document.createElement('span');
-      span.textContent = o.email + (o.last_login_at ? ' · last login ' + when(o.last_login_at) : ' · never logged in') + (o.reminder_sent_at ? ' · reminded ' + when(o.reminder_sent_at) : '');
+      span.textContent = o.email + (o.last_login_at ? ' · last login ' + when(o.last_login_at) : ' · never logged in') + (o.reminder_sent_at ? ' · reminded ' + when(o.reminder_sent_at) : '') +
+        (o.can_log_in === false ? ' · cannot log in (removed from the login list; add again to restore)' : '');
       li.appendChild(span);
       if (!d.event.ended) {
         var b = document.createElement('button'); b.className = 'linkbtn'; b.type = 'button'; b.textContent = 'Remove from event';
@@ -486,6 +514,7 @@
       ul.appendChild(li);
     });
     $('evAddForm').hidden = $('evCsv').parentNode.hidden = !!d.event.ended;
+    if (d.event.ended) hideEvPreview();
   }
   function loadEvOfficers() {
     if (!EV) return;
@@ -497,7 +526,7 @@
       if (!r.ok) return evOffMsg(r.body.message, true);
       evOffMsg(done || '');
       renderEvOfficers(r.body);
-      Api.call('GET', '/api/admins', null, ROLE).then(function (x) { if (guard(x) && x.ok) renderAdmins(x.body.admins); });
+      reloadAdmins();
       loadMail();
     }, function () { evOffMsg('Cannot reach the server.', true); });
   }
@@ -506,16 +535,58 @@
     var v = $('evAddEmail').value.trim();
     if (v) { evOfficers({ id: EV, add: [v] }, 'Added ' + v + '.'); $('evAddEmail').value = ''; }
   });
+  // CSV: show who would be added before anything is saved (owner, 19 Nov; the old login-list
+  // upload had the same preview). Adding never removes anyone, so there is no Replace.
+  var evPending = [], evPendingFor = '';
+  function hideEvPreview() { evPending = []; evPendingFor = ''; $('evPreview').hidden = true; $('evPreviewText').innerHTML = ''; }
   $('evCsv').addEventListener('change', function () {
-    var f = $('evCsv').files[0]; if (!f) return;
-    f.text().then(function (t) {
-      var list = (t.match(/[^\s@,;"']+@[^\s@,;"']+\.[^\s@,;"']+/g) || []);
-      $('evCsv').value = '';
-      if (!list.length) return evOffMsg('No email addresses found in that file.', true);
-      if (!confirm('Add ' + list.length + ' email(s) to ' + (chosen() || {}).name + '?')) return;
-      evOfficers({ id: EV, add: list }, 'Added ' + list.length + ' email(s) from the file.');
-    });
+    var f = this.files && this.files[0];
+    evOffMsg('');
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var found = {};
+      String(reader.result).split(/[\r\n,;\t]+/).forEach(function (cell) {
+        var v = cell.replace(/^[\s"'\ufeff]+|[\s"']+$/g, '').toLowerCase();
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) found[v] = true;
+      });
+      evPending = Object.keys(found).sort(); evPendingFor = EV;
+      showEvPreview();
+    };
+    reader.readAsText(f);
+    this.value = '';
   });
+  function showEvPreview() {
+    var box = $('evPreviewText'); box.innerHTML = '';
+    $('evPreview').hidden = false;
+    if (!evPending.length) { box.textContent = 'No email addresses found in this file.'; $('evUploadBtn').hidden = true; return; }
+    var onEvent = {}, canLogIn = {};
+    evOffNow.forEach(function (e) { onEvent[e] = true; });
+    adminRows.forEach(function (a) { canLogIn[a.email] = true; });
+    var toAdd = evPending.filter(function (e) { return !onEvent[e]; });
+    var fresh = toAdd.filter(function (e) { return !canLogIn[e]; }), known = toAdd.filter(function (e) { return canLogIn[e]; });
+    var name = (chosen() || {}).name || 'this event';
+    var head = document.createElement('b');
+    head.textContent = evPending.length + ' email address(es) in the file: ' + toAdd.length + ' would be added to ' + name +
+      ', ' + (evPending.length - toAdd.length) + ' already on it.';
+    box.appendChild(head);
+    function list(title, items, cls) {
+      if (!items.length) return;
+      var p = document.createElement('p'); p.className = 'small ' + cls; p.textContent = title + ' (' + items.length + '): ' + items.join(', ');
+      box.appendChild(p);
+    }
+    list('New to the login list (they can log in, and get the welcome email when you send it)', fresh, 'muted');
+    list('Already on the login list', known, 'muted');
+    $('evUploadBtn').hidden = !toAdd.length;
+    $('evUploadBtn').textContent = 'Add ' + toAdd.length + ' to ' + name;
+  }
+  $('evUploadBtn').addEventListener('click', function () {
+    if (!evPending.length || evPendingFor !== EV) return hideEvPreview();
+    var list = evPending;
+    hideEvPreview();
+    evOfficers({ id: EV, add: list }, 'Added the file\'s ' + list.length + ' email(s) to ' + ((chosen() || {}).name || 'this event') + '.');
+  });
+  $('evCancelBtn').addEventListener('click', hideEvPreview);
 
   // ---------- emails to officers (Postman) ----------
   var mail = null, sending = false;
@@ -600,79 +671,6 @@
   });
   $('welcomeSend').addEventListener('click', function () { sendAll('welcome'); });
   $('reminderSend').addEventListener('click', function () { sendAll('reminder'); });
-  $('csv').addEventListener('change', function () {
-    var f = this.files && this.files[0];
-    adminError('');
-    if (!f) return;
-    var reader = new FileReader();
-    reader.onload = function () {
-      var found = {};
-      String(reader.result).split(/[\r\n,;\t]+/).forEach(function (cell) {
-        var v = cell.replace(/^[\s"'﻿]+|[\s"']+$/g, '').toLowerCase();
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) found[v] = true;
-      });
-      pending = Object.keys(found);
-      showUploadPreview();
-      $('uploadBtn').disabled = !pending.length;
-      $('preview').hidden = false;
-    };
-    reader.readAsText(f);
-    this.value = '';
-  });
-  // Before uploading, show exactly who would be added and, for Replace, who would be removed
-  // (owner, 3 Nov: dropping officers who never signed up).
-  function uploadChanges() {
-    var inFile = {}, onList = {};
-    pending.forEach(function (e) { inFile[e] = true; });
-    currentAdmins.forEach(function (e) { onList[e] = true; });
-    return {
-      added: pending.filter(function (e) { return !onList[e]; }).sort(),
-      removed: currentAdmins.filter(function (e) { return !inFile[e]; }).sort(),
-      kept: pending.filter(function (e) { return onList[e]; }).length
-    };
-  }
-  function showUploadPreview() {
-    var box = $('previewText'); box.innerHTML = '';
-    if (!pending.length) { box.textContent = 'No email addresses found in this file.'; return; }
-    var mode = document.querySelector('input[name="mode"]:checked').value, c = uploadChanges();
-    var head = document.createElement('b');
-    head.textContent = pending.length + ' email address(es) in the file: ' + c.kept + ' already on the list, ' + c.added.length + ' new' +
-      (mode === 'replace' ? ', and ' + c.removed.length + ' on the list but not in the file, who would be removed.' : '.');
-    box.appendChild(head);
-    function list(title, items, cls) {
-      if (!items.length) return;
-      var p = document.createElement('p'); p.className = 'small ' + cls; p.textContent = title + ' (' + items.length + '): ' + items.join(', ');
-      box.appendChild(p);
-    }
-    if (mode === 'replace') list('Would be removed', c.removed, 'error');
-    list(mode === 'replace' ? 'Would be added (and get the welcome email when you send it)' : 'Would be added', c.added, 'muted');
-  }
-  document.querySelectorAll('input[name="mode"]').forEach(function (r) { r.addEventListener('change', function () { if (pending.length) showUploadPreview(); }); });
-
-  $('uploadBtn').addEventListener('click', function () {
-    var mode = document.querySelector('input[name="mode"]:checked').value;
-    var c = uploadChanges();
-    if (mode === 'replace' && !confirm('Replace the list: remove ' + c.removed.length + ' admin(s) not in the file and add ' + c.added.length + '? Removed admins lose access on their next action.')) return;
-    Api.call('POST', '/api/admins', { emails: pending, mode: mode }, ROLE).then(function (r) {
-      if (!guard(r)) return;
-      if (!r.ok) return adminError(r.body.message);
-      $('preview').hidden = true; pending = [];
-      renderAdmins(r.body.admins);
-    }, function () { adminError('Cannot reach the server.'); });
-  });
-
-  $('addForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    adminError('');
-    var email = $('addEmail').value.trim().toLowerCase();
-    Api.call('POST', '/api/admins', { emails: [email], mode: 'add' }, ROLE).then(function (r) {
-      if (!guard(r)) return;
-      if (!r.ok) return adminError(r.body.message);
-      $('addEmail').value = '';
-      renderAdmins(r.body.admins);
-    }, function () { adminError('Cannot reach the server.'); });
-  });
-
   // ---------- bug log ----------
   var STATUS_LABEL = { new: 'New', in_progress: 'Being fixed', needs_decision: 'Needs your decision', fixed: 'Fixed', wont_fix: "Won't fix", duplicate: 'Duplicate' };
   var REPO = 'https://github.com/ngwlbencorp/mom-deepavali-2026/commit/';

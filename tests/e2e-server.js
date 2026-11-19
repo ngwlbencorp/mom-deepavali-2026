@@ -215,14 +215,43 @@ const post = (path, body, token) => fetch(api + path, { method: 'POST', headers:
   ok(!(await sup.locator('#tip').isHidden()), 'hover shows tooltip');
   await sup.screenshot({ path: out + '/superadmin-dash.png', fullPage: true });
 
+  // Admins tab (owner, 19 Nov): one place to add officers, the event's list. The old login-list
+  // upload box is gone, so this adds through the event card's CSV preview and one-email form.
+  // alice and bob were added through the API without an event, so they show as "No event".
   await sup.click('[data-tab="admins"]');
-  fs.writeFileSync(out + '/admins.csv', 'Name,Email\r\n"Dan","Dan@MOM.gov.sg"\r\nEve,eve@mom.gov.sg\r\nno email here,\r\n');
-  await sup.setInputFiles('#csv', out + '/admins.csv');
-  await sup.waitForFunction(() => !document.getElementById('preview').hidden);
-  ok(/2 email address/.test(await sup.locator('#previewText').textContent()), 'CSV preview finds 2 emails');
-  await sup.click('#uploadBtn');
+  await sup.waitForFunction(() => document.getElementById('adminCount').textContent === '2' && document.querySelectorAll('#adminList li').length === 2);
+  ok(await sup.locator('#csv, #addForm, #uploadBtn, input[name="mode"]').count() === 0 && /^Everyone who can log in/.test((await sup.locator('#adminCount').locator('..').textContent()).trim()),
+    'one add box: the old login-list upload is gone; the list is "Everyone who can log in"');
+  const evShort = (id) => { const m = /^\d{4}-(\d{2})-(\d{2})$/.exec(id); return Number(m[2]) + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(m[1]) - 1]; };
+  ok((await sup.locator('#adminList li').allTextContents()).every((t) => /No event/.test(t)) && /No event \(2\)/.test(await sup.locator('[data-filter="noevent"]').textContent()),
+    'officers on no event say "No event"; the filter counts them');
+  fs.writeFileSync(out + '/admins.csv', 'Name,Email\r\n"Dan","Dan@MOM.gov.sg"\r\nEve,eve@mom.gov.sg\r\nAlice,alice@mom.gov.sg\r\nno email here,\r\n');
+  await sup.setInputFiles('#evCsv', out + '/admins.csv');
+  await sup.waitForFunction(() => !document.getElementById('evPreview').hidden);
+  const pv = await sup.locator('#evPreviewText').textContent();
+  ok(/3 email address\(es\) in the file: 3 would be added to .+, 0 already on it/.test(pv) && /New to the login list .*\(2\): dan@mom\.gov\.sg, eve@mom\.gov\.sg/.test(pv) && /Already on the login list \(1\): alice@mom\.gov\.sg/.test(pv),
+    'event CSV preview: who would be added, who is new to the login list, who is already on it');
+  ok(await sup.locator('#adminCount').textContent() === '2' && await sup.locator('#evOffCount').textContent() === '0', 'nothing is saved before confirming');
+  await sup.click('#evUploadBtn');
+  await sup.waitForFunction(() => document.getElementById('adminCount').textContent === '4' && document.getElementById('evOffCount').textContent === '3' && document.getElementById('evPreview').hidden);
+  ok(true, 'confirming adds the 3 to the event and the 2 new ones to the login list (4 can log in)');
+  const aliceRow = await sup.locator('#adminList li', { hasText: 'alice@mom.gov.sg' }).textContent();
+  ok(new RegExp('Events: ' + evShort(EVT)).test(aliceRow), 'each row names its events (' + aliceRow.match(/Events: [^A-Z]*/) + ')');
+  await sup.fill('#evAddEmail', 'Frank@MOM.gov.sg'); await sup.click('#evAddForm button');
+  await sup.waitForFunction(() => document.getElementById('adminCount').textContent === '5' && document.getElementById('evOffCount').textContent === '4');
+  ok(true, 'one email added to the event and the login list');
+  await sup.click('[data-filter="noevent"]');
+  await sup.waitForFunction(() => document.querySelectorAll('#adminList li').length === 1);
+  ok(/bob@mom\.gov\.sg/.test(await sup.locator('#adminList li').textContent()) && /No event \(1\)/.test(await sup.locator('[data-filter="noevent"]').textContent()) && /Showing 1 of 5/.test(await sup.locator('#adminShown').textContent()),
+    '"No event" filter shows only bob');
+  await sup.click('[data-filter="all"]');
+  let removeMsg = '';
+  sup.once('dialog', (d) => { removeMsg = d.message(); d.accept(); });
+  await sup.locator('#adminList li', { hasText: 'frank@mom.gov.sg' }).locator('button').click();
   await sup.waitForFunction(() => document.getElementById('adminCount').textContent === '4');
-  ok(true, 'upload (add mode): 4 admins listed');
+  await sup.waitForFunction(() => /frank@mom\.gov\.sg.*cannot log in/.test(document.getElementById('evOffList').textContent));
+  ok(/logged out on their next action/.test(removeMsg) && new RegExp('stay on the officer list of ' + evShort(EVT)).test(removeMsg),
+    'Remove takes frank off the login list; he stays on the event list, marked "cannot log in", and the confirm says so');
   const firstRow = await sup.locator('#adminList li').first().textContent(), loggedRow = await sup.locator('#adminList li').last().textContent();
   ok(/^\d+ of 4 have logged in$/.test(await sup.locator('#loginSummary').textContent()) && /Not logged in yet/.test(firstRow) && /Last login .* \d+ logins?/.test(loggedRow),
     'admin list shows who has logged in (last login, count), not-yet first');

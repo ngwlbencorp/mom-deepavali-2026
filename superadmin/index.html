@@ -83,31 +83,20 @@
       <section id="t-admins" hidden>
         <div class="card" id="evOfficerCard">
           <h3>Officers for <span class="evName">this event</span> (<span id="evOffCount">0</span>)</h3>
-          <p class="muted small">Who is on duty for this event. Any listed officer of any event can log in. Adding a new email here also adds it to the admin list below, so the welcome email finds it.</p>
+          <p class="muted small">The one place to add officers. Anyone on any event's list can log in with their email and the shared admin password; a new email also joins "Everyone who can log in" below, so the welcome email finds it. Taking an officer off this event keeps their login, as they may be on another event.</p>
           <label class="btn secondary filebtn">Add from CSV file<input type="file" id="evCsv" accept=".csv,text/csv,text/plain"></label>
+          <div id="evPreview" hidden>
+            <div id="evPreviewText"></div>
+            <button class="btn" type="button" id="evUploadBtn">Add</button>
+            <button class="btn secondary" type="button" id="evCancelBtn">Cancel</button>
+          </div>
           <form class="addone" id="evAddForm">
             <label class="field">Or add one email <input id="evAddEmail" type="email" autocomplete="off" placeholder="name@mom.gov.sg" required></label>
             <button class="btn secondary" type="submit">Add</button>
           </form>
+          <p class="muted small">In a CSV, any cell containing an email address is used; headers and other columns are ignored. Emails are stored in lower case and login ignores capitals, so "Name@MOM.gov.sg" and "name@mom.gov.sg" are the same officer.</p>
           <p class="small" id="evOffMsg" aria-live="polite"></p>
           <ul class="adminlist" id="evOffList"></ul>
-        </div>
-        <div class="card">
-          <h3>Upload admin emails (CSV)</h3>
-          <p class="muted small">Any cell containing an email address is used; headers and other columns are ignored. Admins log in with their email and the shared admin password.</p>
-          <label class="btn secondary filebtn">Choose CSV file<input type="file" id="csv" accept=".csv,text/csv,text/plain"></label>
-          <div id="preview" hidden>
-            <p id="previewText"></p>
-            <label class="radio"><input type="radio" name="mode" value="add" checked> Add to the current list</label>
-            <label class="radio"><input type="radio" name="mode" value="replace"> Replace the current list</label>
-            <button class="btn" id="uploadBtn">Upload</button>
-          </div>
-          <form class="addone" id="addForm">
-            <label class="field">Or add one email <input id="addEmail" type="email" autocomplete="off" placeholder="name@mom.gov.sg" required></label>
-            <button class="btn secondary" type="submit">Add admin</button>
-          </form>
-          <p class="muted small">Emails are stored in lower case and login ignores capitals, so "Name@MOM.gov.sg" and "name@mom.gov.sg" are the same admin.</p>
-          <p class="error" id="adminErr" hidden></p>
         </div>
         <div class="card" id="mailCard">
           <h3>Email officers (Postman)</h3>
@@ -136,13 +125,15 @@
           </div>
         </div>
         <div class="card">
-          <h3>Current admins (<span id="adminCount">0</span>)</h3>
+          <h3>Everyone who can log in (<span id="adminCount">0</span>)</h3>
           <p class="small" id="loginSummary"></p>
+          <p class="error" id="adminErr" hidden></p>
           <div class="adminfilter" role="group" aria-label="Show">
             <button type="button" class="fchip" data-filter="all" aria-pressed="true">All</button>
             <button type="button" class="fchip" data-filter="nowelcome" aria-pressed="false">Welcome not sent</button>
             <button type="button" class="fchip" data-filter="nologin" aria-pressed="false">Not logged in</button>
             <button type="button" class="fchip" data-filter="bad" aria-pressed="false">Email problem</button>
+            <button type="button" class="fchip" data-filter="noevent" aria-pressed="false">No event</button>
           </div>
           <div class="admintools">
             <input type="search" id="adminSearch" placeholder="Search email" aria-label="Search admins by email" autocomplete="off">

@@ -228,6 +228,15 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
   Scrolling through to find which 3 havent been sent the welcome message is inefficient"). Filter
   buttons with counts (Welcome not sent, Not logged in, Email problem), a search by email and a
   sort menu, all in the page from the data it already loads; no API change.
+- **One place to add officers: the event's list** (owner, 19 Nov: confused by two add boxes). The
+  old "Upload admin emails (CSV)" box (Add/Replace, "Add admin") is gone; its Replace could take
+  other events' officers off the login list. "Officers for [event]" adds by CSV, with a preview
+  before saving (added to the event, new to the login list, already on it), or one email. The
+  owner's rule: anyone on any event's list can log in, and every officer belongs to an event.
+  "Everyone who can log in" (`admins`) names each officer's events, from an additive `events`
+  field on `GET /api/admins` (from `event_officers`, no new column), with a "No event" filter.
+  Its Remove deletes the login only; the email stays on event lists, marked "cannot log in",
+  until added again. The API's `emails`/`replace` is unchanged, for pages already open.
 - **Login tracking: only `last_login_at` and `login_count`** (owner approved those two fields,
   30 Oct), to see which officers have tried logging in.
 - **Language tracking: `submissions.language` and `scans.language`** (owner approved, 1 Nov). The
@@ -256,6 +265,7 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
     record survives data refreshes.
   - **"Replace" now keeps officers who are in both lists** (Claude, 2 Nov). It used to delete
     everyone and re-add them, which would have wiped the record and re-sent the welcome to all.
+    (The page has no Replace since 19 Nov; the API still accepts it.)
   - **Password and page addresses come from Vercel settings** (`ADMIN_PASSWORD`, `MINISITE_URL`,
     `OFFICER_SITE_URL`, `ADMIN_CONTACT`, `BRIEFING_URL`), never the code, because the repository is public. The
     email shows the password that actually works. The owner accepted sending it in plain text: a
