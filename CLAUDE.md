@@ -224,6 +224,10 @@ A scam-awareness mini-site for migrant workers (MWs) at MOM's Deepavali event, D
   the officers'.
 - **Re-uploading listed emails changes nothing, and clearing rehearsal data keeps every officer
   and the bug reports** (owner, 30 Oct): the owner does not want to redo the upload after a demo.
+- **The admin list filters, searches and sorts** (owner, 19 Nov: "i have over 90 admins now.
+  Scrolling through to find which 3 havent been sent the welcome message is inefficient"). Filter
+  buttons with counts (Welcome not sent, Not logged in, Email problem), a search by email and a
+  sort menu, all in the page from the data it already loads; no API change.
 - **Login tracking: only `last_login_at` and `login_count`** (owner approved those two fields,
   30 Oct), to see which officers have tried logging in.
 - **Language tracking: `submissions.language` and `scans.language`** (owner approved, 1 Nov). The

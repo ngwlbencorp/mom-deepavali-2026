@@ -138,6 +138,22 @@
         <div class="card">
           <h3>Current admins (<span id="adminCount">0</span>)</h3>
           <p class="small" id="loginSummary"></p>
+          <div class="adminfilter" role="group" aria-label="Show">
+            <button type="button" class="fchip" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="fchip" data-filter="nowelcome" aria-pressed="false">Welcome not sent</button>
+            <button type="button" class="fchip" data-filter="nologin" aria-pressed="false">Not logged in</button>
+            <button type="button" class="fchip" data-filter="bad" aria-pressed="false">Email problem</button>
+          </div>
+          <div class="admintools">
+            <input type="search" id="adminSearch" placeholder="Search email" aria-label="Search admins by email" autocomplete="off">
+            <select id="adminSort" aria-label="Sort admins">
+              <option value="login">Not logged in</option>
+              <option value="email">Email A to Z</option>
+              <option value="lastlogin">Latest login</option>
+              <option value="welcome">No welcome</option>
+            </select>
+          </div>
+          <p class="small muted" id="adminShown" aria-live="polite"></p>
           <ul class="adminlist" id="adminList"></ul>
         </div>
       </section>

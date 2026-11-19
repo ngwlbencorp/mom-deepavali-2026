@@ -135,3 +135,12 @@ input, select, textarea { font-size: 16px !important; }
 .evbar { padding: 10px 14px; margin-bottom: 12px; }
 .evbar .field { margin: 0 0 4px; }
 #evOffList li { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+
+/* Admin list filter, search and sort (owner, 19 Nov: 90+ officers) */
+.adminfilter { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.adminfilter .fchip { font: inherit; font-size: .85rem; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: none; color: inherit; cursor: pointer; }
+.adminfilter .fchip[aria-pressed="true"] { background: var(--plum); border-color: var(--plum); color: #fff; }
+.admintools { display: flex; gap: 8px; margin-bottom: 4px; }
+.admintools input, .admintools select { font-size: 16px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--card, transparent); color: inherit; min-width: 0; }
+.admintools input { flex: 1 1 auto; }
+.admintools select { flex: 0 0 auto; max-width: 48%; }

@@ -383,15 +383,47 @@
   // ---------- admins ----------
   var pending = [];
   function adminError(msg) { var e = $('adminErr'); e.textContent = msg || ''; e.hidden = !msg; }
-  // Officers who have not logged in yet come first, so they are easy to chase.
+  // Officers who have not logged in yet come first by default, so they are easy to chase. With
+  // 90+ officers (owner, 19 Nov) the list also filters (welcome not sent, not logged in, email
+  // problem), searches by email and sorts; the choice survives every refresh of the list.
   var currentAdmins = [];  // emails on the list as last loaded, for the upload preview
+  var adminRows = [], adminFilter = 'all';
+  function badMail(a) { var dv = delivery[a.email] || {}; return !!((dv.welcome && BAD[dv.welcome.status]) || (dv.reminder && BAD[dv.reminder.status])); }
+  var FILTERS = {
+    all: function () { return true; },
+    nowelcome: function (a) { return !a.welcome_sent_at; },
+    nologin: function (a) { return !(a.login_count > 0); },
+    bad: badMail
+  };
+  var SORTS = {
+    login: function (a, b) { return (a.login_count > 0) - (b.login_count > 0) || (a.email < b.email ? -1 : 1); },
+    email: function (a, b) { return a.email < b.email ? -1 : 1; },
+    lastlogin: function (a, b) { return (Date.parse(b.last_login_at) || 0) - (Date.parse(a.last_login_at) || 0) || (a.email < b.email ? -1 : 1); },
+    welcome: function (a, b) { return (!!a.welcome_sent_at) - (!!b.welcome_sent_at) || (a.email < b.email ? -1 : 1); }
+  };
   function renderAdmins(list) {
+    adminRows = list;
     currentAdmins = list.map(function (a) { return a.email; });
     $('adminCount').textContent = list.length;
     var seen = list.filter(function (a) { return a.login_count > 0; }).length;
     $('loginSummary').textContent = seen + ' of ' + list.length + ' have logged in';
-    list = list.slice().sort(function (a, b) { return (a.login_count > 0) - (b.login_count > 0) || (a.email < b.email ? -1 : 1); });
+    drawAdmins();
+  }
+  function drawAdmins() {
+    var all = adminRows;
+    document.querySelectorAll('.adminfilter .fchip').forEach(function (c) {
+      var f = c.getAttribute('data-filter');
+      var n = all.filter(FILTERS[f]).length;
+      if (!c.dataset.label) c.dataset.label = c.textContent;
+      c.textContent = c.dataset.label + ' (' + n + ')';
+      c.setAttribute('aria-pressed', String(f === adminFilter));
+    });
+    var q = ($('adminSearch').value || '').trim().toLowerCase();
+    var list = all.filter(FILTERS[adminFilter]).filter(function (a) { return !q || a.email.indexOf(q) !== -1; });
+    list = list.slice().sort(SORTS[$('adminSort').value] || SORTS.login);
+    $('adminShown').textContent = list.length === all.length ? '' : 'Showing ' + list.length + ' of ' + all.length;
     var ul = $('adminList'); ul.innerHTML = '';
+    if (!list.length && all.length) { var none = document.createElement('li'); none.className = 'muted small'; none.textContent = 'No admins match.'; ul.appendChild(none); }
     list.forEach(function (a) {
       var li = document.createElement('li'), span = document.createElement('span'), b = document.createElement('button');
       span.textContent = a.email;
@@ -421,6 +453,11 @@
   var BAD = { BOUNCED: true, COMPLAINT: true, NOT_FOUND: true };
   function statusText(d) { return d ? ' (' + (STATUS[d.status] || d.status) + (d.error ? ': ' + d.error : '') + ')' : ''; }
   function when(t) { return new Date(t).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); }
+  document.querySelectorAll('.adminfilter .fchip').forEach(function (c) {
+    c.addEventListener('click', function () { adminFilter = c.getAttribute('data-filter'); drawAdmins(); });
+  });
+  $('adminSearch').addEventListener('input', drawAdmins);
+  $('adminSort').addEventListener('change', drawAdmins);
   function loadAdmins() {
     Api.call('GET', '/api/admins', null, ROLE).then(function (r) { if (guard(r) && r.ok) renderAdmins(r.body.admins); }, function () { adminError('Cannot reach the server.'); });
     loadMail();
